@@ -194,6 +194,21 @@ def vline_breaks(vert, x, y):
                for xx, a, b in vert)
 
 
+def vline_continuous(vert, x, ya, yb):
+    """¿Hay un único segmento vertical en x que cubre TODO [ya, yb] sin cortes?
+
+    Es la marca geométrica de un rowspan: cuando el PDF fusiona una celda a
+    lo alto, su borde se traza de una sola pieza de punta a punta, aunque el
+    texto de la celda se envuelva en dos líneas que caen en bandas distintas
+    ("Cordón para" / "lámpara" en la Tabla 400-4). Si en cambio hay una fila
+    nueva de verdad, el borde se corta justo en la frontera. Distingue lo que
+    `words_in` no puede: un borde sin cortar vale más que el texto propio
+    abajo, que solo decide cuando no hay trazado del que fiarse.
+    """
+    return any(abs(xx - x) <= 3 and a <= ya + 1 and b >= yb - 1
+               for xx, a, b in vert)
+
+
 def words_in(words, xa, xb, ya, yb):
     return [w for w in words
             if xa <= (w[0] + w[2]) / 2 < xb and ya - 1 <= (w[1] + w[3]) / 2 <= yb + 1]
@@ -238,11 +253,31 @@ def cell_rects(words, bands, edges, vert, horz, solo_cruces=False):
             # las tres: ni horizontal dibujada, ni corte del borde izquierdo,
             # ni texto propio abajo. Una celda de datos en blanco no basta
             # para fusionarla con la de arriba.
+            #
+            # Salvo que AMBOS bordes —izquierdo y derecho— estén trazados de
+            # una sola pieza sin cortar por todo el tramo: eso es un rowspan
+            # del PDF y manda sobre el texto propio abajo, que solo decide
+            # cuando no hay línea de la que fiarse (vline_continuous).
+            #
+            # No basta con uno solo de los dos: cada borde interno lo
+            # comparten dos columnas, y un borde sin cortar puede deberse a
+            # que la columna VECINA no se divide ahí, no esta. En la Tabla
+            # 400-4, "Area mm2" y "Aislamiento" comparten el borde de la
+            # izquierda; ese borde no se corta porque Aislamiento sí es
+            # rowspan, pero Area mm2 no lo es y su borde derecho sí se corta.
+            # Exigir los dos evita fusionar esa columna con la fila de abajo.
             r = i + 1
-            while (r < nR
-                   and not has_hline(horz, bands[r - 1][1], edges[j], edges[k])
-                   and not vline_breaks(vert, edges[j], bands[r - 1][1])
-                   and not words_in(words, edges[j], edges[k], *bands[r])):
+            while r < nR:
+                yb_r = bands[r][1]
+                if has_hline(horz, bands[r - 1][1], edges[j], edges[k]):
+                    break
+                if (vline_continuous(vert, edges[j], ya, yb_r)
+                        and vline_continuous(vert, edges[k], ya, yb_r)):
+                    r += 1
+                    continue
+                if (vline_breaks(vert, edges[j], bands[r - 1][1])
+                        or words_in(words, edges[j], edges[k], *bands[r])):
+                    break
                 r += 1
             for a in range(i, r):
                 for b in range(j, k):
@@ -268,6 +303,19 @@ def build_cells(words, bands, edges, vert, horz, solo_cruces=False):
             for b in range(j, j + cs):
                 owner[(a, b)] = (i, j)
 
+    # rs cuenta BANDAS crudas, pero la tabla publicada solo tiene una fila por
+    # banda que arranca alguna celda: una banda que un rowspan se traga entera
+    # en TODAS las columnas —el renglón de ajuste de un título envuelto, sin
+    # dato propio en ninguna otra columna— no produce fila de salida. Si rs se
+    # dejara en bandas crudas, ese rowspan se comería la fila publicada
+    # siguiente, que es un producto distinto sin relación ("Cordón..." con
+    # rs=2 tapando la fila de "ECTFE" en la Tabla 402-3). Se remite a cuántas
+    # bandas de [i, i+rs) arrancan alguna celda de verdad.
+    starts = sorted(set(i for i, _, _, _ in rects))
+
+    def out_rowspan(i, rs):
+        return sum(1 for s in starts if i <= s < i + rs)
+
     txt = defaultdict(list)
     for w in words:
         cy, cx = (w[1] + w[3]) / 2, (w[0] + w[2]) / 2
@@ -290,8 +338,9 @@ def build_cells(words, bands, edges, vert, horz, solo_cruces=False):
         cell = {'t': ' '.join(p[2] for p in sorted(txt.get((i, j), []))).strip()}
         if cs > 1:
             cell['cs'] = cs
-        if rs > 1:
-            cell['rs'] = rs
+        rs_out = out_rowspan(i, rs)
+        if rs_out > 1:
+            cell['rs'] = rs_out
         rows[i].append((j, cell))
     out = []
     for i in sorted(rows):

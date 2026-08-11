@@ -16,19 +16,20 @@ con varios valores juntos) · **rejilla** de dónde salieron las columnas: `dibu
 son las líneas del PDF, `huecos` son los espacios entre palabras, que es mucho menos
 fiable y no recupera celdas combinadas.
 
-## 1 · Prioridad alta (7)
+## 1 · Prioridad alta (8)
 
 Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|
-| [ ] | `400-4` | Cordones y cables flexibles (Ver 400-4) | 241, 242, 243, 244 | 22 | 0.77 | dibujada | 132×15 |
+| [ ] | `400-4` | Cordones y cables flexibles (Ver 400-4) | 241, 242, 243, 244 | 22 | 0.75 | dibujada | 132×14 |
 | [ ] | `250-66` | Conductor del electrodo de puesta a tierra para sistemas de corriente… | 98 | 9 | 0.79 | dibujada | 10×8 |
 | [ ] | `392-22(a)` | Area de ocupación permisible para cables multiconductores en charolas… | 231 | 2 | 0.58 | **huecos** | 16×3 |
 | [ ] | `922-22(a)` | Separación de conductores eléctricos verticales y derivados con respec… | 715 | 2 | 0.58 | dibujada | 3×4 |
 | [ ] | `220-42` | Factores de demanda de cargas de alumbrado | 47 | 4 | 0.75 | **huecos** | 12×5 |
 | [ ] | `392-22(b)(1)` | Area de ocupación permisible para cables de un solo conductor en charo… | 233 | 2 | 0.59 | **huecos** | 15×4 |
 | [ ] | `630-31(a)(2)` | Factores de multiplicación del régimen de trabajo para soldadoras por… | 548 | 1 | 0.43 | **huecos** | 3×3 |
+| [ ] | `402-3` | Cables para artefactos | 248, 249 | 4 | 0.79 | dibujada | 34×9 |
 
 ## 2 · Dudosas (14)
 

@@ -165,8 +165,8 @@
  },
  {
   "id": "400-4",
-  "quality": 0.766,
-  "cols": 15,
+  "quality": 0.753,
+  "cols": 14,
   "rows": 132,
   "pages": [
    241,
@@ -215,5 +215,16 @@
    481
   ],
   "title": "Factores de demanda para conductores de entrada de acometida y alimentadores"
+ },
+ {
+  "id": "402-3",
+  "quality": 0.793,
+  "cols": 9,
+  "rows": 34,
+  "pages": [
+   248,
+   249
+  ],
+  "title": "Cables para artefactos"
  }
 ]
