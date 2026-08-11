@@ -1,5 +1,5 @@
 /* ============================================================== TEMAS
-   Cinco paletas. `claro` es la base: define TODOS los tokens, y las demás
+   Seis paletas. `claro` es la base: define TODOS los tokens, y las demás
    solo redefinen los que cambian, así ningún color queda sin valor.
 
    Sobre los oscuros: un acento muy saturado sobre fondo oscuro cansa la
@@ -7,9 +7,14 @@
    luminancia. Por eso `oscuro` y `noche` bajan la saturación del acento en
    lugar de solo aclararlo, y `carbon` conserva el café cálido original para
    quien lo prefiera.
+
+   Cada paleta declara además su `color-scheme`, que es lo que hace que las
+   barras de desplazamiento y los controles del navegador acompañen al tema
+   en vez de salir siempre en claro.
    ------------------------------------------------------------------- */
 :root,
 :root[data-theme="claro"] {
+  color-scheme: light;
   --bg: #fbfaf8;
   --bg-soft: #f2efea;
   --panel: #ffffff;
@@ -31,6 +36,7 @@
 
 /* Papel cálido, contraste suave: para lecturas largas con luz de día. */
 :root[data-theme="sepia"] {
+  color-scheme: light;
   --bg: #f5efe2;
   --bg-soft: #ece4d3;
   --panel: #fbf7ee;
@@ -45,8 +51,29 @@
   --warn-br: #d8bf8e;
 }
 
+/* La paleta de `noche` a plena luz: gris azulado y acento de pizarra, sin
+   nada de café. El acento se oscurece hasta 6.5:1 sobre el panel blanco,
+   porque el mismo azul grisáceo que descansa la vista en oscuro no llega a
+   contraste legible sobre fondo claro. */
+:root[data-theme="alba"] {
+  color-scheme: light;
+  --bg: #f6f8fa;
+  --bg-soft: #eaeef2;
+  --panel: #ffffff;
+  --border: #d0d9e0;
+  --border-soft: #e3e9ee;
+  --text: #1a2126;
+  --text-dim: #566670;
+  --text-faint: #83919b;
+  --accent: #2f6079;
+  --accent-soft: #e2edf3;
+  --warn-bg: #fdf6e6;
+  --warn-br: #ded0ab;
+}
+
 /* Gris neutro con acento desaturado: el oscuro de uso diario. */
 :root[data-theme="oscuro"] {
+  color-scheme: dark;
   --bg: #1a1b1d;
   --bg-soft: #232427;
   --panel: #1f2023;
@@ -63,6 +90,7 @@
 
 /* Casi negro, para pantallas OLED y ambientes sin luz. */
 :root[data-theme="noche"] {
+  color-scheme: dark;
   --bg: #0c0d0e;
   --bg-soft: #151618;
   --panel: #121314;
@@ -79,6 +107,7 @@
 
 /* El café cálido original, para quien lo prefiera. */
 :root[data-theme="carbon"] {
+  color-scheme: dark;
   --bg: #171614;
   --bg-soft: #1f1e1b;
   --panel: #1c1b18;
@@ -96,6 +125,7 @@
 /* Sin elección explícita se sigue al sistema; en oscuro, el neutro. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
+    color-scheme: dark;
     --bg: #1a1b1d;
     --bg-soft: #232427;
     --panel: #1f2023;
@@ -112,6 +142,33 @@
 }
 
 * { box-sizing: border-box; }
+
+/* ------------------------------------------- barras de desplazamiento
+   `color-scheme` ya le dice al navegador de qué color pintar las suyas —sin
+   él, el índice lateral y el menú de temas salían blancos sobre fondo
+   oscuro—, pero cada motor elige un gris distinto. Estas reglas las atan al
+   tema, en la página y dentro de las tablas anchas.
+
+   El pulgar sale del texto tenue y no del borde: el borde se confunde con el
+   fondo en los temas muy oscuros y la barra desaparecía del todo.
+   ------------------------------------------------------------------- */
+* {
+  scrollbar-width: thin;                      /* Firefox */
+  scrollbar-color: color-mix(in srgb, var(--text-faint) 45%, transparent) transparent;
+}
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--text-faint) 45%, transparent);
+  border: 3px solid transparent;              /* aire alrededor del pulgar */
+  background-clip: content-box;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--text-faint) 80%, transparent);
+  background-clip: content-box;
+}
+::-webkit-scrollbar-corner { background: transparent; }
 
 body {
   margin: 0;
