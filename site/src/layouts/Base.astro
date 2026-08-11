@@ -13,6 +13,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <link rel="icon" href={`${base}/favicon.svg`} />
     <link rel="manifest" href={`${base}/manifest.webmanifest`} />
     <meta name="theme-color" content="#8a4b1f" />
+    <script is:inline>
+      // Se aplica ANTES de pintar. Si se hiciera al cargar el módulo, la
+      // página aparecería un instante con el tema claro antes de saltar al
+      // elegido, que es justo el parpadeo que molesta de noche.
+      try {
+        var t = localStorage.getItem('nom-tema');
+        if (t && t !== 'sistema') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <header class="top">
@@ -37,6 +46,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <nav class="links">
           <a href={`${base}/`}>Índice</a>
           <a href={`${base}/glosario`}>Glosario</a>
+          <select id="tema" class="theme-pick" aria-label="Tema de color">
+            <option value="sistema">Sistema</option>
+            <option value="claro">Claro</option>
+            <option value="sepia">Sepia</option>
+            <option value="oscuro">Oscuro</option>
+            <option value="noche">Noche</option>
+            <option value="carbon">Carbón</option>
+          </select>
         </nav>
       </div>
     </header>
@@ -159,6 +176,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           input?.focus();
         }
       });
+
+      // ---------------------------------------------------------- tema
+      const temaSel = document.getElementById('tema');
+      if (temaSel) {
+        let saved = 'sistema';
+        try { saved = localStorage.getItem('nom-tema') || 'sistema'; } catch (e) {}
+        temaSel.value = saved;
+        temaSel.addEventListener('change', () => {
+          const v = temaSel.value;
+          if (v === 'sistema') delete document.documentElement.dataset.theme;
+          else document.documentElement.dataset.theme = v;
+          try { localStorage.setItem('nom-tema', v); } catch (e) {}
+        });
+      }
 
       if ('serviceWorker' in navigator) {
         addEventListener('load', () =>

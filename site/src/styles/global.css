@@ -1,5 +1,15 @@
-/* Paleta clara por defecto; el bloque oscuro solo redefine tokens. */
-:root {
+/* ============================================================== TEMAS
+   Cinco paletas. `claro` es la base: define TODOS los tokens, y las demás
+   solo redefinen los que cambian, así ningún color queda sin valor.
+
+   Sobre los oscuros: un acento muy saturado sobre fondo oscuro cansa la
+   vista, porque el ojo pelea contra el contraste de color además del de
+   luminancia. Por eso `oscuro` y `noche` bajan la saturación del acento en
+   lugar de solo aclararlo, y `carbon` conserva el café cálido original para
+   quien lo prefiera.
+   ------------------------------------------------------------------- */
+:root,
+:root[data-theme="claro"] {
   --bg: #fbfaf8;
   --bg-soft: #f2efea;
   --panel: #ffffff;
@@ -12,29 +22,63 @@
   --accent-soft: #f6ece2;
   --warn-bg: #fdf5e6;
   --warn-br: #e6cfa3;
+
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --radius: 6px;
   --maxw: 1180px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #171614;
-    --bg-soft: #1f1e1b;
-    --panel: #1c1b18;
-    --border: #34322d;
-    --border-soft: #292824;
-    --text: #e8e4dd;
-    --text-dim: #a8a196;
-    --text-faint: #7d766b;
-    --accent: #e0a06a;
-    --accent-soft: #2b241d;
-    --warn-bg: #2a2418;
-    --warn-br: #4d4128;
-  }
+/* Papel cálido, contraste suave: para lecturas largas con luz de día. */
+:root[data-theme="sepia"] {
+  --bg: #f5efe2;
+  --bg-soft: #ece4d3;
+  --panel: #fbf7ee;
+  --border: #d9cdb6;
+  --border-soft: #e5dcc9;
+  --text: #3b3428;
+  --text-dim: #6d6353;
+  --text-faint: #948872;
+  --accent: #8a5a2b;
+  --accent-soft: #ebdfc9;
+  --warn-bg: #f6ead0;
+  --warn-br: #d8bf8e;
 }
-:root[data-theme="dark"] {
+
+/* Gris neutro con acento desaturado: el oscuro de uso diario. */
+:root[data-theme="oscuro"] {
+  --bg: #1a1b1d;
+  --bg-soft: #232427;
+  --panel: #1f2023;
+  --border: #35373b;
+  --border-soft: #2a2c2f;
+  --text: #dfe1e4;
+  --text-dim: #a2a6ac;
+  --text-faint: #7b7f86;
+  --accent: #b8a184;
+  --accent-soft: #2a2723;
+  --warn-bg: #2a2620;
+  --warn-br: #4a4335;
+}
+
+/* Casi negro, para pantallas OLED y ambientes sin luz. */
+:root[data-theme="noche"] {
+  --bg: #0c0d0e;
+  --bg-soft: #151618;
+  --panel: #121314;
+  --border: #26282b;
+  --border-soft: #1c1e20;
+  --text: #ccd0d4;
+  --text-dim: #8d9298;
+  --text-faint: #676c72;
+  --accent: #9db4c0;
+  --accent-soft: #1a1f22;
+  --warn-bg: #1c1a15;
+  --warn-br: #3a3529;
+}
+
+/* El café cálido original, para quien lo prefiera. */
+:root[data-theme="carbon"] {
   --bg: #171614;
   --bg-soft: #1f1e1b;
   --panel: #1c1b18;
@@ -47,6 +91,24 @@
   --accent-soft: #2b241d;
   --warn-bg: #2a2418;
   --warn-br: #4d4128;
+}
+
+/* Sin elección explícita se sigue al sistema; en oscuro, el neutro. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #1a1b1d;
+    --bg-soft: #232427;
+    --panel: #1f2023;
+    --border: #35373b;
+    --border-soft: #2a2c2f;
+    --text: #dfe1e4;
+    --text-dim: #a2a6ac;
+    --text-faint: #7b7f86;
+    --accent: #b8a184;
+    --accent-soft: #2a2723;
+    --warn-bg: #2a2620;
+    --warn-br: #4a4335;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -82,9 +144,25 @@ header.top .wrap {
 
 .brand { font-weight: 650; letter-spacing: -0.01em; color: var(--text); white-space: nowrap; }
 .brand small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--text-faint); letter-spacing: 0.02em; }
-nav.links { margin-left: auto; display: flex; gap: 1rem; font-size: 0.88rem; }
+nav.links { margin-left: auto; display: flex; align-items: center; gap: 1rem; font-size: 0.88rem; }
 nav.links a { color: var(--text-dim); }
 nav.links a:hover, nav.links a[aria-current] { color: var(--accent); }
+
+/* selector de tema */
+.theme-pick {
+  appearance: none;
+  background: var(--panel); color: var(--text-dim);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  font-family: inherit; font-size: 0.82rem;
+  padding: 0.26rem 1.5rem 0.26rem 0.5rem; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 13px) 52%, calc(100% - 9px) 52%;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+.theme-pick:hover { color: var(--accent); border-color: var(--accent); }
+.theme-pick:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 /* ---------------------------------------------------------------- buscador */
 .search-wrap { position: relative; flex: 1; max-width: 460px; }
