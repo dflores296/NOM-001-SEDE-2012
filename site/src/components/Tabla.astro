@@ -45,6 +45,16 @@ const dudosa = t.quality < 0.8;
 
   <div class="tabla-pie">
     {t.rows.length} filas · {t.cols} columnas · página{t.pages.length > 1 ? 's' : ''}{' '}
-    {t.pages.join(', ')} del PDF
+    {t.pages.join(', ')} del PDF ·{' '}
+    <a
+      href={`https://github.com/dflores296/NOM-001-SEDE-2012/issues/new?title=${
+        encodeURIComponent('Tabla ' + t.id + ': revisar valores')
+      }&body=${encodeURIComponent(
+        'Tabla ' + t.id + ' (página ' + t.pages.join(', ') + ' del PDF)\n\n' +
+        'Qué está mal:\n\nQué dice el PDF:\n'
+      )}`}
+      rel="noopener"
+      target="_blank"
+    >¿Ves un error? Repórtalo</a>
   </div>
 </figure>

@@ -32,10 +32,15 @@ const revisar = tablas.filter((t) => t.quality < 0.8).length;
       </div>
     </div>
 
-    <div class="aviso">
-      La reconstrucción de tablas desde un PDF no es exacta. Cada tabla lleva una estimación
-      de calidad y las que no superan el umbral aparecen marcadas, para que sepas cuándo
-      conviene contrastar con el documento del DOF. <b>Ninguna sustituye al original.</b>
+    <div class="aviso aviso-fuerte">
+      <b>Las tablas están en revisión.</b> Se reconstruyeron automáticamente desde el PDF y
+      ese proceso no es exacto: <b>{revisar} de las {tablas.length}</b> no alcanzaron el
+      umbral de confianza y aparecen marcadas una por una. Aun las que sí lo alcanzaron
+      pueden tener celdas mal separadas.
+      <br /><br />
+      Verifica siempre contra el PDF del DOF antes de usar un valor en un proyecto. Si
+      encuentras una diferencia, cada tabla tiene un enlace para reportarla: es la forma más
+      rápida de que se corrija para todos.
     </div>
 
     <div class="chap">
