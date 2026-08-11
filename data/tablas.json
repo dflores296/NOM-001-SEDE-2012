@@ -2,6 +2,7 @@
  {
   "id": "110-26(a)(1)",
   "title": "Espacios de trabajo",
+  "informativa": false,
   "article": 110,
   "pages": [
    22
@@ -79,6 +80,7 @@
  {
   "id": "110-28",
   "title": "Tipos de envolvente",
+  "informativa": false,
   "article": 110,
   "pages": [
    24,
@@ -1050,6 +1052,7 @@
  {
   "id": "110-31",
   "title": "Distancia mínima desde la cerca hasta las partes vivas",
+  "informativa": false,
   "article": 110,
   "pages": [
    25
@@ -1112,6 +1115,7 @@
  {
   "id": "110-34(a)",
   "title": "Distancia mínima del espacio de trabajo en una instalación eléctrica",
+  "informativa": false,
   "article": 110,
   "pages": [
    26,
@@ -1251,6 +1255,7 @@
  {
   "id": "110-34(e)",
   "title": "Altura de las partes vivas sin proteger sobre el espacio de trabajo",
+  "informativa": false,
   "article": 110,
   "pages": [
    27
@@ -1321,6 +1326,7 @@
  {
   "id": "210-2",
   "title": "Circuitos derivados de propósito específico",
+  "informativa": false,
   "article": 210,
   "pages": [
    32
@@ -1655,6 +1661,7 @@
  {
   "id": "210-21(b)(2)",
   "title": "Carga máxima conectada a un contacto por medio de un cordón y clavija.",
+  "informativa": false,
   "article": 210,
   "pages": [
    37
@@ -1736,6 +1743,7 @@
  {
   "id": "210-21(b)(3)",
   "title": "Capacidad nominal de contactos en circuitos de varias capacidades",
+  "informativa": false,
   "article": 210,
   "pages": [
    37
@@ -1881,6 +1889,7 @@
  {
   "id": "210-24",
   "title": "Resumen de requisitos de los circuitos derivados",
+  "informativa": false,
   "article": 210,
   "pages": [
    38
@@ -2131,6 +2140,7 @@
  {
   "id": "220-3",
   "title": "Referencias para el cálculo de carga adicional",
+  "informativa": false,
   "article": 220,
   "pages": [
    44,
@@ -2585,6 +2595,7 @@
  {
   "id": "220-12",
   "title": "Cargas de alumbrado general por tipo del inmueble",
+  "informativa": false,
   "article": 220,
   "pages": [
    45,
@@ -2803,6 +2814,7 @@
  {
   "id": "220-42",
   "title": "Factores de demanda de cargas de alumbrado",
+  "informativa": false,
   "article": 220,
   "pages": [
    47
@@ -3035,6 +3047,7 @@
  {
   "id": "220-44",
   "title": "Factores de demanda para cargas de contactos en inmuebles que no son unidades de vivienda",
+  "informativa": false,
   "article": 220,
   "pages": [
    48
@@ -3092,6 +3105,7 @@
  {
   "id": "220-54",
   "title": "Factores de demanda para secadoras domésticas de ropa",
+  "informativa": false,
   "article": 220,
   "pages": [
    48
@@ -3214,6 +3228,7 @@
  {
   "id": "220-55",
   "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe",
+  "informativa": false,
   "article": 220,
   "pages": [
    49
@@ -3699,6 +3714,7 @@
  {
   "id": "220-56",
   "title": "Factores de demanda para equipos de cuartos de cocina diferentes a unidades de vivienda.",
+  "informativa": false,
   "article": 220,
   "pages": [
    50
@@ -3802,6 +3818,7 @@
  {
   "id": "220-84",
   "title": "Cálculo opcional. Factores de demanda para unidades multifamiliares con tres o más viviendas",
+  "informativa": false,
   "article": 220,
   "pages": [
    52
@@ -4092,6 +4109,7 @@
  {
   "id": "220-86",
   "title": "Método opcional - Factores de demanda para conductores de alimentadores y de acometidas para instituciones educativas.",
+  "informativa": false,
   "article": 220,
   "pages": [
    53
@@ -4150,6 +4168,7 @@
  {
   "id": "220-88",
   "title": "Método opcional - Cálculos de la carga permitida para los conductores del alimentador para restaurantes nuevos.",
+  "informativa": false,
   "article": 220,
   "pages": [
    53
@@ -4246,6 +4265,7 @@
  {
   "id": "220-102",
   "title": "Método para calcular las cargas de instalaciones agrícolas que no sean unidades de vivienda",
+  "informativa": false,
   "article": 220,
   "pages": [
    54
@@ -4304,6 +4324,7 @@
  {
   "id": "220-103",
   "title": "Método para calcular la carga total de una instalación agrícola",
+  "informativa": false,
   "article": 220,
   "pages": [
    54
@@ -4370,6 +4391,7 @@
  {
   "id": "225-3",
   "title": "Otros Artículos",
+  "informativa": false,
   "article": 225,
   "pages": [
    54,
@@ -4604,6 +4626,7 @@
  {
   "id": "225-60",
   "title": "Libramientos sobre carretera, pasillos, rieles, agua y campo abierto",
+  "informativa": false,
   "article": 225,
   "pages": [
    59
@@ -4694,6 +4717,7 @@
  {
   "id": "225-61",
   "title": "Libramientos sobre edificios y otras estructuras",
+  "informativa": false,
   "article": 225,
   "pages": [
    59
@@ -4808,6 +4832,7 @@
  {
   "id": "230-51(c)",
   "title": "Soportes y separación de los conductores individuales de recepción del suministro expuestos",
+  "informativa": false,
   "article": 230,
   "pages": [
    65
@@ -4918,6 +4943,7 @@
  {
   "id": "240-3",
   "title": "Otros artículos",
+  "informativa": false,
   "article": 240,
   "pages": [
    71,
@@ -5348,6 +5374,7 @@
  {
   "id": "240-4(g)",
   "title": "Aplicaciones de conductores específicos",
+  "informativa": false,
   "article": 240,
   "pages": [
    73,
@@ -5536,6 +5563,7 @@
  {
   "id": "250-3",
   "title": "Requisitos adicionales de unión y puesta a tierra",
+  "informativa": false,
   "article": 250,
   "pages": [
    84,
@@ -6142,6 +6170,7 @@
  {
   "id": "250-66",
   "title": "Conductor del electrodo de puesta a tierra para sistemas de corriente alterna",
+  "informativa": false,
   "article": 250,
   "pages": [
    98
@@ -6404,6 +6433,7 @@
  {
   "id": "250-122",
   "title": "Tamaño mínimo de los conductores de puesta a tierra para canalizaciones y equipos",
+  "informativa": false,
   "article": 250,
   "pages": [
    108
@@ -6797,6 +6827,7 @@
  {
   "id": "300-16(c)",
   "title": "Designación métrica y tamaños comerciales",
+  "informativa": false,
   "article": 300,
   "pages": [
    118
@@ -6935,6 +6966,7 @@
  {
   "id": "300-5",
   "title": "Requisitos de profundidad mínima en instalaciones de 0 a 600 volts",
+  "informativa": false,
   "article": 300,
   "pages": [
    121
@@ -7174,6 +7206,7 @@
  {
   "id": "300-19(a)",
   "title": "Separación entre los soportes de los conductores",
+  "informativa": false,
   "article": 300,
   "pages": [
    126,
@@ -7384,6 +7417,7 @@
  {
   "id": "300-50",
   "title": "Requisitos de profundidad mínimaa",
+  "informativa": false,
   "article": 300,
   "pages": [
    130
@@ -7545,6 +7579,7 @@
  {
   "id": "310-15(b)(2)(a)",
   "title": "Factores de Corrección basados en una temperatura ambiente de 30 °C.",
+  "informativa": false,
   "article": 310,
   "pages": [
    134
@@ -7816,6 +7851,7 @@
  {
   "id": "310-15(b)(2)(b)",
   "title": "Factores de Corrección basados en una temperatura ambiente de 40 °C.",
+  "informativa": false,
   "article": 310,
   "pages": [
    134,
@@ -8460,6 +8496,7 @@
  {
   "id": "310-15(b)(3)(a)",
   "title": "Factores de ajuste para más de tres conductores portadores de corriente en una canalización o cable",
+  "informativa": false,
   "article": 310,
   "pages": [
    135
@@ -8542,6 +8579,7 @@
  {
   "id": "310-15(b)(3)(c)",
   "title": "Ajustes a la temperatura ambiente para canalizaciones circulares expuestas a la luz solar en o por encima de azoteas",
+  "informativa": false,
   "article": 310,
   "pages": [
    136
@@ -8623,6 +8661,7 @@
  {
   "id": "310-15(b)(7)",
   "title": "Tipos y tamaño o designación de conductores para alimentadores monofásicos, de 3 hilos de 120/240 volts para viviendas. Tipos de conductores RHH, RHW, RHW-2, THHN, THHW, THHW-LS, THW, THW-LS, THW-2, THWN, THWN-2, volts para viviendas. Tipos de conductores RHH, RHW, RHW-2, THHN, THHW, THHW-LS, THW, THW-LS, THW-2, THWN, THWN-2,",
+  "informativa": false,
   "article": 310,
   "pages": [
    137
@@ -8845,6 +8884,7 @@
  {
   "id": "310-15(b)(16)",
   "title": "Ampacidades permisibles en conductores aislados para tensiones hasta 2000 volts y 60 °C a 90 °C. No más de tres conductores portadores de corriente en una canalización, cable o directamente enterrados, basados en una más de tres conductores portadores de corriente en una canalización, cable o directamente enterrados, basados en una temperatura ambiente de 30 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    137,
@@ -9740,6 +9780,7 @@
  {
   "id": "310-15(b)(17)",
   "title": "Ampacidades permisibles de conductores individuales aislados para tensiones hasta e incluyendo 2000 volts al aire libre, basadas en una temperatura ambiente de 30 °C*.",
+  "informativa": false,
   "article": 310,
   "pages": [
    138,
@@ -10635,6 +10676,7 @@
  {
   "id": "310-15(b)(18)",
   "title": "Ampacidades permisibles de conductores aislados para tensiones hasta e incluyendo 2000 volts, de 150",
+  "informativa": false,
   "article": 310,
   "pages": [
    139
@@ -10989,6 +11031,7 @@
  {
   "id": "310-15(b)(19)",
   "title": "Ampacidades permisibles de conductores aislados individuales para Tensiones de hasta e incluyendo",
+  "informativa": false,
   "article": 310,
   "pages": [
    139
@@ -11343,6 +11386,7 @@
  {
   "id": "310-15(b)(20)",
   "title": "Ampacidades de no más de tres conductores individuales aislados para Tensiones de hasta e incluyendo 2000 volts, sostenidos por un mensajero, con base en una temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    139,
@@ -11879,6 +11923,7 @@
  {
   "id": "310-15(b)(21)",
   "title": "Ampacidades de conductores desnudos o recubiertos, al aire libre, con base en una temperatura ambiente de 40 °C, 80 °C de temperatura total del conductor, y una velocidad del viento de 610 milímetros/segundo ambiente de 40 °C, 80 °C de temperatura total del conductor, y una velocidad del viento de 610 milímetros/segundo",
+  "informativa": false,
   "article": 310,
   "pages": [
    140
@@ -12491,6 +12536,7 @@
  {
   "id": "310-60(c)(4)",
   "title": "Factores de corrección a temperatura ambiente",
+  "informativa": false,
   "article": 310,
   "pages": [
    142,
@@ -12745,6 +12791,7 @@
  {
   "id": "310-60(c)(67)",
   "title": "Ampacidad permisible de cables monoconductores de cobre aislados en configuración tríplex al aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    143
@@ -12971,6 +13018,7 @@
  {
   "id": "310-60(c)(68)",
   "title": "Ampacidad de cables de ternas de conductores individuales de aluminio, aislados, al aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire ambiente de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    143,
@@ -13347,6 +13395,7 @@
  {
   "id": "310-60(c)(69)",
   "title": "Ampacidad de conductores de cobre individuales, aislados, y separados en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    144
@@ -13910,6 +13959,7 @@
  {
   "id": "310-60(c)(70)",
   "title": "Ampacidad de conductores individuales de aluminio, aislados, separados en el aire, con base en temperaturas del conductor de 90 °C (104 °C) y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    144,
@@ -14423,6 +14473,7 @@
  {
   "id": "310-60(c)(71)",
   "title": "Ampacidad de cables de tres conductores de cobre, aislados, separados en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    145
@@ -14790,6 +14841,7 @@
  {
   "id": "310-60(c)(72)",
   "title": "Ampacidad de cables de tres conductores de aluminio, aislados, separados en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    146
@@ -15142,6 +15194,7 @@
  {
   "id": "310-60(c)(73)",
   "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de cobre, en tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    146
@@ -15507,6 +15560,7 @@
  {
   "id": "310-60(c)(74)",
   "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de aluminio, en tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    146,
@@ -15859,6 +15913,7 @@
  {
   "id": "310-60(c)(75)",
   "title": "Ampacidad de cables de tres conductores de cobre aislados y en un tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    147
@@ -16228,6 +16283,7 @@
  {
   "id": "310-60(c)(76)",
   "title": "Ampacidad de cables de tres conductores de aluminio aislados, en un tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "informativa": false,
   "article": 310,
   "pages": [
    147,
@@ -16581,6 +16637,7 @@
  {
   "id": "310-60(c)(77)",
   "title": "Ampacidad de tres conductores de cobre, individualmente aislados, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos (tres conductores por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90 °C, temperaturas del conductor de 90 °C y 105 °C",
+  "informativa": false,
   "article": 310,
   "pages": [
    148
@@ -17534,6 +17591,7 @@
  {
   "id": "310-60(c)(78)",
   "title": "Ampacidad de tres conductores de aluminio, individualmente aislados, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
+  "informativa": false,
   "article": 310,
   "pages": [
    149
@@ -18476,6 +18534,7 @@
  {
   "id": "310-60(c)(79)",
   "title": "Ampacidad de tres conductores de cobre aislados, alambrados dentro de una cubierta general (cable de tres conductores) en ductos eléctricos subterráneos (un cable por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, de tres conductores) en ductos eléctricos subterráneos (un cable por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
+  "informativa": false,
   "article": 310,
   "pages": [
    149,
@@ -19435,6 +19494,7 @@
  {
   "id": "310-60(c)(80)",
   "title": "Ampacidad de tres conductores de aluminio aislados, alambrados dentro de una cubierta general (cable de tres conductores) en ductos eléctricos subterráneos (un cable por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
+  "informativa": false,
   "article": 310,
   "pages": [
    150,
@@ -20388,6 +20448,7 @@
  {
   "id": "310-60(c)(81)",
   "title": "Ampacidad de conductores individuales de cobre, aislados, directamente enterrados, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
+  "informativa": false,
   "article": 310,
   "pages": [
    151,
@@ -21061,6 +21122,7 @@
  {
   "id": "310-60(c)(82)",
   "title": "Ampacidad de conductores individuales de aluminio, aislados, directamente enterrados , con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
+  "informativa": false,
   "article": 310,
   "pages": [
    152
@@ -21727,6 +21789,7 @@
  {
   "id": "310-60(c)(83)",
   "title": "Ampacidad de tres conductores de cobre, aislados, alambrados dentro de una cubierta general (cable de tres conductores), enterrados directamente en la tierra, con base en una temperatura ambiente de la tierra de 20 °C, el montaje tres conductores), enterrados directamente en la tierra, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de",
+  "informativa": false,
   "article": 310,
   "pages": [
    152,
@@ -22416,6 +22479,7 @@
  {
   "id": "310-60(c)(84)",
   "title": "Ampacidad de tres conductores de aluminio, aislados, alambrados dentro de una cubierta general (cable de tres conductores), enterrados directamente en la tierra, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
+  "informativa": false,
   "article": 310,
   "pages": [
    153,
@@ -23089,6 +23153,7 @@
  {
   "id": "310-60(c)(85)",
   "title": "Ampacidad de tres ternas de conductores individuales de cobre, aislados, directamente enterrados, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310- base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-",
+  "informativa": false,
   "article": 310,
   "pages": [
    154
@@ -23752,6 +23817,7 @@
  {
   "id": "310-60(c)(86)",
   "title": "Ampacidad de tres ternas de conductores individuales de aluminio, aislados, directamente enterrados, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-",
+  "informativa": false,
   "article": 310,
   "pages": [
    154,
@@ -24423,6 +24489,7 @@
  {
   "id": "310-104(a)",
   "title": "Aplicaciones y aislamientos de conductores de 600 volts",
+  "informativa": false,
   "article": 310,
   "pages": [
    155,
@@ -25334,6 +25401,7 @@
  {
   "id": "310-104(b)",
   "title": "Espesor del aislamiento para conductores no blindados de tipos RHH y RHW aislados con dieléctricos sólidos y con tensión de operación de 2000 volts",
+  "informativa": false,
   "article": 310,
   "pages": [
    157
@@ -25560,6 +25628,7 @@
  {
   "id": "310-104(c)",
   "title": "Aislamientos y aplicaciones de los conductores de media tensión",
+  "informativa": false,
   "article": 310,
   "pages": [
    157
@@ -25645,7 +25714,8 @@
  },
  {
   "id": "310-104(d)",
-  "title": "Espesor del aislamiento y de la cubierta para cables con dieléctricos sólidos sin pantalla metálica, para 2001 a 5000 volts Esta tabla no es parte de los requerimientos y especificaciones de la NOM, se incluye únicamente con propósitos informativos",
+  "title": "Espesor del aislamiento y de la cubierta para cables con dieléctricos sólidos sin pantalla metálica, para 2001 a 5000 volts",
+  "informativa": true,
   "article": 310,
   "pages": [
    157,
@@ -26037,7 +26107,8 @@
  },
  {
   "id": "310-104(e)",
-  "title": "Espesor del aislamiento para cables con dieléctricos sólidos, con pantalla metálica, para 2001 a 35 000 volts Esta tabla no es parte de los requerimientos y especificaciones de la NOM, se incluye únicamente con propósitos informativos",
+  "title": "Espesor del aislamiento para cables con dieléctricos sólidos, con pantalla metálica, para 2001 a 35 000 volts",
+  "informativa": true,
   "article": 310,
   "pages": [
    158
@@ -26379,6 +26450,7 @@
  {
   "id": "310-106(a)",
   "title": "Tamaño o designación mínimo de los conductores",
+  "informativa": false,
   "article": 310,
   "pages": [
    158
@@ -26551,6 +26623,7 @@
  {
   "id": "312-6(a)",
   "title": "Espacio mínimo para el doblado de los cables en las terminales, y ancho mínimo de las canales para alambrado",
+  "informativa": false,
   "article": 312,
   "pages": [
    161
@@ -26947,6 +27020,7 @@
  {
   "id": "312-6(b)",
   "title": "Espacio mínimo para el doblado del alambre en las terminales",
+  "informativa": false,
   "article": 312,
   "pages": [
    161,
@@ -27634,6 +27708,7 @@
  {
   "id": "314-16(a)",
   "title": "Cajas metálicas",
+  "informativa": false,
   "article": 314,
   "pages": [
    164
@@ -27950,6 +28025,7 @@
  {
   "id": "314-16(b)",
   "title": "Volumen que es requerido considerar para cada conductor",
+  "informativa": false,
   "article": 314,
   "pages": [
    165
@@ -28075,6 +28151,7 @@
  {
   "id": "326-24",
   "title": "Radio mínimo de curvatura",
+  "informativa": false,
   "article": 326,
   "pages": [
    177
@@ -28141,6 +28218,7 @@
  {
   "id": "326-80",
   "title": "Ampacidad de los cables tipo IGS",
+  "informativa": false,
   "article": 326,
   "pages": [
    177
@@ -28367,6 +28445,7 @@
  {
   "id": "326-112",
   "title": "Espesor del papel separador",
+  "informativa": false,
   "article": 326,
   "pages": [
    177
@@ -28426,6 +28505,7 @@
  {
   "id": "326-116",
   "title": "Dimensiones del conduit",
+  "informativa": false,
   "article": 326,
   "pages": [
    177
@@ -28492,6 +28572,7 @@
  {
   "id": "344-30(b)(2)",
   "title": "Soportes para tubo conduit metálico pesado",
+  "informativa": false,
   "article": 344,
   "pages": [
    191
@@ -28595,6 +28676,7 @@
  {
   "id": "348-22",
   "title": "Número máximo de conductores aislados en el tubo conduit metálico flexible con designación métrica de 12 (tamaño comercial de 3/8)*",
+  "informativa": false,
   "article": 348,
   "pages": [
    192
@@ -28721,6 +28803,7 @@
  {
   "id": "352-30",
   "title": "Soportes para tubo conduit rígido de policloruro de vinilo (PVC)",
+  "informativa": false,
   "article": 352,
   "pages": [
    196
@@ -28822,6 +28905,7 @@
  {
   "id": "352-44",
   "title": "Características de expansión del tubo conduit rígido no metálico de PVC con un coeficiente de expansión térmica = 6.084 x 10-5 mm/mm/ºC",
+  "informativa": false,
   "article": 352,
   "pages": [
    196,
@@ -29024,6 +29108,7 @@
  {
   "id": "354-24",
   "title": "Radio mínimo de curvatura para tubo conduit subterráneo no metálico con conductores (NUCC)",
+  "informativa": false,
   "article": 354,
   "pages": [
    199,
@@ -29179,6 +29264,7 @@
  {
   "id": "355-30",
   "title": "Soportes para tubo conduit de resina termofija reforzada (RTRC)",
+  "informativa": false,
   "article": 355,
   "pages": [
    201,
@@ -29311,6 +29397,7 @@
  {
   "id": "355-44",
   "title": "Características de expansión del tubo conduit de resina termofija reforzada RTRC con un coeficiente de expansión térmica = 2.70 x 10-5 milímetros/mm/º C",
+  "informativa": false,
   "article": 355,
   "pages": [
    202
@@ -29505,6 +29592,7 @@
  {
   "id": "360-24(a)",
   "title": "Radios mínimos de curvatura para uso en flexión",
+  "informativa": false,
   "article": 360,
   "pages": [
    207
@@ -29586,6 +29674,7 @@
  {
   "id": "360-24(b)",
   "title": "Radios mínimos para dobleces fijos",
+  "informativa": false,
   "article": 360,
   "pages": [
    207
@@ -29667,6 +29756,7 @@
  {
   "id": "384-22",
   "title": "Dimensiones del canal y área de la sección transversal interior",
+  "informativa": false,
   "article": 384,
   "pages": [
    224,
@@ -29870,6 +29960,7 @@
  {
   "id": "392-10(a)",
   "title": "Métodos de alambrado",
+  "informativa": false,
   "article": 392,
   "pages": [
    229
@@ -30176,6 +30267,7 @@
  {
   "id": "392-22(a)",
   "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de tipo escalera, fondo ventilado, tipo malla o fondo sólido para cables de 2000 volts o menos.",
+  "informativa": false,
   "article": 392,
   "pages": [
    231
@@ -30378,6 +30470,7 @@
  {
   "id": "392-22(a)(5)",
   "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal ventilado para cables de 2000 volts o menos",
+  "informativa": false,
   "article": 392,
   "pages": [
    232
@@ -30470,6 +30563,7 @@
  {
   "id": "392-22(a)(6)",
   "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal sólido para cables de 2 000 volts o menos",
+  "informativa": false,
   "article": 392,
   "pages": [
    232
@@ -30571,6 +30665,7 @@
  {
   "id": "392-22(b)(1)",
   "title": "Area de ocupación permisible para cables de un solo conductor en charolas portacables de tipo escalera, fondo ventilado o malla ventilada para cables de 2000 volts o menos",
+  "informativa": false,
   "article": 392,
   "pages": [
    233
@@ -30762,6 +30857,7 @@
  {
   "id": "392-60(a)",
   "title": "Requisitos de área de metal para charolas portacables utilizadas como conductores de puesta a tierra de equipos",
+  "informativa": false,
   "article": 392,
   "pages": [
    234
@@ -30916,6 +31012,7 @@
  {
   "id": "396-10(a)",
   "title": "Tipos de cable",
+  "informativa": false,
   "article": 396,
   "pages": [
    238
@@ -31095,6 +31192,7 @@
  {
   "id": "400-4",
   "title": "Cordones y cables flexibles (Ver 400-4)",
+  "informativa": false,
   "article": 400,
   "pages": [
    241,
@@ -35265,6 +35363,7 @@
  {
   "id": "400-5(a)(1)",
   "title": "Ampacidad permisible para cables y cordones flexibles a temperatura ambiente de 30 °C. Ver 400-13 y la",
+  "informativa": false,
   "article": 400,
   "pages": [
    244,
@@ -35626,6 +35725,7 @@
  {
   "id": "400-5(a)(2)",
   "title": "Ampacidad de los cables tipo SC, SCE, SCT, PPE, G, G-GC y W (Basada en una temperatura ambiente de 30",
+  "informativa": false,
   "article": 400,
   "pages": [
    245
@@ -36533,6 +36633,7 @@
  {
   "id": "400-5(a)(3)",
   "title": "Factores de ajuste para más de tres conductores de fase en un cable o cordón flexible",
+  "informativa": false,
   "article": 400,
   "pages": [
    245
@@ -36636,6 +36737,7 @@
  {
   "id": "402-3",
   "title": "Cables para artefactos",
+  "informativa": false,
   "article": 402,
   "pages": [
    248,
@@ -37709,6 +37811,7 @@
  {
   "id": "402-5",
   "title": "Ampacidad admisible de alambres para artefactos",
+  "informativa": false,
   "article": 402,
   "pages": [
    249,
@@ -37809,6 +37912,7 @@
  {
   "id": "408-5",
   "title": "Espacio mínimo para los conductores que entran en los envolventes de las barras conductoras.",
+  "informativa": false,
   "article": 408,
   "pages": [
    259
@@ -37865,6 +37969,7 @@
  {
   "id": "409-3",
   "title": "Otros Artículos",
+  "informativa": false,
   "article": 409,
   "pages": [
    262,
@@ -38064,6 +38169,7 @@
  {
   "id": "430-5",
   "title": "Otros Artículos",
+  "informativa": false,
   "article": 430,
   "pages": [
    298
@@ -38227,6 +38333,7 @@
  {
   "id": "430-7(b)",
   "title": "Letras de código de indicación para rotor bloqueado",
+  "informativa": false,
   "article": 430,
   "pages": [
    300
@@ -38533,6 +38640,7 @@
  {
   "id": "430-10(b)",
   "title": "Espacio mínimo para el acomodo del alambrado en las terminales en los envolventes de los controladores de motores",
+  "informativa": false,
   "article": 430,
   "pages": [
    301
@@ -38781,6 +38889,7 @@
  {
   "id": "430-12(b)",
   "title": "Medidas mínimas de las cajas terminales para conexiones de cable a cable.",
+  "informativa": false,
   "article": 430,
   "pages": [
    302
@@ -39328,6 +39437,7 @@
  {
   "id": "430-12(c)(1)",
   "title": "Espacio para las terminales (Terminales fijas)",
+  "informativa": false,
   "article": 430,
   "pages": [
    303
@@ -39403,6 +39513,7 @@
  {
   "id": "430-12(c)(2)",
   "title": "Volúmenes utilizables (Terminales fijos)",
+  "informativa": false,
   "article": 430,
   "pages": [
    303
@@ -39499,6 +39610,7 @@
  {
   "id": "430-22(e)",
   "title": "Servicio por régimen de tiempo.",
+  "informativa": false,
   "article": 430,
   "pages": [
    304
@@ -39629,6 +39741,7 @@
  {
   "id": "430-23(c)",
   "title": "Conductor del secundario",
+  "informativa": false,
   "article": 430,
   "pages": [
    305
@@ -39719,6 +39832,7 @@
  {
   "id": "430-29",
   "title": "Factores de ampacidad del conductor para resistencias de potencia",
+  "informativa": false,
   "article": 430,
   "pages": [
    306
@@ -39840,6 +39954,7 @@
  {
   "id": "430-37",
   "title": "Dispositivos de sobrecarga para protección del motor",
+  "informativa": false,
   "article": 430,
   "pages": [
    309
@@ -40008,6 +40123,7 @@
  {
   "id": "430-52",
   "title": "Ajuste máximo de los dispositivos de protección contra cortocircuito y falla a tierra para circuitos derivados de motores",
+  "informativa": false,
   "article": 430,
   "pages": [
    310,
@@ -40193,6 +40309,7 @@
  {
   "id": "430-72(b)",
   "title": "Ajuste máximo de los dispositivos de protección contra sobrecorriente en amperes",
+  "informativa": false,
   "article": 430,
   "pages": [
    314
@@ -40437,6 +40554,7 @@
  {
   "id": "430-97",
   "title": "Espacio mínimo entre partes metálicas desnudas",
+  "informativa": false,
   "article": 430,
   "pages": [
    317
@@ -40541,6 +40659,7 @@
  {
   "id": "430-247",
   "title": "Corriente a plena carga para motores de corriente continua Los siguientes valores de corriente a plena carga* son para motores que funcionan a su velocidad básica.",
+  "informativa": false,
   "article": 430,
   "pages": [
    324
@@ -40998,6 +41117,7 @@
  {
   "id": "430-248",
   "title": "Corriente a plena carga de motores monofásicos de corriente alterna",
+  "informativa": false,
   "article": 430,
   "pages": [
    324
@@ -41299,6 +41419,7 @@
  {
   "id": "430-249",
   "title": "Corriente a plena carga para motores de dos fases de corriente alterna (4 hilos)",
+  "informativa": false,
   "article": 430,
   "pages": [
    325
@@ -41856,6 +41977,7 @@
  {
   "id": "430-250",
   "title": "Corriente a plena carga de motores trifásicos de corriente alterna",
+  "informativa": false,
   "article": 430,
   "pages": [
    325
@@ -43041,6 +43163,7 @@
  {
   "id": "430-251(a)",
   "title": "Conversión de corrientes monofásicas a rotor bloqueado, para la selección de los medios de desconexión y controladores de los motores, de acuerdo a los valores nominales de tensión y potencia en kW",
+  "informativa": false,
   "article": 430,
   "pages": [
    326
@@ -43260,6 +43383,7 @@
  {
   "id": "430-251(b)",
   "title": "Conversión de corriente polifásica máxima a rotor bloqueado, diseños B, C, y D, para la selección de medios de desconexión y controladores, determinados a partir del valor nominal de potencia en caballos de fuerza y la letra de diseño de desconexión y controladores, determinados a partir del valor nominal de potencia en caballos de fuerza y la letra de diseño",
+  "informativa": false,
   "article": 430,
   "pages": [
    326
@@ -44063,6 +44187,7 @@
  {
   "id": "440-3(d)",
   "title": "Otros artículos",
+  "informativa": false,
   "article": 440,
   "pages": [
    327
@@ -44173,6 +44298,7 @@
  {
   "id": "450-3(a)",
   "title": "Valor nominal o ajuste máximo de la protección contra sobrecorriente para transformadores de más de 600 volts (como porcentaje de la corriente nominal del transformador).",
+  "informativa": false,
   "article": 450,
   "pages": [
    335,
@@ -44403,6 +44529,7 @@
  {
   "id": "450-3(b)",
   "title": "Valor nominal o ajuste máximo de la protección contra sobrecorriente para los transformadores de 600 volts y menos (como un porcentaje nominal de la corriente nominal del transformador)",
+  "informativa": false,
   "article": 450,
   "pages": [
    336
@@ -44502,6 +44629,7 @@
  {
   "id": "490-24",
   "title": "Espacio mínimo de seguridad de las partes vivas",
+  "informativa": false,
   "article": 490,
   "pages": [
    350
@@ -45031,6 +45159,7 @@
  {
   "id": "500-8(c)",
   "title": "Clasificación de la temperatura superficial máxima",
+  "informativa": false,
   "article": 500,
   "pages": [
    360
@@ -45177,6 +45306,7 @@
  {
   "id": "500-8(d)(2)",
   "title": "Temperaturas Clase II",
+  "informativa": false,
   "article": 500,
   "pages": [
    361
@@ -45283,6 +45413,7 @@
  {
   "id": "504-10(b)",
   "title": "Evaluación para la clasificación T4 de acuerdo con el tamaño y la temperatura del componente",
+  "informativa": false,
   "article": 504,
   "pages": [
    381
@@ -45343,6 +45474,7 @@
  {
   "id": "505-7(d)",
   "title": "Distancia mínima de las obstrucciones desde aberturas bridadas a prueba de llamas \"d\".",
+  "informativa": false,
   "article": 505,
   "pages": [
    387
@@ -45409,6 +45541,7 @@
  {
   "id": "505-9(c)(1)(2)",
   "title": "Grupos de clasificación de gas",
+  "informativa": false,
   "article": 505,
   "pages": [
    388
@@ -45451,6 +45584,7 @@
  {
   "id": "505-9(c)(2)(4)",
   "title": "Designación de tipos de protección",
+  "informativa": false,
   "article": 505,
   "pages": [
    389,
@@ -45698,6 +45832,7 @@
  {
   "id": "505-9(d)(1)",
   "title": "Clasificación de la temperatura superficial máxima para equipos eléctricos del grupo II",
+  "informativa": false,
   "article": 505,
   "pages": [
    390
@@ -45780,6 +45915,7 @@
  {
   "id": "506-9(c)(2)(3)",
   "title": "Designación de tipos de protección",
+  "informativa": false,
   "article": 506,
   "pages": [
    401
@@ -45908,6 +46044,7 @@
  {
   "id": "514-3(b)(1)",
   "title": "Areas peligrosas (clasificadas) Clase I: Estaciones de servicio y gasolineras",
+  "informativa": false,
   "article": 514,
   "pages": [
    410,
@@ -46580,6 +46717,7 @@
  {
   "id": "514-3(b)(2)",
   "title": "Areas clasificadas, equipo eléctrico para surtidores de combustible",
+  "informativa": false,
   "article": 514,
   "pages": [
    412
@@ -46676,6 +46814,7 @@
  {
   "id": "515-3",
   "title": "Clasificación eléctrica de las áreas",
+  "informativa": false,
   "article": 515,
   "pages": [
    414,
@@ -47488,6 +47627,7 @@
  {
   "id": "520-44",
   "title": "Ampacidad permitida para cordones de uso extra rudo aprobados con una capacidad térmica de 75೦C y 90೦C",
+  "informativa": false,
   "article": 520,
   "pages": [
    454
@@ -47723,6 +47863,7 @@
  {
   "id": "522-22",
   "title": "Ampacidad del conductor basada en conductores de cobre con aislamiento para 60ºC y 75ºC en una temperatura ambiente de 30ºC",
+  "informativa": false,
   "article": 522,
   "pages": [
    460
@@ -47860,6 +48001,7 @@
  {
   "id": "530-19(a)",
   "title": "Factores de demanda para el alumbrado del escenario",
+  "informativa": false,
   "article": 530,
   "pages": [
    465
@@ -47956,6 +48098,7 @@
  {
   "id": "550-31",
   "title": "Factores de demanda para conductores de entrada de acometida y alimentadores",
+  "informativa": false,
   "article": 550,
   "pages": [
    481
@@ -48094,6 +48237,7 @@
  {
   "id": "551-73(a)",
   "title": "Factores de demanda para los conductores de entrada de acometida y alimentadores para lugares de estacionamiento",
+  "informativa": false,
   "article": 551,
   "pages": [
    493
@@ -48232,6 +48376,7 @@
  {
   "id": "552-10(e)(1)",
   "title": "Protección contra sobrecorriente para baja tensión",
+  "informativa": false,
   "article": 552,
   "pages": [
    496
@@ -48342,6 +48487,7 @@
  {
   "id": "555-12",
   "title": "Factores de demanda",
+  "informativa": false,
   "article": 555,
   "pages": [
    507
@@ -48443,6 +48589,7 @@
  {
   "id": "610-14(a)",
   "title": "Ampacidades para conductores de cobre aislados basados en una temperatura ambiente de 30 °C, utilizados para motores de grúas y montacargas con régimen de trabajo de corta duración,",
+  "informativa": false,
   "article": 610,
   "pages": [
    522,
@@ -49413,6 +49560,7 @@
  {
   "id": "610-14(b)",
   "title": "Factores para determinar la ampacidad de los conductores secundarios entre el controlador y los resistores de grúas.",
+  "informativa": false,
   "article": 610,
   "pages": [
    523
@@ -49534,6 +49682,7 @@
  {
   "id": "610-14(d)",
   "title": "Tamaño mínimo del conductor de contacto basado en la distancia entre soportes.",
+  "informativa": false,
   "article": 610,
   "pages": [
    523
@@ -49616,6 +49765,7 @@
  {
   "id": "610-14(e)",
   "title": "Factores de demanda",
+  "informativa": false,
   "article": 610,
   "pages": [
    523,
@@ -49706,6 +49856,7 @@
  {
   "id": "620-14",
   "title": "Factores de demanda del alimentador para elevadores",
+  "informativa": false,
   "article": 620,
   "pages": [
    530
@@ -49822,6 +49973,7 @@
  {
   "id": "625-29(d)(1)",
   "title": "Ventilación mínima requerida en m3/min, para cada de los vehículos eléctricos de todos los que se pueden cargar al mismo tiempo",
+  "informativa": false,
   "article": 625,
   "pages": [
    541,
@@ -50251,6 +50403,7 @@
  {
   "id": "625-29(d)(2)",
   "title": "Ventilación mínima requerida en ft3/min, por cada número total de vehículos eléctricos que pueden ser cargados al mismo tiempo",
+  "informativa": false,
   "article": 625,
   "pages": [
    542
@@ -50676,6 +50829,7 @@
  {
   "id": "630-11(a)",
   "title": "Factores de multiplicación para el régimen de trabajo para soldadoras de arco",
+  "informativa": false,
   "article": 630,
   "pages": [
    547
@@ -50821,6 +50975,7 @@
  {
   "id": "630-31(a)(2)",
   "title": "Factores de multiplicación del régimen de trabajo para soldadoras por resistencia",
+  "informativa": false,
   "article": 630,
   "pages": [
    548
@@ -50880,6 +51035,7 @@
  {
   "id": "645-5",
   "title": "Tipos de cables permitidos bajo pisos falsos",
+  "informativa": false,
   "article": 645,
   "pages": [
    556
@@ -51018,6 +51174,7 @@
  {
   "id": "680-3",
   "title": "Otros Artículos",
+  "informativa": false,
   "article": 680,
   "pages": [
    570
@@ -51084,6 +51241,7 @@
  {
   "id": "680-8",
   "title": "Libramientos para conductores aéreos",
+  "informativa": false,
   "article": 680,
   "pages": [
    571
@@ -51194,6 +51352,7 @@
  {
   "id": "680-10",
   "title": "Profundidad mínima del recubrimiento",
+  "informativa": false,
   "article": 680,
   "pages": [
    572
@@ -51278,6 +51437,7 @@
  {
   "id": "690-7",
   "title": "Factores de corrección de la tensión para",
+  "informativa": false,
   "article": 690,
   "pages": [
    592
@@ -51476,6 +51636,7 @@
  {
   "id": "690-31(c)",
   "title": "Factores de corrección",
+  "informativa": false,
   "article": 690,
   "pages": [
    596
@@ -51689,6 +51850,7 @@
  {
   "id": "705-3",
   "title": "Otros artículos",
+  "informativa": false,
   "article": 705,
   "pages": [
    627
@@ -51771,6 +51933,7 @@
  {
   "id": "725-154(g)",
   "title": "Sustituciones de los cables",
+  "informativa": false,
   "article": 725,
   "pages": [
    638,
@@ -51885,6 +52048,7 @@
  {
   "id": "725-179",
   "title": "Marcado de los cables",
+  "informativa": false,
   "article": 725,
   "pages": [
    640,
@@ -51943,6 +52107,7 @@
  {
   "id": "760-154(d)",
   "title": "Sustituciones de los cables",
+  "informativa": false,
   "article": 760,
   "pages": [
    648
@@ -52013,6 +52178,7 @@
  {
   "id": "760-179(i)",
   "title": "Marcados de cables",
+  "informativa": false,
   "article": 760,
   "pages": [
    650
@@ -52071,6 +52237,7 @@
  {
   "id": "770-154(a)",
   "title": "Aplicaciones canalizaciones y cable de fibra óptica aprobados, y ensambles enrutadores de cables aprobados en edificios.",
+  "informativa": false,
   "article": 770,
   "pages": [
    656,
@@ -52765,6 +52932,7 @@
  {
   "id": "770-154(b)",
   "title": "Sustituciones de cables",
+  "informativa": false,
   "article": 770,
   "pages": [
    657,
@@ -52855,6 +53023,7 @@
  {
   "id": "770-179",
   "title": "Marcado de cables",
+  "informativa": false,
   "article": 770,
   "pages": [
    658
@@ -52937,6 +53106,7 @@
  {
   "id": "800-154(a)",
   "title": "Aplicaciones de alambres, cables y canalizaciones de comunicaciones aprobados para su uso en edificios",
+  "informativa": false,
   "article": 800,
   "pages": [
    668,
@@ -53911,6 +54081,7 @@
  {
   "id": "800-154(b)",
   "title": "Sustituciones de cables.",
+  "informativa": false,
   "article": 800,
   "pages": [
    669
@@ -53969,6 +54140,7 @@
  {
   "id": "800-179",
   "title": "Marcado en cables",
+  "informativa": false,
   "article": 800,
   "pages": [
    670
@@ -54039,6 +54211,7 @@
  {
   "id": "810-16(a)",
   "title": "Tamaño de los conductores de antena exterior para estaciones receptoras",
+  "informativa": false,
   "article": 810,
   "pages": [
    672
@@ -54162,6 +54335,7 @@
  {
   "id": "810-52",
   "title": "Tamaño de los conductores para exteriores.",
+  "informativa": false,
   "article": 810,
   "pages": [
    674
@@ -54256,6 +54430,7 @@
  {
   "id": "820-154(b)",
   "title": "Uso y sustituciones permitidas de cable coaxial",
+  "informativa": false,
   "article": 820,
   "pages": [
    682
@@ -54322,6 +54497,7 @@
  {
   "id": "820-179",
   "title": "Marcado en cables coaxiales",
+  "informativa": false,
   "article": 820,
   "pages": [
    683
@@ -54388,6 +54564,7 @@
  {
   "id": "820-154(a)",
   "title": "Aplicaciones de cables coaxiales aprobados para su uso en edificios",
+  "informativa": false,
   "article": 820,
   "pages": [
    683,
@@ -54915,6 +55092,7 @@
  {
   "id": "830-47",
   "title": "Requisitos de profundidad mínima de los sistemas de comunicaciones de banda ancha alimentados por una red, (profundidad es la menor distancia medida entre un punto en la superficie superior de cualquier cable, tubo conduit u otra canalización enterrada directamente, y la superficie del piso terminado, concreto o recubrimiento similar)",
+  "informativa": false,
   "article": 830,
   "pages": [
    688
@@ -55040,6 +55218,7 @@
  {
   "id": "830-154(b)",
   "title": "Sustitución de Cable",
+  "informativa": false,
   "article": 830,
   "pages": [
    694
@@ -55114,6 +55293,7 @@
  {
   "id": "830-154(a)",
   "title": "Aplicaciones de cables de comunicaciones de banda ancha para su uso en edificios",
+  "informativa": false,
   "article": 830,
   "pages": [
    694,
@@ -55852,6 +56032,7 @@
  {
   "id": "921-25(b)",
   "title": "Resistencia a tierra del sistema.",
+  "informativa": false,
   "article": 921,
   "pages": [
    704
@@ -55922,6 +56103,7 @@
  {
   "id": "922-10",
   "title": "Ampacidad de conductores desnudos en amperes",
+  "informativa": false,
   "article": 922,
   "pages": [
    708
@@ -56282,6 +56464,7 @@
  {
   "id": "922-12(a)(1)",
   "title": "Separación horizontal mínima entre conductores(1)",
+  "informativa": false,
   "article": 922,
   "pages": [
    709
@@ -56420,6 +56603,7 @@
  {
   "id": "922-12(a)(2)",
   "title": "Separación horizontal mínima \"S\" de conductores en sus soportes fijos, de acuerdo con su flecha",
+  "informativa": false,
   "article": 922,
   "pages": [
    710
@@ -56650,6 +56834,7 @@
  {
   "id": "922-13(a)",
   "title": "Separación vertical mínima entre conductores, en sus soportes en metros",
+  "informativa": false,
   "article": 922,
   "pages": [
    710,
@@ -56865,6 +57050,7 @@
  {
   "id": "922-15(a)",
   "title": "Separación mínima en cualquier dirección (milímetros)",
+  "informativa": false,
   "article": 922,
   "pages": [
    711,
@@ -57214,6 +57400,7 @@
  {
   "id": "922-19(e)",
   "title": "Separación horizontal mínima entre conductores que limitan el espacio para subir(1)",
+  "informativa": false,
   "article": 922,
   "pages": [
    713,
@@ -57487,6 +57674,7 @@
  {
   "id": "922-21",
   "title": "Separación vertical entre conductores suministradores y equipo de comunicaciones o entre equipo suministrador y conductores o equipo de comunicaciones",
+  "informativa": false,
   "article": 922,
   "pages": [
    715
@@ -57545,6 +57733,7 @@
  {
   "id": "922-22(a)",
   "title": "Separación de conductores eléctricos verticales y derivados con respecto a superficies, mensajeros y retenidas en la misma estructura, (centímetros) (1)",
+  "informativa": false,
   "article": 922,
   "pages": [
    715
@@ -57613,6 +57802,7 @@
  {
   "id": "922-31(e)(2)",
   "title": "Distancia del punto de cruce a la estructura más cercana",
+  "informativa": false,
   "article": 922,
   "pages": [
    716
@@ -57727,6 +57917,7 @@
  {
   "id": "922-33",
   "title": "Separación vertical entre conductores soportados en diferentes estructuras (m)(1)",
+  "informativa": false,
   "article": 922,
   "pages": [
    717
@@ -57992,6 +58183,7 @@
  {
   "id": "922-41",
   "title": "Altura mínima de conductores sobre el suelo, agua o vías férreas (m)(1)",
+  "informativa": false,
   "article": 922,
   "pages": [
    717,
@@ -58433,6 +58625,7 @@
  {
   "id": "922-43",
   "title": "Altura sobre el suelo de partes vivas de equipo instalado en estructuras (m) (1)",
+  "informativa": false,
   "article": 922,
   "pages": [
    718
@@ -58559,6 +58752,7 @@
  {
   "id": "922-54",
   "title": "Separación de conductores a edificios y otras construcciones excepto puentes (m)(1)",
+  "informativa": false,
   "article": 922,
   "pages": [
    719,
@@ -58992,6 +59186,7 @@
  {
   "id": "922-55",
   "title": "Separación de conductores suministradores a puentes (m)(1)",
+  "informativa": false,
   "article": 922,
   "pages": [
    720
@@ -59274,6 +59469,7 @@
  {
   "id": "922-83",
   "title": "Condiciones meteorológicas para el cálculo de cargas mecánicas",
+  "informativa": false,
   "article": 922,
   "pages": [
    723
@@ -59432,6 +59628,7 @@
  {
   "id": "922-84",
   "title": "Presiones de viento mínimas para diseño de estructura",
+  "informativa": false,
   "article": 922,
   "pages": [
    724
@@ -59570,6 +59767,7 @@
  {
   "id": "922-84(a)",
   "title": "Factor de incremento de presión de viento por altura de estructura",
+  "informativa": false,
   "article": 922,
   "pages": [
    724
@@ -59644,6 +59842,7 @@
  {
   "id": "922-93(a)(1)",
   "title": "Tamaño mínimo de conductores de cobre",
+  "informativa": false,
   "article": 922,
   "pages": [
    725
@@ -59725,6 +59924,7 @@
  {
   "id": "922-93(b)(1)",
   "title": "Porcentaje de tensión mecánica máxima del cable de acero a 0 °C sin carga de viento o hielo",
+  "informativa": false,
   "article": 922,
   "pages": [
    725,
@@ -59781,6 +59981,7 @@
  {
   "id": "922-93",
   "title": "Factores de sobrecarga mínimos para cada clase de construcción de líneas",
+  "informativa": false,
   "article": 922,
   "pages": [
    726,
@@ -60513,6 +60714,7 @@
  {
   "id": "922-94",
   "title": "Clase de construcción requerida para líneas aéreas",
+  "informativa": false,
   "article": 922,
   "pages": [
    727
@@ -60701,6 +60903,7 @@
  {
   "id": "923-3(f)(1)",
   "title": "Separación mínima entre cables eléctricos y de comunicación propia del suministrador dentro de un mismo registro, pozo o bóveda",
+  "informativa": false,
   "article": 923,
   "pages": [
    729
@@ -60767,6 +60970,7 @@
  {
   "id": "923-5(a)",
   "title": "Altura mínima de partes vivas de terminales en metros",
+  "informativa": false,
   "article": 923,
   "pages": [
    730,
@@ -60856,6 +61060,7 @@
  {
   "id": "923-11",
   "title": "Profundidad mínima de los ductos o bancos de ductos",
+  "informativa": false,
   "article": 923,
   "pages": [
    735
@@ -60934,6 +61139,7 @@
  {
   "id": "923-12(b)",
   "title": "Separación mínima entre ductos o bancos de ductos y con respecto a otras estructuras subterráneas",
+  "informativa": false,
   "article": 923,
   "pages": [
    735
@@ -60992,6 +61198,7 @@
  {
   "id": "924-5",
   "title": "Niveles mínimos de iluminancia requeridos",
+  "informativa": false,
   "article": 924,
   "pages": [
    739
@@ -61040,6 +61247,7 @@
  {
   "id": "1",
   "title": "Porcentaje de la sección transversal en tubo conduit y en tubería para los conductores",
+  "informativa": false,
   "article": null,
   "pages": [
    742
@@ -61101,6 +61309,7 @@
  {
   "id": "2",
   "title": "Radio de las curvas del tubo conduit y tuberías",
+  "informativa": false,
   "article": null,
   "pages": [
    743
@@ -61321,6 +61530,7 @@
  {
   "id": "4",
   "title": "Dimensiones y porcentaje disponible para los conductores del área del tubo conduit (basado en la Tabla 1, de este Capítulo)",
+  "informativa": false,
   "article": null,
   "pages": [
    743,
@@ -65560,6 +65770,7 @@
  {
   "id": "5",
   "title": "Dimensiones de los conductores aislados y cables para artefactos",
+  "informativa": false,
   "article": null,
   "pages": [
    747,
@@ -69849,6 +70060,7 @@
  {
   "id": "8",
   "title": "Propiedades de los conductores",
+  "informativa": false,
   "article": null,
   "pages": [
    750,
@@ -71139,6 +71351,7 @@
  {
   "id": "9",
   "title": "Resistencia y reactancia en corriente alterna para los cables para 600 volts, 3 fases a 60 Hz y 75 °C.",
+  "informativa": false,
   "article": null,
   "pages": [
    751,
@@ -72313,6 +72526,7 @@
  {
   "id": "10",
   "title": "Número de hilos de los cables",
+  "informativa": false,
   "article": null,
   "pages": [
    752
@@ -72569,6 +72783,7 @@
  {
   "id": "11(A)",
   "title": "Limitaciones de las fuentes de alimentación de corriente alterna de Clase 2 y de Clase 3",
+  "informativa": false,
   "article": null,
   "pages": [
    752,
@@ -72856,6 +73071,7 @@
  {
   "id": "11(B)",
   "title": "Limitaciones de las fuentes de alimentación de corriente continua de Clase 2 y de Clase 3",
+  "informativa": false,
   "article": null,
   "pages": [
    753
@@ -73127,6 +73343,7 @@
  {
   "id": "12(A)",
   "title": "Limitaciones para las fuentes de alimentación de corriente alterna para PLFA (alarmas contra incendios de potencia limitada)",
+  "informativa": false,
   "article": null,
   "pages": [
    754
@@ -73335,6 +73552,7 @@
  {
   "id": "12(B)",
   "title": "Limitaciones para las fuentes de alimentación de corriente continua para PLFA (alarmas contra incendios de potencia limitada)",
+  "informativa": false,
   "article": null,
   "pages": [
    754

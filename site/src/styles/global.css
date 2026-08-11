@@ -478,3 +478,24 @@ figure.fig figcaption {
 ul.anot-items { list-style: none; margin: 0.4rem 0 0; padding-left: 0.9rem; }
 ul.anot-items li { margin: 0.22rem 0; }
 ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); }
+
+/* Tablas que la norma marca como informativas: no son exigibles, y eso pesa
+   distinto que el nombre de la tabla, así que va como distintivo aparte. */
+.tag-info {
+  display: inline-block; vertical-align: 2px;
+  margin-left: 0.4rem; padding: 0.05rem 0.4rem;
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-dim);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: help;
+}
+.tabla-info {
+  margin: 0 0 0.5rem; padding: 0.45rem 0.7rem;
+  font-size: 0.82rem; color: var(--text-dim);
+  background: var(--bg-soft);
+  border-left: 3px solid var(--border);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
