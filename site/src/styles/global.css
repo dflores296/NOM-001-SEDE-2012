@@ -32,6 +32,9 @@
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --radius: 6px;
   --maxw: 1180px;
+  /* Margen lateral de la página. Crece con la ventana para que el contenido
+     no quede pegado al borde en pantallas anchas. */
+  --gut: clamp(1.1rem, 1.5vw, 2.4rem);
 }
 
 /* Papel cálido, contraste suave: para lecturas largas con luz de día. */
@@ -185,7 +188,17 @@ a:hover { text-decoration: underline; }
 
 code, .mono { font-family: var(--mono); }
 
-.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.1rem; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
+
+/* La página de artículo ocupa todo el ancho de la ventana en vez de quedarse
+   en una columna centrada. Al alejar el zoom el navegador no encoge la
+   página: entrega MÁS píxeles CSS. Con un ancho máximo fijo esos píxeles de
+   más se iban enteros en dos franjas vacías a los lados, justo cuando se
+   aleja el zoom para poder leer una tabla ancha. Ahora los índices se quedan
+   pegados a los bordes y todo lo que sobra se lo lleva la columna central,
+   que es la que tiene las tablas. */
+.wrap.cols { max-width: none; }
+header.top .wrap { max-width: none; }
 
 /* ---------------------------------------------------------------- cabecera */
 header.top {
@@ -259,6 +272,8 @@ nav.links a:hover, nav.links a[aria-current] { color: var(--accent); }
 }
 
 /* ---------------------------------------------------------------- layout */
+/* Los índices conservan su ancho y todo el espacio sobrante se lo queda la
+   columna central, que es la que lleva las tablas. */
 .cols { display: grid; grid-template-columns: 250px minmax(0,1fr) 210px; gap: 2rem; align-items: start; }
 @media (max-width: 1020px) { .cols { grid-template-columns: 1fr; } .side, .toc { display: none; } }
 
@@ -293,6 +308,7 @@ section.sec > h2 .sid {
 .anchor { color: var(--text-faint); opacity: 0; font-weight: 400; margin-left: 0.35rem; }
 section.sec:hover .anchor { opacity: 1; }
 .sec p { margin: 0.4rem 0; }
+
 
 ul.subs { list-style: none; margin: 0.5rem 0 0; padding: 0 0 0 1rem; border-left: 1px solid var(--border-soft); }
 ul.subs ul.subs { margin-top: 0.35rem; }
