@@ -2,8 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import Sub from '../../components/Sub.astro';
 import Tabla from '../../components/Tabla.astro';
-import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug, BASE }
-  from '../../lib/nom.js';
+import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug,
+         tablaPorId, BASE } from '../../lib/nom.js';
 
 export function getStaticPaths() {
   return articles.map((a) => ({ params: { num: String(a.num) }, props: { a } }));
@@ -29,23 +29,24 @@ const next = i < articles.length - 1 ? articles[i + 1] : null;
 
 const bl = Object.fromEntries(a.sections.map((s) => [s.id, backlinks(s.id)]));
 
-// Cada tabla se coloca tras la última sección que la precede en el documento,
-// que es donde el texto la invoca; así se lee en su contexto en lugar de
-// quedar amontonada al final del artículo.
+// Cada tabla se pinta en el punto del texto donde la norma la imprime: al
+// parsear el PDF se dejó una marca en esa posición y el nodo que la recogió
+// —la sección o el inciso— la lleva en `tables`. Antes se colocaban al final
+// de la parte, y las 32 tablas del Artículo 310 caían juntas entre la Parte B
+// y la C, cortando la lectura justo donde no toca.
 const tabs = tablasPorArticulo.get(a.num) || [];
-const trasSeccion = new Map();
-const sueltas = [];
-for (const t of tabs) {
-  let prev = null;
-  for (const s of a.sections) {
-    if ((s.page ?? 0) <= t.page) prev = s.id;
-    else break;
-  }
-  if (prev) {
-    if (!trasSeccion.has(prev)) trasSeccion.set(prev, []);
-    trasSeccion.get(prev).push(t);
-  } else sueltas.push(t);
-}
+const ancladas = new Set();
+const marca = (n) => {
+  for (const t of n.tables || []) ancladas.add(t.id);
+  for (const c of n.children || []) marca(c);
+};
+a.sections.forEach(marca);
+
+// Red de seguridad: si alguna tabla no encontró su sitio en el texto, se
+// publica al final del artículo en vez de desaparecer.
+const sueltas = tabs.filter((t) => !ancladas.has(t.id));
+
+const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter(Boolean);
 ---
 
 <Base
@@ -106,9 +107,9 @@ for (const t of tabs) {
               {s.figures?.map((f) => (
                 <figure class="fig">
                   <img src={`${BASE}/img/${f.src}`}
-                       alt={`Figura de la página ${f.page} del PDF`}
+                       alt={f.caption || `Figura de la página ${f.page} del PDF`}
                        width={f.w} height={f.h} loading="lazy" />
-                  <figcaption>Página {f.page} del PDF</figcaption>
+                  <figcaption>{f.caption || `Página ${f.page} del PDF`}</figcaption>
                 </figure>
               ))}
 
@@ -139,6 +140,8 @@ for (const t of tabs) {
                 </div>
               ))}
 
+              {tablasDe(s).map((t) => <Tabla t={t} />)}
+
               {s.children?.length > 0 && (
                 <ul class="subs">
                   {s.children.map((c) => <Sub node={c} />)}
@@ -162,9 +165,6 @@ for (const t of tabs) {
               )}
             </section>
           ))}
-          {g.secs.map((s) =>
-            (trasSeccion.get(s.id) || []).map((t) => <Tabla t={t} />)
-          )}
         </>
       ))}
 

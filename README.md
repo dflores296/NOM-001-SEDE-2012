@@ -151,6 +151,18 @@ rectángulos vectoriales:
 - **Continuación entre páginas**: las tablas largas siguen en la página
   siguiente sin repetir el título, así que se sigue la rejilla; y terminan donde
   empieza el título de la siguiente tabla, esté donde esté en la página.
+- **Título y notas al pie**: el título puede ocupar cuatro renglones y quedar al
+  pie de una página con la tabla en la siguiente; las notas al pie van por
+  debajo de la rejilla, fuera del rectángulo que se recorta. Ambos se recogen
+  con la tabla. Si no, se colaban en el texto del artículo: la NOTA de
+  310-60(c)(4) llegó a acumular 287 palabras con nueve notas al pie de nueve
+  tablas distintas y el pie de la Figura 310-60.
+- **Dónde va cada tabla**: al recortar la tabla se deja una marca en esa misma
+  posición del flujo de texto, y el parser la cuelga del inciso por el que iba
+  pasando. Así cada tabla se publica donde la norma la imprime —la
+  310-15(b)(2)(a) dentro del inciso 310-15(b)(2)— en vez de amontonarse al
+  final. Las 207 tablas de artículo quedan ancladas; las 11 del Capítulo 10 no
+  pertenecen a ningún artículo y se publican en su propia página.
 
 **Esto es aproximado y se publica como tal.** Cada tabla lleva una calidad
 estimada; las que no llegan a 0.80 salen marcadas en el sitio con un aviso para

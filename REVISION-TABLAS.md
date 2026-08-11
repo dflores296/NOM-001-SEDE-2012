@@ -20,20 +20,20 @@ separación en columnas falló en alguna fila.
 | | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|
 | [ ] | `400-4` | Cordones y cables flexibles (Ver 400-4) | 241, 242, 243, 244 | 22 | 0.77 | dibujada | 132×15 |
-| [ ] | `314-16(a)` | Cajas metálicas | 164 | 5 | 0.42 | dibujada | 26×3 |
 | [ ] | `220-55` | Factores de demanda y cargas para estufas eléctricas domés | 49 | 7 | 0.66 | **huecos** | 32×4 |
+| [ ] | `314-16(a)` | Cajas metálicas | 164 | 3 | 0.42 | dibujada | 26×3 |
 | [ ] | `250-66` | Conductor del electrodo de puesta a tierra para sistemas d | 98 | 9 | 0.79 | dibujada | 10×8 |
 | [ ] | `392-22(a)` | Area de ocupación permisible para cables multiconductores | 231 | 2 | 0.58 | **huecos** | 16×3 |
-| [ ] | `690-7` | Factores de corrección de la tensión para | 592 | 2 | 0.58 | **huecos** | 15×3 |
 | [ ] | `220-42` | Factores de demanda de cargas de alumbrado | 47 | 4 | 0.75 | **huecos** | 12×5 |
 | [ ] | `326-116` | Dimensiones del conduit | 177 | 1 | 0.40 | **huecos** | 5×2 |
 | [ ] | `392-22(b)(1)` | Area de ocupación permisible para cables de un solo conduc | 233 | 2 | 0.60 | **huecos** | 15×3 |
 | [ ] | `630-31(a)(2)` | Factores de multiplicación del régimen de trabajo para sol | 548 | 1 | 0.43 | **huecos** | 3×3 |
 | [ ] | `392-22(a)(5)` | Area de ocupación permisible para cables multiconductores | 232 | 2 | 0.67 | **huecos** | 6×3 |
 | [ ] | `400-5(a)(3)` | Factores de ajuste para más de tres conductores de fase en | 245 | 2 | 0.67 | **huecos** | 7×3 |
-| [ ] | `348-22` | Número máximo de conductores aislados en el tubo conduit | 192 | 2 | 0.70 | **huecos** | 7×4 |
+| [ ] | `348-22` | Número máximo de conductores aislados en el tubo conduit m | 192 | 2 | 0.70 | **huecos** | 7×4 |
 | [ ] | `430-7(b)` | Letras de código de indicación para rotor bloqueado | 300 | 1 | 0.57 | **huecos** | 20×4 |
 | [ ] | `922-22(a)` | Separación de conductores eléctricos verticales y derivado | 715 | 2 | 0.58 | dibujada | 3×4 |
+| [ ] | `690-7` | Factores de corrección de la tensión para | 592 | 1 | 0.58 | **huecos** | 15×3 |
 | [ ] | `310-15(b)(3)(c)` | Ajustes a la temperatura ambiente para canalizaciones circ | 136 | 1 | 0.64 | **huecos** | 5×3 |
 | [ ] | `530-19(a)` | Factores de demanda para el alumbrado del escenario | 465 | 1 | 0.67 | **huecos** | 5×4 |
 | [ ] | `210-24` | Resumen de requisitos de los circuitos derivados | 38 | 2 | 0.79 | **huecos** | 11×6 |
@@ -48,9 +48,9 @@ separación en columnas falló en alguna fila.
 | [ ] | `922-15(a)` | Separación mínima en cualquier dirección (milímetros) | 711, 712 | 2 | 0.74 | dibujada | 22×6 |
 | [ ] | `725-179` | Marcado de los cables | 640, 641 | 1 | 0.67 | dibujada | 3×2 |
 | [ ] | `430-12(c)(2)` | Volúmenes utilizables (Terminales fijos) | 303 | 0 | 0.75 | **huecos** | 5×4 |
-| [ ] | `551-73(a)` | Factores de demanda para los conductores de entrada | 493 | 1 | 0.78 | dibujada | 8×4 |
-| [ ] | `550-31` | Factores de demanda para conductores de entrada | 481 | 1 | 0.79 | dibujada | 14×2 |
-| [ ] | `922-12(a)(2)` | Separación horizontal mínima "S" de | 710 | 1 | 0.80 | dibujada | 7×11 |
+| [ ] | `551-73(a)` | Factores de demanda para los conductores de entrada de aco | 493 | 1 | 0.78 | dibujada | 8×4 |
+| [ ] | `550-31` | Factores de demanda para conductores de entrada de acometi | 481 | 1 | 0.79 | dibujada | 14×2 |
+| [ ] | `922-12(a)(2)` | Separación horizontal mínima "S" de conductores en sus sop | 710 | 1 | 0.80 | dibujada | 7×11 |
 | [ ] | `922-93(b)(1)` | Porcentaje de tensión mecánica máxima del cable de acero a | 725, 726 | 0 | 0.67 | dibujada | 2×3 |
 | [ ] | `310-104(e)` | Espesor del aislamiento para cables con dieléctricos sólid | 158 | 0 | 0.75 | dibujada | 15×10 |
 
@@ -67,10 +67,10 @@ conviene mirar con calma aunque no estén marcadas.
 | [ ] | `514-3(b)(2)` | Areas clasificadas, equipo eléctrico para surtidores de co | 412 | 2 | 0.80 | **huecos** | 5×4 |
 | [ ] | `922-13(a)` | Separación vertical mínima entre conductores, en sus sopor | 710, 711 | 5 | 0.92 | **huecos** | 9×7 |
 | [ ] | `924-5` | Niveles mínimos de iluminancia requeridos | 739 | 1 | 0.80 | **huecos** | 2×3 |
-| [ ] | `210-21(b)(3)` | Capacidad nominal de contactos en circuitos de varias capa | 37 | 2 | 0.88 | **huecos** | 7×5 |
 | [ ] | `430-37` | Dispositivos de sobrecarga para protección del motor | 309 | 3 | 0.91 | **huecos** | 10×4 |
 | [ ] | `514-3(b)(1)` | Areas peligrosas (clasificadas) Clase I: Estaciones de ser | 410, 411, 412 | 2 | 0.90 | **huecos** | 45×4 |
 | [ ] | `506-9(c)(2)(3)` | Designación de tipos de protección | 401 | 1 | 0.85 | **huecos** | 9×3 |
+| [ ] | `210-21(b)(3)` | Capacidad nominal de contactos en circuitos de varias capa | 37 | 1 | 0.88 | **huecos** | 7×5 |
 | [ ] | `12(A)` | Limitaciones para las fuentes de alimentación de corriente | 754 | 1 | 0.89 | **huecos** | 7×8 |
 | [ ] | `12(B)` | Limitaciones para las fuentes de alimentación de corriente | 754 | 1 | 0.89 | **huecos** | 7×8 |
 | [ ] | `610-14(d)` | Tamaño mínimo del conductor de contacto basado en la dista | 523 | 1 | 0.90 | **huecos** | 4×4 |
@@ -89,7 +89,7 @@ conviene mirar con calma aunque no estén marcadas.
 | [ ] | `310-60(c)(84)` | Ampacidad de tres conductores de aluminio, aislados, alamb | 153, 154 | 0 | 0.99 | **huecos** | 34×6 |
 | [ ] | `220-3` | Referencias para el cálculo de carga adicional | 44, 45 | 1 | 1.00 | **huecos** | 30×4 |
 | [ ] | `220-12` | Cargas de alumbrado general por tipo del inmueble | 45, 46 | 1 | 1.00 | **huecos** | 23×2 |
-| [ ] | `220-56` | Factores de demanda para equipos de cuartos de cocina | 50 | 2 | 1.00 | **huecos** | 7×3 |
+| [ ] | `220-56` | Factores de demanda para equipos de cuartos de cocina dife | 50 | 2 | 1.00 | **huecos** | 7×3 |
 | [ ] | `220-84` | Cálculo opcional. Factores de demanda para unidades multif | 52 | 2 | 1.00 | **huecos** | 24×3 |
 | [ ] | `225-61` | Libramientos sobre edificios y otras estructuras | 59 | 1 | 1.00 | **huecos** | 8×3 |
 | [ ] | `240-4(g)` | Aplicaciones de conductores específicos | 73, 74 | 1 | 1.00 | **huecos** | 11×4 |
@@ -99,12 +99,12 @@ conviene mirar con calma aunque no estén marcadas.
 | [ ] | `326-80` | Ampacidad de los cables tipo IGS | 177 | 1 | 1.00 | **huecos** | 10×6 |
 | [ ] | `354-24` | Radio mínimo de curvatura para tubo conduit subterráneo no | 199, 200 | 2 | 1.00 | **huecos** | 11×3 |
 | [ ] | `396-10(a)` | Tipos de cable | 238 | 1 | 1.00 | **huecos** | 9×5 |
-| [ ] | `402-5` | Ampacidad admisible de alambres para artefactos | 249, 250 | 4 | 1.00 | **huecos** | 6×3 |
+| [ ] | `402-5` | Ampacidad admisible de alambres para artefactos | 249, 250 | 3 | 1.00 | **huecos** | 6×3 |
 | [ ] | `552-10(e)(1)` | Protección contra sobrecorriente para baja tensión | 496 | 0 | 1.00 | **huecos** | 6×4 |
 | [ ] | `680-3` | Otros Artículos | 570 | 1 | 1.00 | **huecos** | 5×2 |
 | [ ] | `690-31(c)` | Factores de corrección | 596 | 1 | 1.00 | **huecos** | 11×5 |
 
-## 3 · Verificación de control (8)
+## 3 · Verificación de control (7)
 
 Salieron limpias y son muy citadas. Conviene mirarlas justamente por eso: una tabla
 equivocada que *parece* correcta es más peligrosa que una marcada como dudosa. Basta
@@ -115,10 +115,9 @@ comprobar dos o tres renglones de cada una.
 | [ ] | `250-122` | Tamaño mínimo de los conductores de puesta a tierra para c | 108 | 22 | 1.00 | dibujada | 22×5 |
 | [ ] | `310-104(a)` | Aplicaciones y aislamientos de conductores de 600 volts | 155, 156, 157 | 14 | 1.00 | dibujada | 46×6 |
 | [ ] | `312-6(a)` | Espacio mínimo para el doblado de los cables en las termin | 161 | 6 | 1.00 | dibujada | 17×7 |
-| [ ] | `314-16(b)` | Volumen que es requerido considerar para cada conductor | 165 | 6 | 1.00 | dibujada | 9×3 |
 | [ ] | `430-52` | Ajuste máximo de los dispositivos de protección contra cor | 310, 311 | 11 | 1.00 | dibujada | 9×5 |
 | [ ] | `922-93` | Factores de sobrecarga mínimos para cada clase de construc | 726, 727 | 6 | 1.00 | dibujada | 33×8 |
-| [ ] | `1` | Porcentaje de la sección transversal en tubo conduit y en | 742 | 24 | 1.00 | dibujada | 4×2 |
+| [ ] | `1` | Porcentaje de la sección transversal en tubo conduit y en | 742 | 23 | 1.00 | dibujada | 4×2 |
 | [ ] | `2` | Radio de las curvas del tubo conduit y tuberías | 743 | 10 | 1.00 | dibujada | 14×4 |
 
 ## Qué mirar en cada tabla

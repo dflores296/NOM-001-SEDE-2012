@@ -83,6 +83,15 @@ def load_pages(pdf):
 # factor de corrección desaparecía y el texto saltaba de "usando la siguiente
 # ecuación:" directo a la tabla.
 IMG_MARK = '\x00IMG:'
+# Marca de posición de una tabla dentro del flujo de texto. Va por el mismo
+# camino que las imágenes: el parser la ve pasar y cuelga la tabla del inciso
+# vigente, que es donde la norma la imprime.
+TBL_MARK = '\x00TBL:'
+
+# Pie de figura: "Figura 310-60.- Dimensiones de instalación de cables...".
+# Siempre empieza la línea; una cita del cuerpo va dentro de la frase
+# ("...como se indica en la Figura 310-60") y no la hace coincidir.
+RE_FIGCAP = re.compile(r'^Figura\s+\d{3}-\d{1,3}\s*[.\-]')
 
 
 def extract_images(pdf, img_dir):
@@ -120,7 +129,7 @@ RE_KEEP = re.compile(
     r'\d{3}-\d{1,3}(?:\.\s*|\s+)[0-9A-ZÁÉÍÓÚÑ])')
 
 
-def build_linemap(pages, pdf=None, skip=None, images=None):
+def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):
     """Devuelve (lineas, pagina_de_cada_linea) del documento completo.
 
     `skip` son zonas [(pagina, y0, y1)] que se omiten: las ocupa una tabla, y
@@ -133,6 +142,9 @@ def build_linemap(pages, pdf=None, skip=None, images=None):
     imgs = {}
     for pno, y, name, w, h in (images or []):
         imgs.setdefault(pno, []).append((y, name, w, h))
+    tbls = {}
+    for pno, y, art, tid in (marcas or []):
+        tbls.setdefault(pno, []).append((y, art, tid))
 
     lines, pageno = [], []
     for pno in range(1, len(pages) + 1):
@@ -146,11 +158,15 @@ def build_linemap(pages, pdf=None, skip=None, images=None):
             items = [(0, t) for t in pages[pno - 1].split('\n')]
         for y, name, w, h in imgs.get(pno, []):
             items.append((y, '%s%s:%d:%d' % (IMG_MARK, name, w, h)))
+        # justo por encima de su primera línea, para que caiga en el nodo que
+        # la precede y no en el siguiente
+        for y, art, tid in tbls.get(pno, []):
+            items.append((y - 0.01, '%s%s|%s' % (TBL_MARK, art or 0, tid)))
         items.sort(key=lambda z: z[0])
 
         zonas = skip.get(pno, [])
         for y, txt in items:
-            if (not txt.startswith(IMG_MARK)
+            if (not txt.startswith(IMG_MARK) and not txt.startswith(TBL_MARK)
                     and not RE_KEEP.match(unaccent(txt.strip()))
                     and any(a <= y <= b for a, b in zonas)):
                 continue
@@ -240,6 +256,8 @@ def parse_article(num, lines, pageno, lo, hi):
     # reales, y "Factores de corrección" acababa en 310-15(b)(3)(2) en vez de
     # en 310-15(b)(2).
     annot = [None, None]
+    # última figura vista, para poder engancharle su leyenda
+    ultima_fig = [None]
 
     def commit():
         nonlocal buf
@@ -303,15 +321,46 @@ def parse_article(num, lines, pageno, lo, hi):
             continue
         u = unaccent(ln)
 
+        # --- tabla: se cuelga del nodo vigente, igual que una figura
+        if ln.startswith(TBL_MARK):
+            art_tab, tid = ln[len(TBL_MARK):].split('|', 1)
+            owner = stack[-1]['node'] if stack else sec
+            # Las tablas del Capítulo 10 caen dentro del rango de líneas del
+            # último artículo del documento, pero no le pertenecen: se dejan
+            # sin anclar y se publican en su propia página.
+            if owner is not None and int(art_tab) == num:
+                owner.setdefault('tables', []).append({'id': tid, 'seq': next(seq)})
+            continue
+
         # --- imagen (fórmula o figura): se cuelga del nodo vigente
         if ln.startswith(IMG_MARK):
             name, w, h = ln[len(IMG_MARK):].rsplit(':', 2)
             owner = stack[-1]['node'] if stack else sec
             if owner is not None:
-                owner.setdefault('figures', []).append(
-                    {'src': name, 'w': int(w), 'h': int(h),
-                     'page': pageno[i], 'seq': next(seq)})
+                fig = {'src': name, 'w': int(w), 'h': int(h),
+                       'page': pageno[i], 'seq': next(seq)}
+                owner.setdefault('figures', []).append(fig)
+                ultima_fig[0] = fig
             continue
+
+        # --- leyenda de una figura: "Figura 310-60.- Dimensiones de..."
+        #
+        # Va debajo de su imagen y describe lo que se ve, no es texto
+        # normativo. Como párrafo se pegaba a la nota anterior y la
+        # ensuciaba: en 310-60(c)(4) el pie de la Figura 310-60 quedó dentro
+        # de la NOTA sobre pérdidas dieléctricas, que trata de otra cosa.
+        if ultima_fig[0] is not None and RE_FIGCAP.match(u):
+            ultima_fig[0]['caption'] = re.sub(r'\s+', ' ', ln).strip()
+            continue
+        if ultima_fig[0] is not None and ultima_fig[0].get('caption'):
+            # La leyenda ocupa dos renglones más veces de las que parece
+            # ("Figura 310-60.- Dimensiones de instalación de cables / para
+            # uso con las Tablas..."). El segundo empieza en minúscula, que
+            # es lo que distingue una línea partida de una frase nueva.
+            if ln[:1].islower():
+                ultima_fig[0]['caption'] += ' ' + re.sub(r'\s+', ' ', ln).strip()
+                continue
+            ultima_fig[0] = None
 
         # --- encabezado de sección: 210-8. Título.
         m = RE_SEC.match(u)
@@ -495,16 +544,24 @@ def main():
 
     # Zonas ocupadas por tablas, producidas por build_tables. Se omiten para
     # que el contenido de una tabla no reaparezca como párrafo corrido.
-    skip = {}
+    #
+    # Además se anota DÓNDE empieza cada tabla, para poder devolverla a su
+    # sitio: una tabla pertenece al punto del texto en el que aparece en la
+    # norma, no al final de la sección ni al final de la parte.
+    skip, marcas, vistas = {}, [], set()
     rpath = os.path.join(out, 'tablas_regiones.json')
     if os.path.exists(rpath):
-        for r in json.load(open(rpath)):
+        for r in sorted(json.load(open(rpath)), key=lambda r: (r['page'], r['y0'])):
             skip.setdefault(r['page'], []).append((r['y0'], r['y1']))
+            if r['id'] not in vistas:      # solo la primera página de la tabla
+                vistas.add(r['id'])
+                marcas.append((r['page'], r['y0'], r.get('article'), r['id']))
 
     img_dir = os.environ.get('NOM_IMG_DIR', 'site/public/img')
     images = extract_images(pdf, img_dir)
 
-    lines, pageno = build_linemap(pages, pdf=pdf, skip=skip, images=images)
+    lines, pageno = build_linemap(pages, pdf=pdf, skip=skip, images=images,
+                                  marcas=marcas)
     toc, chapters, titulos = parse_toc(pages)
     starts = find_articles(lines, pageno, toc)
 

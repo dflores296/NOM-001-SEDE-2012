@@ -71,7 +71,8 @@
     "page": 22,
     "y0": 345.3330078125,
     "y1": 434.21,
-    "id": "110-26(a)(1)"
+    "id": "110-26(a)(1)",
+    "article": 110
    }
   ]
  },
@@ -1025,20 +1026,24 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* El mecanismo debe ser operable cuando está cubierto con hielo. El término hermético a la lluvia generalmente se usa junto con envolventes tipo 3, 3S, 3SX, 3X, 4, 4X, 6 y 6P. El término a prueba de lluvia generalmente se usa junto con envolventes tipo 3R y 3RX. El término hermético al agua generalmente se usa junto con envolventes tipo 4, 4X, 6, 6P. El término hermético al goteo generalmente se usa junto con envolventes tipo 2, 5, 12, 12K y 13. El término hermético al polvo generalmente se usa junto con envolventes tipo 3, 3S, 3SX, 3X, 5, 12, 12K y 13. Los rangos de protección contra el acceso (IP) se pueden consultar en el Apéndice D.2 Clasificación IEC. C. Más de 600 volts 110-30. General. Los conductores y equipos usados en circuitos de más de 600 volts deben cumplir con la Parte A de este artículo y"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 24,
     "y0": 337.0830078125,
     "y1": 777.23,
-    "id": "110-28"
+    "id": "110-28",
+    "article": 110
    },
    {
     "page": 25,
     "y0": 12.73,
-    "y1": 110.91,
-    "id": "110-28"
+    "y1": 204.6376953125,
+    "id": "110-28",
+    "article": 110
    }
   ]
  },
@@ -1088,14 +1093,19 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1) Paredes y techo. Se deben construir con materiales de resistencia estructural adecuada para las condiciones del lugar, con una clasificación de resistencia mínima al fuego de 3 horas. Para el propósito de esta sección, no se permite la construcción con polines de madera y paneles prefabricados.",
+   "2) Pisos. Los pisos de las bóvedas en contacto con la tierra deben ser de concreto con un espesor no menor a 10 centímetros, pero cuando la bóveda se construya con un espacio vacío u otros pisos debajo de ella, el piso debe tener la resistencia estructural adecuada para la carga impuesta sobre él y una resistencia mínima al fuego de 3 horas.",
+   "3) Puertas. Cada puerta que conduzca a una bóveda desde el interior del edificio será provista con una puerta de ajuste hermético"
+  ],
   "quality": 0.875,
   "regions": [
    {
     "page": 25,
     "y0": 343.0830078125,
-    "y1": 426.08,
-    "id": "110-31"
+    "y1": 520.3876953125,
+    "id": "110-31",
+    "article": 110
    }
   ]
  },
@@ -1226,13 +1236,15 @@
     "page": 26,
     "y0": 580.0830078125,
     "y1": 790.73,
-    "id": "110-34(a)"
+    "id": "110-34(a)",
+    "article": 110
    },
    {
     "page": 27,
     "y0": -3.0,
     "y1": 55.61,
-    "id": "110-34(a)"
+    "id": "110-34(a)",
+    "article": 110
    }
   ]
  },
@@ -1301,7 +1313,8 @@
     "page": 27,
     "y0": 343.8330078125,
     "y1": 429.04,
-    "id": "110-34(e)"
+    "id": "110-34(e)",
+    "article": 110
    }
   ]
  },
@@ -1634,7 +1647,8 @@
     "page": 32,
     "y0": 107.5830078125,
     "y1": 627.07,
-    "id": "210-2"
+    "id": "210-2",
+    "article": 210
    }
   ]
  },
@@ -1705,14 +1719,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "3) Valor nominal del contacto. Cuando se conecten dos o más contactos o salidas a un circuito derivado, la capacidad nominal de los contactos debe corresponder a los valores de la Tabla 210-21(b)(3) o, si es de más de 50 amperes, la capacidad nominal del contacto no debe ser menor a la capacidad nominal del circuito derivado. Excepción 1: Se permite que los contactos instalados exclusivamente para usar una o más máquinas de soldar por arco conectadas con cordón y clavija, tenga una capacidad nominal no menor a la ampacidad mínima de los conductores del circuito derivado, tal como se permite en 630-11(a) o (b) para las máquinas de soldar por arco. Excepción 2: Se permite que el valor nominal en amperes de un contacto instalado para iluminación con lámparas de descarga eléctrica, se base en lo que se indica en 410-62(c)."
+  ],
   "quality": 0.923,
   "regions": [
    {
     "page": 37,
     "y0": 452.5830078125,
-    "y1": 543.76,
-    "id": "210-21(b)(2)"
+    "y1": 642.6376953125,
+    "id": "210-21(b)(2)",
+    "article": 210
    }
   ]
  },
@@ -1856,7 +1873,8 @@
     "page": 37,
     "y0": 638.5830078125,
     "y1": 743.29,
-    "id": "210-21(b)(3)"
+    "id": "210-21(b)(3)",
+    "article": 210
    }
   ]
  },
@@ -2094,14 +2112,19 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* Estos tamaños se refieren a conductores de cobre.",
+   "** Para la capacidad de los contactos instalados para alumbrado de descarga conectados con cordón y clavija, véase 410- 62(c).",
+   "NOTA: Se permite que la protección contra sobrecorriente sea de valor igual o menor que la clasificación del circuito"
+  ],
   "quality": 0.786,
   "regions": [
    {
     "page": 38,
     "y0": 364.0830078125,
-    "y1": 605.94,
-    "id": "210-24"
+    "y1": 655.1747436523438,
+    "id": "210-24",
+    "article": 210
    }
   ]
  },
@@ -2547,13 +2570,15 @@
     "page": 44,
     "y0": 573.3330078125,
     "y1": 777.23,
-    "id": "220-3"
+    "id": "220-3",
+    "article": 220
    },
    {
     "page": 45,
     "y0": 10.48,
     "y1": 386.26,
-    "id": "220-3"
+    "id": "220-3",
+    "article": 220
    }
   ]
  },
@@ -2763,13 +2788,15 @@
     "page": 45,
     "y0": 496.8330078125,
     "y1": 794.0,
-    "id": "220-12"
+    "id": "220-12",
+    "article": 220
    },
    {
     "page": 46,
     "y0": 25.48,
     "y1": 155.29,
-    "id": "220-12"
+    "id": "220-12",
+    "article": 220
    }
   ]
  },
@@ -2991,14 +3018,17 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* Los factores de demanda de esta Tabla no se deben aplicar a la carga calculada de los alimentadores que dan suministro a las zonas de hospitales, hoteles y moteles en las que es posible que se deba utilizar todo el alumbrado al mismo tiempo, como salas de operaciones, comedores y salas de baile."
+  ],
   "quality": 0.75,
   "regions": [
    {
     "page": 47,
     "y0": 464.5830078125,
-    "y1": 673.48,
-    "id": "220-42"
+    "y1": 704.4633178710938,
+    "id": "220-42",
+    "article": 220
    }
   ]
  },
@@ -3044,10 +3074,18 @@
   "quality": 1.0,
   "regions": [
    {
+    "page": 47,
+    "y0": 749.5830078125,
+    "y1": 792.0,
+    "id": "220-44",
+    "article": 220
+   },
+   {
     "page": 48,
     "y0": 27.13,
     "y1": 89.29,
-    "id": "220-44"
+    "id": "220-44",
+    "article": 220
    }
   ]
  },
@@ -3168,13 +3206,14 @@
     "page": 48,
     "y0": 445.0830078125,
     "y1": 651.79,
-    "id": "220-54"
+    "id": "220-54",
+    "article": 220
    }
   ]
  },
  {
   "id": "220-55",
-  "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas",
+  "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe",
   "article": 220,
   "pages": [
    49
@@ -3634,20 +3673,32 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "1.- Todas las estufas del mismo valor nominal y de más de 12 kW hasta 27 kW. Para estufas individuales de más de 12 kW pero no más de 27 kW, se debe aumentar la demanda máxima de la columna C un 5 por ciento por cada kW adicional o fracción por encima de los 12 kW.",
+   "2.- Las estufas de más de 8.75 kW hasta 27 kW de distinto valor nominal. Para estufas con potencia individual de más de 8.75 kW y de diferente capacidad nominal, pero que no superen los 27 kW, se debe calcular un valor promedio sumando las capacidades nominales de todas las estufas para obtener la carga total conectada (utilizando 12 kW por cada estufa de menos de 12 kW) y dividiendo entre el número total de estufas. Después se debe aumentar la demanda máxima de la columna C un 5 por ciento por cada kW o fracción en que este valor promedio exceda de 12 kW.",
+   "3.- De más de 1.75 kW hasta 8.75 kW. En lugar del método de la columna C, se permite añadir la potencia nominal de todos los aparatos"
+  ],
   "quality": 0.656,
   "regions": [
    {
+    "page": 48,
+    "y0": 736.0830078125,
+    "y1": 792.0,
+    "id": "220-55",
+    "article": 220
+   },
+   {
     "page": 49,
     "y0": 39.21,
-    "y1": 506.96,
-    "id": "220-55"
+    "y1": 594.9633178710938,
+    "id": "220-55",
+    "article": 220
    }
   ]
  },
  {
   "id": "220-56",
-  "title": "Factores de demanda para equipos de cuartos de cocina",
+  "title": "Factores de demanda para equipos de cuartos de cocina diferentes a unidades de vivienda.",
   "article": 220,
   "pages": [
    50
@@ -3743,7 +3794,8 @@
     "page": 50,
     "y0": 25.0830078125,
     "y1": 165.04,
-    "id": "220-56"
+    "id": "220-56",
+    "article": 220
    }
   ]
  },
@@ -4032,13 +4084,14 @@
     "page": 52,
     "y0": 196.0830078125,
     "y1": 609.79,
-    "id": "220-84"
+    "id": "220-84",
+    "article": 220
    }
   ]
  },
  {
   "id": "220-86",
-  "title": "Método opcional - Factores de demanda para conductores de",
+  "title": "Método opcional - Factores de demanda para conductores de alimentadores y de acometidas para instituciones educativas.",
   "article": 220,
   "pages": [
    53
@@ -4089,13 +4142,14 @@
     "page": 53,
     "y0": 211.0830078125,
     "y1": 300.04,
-    "id": "220-86"
+    "id": "220-86",
+    "article": 220
    }
   ]
  },
  {
   "id": "220-88",
-  "title": "Método opcional - Cálculos de la carga permitida para los conductores del alimentador para restaurantes",
+  "title": "Método opcional - Cálculos de la carga permitida para los conductores del alimentador para restaurantes nuevos.",
   "article": 220,
   "pages": [
    53
@@ -4184,7 +4238,8 @@
     "page": 53,
     "y0": 558.3330078125,
     "y1": 691.48,
-    "id": "220-88"
+    "id": "220-88",
+    "article": 220
    }
   ]
  },
@@ -4241,7 +4296,8 @@
     "page": 54,
     "y0": 130.8330078125,
     "y1": 273.79,
-    "id": "220-102"
+    "id": "220-102",
+    "article": 220
    }
   ]
  },
@@ -4306,7 +4362,8 @@
     "page": 54,
     "y0": 346.0830078125,
     "y1": 444.01,
-    "id": "220-103"
+    "id": "220-103",
+    "article": 220
    }
   ]
  },
@@ -4532,13 +4589,15 @@
     "page": 54,
     "y0": 619.0830078125,
     "y1": 777.98,
-    "id": "225-3"
+    "id": "225-3",
+    "article": 225
    },
    {
     "page": 55,
     "y0": 25.48,
     "y1": 237.04,
-    "id": "225-3"
+    "id": "225-3",
+    "article": 225
    }
   ]
  },
@@ -4627,7 +4686,8 @@
     "page": 59,
     "y0": 281.5830078125,
     "y1": 417.79,
-    "id": "225-60"
+    "id": "225-60",
+    "article": 225
    }
   ]
  },
@@ -4740,13 +4800,14 @@
     "page": 59,
     "y0": 524.5830078125,
     "y1": 660.76,
-    "id": "225-61"
+    "id": "225-61",
+    "article": 225
    }
   ]
  },
  {
   "id": "230-51(c)",
-  "title": "Soportes y separación de los conductores individuales",
+  "title": "Soportes y separación de los conductores individuales de recepción del suministro expuestos",
   "article": 230,
   "pages": [
    65
@@ -4840,14 +4901,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* No expuestos a la intemperie"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 65,
     "y0": 463.0830078125,
-    "y1": 611.21,
-    "id": "230-51(c)"
+    "y1": 622.1747436523438,
+    "id": "230-51(c)",
+    "article": 230
    }
   ]
  },
@@ -5269,13 +5333,15 @@
     "page": 71,
     "y0": 499.8330078125,
     "y1": 782.48,
-    "id": "240-3"
+    "id": "240-3",
+    "article": 240
    },
    {
     "page": 72,
     "y0": 23.98,
     "y1": 461.29,
-    "id": "240-3"
+    "id": "240-3",
+    "article": 240
    }
   ]
  },
@@ -5455,13 +5521,15 @@
     "page": 73,
     "y0": 460.0830078125,
     "y1": 781.73,
-    "id": "240-4(g)"
+    "id": "240-4(g)",
+    "article": 240
    },
    {
     "page": 74,
     "y0": 16.48,
     "y1": 46.51,
-    "id": "240-4(g)"
+    "id": "240-4(g)",
+    "article": 240
    }
   ]
  },
@@ -6059,13 +6127,15 @@
     "page": 84,
     "y0": 496.8330078125,
     "y1": 781.73,
-    "id": "250-3"
+    "id": "250-3",
+    "article": 250
    },
    {
     "page": 85,
     "y0": 20.98,
     "y1": 384.76,
-    "id": "250-3"
+    "id": "250-3",
+    "article": 250
    }
   ]
  },
@@ -6326,7 +6396,8 @@
     "page": 98,
     "y0": 380.6103515625,
     "y1": 602.95,
-    "id": "250-66"
+    "id": "250-66",
+    "article": 250
    }
   ]
  },
@@ -6718,7 +6789,8 @@
     "page": 108,
     "y0": 109.8681640625,
     "y1": 407.23,
-    "id": "250-122"
+    "id": "250-122",
+    "article": 250
    }
   ]
  },
@@ -6855,7 +6927,8 @@
     "page": 118,
     "y0": 282.3681640625,
     "y1": 475.54,
-    "id": "300-16(c)"
+    "id": "300-16(c)",
+    "article": 300
    }
   ]
  },
@@ -7080,14 +7153,21 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. Profundidad mínima se define como la distancia más corta en milímetros medida entre un punto en la superficie superior de cualquier conductor, cable, tubo conduit o canalización directamente enterrados, y el nivel superior del terreno terminado, concreto o cubierta similar.",
+   "2. Las canalizaciones aprobadas para enterramiento sólo embebidas en concreto requieren una cubierta de concreto de no menos de 5 centímetros de espesor.",
+   "3. Se permitirán menores profundidades cuando los cables y conductores suben para terminaciones o empalmes o cuando se requiere tener acceso a ellos.",
+   "4. Cuando se usa uno de los métodos de alambrado presentados en las columnas 1-3 para uno de los tipos de circuitos de las columnas 4 y 5, se permitirá enterrar los cables a la menor profundidad.",
+   "5. Si se encuentra roca sólida que impide cumplir con la profundidad especificada en esta Tabla, el alambrado se debe instalar en canalizaciones metálicas o no metálicas permitidas directamente enterradas. Las canalizaciones se deben cubrir con un mínimo de 5 centímetros de concreto que penetre hasta la roca. Excepción 1: Se permitirá el cable tipo MI bajo un edificio sin instalación en una canalización, cuando esté embebido de concreto, relleno u otro material de mampostería de acuerdo con 332-10(6) o en tramos subterráneos si están protegidos adecuadamente contra"
+  ],
   "quality": 0.983,
   "regions": [
    {
     "page": 121,
     "y0": 203.6181640625,
-    "y1": 603.84,
-    "id": "300-5"
+    "y1": 703.4228515625,
+    "id": "300-5",
+    "article": 300
    }
   ]
  },
@@ -7289,13 +7369,15 @@
     "page": 126,
     "y0": 711.9651489257812,
     "y1": 794.0,
-    "id": "300-19(a)"
+    "id": "300-19(a)",
+    "article": 300
    },
    {
     "page": 127,
     "y0": -3.0,
     "y1": 249.75,
-    "id": "300-19(a)"
+    "id": "300-19(a)",
+    "article": 300
    }
   ]
  },
@@ -7455,7 +7537,8 @@
     "page": 130,
     "y0": 194.4189453125,
     "y1": 433.59,
-    "id": "300-50"
+    "id": "300-50",
+    "article": 300
    }
   ]
  },
@@ -7725,7 +7808,8 @@
     "page": 134,
     "y0": 169.1181640625,
     "y1": 521.35,
-    "id": "310-15(b)(2)(a)"
+    "id": "310-15(b)(2)(a)",
+    "article": 310
    }
   ]
  },
@@ -8361,13 +8445,15 @@
     "page": 134,
     "y0": 531.3681640625,
     "y1": 780.27,
-    "id": "310-15(b)(2)(b)"
+    "id": "310-15(b)(2)(b)",
+    "article": 310
    },
    {
     "page": 135,
     "y0": 18.02,
     "y1": 291.09,
-    "id": "310-15(b)(2)(b)"
+    "id": "310-15(b)(2)(b)",
+    "article": 310
    }
   ]
  },
@@ -8448,13 +8534,14 @@
     "page": 135,
     "y0": 427.1181640625,
     "y1": 603.04,
-    "id": "310-15(b)(3)(a)"
+    "id": "310-15(b)(3)(a)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-15(b)(3)(c)",
-  "title": "Ajustes a la temperatura ambiente para canalizaciones circulares",
+  "title": "Ajustes a la temperatura ambiente para canalizaciones circulares expuestas a la luz solar en o por encima de azoteas",
   "article": 310,
   "pages": [
    136
@@ -8528,13 +8615,14 @@
     "page": 136,
     "y0": 292.8681640625,
     "y1": 443.37,
-    "id": "310-15(b)(3)(c)"
+    "id": "310-15(b)(3)(c)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-15(b)(7)",
-  "title": "Tipos y tamaño o designación de conductores para alimentadores monofásicos, de 3 hilos de 120/240",
+  "title": "Tipos y tamaño o designación de conductores para alimentadores monofásicos, de 3 hilos de 120/240 volts para viviendas. Tipos de conductores RHH, RHW, RHW-2, THHN, THHW, THHW-LS, THW, THW-LS, THW-2, THWN, THWN-2,",
   "article": 310,
   "pages": [
    137
@@ -8749,13 +8837,14 @@
     "page": 137,
     "y0": 55.1181640625,
     "y1": 306.0,
-    "id": "310-15(b)(7)"
+    "id": "310-15(b)(7)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-15(b)(16)",
-  "title": "Ampacidades permisibles en conductores aislados para tensiones hasta 2000 volts y 60 °C a 90 °C. No",
+  "title": "Ampacidades permisibles en conductores aislados para tensiones hasta 2000 volts y 60 °C a 90 °C. No más de tres conductores portadores de corriente en una canalización, cable o directamente enterrados, basados en una temperatura ambiente de 30 °C*",
   "article": 310,
   "pages": [
    137,
@@ -9626,26 +9715,31 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Véase 310-15(b)(2) para los factores de corrección de la ampacidad cuando la temperatura ambiente es diferente a 30 °C.",
+   "** Véase 240-4(d) para limitaciones de protección contra sobrecorriente del conductor."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 137,
     "y0": 548.6181640625,
     "y1": 769.02,
-    "id": "310-15(b)(16)"
+    "id": "310-15(b)(16)",
+    "article": 310
    },
    {
     "page": 138,
     "y0": -3.0,
-    "y1": 458.33,
-    "id": "310-15(b)(16)"
+    "y1": 480.2485046386719,
+    "id": "310-15(b)(16)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-15(b)(17)",
-  "title": "Ampacidades permisibles de conductores individuales aislados para tensiones hasta e incluyendo 2000",
+  "title": "Ampacidades permisibles de conductores individuales aislados para tensiones hasta e incluyendo 2000 volts al aire libre, basadas en una temperatura ambiente de 30 °C*.",
   "article": 310,
   "pages": [
    138,
@@ -10516,20 +10610,25 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Véase 310-15(b)(2) para los factores de corrección de la ampacidad cuando la temperatura ambiente es diferente a 30 °C.",
+   "** Véase 240-4(d) para limitaciones de protección contra sobrecorriente del conductor."
+  ],
   "quality": 0.996,
   "regions": [
    {
     "page": 138,
     "y0": 476.6181640625,
     "y1": 773.52,
-    "id": "310-15(b)(17)"
+    "id": "310-15(b)(17)",
+    "article": 310
    },
    {
     "page": 139,
     "y0": 21.02,
-    "y1": 156.08,
-    "id": "310-15(b)(17)"
+    "y1": 173.4984893798828,
+    "id": "310-15(b)(17)",
+    "article": 310
    }
   ]
  },
@@ -10873,14 +10972,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Véase 310-15(b)(2)(b) para los factores de corrección de la ampacidad cuando la temperatura ambiente es diferente a 40 °C"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 139,
     "y0": 182.6181640625,
-    "y1": 397.58,
-    "id": "310-15(b)(18)"
+    "y1": 405.2485046386719,
+    "id": "310-15(b)(18)",
+    "article": 310
    }
   ]
  },
@@ -11224,20 +11326,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Véase 310-15(b)(2) para los factores de corrección de la ampacidad cuando la temperatura ambiente es diferente a 40 °C"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 139,
     "y0": 400.1181640625,
-    "y1": 637.58,
-    "id": "310-15(b)(19)"
+    "y1": 645.9984741210938,
+    "id": "310-15(b)(19)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-15(b)(20)",
-  "title": "Ampacidades de no más de tres conductores individuales aislados para Tensiones de hasta e",
+  "title": "Ampacidades de no más de tres conductores individuales aislados para Tensiones de hasta e incluyendo 2000 volts, sostenidos por un mensajero, con base en una temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    139,
@@ -11750,26 +11855,30 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Véase 310-15(b)(2) para los factores de corrección de la ampacidad cuando la temperatura ambiente es diferente a 40 °C."
+  ],
   "quality": 0.993,
   "regions": [
    {
     "page": 139,
     "y0": 657.3681640625,
     "y1": 794.0,
-    "id": "310-15(b)(20)"
+    "id": "310-15(b)(20)",
+    "article": 310
    },
    {
     "page": 140,
     "y0": -3.0,
-    "y1": 276.08,
-    "id": "310-15(b)(20)"
+    "y1": 284.4985046386719,
+    "id": "310-15(b)(20)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-15(b)(21)",
-  "title": "Ampacidades de conductores desnudos o recubiertos, al aire libre, con base en una temperatura",
+  "title": "Ampacidades de conductores desnudos o recubiertos, al aire libre, con base en una temperatura ambiente de 40 °C, 80 °C de temperatura total del conductor, y una velocidad del viento de 610 milímetros/segundo",
   "article": 310,
   "pages": [
    140
@@ -12374,7 +12483,8 @@
     "page": 140,
     "y0": 280.1181640625,
     "y1": 559.47,
-    "id": "310-15(b)(21)"
+    "id": "310-15(b)(21)",
+    "article": 310
    }
   ]
  },
@@ -12620,19 +12730,21 @@
     "page": 142,
     "y0": 637.8681640625,
     "y1": 778.02,
-    "id": "310-60(c)(4)"
+    "id": "310-60(c)(4)",
+    "article": 310
    },
    {
     "page": 143,
     "y0": 23.27,
     "y1": 237.1,
-    "id": "310-60(c)(4)"
+    "id": "310-60(c)(4)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(67)",
-  "title": "Ampacidad permisible de cables monoconductores de cobre aislados en configuración tríplex al aire,",
+  "title": "Ampacidad permisible de cables monoconductores de cobre aislados en configuración tríplex al aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    143
@@ -12842,20 +12954,23 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 0.68,
   "regions": [
    {
     "page": 143,
     "y0": 247.1181640625,
-    "y1": 539.98,
-    "id": "310-60(c)(67)"
+    "y1": 549.2484741210938,
+    "id": "310-60(c)(67)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(68)",
-  "title": "Ampacidad de cables de ternas de conductores individuales de aluminio, aislados, al aire, con base en",
+  "title": "Ampacidad de cables de ternas de conductores individuales de aluminio, aislados, al aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire ambiente de 40 °C*",
   "article": 310,
   "pages": [
    143,
@@ -13208,26 +13323,30 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 143,
     "y0": 552.3681640625,
     "y1": 780.27,
-    "id": "310-60(c)(68)"
+    "id": "310-60(c)(68)",
+    "article": 310
    },
    {
     "page": 144,
     "y0": 18.02,
-    "y1": 151.47,
-    "id": "310-60(c)(68)"
+    "y1": 162.9984893798828,
+    "id": "310-60(c)(68)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(69)",
-  "title": "Ampacidad de conductores de cobre individuales, aislados, y separados en el aire, con base en",
+  "title": "Ampacidad de conductores de cobre individuales, aislados, y separados en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    144
@@ -13774,20 +13893,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 0.981,
   "regions": [
    {
     "page": 144,
     "y0": 181.1181640625,
-    "y1": 623.21,
-    "id": "310-60(c)(69)"
+    "y1": 650.7098999023438,
+    "id": "310-60(c)(69)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(70)",
-  "title": "Ampacidad de conductores individuales de aluminio, aislados, separados en el aire, con base en",
+  "title": "Ampacidad de conductores individuales de aluminio, aislados, separados en el aire, con base en temperaturas del conductor de 90 °C (104 °C) y 105 °C y temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    144,
@@ -14277,26 +14399,30 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 0.889,
   "regions": [
    {
     "page": 144,
     "y0": 667.8681640625,
     "y1": 794.0,
-    "id": "310-60(c)(70)"
+    "id": "310-60(c)(70)",
+    "article": 310
    },
    {
     "page": 145,
     "y0": -1.48,
-    "y1": 365.96,
-    "id": "310-60(c)(70)"
+    "y1": 378.2485046386719,
+    "id": "310-60(c)(70)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(71)",
-  "title": "Ampacidad de cables de tres conductores de cobre, aislados, separados en el aire, con base en",
+  "title": "Ampacidad de cables de tres conductores de cobre, aislados, separados en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    145
@@ -14647,20 +14773,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 0.979,
   "regions": [
    {
     "page": 145,
     "y0": 378.3681640625,
-    "y1": 686.97,
-    "id": "310-60(c)(71)"
+    "y1": 710.7098999023438,
+    "id": "310-60(c)(71)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(72)",
-  "title": "Ampacidad de cables de tres conductores de aluminio, aislados, separados en el aire, con base en",
+  "title": "Ampacidad de cables de tres conductores de aluminio, aislados, separados en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente de 40 °C*",
   "article": 310,
   "pages": [
    146
@@ -14989,26 +15118,30 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 0.978,
   "regions": [
    {
     "page": 145,
     "y0": 724.8681640625,
     "y1": 792.27,
-    "id": "310-60(c)(72)"
+    "id": "310-60(c)(72)",
+    "article": 310
    },
    {
     "page": 146,
     "y0": 20.27,
-    "y1": 290.22,
-    "id": "310-60(c)(72)"
+    "y1": 300.9985046386719,
+    "id": "310-60(c)(72)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(73)",
-  "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de cobre, en tubo",
+  "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de cobre, en tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    146
@@ -15357,20 +15490,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 0.979,
   "regions": [
    {
     "page": 146,
     "y0": 298.1181640625,
-    "y1": 602.22,
-    "id": "310-60(c)(73)"
+    "y1": 612.2484741210938,
+    "id": "310-60(c)(73)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(74)",
-  "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de aluminio, en tubo",
+  "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de aluminio, en tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    146,
@@ -15699,26 +15835,30 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 0.978,
   "regions": [
    {
     "page": 146,
     "y0": 625.8681640625,
     "y1": 778.02,
-    "id": "310-60(c)(74)"
+    "id": "310-60(c)(74)",
+    "article": 310
    },
    {
     "page": 147,
     "y0": 23.27,
-    "y1": 185.22,
-    "id": "310-60(c)(74)"
+    "y1": 207.4598846435547,
+    "id": "310-60(c)(74)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(75)",
-  "title": "Ampacidad de cables de tres conductores de cobre aislados y en un tubo conduit físicamente aislado",
+  "title": "Ampacidad de cables de tres conductores de cobre aislados y en un tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    147
@@ -16071,20 +16211,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 147,
     "y0": 203.6181640625,
-    "y1": 484.47,
-    "id": "310-60(c)(75)"
+    "y1": 506.7098693847656,
+    "id": "310-60(c)(75)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(76)",
-  "title": "Ampacidad de cables de tres conductores de aluminio aislados, en un tubo conduit físicamente aislado",
+  "title": "Ampacidad de cables de tres conductores de aluminio aislados, en un tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
   "article": 310,
   "pages": [
    147,
@@ -16414,26 +16557,30 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ],
   "quality": 0.978,
   "regions": [
    {
     "page": 147,
     "y0": 519.3681640625,
     "y1": 778.02,
-    "id": "310-60(c)(76)"
+    "id": "310-60(c)(76)",
+    "article": 310
    },
    {
     "page": 148,
     "y0": 21.77,
-    "y1": 68.97,
-    "id": "310-60(c)(76)"
+    "y1": 78.99849700927734,
+    "id": "310-60(c)(76)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(77)",
-  "title": "Ampacidad de tres conductores de cobre, individualmente aislados, en ductos eléctricos subterráneos",
+  "title": "Ampacidad de tres conductores de cobre, individualmente aislados, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90 °C, temperaturas del conductor de 90 °C y 105 °C",
   "article": 310,
   "pages": [
    148
@@ -17379,13 +17526,14 @@
     "page": 148,
     "y0": 76.1181640625,
     "y1": 713.7,
-    "id": "310-60(c)(77)"
+    "id": "310-60(c)(77)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(78)",
-  "title": "Ampacidad de tres conductores de aluminio, individualmente aislados, en ductos eléctricos subterráneos",
+  "title": "Ampacidad de tres conductores de aluminio, individualmente aislados, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
   "article": 310,
   "pages": [
    149
@@ -18310,16 +18458,24 @@
   "quality": 0.992,
   "regions": [
    {
+    "page": 148,
+    "y0": 709.1181640625,
+    "y1": 792.0,
+    "id": "310-60(c)(78)",
+    "article": 310
+   },
+   {
     "page": 149,
     "y0": 27.17,
     "y1": 640.01,
-    "id": "310-60(c)(78)"
+    "id": "310-60(c)(78)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(79)",
-  "title": "Ampacidad de tres conductores de cobre aislados, alambrados dentro de una cubierta general (cable",
+  "title": "Ampacidad de tres conductores de cobre aislados, alambrados dentro de una cubierta general (cable de tres conductores) en ductos eléctricos subterráneos (un cable por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
   "article": 310,
   "pages": [
    149,
@@ -19264,19 +19420,21 @@
     "page": 149,
     "y0": 634.8681640625,
     "y1": 777.27,
-    "id": "310-60(c)(79)"
+    "id": "310-60(c)(79)",
+    "article": 310
    },
    {
     "page": 150,
     "y0": 21.02,
     "y1": 577.76,
-    "id": "310-60(c)(79)"
+    "id": "310-60(c)(79)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(80)",
-  "title": "Ampacidad de tres conductores de aluminio aislados, alambrados dentro de una cubierta general (cable de",
+  "title": "Ampacidad de tres conductores de aluminio aislados, alambrados dentro de una cubierta general (cable de tres conductores) en ductos eléctricos subterráneos (un cable por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
   "article": 310,
   "pages": [
    150,
@@ -20215,19 +20373,21 @@
     "page": 150,
     "y0": 572.6181640625,
     "y1": 777.27,
-    "id": "310-60(c)(80)"
+    "id": "310-60(c)(80)",
+    "article": 310
    },
    {
     "page": 151,
     "y0": 20.27,
     "y1": 517.01,
-    "id": "310-60(c)(80)"
+    "id": "310-60(c)(80)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(81)",
-  "title": "Ampacidad de conductores individuales de cobre, aislados, directamente enterrados, con base en una",
+  "title": "Ampacidad de conductores individuales de cobre, aislados, directamente enterrados, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
   "article": 310,
   "pages": [
    151,
@@ -20886,19 +21046,21 @@
     "page": 151,
     "y0": 511.8681640625,
     "y1": 775.77,
-    "id": "310-60(c)(81)"
+    "id": "310-60(c)(81)",
+    "article": 310
    },
    {
     "page": 152,
     "y0": 21.77,
     "y1": 212.23,
-    "id": "310-60(c)(81)"
+    "id": "310-60(c)(81)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(82)",
-  "title": "Ampacidad de conductores individuales de aluminio, aislados, directamente enterrados , con base en una",
+  "title": "Ampacidad de conductores individuales de aluminio, aislados, directamente enterrados , con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
   "article": 310,
   "pages": [
    152
@@ -21557,13 +21719,14 @@
     "page": 152,
     "y0": 222.3681640625,
     "y1": 671.23,
-    "id": "310-60(c)(82)"
+    "id": "310-60(c)(82)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(83)",
-  "title": "Ampacidad de tres conductores de cobre, aislados, alambrados dentro de una cubierta general (cable de",
+  "title": "Ampacidad de tres conductores de cobre, aislados, alambrados dentro de una cubierta general (cable de tres conductores), enterrados directamente en la tierra, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de",
   "article": 310,
   "pages": [
    152,
@@ -22238,19 +22401,21 @@
     "page": 152,
     "y0": 681.3681640625,
     "y1": 794.0,
-    "id": "310-60(c)(83)"
+    "id": "310-60(c)(83)",
+    "article": 310
    },
    {
     "page": 153,
     "y0": 16.52,
     "y1": 404.98,
-    "id": "310-60(c)(83)"
+    "id": "310-60(c)(83)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(84)",
-  "title": "Ampacidad de tres conductores de aluminio, aislados, alambrados dentro de una cubierta general (cable",
+  "title": "Ampacidad de tres conductores de aluminio, aislados, alambrados dentro de una cubierta general (cable de tres conductores), enterrados directamente en la tierra, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
   "article": 310,
   "pages": [
    153,
@@ -22909,19 +23074,21 @@
     "page": 153,
     "y0": 415.1181640625,
     "y1": 778.02,
-    "id": "310-60(c)(84)"
+    "id": "310-60(c)(84)",
+    "article": 310
    },
    {
     "page": 154,
     "y0": 15.02,
     "y1": 210.26,
-    "id": "310-60(c)(84)"
+    "id": "310-60(c)(84)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(85)",
-  "title": "Ampacidad de tres ternas de conductores individuales de cobre, aislados, directamente enterrados, con",
+  "title": "Ampacidad de tres ternas de conductores individuales de cobre, aislados, directamente enterrados, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-",
   "article": 310,
   "pages": [
    154
@@ -23577,13 +23744,14 @@
     "page": 154,
     "y0": 205.1181640625,
     "y1": 635.98,
-    "id": "310-60(c)(85)"
+    "id": "310-60(c)(85)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-60(c)(86)",
-  "title": "Ampacidad de tres ternas de conductores individuales de aluminio, aislados, directamente enterrados, con",
+  "title": "Ampacidad de tres ternas de conductores individuales de aluminio, aislados, directamente enterrados, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-",
   "article": 310,
   "pages": [
    154,
@@ -24240,13 +24408,15 @@
     "page": 154,
     "y0": 646.1181640625,
     "y1": 767.52,
-    "id": "310-60(c)(86)"
+    "id": "310-60(c)(86)",
+    "article": 310
    },
    {
     "page": 155,
     "y0": 16.52,
     "y1": 341.98,
-    "id": "310-60(c)(86)"
+    "id": "310-60(c)(86)",
+    "article": 310
    }
   ]
  },
@@ -25142,25 +25312,28 @@
     "page": 155,
     "y0": 446.6181640625,
     "y1": 784.02,
-    "id": "310-104(a)"
+    "id": "310-104(a)",
+    "article": 310
    },
    {
     "page": 156,
     "y0": -3.0,
     "y1": 794.0,
-    "id": "310-104(a)"
+    "id": "310-104(a)",
+    "article": 310
    },
    {
     "page": 157,
     "y0": -3.0,
     "y1": 116.11,
-    "id": "310-104(a)"
+    "id": "310-104(a)",
+    "article": 310
    }
   ]
  },
  {
   "id": "310-104(b)",
-  "title": "Espesor del aislamiento para conductores no blindados de tipos RHH y RHW aislados con dieléctricos",
+  "title": "Espesor del aislamiento para conductores no blindados de tipos RHH y RHW aislados con dieléctricos sólidos y con tensión de operación de 2000 volts",
   "article": 310,
   "pages": [
    157
@@ -25379,7 +25552,8 @@
     "page": 157,
     "y0": 266.6181640625,
     "y1": 432.75,
-    "id": "310-104(b)"
+    "id": "310-104(b)",
+    "article": 310
    }
   ]
  },
@@ -25455,14 +25629,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Cuando las condiciones de diseño exigen temperaturas del aislamiento mayores que de 90º C."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 157,
     "y0": 474.3681640625,
-    "y1": 582.1,
-    "id": "310-104(c)"
+    "y1": 591.2484741210938,
+    "id": "310-104(c)",
+    "article": 310
    }
   ]
  },
@@ -25837,20 +26014,24 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Bajo un recubrimiento común externo como por ejemplo una cubierta, un forro o una armadura."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 157,
     "y0": 601.1181640625,
     "y1": 781.77,
-    "id": "310-104(d)"
+    "id": "310-104(d)",
+    "article": 310
    },
    {
     "page": 158,
     "y0": 17.27,
-    "y1": 190.46,
-    "id": "310-104(d)"
+    "y1": 200.7098846435547,
+    "id": "310-104(d)",
+    "article": 310
    }
   ]
  },
@@ -26190,7 +26371,8 @@
     "page": 158,
     "y0": 209.6181640625,
     "y1": 432.71,
-    "id": "310-104(e)"
+    "id": "310-104(e)",
+    "article": 310
    }
   ]
  },
@@ -26361,7 +26543,8 @@
     "page": 158,
     "y0": 623.6181640625,
     "y1": 751.5,
-    "id": "310-106(a)"
+    "id": "310-106(a)",
+    "article": 310
    }
   ]
  },
@@ -26756,7 +26939,8 @@
     "page": 161,
     "y0": 264.3681640625,
     "y1": 455.22,
-    "id": "312-6(a)"
+    "id": "312-6(a)",
+    "article": 312
    }
   ]
  },
@@ -27425,20 +27609,25 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. El espacio para realizar los dobleces en los terminales se debe medir en una línea recta desde el extremo de la terminal de conexión o del conector del alambre en dirección perpendicular a la pared del embebido en concreto.",
+   "2. Para las terminales removibles y de tendido de cables para un solo alambre, se permitirá que el espacio para el doblado se reduzca en la siguiente cantidad de milímetros: a 12.7 milímetros b 25.4 milímetros c 38.1 milímetros d 50.8 milímetros e 76.2 milímetros"
+  ],
   "quality": 0.995,
   "regions": [
    {
     "page": 161,
     "y0": 721.8681640625,
     "y1": 794.0,
-    "id": "312-6(b)"
+    "id": "312-6(b)",
+    "article": 312
    },
    {
     "page": 162,
     "y0": 15.02,
-    "y1": 376.47,
-    "id": "312-6(b)"
+    "y1": 474.2485046386719,
+    "id": "312-6(b)",
+    "article": 312
    }
   ]
  },
@@ -27742,14 +27931,19 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Cuando no es requerido considerar volumen por 314-16(b)(2) hasta (b)(5).",
+   "1) Cajas estándar. El volumen para las cajas estándar, que no tienen marcado el volumen, debe ser el que se indica en la Tabla 314-16(a).",
+   "2) Otras cajas. Las cajas de 1640 cm3 o menos, distintas de las descritas en la Tabla 314-16(a) y las cajas no metálicas, deben ir marcadas por el fabricante de modo legible y duradero con el volumen en cm3. Las cajas descritas en la Tabla 314-16(a) que tengan mayor volumen del indicado en la tabla, pueden tener marcado su volumen en cm3 como exige esta Sección."
+  ],
   "quality": 0.423,
   "regions": [
    {
     "page": 164,
     "y0": 280.1181640625,
-    "y1": 671.95,
-    "id": "314-16(a)"
+    "y1": 746.1728515625,
+    "id": "314-16(a)",
+    "article": 314
    }
   ]
  },
@@ -27864,14 +28058,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1) Ocupación por los conductores. Cada conductor que se origina por fuera de la caja y termina o está empalmado dentro de ella, se debe contar una vez, y cada conductor que pase a través de la caja sin empalmes ni terminaciones se debe contar una vez. Cada bucle o espiral de conductores ininterrumpidos no menores al doble de la longitud mínima exigida para los conductores libres, se debe contar dos veces. La ocupación debida a los conductores se debe calcular usando la Tabla 314-16(b). Un conductor que ninguna de sus partes sale la caja, no se cuenta. Excepción: Se permite omitir de los cálculos el conductor o conductores de puesta a tierra de equipos o como máximo cuatro alambres para accesorios de tamaño menor a 2.08 mm2 (14 AWG), o ambos, cuando entran a una caja desde una luminaria con domo o tapa ornamental similar y terminan dentro de esa caja."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 165,
     "y0": 51.3681640625,
-    "y1": 203.29,
-    "id": "314-16(b)"
+    "y1": 302.9228515625,
+    "id": "314-16(b)",
+    "article": 314
    }
   ]
  },
@@ -27936,7 +28133,8 @@
     "page": 177,
     "y0": 61.8681640625,
     "y1": 147.79,
-    "id": "326-24"
+    "id": "326-24",
+    "article": 326
    }
   ]
  },
@@ -28161,7 +28359,8 @@
     "page": 177,
     "y0": 244.1181640625,
     "y1": 409.48,
-    "id": "326-80"
+    "id": "326-80",
+    "article": 326
    }
   ]
  },
@@ -28219,7 +28418,8 @@
     "page": 177,
     "y0": 504.3681640625,
     "y1": 575.29,
-    "id": "326-112"
+    "id": "326-112",
+    "article": 326
    }
   ]
  },
@@ -28284,7 +28484,8 @@
     "page": 177,
     "y0": 648.3681640625,
     "y1": 743.27,
-    "id": "326-116"
+    "id": "326-116",
+    "article": 326
    }
   ]
  },
@@ -28386,13 +28587,14 @@
     "page": 191,
     "y0": 205.1181640625,
     "y1": 319.54,
-    "id": "344-30(b)(2)"
+    "id": "344-30(b)(2)",
+    "article": 344
    }
   ]
  },
  {
   "id": "348-22",
-  "title": "Número máximo de conductores aislados en el tubo conduit",
+  "title": "Número máximo de conductores aislados en el tubo conduit metálico flexible con designación métrica de 12 (tamaño comercial de 3/8)*",
   "article": 348,
   "pages": [
    192
@@ -28502,14 +28704,17 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* Además, se permitirá un conductor de puesta a tierra de equipos del mismo tamaño o designación, aislado, cubierto o desnudo."
+  ],
   "quality": 0.704,
   "regions": [
    {
     "page": 192,
     "y0": 458.6181640625,
-    "y1": 626.95,
-    "id": "348-22"
+    "y1": 636.2484741210938,
+    "id": "348-22",
+    "article": 348
    }
   ]
  },
@@ -28609,13 +28814,14 @@
     "page": 196,
     "y0": 364.1181640625,
     "y1": 473.29,
-    "id": "352-30"
+    "id": "352-30",
+    "article": 352
    }
   ]
  },
  {
   "id": "352-44",
-  "title": "Características de expansión del tubo conduit rígido no metálico de PVC con un coeficiente de expansión",
+  "title": "Características de expansión del tubo conduit rígido no metálico de PVC con un coeficiente de expansión térmica = 6.084 x 10-5 mm/mm/ºC",
   "article": 352,
   "pages": [
    196,
@@ -28803,13 +29009,15 @@
     "page": 196,
     "y0": 523.8681640625,
     "y1": 776.52,
-    "id": "352-44"
+    "id": "352-44",
+    "article": 352
    },
    {
     "page": 197,
     "y0": 15.02,
     "y1": 75.83,
-    "id": "352-44"
+    "id": "352-44",
+    "article": 352
    }
   ]
  },
@@ -28956,13 +29164,15 @@
     "page": 199,
     "y0": 616.1181640625,
     "y1": 766.77,
-    "id": "354-24"
+    "id": "354-24",
+    "article": 354
    },
    {
     "page": 200,
     "y0": 15.77,
     "y1": 56.29,
-    "id": "354-24"
+    "id": "354-24",
+    "article": 354
    }
   ]
  },
@@ -29086,19 +29296,21 @@
     "page": 201,
     "y0": 679.1181640625,
     "y1": 766.77,
-    "id": "355-30"
+    "id": "355-30",
+    "article": 355
    },
    {
     "page": 202,
     "y0": 14.27,
     "y1": 72.79,
-    "id": "355-30"
+    "id": "355-30",
+    "article": 355
    }
   ]
  },
  {
   "id": "355-44",
-  "title": "Características de expansión del tubo conduit de resina termofija reforzada RTRC con un coeficiente de",
+  "title": "Características de expansión del tubo conduit de resina termofija reforzada RTRC con un coeficiente de expansión térmica = 2.70 x 10-5 milímetros/mm/º C",
   "article": 355,
   "pages": [
    202
@@ -29285,7 +29497,8 @@
     "page": 202,
     "y0": 417.3681640625,
     "y1": 686.37,
-    "id": "355-44"
+    "id": "355-44",
+    "article": 355
    }
   ]
  },
@@ -29365,7 +29578,8 @@
     "page": 207,
     "y0": 127.8681640625,
     "y1": 214.6,
-    "id": "360-24(a)"
+    "id": "360-24(a)",
+    "article": 360
    }
   ]
  },
@@ -29445,7 +29659,8 @@
     "page": 207,
     "y0": 258.3681640625,
     "y1": 333.85,
-    "id": "360-24(b)"
+    "id": "360-24(b)",
+    "article": 360
    }
   ]
  },
@@ -29630,20 +29845,25 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "*Para calcular el número de conductores permitidos en las canalizaciones con uniones externas se debe usar un porcentaje del 40 por ciento de ocupación.",
+   "**Para calcular el número de conductores permitidos en las canalizaciones con uniones internas se debe usar un porcentaje del 25% de ocupación."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 224,
     "y0": 658.8681640625,
     "y1": 775.77,
-    "id": "384-22"
+    "id": "384-22",
+    "article": 384
    },
    {
     "page": 225,
     "y0": 16.52,
-    "y1": 101.25,
-    "id": "384-22"
+    "y1": 140.7098846435547,
+    "id": "384-22",
+    "article": 384
    }
   ]
  },
@@ -29948,13 +30168,14 @@
     "page": 229,
     "y0": 136.1181640625,
     "y1": 569.33,
-    "id": "392-10(a)"
+    "id": "392-10(a)",
+    "article": 392
    }
   ]
  },
  {
   "id": "392-22(a)",
-  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de tipo escalera, fondo",
+  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de tipo escalera, fondo ventilado, tipo malla o fondo sólido para cables de 2000 volts o menos.",
   "article": 392,
   "pages": [
    231
@@ -30149,13 +30370,14 @@
     "page": 231,
     "y0": 124.8681640625,
     "y1": 391.48,
-    "id": "392-22(a)"
+    "id": "392-22(a)",
+    "article": 392
    }
   ]
  },
  {
   "id": "392-22(a)(5)",
-  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal ventilado",
+  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal ventilado para cables de 2000 volts o menos",
   "article": 392,
   "pages": [
    232
@@ -30240,13 +30462,14 @@
     "page": 232,
     "y0": 453.3681640625,
     "y1": 573.78,
-    "id": "392-22(a)(5)"
+    "id": "392-22(a)(5)",
+    "article": 392
    }
   ]
  },
  {
   "id": "392-22(a)(6)",
-  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal sólido para",
+  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal sólido para cables de 2 000 volts o menos",
   "article": 392,
   "pages": [
    232
@@ -30340,13 +30563,14 @@
     "page": 232,
     "y0": 568.8681640625,
     "y1": 696.79,
-    "id": "392-22(a)(6)"
+    "id": "392-22(a)(6)",
+    "article": 392
    }
   ]
  },
  {
   "id": "392-22(b)(1)",
-  "title": "Area de ocupación permisible para cables de un solo conductor en charolas portacables de tipo escalera,",
+  "title": "Area de ocupación permisible para cables de un solo conductor en charolas portacables de tipo escalera, fondo ventilado o malla ventilada para cables de 2000 volts o menos",
   "article": 392,
   "pages": [
    233
@@ -30530,13 +30754,14 @@
     "page": 233,
     "y0": 192.3681640625,
     "y1": 402.02,
-    "id": "392-22(b)(1)"
+    "id": "392-22(b)(1)",
+    "article": 392
    }
   ]
  },
  {
   "id": "392-60(a)",
-  "title": "Requisitos de área de metal para charolas portacables utilizadas como conductores de puesta a tierra de",
+  "title": "Requisitos de área de metal para charolas portacables utilizadas como conductores de puesta a tierra de equipos",
   "article": 392,
   "pages": [
    234
@@ -30683,7 +30908,8 @@
     "page": 234,
     "y0": 272.6181640625,
     "y1": 470.27,
-    "id": "392-60(a)"
+    "id": "392-60(a)",
+    "article": 392
    }
   ]
  },
@@ -30861,7 +31087,8 @@
     "page": 238,
     "y0": 51.3681640625,
     "y1": 178.54,
-    "id": "396-10(a)"
+    "id": "396-10(a)",
+    "article": 396
    }
   ]
  },
@@ -35009,25 +35236,29 @@
     "page": 241,
     "y0": 550.1181640625,
     "y1": 794.0,
-    "id": "400-4"
+    "id": "400-4",
+    "article": 400
    },
    {
     "page": 242,
     "y0": 9.02,
     "y1": 794.0,
-    "id": "400-4"
+    "id": "400-4",
+    "article": 400
    },
    {
     "page": 243,
     "y0": 11.27,
     "y1": 794.0,
-    "id": "400-4"
+    "id": "400-4",
+    "article": 400
    },
    {
     "page": 244,
     "y0": 9.77,
     "y1": 432.05,
-    "id": "400-4"
+    "id": "400-4",
+    "article": 400
    }
   ]
  },
@@ -35369,20 +35600,26 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Cordón de oropel (tinsel).",
+   "** Sólo cables para elevadores.",
+   "*** 7 amperes sólo para cables de elevadores; 2 amperes para otros tipos. +Las corrientes permisibles bajo la columna A se aplican a cordones de tres conductores y otros multiconductores conectados a equipos de utilización, de modo que sólo tres conductores son portadores de corriente. Las corrientes permisibles bajo la columna B se aplican a cordones de 2 conductores y otros cordones multiconductores conectados a equipos de utilización, de modo que sólo dos conductores son portadores de corriente."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 244,
     "y0": 711.3681640625,
     "y1": 790.02,
-    "id": "400-5(a)(1)"
+    "id": "400-5(a)(1)",
+    "article": 400
    },
    {
     "page": 245,
     "y0": 4.52,
-    "y1": 233.22,
-    "id": "400-5(a)(1)"
+    "y1": 292.2098693847656,
+    "id": "400-5(a)(1)",
+    "article": 400
    }
   ]
  },
@@ -36288,7 +36525,8 @@
     "page": 245,
     "y0": 301.8681640625,
     "y1": 574.44,
-    "id": "400-5(a)(2)"
+    "id": "400-5(a)(2)",
+    "article": 400
    }
   ]
  },
@@ -36390,7 +36628,8 @@
     "page": 245,
     "y0": 628.8681640625,
     "y1": 756.83,
-    "id": "400-5(a)(3)"
+    "id": "400-5(a)(3)",
+    "article": 400
    }
   ]
  },
@@ -37445,20 +37684,25 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "*Se permitirá que los aislamientos y cubiertas exteriores aprobados estén marcados como no propagadores de incendio, baja emisión de humo y gas ácido, pueden identificarse con el sufijo \"LS\". 402-5. Ampacidad permisible de cables para artefactos. La ampacidad permisible de los cables para artefactos debe ser como se especifica en la Tabla 402-5. No se debe utilizar ningún conductor en condiciones tales que su temperatura de operación exceda la especificada en la Tabla 402-3 para el tipo de aislamiento involucrado.",
+   "NOTA: Para los límites de temperatura de los conductores, véase 310-15(a)(3)."
+  ],
   "quality": 0.816,
   "regions": [
    {
     "page": 248,
     "y0": 405.3681640625,
     "y1": 782.52,
-    "id": "402-3"
+    "id": "402-3",
+    "article": 402
    },
    {
     "page": 249,
     "y0": -3.0,
-    "y1": 631.59,
-    "id": "402-3"
+    "y1": 703.4228515625,
+    "id": "402-3",
+    "article": 402
    }
   ]
  },
@@ -37550,19 +37794,21 @@
     "page": 249,
     "y0": 703.1181640625,
     "y1": 766.77,
-    "id": "402-5"
+    "id": "402-5",
+    "article": 402
    },
    {
     "page": 250,
     "y0": 17.27,
     "y1": 63.79,
-    "id": "402-5"
+    "id": "402-5",
+    "article": 402
    }
   ]
  },
  {
   "id": "408-5",
-  "title": "Espacio mínimo para los conductores que entran en los",
+  "title": "Espacio mínimo para los conductores que entran en los envolventes de las barras conductoras.",
   "article": 408,
   "pages": [
    259
@@ -37611,7 +37857,8 @@
     "page": 259,
     "y0": 558.3681640625,
     "y1": 667.62,
-    "id": "408-5"
+    "id": "408-5",
+    "article": 408
    }
   ]
  },
@@ -37802,13 +38049,15 @@
     "page": 262,
     "y0": 629.6181640625,
     "y1": 794.0,
-    "id": "409-3"
+    "id": "409-3",
+    "article": 409
    },
    {
     "page": 263,
     "y0": 19.52,
     "y1": 187.54,
-    "id": "409-3"
+    "id": "409-3",
+    "article": 409
    }
   ]
  },
@@ -37970,7 +38219,8 @@
     "page": 298,
     "y0": 343.1181640625,
     "y1": 646.54,
-    "id": "430-5"
+    "id": "430-5",
+    "article": 430
    }
   ]
  },
@@ -38275,13 +38525,14 @@
     "page": 300,
     "y0": 64.1181640625,
     "y1": 340.58,
-    "id": "430-7(b)"
+    "id": "430-7(b)",
+    "article": 430
    }
   ]
  },
  {
   "id": "430-10(b)",
-  "title": "Espacio mínimo para el acomodo del alambrado en las terminales en los envolventes de los controladores de",
+  "title": "Espacio mínimo para el acomodo del alambrado en las terminales en los envolventes de los controladores de motores",
   "article": 430,
   "pages": [
    301
@@ -38513,14 +38764,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "*Cuando sean tres o más los conductores por terminal, el espacio mínimo para el acomodo de los conductores debe cumplir los requisitos del Artículo 312. 430-11. Protección contra líquidos. Se deben proporcionar guardas de protección o envolventes adecuados para proteger las partes expuestas portadoras de corriente de los motores y el aislamiento de las puntas de los motores, cuando se instalen directamente"
+  ],
   "quality": 0.951,
   "regions": [
    {
     "page": 301,
     "y0": 497.6181640625,
-    "y1": 701.25,
-    "id": "430-10(b)"
+    "y1": 752.9228515625,
+    "id": "430-10(b)",
+    "article": 430
    }
   ]
  },
@@ -39059,13 +39313,15 @@
     "page": 302,
     "y0": 360.3681640625,
     "y1": 766.52,
-    "id": "430-12(b)"
+    "id": "430-12(b)",
+    "article": 430
    },
    {
     "page": 303,
     "y0": 16.52,
     "y1": 31.52,
-    "id": "430-12(b)"
+    "id": "430-12(b)",
+    "article": 430
    }
   ]
  },
@@ -39139,7 +39395,8 @@
     "page": 303,
     "y0": 130.1181640625,
     "y1": 225.79,
-    "id": "430-12(c)(1)"
+    "id": "430-12(c)(1)",
+    "article": 430
    }
   ]
  },
@@ -39234,7 +39491,8 @@
     "page": 303,
     "y0": 235.8681640625,
     "y1": 321.79,
-    "id": "430-12(c)(2)"
+    "id": "430-12(c)(2)",
+    "article": 430
    }
   ]
  },
@@ -39363,7 +39621,8 @@
     "page": 304,
     "y0": 359.6181640625,
     "y1": 560.23,
-    "id": "430-22(e)"
+    "id": "430-22(e)",
+    "article": 430
    }
   ]
  },
@@ -39452,7 +39711,8 @@
     "page": 305,
     "y0": 382.1181640625,
     "y1": 507.83,
-    "id": "430-23(c)"
+    "id": "430-23(c)",
+    "article": 430
    }
   ]
  },
@@ -39572,7 +39832,8 @@
     "page": 306,
     "y0": 577.1181640625,
     "y1": 702.83,
-    "id": "430-29"
+    "id": "430-29",
+    "article": 430
    }
   ]
  },
@@ -39730,20 +39991,23 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "*Excepción: No se requerirá una unidad de protección contra sobrecarga en cada fase cuando se proporcione protección contra sobrecarga por otros medios aprobados. 430-40. Relevadores de sobrecarga. Los relevadores de sobrecarga y otros dispositivos para la protección de los motores contra sobrecarga, que no sean capaces de abrir cortocircuitos o fallas a tierra, deben estar protegidos por fusibles o interruptores automáticos con valores nominales o ajustes que cumplan lo establecido en 430-52, o por un protector de motores contra cortocircuito, de acuerdo con 430-52. Excepción: Cuando estén aprobados para su instalación en grupo y marcados con el tamaño máximo del fusible o interruptor automático de tiempo inverso mediante el cual deben estar protegidos, los dispositivos de protección contra sobrecarga se deben"
+  ],
   "quality": 0.912,
   "regions": [
    {
     "page": 309,
     "y0": 236.6181640625,
-    "y1": 470.29,
-    "id": "430-37"
+    "y1": 564.6728515625,
+    "id": "430-37",
+    "article": 430
    }
   ]
  },
  {
   "id": "430-52",
-  "title": "Ajuste máximo de los dispositivos de protección contra cortocircuito y falla a tierra para circuitos derivados de",
+  "title": "Ajuste máximo de los dispositivos de protección contra cortocircuito y falla a tierra para circuitos derivados de motores",
   "article": 430,
   "pages": [
    310,
@@ -39914,13 +40178,15 @@
     "page": 310,
     "y0": 607.8681640625,
     "y1": 781.02,
-    "id": "430-52"
+    "id": "430-52",
+    "article": 430
    },
    {
     "page": 311,
     "y0": 24.77,
     "y1": 67.48,
-    "id": "430-52"
+    "id": "430-52",
+    "article": 430
    }
   ]
  },
@@ -40152,14 +40418,19 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "NOTA 1. Valor especificado en 310-15, según sea aplicable.",
+   "NOTA 2. 400 por ciento del valor especificado en la Tabla 310-15(b)(17) para conductores a 60 °C.",
+   "NOTA 3. 300 por ciento del valor especificado en la Tabla 310-15(b)(16) para conductores a 60 °C. c) Transformador del circuito de control. Cuando se suministre un transformador para el circuito de control de motores, dicho transformador debe estar protegido de acuerdo con lo siguiente: Excepción: La protección contra sobrecorriente se debe omitir cuando la apertura del circuito de control pudiera crear una situación de riesgo, como por ejemplo, el circuito de control de un motor de una bomba contra incendios y similares."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 314,
     "y0": 382.1181640625,
-    "y1": 574.46,
-    "id": "430-72(b)"
+    "y1": 664.4228515625,
+    "id": "430-72(b)",
+    "article": 430
    }
   ]
  },
@@ -40262,7 +40533,8 @@
     "page": 317,
     "y0": 543.3681640625,
     "y1": 657.02,
-    "id": "430-97"
+    "id": "430-97",
+    "article": 430
    }
   ]
  },
@@ -40709,14 +40981,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Estos valores son promedios para corriente continua."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 324,
     "y0": 131.6181640625,
-    "y1": 442.48,
-    "id": "430-247"
+    "y1": 452.7098693847656,
+    "id": "430-247",
+    "article": 430
    }
   ]
  },
@@ -41016,7 +41291,8 @@
     "page": 324,
     "y0": 447.3681640625,
     "y1": 680.23,
-    "id": "430-248"
+    "id": "430-248",
+    "article": 430
    }
   ]
  },
@@ -41565,13 +41841,15 @@
     "page": 324,
     "y0": 690.3681640625,
     "y1": 794.0,
-    "id": "430-249"
+    "id": "430-249",
+    "article": 430
    },
    {
     "page": 325,
     "y0": 20.27,
     "y1": 325.05,
-    "id": "430-249"
+    "id": "430-249",
+    "article": 430
    }
   ]
  },
@@ -42745,20 +43023,24 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "*Para factores de potencia de 90 por ciento y 80 por ciento, las cifras anteriores se deben multiplicar respectivamente por",
+   "1.10 y 1.25"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 325,
     "y0": 319.8681640625,
-    "y1": 725.19,
-    "id": "430-250"
+    "y1": 744.4598999023438,
+    "id": "430-250",
+    "article": 430
    }
   ]
  },
  {
   "id": "430-251(a)",
-  "title": "Conversión de corrientes monofásicas a rotor bloqueado, para la selección de los medios de desconexión y",
+  "title": "Conversión de corrientes monofásicas a rotor bloqueado, para la selección de los medios de desconexión y controladores de los motores, de acuerdo a los valores nominales de tensión y potencia en kW",
   "article": 430,
   "pages": [
    326
@@ -42970,13 +43252,14 @@
     "page": 326,
     "y0": 25.1181640625,
     "y1": 204.0,
-    "id": "430-251(a)"
+    "id": "430-251(a)",
+    "article": 430
    }
   ]
  },
  {
   "id": "430-251(b)",
-  "title": "Conversión de corriente polifásica máxima a rotor bloqueado, diseños B, C, y D, para la selección de medios",
+  "title": "Conversión de corriente polifásica máxima a rotor bloqueado, diseños B, C, y D, para la selección de medios de desconexión y controladores, determinados a partir del valor nominal de potencia en caballos de fuerza y la letra de diseño",
   "article": 430,
   "pages": [
    326
@@ -43763,14 +44046,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "*Los motores de diseño A no están limitados a una corriente máxima de arranque o una corriente de rotor bloqueado."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 326,
     "y0": 214.1181640625,
-    "y1": 600.71,
-    "id": "430-251(b)"
+    "y1": 610.9598999023438,
+    "id": "430-251(b)",
+    "article": 430
    }
   ]
  },
@@ -43879,13 +44165,14 @@
     "page": 327,
     "y0": 296.6181640625,
     "y1": 438.04,
-    "id": "440-3(d)"
+    "id": "440-3(d)",
+    "article": 440
    }
   ]
  },
  {
   "id": "450-3(a)",
-  "title": "Valor nominal o ajuste máximo de la protección contra sobrecorriente para transformadores de más de 600",
+  "title": "Valor nominal o ajuste máximo de la protección contra sobrecorriente para transformadores de más de 600 volts (como porcentaje de la corriente nominal del transformador).",
   "article": 450,
   "pages": [
    335,
@@ -44101,19 +44388,21 @@
     "page": 335,
     "y0": 531.3681640625,
     "y1": 775.77,
-    "id": "450-3(a)"
+    "id": "450-3(a)",
+    "article": 450
    },
    {
     "page": 336,
     "y0": 11.27,
     "y1": 51.72,
-    "id": "450-3(a)"
+    "id": "450-3(a)",
+    "article": 450
    }
   ]
  },
  {
   "id": "450-3(b)",
-  "title": "Valor nominal o ajuste máximo de la protección contra sobrecorriente para los transformadores de 600 volts y",
+  "title": "Valor nominal o ajuste máximo de la protección contra sobrecorriente para los transformadores de 600 volts y menos (como un porcentaje nominal de la corriente nominal del transformador)",
   "article": 450,
   "pages": [
    336
@@ -44205,7 +44494,8 @@
     "page": 336,
     "y0": 141.3681640625,
     "y1": 272.98,
-    "id": "450-3(b)"
+    "id": "450-3(b)",
+    "article": 450
    }
   ]
  },
@@ -44733,7 +45023,8 @@
     "page": 350,
     "y0": 290.6181640625,
     "y1": 569.97,
-    "id": "490-24"
+    "id": "490-24",
+    "article": 490
    }
   ]
  },
@@ -44878,7 +45169,8 @@
     "page": 360,
     "y0": 359.6337890625,
     "y1": 589.59,
-    "id": "500-8(c)"
+    "id": "500-8(c)",
+    "article": 500
    }
   ]
  },
@@ -44983,13 +45275,14 @@
     "page": 361,
     "y0": 241.8837890625,
     "y1": 355.53,
-    "id": "500-8(d)(2)"
+    "id": "500-8(d)(2)",
+    "article": 500
    }
   ]
  },
  {
   "id": "504-10(b)",
-  "title": "Evaluación para la clasificación T4 de acuerdo",
+  "title": "Evaluación para la clasificación T4 de acuerdo con el tamaño y la temperatura del componente",
   "article": 504,
   "pages": [
    381
@@ -45033,20 +45326,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Basada en una temperatura ambiente de 40 °C. Reducir a 1.2 watts con temperatura ambiente de 60 ºC o a 1.0 watt con temperatura ambiente de 80 ºC"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 381,
     "y0": 551.6337890625,
-    "y1": 668.34,
-    "id": "504-10(b)"
+    "y1": 690.4755249023438,
+    "id": "504-10(b)",
+    "article": 504
    }
   ]
  },
  {
   "id": "505-7(d)",
-  "title": "Distancia mínima de las obstrucciones",
+  "title": "Distancia mínima de las obstrucciones desde aberturas bridadas a prueba de llamas \"d\".",
   "article": 505,
   "pages": [
    387
@@ -45105,7 +45401,8 @@
     "page": 387,
     "y0": 182.6337890625,
     "y1": 289.63,
-    "id": "505-7(d)"
+    "id": "505-7(d)",
+    "article": 505
    }
   ]
  },
@@ -45146,7 +45443,8 @@
     "page": 388,
     "y0": 388.8837890625,
     "y1": 462.88,
-    "id": "505-9(c)(1)(2)"
+    "id": "505-9(c)(1)(2)",
+    "article": 505
    }
   ]
  },
@@ -45374,26 +45672,32 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* No se considera el uso cuando se utiliza una combinación de técnicas.",
+   "** Se permitirá instalar aparatos asociados en un lugar peligroso (clasificado) si están protegidos adecuadamente usando otro tipo de protección.",
+   "1) Clasificación de temperatura. El equipo debe estar marcado indicando la temperatura de funcionamiento o la clase de temperatura referenciada para un ambiente a 40 °C, o la temperatura ambiente más alta si el equipo está dimensionado y marcado para una temperatura ambiente mayor que 40 °C. Si se da la clase de temperatura, se debe indicar usando la clase de temperatura (código T) que se muestra en la Tabla 505-9(d)(1). El equipo eléctrico diseñado para uso en un intervalo de temperatura ambiente entre – 20 °C y + 40 °C debe tener un marcado de no temperatura ambiente."
+  ],
   "quality": 0.877,
   "regions": [
    {
     "page": 389,
     "y0": 425.6337890625,
     "y1": 775.78,
-    "id": "505-9(c)(2)(4)"
+    "id": "505-9(c)(2)(4)",
+    "article": 505
    },
    {
     "page": 390,
     "y0": 17.28,
-    "y1": 91.56,
-    "id": "505-9(c)(2)(4)"
+    "y1": 191.1884765625,
+    "id": "505-9(c)(2)(4)",
+    "article": 505
    }
   ]
  },
  {
   "id": "505-9(d)(1)",
-  "title": "Clasificación de la temperatura superficial",
+  "title": "Clasificación de la temperatura superficial máxima para equipos eléctricos del grupo II",
   "article": 505,
   "pages": [
    390
@@ -45468,7 +45772,8 @@
     "page": 390,
     "y0": 311.6337890625,
     "y1": 456.09,
-    "id": "505-9(d)(1)"
+    "id": "505-9(d)(1)",
+    "article": 505
    }
   ]
  },
@@ -45585,14 +45890,18 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* No se considera el uso cuando se utiliza una combinación de técnicas.",
+   "** Se permite instalar aparatos asociados en un lugar peligroso (clasificado) si está protegido adecuadamente usando otro tipo de protección. 401/780 www.dof.gob.mx/normasOficiales/4951/SENER/SENER.html"
+  ],
   "quality": 0.852,
   "regions": [
    {
     "page": 401,
     "y0": 514.1337890625,
-    "y1": 739.56,
-    "id": "506-9(c)(2)(3)"
+    "y1": 778.6953125,
+    "id": "506-9(c)(2)(3)",
+    "article": 506
    }
   ]
  },
@@ -46249,19 +46558,22 @@
     "page": 410,
     "y0": 441.3837890625,
     "y1": 794.0,
-    "id": "514-3(b)(1)"
+    "id": "514-3(b)(1)",
+    "article": 514
    },
    {
     "page": 411,
     "y0": 23.28,
     "y1": 784.78,
-    "id": "514-3(b)(1)"
+    "id": "514-3(b)(1)",
+    "article": 514
    },
    {
     "page": 412,
     "y0": -3.0,
     "y1": 213.03,
-    "id": "514-3(b)(1)"
+    "id": "514-3(b)(1)",
+    "article": 514
    }
   ]
  },
@@ -46356,7 +46668,8 @@
     "page": 412,
     "y0": 250.8837890625,
     "y1": 454.62,
-    "id": "514-3(b)(2)"
+    "id": "514-3(b)(2)",
+    "article": 514
    }
   ]
  },
@@ -47146,25 +47459,29 @@
     "page": 414,
     "y0": 644.6337890625,
     "y1": 794.0,
-    "id": "515-3"
+    "id": "515-3",
+    "article": 515
    },
    {
     "page": 415,
     "y0": 24.78,
     "y1": 794.0,
-    "id": "515-3"
+    "id": "515-3",
+    "article": 515
    },
    {
     "page": 416,
     "y0": 12.03,
     "y1": 787.78,
-    "id": "515-3"
+    "id": "515-3",
+    "article": 515
    },
    {
     "page": 417,
     "y0": 15.780000000000001,
     "y1": 319.61,
-    "id": "515-3"
+    "id": "515-3",
+    "article": 515
    }
   ]
  },
@@ -47398,13 +47715,14 @@
     "page": 454,
     "y0": 24.24560546875,
     "y1": 294.02,
-    "id": "520-44"
+    "id": "520-44",
+    "article": 520
    }
   ]
  },
  {
   "id": "522-22",
-  "title": "Ampacidad del conductor basada en conductores de cobre",
+  "title": "Ampacidad del conductor basada en conductores de cobre con aislamiento para 60ºC y 75ºC en una temperatura ambiente de 30ºC",
   "article": 522,
   "pages": [
    460
@@ -47524,14 +47842,18 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. Para temperaturas ambiente diferentes de 30ºC, se utilizan los factores de corrección de temperatura de la Tabla 310- 15(b)(16).",
+   "2. Los ajustes de la ampacidad para conductores con aislamiento para 90 ºC o más se deben basar en las ampacidades en la columna de 75ºC. a) Dos o más circuitos de control. Se permitirá que los circuitos de control ocupen el mismo cable, charola portacables, envolvente o canalización sin considerar si los circuitos individuales son de corriente alterna o de corriente continua, siempre que todos los conductores estén aislados para la tensión máxima de cualquier conductor en el cable, charola portacables, envolvente o canalización. b) Circuitos de control con circuitos de fuerza. Se permitirá que los circuitos de control se instalen con los conductores de fuerza tal como se especifica en (1) a (3) siguientes:"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 460,
     "y0": 364.8525390625,
-    "y1": 517.5,
-    "id": "522-22"
+    "y1": 616.4072265625,
+    "id": "522-22",
+    "article": 522
    }
   ]
  },
@@ -47626,13 +47948,14 @@
     "page": 465,
     "y0": 436.1025390625,
     "y1": 539.31,
-    "id": "530-19(a)"
+    "id": "530-19(a)",
+    "article": 530
    }
   ]
  },
  {
   "id": "550-31",
-  "title": "Factores de demanda para conductores de entrada",
+  "title": "Factores de demanda para conductores de entrada de acometida y alimentadores",
   "article": 550,
   "pages": [
    481
@@ -47763,13 +48086,14 @@
     "page": 481,
     "y0": 182.6025390625,
     "y1": 358.56,
-    "id": "550-31"
+    "id": "550-31",
+    "article": 550
    }
   ]
  },
  {
   "id": "551-73(a)",
-  "title": "Factores de demanda para los conductores de entrada",
+  "title": "Factores de demanda para los conductores de entrada de acometida y alimentadores para lugares de estacionamiento",
   "article": 551,
   "pages": [
    493
@@ -47900,7 +48224,8 @@
     "page": 493,
     "y0": 301.1025390625,
     "y1": 480.0,
-    "id": "551-73(a)"
+    "id": "551-73(a)",
+    "article": 551
    }
   ]
  },
@@ -48009,7 +48334,8 @@
     "page": 496,
     "y0": 252.3525390625,
     "y1": 357.0,
-    "id": "552-10(e)(1)"
+    "id": "552-10(e)(1)",
+    "article": 552
    }
   ]
  },
@@ -48099,20 +48425,24 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. Cuando los lugares para deslizar embarcaciones tienen dos contactos específicamente para un deslizadero individual y estos contactos tienen diferentes tensiones (por ejemplo: uno de 30 amperes, 120 volts, y otro de 50 amperes, 120/240 volts), sólo se exigirá calcular el contacto con la mayor demanda de kilowatts.",
+   "2. Si la instalación que se monta incluye medidores individuales de energía eléctrica para cada deslizadero, y se calcula usando los criterios enumerados en la Tabla 555-12, la demanda total en amperes se puede multiplicar por 0.9 para obtener la demanda final en amperes."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 507,
     "y0": 239.6025390625,
-    "y1": 405.02,
-    "id": "555-12"
+    "y1": 472.9442443847656,
+    "id": "555-12",
+    "article": 555
    }
   ]
  },
  {
   "id": "610-14(a)",
-  "title": "Ampacidades para conductores de cobre aislados basados en una",
+  "title": "Ampacidades para conductores de cobre aislados basados en una temperatura ambiente de 30 °C, utilizados para motores de grúas y montacargas con régimen de trabajo de corta duración,",
   "article": 610,
   "pages": [
    522,
@@ -49068,19 +49398,21 @@
     "page": 522,
     "y0": 217.8525390625,
     "y1": 776.5,
-    "id": "610-14(a)"
+    "id": "610-14(a)",
+    "article": 610
    },
    {
     "page": 523,
     "y0": 21.0,
     "y1": 41.2,
-    "id": "610-14(a)"
+    "id": "610-14(a)",
+    "article": 610
    }
   ]
  },
  {
   "id": "610-14(b)",
-  "title": "Factores para determinar la ampacidad de los conductores",
+  "title": "Factores para determinar la ampacidad de los conductores secundarios entre el controlador y los resistores de grúas.",
   "article": 610,
   "pages": [
    523
@@ -49194,7 +49526,8 @@
     "page": 523,
     "y0": 149.6025390625,
     "y1": 318.85,
-    "id": "610-14(b)"
+    "id": "610-14(b)",
+    "article": 610
    }
   ]
  },
@@ -49275,7 +49608,8 @@
     "page": 523,
     "y0": 451.1025390625,
     "y1": 550.56,
-    "id": "610-14(d)"
+    "id": "610-14(d)",
+    "article": 610
    }
   ]
  },
@@ -49357,13 +49691,15 @@
     "page": 523,
     "y0": 694.8525390625,
     "y1": 778.0,
-    "id": "610-14(e)"
+    "id": "610-14(e)",
+    "article": 610
    },
    {
     "page": 524,
     "y0": 18.0,
     "y1": 81.81,
-    "id": "610-14(e)"
+    "id": "610-14(e)",
+    "article": 610
    }
   ]
  },
@@ -49469,20 +49805,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "NOTA: Los factores de demanda se basan en un régimen de trabajo del 50 por ciento (es decir, la mitad del tiempo funcionando y la mitad del tiempo detenido). 620-15. Capacidad nominal del controlador. La capacidad nominal del controlador debe cumplir con lo requerido en 430-83. Se permite que la capacidad nominal del controlador sea menor que la capacidad del motor del elevador cuando el propio controlador limite 530/780 www.dof.gob.mx/normasOficiales/4951/SENER/SENER.html"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 530,
     "y0": 540.3525390625,
-    "y1": 705.06,
-    "id": "620-14"
+    "y1": 778.6953125,
+    "id": "620-14",
+    "article": 620
    }
   ]
  },
  {
   "id": "625-29(d)(1)",
-  "title": "Ventilación mínima requerida en m3/min, para cada",
+  "title": "Ventilación mínima requerida en m3/min, para cada de los vehículos eléctricos de todos los que se pueden cargar al mismo tiempo",
   "article": 625,
   "pages": [
    541,
@@ -49888,26 +50227,30 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "2) Otros valores. Para tensiones y corrientes no relacionadas en la tabla 625-29(d)(1) o en la tabla  625-29(d)(2) los requisitos mínimos de ventilación, deben ser calculados por medio de las siguientes fórmulas, según sea aplicable: (1)        Instalaciones monofásicas:"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 541,
     "y0": 547.8525390625,
     "y1": 776.5,
-    "id": "625-29(d)(1)"
+    "id": "625-29(d)(1)",
+    "article": 625
    },
    {
     "page": 542,
     "y0": 26.25,
-    "y1": 41.32,
-    "id": "625-29(d)(1)"
+    "y1": 89.1572265625,
+    "id": "625-29(d)(1)",
+    "article": 625
    }
   ]
  },
  {
   "id": "625-29(d)(2)",
-  "title": "Ventilación mínima requerida en ft3/min, por cada número total de vehículos eléctricos que pueden ser",
+  "title": "Ventilación mínima requerida en ft3/min, por cada número total de vehículos eléctricos que pueden ser cargados al mismo tiempo",
   "article": 625,
   "pages": [
    542
@@ -50315,14 +50658,18 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "3) Sistemas de ingeniería. Se permite que los requisitos mínimos de ventilación para un sistema de equipo de alimentación para vehículos eléctricos, sean determinados por cálculos específicos en un estudio de ingeniería, realizado por personal calificado, como parte integral de un sistema de ventilación de la totalidad del edificio.",
+   "4) Circuitos alimentadores. El circuito de alimentación para el equipo de ventilación mecánica debe estar enclavado eléctricamente con el equipo de alimentación para vehículos eléctricos, y debe permanecer energizado durante el ciclo completo de carga del vehículo eléctrico. El equipo de alimentación para vehículos eléctricos debe estar marcado de acuerdo con 625-15. Los contactos de los equipos de alimentación para vehículos eléctricos designados para 120 volts, monofásicos, de 15 y 20 amperes, deben marcarse de acuerdo con 625-15(c) y deben estar equipados con un interruptor. El sistema de ventilación mecánica se debe enclavar eléctricamente a través del"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 542,
     "y0": 159.3525390625,
-    "y1": 382.45,
-    "id": "625-29(d)(2)"
+    "y1": 476.9072265625,
+    "id": "625-29(d)(2)",
+    "article": 625
    }
   ]
  },
@@ -50466,7 +50813,8 @@
     "page": 547,
     "y0": 426.3525390625,
     "y1": 582.84,
-    "id": "630-11(a)"
+    "id": "630-11(a)",
+    "article": 630
    }
   ]
  },
@@ -50524,7 +50872,8 @@
     "page": 548,
     "y0": 513.3525390625,
     "y1": 568.44,
-    "id": "630-31(a)(2)"
+    "id": "630-31(a)(2)",
+    "article": 630
    }
   ]
  },
@@ -50661,7 +51010,8 @@
     "page": 556,
     "y0": 195.3525390625,
     "y1": 333.0,
-    "id": "645-5"
+    "id": "645-5",
+    "article": 645
    }
   ]
  },
@@ -50726,7 +51076,8 @@
     "page": 570,
     "y0": 607.8525390625,
     "y1": 700.56,
-    "id": "680-3"
+    "id": "680-3",
+    "article": 680
    }
   ]
  },
@@ -50835,7 +51186,8 @@
     "page": 571,
     "y0": 432.3525390625,
     "y1": 596.31,
-    "id": "680-8"
+    "id": "680-8",
+    "article": 680
    }
   ]
  },
@@ -50909,14 +51261,17 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "* Las canalizaciones aprobadas para enterrarse sólo cuando están recubiertas de concreto se requiere un recubrimiento no menor a 5 centímetros 680-9. Calentadores eléctricos de agua para alberca. Todos los calentadores eléctricos de agua para alberca deben tener los elementos calentadores divididos en cargas que no excedan 48 amperes y protegidos a no más de 60 amperes. La ampacidad de los conductores de circuito derivado y la capacidad nominal o ajuste del dispositivo de protección contra sobrecorriente no debe ser menor que 125 por ciento de la carga total de la placa de datos. 680-10. Alambrado subterráneo. No se permite el alambrado bajo la alberca o debajo del área en una extensión de 1.50 metros medidos horizontalmente desde las paredes internas de la alberca a menos que este alambrado sea necesario para alimentar los equipos de la alberca permitidos por este Artículo. Cuando la falta de espacio no permita enrutar el alambrado a 1.50 metros o más de la"
+  ],
   "quality": 0.929,
   "regions": [
    {
     "page": 572,
     "y0": 244.8525390625,
-    "y1": 394.52,
-    "id": "680-10"
+    "y1": 494.1572265625,
+    "id": "680-10",
+    "article": 680
    }
   ]
  },
@@ -51103,10 +51458,18 @@
   "quality": 0.581,
   "regions": [
    {
+    "page": 591,
+    "y0": 746.6025390625,
+    "y1": 792.0,
+    "id": "690-7",
+    "article": 690
+   },
+   {
     "page": 592,
     "y0": 42.88,
     "y1": 273.81,
-    "id": "690-7"
+    "id": "690-7",
+    "article": 690
    }
   ]
  },
@@ -51318,7 +51681,8 @@
     "page": 596,
     "y0": 271.8525390625,
     "y1": 444.73,
-    "id": "690-31(c)"
+    "id": "690-31(c)",
+    "article": 690
    }
   ]
  },
@@ -51399,7 +51763,8 @@
     "page": 627,
     "y0": 330.3837890625,
     "y1": 471.84,
-    "id": "705-3"
+    "id": "705-3",
+    "article": 705
    }
   ]
  },
@@ -51505,13 +51870,15 @@
     "page": 638,
     "y0": 716.6337890625,
     "y1": 769.03,
-    "id": "725-154(g)"
+    "id": "725-154(g)",
+    "article": 725
    },
    {
     "page": 639,
     "y0": 13.53,
     "y1": 170.38,
-    "id": "725-154(g)"
+    "id": "725-154(g)",
+    "article": 725
    }
   ]
  },
@@ -51561,13 +51928,15 @@
     "page": 640,
     "y0": 687.3837890625,
     "y1": 794.0,
-    "id": "725-179"
+    "id": "725-179",
+    "article": 725
    },
    {
     "page": 641,
     "y0": -3.0,
     "y1": 147.13,
-    "id": "725-179"
+    "id": "725-179",
+    "article": 725
    }
   ]
  },
@@ -51636,7 +52005,8 @@
     "page": 648,
     "y0": 505.1337890625,
     "y1": 598.56,
-    "id": "760-154(d)"
+    "id": "760-154(d)",
+    "article": 760
    }
   ]
  },
@@ -51693,13 +52063,14 @@
     "page": 650,
     "y0": 366.3837890625,
     "y1": 456.84,
-    "id": "760-179(i)"
+    "id": "760-179(i)",
+    "article": 760
    }
   ]
  },
  {
   "id": "770-154(a)",
-  "title": "Aplicaciones canalizaciones y cable de fibra óptica aprobados, y ensambles enrutadores de cables",
+  "title": "Aplicaciones canalizaciones y cable de fibra óptica aprobados, y ensambles enrutadores de cables aprobados en edificios.",
   "article": 770,
   "pages": [
    656,
@@ -52379,13 +52750,15 @@
     "page": 656,
     "y0": 719.6337890625,
     "y1": 794.0,
-    "id": "770-154(a)"
+    "id": "770-154(a)",
+    "article": 770
    },
    {
     "page": 657,
     "y0": 12.03,
     "y1": 642.16,
-    "id": "770-154(a)"
+    "id": "770-154(a)",
+    "article": 770
    }
   ]
  },
@@ -52467,13 +52840,15 @@
     "page": 657,
     "y0": 651.3837890625,
     "y1": 768.28,
-    "id": "770-154(b)"
+    "id": "770-154(b)",
+    "article": 770
    },
    {
     "page": 658,
     "y0": 13.53,
     "y1": 49.59,
-    "id": "770-154(b)"
+    "id": "770-154(b)",
+    "article": 770
    }
   ]
  },
@@ -52554,13 +52929,14 @@
     "page": 658,
     "y0": 584.6337890625,
     "y1": 756.84,
-    "id": "770-179"
+    "id": "770-179",
+    "article": 770
    }
   ]
  },
  {
   "id": "800-154(a)",
-  "title": "Aplicaciones de alambres, cables y canalizaciones",
+  "title": "Aplicaciones de alambres, cables y canalizaciones de comunicaciones aprobados para su uso en edificios",
   "article": 800,
   "pages": [
    668,
@@ -53509,20 +53885,26 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "NOTA 1: Una \"N\" en la tabla indica que el tipo de cable no se permite sea instalado en la aplicación. Una \"S *\" indica que el cable se permite sea instalado en la aplicación, sujeto a las limitaciones descritas en 800-110 y 800-113.",
+   "NOTA 2: Parte E del Artículo 800 cubre los métodos de instalación dentro de los edificios. Esta tabla contiene las aplicaciones aprobadas para alambres, cables y canalizaciones de comunicaciones para su uso en edificios. La definición del punto de entrada se encuentra en el Artículo 800-2. Cables de entrada de comunicaciones que no provengan de un conduit metálico pesado o conduit metálico semipesado no se consideran que estén dentro del edificio.",
+   "NOTA 3: Para más información sobre las restricciones de la instalación de cables de comunicación en ductos prefabricados ver 800-113(b)."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 668,
     "y0": 439.8837890625,
     "y1": 784.35,
-    "id": "800-154(a)"
+    "id": "800-154(a)",
+    "article": 800
    },
    {
     "page": 669,
     "y0": -3.0,
-    "y1": 277.61,
-    "id": "800-154(a)"
+    "y1": 311.8397521972656,
+    "id": "800-154(a)",
+    "article": 800
    }
   ]
  },
@@ -53579,7 +53961,8 @@
     "page": 669,
     "y0": 322.1337890625,
     "y1": 418.59,
-    "id": "800-154(b)"
+    "id": "800-154(b)",
+    "article": 800
    }
   ]
  },
@@ -53648,7 +54031,8 @@
     "page": 670,
     "y0": 424.8837890625,
     "y1": 570.06,
-    "id": "800-179"
+    "id": "800-179",
+    "article": 800
    }
   ]
  },
@@ -53770,7 +54154,8 @@
     "page": 672,
     "y0": 181.1337890625,
     "y1": 307.49,
-    "id": "810-16(a)"
+    "id": "810-16(a)",
+    "article": 810
    }
   ]
  },
@@ -53863,7 +54248,8 @@
     "page": 674,
     "y0": 97.1337890625,
     "y1": 248.26,
-    "id": "810-52"
+    "id": "810-52",
+    "article": 810
    }
   ]
  },
@@ -53928,7 +54314,8 @@
     "page": 682,
     "y0": 308.6337890625,
     "y1": 435.84,
-    "id": "820-154(b)"
+    "id": "820-154(b)",
+    "article": 820
    }
   ]
  },
@@ -53993,7 +54380,8 @@
     "page": 683,
     "y0": 109.8837890625,
     "y1": 232.56,
-    "id": "820-179"
+    "id": "820-179",
+    "article": 820
    }
   ]
  },
@@ -54512,19 +54900,21 @@
     "page": 683,
     "y0": 370.1337890625,
     "y1": 794.0,
-    "id": "820-154(a)"
+    "id": "820-154(a)",
+    "article": 820
    },
    {
     "page": 684,
     "y0": -3.0,
     "y1": 229.61,
-    "id": "820-154(a)"
+    "id": "820-154(a)",
+    "article": 820
    }
   ]
  },
  {
   "id": "830-47",
-  "title": "Requisitos de profundidad mínima de los sistemas de comunicaciones de banda ancha alimentados por una red,",
+  "title": "Requisitos de profundidad mínima de los sistemas de comunicaciones de banda ancha alimentados por una red, (profundidad es la menor distancia medida entre un punto en la superficie superior de cualquier cable, tubo conduit u otra canalización enterrada directamente, y la superficie del piso terminado, concreto o recubrimiento similar)",
   "article": 830,
   "pages": [
    688
@@ -54632,14 +55022,18 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. Las canalizaciones aprobadas para enterramiento solamente embebidas en concreto requieren una envoltura de concreto de espesor no menor a 5 centímetros.",
+   "2. Se permite profundidades menores donde los cables suben hasta las terminaciones o empalmes, o cuando de otra manera se exige el acceso a ellos."
+  ],
   "quality": 0.962,
   "regions": [
    {
     "page": 688,
     "y0": 337.1025390625,
-    "y1": 696.73,
-    "id": "830-47"
+    "y1": 745.9442749023438,
+    "id": "830-47",
+    "article": 830
    }
   ]
  },
@@ -54712,7 +55106,8 @@
     "page": 694,
     "y0": 556.8525390625,
     "y1": 685.56,
-    "id": "830-154(b)"
+    "id": "830-154(b)",
+    "article": 830
    }
   ]
  },
@@ -55442,13 +55837,15 @@
     "page": 694,
     "y0": 718.8525390625,
     "y1": 780.25,
-    "id": "830-154(a)"
+    "id": "830-154(a)",
+    "article": 830
    },
    {
     "page": 695,
     "y0": 0.75,
     "y1": 553.57,
-    "id": "830-154(a)"
+    "id": "830-154(a)",
+    "article": 830
    }
   ]
  },
@@ -55517,7 +55914,8 @@
     "page": 704,
     "y0": 305.6025390625,
     "y1": 406.52,
-    "id": "921-25(b)"
+    "id": "921-25(b)",
+    "article": 921
    }
   ]
  },
@@ -55876,7 +56274,8 @@
     "page": 708,
     "y0": 227.6025390625,
     "y1": 450.72,
-    "id": "922-10"
+    "id": "922-10",
+    "article": 922
    }
   ]
  },
@@ -56013,13 +56412,14 @@
     "page": 709,
     "y0": 376.6533203125,
     "y1": 641.27,
-    "id": "922-12(a)(1)"
+    "id": "922-12(a)(1)",
+    "article": 922
    }
   ]
  },
  {
   "id": "922-12(a)(2)",
-  "title": "Separación horizontal mínima \"S\" de",
+  "title": "Separación horizontal mínima \"S\" de conductores en sus soportes fijos, de acuerdo con su flecha",
   "article": 922,
   "pages": [
    710
@@ -56242,7 +56642,8 @@
     "page": 710,
     "y0": 62.6025390625,
     "y1": 242.18,
-    "id": "922-12(a)(2)"
+    "id": "922-12(a)(2)",
+    "article": 922
    }
   ]
  },
@@ -56449,13 +56850,15 @@
     "page": 710,
     "y0": 568.1025390625,
     "y1": 794.0,
-    "id": "922-13(a)"
+    "id": "922-13(a)",
+    "article": 922
    },
    {
     "page": 711,
     "y0": -1.83,
     "y1": 79.56,
-    "id": "922-13(a)"
+    "id": "922-13(a)",
+    "article": 922
    }
   ]
  },
@@ -56796,19 +57199,21 @@
     "page": 711,
     "y0": 449.6025390625,
     "y1": 793.75,
-    "id": "922-15(a)"
+    "id": "922-15(a)",
+    "article": 922
    },
    {
     "page": 712,
     "y0": 10.5,
     "y1": 660.85,
-    "id": "922-15(a)"
+    "id": "922-15(a)",
+    "article": 922
    }
   ]
  },
  {
   "id": "922-19(e)",
-  "title": "Separación horizontal mínima entre",
+  "title": "Separación horizontal mínima entre conductores que limitan el espacio para subir(1)",
   "article": 922,
   "pages": [
    713,
@@ -57067,19 +57472,21 @@
     "page": 713,
     "y0": 555.3525390625,
     "y1": 794.0,
-    "id": "922-19(e)"
+    "id": "922-19(e)",
+    "article": 922
    },
    {
     "page": 714,
     "y0": -3.0,
     "y1": 143.32,
-    "id": "922-19(e)"
+    "id": "922-19(e)",
+    "article": 922
    }
   ]
  },
  {
   "id": "922-21",
-  "title": "Separación vertical entre conductores suministradores y equipo de comunicaciones o entre equipo",
+  "title": "Separación vertical entre conductores suministradores y equipo de comunicaciones o entre equipo suministrador y conductores o equipo de comunicaciones",
   "article": 922,
   "pages": [
    715
@@ -57130,13 +57537,14 @@
     "page": 715,
     "y0": 182.6025390625,
     "y1": 294.77,
-    "id": "922-21"
+    "id": "922-21",
+    "article": 922
    }
   ]
  },
  {
   "id": "922-22(a)",
-  "title": "Separación de conductores eléctricos verticales y derivados con respecto a superficies, mensajeros y",
+  "title": "Separación de conductores eléctricos verticales y derivados con respecto a superficies, mensajeros y retenidas en la misma estructura, (centímetros) (1)",
   "article": 922,
   "pages": [
    715
@@ -57197,7 +57605,8 @@
     "page": 715,
     "y0": 514.1025390625,
     "y1": 645.81,
-    "id": "922-22(a)"
+    "id": "922-22(a)",
+    "article": 922
    }
   ]
  },
@@ -57310,7 +57719,8 @@
     "page": 716,
     "y0": 556.1025390625,
     "y1": 752.27,
-    "id": "922-31(e)(2)"
+    "id": "922-31(e)(2)",
+    "article": 922
    }
   ]
  },
@@ -57574,7 +57984,8 @@
     "page": 717,
     "y0": 159.3525390625,
     "y1": 391.57,
-    "id": "922-33"
+    "id": "922-33",
+    "article": 922
    }
   ]
  },
@@ -58007,13 +58418,15 @@
     "page": 717,
     "y0": 710.4033203125,
     "y1": 794.0,
-    "id": "922-41"
+    "id": "922-41",
+    "article": 922
    },
    {
     "page": 718,
     "y0": -3.0,
     "y1": 248.31,
-    "id": "922-41"
+    "id": "922-41",
+    "article": 922
    }
   ]
  },
@@ -58138,7 +58551,8 @@
     "page": 718,
     "y0": 418.6533203125,
     "y1": 606.88,
-    "id": "922-43"
+    "id": "922-43",
+    "article": 922
    }
   ]
  },
@@ -58563,13 +58977,15 @@
     "page": 719,
     "y0": 513.9033203125,
     "y1": 794.0,
-    "id": "922-54"
+    "id": "922-54",
+    "article": 922
    },
    {
     "page": 720,
     "y0": 24.0,
     "y1": 109.56,
-    "id": "922-54"
+    "id": "922-54",
+    "article": 922
    }
   ]
  },
@@ -58850,7 +59266,8 @@
     "page": 720,
     "y0": 466.6533203125,
     "y1": 687.06,
-    "id": "922-55"
+    "id": "922-55",
+    "article": 922
    }
   ]
  },
@@ -59007,7 +59424,8 @@
     "page": 723,
     "y0": 392.6025390625,
     "y1": 556.56,
-    "id": "922-83"
+    "id": "922-83",
+    "article": 922
    }
   ]
  },
@@ -59144,7 +59562,8 @@
     "page": 724,
     "y0": 73.1025390625,
     "y1": 206.23,
-    "id": "922-84"
+    "id": "922-84",
+    "article": 922
    }
   ]
  },
@@ -59217,7 +59636,8 @@
     "page": 724,
     "y0": 297.3525390625,
     "y1": 425.27,
-    "id": "922-84(a)"
+    "id": "922-84(a)",
+    "article": 922
    }
   ]
  },
@@ -59297,7 +59717,8 @@
     "page": 725,
     "y0": 385.1025390625,
     "y1": 494.27,
-    "id": "922-93(a)(1)"
+    "id": "922-93(a)(1)",
+    "article": 922
    }
   ]
  },
@@ -59345,13 +59766,15 @@
     "page": 725,
     "y0": 722.6025390625,
     "y1": 794.0,
-    "id": "922-93(b)(1)"
+    "id": "922-93(b)(1)",
+    "article": 922
    },
    {
     "page": 726,
     "y0": 24.75,
     "y1": 66.09,
-    "id": "922-93(b)(1)"
+    "id": "922-93(b)(1)",
+    "article": 922
    }
   ]
  },
@@ -60075,13 +60498,15 @@
     "page": 726,
     "y0": 475.1025390625,
     "y1": 794.0,
-    "id": "922-93"
+    "id": "922-93",
+    "article": 922
    },
    {
     "page": 727,
     "y0": -3.0,
     "y1": 104.33,
-    "id": "922-93"
+    "id": "922-93",
+    "article": 922
    }
   ]
  },
@@ -60258,20 +60683,24 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. Las tensiones son entre fases.",
+   "2. En cruzamientos de líneas, la construcción de la línea superior debe ser igual o mayor que la de la línea inferior. J. Retenidas 922-101. Generalidades. a) En postes de madera y de concreto se debe considerar que las retenidas llevan la resultante de la carga total en la dirección en que actúen. b) En líneas que crucen sobre vías férreas, las estructuras adyacentes deben resistir las cargas transversal y longitudinal señaladas"
+  ],
   "quality": 0.976,
   "regions": [
    {
     "page": 727,
     "y0": 144.3525390625,
-    "y1": 354.81,
-    "id": "922-94"
+    "y1": 447.6572265625,
+    "id": "922-94",
+    "article": 922
    }
   ]
  },
  {
   "id": "923-3(f)(1)",
-  "title": "Separación mínima entre cables eléctricos y de comunicación propia del suministrador dentro de un mismo",
+  "title": "Separación mínima entre cables eléctricos y de comunicación propia del suministrador dentro de un mismo registro, pozo o bóveda",
   "article": 923,
   "pages": [
    729
@@ -60330,7 +60759,8 @@
     "page": 729,
     "y0": 245.6025390625,
     "y1": 346.56,
-    "id": "923-3(f)(1)"
+    "id": "923-3(f)(1)",
+    "article": 923
    }
   ]
  },
@@ -60411,13 +60841,15 @@
     "page": 730,
     "y0": 688.8525390625,
     "y1": 778.75,
-    "id": "923-5(a)"
+    "id": "923-5(a)",
+    "article": 923
    },
    {
     "page": 731,
     "y0": 8.25,
     "y1": 43.59,
-    "id": "923-5(a)"
+    "id": "923-5(a)",
+    "article": 923
    }
   ]
  },
@@ -60483,14 +60915,19 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. Cuando se instalen cables para diferentes tensiones en una misma trinchera, los cables de mayor tensión deben estar a mayor profundidad.",
+   "2. Los cables submarinos deben enterrarse en una trinchera de 1.00 metro de profundidad hasta alcanzar 10.00 metros de profundidad en zonas de arena. En zonas de roca debe protegerse con medias cañas de fierro; en partes más profundas deben ir depositadas en el lecho marino.",
+   "3. Cuando no sea posible cumplir con estas profundidades, éstas pueden reducirse previo acuerdo entre las partes involucradas."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 735,
     "y0": 97.1025390625,
-    "y1": 238.6,
-    "id": "923-11"
+    "y1": 325.4072265625,
+    "id": "923-11",
+    "article": 923
    }
   ]
  },
@@ -60547,7 +60984,8 @@
     "page": 735,
     "y0": 439.1025390625,
     "y1": 549.02,
-    "id": "923-12(b)"
+    "id": "923-12(b)",
+    "article": 923
    }
   ]
  },
@@ -60594,7 +61032,8 @@
     "page": 739,
     "y0": 471.3525390625,
     "y1": 660.85,
-    "id": "924-5"
+    "id": "924-5",
+    "article": 924
    }
   ]
  },
@@ -60644,14 +61083,18 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "NOTA 1: Esta Tabla 1 se basa en las condiciones más comunes de cableado y alineación de los conductores, cuando la longitud de los tramos y el número de curvas de los cables están dentro de límites razonables. Sin embargo, en determinadas condiciones se podrá ocupar una parte mayor o menor de los conductos.",
+   "NOTA 2: Cuando se instalen tres conductores o cables dentro de una canalización, si la relación de la canalización (diámetro interno) con el conductor o cable (diámetro externo) está entre 2.8 y 3.2, los cables se podrán atascar dentro de la canalización por lo que se debe instalar una canalización de tamaño inmediato superior. Si bien puede ocurrir un atascamiento cuando se instalen cuatro o más conductores o cables dentro de una canalización, la probabilidad es muy baja."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 742,
     "y0": 559.8525390625,
-    "y1": 645.81,
-    "id": "1"
+    "y1": 737.9072265625,
+    "id": "1",
+    "article": null
    }
   ]
  },
@@ -60870,13 +61313,14 @@
     "page": 743,
     "y0": 289.8525390625,
     "y1": 521.25,
-    "id": "2"
+    "id": "2",
+    "article": null
    }
   ]
  },
  {
   "id": "4",
-  "title": "Dimensiones y porcentaje disponible para los conductores",
+  "title": "Dimensiones y porcentaje disponible para los conductores del área del tubo conduit (basado en la Tabla 1, de este Capítulo)",
   "article": null,
   "pages": [
    743,
@@ -65080,31 +65524,36 @@
     "page": 743,
     "y0": 529.8525390625,
     "y1": 778.75,
-    "id": "4"
+    "id": "4",
+    "article": null
    },
    {
     "page": 744,
     "y0": 18.0,
     "y1": 793.33,
-    "id": "4"
+    "id": "4",
+    "article": null
    },
    {
     "page": 745,
     "y0": 6.75,
     "y1": 775.75,
-    "id": "4"
+    "id": "4",
+    "article": null
    },
    {
     "page": 746,
     "y0": 17.25,
     "y1": 767.5,
-    "id": "4"
+    "id": "4",
+    "article": null
    },
    {
     "page": 747,
     "y0": 15.0,
     "y1": 226.45,
-    "id": "4"
+    "id": "4",
+    "article": null
    }
   ]
  },
@@ -69371,25 +69820,29 @@
     "page": 747,
     "y0": 233.6025390625,
     "y1": 778.0,
-    "id": "5"
+    "id": "5",
+    "article": null
    },
    {
     "page": 748,
     "y0": 16.5,
     "y1": 794.0,
-    "id": "5"
+    "id": "5",
+    "article": null
    },
    {
     "page": 749,
     "y0": -3.0,
     "y1": 794.0,
-    "id": "5"
+    "id": "5",
+    "article": null
    },
    {
     "page": 750,
     "y0": -3.0,
     "y1": 529.44,
-    "id": "5"
+    "id": "5",
+    "article": null
    }
   ]
  },
@@ -70671,13 +71124,15 @@
     "page": 750,
     "y0": 536.6025390625,
     "y1": 778.0,
-    "id": "8"
+    "id": "8",
+    "article": null
    },
    {
     "page": 751,
     "y0": 24.0,
     "y1": 353.93,
-    "id": "8"
+    "id": "8",
+    "article": null
    }
   ]
  },
@@ -71843,13 +72298,15 @@
     "page": 751,
     "y0": 454.1025390625,
     "y1": 775.75,
-    "id": "9"
+    "id": "9",
+    "article": null
    },
    {
     "page": 752,
     "y0": 16.5,
     "y1": 62.16,
-    "id": "9"
+    "id": "9",
+    "article": null
    }
   ]
  },
@@ -72104,7 +72561,8 @@
     "page": 752,
     "y0": 162.3525390625,
     "y1": 386.97,
-    "id": "10"
+    "id": "10",
+    "article": null
    }
   ]
  },
@@ -72374,26 +72832,30 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "*Los intervalos de tensión presentados son para corriente alterna sinusoidal en lugares interiores o en donde no es probable que haya humedad. Para condiciones no sinusoidales o de contacto con la humedad, véase la Nota 2."
+  ],
   "quality": 0.952,
   "regions": [
    {
     "page": 752,
     "y0": 592.8525390625,
     "y1": 783.25,
-    "id": "11(A)"
+    "id": "11(A)",
+    "article": null
    },
    {
     "page": 753,
     "y0": 2.25,
-    "y1": 48.09,
-    "id": "11(A)"
+    "y1": 64.30850982666016,
+    "id": "11(A)",
+    "article": null
    }
   ]
  },
  {
   "id": "11(B)",
-  "title": "Limitaciones de las fuentes de alimentación",
+  "title": "Limitaciones de las fuentes de alimentación de corriente continua de Clase 2 y de Clase 3",
   "article": null,
   "pages": [
    753
@@ -72648,20 +73110,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "* Los intervalos de tensión presentados son para corriente continua permanente en interiores o en donde no es probable que haya humedad. Para condiciones de corriente continua interrumpida o de contacto con la humedad, véase la Nota 4."
+  ],
   "quality": 0.943,
   "regions": [
    {
     "page": 753,
     "y0": 71.6025390625,
-    "y1": 261.82,
-    "id": "11(B)"
+    "y1": 276.771484375,
+    "id": "11(B)",
+    "article": null
    }
   ]
  },
  {
   "id": "12(A)",
-  "title": "Limitaciones para las fuentes de alimentación de corriente alterna para PLFA (alarmas contra incendios de",
+  "title": "Limitaciones para las fuentes de alimentación de corriente alterna para PLFA (alarmas contra incendios de potencia limitada)",
   "article": null,
   "pages": [
    754
@@ -72862,13 +73327,14 @@
     "page": 754,
     "y0": 25.1025390625,
     "y1": 171.01,
-    "id": "12(A)"
+    "id": "12(A)",
+    "article": null
    }
   ]
  },
  {
   "id": "12(B)",
-  "title": "Limitaciones para las fuentes de alimentación de corriente",
+  "title": "Limitaciones para las fuentes de alimentación de corriente continua para PLFA (alarmas contra incendios de potencia limitada)",
   "article": null,
   "pages": [
    754
@@ -73069,7 +73535,8 @@
     "page": 754,
     "y0": 181.1025390625,
     "y1": 332.26,
-    "id": "12(B)"
+    "id": "12(B)",
+    "article": null
    }
   ]
  }

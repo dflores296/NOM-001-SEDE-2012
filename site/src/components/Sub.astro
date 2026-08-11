@@ -1,6 +1,7 @@
 ---
 // Inciso anidado (a) → (1) → a.  Se llama a sí mismo para los niveles inferiores.
-import { linkify, BASE } from '../lib/nom.js';
+import Tabla from './Tabla.astro';
+import { linkify, BASE, tablaPorId } from '../lib/nom.js';
 const { node } = Astro.props;
 // El marcador se decide por el TIPO de inciso, no por su profundidad: la
 // misma "a." puede aparecer a distintos niveles según el artículo.
@@ -11,6 +12,13 @@ const anot = [
   ...(node.notes || []).map((n) => ({ ...n, k: 'nota' })),
   ...(node.exceptions || []).map((n) => ({ ...n, k: 'exc' })),
 ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0));
+
+// Las tablas de este inciso, en el orden en que aparecen en la norma. Van
+// después del texto y antes de los incisos hijos, que es donde el documento
+// las imprime: el parser las enganchó al nodo vigente cuando pasó por ellas.
+const tabs = (node.tables || [])
+  .map((t) => tablaPorId.get(t.id))
+  .filter(Boolean);
 ---
 <li class="sub" id={node.id}>
   <span class="lbl">{label}</span>
@@ -19,9 +27,9 @@ const anot = [
 
   {node.figures?.map((f) => (
     <figure class="fig">
-      <img src={`${BASE}/img/${f.src}`} alt={`Figura de la página ${f.page} del PDF`}
+      <img src={`${BASE}/img/${f.src}`} alt={f.caption || `Figura de la página ${f.page} del PDF`}
            width={f.w} height={f.h} loading="lazy" />
-      <figcaption>Página {f.page} del PDF</figcaption>
+      <figcaption>{f.caption || `Página ${f.page} del PDF`}</figcaption>
     </figure>
   ))}
 
@@ -45,6 +53,8 @@ const anot = [
       )}
     </div>
   ))}
+
+  {tabs.map((t) => <Tabla t={t} />)}
 
   {node.children?.length > 0 && (
     <ul class="subs">
