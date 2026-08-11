@@ -3,3 +3,6 @@ __pycache__/
 node_modules/
 dist/
 .astro/
+
+# Derivado de data/ por tools/build_search.py; lo regenera el workflow.
+site/public/data/

@@ -1,0 +1,137 @@
+---
+import Base from '../../layouts/Base.astro';
+import Sub from '../../components/Sub.astro';
+import { articles, chapters, linkify, backlinks } from '../../lib/nom.js';
+
+export function getStaticPaths() {
+  return articles.map((a) => ({ params: { num: String(a.num) }, props: { a } }));
+}
+
+const { a } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const chap = chapters.find((c) => c.num === a.chapter);
+
+// Las secciones se agrupan por parte respetando el orden del documento.
+const groups = [];
+for (const s of a.sections) {
+  const last = groups[groups.length - 1];
+  if (last && last.part === s.part) last.secs.push(s);
+  else groups.push({ part: s.part, secs: [s] });
+}
+const partTitle = (l) => a.parts.find((p) => p.letter === l)?.title || '';
+
+const ordered = articles.map((x) => x.num);
+const i = ordered.indexOf(a.num);
+const prev = i > 0 ? articles[i - 1] : null;
+const next = i < articles.length - 1 ? articles[i + 1] : null;
+
+const bl = Object.fromEntries(a.sections.map((s) => [s.id, backlinks(s.id)]));
+---
+
+<Base
+  title={`Artículo ${a.num} — ${a.title} | NOM-001-SEDE-2012`}
+  desc={`Artículo ${a.num} de la NOM-001-SEDE-2012: ${a.title}. ${a.sections.length} secciones, con referencias cruzadas navegables.`}
+>
+  <div class="wrap cols">
+    <!-- ------------------------------------------------ navegación lateral -->
+    <aside class="side">
+      <h3>Capítulo {a.chapter}</h3>
+      {articles
+        .filter((x) => x.chapter === a.chapter)
+        .map((x) => (
+          <a href={`${base}/art/${x.num}`} class={x.num === a.num ? 'on' : ''}>
+            <span class="mono">{x.num}</span> {x.title}
+          </a>
+        ))}
+    </aside>
+
+    <!-- ------------------------------------------------------------ cuerpo -->
+    <main>
+      <div class="art-head">
+        <div class="crumb">
+          <a href={`${base}/#cap${a.chapter}`}>Capítulo {a.chapter} · {chap?.title}</a>
+        </div>
+        <h1><span class="art-num">Artículo {a.num}</span> — {a.title}</h1>
+        <div class="meta">
+          {a.sections.length} secciones · {a.parts.length} partes · página {a.page} del PDF
+        </div>
+      </div>
+
+      {a.num === 100 && (
+        /* El Artículo 100 son definiciones, no secciones numeradas. Las citas
+           a "Artículo 100" caen aquí, así que hay que llevarlas al glosario. */
+        <div class="aviso">
+          Este artículo es el catálogo de definiciones de la norma y se consulta
+          en el <a href={`${base}/glosario`}><b>glosario</b></a>, donde están sus
+          {' '}185 términos con buscador.
+        </div>
+      )}
+
+      {groups.map((g) => (
+        <>
+          {g.part && (
+            <div class="part-head" id={`parte-${g.part}`}>
+              Parte {g.part} — {partTitle(g.part)}
+            </div>
+          )}
+          {g.secs.map((s) => (
+            <section class="sec" id={s.id}>
+              <h2>
+                <span class="sid">{s.id}</span>{s.title}
+                <a class="anchor" href={`#${s.id}`} aria-label="Enlace a esta sección">#</a>
+              </h2>
+
+              {s.text && <p set:html={linkify(s.text)} />}
+
+              {s.notes?.map((n) => (
+                <div class="nota"><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
+              ))}
+              {s.exceptions?.map((n) => (
+                <div class="exc"><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
+              ))}
+
+              {s.children?.length > 0 && (
+                <ul class="subs">
+                  {s.children.map((c) => <Sub node={c} />)}
+                </ul>
+              )}
+
+              {bl[s.id]?.length > 0 && (
+                <details class="backlinks">
+                  <summary>
+                    Citado por {bl[s.id].length} {bl[s.id].length === 1 ? 'requisito' : 'requisitos'}
+                  </summary>
+                  <ul>
+                    {bl[s.id].map((b) => (
+                      <li>
+                        <a href={b.href} class="mono">{b.id}</a>
+                        {b.titulo && <span> — {b.titulo}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </section>
+          ))}
+        </>
+      ))}
+
+      <nav class="pager">
+        {prev && (
+          <a href={`${base}/art/${prev.num}`}>← <b class="mono">{prev.num}</b> {prev.title}</a>
+        )}
+        {next && (
+          <a class="nx" href={`${base}/art/${next.num}`}><b class="mono">{next.num}</b> {next.title} →</a>
+        )}
+      </nav>
+    </main>
+
+    <!-- ------------------------------------------- índice de este artículo -->
+    <aside class="toc">
+      <h3>En este artículo</h3>
+      {a.sections.map((s) => (
+        <a href={`#${s.id}`}><span class="mono">{s.id}</span> {s.title}</a>
+      ))}
+    </aside>
+  </div>
+</Base>

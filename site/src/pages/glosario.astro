@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import { definiciones, linkify } from '../lib/nom.js';
+
+const slug = (t) =>
+  t.normalize('NFD').replace(/[̀-ͯ]/g, '')
+   .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const partes = [
+  { letter: 'A', title: 'Definiciones generales' },
+  { letter: 'B', title: 'Definiciones aplicables a más de 600 volts' },
+];
+---
+
+<Base
+  title="Glosario — NOM-001-SEDE-2012"
+  desc="Las 185 definiciones del Artículo 100 de la NOM-001-SEDE-2012."
+>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Glosario</h1>
+      <p>
+        Las {definiciones.length} definiciones del <b>Artículo 100</b>. Son las que fijan el
+        significado de los términos en toda la norma, así que conviene leerlas antes de
+        interpretar cualquier requisito.
+      </p>
+    </div>
+
+    {partes.map((p) => {
+      const items = definiciones.filter((d) => d.part === p.letter);
+      if (!items.length) return null;
+      return (
+        <div class="chap">
+          <h2><span>Parte {p.letter}</span>{p.title}</h2>
+          <dl class="defs">
+            {items.map((d) => (
+              <div class="def" id={slug(d.term)}>
+                <dt>
+                  {d.term}
+                  <span class="tag">pág. {d.page}</span>
+                </dt>
+                <dd set:html={linkify(d.definition)} />
+              </div>
+            ))}
+          </dl>
+        </div>
+      );
+    })}
+  </div>
+</Base>

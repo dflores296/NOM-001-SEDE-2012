@@ -1,0 +1,170 @@
+---
+import '../styles/global.css';
+const { title, desc = 'Guía interactiva de la NOM-001-SEDE-2012, Instalaciones Eléctricas (utilización).' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+    <link rel="icon" href={`${base}/favicon.svg`} />
+    <link rel="manifest" href={`${base}/manifest.webmanifest`} />
+    <meta name="theme-color" content="#8a4b1f" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href={`${base}/`}>
+          NOM-001-SEDE-2012
+          <small>Instalaciones Eléctricas</small>
+        </a>
+
+        <div class="search-wrap">
+          <input
+            id="q"
+            type="search"
+            placeholder="Buscar:  250-32,  ampacidad,  falla a tierra…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Buscar en la norma"
+          />
+          <div class="results" id="res" role="listbox"></div>
+        </div>
+
+        <nav class="links">
+          <a href={`${base}/`}>Índice</a>
+          <a href={`${base}/glosario`}>Glosario</a>
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="bot">
+      <div class="wrap">
+        <p>
+          Reproducción del texto publicado en el <b>Diario Oficial de la Federación</b> el 29 de
+          noviembre de 2012, con fines de consulta. <b>No es una edición oficial.</b> Ante cualquier
+          discrepancia prevalece el texto publicado en el DOF.
+        </p>
+        <p>
+          Los textos reglamentarios no son objeto de protección por derecho de autor conforme al
+          artículo 14 de la Ley Federal del Derecho de Autor. El código de este proyecto es libre.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      import MiniSearch from 'minisearch';
+
+      const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+      const input = document.getElementById('q');
+      const box = document.getElementById('res');
+      let mini = null;
+      let sel = -1;
+
+      // Se cachea la PROMESA, no un booleano. Con una bandera, el `focus` que
+      // arranca la descarga y el `input` que llega justo después se pisan: el
+      // segundo ve "ya está cargando", retorna de inmediato y busca contra un
+      // índice todavía nulo.
+      let loading = null;
+      function load() {
+        if (!loading) {
+          loading = (async () => {
+            const r = await fetch(`${base}/data/search.json`);
+            const docs = await r.json();
+            const ms = new MiniSearch({
+              fields: ['id', 'title', 'text'],
+              storeFields: ['id', 'title', 'art', 'artTitle'],
+              searchOptions: { boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15 },
+            });
+            ms.addAll(docs);
+            mini = ms;
+          })();
+        }
+        return loading;
+      }
+
+      function href(id, art) {
+        return `${base}/art/${art}#${String(id).split('(')[0]}`;
+      }
+
+      function render(list, q) {
+        if (!list.length) {
+          box.innerHTML = `<div class="empty">Sin resultados para “${q}”.</div>`;
+          box.classList.add('open');
+          return;
+        }
+        box.innerHTML = list
+          .map(
+            (r) =>
+              `<a role="option" href="${href(r.id, r.art)}">
+                 <span class="rid">${r.id}</span>
+                 <span class="rti">${r.title || ''}</span>
+                 <span class="rsn">Art. ${r.art} · ${r.artTitle || ''}</span>
+               </a>`
+          )
+          .join('');
+        box.classList.add('open');
+        sel = -1;
+      }
+
+      let t;
+      input?.addEventListener('input', () => {
+        clearTimeout(t);
+        t = setTimeout(async () => {
+          const q = input.value.trim();
+          if (q.length < 2) {
+            box.classList.remove('open');
+            return;
+          }
+          await load();
+          render(mini.search(q).slice(0, 25), q);
+        }, 110);
+      });
+
+      input?.addEventListener('focus', load);
+
+      input?.addEventListener('keydown', (e) => {
+        const items = [...box.querySelectorAll('a')];
+        if (!items.length) return;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          items[sel]?.classList.remove('sel');
+          sel = e.key === 'ArrowDown'
+            ? Math.min(sel + 1, items.length - 1)
+            : Math.max(sel - 1, 0);
+          items[sel].classList.add('sel');
+          items[sel].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter' && sel >= 0) {
+          e.preventDefault();
+          location.href = items[sel].href;
+        } else if (e.key === 'Escape') {
+          box.classList.remove('open');
+          input.blur();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-wrap')) box.classList.remove('open');
+      });
+
+      // "/" enfoca el buscador desde cualquier parte
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== input) {
+          e.preventDefault();
+          input?.focus();
+        }
+      });
+
+      if ('serviceWorker' in navigator) {
+        addEventListener('load', () =>
+          navigator.serviceWorker.register(`${base}/sw.js`).catch(() => {})
+        );
+      }
+    </script>
+  </body>
+</html>

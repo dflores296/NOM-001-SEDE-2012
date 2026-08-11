@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import { articles, chapters, corpus, grafo, definiciones } from '../lib/nom.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const nSec = articles.reduce((n, a) => n + a.sections.length, 0);
+const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8);
+---
+
+<Base title="NOM-001-SEDE-2012 — Guía interactiva">
+  <div class="wrap">
+    <div class="hero">
+      <h1>NOM-001-SEDE-2012</h1>
+      <p>
+        Instalaciones Eléctricas (utilización). Las 780 páginas de la norma, con sus referencias
+        cruzadas convertidas en enlaces navegables y búsqueda instantánea. Pulsa <b>/</b> para
+        buscar desde cualquier página.
+      </p>
+      <div class="stats">
+        <div class="stat"><b>{articles.length}</b><span>Artículos</span></div>
+        <div class="stat"><b>{nSec.toLocaleString('es-MX')}</b><span>Secciones</span></div>
+        <div class="stat"><b>{grafo.meta.aristas.toLocaleString('es-MX')}</b><span>Referencias enlazadas</span></div>
+        <div class="stat"><b>{definiciones.length}</b><span>Definiciones</span></div>
+      </div>
+    </div>
+
+    <div class="aviso">
+      Reproducción del texto publicado en el DOF el 29 de noviembre de 2012, con fines de consulta.{' '}
+      <b>No es una edición oficial</b> y no sustituye al documento del Diario Oficial de la
+      Federación ni al criterio de una Unidad de Verificación.
+    </div>
+
+    <div class="chap">
+      <h2>Los requisitos que más se citan</h2>
+      <p class="meta" style="color:var(--text-faint);font-size:.84rem;margin:-.3rem 0 .7rem">
+        Calculado sobre el grafo de referencias: qué exigencias sostienen al resto de la norma.
+      </p>
+      <div class="grid">
+        {top.map((r) => (
+          <a class="card" href={`${base}/art/${r.articulo}#${r.id.replace('art:', '')}`}>
+            <b>{r.id.startsWith('art:') ? `Artículo ${r.id.slice(4)}` : r.id}</b>
+            <span>{r.titulo}</span>
+            <em>{r.citas} referencias</em>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    {chapters.map((c) => {
+      const arts = articles.filter((a) => a.chapter === c.num);
+      if (!arts.length) return null;
+      return (
+        <div class="chap" id={`cap${c.num}`}>
+          <h2><span>Capítulo {c.num}</span>{c.title}</h2>
+          <div class="grid">
+            {arts.map((a) => (
+              /* El Artículo 100 no tiene secciones numeradas: es el glosario,
+                 y se consulta desde su propia página. */
+              <a class="card" href={a.num === 100 ? `${base}/glosario` : `${base}/art/${a.num}`}>
+                <b>{a.num}</b>
+                <span>{a.title}</span>
+                <em>
+                  {a.num === 100
+                    ? `${definiciones.length} definiciones`
+                    : `${a.sections.length} secciones`}
+                </em>
+              </a>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+
+    <div class="chap" id="cap10">
+      <h2><span>Capítulo 10</span>Tablas</h2>
+      <p style="color:var(--text-dim);font-size:.9rem">
+        Las tablas del Capítulo 10 todavía no están estructuradas como datos. En el PDF pierden
+        filas y columnas al extraerse, así que se abordan por separado. Mientras tanto, las
+        referencias a tablas enlazan al artículo que las contiene.
+      </p>
+    </div>
+  </div>
+</Base>

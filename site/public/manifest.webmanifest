@@ -1,0 +1,14 @@
+{
+  "name": "NOM-001-SEDE-2012 — Instalaciones Eléctricas",
+  "short_name": "NOM-001",
+  "description": "Guía interactiva de la NOM-001-SEDE-2012 con referencias cruzadas navegables y búsqueda.",
+  "start_url": "/NOM-001-SEDE-2012/",
+  "scope": "/NOM-001-SEDE-2012/",
+  "display": "standalone",
+  "background_color": "#fbfaf8",
+  "theme_color": "#8a4b1f",
+  "lang": "es-MX",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
