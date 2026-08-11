@@ -1,0 +1,26 @@
+---
+// Inciso anidado (a) → (1) → a.  Se llama a sí mismo para los niveles inferiores.
+import { linkify } from '../lib/nom.js';
+const { node } = Astro.props;
+// El marcador se decide por el TIPO de inciso, no por su profundidad: la
+// misma "a." puede aparecer a distintos niveles según el artículo.
+const label = node.kind === 'letter' ? `${node.label}.` : `(${node.label})`;
+---
+<li class="sub" id={node.id}>
+  <span class="lbl">{label}</span>
+  {node.title && <span class="st">{node.title}. </span>}
+  <span set:html={linkify(node.text)} />
+
+  {node.notes?.map((n) => (
+    <div class="nota"><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
+  ))}
+  {node.exceptions?.map((n) => (
+    <div class="exc"><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
+  ))}
+
+  {node.children?.length > 0 && (
+    <ul class="subs">
+      {node.children.map((c) => <Astro.self node={c} />)}
+    </ul>
+  )}
+</li>

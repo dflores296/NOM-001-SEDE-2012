@@ -1,0 +1,170 @@
+LICENCIAS DE ESTE REPOSITORIO
+=============================
+
+Resumen, para orientarse. Lo que rige es el texto de cada licencia.
+
+| Parte                                       | Licencia                      |
+|---------------------------------------------|-------------------------------|
+| Sitio y el resto del código (site/, raíz)   | PolyForm Noncommercial 1.0.0  |
+| Herramientas de extracción (tools/)         | AGPL-3.0-or-later             |
+| Datos (data/, INDICE.txt)                   | CC BY-NC-SA 4.0               |
+| Documentación (docs/ y los .md de la raíz)  | CC BY-NC-SA 4.0               |
+| Texto de la NOM-001-SEDE-2012               | Sin derechos de autor (abajo) |
+
+Uso no comercial: libre. Ver, estudiar, modificar y compartir el sitio, el
+código y los datos sin fines de lucro está permitido, incluidas escuelas,
+organismos de gobierno y organizaciones sin fines de lucro.
+
+Consultar la guía publicada, también para el propio trabajo profesional, es
+libre: eso es usarla, no redistribuirla. Lo que requiere permiso es usar el
+sitio o los datos de este repositorio con fines comerciales: revenderlos,
+publicarlos en un sitio o producto con fines de lucro, o integrarlos en un
+servicio de pago.
+
+Por qué tools/ va aparte: las herramientas que leen el PDF usan PyMuPDF, que
+se publica bajo la AGPL-3.0. Una licencia no comercial no es compatible con
+ella, así que tools/ lleva la misma AGPL. La AGPL permite el uso comercial,
+pero obliga a quien distribuya esas herramientas, o las ofrezca como servicio
+en red, a publicar su código bajo la misma licencia.
+
+Para una licencia de uso comercial: contactar al autor en
+https://github.com/dflores296.
+
+Versiones anteriores. Del 11 de agosto al 6 de octubre de 2026 el repositorio
+se publicó con el código bajo MIT y los datos bajo CC BY-SA 4.0. Quien obtuvo
+una copia en esos días conserva lo que esas licencias le concedieron sobre ella.
+Desde el 6 de octubre de 2026 rigen las licencias de este archivo, también para
+toda la historia del repositorio.
+
+--------------------------------------------------------------------------------
+
+1. SITIO Y EL RESTO DEL CÓDIGO (site/ y archivos de la raíz; no tools/)
+
+Required Notice: Copyright (c) 2026 David Flores (https://github.com/dflores296/NOM-001-SEDE-2012)
+
+# PolyForm Noncommercial License 1.0.0
+
+<https://polyformproject.org/licenses/noncommercial/1.0.0>
+
+## Acceptance
+
+In order to get any license under these terms, you must agree to them as both strict obligations and conditions to all your licenses.
+
+## Copyright License
+
+The licensor grants you a copyright license for the software to do everything you might do with the software that would otherwise infringe the licensor's copyright in it for any permitted purpose.  However, you may only distribute the software according to [Distribution License](#distribution-license) and make changes or new works based on the software according to [Changes and New Works License](#changes-and-new-works-license).
+
+## Distribution License
+
+The licensor grants you an additional copyright license to distribute copies of the software.  Your license to distribute covers distributing the software with changes and new works permitted by [Changes and New Works License](#changes-and-new-works-license).
+
+## Notices
+
+You must ensure that anyone who gets a copy of any part of the software from you also gets a copy of these terms or the URL for them above, as well as copies of any plain-text lines beginning with `Required Notice:` that the licensor provided with the software.  For example:
+
+> Required Notice: Copyright Yoyodyne, Inc. (http://example.com)
+
+## Changes and New Works License
+
+The licensor grants you an additional copyright license to make changes and new works based on the software for any permitted purpose.
+
+## Patent License
+
+The licensor grants you a patent license for the software that covers patent claims the licensor can license, or becomes able to license, that you would infringe by using the software.
+
+## Noncommercial Purposes
+
+Any noncommercial purpose is a permitted purpose.
+
+## Personal Uses
+
+Personal use for research, experiment, and testing for the benefit of public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application, is use for a permitted purpose.
+
+## Noncommercial Organizations
+
+Use by any charitable organization, educational institution, public research organization, public safety or health organization, environmental protection organization, or government institution is use for a permitted purpose regardless of the source of funding or obligations resulting from the funding.
+
+## Fair Use
+
+You may have "fair use" rights for the software under the law. These terms do not limit them.
+
+## No Other Rights
+
+These terms do not allow you to sublicense or transfer any of your licenses to anyone else, or prevent the licensor from granting licenses to anyone else.  These terms do not imply any other licenses.
+
+## Patent Defense
+
+If you make any written claim that the software infringes or contributes to infringement of any patent, your patent license for the software granted under these terms ends immediately. If your company makes such a claim, your patent license ends immediately for work on behalf of your company.
+
+## Violations
+
+The first time you are notified in writing that you have violated any of these terms, or done anything with the software not covered by your licenses, your licenses can nonetheless continue if you come into full compliance with these terms, and take practical steps to correct past violations, within 32 days of receiving notice.  Otherwise, all your licenses end immediately.
+
+## No Liability
+
+***As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will not be liable to you for any damages arising out of these terms or the use or nature of the software, under any kind of legal claim.***
+
+## Definitions
+
+The **licensor** is the individual or entity offering these terms, and the **software** is the software the licensor makes available under these terms.
+
+**You** refers to the individual or entity agreeing to these terms.
+
+**Your company** is any legal entity, sole proprietorship, or other kind of organization that you work for, plus all organizations that have control over, are under the control of, or are under common control with that organization.  **Control** means ownership of substantially all the assets of an entity, or the power to direct its management and policies by vote, contract, or otherwise.  Control can be direct or indirect.
+
+**Your licenses** are all the licenses granted to you for the software under these terms.
+
+**Use** means anything you do with the software requiring one of your licenses.
+
+--------------------------------------------------------------------------------
+
+2. HERRAMIENTAS DE EXTRACCIÓN (tools/)
+
+Copyright (C) 2026 David Flores
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+details.
+
+The full text of the license is in LICENSES/AGPL-3.0-or-later.txt, and at
+<https://www.gnu.org/licenses/agpl-3.0.html>.
+
+--------------------------------------------------------------------------------
+
+3. ESTRUCTURA, ANOTACIONES, DATOS DERIVADOS Y DOCUMENTACIÓN (data/,
+   INDICE.txt, docs/ y los archivos .md de la raíz)
+
+Copyright (c) 2026 David Flores.
+
+Se publican bajo la licencia Creative Commons Atribución-NoComercial-
+CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0):
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.es
+
+Abarca lo que este proyecto agrega al texto de la norma: la estructura en
+artículos, secciones e incisos, las tablas reconstruidas y contrastadas a mano,
+las leyendas y transcripciones de figuras, el grafo de referencias y demás
+anotaciones, y la documentación del proyecto. No abarca el texto de la norma
+en sí (sección 4).
+
+--------------------------------------------------------------------------------
+
+4. CONTENIDO NORMATIVO
+
+El texto de la NOM-001-SEDE-2012 reproducido en este repositorio proviene del
+Diario Oficial de la Federación (29 de noviembre de 2012). Conforme al artículo
+14 de la Ley Federal del Derecho de Autor, los textos legislativos,
+reglamentarios y administrativos no son objeto de protección como derecho de
+autor; su publicación debe apegarse al texto oficial y no confiere derecho
+exclusivo sobre la edición.
+
+Esta NO es una edición oficial. Ante cualquier discrepancia prevalece el texto
+publicado en el Diario Oficial de la Federación.
+
+Las normas referenciadas por la NOM (NMX, ANCE, IEC, NFPA 70) tienen sus
+propios derechos de autor y en este repositorio únicamente se citan.

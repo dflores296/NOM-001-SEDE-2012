@@ -147,6 +147,7 @@ def parse_article(num, lines, pageno, lo, hi):
     stack = []          # pila de incisos anidados
     buf = []            # acumulador de texto libre
     target = None       # dónde va `buf`
+    last_sec = 0        # nº de la última sección aceptada (control de monotonía)
 
     def commit():
         nonlocal buf
@@ -156,18 +157,40 @@ def parse_article(num, lines, pageno, lo, hi):
                 target['text'] = (target.get('text', '') + ' ' + txt).strip()
         buf = []
 
+    def rank(kind, label):
+        return int(label) if kind == 'num' else ord(label)
+
     def new_sub(label, kind, title_text):
-        """Crea un inciso al nivel que corresponde y lo engancha al padre."""
+        """Crea un inciso al nivel que corresponde y lo engancha al padre.
+
+        La profundidad NO puede deducirse del tipo de marcador, porque la norma
+        no lo usa de forma consistente. En 110-14(c) el orden es
+        'c) → a. → (1)(2)', mientras que en otros artículos es
+        'c) → (1) → a.'. Con niveles fijos, los '(1)' de 110-14 se colgaban de
+        'c)' en lugar de 'a.', chocaban entre sí y producían ids duplicados.
+
+        Se infiere de la secuencia: un marcador cuyo rótulo continúa a otro del
+        mismo tipo ya abierto es su hermano; cualquier otro abre una lista nueva
+        anidada bajo el inciso vigente. Así 'b.' cierra el bloque de 'a.' y sus
+        '(1)(2)' reinician correctamente dentro de 'b.'.
+        """
         nonlocal target
-        level = {'alpha': 1, 'num': 2, 'letter': 3}[kind]
-        while stack and stack[-1]['level'] >= level:
-            stack.pop()
-        parent = stack[-1]['node'] if stack else sec
+        parent = None
+        for i in range(len(stack) - 1, -1, -1):
+            e = stack[i]
+            if e['kind'] != kind:
+                continue
+            if rank(kind, label) > rank(kind, e['label']):
+                del stack[i:]                       # hermano: cierra lo anidado
+            parent = stack[-1]['node'] if stack else sec
+            break
+        if parent is None:
+            parent = stack[-1]['node'] if stack else sec
         if parent is None:
             return False
         wrap = {'alpha': '(%s)', 'num': '(%s)', 'letter': '%s.'}[kind]
         node = {'id': parent['id'] + (wrap % label),
-                'label': label, 'level': level, 'text': '',
+                'label': label, 'kind': kind, 'level': len(stack) + 1, 'text': '',
                 'children': [], 'notes': [], 'exceptions': []}
         # el título va embebido: "a) Circuitos de menos de 50 volts. Un conductor..."
         mt = re.match(r'^([^.]{3,90})\.\s+(.*)$', title_text)
@@ -177,7 +200,7 @@ def parse_article(num, lines, pageno, lo, hi):
         else:
             node['text'] = title_text.strip()
         parent.setdefault('children', []).append(node)
-        stack.append({'level': level, 'node': node})
+        stack.append({'kind': kind, 'label': label, 'node': node})
         target = node
         return True
 
@@ -191,6 +214,16 @@ def parse_article(num, lines, pageno, lo, hi):
         # --- encabezado de sección: 210-8. Título.
         m = RE_SEC.match(u)
         if m:
+            # Dentro de un artículo las secciones son estrictamente crecientes.
+            # Sin esta comprobación, una referencia cruzada que cae al inicio de
+            # una línea por el corte de párrafo se confunde con un encabezado:
+            # en 220-14(j) la frase "...de alumbrado general del 220-12. No se
+            # deben exigir cálculos..." parte justo antes de "220-12.".
+            n_sec = int(m.group(1).split('-')[1])
+            if n_sec <= last_sec:
+                buf.append(ln)
+                continue
+            last_sec = n_sec
             commit()
             sid = m.group(1)
             rest = ln[len(m.group(1)) + 1:].lstrip()
