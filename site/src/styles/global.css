@@ -379,3 +379,13 @@ ul.rev-check li { margin: 0.45rem 0; font-size: 0.92rem; }
 ul.rev-check code {
   background: var(--bg-soft); padding: 0 0.25em; border-radius: 3px; font-size: 0.9em;
 }
+
+/* Definiciones dentro de una sección. En el PDF vienen como un párrafo
+   corrido donde cada término se pierde entre los anteriores. */
+dl.defs-sec { margin: 0.6rem 0 0; padding: 0; }
+dl.defs-sec > div {
+  margin: 0 0 0.55rem; padding: 0 0 0 0.8rem;
+  border-left: 2px solid var(--border);
+}
+dl.defs-sec dt { font-weight: 650; margin-bottom: 0.1rem; }
+dl.defs-sec dd { margin: 0; color: var(--text-dim); font-size: 0.94rem; }
