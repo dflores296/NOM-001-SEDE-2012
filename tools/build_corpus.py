@@ -59,14 +59,16 @@ RE_TBLREF  = re.compile(r'Tabla\s+(\d{3}-[\w().\-]+|\d{1,2}[A-Z]?(?:\([A-Z]\))?)
 def sec_re(num):
     """Encabezado de sección del artículo `num`: '210-8. Título.'
 
-    La norma es inconsistente en el separador y hay que aceptar las tres formas:
-        '210-8. Protección'   punto y espacio  (lo normal)
-        '384-1 Alcance.'      sin punto        (arts. 384, 506, 522)
-        '701-1.Alcance.'      sin espacio      (art. 701)
+    La norma es inconsistente en el separador y hay que aceptar las cuatro
+    formas que usa:
+        '210-8. Protección'    punto y espacio  (lo normal)
+        '384-1 Alcance.'       sin punto        (arts. 384, 506, 522)
+        '701-1.Alcance.'       sin espacio      (art. 701)
+        '513-10.- Equipo...'   punto y guion    (art. 513, una sola vez)
     Para no confundir un encabezado con una referencia cruzada al inicio de
     una línea de texto corrido, se exige que el título arranque en mayúscula.
     """
-    return re.compile(r'^(%d-\d{1,3})(?:\.\s*|\s+)([0-9A-ZÁÉÍÓÚÑ].*)$' % num)
+    return re.compile(r'^(%d-\d{1,3})(?:\.-\s*|\.\s*|\s+)([0-9A-ZÁÉÍÓÚÑ].*)$' % num)
 
 
 # ------------------------------------------------------------------ carga

@@ -577,23 +577,56 @@ def table_extent(doc, cap, caption_pages):
     return out
 
 
+CAPTION_MAX_LINES = 4     # tope de continuación del título
+
+
 def find_captions(doc):
-    """[(pagina, y, id, titulo)] de cada título de tabla del cuerpo."""
+    """[(pagina, y, id, titulo)] de cada título de tabla del cuerpo.
+
+    El título se toma del BLOQUE de texto completo, no de su primera línea:
+    los títulos largos se parten en varias y quedaban cortados a media frase.
+    El de la Tabla 310-104(d) terminaba en "..., para" y dejaba fuera "2001 a
+    5000 volts" y la aclaración de que la tabla es informativa.
+
+    El PDF agrupa cada título en un bloque propio y deja las celdas en bloques
+    aparte, así que el bloque es el límite natural. Aun así se aplica un tope
+    de líneas: en la Tabla 225-3 el bloque arrastra contenido de la tabla y sin
+    él el título se convertiría en un párrafo entero.
+    """
     caps = []
     for pno in range(10, doc.page_count):
         page = doc[pno]
         for blk in page.get_text('dict')['blocks']:
-            for line in blk.get('lines', []):
-                txt = ''.join(s['text'] for s in line['spans']).strip()
-                if not txt or len(txt) > 260:
+            lines = blk.get('lines', [])
+            if not lines:
+                continue
+            txts = [''.join(s['text'] for s in ln['spans']).strip() for ln in lines]
+            ys = [round(ln['bbox'][1], 1) for ln in lines]
+            # Una línea que comparte su altura con otra es una FILA de tabla,
+            # con sus celdas repartidas a lo ancho; la continuación de un
+            # título siempre va sola en su renglón. Es lo que separa el título
+            # de la Tabla 310-104(d), partido en tres renglones propios, del de
+            # la 225-3, cuyo bloque sigue con las celdas de la tabla.
+            solo = [sum(1 for y2 in ys if abs(y2 - y) <= 2.0) == 1 for y in ys]
+
+            # El título no siempre abre el bloque, así que se revisan todas sus
+            # líneas; la continuación se toma de las siguientes DEL MISMO
+            # bloque, que es donde el PDF deja el resto de la frase.
+            for i, first in enumerate(txts):
+                if not first or len(first) > 260:
                     continue
-                m = RE_CAPTION.match(unaccent(txt))
+                m = RE_CAPTION.match(unaccent(first))
                 if not m:
                     continue
                 tid = re.sub(r'\s+', '', m.group(1))
-                title = txt[len(txt) - len(m.group(2)):].strip() if m.group(2) else ''
-                caps.append({'page': pno + 1, 'y': line['bbox'][1],
-                             'id': tid, 'title': re.sub(r'\s+', ' ', title)})
+                title = first[len(first) - len(m.group(2)):].strip() if m.group(2) else ''
+                for j in range(i + 1, min(i + CAPTION_MAX_LINES, len(txts))):
+                    extra = txts[j]
+                    if not extra or not solo[j] or RE_CAPTION.match(unaccent(extra)):
+                        break
+                    title += ' ' + extra
+                caps.append({'page': pno + 1, 'y': lines[i]['bbox'][1],
+                             'id': tid, 'title': re.sub(r'\s+', ' ', title).strip()})
     return caps
 
 

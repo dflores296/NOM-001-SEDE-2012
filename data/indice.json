@@ -48783,121 +48783,129 @@
   "chapter": 5,
   "page": 408
  },
- "513-9(a)": {
+ "513-10": {
+  "kind": "seccion",
+  "id": "513-10",
+  "title": "- Equipo especial",
+  "article": 513,
+  "chapter": 5,
+  "page": 408
+ },
+ "513-10(a)": {
   "kind": "inciso",
-  "id": "513-9(a)",
+  "id": "513-10(a)",
   "title": "Sistemas eléctricos de las aeronaves.",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(a)(1)": {
+ "513-10(a)(1)": {
   "kind": "inciso",
-  "id": "513-9(a)(1)",
+  "id": "513-10(a)(1)",
   "title": "Desenergización del sistema eléctrico de la aeronave",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(a)(2)": {
+ "513-10(a)(2)": {
   "kind": "inciso",
-  "id": "513-9(a)(2)",
+  "id": "513-10(a)(2)",
   "title": "Baterías de aeronaves",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(b)": {
+ "513-10(b)": {
   "kind": "inciso",
-  "id": "513-9(b)",
+  "id": "513-10(b)",
   "title": "Carga de las baterías de una aeronave y equipos",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(c)": {
+ "513-10(c)": {
   "kind": "inciso",
-  "id": "513-9(c)",
+  "id": "513-10(c)",
   "title": "Fuentes de alimentación externas para energizar las aeronaves",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(c)(1)": {
+ "513-10(c)(1)": {
   "kind": "inciso",
-  "id": "513-9(c)(1)",
+  "id": "513-10(c)(1)",
   "title": "A no menos de 45 centímetros sobre el piso",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(c)(2)": {
+ "513-10(c)(2)": {
   "kind": "inciso",
-  "id": "513-9(c)(2)",
+  "id": "513-10(c)(2)",
   "title": "Marcado de las unidades móviles",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(c)(3)": {
+ "513-10(c)(3)": {
   "kind": "inciso",
-  "id": "513-9(c)(3)",
+  "id": "513-10(c)(3)",
   "title": "Cordones",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(d)": {
+ "513-10(d)": {
   "kind": "inciso",
-  "id": "513-9(d)",
+  "id": "513-10(d)",
   "title": "Equipos móviles de mantenimiento con componentes eléctricos",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(d)(1)": {
+ "513-10(d)(1)": {
   "kind": "inciso",
-  "id": "513-9(d)(1)",
+  "id": "513-10(d)(1)",
   "title": "Generalidades",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(d)(2)": {
+ "513-10(d)(2)": {
   "kind": "inciso",
-  "id": "513-9(d)(2)",
+  "id": "513-10(d)(2)",
   "title": "Cordones y conectores",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(d)(3)": {
+ "513-10(d)(3)": {
   "kind": "inciso",
-  "id": "513-9(d)(3)",
+  "id": "513-10(d)(3)",
   "title": "Usos restringidos",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(e)": {
+ "513-10(e)": {
   "kind": "inciso",
-  "id": "513-9(e)",
+  "id": "513-10(e)",
   "title": "Equipos portátiles.",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(e)(1)": {
+ "513-10(e)(1)": {
   "kind": "inciso",
-  "id": "513-9(e)(1)",
+  "id": "513-10(e)(1)",
   "title": "Equipos portátiles de alumbrado",
   "article": 513,
   "chapter": 5,
   "page": 408
  },
- "513-9(e)(2)": {
+ "513-10(e)(2)": {
   "kind": "inciso",
-  "id": "513-9(e)(2)",
+  "id": "513-10(e)(2)",
   "title": "Equipos de utilización portátiles",
   "article": 513,
   "chapter": 5,
