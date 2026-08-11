@@ -347,10 +347,14 @@ def main():
     os.makedirs(out, exist_ok=True)
     doc = pymupdf.open(pdf)
 
-    corpus_path = os.path.join(out, 'corpus.json')
-    art_nums = []
-    if os.path.exists(corpus_path):
-        art_nums = sorted(a['num'] for a in json.load(open(corpus_path))['articles'])
+    # Los números de artículo se sacan del índice del propio PDF y no de
+    # corpus.json: así este script puede correr ANTES que build_corpus, que a
+    # su vez necesita saber qué zonas de la página ocupa una tabla para no
+    # arrastrar su contenido al texto de la sección.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from build_corpus import parse_toc
+    pages_txt = [doc[i].get_text() for i in range(doc.page_count)]
+    art_nums = sorted(parse_toc(pages_txt)[0])
 
     caps = find_captions(doc)
     # varias páginas repiten el título al continuar la tabla; se conserva la
@@ -382,6 +386,9 @@ def main():
         # tabla no sirve: las coordenadas son relativas a cada página y la del
         # título suele traer solo el encabezado, cuyo trazado no coincide con
         # el del cuerpo. Lo que sí se comparte es el número de columnas.
+        regions = [{'page': pno, 'y0': (cap['y'] - 4 if pno == cap['page'] else bands[0][0] - 2),
+                    'y1': bands[-1][1] + 2, 'id': cap['id']}
+                   for pno, bands in extent]
         grid, npages, per_page = [], [], []
         for pno, bands in extent:
             page = doc[pno - 1]
@@ -468,9 +475,17 @@ def main():
             # la tabla para poder avisar al lector cuando conviene contrastar
             # con el PDF, en vez de presentar todo con la misma confianza.
             'quality': round(grid_score(body), 3),
+            'regions': regions,
         })
 
     json.dump(tables, open(os.path.join(out, 'tablas.json'), 'w'),
+              ensure_ascii=False, indent=1)
+
+    # Zonas de página ocupadas por tablas. build_corpus las salta para que el
+    # contenido de una tabla no reaparezca como párrafo corrido dentro de la
+    # sección, que es como se veía la 310-15(b)(2)(a): 60 números seguidos.
+    regs = [r for t in tables for r in t['regions']]
+    json.dump(regs, open(os.path.join(out, 'tablas_regiones.json'), 'w'),
               ensure_ascii=False, indent=1)
 
     q = [t['quality'] for t in tables]

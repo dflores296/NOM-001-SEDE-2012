@@ -1,6 +1,6 @@
 ---
 // Inciso anidado (a) → (1) → a.  Se llama a sí mismo para los niveles inferiores.
-import { linkify } from '../lib/nom.js';
+import { linkify, BASE } from '../lib/nom.js';
 const { node } = Astro.props;
 // El marcador se decide por el TIPO de inciso, no por su profundidad: la
 // misma "a." puede aparecer a distintos niveles según el artículo.
@@ -17,6 +17,14 @@ const anot = [
   {node.title && <span class="st">{node.title}. </span>}
   <span set:html={linkify(node.text)} />
 
+  {node.figures?.map((f) => (
+    <figure class="fig">
+      <img src={`${BASE}/img/${f.src}`} alt={`Figura de la página ${f.page} del PDF`}
+           width={f.w} height={f.h} loading="lazy" />
+      <figcaption>Página {f.page} del PDF</figcaption>
+    </figure>
+  ))}
+
   {node.definitions?.length > 0 && (
     <dl class="defs-sec">
       {node.definitions.map((d) => (
@@ -26,7 +34,16 @@ const anot = [
   )}
 
   {anot.map((n) => (
-    <div class={n.k}><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
+    <div class={n.k}>
+      <span class="lb">{n.label}</span><span set:html={linkify(n.text)} />
+      {n.items?.length > 0 && (
+        <ul class="anot-items">
+          {n.items.map((it) => (
+            <li><span class="lbl">({it.label})</span> <span set:html={linkify(it.text)} /></li>
+          ))}
+        </ul>
+      )}
+    </div>
   ))}
 
   {node.children?.length > 0 && (
