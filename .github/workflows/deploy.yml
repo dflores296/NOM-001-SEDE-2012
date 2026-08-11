@@ -30,12 +30,18 @@ jobs:
       # El corpus se regenera desde el PDF en cada publicación: así el sitio
       # nunca se despega de la fuente, y si un cambio en el parser rompe algo,
       # la validación lo detiene aquí y no en producción.
-      - name: Regenerar corpus, grafo e índice de búsqueda
+      # El orden importa: build_corpus salta las zonas de página que ocupan
+      # las tablas leyendo data/tablas_regiones.json, que produce build_tables.
+      # Corriéndolo después, el corpus se armaba con las regiones de la corrida
+      # ANTERIOR y arrastraba al texto lo que la tabla ya se había llevado: las
+      # notas al pie de la 220-12 se quedaban pegadas a la NOTA del artículo.
+      - name: Regenerar tablas, corpus, grafo e índice de búsqueda
         run: |
+          python3 tools/build_tables.py NOM-001-SEDE-2012.pdf data/
           python3 tools/build_corpus.py NOM-001-SEDE-2012.pdf data/
           python3 tools/build_graph.py data/
-          python3 tools/build_tables.py NOM-001-SEDE-2012.pdf data/
           python3 tools/build_search.py data/ site/public/data/
+          python3 tools/build_revision.py data/ REVISION-TABLAS.md
 
       - name: Verificar cobertura del parseo
         run: python3 tools/check_corpus.py data/

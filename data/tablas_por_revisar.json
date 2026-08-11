@@ -60,16 +60,6 @@
   "title": "Separación de conductores eléctricos verticales y derivados con respecto a superficies, mensajeros y retenidas en la misma estructura, (centímetros) (1)"
  },
  {
-  "id": "392-22(b)(1)",
-  "quality": 0.586,
-  "cols": 2,
-  "rows": 15,
-  "pages": [
-   233
-  ],
-  "title": "Area de ocupación permisible para cables de un solo conductor en charolas portacables de tipo escalera, fondo ventilado o malla ventilada para cables de 2000 volts o menos"
- },
- {
   "id": "310-15(b)(3)(c)",
   "quality": 0.6,
   "cols": 2,
@@ -131,16 +121,6 @@
    202
   ],
   "title": "Soportes para tubo conduit de resina termofija reforzada (RTRC)"
- },
- {
-  "id": "220-42",
-  "quality": 0.71,
-  "cols": 3,
-  "rows": 12,
-  "pages": [
-   47
-  ],
-  "title": "Factores de demanda de cargas de alumbrado"
  },
  {
   "id": "430-12(c)(2)",

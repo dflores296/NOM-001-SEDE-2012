@@ -30,12 +30,17 @@ function señales(t) {
   return s;
 }
 
-const info = tablas.map((t) => ({
-  t,
-  c: citas[t.id] || 0,
-  s: señales(t),
-  prio: (citas[t.id] || 0) * (1 - t.quality) + (1 - t.quality) + (t.cols < 2 ? 3 : 0),
-}));
+// Las contrastadas a ojo contra el PDF salen de la lista: ya se revisaron,
+// y dejarlas pidiendo revisión enterraría las que sí faltan.
+const info = tablas
+  .filter((t) => !t.verificada)
+  .map((t) => ({
+    t,
+    c: citas[t.id] || 0,
+    s: señales(t),
+    prio: (citas[t.id] || 0) * (1 - t.quality) + (1 - t.quality) + (t.cols < 2 ? 3 : 0),
+  }));
+const verificadas = tablas.filter((t) => t.verificada);
 
 const criticas = info.filter((x) => x.prio >= 1.0).sort((a, b) => b.prio - a.prio);
 const dudosas = info
@@ -69,7 +74,7 @@ const href = (t) =>
       <div class="stats">
         <div class="stat"><b>{criticas.length}</b><span>Prioridad alta</span></div>
         <div class="stat"><b>{dudosas.length}</b><span>Dudosas</span></div>
-        <div class="stat"><b>{confianza.length}</b><span>Verificación de control</span></div>
+        <div class="stat"><b>{verificadas.length}</b><span>Verificadas contra el PDF</span></div>
         <div class="stat"><b>{tablas.length}</b><span>Tablas en total</span></div>
       </div>
     </div>

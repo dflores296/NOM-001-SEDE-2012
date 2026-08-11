@@ -492,6 +492,16 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
   border-radius: 999px;
   cursor: help;
 }
+/* Marca de tabla contrastada a ojo contra el PDF. Va en el pie, junto al
+   resto de la procedencia, porque es un dato sobre de dónde sale la tabla. */
+.tag-ok {
+  font-weight: 600;
+  color: var(--ok, #2e7d32);
+  cursor: help;
+}
+:root:not([data-theme='light']) .tag-ok { color: var(--ok, #7bc47f); }
+:root[data-theme='dark'] .tag-ok { color: var(--ok, #7bc47f); }
+:root[data-theme='light'] .tag-ok { color: var(--ok, #2e7d32); }
 .tabla-info {
   margin: 0 0 0.5rem; padding: 0.45rem 0.7rem;
   font-size: 0.82rem; color: var(--text-dim);

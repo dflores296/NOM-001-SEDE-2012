@@ -3,7 +3,9 @@ import { linkify, tablaSlug } from '../lib/nom.js';
 const { t } = Astro.props;
 const head = t.rows.slice(0, t.header_rows || 0);
 const body = t.rows.slice(t.header_rows || 0);
-const dudosa = t.quality < 0.8;
+// Una tabla contrastada a ojo contra el PDF ya no es una estimación: no
+// tiene sentido pedirle al lector que haga la comprobación que ya se hizo.
+const dudosa = t.quality < 0.8 && !t.verificada;
 
 // Una celda que abarca varias columnas encabeza un GRUPO de columnas, no una
 // sola: `scope` se lo dice a los lectores de pantalla, que si no leen el
@@ -79,6 +81,10 @@ const alcance = (c) => (c.cs > 1 ? 'colgroup' : 'col');
   )}
 
   <div class="tabla-pie">
+    {t.verificada && (
+      <><span class="tag-ok" title={`Contrastada celda por celda contra la página ${t.pages.join(', ')} del PDF el ${t.verificada}.`}
+        >Verificada contra el PDF</span>{' · '}</>
+    )}
     {t.rows.length} filas · {t.cols} columnas · página{t.pages.length > 1 ? 's' : ''}{' '}
     {t.pages.join(', ')} del PDF ·{' '}
     <a
