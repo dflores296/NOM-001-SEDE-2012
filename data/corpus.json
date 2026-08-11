@@ -76585,17 +76585,27 @@
      "title": "Sellado",
      "part": null,
      "page": 408,
-     "text": "Se deben colocar sellos aprobados de acuerdo con lo indicado en 501-15 o 505-16 según sean aplicables. Los requisitos de sellado especificados se deben aplicar tanto a los límites horizontales como a los verticales de los lugares definidos como de Clase I. 513-10.- Equipo especial.",
+     "text": "Se deben colocar sellos aprobados de acuerdo con lo indicado en 501-15 o 505-16 según sean aplicables. Los requisitos de sellado especificados se deben aplicar tanto a los límites horizontales como a los verticales de los lugares definidos como de Clase I.",
+     "children": [],
+     "notes": [],
+     "exceptions": []
+    },
+    {
+     "id": "513-10",
+     "title": "- Equipo especial",
+     "part": null,
+     "page": 408,
+     "text": "",
      "children": [
       {
-       "id": "513-9(a)",
+       "id": "513-10(a)",
        "label": "a",
        "kind": "alpha",
        "level": 1,
        "text": "Sistemas eléctricos de las aeronaves.",
        "children": [
         {
-         "id": "513-9(a)(1)",
+         "id": "513-10(a)(1)",
          "label": "1",
          "kind": "num",
          "level": 2,
@@ -76606,7 +76616,7 @@
          "title": "Desenergización del sistema eléctrico de la aeronave"
         },
         {
-         "id": "513-9(a)(2)",
+         "id": "513-10(a)(2)",
          "label": "2",
          "kind": "num",
          "level": 2,
@@ -76621,7 +76631,7 @@
        "exceptions": []
       },
       {
-       "id": "513-9(b)",
+       "id": "513-10(b)",
        "label": "b",
        "kind": "alpha",
        "level": 1,
@@ -76632,14 +76642,14 @@
        "title": "Carga de las baterías de una aeronave y equipos"
       },
       {
-       "id": "513-9(c)",
+       "id": "513-10(c)",
        "label": "c",
        "kind": "alpha",
        "level": 1,
        "text": "Fuentes de alimentación externas para energizar las aeronaves",
        "children": [
         {
-         "id": "513-9(c)(1)",
+         "id": "513-10(c)(1)",
          "label": "1",
          "kind": "num",
          "level": 2,
@@ -76650,7 +76660,7 @@
          "title": "A no menos de 45 centímetros sobre el piso"
         },
         {
-         "id": "513-9(c)(2)",
+         "id": "513-10(c)(2)",
          "label": "2",
          "kind": "num",
          "level": 2,
@@ -76661,7 +76671,7 @@
          "title": "Marcado de las unidades móviles"
         },
         {
-         "id": "513-9(c)(3)",
+         "id": "513-10(c)(3)",
          "label": "3",
          "kind": "num",
          "level": 2,
@@ -76676,14 +76686,14 @@
        "exceptions": []
       },
       {
-       "id": "513-9(d)",
+       "id": "513-10(d)",
        "label": "d",
        "kind": "alpha",
        "level": 1,
        "text": "Equipos móviles de mantenimiento con componentes eléctricos",
        "children": [
         {
-         "id": "513-9(d)(1)",
+         "id": "513-10(d)(1)",
          "label": "1",
          "kind": "num",
          "level": 2,
@@ -76694,7 +76704,7 @@
          "title": "Generalidades"
         },
         {
-         "id": "513-9(d)(2)",
+         "id": "513-10(d)(2)",
          "label": "2",
          "kind": "num",
          "level": 2,
@@ -76705,7 +76715,7 @@
          "title": "Cordones y conectores"
         },
         {
-         "id": "513-9(d)(3)",
+         "id": "513-10(d)(3)",
          "label": "3",
          "kind": "num",
          "level": 2,
@@ -76720,14 +76730,14 @@
        "exceptions": []
       },
       {
-       "id": "513-9(e)",
+       "id": "513-10(e)",
        "label": "e",
        "kind": "alpha",
        "level": 1,
        "text": "Equipos portátiles.",
        "children": [
         {
-         "id": "513-9(e)(1)",
+         "id": "513-10(e)(1)",
          "label": "1",
          "kind": "num",
          "level": 2,
@@ -76738,7 +76748,7 @@
          "title": "Equipos portátiles de alumbrado"
         },
         {
-         "id": "513-9(e)(2)",
+         "id": "513-10(e)(2)",
          "label": "2",
          "kind": "num",
          "level": 2,
@@ -76827,7 +76837,6 @@
     "501-30",
     "505-16",
     "505-25",
-    "513-10",
     "513-3",
     "513-3(c)",
     "513-3(d)",
