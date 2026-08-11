@@ -5636,7 +5636,7 @@
   "rows": [
    [
     {
-     "t": "Tamaño del mayor conductor de entrada a la acometida o área equivalente paraleloa para conductores en",
+     "t": "Tamaño del mayor conductor de entrada a la acometida o área equivalente para conductores en paralelo a",
      "cs": 4
     },
     {
@@ -5658,7 +5658,7 @@
      "cs": 2
     },
     {
-     "t": "Aluminiob",
+     "t": "Aluminio b",
      "cs": 2
     }
    ],
@@ -5872,8 +5872,10 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.786,
+  "notes": [
+   "Cuando no hay conductores de acometida, el tamaño del conductor del electrodo de puesta a tierra se deberá determinar por el tamaño equivalente del conductor más grande de acometida requerido para la carga a alimentar."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 98,
@@ -5882,7 +5884,8 @@
     "id": "250-66",
     "article": 250
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "250-122",
@@ -30725,7 +30728,7 @@
    231
   ],
   "page": 231,
-  "cols": 3,
+  "cols": 5,
   "header_rows": 4,
   "intro": "",
   "rows": [
@@ -30736,23 +30739,31 @@
     },
     {
      "t": "Area de ocupación máxima permisible para cables multiconductores",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Charolas portacables tipo escalera, tipo malla o fondo ventilado, 392-22(a)(1)",
+     "cs": 2
+    },
+    {
+     "t": "Charolas portacables tipo fondo sólido, 392-22(a)(3)",
      "cs": 2
     }
    ],
    [
     {
-     "t": "Charolas portacables tipo escalera, tipo malla o fondo ventilado, 392-22(a)(1)"
+     "t": "Columna 1 Aplicable sólo por 392-22(a)(1)(b)"
     },
     {
-     "t": "Charolas portacables tipo fondo sólido, 392-22(a)(3)"
-    }
-   ],
-   [
-    {
-     "t": "2a Columna 1 Columna Aplicable sólo por 392- Aplicable sólo por 22(a)(1)(b) 392-22(a)(1)(c)"
+     "t": "Columna 2a Aplicable sólo por 392-22(a)(1)(c)"
     },
     {
-     "t": "4a Columna 3 Columna Aplicable sólo por Aplicable sólo por 392- 392-22(a)(3)(b) 22(a)(3)(c)"
+     "t": "Columna 3 Aplicable sólo por 392-22(a)(3)(b)"
+    },
+    {
+     "t": "Columna 4a Aplicable sólo por 392-22(a)(3)(c)"
     }
    ],
    [
@@ -30760,10 +30771,16 @@
      "t": "cm"
     },
     {
-     "t": "mm2 mm2"
+     "t": "mm2"
     },
     {
-     "t": "mm2 mm2"
+     "t": "mm2"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "mm2"
     }
    ],
    [
@@ -30771,10 +30788,16 @@
      "t": "5"
     },
     {
-     "t": "1 500 1 500 - (30 Sd)"
+     "t": "1 500"
     },
     {
-     "t": "1 200 1 200 - (30 Sd)"
+     "t": "1 500 - (30 Sd)"
+    },
+    {
+     "t": "1 200"
+    },
+    {
+     "t": "1 200 - (30 Sd)"
     }
    ],
    [
@@ -30782,10 +30805,16 @@
      "t": "10"
     },
     {
-     "t": "3 000 3 000 - (30 Sd)"
+     "t": "3 000"
     },
     {
-     "t": "2 300 2 300 - (30 Sd)"
+     "t": "3 000 - (30 Sd)"
+    },
+    {
+     "t": "2 300"
+    },
+    {
+     "t": "2 300 - (30 Sd)"
     }
    ],
    [
@@ -30793,10 +30822,16 @@
      "t": "15"
     },
     {
-     "t": "4 500 4 500 - (30 Sd)"
+     "t": "4 500"
     },
     {
-     "t": "3 500 3 500 - (30 Sd)"
+     "t": "4 500 - (30 Sd)"
+    },
+    {
+     "t": "3 500"
+    },
+    {
+     "t": "3 500 - (30 Sd)"
     }
    ],
    [
@@ -30804,10 +30839,16 @@
      "t": "20"
     },
     {
-     "t": "6 000 6 000 - (30 Sd)"
+     "t": "6 000"
     },
     {
-     "t": "4 500 4 500 - (30 Sd)"
+     "t": "6 000 - (30 Sd)"
+    },
+    {
+     "t": "4 500"
+    },
+    {
+     "t": "4 500 - (30 Sd)"
     }
    ],
    [
@@ -30815,10 +30856,16 @@
      "t": "22.5"
     },
     {
-     "t": "6 800 6 800 - (30 Sd)"
+     "t": "6 800"
     },
     {
-     "t": "5 100 5 100 - (25 Sd)"
+     "t": "6 800 - (30 Sd)"
+    },
+    {
+     "t": "5 100"
+    },
+    {
+     "t": "5 100 - (25 Sd)"
     }
    ],
    [
@@ -30826,10 +30873,16 @@
      "t": "30"
     },
     {
-     "t": "9 000 9 000 - (30 Sd)"
+     "t": "9 000"
     },
     {
-     "t": "7 100 7 100 - (25 Sd)"
+     "t": "9 000 - (30 Sd)"
+    },
+    {
+     "t": "7 100"
+    },
+    {
+     "t": "7 100 - (25 Sd)"
     }
    ],
    [
@@ -30837,10 +30890,16 @@
      "t": "40"
     },
     {
-     "t": "12 000 12 000 - (30 Sd)"
+     "t": "12 000"
     },
     {
-     "t": "9 400 9 400 - (30 Sd)"
+     "t": "12 000 - (30 Sd)"
+    },
+    {
+     "t": "9 400"
+    },
+    {
+     "t": "9 400 - (30 Sd)"
     }
    ],
    [
@@ -30848,10 +30907,16 @@
      "t": "45"
     },
     {
-     "t": "13 500 13 500 - (30 Sd)"
+     "t": "13 500"
     },
     {
-     "t": "10 600 10 600 - (25 Sd)"
+     "t": "13 500 - (30 Sd)"
+    },
+    {
+     "t": "10 600"
+    },
+    {
+     "t": "10 600 - (25 Sd)"
     }
    ],
    [
@@ -30859,10 +30924,16 @@
      "t": "50"
     },
     {
-     "t": "15 000 15 000 - (30 Sd)"
+     "t": "15 000"
     },
     {
-     "t": "11 800 11 800 - (30 Sd)"
+     "t": "15 000 - (30 Sd)"
+    },
+    {
+     "t": "11 800"
+    },
+    {
+     "t": "11 800 - (30 Sd)"
     }
    ],
    [
@@ -30870,10 +30941,16 @@
      "t": "60"
     },
     {
-     "t": "18 000 18 000 - (30 Sd)"
+     "t": "18 000"
     },
     {
-     "t": "14 200 14 200 - (25 Sd)"
+     "t": "18 000 - (30 Sd)"
+    },
+    {
+     "t": "14 200"
+    },
+    {
+     "t": "14 200 - (25 Sd)"
     }
    ],
    [
@@ -30881,10 +30958,16 @@
      "t": "75"
     },
     {
-     "t": "22 500 22 500 - (30 Sd)"
+     "t": "22 500"
     },
     {
-     "t": "17 700 17 700 - (25 Sd)"
+     "t": "22 500 - (30 Sd)"
+    },
+    {
+     "t": "17 700"
+    },
+    {
+     "t": "17 700 - (25 Sd)"
     }
    ],
    [
@@ -30892,10 +30975,16 @@
      "t": "90"
     },
     {
-     "t": "27 000 27 000 - (30 Sd)"
+     "t": "27 000"
     },
     {
-     "t": "21 300 21 300 - (25 Sd)"
+     "t": "27 000 - (30 Sd)"
+    },
+    {
+     "t": "21 300"
+    },
+    {
+     "t": "21 300 - (25 Sd)"
     }
    ]
   ],
@@ -30904,7 +30993,7 @@
    "a Se deben calcular las áreas de ocupación máxima permisible de las columnas 2 y 4. Por ejemplo, la ocupación máxima permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4500 menos (30 multiplicado por Sd).",
    "b El término Sd de las columnas 2 y 4 es la suma de los diámetros, en milímetros, de todos los cables multiconductores de 107 mm2 (4/0AWG) y más grandes instalados en la misma charola con cables más pequeños."
   ],
-  "quality": 0.467,
+  "quality": 1.0,
   "regions": [
    {
     "page": 231,
@@ -30913,7 +31002,8 @@
     "id": "392-22(a)",
     "article": 392
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "392-22(a)(5)",
@@ -38436,7 +38526,7 @@
   ],
   "page": 300,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -38602,7 +38692,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.55,
+  "quality": 1.0,
   "regions": [
    {
     "page": 300,
@@ -38611,7 +38701,8 @@
     "id": "430-7(b)",
     "article": 430
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "430-10(b)",
