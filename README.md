@@ -25,7 +25,8 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | `data/tablas_por_revisar.json` | Tablas cuya reconstrucción conviene contrastar |
 | `data/indice.json` | Índice plano `id → {título, artículo, página}` |
 | `data/validacion.json` | Métricas de cobertura del parseo |
-| `tools/` | Los cuatro scripts que generan todo lo anterior desde el PDF |
+| `REVISION-TABLAS.md` | Lista de trabajo de tablas por revisar, generada desde `data/tablas.json` y `data/grafo.json` |
+| `tools/` | Los scripts que generan todo lo anterior desde el PDF |
 | `site/` | Sitio estático (Astro) |
 
 ## Cifras
@@ -33,15 +34,15 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | | |
 |---|---|
 | Artículos | 151 |
-| Secciones | 2 896 |
-| Incisos | 7 084 |
-| Notas / Excepciones | 789 / 987 |
+| Secciones | 2 897 |
+| Incisos | 8 281 |
+| Notas / Excepciones | 779 / 981 |
 | Definiciones | 185 |
-| Referencias enlazadas | 4 942 |
+| Referencias enlazadas | 4 649 |
 | Referencias rotas | 0 |
-| Cobertura del texto | 99.99 % |
-| Tablas reconstruidas | 209 |
-| Tablas de alta confianza | 107 |
+| Cobertura del texto | 99.96 % |
+| Tablas reconstruidas | 218 |
+| Tablas de alta confianza | 154 |
 
 ## El identificador canónico
 
@@ -70,6 +71,7 @@ python3 tools/build_corpus.py  NOM-001-SEDE-2012.pdf data/
 python3 tools/build_graph.py   data/
 python3 tools/build_tables.py  NOM-001-SEDE-2012.pdf data/
 python3 tools/build_search.py  data/ site/public/data/
+python3 tools/build_revision.py data/ REVISION-TABLAS.md
 python3 tools/check_corpus.py  data/     # falla si el parseo se degrada
 
 cd site && npm install && npm run build
