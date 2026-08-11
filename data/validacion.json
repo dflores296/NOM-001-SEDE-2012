@@ -1,0 +1,27 @@
+{
+ "articulos": 151,
+ "articulos_esperados": 151,
+ "secciones": 2897,
+ "incisos": 7084,
+ "notas": 789,
+ "excepciones": 987,
+ "definiciones": 185,
+ "referencias_distintas": 2026,
+ "lineas_contenido": 33965,
+ "lineas_no_capturadas": 2,
+ "cobertura_pct": 99.99,
+ "lineas_no_capturadas_ejemplos": [
+  {
+   "articulo": 100,
+   "linea": "puede hacerse referencia a ellas en este Artículo."
+  },
+  {
+   "articulo": 366,
+   "linea": "366-58. Conductores aislados."
+  }
+ ],
+ "secciones_vacias": [
+  "340-6"
+ ],
+ "articulos_sin_secciones": []
+}
