@@ -1,15 +1,5 @@
 [
  {
-  "id": "630-31(a)(2)",
-  "quality": 0.429,
-  "cols": 3,
-  "rows": 3,
-  "pages": [
-   548
-  ],
-  "title": "Factores de multiplicación del régimen de trabajo para soldadoras por resistencia"
- },
- {
   "id": "392-22(a)",
   "quality": 0.467,
   "cols": 3,
@@ -40,16 +30,6 @@
   "title": "Letras de código de indicación para rotor bloqueado"
  },
  {
-  "id": "326-112",
-  "quality": 0.556,
-  "cols": 3,
-  "rows": 3,
-  "pages": [
-   177
-  ],
-  "title": "Espesor del papel separador"
- },
- {
   "id": "922-22(a)",
   "quality": 0.583,
   "cols": 4,
@@ -58,16 +38,6 @@
    715
   ],
   "title": "Separación de conductores eléctricos verticales y derivados con respecto a superficies, mensajeros y retenidas en la misma estructura, (centímetros) (1)"
- },
- {
-  "id": "310-15(b)(3)(c)",
-  "quality": 0.6,
-  "cols": 2,
-  "rows": 5,
-  "pages": [
-   136
-  ],
-  "title": "Ajustes a la temperatura ambiente para canalizaciones circulares expuestas a la luz solar en o por encima de azoteas"
  },
  {
   "id": "530-19(a)",
@@ -88,28 +58,6 @@
    245
   ],
   "title": "Factores de ajuste para más de tres conductores de fase en un cable o cordón flexible"
- },
- {
-  "id": "725-179",
-  "quality": 0.667,
-  "cols": 2,
-  "rows": 3,
-  "pages": [
-   640,
-   641
-  ],
-  "title": "Marcado de los cables"
- },
- {
-  "id": "922-93(b)(1)",
-  "quality": 0.667,
-  "cols": 3,
-  "rows": 2,
-  "pages": [
-   725,
-   726
-  ],
-  "title": "Porcentaje de tensión mecánica máxima del cable de acero a 0 °C sin carga de viento o hielo"
  },
  {
   "id": "355-30",
@@ -142,16 +90,6 @@
    712
   ],
   "title": "Separación mínima en cualquier dirección (milímetros)"
- },
- {
-  "id": "924-5",
-  "quality": 0.75,
-  "cols": 2,
-  "rows": 2,
-  "pages": [
-   739
-  ],
-  "title": "Niveles mínimos de iluminancia requeridos"
  },
  {
   "id": "400-4",

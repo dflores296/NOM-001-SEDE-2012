@@ -8036,7 +8036,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.6,
+  "quality": 1.0,
   "regions": [
    {
     "page": 136,
@@ -8045,7 +8045,8 @@
     "id": "310-15(b)(3)(c)",
     "article": 310
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "310-15(b)(7)",
@@ -28840,7 +28841,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.556,
+  "quality": 1.0,
   "regions": [
    {
     "page": 177,
@@ -28849,7 +28850,8 @@
     "id": "326-112",
     "article": 326
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "326-116",
@@ -50752,47 +50754,84 @@
    548
   ],
   "page": 548,
-  "cols": 3,
-  "header_rows": 3,
+  "cols": 10,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
     {
-     "t": ""
-    },
-    {
-     "t": "Ciclo de trabajo"
-    },
-    {
-     "t": ""
+     "t": "Ciclo de trabajo",
+     "cs": 10
     }
    ],
    [
     {
-     "t": "Por ciento 50"
+     "t": "Por ciento"
     },
     {
-     "t": "40 30 25 20 15 10"
+     "t": "50"
     },
     {
-     "t": "7.5 5 ó menos"
+     "t": "40"
+    },
+    {
+     "t": "30"
+    },
+    {
+     "t": "25"
+    },
+    {
+     "t": "20"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "7.5"
+    },
+    {
+     "t": "5 ó menos"
     }
    ],
    [
     {
-     "t": "Factor 0.71"
+     "t": "Factor"
     },
     {
-     "t": "0.63 0.55 0.50 0.45 0.39 0.32"
+     "t": "0.71"
     },
     {
-     "t": "0.27 0.22"
+     "t": "0.63"
+    },
+    {
+     "t": "0.55"
+    },
+    {
+     "t": "0.50"
+    },
+    {
+     "t": "0.45"
+    },
+    {
+     "t": "0.39"
+    },
+    {
+     "t": "0.32"
+    },
+    {
+     "t": "0.27"
+    },
+    {
+     "t": "0.22"
     }
    ]
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.429,
+  "quality": 1.0,
   "regions": [
    {
     "page": 548,
@@ -50801,7 +50840,8 @@
     "id": "630-31(a)(2)",
     "article": 630
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "645-5",
@@ -51757,7 +51797,7 @@
   ],
   "page": 640,
   "cols": 2,
-  "header_rows": 3,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -51770,24 +51810,80 @@
    ],
    [
     {
-     "t": "CL3P CL2P"
+     "t": "CL3P"
     },
     {
-     "t": "Cable Clase 3 en plenums Cable Clase 2 en plenums"
+     "t": "Cable Clase 3 en plenums"
     }
    ],
    [
     {
-     "t": "CL3R CL2R PLTC CL3 CL2 CL3X CL2X"
+     "t": "CL2P"
     },
     {
-     "t": "Cable Clase 3 en ductos verticales Cable Clase 2 en ductos verticales Cable de potencia limitada en charolas portacables Cable Clase 3 Cable Clase 2 Cable Clase 3 para propósitos limitados Cable Clase 2 para propósitos limitados"
+     "t": "Cable Clase 2 en plenums"
+    }
+   ],
+   [
+    {
+     "t": "CL3R"
+    },
+    {
+     "t": "Cable Clase 3 en ductos verticales"
+    }
+   ],
+   [
+    {
+     "t": "CL2R"
+    },
+    {
+     "t": "Cable Clase 2 en ductos verticales"
+    }
+   ],
+   [
+    {
+     "t": "PLTC"
+    },
+    {
+     "t": "Cable de potencia limitada en charolas portacables"
+    }
+   ],
+   [
+    {
+     "t": "CL3"
+    },
+    {
+     "t": "Cable Clase 3"
+    }
+   ],
+   [
+    {
+     "t": "CL2"
+    },
+    {
+     "t": "Cable Clase 2"
+    }
+   ],
+   [
+    {
+     "t": "CL3X"
+    },
+    {
+     "t": "Cable Clase 3 para propósitos limitados"
+    }
+   ],
+   [
+    {
+     "t": "CL2X"
+    },
+    {
+     "t": "Cable Clase 2 para propósitos limitados"
     }
    ]
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.667,
+  "quality": 1.0,
   "regions": [
    {
     "page": 640,
@@ -51803,7 +51899,8 @@
     "id": "725-179",
     "article": 725
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "760-154(d)",
@@ -59652,7 +59749,7 @@
   ],
   "page": 725,
   "cols": 3,
-  "header_rows": 2,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -59668,19 +59765,30 @@
    ],
    [
     {
-     "t": "Inicial sin carga Final sin carga"
+     "t": "Inicial sin carga"
     },
     {
-     "t": "25 25"
+     "t": "25"
     },
     {
-     "t": "20 20"
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "Final sin carga"
+    },
+    {
+     "t": "25"
+    },
+    {
+     "t": "20"
     }
    ]
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.667,
+  "quality": 1.0,
   "regions": [
    {
     "page": 725,
@@ -59696,7 +59804,8 @@
     "id": "922-93(b)(1)",
     "article": 922
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "922-93",
@@ -60839,7 +60948,7 @@
   ],
   "page": 739,
   "cols": 2,
-  "header_rows": 2,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -60852,16 +60961,80 @@
    ],
    [
     {
-     "t": "Frente de tableros de control con instrumentos, diversos e interruptores, etc. Parte posterior de los tableros o áreas dentro de tableros \"dúplex\" Pupitres de distribución o de trabajo Cuarto de baterías Pasillos y escaleras (medida al nivel del piso) Alumbrado de emergencia, en cualquier área Areas de maniobra Areas de tránsito de personal y vehículos General"
+     "t": "Frente de tableros de control con instrumentos, diversos e interruptores, etc."
     },
     {
-     "t": "270 55 270 110 55 11 160 110 22"
+     "t": "270"
+    }
+   ],
+   [
+    {
+     "t": "Parte posterior de los tableros o áreas dentro de tableros \"dúplex\""
+    },
+    {
+     "t": "55"
+    }
+   ],
+   [
+    {
+     "t": "Pupitres de distribución o de trabajo"
+    },
+    {
+     "t": "270"
+    }
+   ],
+   [
+    {
+     "t": "Cuarto de baterías"
+    },
+    {
+     "t": "110"
+    }
+   ],
+   [
+    {
+     "t": "Pasillos y escaleras (medida al nivel del piso)"
+    },
+    {
+     "t": "55"
+    }
+   ],
+   [
+    {
+     "t": "Alumbrado de emergencia, en cualquier área"
+    },
+    {
+     "t": "11"
+    }
+   ],
+   [
+    {
+     "t": "Areas de maniobra"
+    },
+    {
+     "t": "160"
+    }
+   ],
+   [
+    {
+     "t": "Areas de tránsito de personal y vehículos"
+    },
+    {
+     "t": "110"
+    }
+   ],
+   [
+    {
+     "t": "General"
+    },
+    {
+     "t": "22"
     }
    ]
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.75,
+  "quality": 1.0,
   "regions": [
    {
     "page": 739,
@@ -60870,7 +61043,8 @@
     "id": "924-5",
     "article": 924
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "1",
