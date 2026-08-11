@@ -38,9 +38,14 @@ def unaccent(s):
                    if unicodedata.category(c) != 'Mn')
 
 
+# Un título de tabla continúa con su nombre en mayúscula ("Tabla 1.- Porcentaje
+# de la sección..."). Una cita en prosa continúa en minúscula o con coma
+# ("Tabla 1 del Capítulo 10.", "Tabla 1, Capítulo 10."). Sin esa distinción, la
+# primera cita del texto se tomaba como el encabezado de la tabla y la tabla
+# real quedaba fuera: le pasaba a la Tabla 1, la más citada de toda la norma.
 RE_CAPTION = re.compile(
     r'^Tabla\s+(\d{3}-\d{1,3}(?:\s*\([a-z0-9]{1,4}\))*|\d{1,2}[A-Z]?(?:\([A-Z]\))?)'
-    r'\s*(?:\.-|\.|-|—)?\s*(.*)$')
+    r'\s*(?:\.-|\.|-|—)?\s+([0-9A-ZÁÉÍÓÚÑ].*)$')
 
 RE_NOTE = re.compile(r'^\s*(?:\*+|NOTA|Nota)\b')
 
@@ -297,6 +302,11 @@ def table_extent(doc, cap, caption_pages):
         vert, horz = page_rules(page)
         bands = contiguous(row_bands(vert, horz, ytop, ylimit))
         if not bands:
+            # Un título al pie de página deja su tabla en la siguiente. Si se
+            # abandona aquí, la tabla se pierde entera: le pasaba a 220-55.
+            if not out and pno + 1 <= doc.page_count and ytop > page.rect.y1 - 120:
+                pno, ytop = pno + 1, -1
+                continue
             break
         out.append((pno, bands))
 
