@@ -88,8 +88,12 @@ def main():
             tid = e['to'][6:]
             citas[tid] = citas.get(tid, 0) + 1
 
+    # Las contrastadas a ojo contra el PDF ya no son lista de trabajo.
+    verificadas = [t for t in tablas if t.get('verificada')]
     info = []
     for t in tablas:
+        if t.get('verificada'):
+            continue
         c = citas.get(t['id'], 0)
         q = t['quality']
         # Misma fórmula que revision.astro: citas * lo dudosa que es, más un
@@ -134,6 +138,12 @@ def main():
     ]
 
     out = [CABECERA.format(sitio=SITIO).rstrip()]
+    out.append(
+        f'**{len(verificadas)} de {len(tablas)} tablas ya se contrastaron celda '
+        f'por celda contra el PDF** y salen de esta lista; quedan registradas en '
+        f'`data/tablas_revisadas.json`, que se aplica encima de la '
+        f'reconstrucción automática.'
+    )
     for titulo, nota, items in secciones:
         out.append(titulo + '\n\n' + nota)
         out.append(tabla_md([(t, c) for t, c, _ in items]))
@@ -143,7 +153,8 @@ def main():
     out_path.write_text('\n\n'.join(out).rstrip() + '\n', encoding='utf-8')
     print(
         f'{out_path}: {len(criticas)} prioridad alta, {len(dudosas)} dudosas, '
-        f'{len(confianza)} verificación de control, {len(tablas)} tablas en total.'
+        f'{len(confianza)} verificación de control, {len(verificadas)} '
+        f'verificadas, {len(tablas)} tablas en total.'
     )
 
 

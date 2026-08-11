@@ -1,0 +1,66 @@
+{
+ "220-42": {
+  "verificada": "2026-08-11",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [{"t": "Tipo de inmueble"}, {"t": "Parte de la carga de alumbrado a la que se aplica el factor de demanda (voltamperes)"}, {"t": "Factor de demanda (%)"}],
+   [{"t": "Almacenes", "rs": 2}, {"t": "Primeros 12 500 o menos"}, {"t": "100"}],
+   [{"t": "A partir de 12 500"}, {"t": "50"}],
+   [{"t": "Hospitales*", "rs": 2}, {"t": "Primeros 50 000 o menos"}, {"t": "40"}],
+   [{"t": "A partir de 50 000"}, {"t": "20"}],
+   [{"t": "Hoteles y moteles, incluyendo los apartamentos sin cocina para los inquilinos*", "rs": 3}, {"t": "Primeros 20 000 o menos"}, {"t": "50"}],
+   [{"t": "De 20 001 a 100 000"}, {"t": "40"}],
+   [{"t": "A partir de 1 00000"}, {"t": "30"}],
+   [{"t": "Unidades de vivienda", "rs": 3}, {"t": "Primeros 3000 o menos"}, {"t": "100"}],
+   [{"t": "De 3001 a 120 000"}, {"t": "35"}],
+   [{"t": "A partir de 120 000"}, {"t": "25"}],
+   [{"t": "Todos los demás"}, {"t": "Voltamperes totales"}, {"t": "100"}]
+  ],
+  "notes": [
+   "* Los factores de demanda de esta Tabla no se deben aplicar a la carga calculada de los alimentadores que dan suministro a las zonas de hospitales, hoteles y moteles en las que es posible que se deba utilizar todo el alumbrado al mismo tiempo, como salas de operaciones, comedores y salas de baile."
+  ]
+ },
+ "392-22(b)(1)": {
+  "verificada": "2026-08-11",
+  "cols": 3,
+  "header_rows": 3,
+  "rows": [
+   [{"t": "Ancho interior de la charola portacables", "rs": 2}, {"t": "Area de ocupación máxima permisible para cables multiconductores Charolas portacables tipo escalera o fondo ventilado", "cs": 2}],
+   [{"t": "Columna 1 Aplicable sólo por 392-22(b)(1)(b)"}, {"t": "Columna 2a Aplicable sólo por 392-22(b)(1)(c)"}],
+   [{"t": "Centímetros"}, {"t": "mm2"}, {"t": "mm2"}],
+   [{"t": "5"}, {"t": "1 400"}, {"t": "1 400 - (28 Sd)"}],
+   [{"t": "10"}, {"t": "2 800"}, {"t": "2 800 - (28 Sd)"}],
+   [{"t": "15"}, {"t": "4 200"}, {"t": "4 200 - (28 Sd)"}],
+   [{"t": "20"}, {"t": "5 600"}, {"t": "5 600 - (28 Sd)"}],
+   [{"t": "22.5"}, {"t": "6 100"}, {"t": "6 100 - (28 Sd)"}],
+   [{"t": "30"}, {"t": "8 400"}, {"t": "8 400 - (28 Sd)"}],
+   [{"t": "40"}, {"t": "11 200"}, {"t": "11 200 - (28 Sd)"}],
+   [{"t": "45"}, {"t": "12 600"}, {"t": "12 600 - (28 Sd)"}],
+   [{"t": "50"}, {"t": "14 000"}, {"t": "14 000 - (28 Sd)"}],
+   [{"t": "60"}, {"t": "16 800"}, {"t": "16 800 - (28 Sd)"}],
+   [{"t": "75"}, {"t": "21 000"}, {"t": "21 000 - (28 Sd)"}],
+   [{"t": "90"}, {"t": "25 200"}, {"t": "25 200 - (28 Sd)"}]
+  ],
+  "notes": [
+   "a Se deben calcular las áreas de ocupación máxima permisible de las columnas 2 . Por ejemplo, la ocupación máxima permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4200 menos (28 multiplicado por Sd). El término Sd de las columnas 2 es la suma de los diámetros, en milímetros, de todos los cables individuales de 507 mm2 y más mayores instalados en la misma charola con cables más pequeños."
+  ]
+ },
+ "396-10(a)": {
+  "verificada": "2026-08-11",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [{"t": "Tipo de cable"}, {"t": "Sección"}, {"t": "Artículo"}],
+   [{"t": "Cable con aislamiento mineral y cubierta metálica"}, {"t": ""}, {"t": "332"}],
+   [{"t": "Cable con armadura metálica"}, {"t": ""}, {"t": "330"}],
+   [{"t": "Cable de media tensión"}, {"t": ""}, {"t": "328"}],
+   [{"t": "Cable de potencia limitada para charola portacables"}, {"t": "725-154(c) y 725-179(e)"}, {"t": ""}],
+   [{"t": "Cable multiconductor acometida"}, {"t": ""}, {"t": "338"}],
+   [{"t": "Cable multiconductor para alimentadores y circuitos derivados subterráneos"}, {"t": ""}, {"t": "340"}],
+   [{"t": "Cables de fuerza y control para charola portacables"}, {"t": ""}, {"t": "336"}],
+   [{"t": "Otros cables multiconductores, de control, de señalización o de fuerza ensamblados en fábrica que están identificados para ese uso"}, {"t": ""}, {"t": ""}]
+  ],
+  "notes": []
+ }
+}

@@ -858,6 +858,51 @@ def find_captions(doc):
     return caps
 
 
+# ------------------------------------------------- correcciones a mano
+#
+# La reconstrucción automática llegó hasta donde llega. El PDF no va a
+# cambiar —es el DOF del 29/11/2012— así que lo que vale al final no es el
+# algoritmo sino el JSON: una tabla contrastada a ojo contra el PDF y
+# corregida ya no necesita que ningún heurístico acierte con ella.
+#
+# El problema es que este script se ejecuta en cada publicación y
+# sobrescribe data/tablas.json, así que una corrección hecha directamente
+# sobre ese archivo se perdería en el siguiente despliegue sin avisar. De
+# ahí este archivo aparte: data/tablas_revisadas.json guarda la versión
+# corregida de cada tabla y se aplica ENCIMA de lo reconstruido, al final.
+#
+# Cada entrada lleva la fecha de revisión, y esa marca viaja a la tabla como
+# `verificada`: el sitio deja de pedir que se contraste con el PDF y la lista
+# de revisión la da por cerrada.
+
+CAMPOS_REVISABLES = ('title', 'cols', 'header_rows', 'intro', 'rows', 'notes',
+                     'informativa')
+
+
+def apply_revisiones(tables, path):
+    """Aplica data/tablas_revisadas.json sobre las tablas reconstruidas."""
+    if not os.path.exists(path):
+        return 0
+    with open(path, encoding='utf-8') as fh:
+        revs = json.load(fh)
+    porid = {t['id']: t for t in tables}
+    n = 0
+    for tid, rev in revs.items():
+        t = porid.get(tid)
+        if t is None:
+            raise SystemExit(
+                'tablas_revisadas.json: la tabla %r no existe en el PDF' % tid)
+        for k in CAMPOS_REVISABLES:
+            if k in rev:
+                t[k] = rev[k]
+        t['verificada'] = rev['verificada']
+        # La calidad es la estimación del reparto automático; si la tabla ya
+        # se contrastó a ojo, deja de ser una estimación.
+        t['quality'] = 1.0
+        n += 1
+    return n
+
+
 def main():
     import pymupdf
     pdf = sys.argv[1] if len(sys.argv) > 1 else 'NOM-001-SEDE-2012.pdf'
@@ -1121,6 +1166,8 @@ def main():
             'regions': regions,
         })
 
+    revisadas = apply_revisiones(tables, os.path.join(out, 'tablas_revisadas.json'))
+
     json.dump(tables, open(os.path.join(out, 'tablas.json'), 'w'),
               ensure_ascii=False, indent=1)
 
@@ -1132,7 +1179,8 @@ def main():
               ensure_ascii=False, indent=1)
 
     q = [t['quality'] for t in tables]
-    revisar = sorted((t for t in tables if t['quality'] < 0.80),
+    revisar = sorted((t for t in tables
+                      if t['quality'] < 0.80 and not t.get('verificada')),
                      key=lambda t: t['quality'])
     json.dump([{'id': t['id'], 'quality': t['quality'], 'cols': t['cols'],
                 'rows': len(t['rows']), 'pages': t['pages'], 'title': t['title']}
@@ -1156,6 +1204,8 @@ def main():
         sum(1 for t in tables if t['grid'] == 'rejilla'),
         sum(1 for t in tables if t['grid'] == 'huecos')))
     print('  con frase de intro : %d' % sum(1 for t in tables if t['intro']))
+    print()
+    print('  contrastadas a ojo  : %d  -> data/tablas_revisadas.json' % revisadas)
     print()
     print('Calidad de la separación en celdas:')
     print('  media              : %.3f' % (sum(q) / len(q)))

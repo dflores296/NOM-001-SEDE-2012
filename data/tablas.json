@@ -2651,7 +2651,8 @@
    ],
    [
     {
-     "t": "Almacenes"
+     "t": "Almacenes",
+     "rs": 2
     },
     {
      "t": "Primeros 12 500 o menos"
@@ -2662,9 +2663,6 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "A partir de 12 500"
     },
     {
@@ -2673,7 +2671,8 @@
    ],
    [
     {
-     "t": "Hospitales*"
+     "t": "Hospitales*",
+     "rs": 2
     },
     {
      "t": "Primeros 50 000 o menos"
@@ -2684,9 +2683,6 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "A partir de 50 000"
     },
     {
@@ -2695,7 +2691,8 @@
    ],
    [
     {
-     "t": "Hoteles y moteles, incluyendo los"
+     "t": "Hoteles y moteles, incluyendo los apartamentos sin cocina para los inquilinos*",
+     "rs": 3
     },
     {
      "t": "Primeros 20 000 o menos"
@@ -2706,9 +2703,6 @@
    ],
    [
     {
-     "t": "apartamentos sin cocina para los inquilinos*"
-    },
-    {
      "t": "De 20 001 a 100 000"
     },
     {
@@ -2716,9 +2710,6 @@
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "A partir de 1 00000"
     },
@@ -2728,7 +2719,8 @@
    ],
    [
     {
-     "t": "Unidades de vivienda"
+     "t": "Unidades de vivienda",
+     "rs": 3
     },
     {
      "t": "Primeros 3000 o menos"
@@ -2739,9 +2731,6 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "De 3001 a 120 000"
     },
     {
@@ -2749,9 +2738,6 @@
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "A partir de 120 000"
     },
@@ -2775,7 +2761,7 @@
   "notes": [
    "* Los factores de demanda de esta Tabla no se deben aplicar a la carga calculada de los alimentadores que dan suministro a las zonas de hospitales, hoteles y moteles en las que es posible que se deba utilizar todo el alumbrado al mismo tiempo, como salas de operaciones, comedores y salas de baile."
   ],
-  "quality": 0.71,
+  "quality": 1.0,
   "regions": [
    {
     "page": 47,
@@ -2784,7 +2770,8 @@
     "id": "220-42",
     "article": 220
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "220-44",
@@ -31146,7 +31133,7 @@
    233
   ],
   "page": 233,
-  "cols": 2,
+  "cols": 3,
   "header_rows": 3,
   "intro": "",
   "rows": [
@@ -31156,12 +31143,16 @@
      "rs": 2
     },
     {
-     "t": "Area de ocupación máxima permisible para cables multiconductores Charolas portacables tipo escalera o fondo ventilado"
+     "t": "Area de ocupación máxima permisible para cables multiconductores Charolas portacables tipo escalera o fondo ventilado",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "Columna 1 Columna 2a Aplicable sólo por 392-22(b)(1)(b) Aplicable sólo por 392-22(b)(1)(c)"
+     "t": "Columna 1 Aplicable sólo por 392-22(b)(1)(b)"
+    },
+    {
+     "t": "Columna 2a Aplicable sólo por 392-22(b)(1)(c)"
     }
    ],
    [
@@ -31169,7 +31160,10 @@
      "t": "Centímetros"
     },
     {
-     "t": "mm2 mm2"
+     "t": "mm2"
+    },
+    {
+     "t": "mm2"
     }
    ],
    [
@@ -31177,7 +31171,10 @@
      "t": "5"
     },
     {
-     "t": "1 400 1 400 - (28 Sd)"
+     "t": "1 400"
+    },
+    {
+     "t": "1 400 - (28 Sd)"
     }
    ],
    [
@@ -31185,7 +31182,10 @@
      "t": "10"
     },
     {
-     "t": "2 800 2 800 - (28 Sd)"
+     "t": "2 800"
+    },
+    {
+     "t": "2 800 - (28 Sd)"
     }
    ],
    [
@@ -31193,7 +31193,10 @@
      "t": "15"
     },
     {
-     "t": "4 200 4 200 - (28 Sd)"
+     "t": "4 200"
+    },
+    {
+     "t": "4 200 - (28 Sd)"
     }
    ],
    [
@@ -31201,7 +31204,10 @@
      "t": "20"
     },
     {
-     "t": "5 600 5 600 - (28 Sd)"
+     "t": "5 600"
+    },
+    {
+     "t": "5 600 - (28 Sd)"
     }
    ],
    [
@@ -31209,7 +31215,10 @@
      "t": "22.5"
     },
     {
-     "t": "6 100 6 100 - (28 Sd)"
+     "t": "6 100"
+    },
+    {
+     "t": "6 100 - (28 Sd)"
     }
    ],
    [
@@ -31217,7 +31226,10 @@
      "t": "30"
     },
     {
-     "t": "8 400 8 400 - (28 Sd)"
+     "t": "8 400"
+    },
+    {
+     "t": "8 400 - (28 Sd)"
     }
    ],
    [
@@ -31225,7 +31237,10 @@
      "t": "40"
     },
     {
-     "t": "11 200 11 200 - (28 Sd)"
+     "t": "11 200"
+    },
+    {
+     "t": "11 200 - (28 Sd)"
     }
    ],
    [
@@ -31233,7 +31248,10 @@
      "t": "45"
     },
     {
-     "t": "12 600 12 600 - (28 Sd)"
+     "t": "12 600"
+    },
+    {
+     "t": "12 600 - (28 Sd)"
     }
    ],
    [
@@ -31241,7 +31259,10 @@
      "t": "50"
     },
     {
-     "t": "14 000 14 000 - (28 Sd)"
+     "t": "14 000"
+    },
+    {
+     "t": "14 000 - (28 Sd)"
     }
    ],
    [
@@ -31249,7 +31270,10 @@
      "t": "60"
     },
     {
-     "t": "16 800 16 800 - (28 Sd)"
+     "t": "16 800"
+    },
+    {
+     "t": "16 800 - (28 Sd)"
     }
    ],
    [
@@ -31257,7 +31281,10 @@
      "t": "75"
     },
     {
-     "t": "21 000 21 000 - (28 Sd)"
+     "t": "21 000"
+    },
+    {
+     "t": "21 000 - (28 Sd)"
     }
    ],
    [
@@ -31265,16 +31292,18 @@
      "t": "90"
     },
     {
-     "t": "25 200 25 200 - (28 Sd)"
+     "t": "25 200"
+    },
+    {
+     "t": "25 200 - (28 Sd)"
     }
    ]
   ],
   "grid": "huecos",
   "notes": [
-   "a Se deben calcular las áreas de ocupación máxima permisible de las columnas 2 . Por ejemplo, la ocupación máxima permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4200 menos (28 multiplicado por Sd). El término Sd de las columnas 2 es la suma de los diámetros, en milímetros, de todos los cables individuales de 507 mm2 y más mayores instalados en la misma charola con cables más pequeños.",
-   "2) Charolas de canal ventilado. Cuando una charola portacables de canal ventilado de 5, 7.50, 10 o 15 centímetros de ancho contenga cables de un solo conductor, la suma de los diámetros de todos los cables de un solo conductor no debe exceder el ancho interior del canal. c) Número de cables de media tensión y tipo MC (más de 2000 volts) en charolas portacables. El número de cables de más de"
+   "a Se deben calcular las áreas de ocupación máxima permisible de las columnas 2 . Por ejemplo, la ocupación máxima permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4200 menos (28 multiplicado por Sd). El término Sd de las columnas 2 es la suma de los diámetros, en milímetros, de todos los cables individuales de 507 mm2 y más mayores instalados en la misma charola con cables más pequeños."
   ],
-  "quality": 0.586,
+  "quality": 1.0,
   "regions": [
    {
     "page": 233,
@@ -31283,7 +31312,8 @@
     "id": "392-22(b)(1)",
     "article": 392
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "392-60(a)",
@@ -31450,7 +31480,7 @@
    238
   ],
   "page": 238,
-  "cols": 2,
+  "cols": 3,
   "header_rows": 1,
   "intro": "",
   "rows": [
@@ -31459,12 +31489,18 @@
      "t": "Tipo de cable"
     },
     {
-     "t": "Sección Artículo"
+     "t": "Sección"
+    },
+    {
+     "t": "Artículo"
     }
    ],
    [
     {
      "t": "Cable con aislamiento mineral y cubierta metálica"
+    },
+    {
+     "t": ""
     },
     {
      "t": "332"
@@ -31475,12 +31511,18 @@
      "t": "Cable con armadura metálica"
     },
     {
+     "t": ""
+    },
+    {
      "t": "330"
     }
    ],
    [
     {
      "t": "Cable de media tensión"
+    },
+    {
+     "t": ""
     },
     {
      "t": "328"
@@ -31492,11 +31534,17 @@
     },
     {
      "t": "725-154(c) y 725-179(e)"
+    },
+    {
+     "t": ""
     }
    ],
    [
     {
      "t": "Cable multiconductor acometida"
+    },
+    {
+     "t": ""
     },
     {
      "t": "338"
@@ -31507,6 +31555,9 @@
      "t": "Cable multiconductor para alimentadores y circuitos derivados subterráneos"
     },
     {
+     "t": ""
+    },
+    {
      "t": "340"
     }
    ],
@@ -31515,14 +31566,21 @@
      "t": "Cables de fuerza y control para charola portacables"
     },
     {
-     "t": "336",
-     "rs": 2
+     "t": ""
+    },
+    {
+     "t": "336"
     }
    ],
    [
     {
-     "t": "Otros cables multiconductores, de control, de señalización o de fuerza ensamblados en fábrica que están identificados para ese uso",
-     "cs": 2
+     "t": "Otros cables multiconductores, de control, de señalización o de fuerza ensamblados en fábrica que están identificados para ese uso"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
     }
    ]
   ],
@@ -31537,7 +31595,8 @@
     "id": "396-10(a)",
     "article": 396
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "400-4",
