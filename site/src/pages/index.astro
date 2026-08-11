@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { articles, chapters, corpus, grafo, definiciones } from '../lib/nom.js';
+import { articles, chapters, corpus, grafo, definiciones, tablas } from '../lib/nom.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const nSec = articles.reduce((n, a) => n + a.sections.length, 0);
@@ -28,6 +28,14 @@ const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8
       Reproducción del texto publicado en el DOF el 29 de noviembre de 2012, con fines de consulta.{' '}
       <b>No es una edición oficial</b> y no sustituye al documento del Diario Oficial de la
       Federación ni al criterio de una Unidad de Verificación.
+    </div>
+
+    <div class="aviso aviso-fuerte">
+      <b>Las tablas están en revisión.</b> El texto de los artículos se extrajo con una
+      cobertura verificada del 99.99 %, pero las {tablas.length} tablas se reconstruyeron
+      automáticamente desde el PDF y eso no es exacto. Contrástalas con el original antes de
+      usar un valor, y <a href={`${base}/tablas`}>repórtanos cualquier diferencia</a>: el
+      proyecto mejora con quien lo usa en obra.
     </div>
 
     <div class="chap">

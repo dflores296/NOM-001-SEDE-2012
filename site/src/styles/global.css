@@ -327,6 +327,11 @@ figure.tabla:hover .anchor { opacity: 1; }
 .card span { display: block; font-size: 0.86rem; line-height: 1.35; }
 .card em { font-style: normal; font-size: 0.72rem; color: var(--text-faint); }
 
+.aviso-fuerte {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+}
+
 .aviso {
   background: var(--warn-bg); border: 1px solid var(--warn-br);
   border-radius: var(--radius); padding: 0.7rem 0.9rem;
