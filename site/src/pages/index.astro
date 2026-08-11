@@ -34,7 +34,7 @@ const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8
       <b>Las tablas están en revisión.</b> El texto de los artículos se extrajo con una
       cobertura verificada del 99.99 %, pero las {tablas.length} tablas se reconstruyeron
       automáticamente desde el PDF y eso no es exacto. Contrástalas con el original antes de
-      usar un valor, y <a href={`${base}/tablas`}>repórtanos cualquier diferencia</a>: el
+      usar un valor, y <a href={`${base}/tablas/`}>repórtanos cualquier diferencia</a>: el
       proyecto mejora con quien lo usa en obra.
     </div>
 
@@ -64,7 +64,7 @@ const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8
             {arts.map((a) => (
               /* El Artículo 100 no tiene secciones numeradas: es el glosario,
                  y se consulta desde su propia página. */
-              <a class="card" href={a.num === 100 ? `${base}/glosario` : `${base}/art/${a.num}`}>
+              <a class="card" href={a.num === 100 ? `${base}/glosario/` : `${base}/art/${a.num}`}>
                 <b>{a.num}</b>
                 <span>{a.title}</span>
                 <em>

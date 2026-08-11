@@ -46,7 +46,7 @@ const confianza = info
   .sort((a, b) => b.c - a.c);
 
 const href = (t) =>
-  t.article ? `${base}/art/${t.article}#${tablaSlug(t.id)}` : `${base}/tablas#${tablaSlug(t.id)}`;
+  t.article ? `${base}/art/${t.article}#${tablaSlug(t.id)}` : `${base}/tablas/#${tablaSlug(t.id)}`;
 ---
 
 <Base
