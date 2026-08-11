@@ -463,16 +463,23 @@ def best_edges(words, bands, vert=None):
 
     Ningún método gana siempre: hay tablas con rejilla completa dibujada y
     otras que solo trazan el borde exterior, donde únicamente sirven los
-    huecos. En vez de adivinar por tabla, se construyen ambas y se compara el
-    resultado; a igualdad de calidad gana la que produce más columnas, porque
-    una tabla infra-segmentada esconde datos dentro de una celda.
+    huecos. En vez de adivinar por tabla, se construyen todas y se comparan.
+
+    El desempate mira primero cuántas columnas quedan SIN UN SOLO DATO. Premiar
+    sin más al reparto con más columnas resolvía la infra-segmentación pero
+    abría el problema contrario: en la Tabla 220-56, que tiene dos columnas,
+    los huecos proponían cuatro —dos de ellas enteramente vacías— y ganaban por
+    ser más. Una columna vacía no es información, es un corte inventado.
     """
     best, best_key = None, None
     for e in column_candidates(words, bands, vert):
         g = build_grid(words, bands, e)
         if not g:
             continue
-        key = (round(grid_score(g), 3), len(e) - 1)
+        ncols = len(e) - 1
+        vacias = sum(1 for c in range(ncols)
+                     if not any(row[c].strip() for row in g if c < len(row)))
+        key = (round(grid_score(g), 3), -vacias, ncols)
         if best_key is None or key > best_key:
             best, best_key = e, key
     return best or []

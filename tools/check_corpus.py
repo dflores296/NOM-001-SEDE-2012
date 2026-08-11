@@ -111,6 +111,29 @@ def main():
             fails.append('%d filas de tabla mal formadas: %s'
                          % (len(malformadas), malformadas[:6]))
 
+        # Una columna sin un solo dato en toda la tabla es un corte inventado,
+        # no una columna del original. Aparecían cuando el reparto elegido era
+        # el que más columnas producía: la 220-56, de dos columnas, llegó a
+        # publicarse con cuatro y dos de ellas vacías.
+        vacias = []
+        for t in tabs:
+            n = t['cols']
+            ocupada = [False] * n
+            for row in t['rows']:
+                col = 0
+                for c in row:
+                    cs = c.get('cs', 1)
+                    if c['t'].strip():
+                        for x in range(col, min(col + cs, n)):
+                            ocupada[x] = True
+                    col += cs
+            faltan = [i for i, o in enumerate(ocupada) if not o]
+            if faltan:
+                vacias.append('%s col %s' % (t['id'], faltan))
+        if vacias:
+            fails.append('%d tablas con columnas vacías: %s'
+                         % (len(vacias), vacias[:6]))
+
     if fails:
         print('VERIFICACIÓN FALLIDA')
         for f in fails:
