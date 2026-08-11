@@ -22,7 +22,7 @@ MIN = {
 # Tablas: umbrales aparte, porque su reconstrucción es aproximada por
 # naturaleza y conviene vigilar que no se degrade, no que sea perfecta.
 MIN_TABLAS = 200
-MIN_TABLAS_FIABLES = 100
+MIN_TABLAS_FIABLES = 130
 
 
 def walk(n):
@@ -80,6 +80,36 @@ def main():
         sin_grid = [t['id'] for t in tabs if t['cols'] < 2]
         if len(sin_grid) > 12:
             fails.append('%d tablas quedaron en una sola columna' % len(sin_grid))
+
+        # Cada fila debe cubrir exactamente las columnas de la tabla, contando
+        # los colspan y los rowspan que bajan de las filas de arriba. Una fila
+        # que se pasa o que deja un hueco desalinea el resto de la tabla en el
+        # navegador, y eso en una tabla de ampacidades es un valor mal leído.
+        malformadas = []
+        for t in tabs:
+            n = t['cols']
+            pend = [0] * n
+            for i, row in enumerate(t['rows']):
+                occ = [p > 0 for p in pend]
+                col = 0
+                for c in row:
+                    while col < n and occ[col]:
+                        col += 1
+                    cs, rs = c.get('cs', 1), c.get('rs', 1)
+                    if col + cs > n:
+                        malformadas.append('%s fila %d' % (t['id'], i))
+                        break
+                    for x in range(col, col + cs):
+                        occ[x] = True
+                        if rs > 1:
+                            pend[x] = rs
+                    col += cs
+                if sum(occ) != n:
+                    malformadas.append('%s fila %d' % (t['id'], i))
+                pend = [max(0, p - 1) for p in pend]
+        if malformadas:
+            fails.append('%d filas de tabla mal formadas: %s'
+                         % (len(malformadas), malformadas[:6]))
 
     if fails:
         print('VERIFICACIÓN FALLIDA')

@@ -136,7 +136,18 @@ rectángulos vectoriales:
   eje x y busca franjas sin tinta. Ninguno gana siempre: hay tablas con rejilla
   completa y otras que solo trazan el borde exterior. Se puntúa cada resultado
   —una celda con varios números sueltos delata que la separación falló— y gana
-  el que separa mejor.
+  el que separa mejor. De 218 tablas, 157 traen rejilla dibujada.
+- **Celdas combinadas**: el PDF fusiona celdas en el encabezado para que se
+  entienda —«Rango de temperatura del conductor» cubre las tres columnas de
+  60/75/90 °C, y «Temperatura ambiente (°C)» ocupa dos filas—. Esa jerarquía
+  también está en el trazado: una celda se extiende hasta donde hay línea
+  dibujada. Cada celda se publica como `{t, cs, rs}` (texto, colspan, rowspan)
+  y el sitio la reproduce con las mismas combinaciones que el original. Sin
+  esto, los títulos de columna no decían a qué se referían y aparecían
+  columnas vacías donde el PDF solo tenía una celda ancha.
+- **Frase de entrada**: cuando la primera fila es una sola celda a todo lo
+  ancho con una frase («Para temperaturas ambiente distintas de 30 °C,
+  multiplique...»), no es un encabezado: se publica aparte, en `intro`.
 - **Continuación entre páginas**: las tablas largas siguen en la página
   siguiente sin repetir el título, así que se sigue la rejilla; y terminan donde
   empieza el título de la siguiente tabla, esté donde esté en la página.
