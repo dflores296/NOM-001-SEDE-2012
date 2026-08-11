@@ -1,0 +1,157 @@
+---
+import Base from '../layouts/Base.astro';
+import { tablas, grafo, tablaSlug } from '../lib/nom.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Cuántas veces cita la norma a cada tabla: una tabla dudosa que nadie
+// consulta importa mucho menos que una fiable de la que cuelga medio capítulo.
+const citas = {};
+for (const e of grafo.edges) {
+  if (e.to.startsWith('tabla:')) {
+    const id = e.to.slice(6);
+    citas[id] = (citas[id] || 0) + 1;
+  }
+}
+
+const NUM = /(?<!\S)[-+]?\d[\d.,]*(?!\S)/g;
+
+function señales(t) {
+  const s = [];
+  if (t.cols < 2) s.push('quedó en una sola columna');
+  const fus = t.rows.reduce(
+    (n, r) => n + r.filter((c) => (c.match(NUM) || []).length > 1).length, 0);
+  if (fus) s.push(`${fus} celdas con varios valores juntos`);
+  const vac = Array.from({ length: t.cols }, (_, i) => i)
+    .filter((i) => t.rows.filter((r) => r[i] && r[i].trim()).length <= 1).length;
+  if (vac) s.push(`${vac} columna${vac > 1 ? 's' : ''} casi vacía${vac > 1 ? 's' : ''}`);
+  if (t.header_rows === 0) s.push('sin encabezado detectado');
+  if (t.pages.length > 1) s.push(`cruza ${t.pages.length} páginas`);
+  return s;
+}
+
+const info = tablas.map((t) => ({
+  t,
+  c: citas[t.id] || 0,
+  s: señales(t),
+  prio: (citas[t.id] || 0) * (1 - t.quality) + (1 - t.quality) + (t.cols < 2 ? 3 : 0),
+}));
+
+const criticas = info.filter((x) => x.prio >= 1.0).sort((a, b) => b.prio - a.prio);
+const dudosas = info
+  .filter((x) => x.prio < 1.0 && x.t.quality < 0.8)
+  .sort((a, b) => b.c - a.c || a.t.quality - b.t.quality);
+const confianza = info
+  .filter((x) => x.t.quality >= 0.95 && x.c >= 4)
+  .sort((a, b) => b.c - a.c);
+
+const href = (t) =>
+  t.article ? `${base}/art/${t.article}#${tablaSlug(t.id)}` : `${base}/tablas#${tablaSlug(t.id)}`;
+---
+
+<Base
+  title="Qué revisar — NOM-001-SEDE-2012"
+  desc="Lista priorizada de tablas por contrastar contra el PDF del DOF."
+>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Qué revisar</h1>
+      <p>
+        Las tablas se reconstruyeron automáticamente desde el PDF y ese proceso no es exacto.
+        Esta lista está ordenada por <b>impacto por duda</b>: cuántas veces cita la norma a
+        cada tabla, multiplicado por lo insegura que quedó su reconstrucción. Empezar por
+        arriba es lo que más corrige por minuto invertido.
+      </p>
+      <p style="margin-top:.7rem">
+        Cada renglón dice qué buscar y en qué página del PDF. Al abrir la tabla encontrarás un
+        enlace para reportar la diferencia con el número y la página ya rellenados.
+      </p>
+      <div class="stats">
+        <div class="stat"><b>{criticas.length}</b><span>Prioridad alta</span></div>
+        <div class="stat"><b>{dudosas.length}</b><span>Dudosas</span></div>
+        <div class="stat"><b>{confianza.length}</b><span>Verificación de control</span></div>
+        <div class="stat"><b>{tablas.length}</b><span>Tablas en total</span></div>
+      </div>
+    </div>
+
+    <div class="chap">
+      <h2>1 · Prioridad alta</h2>
+      <p class="rev-nota">
+        Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a muchos
+        cálculos.
+      </p>
+      <ol class="rev">
+        {criticas.map(({ t, c, s }) => (
+          <li>
+            <a href={href(t)}><b class="mono">Tabla {t.id}</b></a>
+            <span class="rev-t">{t.title}</span>
+            <span class="rev-m">
+              pág. {t.pages.join(', ')} del PDF · {c} {c === 1 ? 'cita' : 'citas'} ·
+              calidad {t.quality.toFixed(2)} · {t.rows.length}×{t.cols}
+            </span>
+            {s.length > 0 && <span class="rev-s">Qué buscar: {s.join(' · ')}</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="chap">
+      <h2>2 · Dudosas</h2>
+      <p class="rev-nota">
+        Bajo el umbral de confianza, pero poco citadas. Menos urgentes.
+      </p>
+      <ol class="rev">
+        {dudosas.map(({ t, c, s }) => (
+          <li>
+            <a href={href(t)}><b class="mono">Tabla {t.id}</b></a>
+            <span class="rev-t">{t.title}</span>
+            <span class="rev-m">
+              pág. {t.pages.join(', ')} · {c} {c === 1 ? 'cita' : 'citas'} ·
+              calidad {t.quality.toFixed(2)} · {t.rows.length}×{t.cols}
+            </span>
+            {s.length > 0 && <span class="rev-s">Qué buscar: {s.join(' · ')}</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="chap">
+      <h2>3 · Verificación de control</h2>
+      <p class="rev-nota">
+        Estas salieron limpias y muy citadas. Conviene mirarlas justamente por eso: una tabla
+        equivocada que <em>parece</em> correcta es más peligrosa que una marcada como dudosa.
+        Basta comprobar dos o tres renglones de cada una.
+      </p>
+      <ol class="rev">
+        {confianza.map(({ t, c }) => (
+          <li>
+            <a href={href(t)}><b class="mono">Tabla {t.id}</b></a>
+            <span class="rev-t">{t.title}</span>
+            <span class="rev-m">
+              pág. {t.pages.join(', ')} · {c} citas · calidad {t.quality.toFixed(2)} ·
+              {' '}{t.rows.length}×{t.cols}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="chap">
+      <h2>Qué mirar en cada tabla</h2>
+      <ul class="rev-check">
+        <li><b>Número de columnas.</b> Si el PDF tiene 8 y aquí ves 5, se fusionaron.</li>
+        <li><b>Celdas con varios valores.</b> Un <code>55 65 75</code> junto en una celda
+          significa que la separación falló en esa fila.</li>
+        <li><b>Encabezados de dos niveles.</b> Las tablas con COBRE / ALUMINIO arriba y
+          60/75/90 °C abajo son las más frágiles: revisa que cada número quede bajo su
+          material y su temperatura.</li>
+        <li><b>Primera y última fila.</b> Es donde se cuela el título de la tabla siguiente o
+          una nota al pie convertida en fila.</li>
+        <li><b>Tablas que cruzan páginas.</b> Comprueba que no falten filas en la costura ni
+          se repita el encabezado a media tabla.</li>
+        <li><b>Notas al pie y asteriscos.</b> Hoy pueden aparecer como una fila más en vez de
+          como nota.</li>
+      </ul>
+    </div>
+  </div>
+</Base>

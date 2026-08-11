@@ -50,6 +50,16 @@
   "title": "Ampacidad de tres conductores de cobre, individualmente aislados, en ductos eléctricos subterráneos"
  },
  {
+  "id": "310-60(c)(78)",
+  "quality": 0.226,
+  "cols": 2,
+  "rows": 48,
+  "pages": [
+   149
+  ],
+  "title": "Ampacidad de tres conductores de aluminio, individualmente aislados, en ductos eléctricos subterráneos"
+ },
+ {
   "id": "310-60(c)(71)",
   "quality": 0.278,
   "cols": 2,
@@ -162,6 +172,16 @@
   "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de tipo escalera, fondo"
  },
  {
+  "id": "690-7",
+  "quality": 0.581,
+  "cols": 3,
+  "rows": 15,
+  "pages": [
+   592
+  ],
+  "title": "Factores de corrección de la tensión para"
+ },
+ {
   "id": "922-22(a)",
   "quality": 0.583,
   "cols": 4,
@@ -169,7 +189,7 @@
   "pages": [
    715
   ],
-  "title": "o en 922-15."
+  "title": "Separación de conductores eléctricos verticales y derivados con respecto a superficies, mensajeros y"
  },
  {
   "id": "922-12(a)(1)",
@@ -199,7 +219,7 @@
   "pages": [
    233
   ],
-  "title": "para el ancho correspondiente de la charola."
+  "title": "Area de ocupación permisible para cables de un solo conductor en charolas portacables de tipo escalera,"
  },
  {
   "id": "922-15(a)",
@@ -252,6 +272,16 @@
    232
   ],
   "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal sólido para"
+ },
+ {
+  "id": "220-55",
+  "quality": 0.656,
+  "cols": 4,
+  "rows": 32,
+  "pages": [
+   49
+  ],
+  "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas"
  },
  {
   "id": "625-29(d)(2)",

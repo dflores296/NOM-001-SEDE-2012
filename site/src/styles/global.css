@@ -351,3 +351,31 @@ footer.bot a { color: var(--text-dim); }
 .pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border); font-size: 0.86rem; }
 .pager a { max-width: 46%; }
 .pager .nx { text-align: right; margin-left: auto; }
+
+/* ------------------------------------------------------ lista de revisión */
+.rev-nota { color: var(--text-dim); font-size: 0.88rem; margin: -0.2rem 0 0.9rem; }
+ol.rev { list-style: none; counter-reset: r; margin: 0; padding: 0; }
+ol.rev li {
+  counter-increment: r;
+  display: grid; grid-template-columns: auto 1fr; gap: 0.1rem 0.6rem;
+  padding: 0.6rem 0.7rem 0.6rem 2.4rem; position: relative;
+  border: 1px solid var(--border-soft); border-radius: var(--radius);
+  margin-bottom: 0.4rem; background: var(--panel);
+}
+ol.rev li::before {
+  content: counter(r); position: absolute; left: 0.7rem; top: 0.6rem;
+  font-family: var(--mono); font-size: 0.78rem; color: var(--text-faint);
+}
+ol.rev li > a { grid-column: 1; }
+ol.rev .rev-t { grid-column: 2; font-size: 0.9rem; }
+ol.rev .rev-m { grid-column: 1 / -1; font-size: 0.76rem; color: var(--text-faint); }
+ol.rev .rev-s { grid-column: 1 / -1; font-size: 0.79rem; color: var(--accent); }
+@media (max-width: 620px) {
+  ol.rev li { grid-template-columns: 1fr; }
+  ol.rev .rev-t { grid-column: 1; }
+}
+ul.rev-check { padding-left: 1.1rem; }
+ul.rev-check li { margin: 0.45rem 0; font-size: 0.92rem; }
+ul.rev-check code {
+  background: var(--bg-soft); padding: 0 0.25em; border-radius: 3px; font-size: 0.9em;
+}
