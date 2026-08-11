@@ -20,11 +20,11 @@ function señales(t) {
   const s = [];
   if (t.cols < 2) s.push('quedó en una sola columna');
   const fus = t.rows.reduce(
-    (n, r) => n + r.filter((c) => (c.match(NUM) || []).length > 1).length, 0);
+    (n, r) => n + r.filter((c) => (c.t.match(NUM) || []).length > 1).length, 0);
   if (fus) s.push(`${fus} celdas con varios valores juntos`);
-  const vac = Array.from({ length: t.cols }, (_, i) => i)
-    .filter((i) => t.rows.filter((r) => r[i] && r[i].trim()).length <= 1).length;
-  if (vac) s.push(`${vac} columna${vac > 1 ? 's' : ''} casi vacía${vac > 1 ? 's' : ''}`);
+  // Sin verticales dibujadas no hay de dónde sacar las fusiones y las
+  // columnas salen de los huecos entre palabras, que es lo menos fiable.
+  if (t.grid === 'huecos') s.push('sin rejilla dibujada en el PDF');
   if (t.header_rows === 0) s.push('sin encabezado detectado');
   if (t.pages.length > 1) s.push(`cruza ${t.pages.length} páginas`);
   return s;

@@ -122,6 +122,229 @@ def edges_from_rules(vert, bands):
     return keep if len(keep) >= 3 else []
 
 
+# ------------------------------------------------- rejilla con fusiones
+#
+# El encabezado del PDF combina celdas para que se entienda: "Rango de
+# temperatura del conductor" cubre las tres columnas de 60/75/90 °C, y
+# "Temperatura ambiente (°C)" ocupa dos filas. Una rejilla plana pierde esa
+# jerarquía y deja títulos de columna que no dicen a qué se refieren, además
+# de columnas fantasma donde el original solo tenía una celda ancha.
+#
+# Las fusiones están en el trazado: una celda se extiende hasta donde el PDF
+# dibujó una línea. Reconstruirlas es leer las líneas, no adivinar.
+
+COVER_V = 0.60   # fracción del alto de la fila que debe cubrir una vertical
+COVER_H = 0.70   # fracción del ancho de la celda que debe cubrir una horizontal
+
+
+def rule_edges(vert, bands):
+    """Fronteras de columna: TODAS las verticales de la región, agrupadas.
+
+    A diferencia de edges_from_rules, aquí no se descartan los segmentos
+    cortos del encabezado: con el modelo de celdas ya no parten las filas de
+    datos, porque cada fila decide por su cuenta dónde tiene borde.
+    """
+    if not bands:
+        return []
+    top, bot = bands[0][0], bands[-1][1]
+    xs = [x for x, a, b in vert if min(b, bot) - max(a, top) > 2]
+    return cluster(xs, 3.0)
+
+
+def has_vline(vert, x, ya, yb):
+    cov = sum(min(b, yb) - max(a, ya) for xx, a, b in vert
+              if abs(xx - x) <= 3 and min(b, yb) > max(a, ya))
+    return cov >= COVER_V * (yb - ya)
+
+
+def has_hline(horz, y, xa, xb):
+    """¿Hay horizontal a la altura y que cubra casi todo el tramo [xa, xb]?"""
+    segs = sorted((max(a, xa), min(b, xb)) for yy, a, b in horz
+                  if abs(yy - y) <= 3 and min(b, xb) > max(a, xa))
+    cov, cur = 0.0, None
+    for a, b in segs:
+        if cur and a <= cur[1]:
+            cur = (cur[0], max(cur[1], b))
+        else:
+            if cur:
+                cov += cur[1] - cur[0]
+            cur = (a, b)
+    if cur:
+        cov += cur[1] - cur[0]
+    return cov >= COVER_H * (xb - xa)
+
+
+def vline_breaks(vert, x, y):
+    """¿La vertical de x se interrumpe a la altura y?
+
+    Varias tablas no dibujan horizontales entre filas de datos: cada celda
+    traza su propio borde izquierdo, segmentado fila por fila. El corte de
+    ese borde es entonces la única marca de que ahí termina la fila.
+    """
+    return any(abs(xx - x) <= 3 and (abs(a - y) <= 2.5 or abs(b - y) <= 2.5)
+               for xx, a, b in vert)
+
+
+def words_in(words, xa, xb, ya, yb):
+    return [w for w in words
+            if xa <= (w[0] + w[2]) / 2 < xb and ya - 1 <= (w[1] + w[3]) / 2 <= yb + 1]
+
+
+def crosses(words, x, ya, yb):
+    """¿Alguna palabra de la banda se monta sobre la frontera x?"""
+    return any(w[0] < x - 0.5 < w[2] and ya - 1 <= (w[1] + w[3]) / 2 <= yb + 1
+               for w in words)
+
+
+def cell_rects(words, bands, edges, vert, horz):
+    """Rectángulos maximales de la rejilla -> [(fila, col, rowspan, colspan)]."""
+    nR, nC = len(bands), len(edges) - 1
+    taken = [[False] * nC for _ in range(nR)]
+    out = []
+    for i in range(nR):
+        ya, yb = bands[i]
+        for j in range(nC):
+            if taken[i][j]:
+                continue
+            # Ancho: avanza mientras no haya vertical que separe Y además haya
+            # prueba de que la celda cruza esa frontera —una palabra montada
+            # encima, o nada a la derecha que separar—. Sin esa segunda
+            # condición, las tablas que no dibujan todas sus verticales
+            # fundirían cada fila de datos en una sola celda.
+            k = j + 1
+            while (k < nC and not has_vline(vert, edges[k], ya, yb)
+                   and (crosses(words, edges[k], ya, yb)
+                        or not words_in(words, edges[k], edges[k + 1], ya, yb))):
+                k += 1
+            # Alto: baja mientras no haya NINGUNA señal de frontera. Se exigen
+            # las tres: ni horizontal dibujada, ni corte del borde izquierdo,
+            # ni texto propio abajo. Una celda de datos en blanco no basta
+            # para fusionarla con la de arriba.
+            r = i + 1
+            while (r < nR
+                   and not has_hline(horz, bands[r - 1][1], edges[j], edges[k])
+                   and not vline_breaks(vert, edges[j], bands[r - 1][1])
+                   and not words_in(words, edges[j], edges[k], *bands[r])):
+                r += 1
+            for a in range(i, r):
+                for b in range(j, k):
+                    taken[a][b] = True
+            out.append((i, j, r - i, k - j))
+    return out
+
+
+def build_cells(words, bands, edges, vert, horz):
+    """Filas de celdas {t, cs, rs} a partir del trazado de la página."""
+    if len(edges) < 3 or not bands:
+        return []
+    # Las bandas sin una sola palabra se descartan ANTES de medir las
+    # fusiones: si se quitaran después, los rowspan que las cruzan quedarían
+    # contando filas que ya no existen.
+    bands = [b for b in bands if words_in(words, edges[0] - 1e6, edges[-1] + 1e6, *b)]
+    if not bands:
+        return []
+    rects = cell_rects(words, bands, edges, vert, horz)
+    owner = {}
+    for i, j, rs, cs in rects:
+        for a in range(i, i + rs):
+            for b in range(j, j + cs):
+                owner[(a, b)] = (i, j)
+
+    txt = defaultdict(list)
+    for w in words:
+        cy, cx = (w[1] + w[3]) / 2, (w[0] + w[2]) / 2
+        bi = next((i for i, b in enumerate(bands) if b[0] - 1 <= cy <= b[1] + 1), None)
+        # Las fronteras solo llegan hasta donde el PDF dibujó verticales. Lo
+        # que sobresalga por fuera cae en la columna del extremo: si se
+        # descartara, la tabla publicada perdería texto en silencio.
+        cj = next((c for c in range(len(edges) - 1)
+                   if edges[c] <= cx < edges[c + 1]), None)
+        if cj is None and bi is not None:
+            cj = 0 if cx < edges[0] else len(edges) - 2
+        if bi is None or cj is None:
+            continue
+        key = owner.get((bi, cj))
+        if key:
+            txt[key].append((round(w[1], 1), w[0], w[4]))
+
+    rows = defaultdict(list)
+    for i, j, rs, cs in rects:
+        cell = {'t': ' '.join(p[2] for p in sorted(txt.get((i, j), []))).strip()}
+        if cs > 1:
+            cell['cs'] = cs
+        if rs > 1:
+            cell['rs'] = rs
+        rows[i].append((j, cell))
+    out = []
+    for i in sorted(rows):
+        out.append([c for _, c in sorted(rows[i], key=lambda z: z[0])])
+    return [r for r in out if r]
+
+
+def flat_cells(grid):
+    """Convierte una rejilla plana de cadenas en celdas sin fusiones."""
+    return [[{'t': c} for c in row] for row in grid]
+
+
+def cell_text(rows):
+    """Vista plana del texto, para puntuar y para heurísticas."""
+    return [[c['t'] for c in row] for row in rows]
+
+
+def row_width(row):
+    return sum(c.get('cs', 1) for c in row)
+
+
+def layout(rows, ncols):
+    """Coloca las celdas como lo haría el navegador: [(fila, celda, col, cs)].
+
+    Hay que llevar la cuenta de los rowspan que vienen de arriba. Una fila
+    bajo una celda de dos filas empieza en la segunda columna, no en la
+    primera, y sin esta cuenta se le añadiría una columna de relleno que en
+    la tabla no existe.
+    """
+    pend = [0] * ncols
+    out = []
+    for row in rows:
+        occ = [p > 0 for p in pend]
+        col = 0
+        fila = []
+        for c in row:
+            while col < ncols and occ[col]:
+                col += 1
+            cs = c.get('cs', 1)
+            for x in range(col, min(ncols, col + cs)):
+                occ[x] = True
+                if c.get('rs', 1) > 1:
+                    pend[x] = c['rs']
+            fila.append((c, col, cs))
+            col += cs
+        out.append((fila, sum(1 for o in occ if o)))
+        pend = [max(0, p - 1) for p in pend]
+    return out
+
+
+def drop_columns(rows, ncols, dead):
+    """Elimina columnas enteras respetando las fusiones."""
+    dead = set(dead)
+    out = []
+    for fila, _ in layout(rows, ncols):
+        new = []
+        for c, col, cs in fila:
+            quita = sum(1 for x in range(col, col + cs) if x in dead)
+            if quita >= cs:
+                continue
+            c = dict(c)
+            if cs - quita > 1:
+                c['cs'] = cs - quita
+            else:
+                c.pop('cs', None)
+            new.append(c)
+        if new:
+            out.append(new)
+    return out, ncols - len(dead)
+
+
 RE_ATOM = re.compile(r'(?<!\S)[-+]?\d[\d.,]*(?!\S)')
 
 
@@ -246,10 +469,13 @@ def build_grid(words, bands, edges):
             if not (b[0] - 1 <= cy <= b[1] + 1):
                 continue
             cx = (w[0] + w[2]) / 2
-            for c in range(len(edges) - 1):
-                if edges[c] <= cx < edges[c + 1]:
-                    cells[c] = (cells[c] + ' ' + w[4]).strip()
-                    break
+            # Lo que sobresale por fuera de las fronteras cae en la columna
+            # del extremo, en vez de descartarse: un encabezado más ancho que
+            # el cuerpo perdía palabras en silencio.
+            c = next((c for c in range(len(edges) - 1)
+                      if edges[c] <= cx < edges[c + 1]),
+                     0 if cx < edges[0] else len(edges) - 2)
+            cells[c] = (cells[c] + ' ' + w[4]).strip()
         if any(c.strip() for c in cells):
             grid.append(cells)
     return grid
@@ -389,63 +615,114 @@ def main():
         regions = [{'page': pno, 'y0': (cap['y'] - 4 if pno == cap['page'] else bands[0][0] - 2),
                     'y1': bands[-1][1] + 2, 'id': cap['id']}
                    for pno, bands in extent]
-        grid, npages, per_page = [], [], []
+        rows, npages, per_page = [], [], []
         for pno, bands in extent:
             page = doc[pno - 1]
             ws = clean_words(page, bands[0][0] - 1)
             if not ws:
                 continue
-            vert, _ = page_rules(page)
+            vert, horz = page_rules(page)
             edges = best_edges(ws, bands, vert)
             if len(edges) < 2:
                 continue
-            per_page.append((pno, bands, ws, edges))
+            per_page.append((pno, bands, ws, edges, vert, horz))
 
         if not per_page:
             continue
 
-        # Todas las páginas de una tabla comparten el mismo trazado, así que
-        # las fronteras de la página mejor reconstruida sirven para las demás.
-        # Se elige por CALIDAD, no por número de filas: si se votara por filas,
-        # la página más larga impondría su resultado aunque se haya extraído
-        # mal, que es lo que pasaba con la tabla de ampacidades 310-15(b)(16).
-        ref = max(per_page,
-                  key=lambda z: (round(grid_score(build_grid(z[2], z[1], z[3])), 3),
-                                 len(z[3]) - 1))[3]
+        # Dos modelos por página: la rejilla dibujada, que trae las fusiones, y
+        # la separación por huecos, que es lo único que hay cuando la tabla no
+        # dibuja verticales. Gana la rejilla salvo que separe peor las celdas:
+        # el criterio anterior —a igual calidad, más columnas gana— era el que
+        # inventaba columnas vacías donde el original tenía una celda ancha.
+        def modelo(z):
+            pno, bands, ws, edges, vert, horz = z
+            re_ = rule_edges(vert, bands)
+            cel = build_cells(ws, bands, re_, vert, horz)
+            pla = flat_cells(build_grid(ws, bands, edges))
+            if cel and grid_score(cell_text(cel)) >= grid_score(cell_text(pla)) - 0.02:
+                return cel, len(re_) - 1, 'rejilla'
+            return pla, len(edges) - 1, 'huecos'
 
-        for pno, bands, ws, edges in per_page:
-            own = build_grid(ws, bands, edges)
-            alt = build_grid(ws, bands, ref)
-            g = alt if (grid_score(alt), len(ref)) > (grid_score(own), len(edges)) else own
-            if g:
-                grid += g
+        modelos = {z[0]: modelo(z) for z in per_page}
+
+        # Todas las páginas de una tabla comparten el mismo trazado, así que
+        # el ancho de la página mejor reconstruida manda sobre las demás.
+        #
+        # Se descarta primero lo que quedó mal separado y de lo que sobrevive
+        # gana la página MÁS ANCHA. Ordenar solo por calidad no sirve: la
+        # página del título trae únicamente el encabezado, no tiene un solo
+        # número que pueda quedar mal repartido y por eso puntúa 1.0 siempre;
+        # si mandara ella, la tabla entera se publicaría con las columnas del
+        # encabezado y las filas de datos se fundirían dentro. Le pasaba a la
+        # 922-41 y a la 110-34(a).
+        # Gana la más ancha, y a igual ancho la mejor separada. Una página mal
+        # extraída no gana por ancha: cuando la separación falla lo que hace es
+        # FUNDIR celdas, así que queda más angosta, no más ancha.
+        puntos = {z[0]: round(grid_score(cell_text(modelos[z[0]][0])), 3)
+                  for z in per_page}
+        best_page = max(per_page, key=lambda z: (modelos[z[0]][1], puntos[z[0]]))
+        ncols = modelos[best_page[0]][1]
+        ref_edges = rule_edges(best_page[4], best_page[1]) \
+            if modelos[best_page[0]][2] == 'rejilla' else best_page[3]
+        origen = modelos[best_page[0]][2]
+
+        for pno, bands, ws, edges, vert, horz in per_page:
+            cel, n, _ = modelos[pno]
+            if n != ncols:
+                # La página va con otro ancho: se reconstruye con las fronteras
+                # de la página de referencia, que en el PDF son las mismas.
+                alt = (build_cells(ws, bands, ref_edges, vert, horz)
+                       if origen == 'rejilla' else flat_cells(build_grid(ws, bands, ref_edges)))
+                if alt and max(row_width(r) for r in alt) == ncols:
+                    cel = alt
+            if cel:
+                rows += cel
                 npages.append(pno)
         notes = []
-        if not grid:
+        if not rows:
             continue
 
         # notas al pie: filas de una sola celda que empiezan con * o NOTA
         body = []
-        for row in grid:
-            filled = [c for c in row if c.strip()]
-            if len(filled) == 1 and RE_NOTE.match(filled[0]):
-                notes.append(filled[0].strip())
+        for row in rows:
+            filled = [c for c in row if c['t'].strip()]
+            if len(filled) == 1 and RE_NOTE.match(filled[0]['t']):
+                notes.append(filled[0]['t'].strip())
             else:
                 body.append(row)
         if not body:
             continue
 
-        ncols = max(len(r) for r in body)
-        body = [r + [''] * (ncols - len(r)) for r in body]
+        ncols = max(row_width(r) for r in body)
+        # una fila más angosta que la tabla se completa por la derecha
+        for idx, (fila, ocupa) in enumerate(layout(body, ncols)):
+            if ocupa < ncols:
+                falta = ncols - ocupa
+                body[idx].append({'t': '', 'cs': falta} if falta > 1 else {'t': ''})
 
         # Las líneas de la rejilla a veces trazan separadores donde no hay
         # datos (bordes dobles, subdivisiones del encabezado), lo que deja
         # columnas enteras vacías. Se eliminan para que la tabla publicada
         # tenga las columnas que realmente tiene.
-        used = [i for i in range(ncols) if any(r[i].strip() for r in body)]
-        if used and len(used) < ncols:
-            body = [[r[i] for i in used] for r in body]
-            ncols = len(used)
+        ocupadas = set()
+        for fila, _ in layout(body, ncols):
+            for c, col, cs in fila:
+                if c['t'].strip():
+                    ocupadas.update(range(col, col + cs))
+        muertas = [i for i in range(ncols) if i not in ocupadas]
+        if muertas and len(muertas) < ncols:
+            body, ncols = drop_columns(body, ncols, muertas)
+
+        # La primera fila fusionada a todo lo ancho no es un encabezado: es la
+        # frase que introduce la tabla ("Para temperaturas ambiente distintas
+        # de 30 °C, multiplique..."). Repartida en celdas quedaba como títulos
+        # de columna sin sentido, así que sube a subtítulo de la tabla.
+        intro = ''
+        while (len(body) > 1 and len(body[0]) == 1
+               and body[0][0].get('cs', 1) == ncols
+               and len(body[0][0]['t'].split()) >= 6):
+            intro = (intro + ' ' + body.pop(0)[0]['t']).strip()
 
         art = None
         m = re.match(r'^(\d{3})-', cap['id'])
@@ -455,7 +732,7 @@ def main():
         # el encabezado son las filas iniciales sin ningún número suelto
         head = 0
         for r in body[:4]:
-            cells = [c for c in r if c.strip()]
+            cells = [c['t'] for c in r if c['t'].strip()]
             if cells and not any(re.fullmatch(r'[\d.,/\-]+', c.strip()) for c in cells):
                 head += 1
             else:
@@ -469,12 +746,16 @@ def main():
             'page': cap['page'],
             'cols': ncols,
             'header_rows': head,
+            'intro': intro,
+            # Cada celda es {t: texto, cs: colspan, rs: rowspan}; cs y rs se
+            # omiten cuando valen 1, que es la mayoría.
             'rows': body,
+            'grid': origen,
             'notes': notes,
             # Calidad estimada de la separación en celdas. Se publica junto a
             # la tabla para poder avisar al lector cuando conviene contrastar
             # con el PDF, en vez de presentar todo con la misma confianza.
-            'quality': round(grid_score(body), 3),
+            'quality': round(grid_score(cell_text(body)), 3),
             'regions': regions,
         })
 
@@ -505,6 +786,14 @@ def main():
         min(t['cols'] for t in tables),
         sorted(t['cols'] for t in tables)[len(tables) // 2],
         max(t['cols'] for t in tables)))
+    print()
+    fus = sum(1 for t in tables for r in t['rows'] for c in r
+              if c.get('cs', 1) > 1 or c.get('rs', 1) > 1)
+    print('  celdas fusionadas  : %d' % fus)
+    print('  con rejilla dibujada: %d · por huecos: %d' % (
+        sum(1 for t in tables if t['grid'] == 'rejilla'),
+        sum(1 for t in tables if t['grid'] == 'huecos')))
+    print('  con frase de intro : %d' % sum(1 for t in tables if t['intro']))
     print()
     print('Calidad de la separación en celdas:')
     print('  media              : %.3f' % (sum(q) / len(q)))
