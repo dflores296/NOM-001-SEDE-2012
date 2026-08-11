@@ -16,7 +16,7 @@ con varios valores juntos) · **rejilla** de dónde salieron las columnas: `dibu
 son las líneas del PDF, `huecos` son los espacios entre palabras, que es mucho menos
 fiable y no recupera celdas combinadas.
 
-## 1 · Prioridad alta (8)
+## 1 · Prioridad alta (9)
 
 Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a muchos cálculos.
 
@@ -24,33 +24,35 @@ Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a mucho
 |---|---|---|---|---|---|---|---|
 | [ ] | `400-4` | Cordones y cables flexibles (Ver 400-4) | 241, 242, 243, 244 | 22 | 0.75 | dibujada | 132×14 |
 | [ ] | `250-66` | Conductor del electrodo de puesta a tierra para sistemas de corriente… | 98 | 9 | 0.79 | dibujada | 10×8 |
-| [ ] | `392-22(a)` | Area de ocupación permisible para cables multiconductores en charolas… | 231 | 2 | 0.58 | **huecos** | 16×3 |
+| [ ] | `392-22(a)` | Area de ocupación permisible para cables multiconductores en charolas… | 231 | 2 | 0.47 | **huecos** | 16×3 |
+| [ ] | `220-42` | Factores de demanda de cargas de alumbrado | 47 | 4 | 0.71 | dibujada | 12×3 |
 | [ ] | `922-22(a)` | Separación de conductores eléctricos verticales y derivados con respec… | 715 | 2 | 0.58 | dibujada | 3×4 |
-| [ ] | `220-42` | Factores de demanda de cargas de alumbrado | 47 | 4 | 0.75 | **huecos** | 12×5 |
-| [ ] | `392-22(b)(1)` | Area de ocupación permisible para cables de un solo conductor en charo… | 233 | 2 | 0.59 | **huecos** | 15×4 |
+| [ ] | `392-22(b)(1)` | Area de ocupación permisible para cables de un solo conductor en charo… | 233 | 2 | 0.59 | **huecos** | 15×2 |
 | [ ] | `630-31(a)(2)` | Factores de multiplicación del régimen de trabajo para soldadoras por… | 548 | 1 | 0.43 | **huecos** | 3×3 |
+| [ ] | `400-5(a)(3)` | Factores de ajuste para más de tres conductores de fase en un cable o… | 245 | 2 | 0.64 | dibujada | 7×2 |
 | [ ] | `402-3` | Cables para artefactos | 248, 249 | 4 | 0.79 | dibujada | 34×9 |
 
-## 2 · Dudosas (14)
+## 2 · Dudosas (15)
 
 Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 
 | | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|
-| [ ] | `400-5(a)(3)` | Factores de ajuste para más de tres conductores de fase en un cable o… | 245 | 2 | 0.67 | **huecos** | 7×3 |
 | [ ] | `922-15(a)` | Separación mínima en cualquier dirección (milímetros) | 711, 712 | 2 | 0.73 | **huecos** | 22×6 |
+| [ ] | `514-3(b)(2)` | Areas clasificadas, equipo eléctrico para surtidores de combustible | 412 | 2 | 0.77 | dibujada | 5×3 |
 | [ ] | `210-24` | Resumen de requisitos de los circuitos derivados | 38 | 2 | 0.79 | **huecos** | 11×6 |
+| [ ] | `690-7` | Factores de corrección de la tensión para | 592 | 1 | 0.54 | **huecos** | 14×2 |
+| [ ] | `430-7(b)` | Letras de código de indicación para rotor bloqueado | 300 | 1 | 0.55 | dibujada | 20×2 |
 | [ ] | `326-112` | Espesor del papel separador | 177 | 1 | 0.56 | dibujada | 3×3 |
-| [ ] | `430-7(b)` | Letras de código de indicación para rotor bloqueado | 300 | 1 | 0.57 | **huecos** | 20×4 |
-| [ ] | `690-7` | Factores de corrección de la tensión para | 592 | 1 | 0.58 | **huecos** | 15×3 |
-| [ ] | `310-15(b)(3)(c)` | Ajustes a la temperatura ambiente para canalizaciones circulares expue… | 136 | 1 | 0.64 | **huecos** | 5×3 |
-| [ ] | `530-19(a)` | Factores de demanda para el alumbrado del escenario | 465 | 1 | 0.67 | **huecos** | 5×4 |
+| [ ] | `310-15(b)(3)(c)` | Ajustes a la temperatura ambiente para canalizaciones circulares expue… | 136 | 1 | 0.60 | dibujada | 5×2 |
+| [ ] | `530-19(a)` | Factores de demanda para el alumbrado del escenario | 465 | 1 | 0.60 | dibujada | 5×2 |
 | [ ] | `725-179` | Marcado de los cables | 640, 641 | 1 | 0.67 | dibujada | 3×2 |
 | [ ] | `355-30` | Soportes para tubo conduit de resina termofija reforzada (RTRC) | 201, 202 | 1 | 0.68 | **huecos** | 7×4 |
+| [ ] | `924-5` | Niveles mínimos de iluminancia requeridos | 739 | 1 | 0.75 | dibujada | 2×2 |
 | [ ] | `551-73(a)` | Factores de demanda para los conductores de entrada de acometida y ali… | 493 | 1 | 0.78 | dibujada | 8×4 |
 | [ ] | `550-31` | Factores de demanda para conductores de entrada de acometida y aliment… | 481 | 1 | 0.79 | dibujada | 14×2 |
 | [ ] | `922-93(b)(1)` | Porcentaje de tensión mecánica máxima del cable de acero a 0 °C sin ca… | 725, 726 | 0 | 0.67 | dibujada | 2×3 |
-| [ ] | `430-12(c)(2)` | Volúmenes utilizables (Terminales fijos) | 303 | 0 | 0.75 | **huecos** | 5×4 |
+| [ ] | `430-12(c)(2)` | Volúmenes utilizables (Terminales fijos) | 303 | 0 | 0.71 | dibujada | 5×3 |
 
 ## 3 · Verificación de control (13)
 

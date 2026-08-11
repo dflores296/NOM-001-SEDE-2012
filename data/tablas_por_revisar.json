@@ -10,28 +10,8 @@
   "title": "Factores de multiplicación del régimen de trabajo para soldadoras por resistencia"
  },
  {
-  "id": "326-112",
-  "quality": 0.556,
-  "cols": 3,
-  "rows": 3,
-  "pages": [
-   177
-  ],
-  "title": "Espesor del papel separador"
- },
- {
-  "id": "430-7(b)",
-  "quality": 0.571,
-  "cols": 4,
-  "rows": 20,
-  "pages": [
-   300
-  ],
-  "title": "Letras de código de indicación para rotor bloqueado"
- },
- {
   "id": "392-22(a)",
-  "quality": 0.581,
+  "quality": 0.467,
   "cols": 3,
   "rows": 16,
   "pages": [
@@ -41,13 +21,33 @@
  },
  {
   "id": "690-7",
-  "quality": 0.581,
-  "cols": 3,
-  "rows": 15,
+  "quality": 0.536,
+  "cols": 2,
+  "rows": 14,
   "pages": [
    592
   ],
   "title": "Factores de corrección de la tensión para"
+ },
+ {
+  "id": "430-7(b)",
+  "quality": 0.55,
+  "cols": 2,
+  "rows": 20,
+  "pages": [
+   300
+  ],
+  "title": "Letras de código de indicación para rotor bloqueado"
+ },
+ {
+  "id": "326-112",
+  "quality": 0.556,
+  "cols": 3,
+  "rows": 3,
+  "pages": [
+   177
+  ],
+  "title": "Espesor del papel separador"
  },
  {
   "id": "922-22(a)",
@@ -62,7 +62,7 @@
  {
   "id": "392-22(b)(1)",
   "quality": 0.586,
-  "cols": 4,
+  "cols": 2,
   "rows": 15,
   "pages": [
    233
@@ -71,8 +71,8 @@
  },
  {
   "id": "310-15(b)(3)(c)",
-  "quality": 0.636,
-  "cols": 3,
+  "quality": 0.6,
+  "cols": 2,
   "rows": 5,
   "pages": [
    136
@@ -80,24 +80,24 @@
   "title": "Ajustes a la temperatura ambiente para canalizaciones circulares expuestas a la luz solar en o por encima de azoteas"
  },
  {
-  "id": "400-5(a)(3)",
-  "quality": 0.667,
-  "cols": 3,
-  "rows": 7,
-  "pages": [
-   245
-  ],
-  "title": "Factores de ajuste para más de tres conductores de fase en un cable o cordón flexible"
- },
- {
   "id": "530-19(a)",
-  "quality": 0.667,
-  "cols": 4,
+  "quality": 0.6,
+  "cols": 2,
   "rows": 5,
   "pages": [
    465
   ],
   "title": "Factores de demanda para el alumbrado del escenario"
+ },
+ {
+  "id": "400-5(a)(3)",
+  "quality": 0.643,
+  "cols": 2,
+  "rows": 7,
+  "pages": [
+   245
+  ],
+  "title": "Factores de ajuste para más de tres conductores de fase en un cable o cordón flexible"
  },
  {
   "id": "725-179",
@@ -133,6 +133,26 @@
   "title": "Soportes para tubo conduit de resina termofija reforzada (RTRC)"
  },
  {
+  "id": "220-42",
+  "quality": 0.71,
+  "cols": 3,
+  "rows": 12,
+  "pages": [
+   47
+  ],
+  "title": "Factores de demanda de cargas de alumbrado"
+ },
+ {
+  "id": "430-12(c)(2)",
+  "quality": 0.714,
+  "cols": 3,
+  "rows": 5,
+  "pages": [
+   303
+  ],
+  "title": "Volúmenes utilizables (Terminales fijos)"
+ },
+ {
   "id": "922-15(a)",
   "quality": 0.726,
   "cols": 6,
@@ -144,24 +164,14 @@
   "title": "Separación mínima en cualquier dirección (milímetros)"
  },
  {
-  "id": "220-42",
+  "id": "924-5",
   "quality": 0.75,
-  "cols": 5,
-  "rows": 12,
+  "cols": 2,
+  "rows": 2,
   "pages": [
-   47
+   739
   ],
-  "title": "Factores de demanda de cargas de alumbrado"
- },
- {
-  "id": "430-12(c)(2)",
-  "quality": 0.75,
-  "cols": 4,
-  "rows": 5,
-  "pages": [
-   303
-  ],
-  "title": "Volúmenes utilizables (Terminales fijos)"
+  "title": "Niveles mínimos de iluminancia requeridos"
  },
  {
   "id": "400-4",
@@ -175,6 +185,16 @@
    244
   ],
   "title": "Cordones y cables flexibles (Ver 400-4)"
+ },
+ {
+  "id": "514-3(b)(2)",
+  "quality": 0.769,
+  "cols": 3,
+  "rows": 5,
+  "pages": [
+   412
+  ],
+  "title": "Areas clasificadas, equipo eléctrico para surtidores de combustible"
  },
  {
   "id": "551-73(a)",

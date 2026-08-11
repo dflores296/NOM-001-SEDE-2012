@@ -1728,133 +1728,68 @@
    37
   ],
   "page": 37,
-  "cols": 5,
+  "cols": 2,
   "header_rows": 2,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Capacidad"
+     "t": "Capacidad nominal del circuito"
     },
     {
-     "t": "nominal del"
-    },
-    {
-     "t": "circuito Capacidad"
-    },
-    {
-     "t": "nominal del"
-    },
-    {
-     "t": "contacto"
+     "t": "Capacidad nominal del contacto"
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Amperes"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Amperes",
+     "cs": 2
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "15"
     },
     {
-     "t": ""
-    },
-    {
      "t": "No más de 15"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "20"
     },
     {
-     "t": ""
-    },
-    {
      "t": "15 ó 20"
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "30"
     },
     {
-     "t": ""
-    },
-    {
      "t": "30"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "40"
     },
     {
-     "t": ""
-    },
-    {
      "t": "40 ó 50"
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "50"
     },
     {
-     "t": ""
-    },
-    {
      "t": "50"
-    },
-    {
-     "t": ""
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.875,
+  "quality": 0.846,
   "regions": [
    {
     "page": 37,
@@ -2117,14 +2052,11 @@
    45
   ],
   "page": 44,
-  "cols": 4,
+  "cols": 3,
   "header_rows": 1,
   "intro": "",
   "rows": [
    [
-    {
-     "t": ""
-    },
     {
      "t": "Cálculo"
     },
@@ -2137,8 +2069,10 @@
    ],
    [
     {
-     "t": "Alimentadores de tableros de distribución en escenarios - teatros 520",
-     "cs": 3
+     "t": "Alimentadores de tableros de distribución en escenarios - teatros"
+    },
+    {
+     "t": "520"
     },
     {
      "t": "520-27"
@@ -2146,8 +2080,10 @@
    ],
    [
     {
-     "t": "Bases de cálculo - estacionamientos de vehículos recreativos 551",
-     "cs": 3
+     "t": "Bases de cálculo - estacionamientos de vehículos recreativos"
+    },
+    {
+     "t": "551"
     },
     {
      "t": "551-73 (a)"
@@ -2155,8 +2091,10 @@
    ],
    [
     {
-     "t": "Caída de tensión (cálculo obligatorio) - bombas contra incendios 695",
-     "cs": 3
+     "t": "Caída de tensión (cálculo obligatorio) - bombas contra incendios"
+    },
+    {
+     "t": "695"
     },
     {
      "t": "695-7"
@@ -2164,8 +2102,10 @@
    ],
    [
     {
-     "t": "Caída de tensión (cálculo obligatorio) - equipo eléctrico sensible 647",
-     "cs": 3
+     "t": "Caída de tensión (cálculo obligatorio) - equipo eléctrico sensible"
+    },
+    {
+     "t": "647"
     },
     {
      "t": "647-4 (d)"
@@ -2173,8 +2113,7 @@
    ],
    [
     {
-     "t": "Cálculos de circuitos derivados de más de 600 volts",
-     "cs": 2
+     "t": "Cálculos de circuitos derivados de más de 600 volts"
     },
     {
      "t": "210"
@@ -2185,8 +2124,7 @@
    ],
    [
     {
-     "t": "Cálculos de la ampacidad- soldadores eléctricos",
-     "cs": 2
+     "t": "Cálculos de la ampacidad- soldadores eléctricos"
     },
     {
      "t": "630"
@@ -2197,8 +2135,10 @@
    ],
    [
     {
-     "t": "Cálculos de la carga del alimentador y de acometida – marinas y muelles 555",
-     "cs": 3
+     "t": "Cálculos de la carga del alimentador y de acometida – marinas y muelles"
+    },
+    {
+     "t": "555"
     },
     {
      "t": "555-12"
@@ -2206,8 +2146,7 @@
    ],
    [
     {
-     "t": "Cálculos del alimentador de más de 600 volts",
-     "cs": 2
+     "t": "Cálculos del alimentador de más de 600 volts"
     },
     {
      "t": "215"
@@ -2218,10 +2157,7 @@
    ],
    [
     {
-     "t": "Calentadores de"
-    },
-    {
-     "t": "agua tipo almacenamiento"
+     "t": "Calentadores de agua tipo almacenamiento"
     },
     {
      "t": "422"
@@ -2232,11 +2168,10 @@
    ],
    [
     {
-     "t": "Capacidad nominal y tamaño - los conductores de grúas",
-     "cs": 2
+     "t": "Capacidad nominal y tamaño - los conductores de grúas y montacargas"
     },
     {
-     "t": "y montacargas 610"
+     "t": "610"
     },
     {
      "t": "610-14"
@@ -2251,20 +2186,14 @@
     },
     {
      "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Carga total para prefabricadas y"
+     "t": "Carga total para determinar el suministro de energía- casas móviles, casas prefabricadas y estacionamientos de casas móviles"
     },
     {
-     "t": "determinar el suministro de energía- casas estacionamientos de casas móviles"
-    },
-    {
-     "t": "móviles, casas 550"
+     "t": "550"
     },
     {
      "t": "550-18 (b)"
@@ -2272,10 +2201,7 @@
    ],
    [
     {
-     "t": "Conductores -"
-    },
-    {
-     "t": "convertidores de fase"
+     "t": "Conductores - convertidores de fase"
     },
     {
      "t": "455"
@@ -2286,13 +2212,10 @@
    ],
    [
     {
-     "t": "Dimensionado estudios de"
+     "t": "Dimensionado de los conductores del alimentador para escenarios en estudios de televisión - Estudios de cine, de televisión y lugares similares"
     },
     {
-     "t": "de los conductores del alimentador para televisión - Estudios de cine, de televisión y"
-    },
-    {
-     "t": "escenarios en lugares similares 530"
+     "t": "530"
     },
     {
      "t": "530-19"
@@ -2300,13 +2223,10 @@
    ],
    [
     {
-     "t": "Dimensionado del para tuberías y"
+     "t": "Dimensionado del circuito derivado - equipos eléctricos fijos de calefacción para tuberías y recipientes"
     },
     {
-     "t": "circuito derivado - equipos eléctricos fijos recipientes"
-    },
-    {
-     "t": "de calefacción 427"
+     "t": "427"
     },
     {
      "t": "427-4"
@@ -2314,13 +2234,10 @@
    ],
    [
     {
-     "t": "Dimensionado calefacción de"
+     "t": "Dimensionado del circuito derivado - equipos eléctricos fijos para calefacción de ambiente"
     },
     {
-     "t": "del circuito derivado - equipos eléctricos ambiente"
-    },
-    {
-     "t": "fijos para 424"
+     "t": "424"
     },
     {
      "t": "424-3"
@@ -2328,13 +2245,10 @@
    ],
    [
     {
-     "t": "Dimensionado del deshielo y fusión"
+     "t": "Dimensionado del circuito derivado -equipos eléctricos fijos exteriores para deshielo y fusión de nieve"
     },
     {
-     "t": "circuito derivado -equipos eléctricos fijos de nieve"
-    },
-    {
-     "t": "exteriores para 426"
+     "t": "426"
     },
     {
      "t": "426-4"
@@ -2342,13 +2256,10 @@
    ],
    [
     {
-     "t": "Dimensionado del"
+     "t": "Dimensionado del circuito y corriente - sistemas solares fotovoltaicos"
     },
     {
-     "t": "circuito y corriente - sistemas solares"
-    },
-    {
-     "t": "fotovoltaicos 690"
+     "t": "690"
     },
     {
      "t": "690-8"
@@ -2356,13 +2267,10 @@
    ],
    [
     {
-     "t": "Dimensionado del"
+     "t": "Dimensionado del conductor de alimentación - maquinaria industrial"
     },
     {
-     "t": "conductor de alimentación - maquinaria"
-    },
-    {
-     "t": "industrial 670"
+     "t": "670"
     },
     {
      "t": "670-4 (a)"
@@ -2370,13 +2278,10 @@
    ],
    [
     {
-     "t": "Dimensionado acondicionado y"
+     "t": "Dimensionado del conductor del circuito derivado - equipos de aire acondicionado y de refrigeración"
     },
     {
-     "t": "del conductor del circuito derivado - de refrigeración"
-    },
-    {
-     "t": "equipos de aire 440"
+     "t": "440"
     },
     {
      "t": "Parte D"
@@ -2384,10 +2289,7 @@
    ],
    [
     {
-     "t": "Dimensionado del"
-    },
-    {
-     "t": "conductor del circuito derivado - galvanoplastia"
+     "t": "Dimensionado del conductor del circuito derivado - galvanoplastia"
     },
     {
      "t": "669"
@@ -2398,38 +2300,27 @@
    ],
    [
     {
-     "t": "Equipos de carga"
+     "t": "Equipos de carga combinada, de motores y de motores múltiples"
     },
     {
-     "t": "combinada, de motores y de motores"
+     "t": "430"
     },
     {
-     "t": "múltiples 430"
-    },
-    {
-     "t": "430-25"
+     "t": "430-25",
+     "rs": 2
     }
    ],
    [
     {
-     "t": "Espacios electrificados"
-    },
-    {
-     "t": "para estacionamiento de camiones"
+     "t": "Espacios electrificados para estacionamiento de camiones"
     },
     {
      "t": "626"
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Factores de"
-    },
-    {
-     "t": "demanda del alimentador - elevadores"
+     "t": "Factores de demanda del alimentador - elevadores"
     },
     {
      "t": "620"
@@ -2440,10 +2331,7 @@
    ],
    [
     {
-     "t": "Factores de"
-    },
-    {
-     "t": "demanda del alimentador - motores"
+     "t": "Factores de demanda del alimentador - motores"
     },
     {
      "t": "430"
@@ -2454,13 +2342,10 @@
    ],
    [
     {
-     "t": "Factores de estacionamientos de casas móviles"
+     "t": "Factores de demanda permisibles para sistemas de alambrado eléctrico en estacionamientos - casas móviles, casas prefabricadas y estacionamientos de casas móviles"
     },
     {
-     "t": "demanda permisibles para sistemas de alambrado - casas móviles, casas prefabricadas y"
-    },
-    {
-     "t": "eléctrico en estacionamientos 550"
+     "t": "550"
     },
     {
      "t": "550-31"
@@ -2468,10 +2353,7 @@
    ],
    [
     {
-     "t": "Líneas - celdas"
-    },
-    {
-     "t": "electrolíticas"
+     "t": "Líneas - celdas electrolíticas"
     },
     {
      "t": "668"
@@ -2482,10 +2364,7 @@
    ],
    [
     {
-     "t": "Máquinas de riego"
-    },
-    {
-     "t": "accionadas o controladas eléctricamente"
+     "t": "Máquinas de riego accionadas o controladas eléctricamente"
     },
     {
      "t": "675"
@@ -2496,10 +2375,7 @@
    ],
    [
     {
-     "t": "Motores, varios"
-    },
-    {
-     "t": "motores o un(os) motor(es) y otra(s) carga(s)"
+     "t": "Motores, varios motores o un(os) motor(es) y otra(s) carga(s)"
     },
     {
      "t": "430"
@@ -2540,7 +2416,7 @@
   ],
   "page": 45,
   "cols": 2,
-  "header_rows": 2,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -2727,7 +2603,10 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "a Ver 220-14(j)",
+   "b Ver 220-14(k)"
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -2740,7 +2619,7 @@
    {
     "page": 46,
     "y0": 25.48,
-    "y1": 155.29,
+    "y1": 183.9633331298828,
     "id": "220-12",
     "article": 220
    }
@@ -2755,7 +2634,7 @@
    47
   ],
   "page": 47,
-  "cols": 5,
+  "cols": 3,
   "header_rows": 1,
   "intro": "",
   "rows": [
@@ -2764,16 +2643,10 @@
      "t": "Tipo de inmueble"
     },
     {
-     "t": "Parte"
+     "t": "Parte de la carga de alumbrado a la que se aplica el factor de demanda (voltamperes)"
     },
     {
-     "t": "de la carga de alumbrado a la que se aplica el factor de demanda (voltamperes)"
-    },
-    {
-     "t": "Factor de demanda"
-    },
-    {
-     "t": "(%)"
+     "t": "Factor de demanda (%)"
     }
    ],
    [
@@ -2781,22 +2654,13 @@
      "t": "Almacenes"
     },
     {
-     "t": ""
-    },
-    {
      "t": "Primeros 12 500 o menos"
     },
     {
      "t": "100"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": ""
     },
@@ -2805,9 +2669,6 @@
     },
     {
      "t": "50"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -2815,22 +2676,13 @@
      "t": "Hospitales*"
     },
     {
-     "t": ""
-    },
-    {
      "t": "Primeros 50 000 o menos"
     },
     {
      "t": "40"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": ""
     },
@@ -2839,49 +2691,31 @@
     },
     {
      "t": "20"
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Hoteles y moteles, incluyendo"
-    },
-    {
-     "t": "los"
+     "t": "Hoteles y moteles, incluyendo los"
     },
     {
      "t": "Primeros 20 000 o menos"
     },
     {
      "t": "50"
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "apartamentos sin cocina para inquilinos*"
-    },
-    {
-     "t": "los"
+     "t": "apartamentos sin cocina para los inquilinos*"
     },
     {
      "t": "De 20 001 a 100 000"
     },
     {
      "t": "40"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": "inquilinos*"
-    },
     {
      "t": ""
     },
@@ -2890,9 +2724,6 @@
     },
     {
      "t": "30"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -2900,22 +2731,13 @@
      "t": "Unidades de vivienda"
     },
     {
-     "t": ""
-    },
-    {
      "t": "Primeros 3000 o menos"
     },
     {
      "t": "100"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": ""
     },
@@ -2924,15 +2746,9 @@
     },
     {
      "t": "35"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": ""
     },
@@ -2941,9 +2757,6 @@
     },
     {
      "t": "25"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -2951,24 +2764,18 @@
      "t": "Todos los demás"
     },
     {
-     "t": ""
-    },
-    {
      "t": "Voltamperes totales"
     },
     {
      "t": "100"
-    },
-    {
-     "t": ""
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [
    "* Los factores de demanda de esta Tabla no se deben aplicar a la carga calculada de los alimentadores que dan suministro a las zonas de hospitales, hoteles y moteles en las que es posible que se deba utilizar todo el alumbrado al mismo tiempo, como salas de operaciones, comedores y salas de baile."
   ],
-  "quality": 0.75,
+  "quality": 0.71,
   "regions": [
    {
     "page": 47,
@@ -4007,7 +3814,7 @@
    53
   ],
   "page": 53,
-  "cols": 4,
+  "cols": 3,
   "header_rows": 1,
   "intro": "",
   "rows": [
@@ -4019,10 +3826,7 @@
      "t": "Restaurante con todo el equipo eléctrico (kilovoltamperes)"
     },
     {
-     "t": "Restaurante con equipo eléctrico eléctrico (kilovoltamperes)"
-    },
-    {
-     "t": "y no"
+     "t": "Restaurante con equipo eléctrico y no eléctrico (kilovoltamperes)"
     }
    ],
    [
@@ -4034,57 +3838,45 @@
     },
     {
      "t": "100 %"
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "201-325 10"
+     "t": "201-325"
     },
     {
-     "t": "% (de la diferencia con 200) + 160.0"
+     "t": "10 % (de la diferencia con 200) + 160.0"
     },
     {
-     "t": "50% (de la diferencia con 200) +"
-    },
-    {
-     "t": "200.0"
+     "t": "50% (de la diferencia con 200) + 200.0"
     }
    ],
    [
     {
-     "t": "326-800 50"
+     "t": "326-800"
     },
     {
-     "t": "% (de la diferencia con 325) + 172.5"
+     "t": "50 % (de la diferencia con 325) + 172.5"
     },
     {
-     "t": "45% (de la diferencia con 325) +"
-    },
-    {
-     "t": "262.5"
+     "t": "45% (de la diferencia con 325) + 262.5"
     }
    ],
    [
     {
-     "t": "Más de 800 50"
+     "t": "Más de 800"
     },
     {
-     "t": "% (de la diferencia con 800) + 410.0"
+     "t": "50 % (de la diferencia con 800) + 410.0"
     },
     {
-     "t": "20% (de la diferencia con 800) +"
-    },
-    {
-     "t": "476.3"
+     "t": "20% (de la diferencia con 800) + 476.3"
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.947,
+  "quality": 0.8,
   "regions": [
    {
     "page": 53,
@@ -4773,14 +4565,11 @@
    72
   ],
   "page": 71,
-  "cols": 3,
+  "cols": 2,
   "header_rows": 1,
   "intro": "",
   "rows": [
    [
-    {
-     "t": ""
-    },
     {
      "t": "Equipo"
     },
@@ -4793,16 +4582,12 @@
      "t": "Acometidas"
     },
     {
-     "t": ""
-    },
-    {
      "t": "230"
     }
    ],
    [
     {
-     "t": "Anuncios eléctricos e iluminación de contorno",
-     "cs": 2
+     "t": "Anuncios eléctricos e iluminación de contorno"
     },
     {
      "t": "600"
@@ -4813,25 +4598,20 @@
      "t": "Aparatos"
     },
     {
-     "t": ""
-    },
-    {
      "t": "422"
     }
    ],
    [
     {
-     "t": "Elevadores, elevadores montaplatos, escaleras y pasillos móviles; elevadores para sillas de ruedas y elevadores de 620 sillas de ruedas para escaleras.",
-     "cs": 3
+     "t": "Elevadores, elevadores montaplatos, escaleras y pasillos móviles; elevadores para sillas de ruedas y elevadores de sillas de ruedas para escaleras."
+    },
+    {
+     "t": "620"
     }
    ],
    [
     {
      "t": "Bombas contra incendios"
-    },
-    {
-     "t": "",
-     "rs": 3
     },
     {
      "t": "695"
@@ -4855,8 +4635,10 @@
    ],
    [
     {
-     "t": "Circuitos de Clase 1, Clase 2 y Clase 3 de control remoto, de 725 señalización y de potencia limitada",
-     "cs": 3
+     "t": "Circuitos de Clase 1, Clase 2 y Clase 3 de control remoto, de señalización y de potencia limitada"
+    },
+    {
+     "t": "725"
     }
    ],
    [
@@ -4864,24 +4646,20 @@
      "t": "Circuitos derivados"
     },
     {
-     "t": ""
-    },
-    {
      "t": "210"
     }
    ],
    [
     {
-     "t": "Contactos, conectores de cordón y clavijas de conexión 406",
-     "cs": 3
+     "t": "Contactos, conectores de cordón y clavijas de conexión"
+    },
+    {
+     "t": "406"
     }
    ],
    [
     {
      "t": "Convertidores de fase"
-    },
-    {
-     "t": ""
     },
     {
      "t": "455"
@@ -4892,18 +4670,12 @@
      "t": "Electroductos"
     },
     {
-     "t": ""
-    },
-    {
      "t": "368"
     }
    ],
    [
     {
-     "t": "Equipo de aire acondicionado"
-    },
-    {
-     "t": "y refrigeración"
+     "t": "Equipo de aire acondicionado y refrigeración"
     },
     {
      "t": "440"
@@ -4911,21 +4683,13 @@
    ],
    [
     {
-     "t": "Equipo de calefacción"
-    },
-    {
-     "t": "eléctrica fija de tuberías y"
-    },
-    {
-     "t": "recipientes 427"
+     "t": "Equipo de calefacción eléctrica fija de tuberías y recipientes 427",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "Equipo de calentamiento"
-    },
-    {
-     "t": "dieléctrico y por inducción"
+     "t": "Equipo de calentamiento dieléctrico y por inducción"
     },
     {
      "t": "665"
@@ -4933,21 +4697,13 @@
    ],
    [
     {
-     "t": "Equipo eléctrico exterior fijo"
-    },
-    {
-     "t": "de deshielo y fusión de"
-    },
-    {
-     "t": "la nieve 426"
+     "t": "Equipo eléctrico exterior fijo de deshielo y fusión de la nieve 426",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "Equipo eléctrico fijo de"
-    },
-    {
-     "t": "calefacción de ambiente"
+     "t": "Equipo eléctrico fijo de calefacción de ambiente"
     },
     {
      "t": "424"
@@ -4955,13 +4711,8 @@
    ],
    [
     {
-     "t": "Equipos de procesamiento, señal de audio"
-    },
-    {
-     "t": "amplificación y"
-    },
-    {
-     "t": "reproducción de 640"
+     "t": "Equipos de procesamiento, amplificación y reproducción de 640 señal de audio",
+     "cs": 2
     }
    ],
    [
@@ -4969,18 +4720,12 @@
      "t": "Equipos de rayos X"
     },
     {
-     "t": ""
-    },
-    {
      "t": "660"
     }
    ],
    [
     {
-     "t": "Estudios de cine y de"
-    },
-    {
-     "t": "televisión y lugares similares"
+     "t": "Estudios de cine y de televisión y lugares similares"
     },
     {
      "t": "530"
@@ -4991,9 +4736,6 @@
      "t": "Generadores"
     },
     {
-     "t": ""
-    },
-    {
      "t": "445"
     }
    ],
@@ -5002,18 +4744,12 @@
      "t": "Grúas y polipastos"
     },
     {
-     "t": ""
-    },
-    {
      "t": "610"
     }
    ],
    [
     {
-     "t": "Instalaciones en lugares de"
-    },
-    {
-     "t": "atención de la salud"
+     "t": "Instalaciones en lugares de atención de la salud"
     },
     {
      "t": "517"
@@ -5024,18 +4760,12 @@
      "t": "Lugares de reunión"
     },
     {
-     "t": ""
-    },
-    {
      "t": "518"
     }
    ],
    [
     {
-     "t": "Luminarias, portalámparas"
-    },
-    {
-     "t": "y lámparas"
+     "t": "Luminarias, portalámparas y lámparas"
     },
     {
      "t": "410"
@@ -5046,18 +4776,12 @@
      "t": "Maquinaria industrial"
     },
     {
-     "t": ""
-    },
-    {
      "t": "670"
     }
    ],
    [
     {
-     "t": "Motores, circuitos de motores"
-    },
-    {
-     "t": "y controladores"
+     "t": "Motores, circuitos de motores y controladores"
     },
     {
      "t": "430"
@@ -5068,18 +4792,12 @@
      "t": "Organos eléctricos de tubos"
     },
     {
-     "t": ""
-    },
-    {
      "t": "650"
     }
    ],
    [
     {
-     "t": "Sistemas de alarma contra"
-    },
-    {
-     "t": "incendios"
+     "t": "Sistemas de alarma contra incendios"
     },
     {
      "t": "760"
@@ -5090,18 +4808,12 @@
      "t": "Sistemas de emergencia"
     },
     {
-     "t": ""
-    },
-    {
      "t": "700"
     }
    ],
    [
     {
      "t": "Sistemas solares fotovoltaicos"
-    },
-    {
-     "t": ""
     },
     {
      "t": "690"
@@ -5112,40 +4824,26 @@
      "t": "Soldadores eléctricos"
     },
     {
-     "t": ""
-    },
-    {
      "t": "630"
     }
    ],
    [
     {
-     "t": "Tableros de distribución y"
+     "t": "Tableros de distribución y tableros de alumbrado y control"
     },
     {
-     "t": "tableros de alumbrado y"
-    },
-    {
-     "t": "control 408"
+     "t": "408"
     }
    ],
    [
     {
-     "t": "Teatros, áreas de espectadores y estudios de televisión y"
-    },
-    {
-     "t": "en estudios lugares similares"
-    },
-    {
-     "t": "cinematográficos 520"
+     "t": "Teatros, áreas de espectadores en estudios cinematográficos 520 y estudios de televisión y lugares similares",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "Transformadores y bóvedas"
-    },
-    {
-     "t": "de transformadores"
+     "t": "Transformadores y bóvedas de transformadores"
     },
     {
      "t": "450"
@@ -5154,7 +4852,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.988,
+  "quality": 0.985,
   "regions": [
    {
     "page": 71,
@@ -6971,7 +6669,7 @@
   ],
   "page": 126,
   "cols": 4,
-  "header_rows": 4,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
@@ -6998,27 +6696,16 @@
    ],
    [
     {
-     "t": ""
+     "t": "",
+     "rs": 3
     },
     {
-     "t": "canalizaciones verticales"
+     "t": "canalizaciones verticales",
+     "rs": 3
     },
     {
-     "t": "aluminio recubierto de cobre"
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "de cobre"
+     "t": "aluminio recubierto de cobre",
+     "rs": 2
     },
     {
      "t": ""
@@ -7027,65 +6714,47 @@
    [
     {
      "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "metros"
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "metros"
-    },
-    {
-     "t": ""
+     "t": "metros",
+     "cs": 2,
+     "rs": 2
     }
    ],
    [
     {
-     "t": "Desde 0.824 mm2 (18 AWG)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "hasta 8.37 mm2 (8 AWG)"
+     "t": "Desde 0.824 mm2 (18 AWG) hasta 8.37 mm2 (8 AWG)",
+     "rs": 2
     },
     {
      "t": ""
     },
     {
-     "t": "-"
+     "t": "-",
+     "rs": 2
     },
     {
-     "t": "30"
+     "t": "30",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "no mayores a",
+     "rs": 7
     }
    ],
    [
     {
      "t": "Desde 13.3 mm2 (6 AWG) hasta 53.5 mm2 (1/0 AWG)"
-    },
-    {
-     "t": ""
     },
     {
      "t": "60"
@@ -7099,9 +6768,6 @@
      "t": "Desde 67.4 mm2 (2/0 AWG) hasta 107 mm2 (4/0 AWG)"
     },
     {
-     "t": ""
-    },
-    {
      "t": "55"
     },
     {
@@ -7111,9 +6777,6 @@
    [
     {
      "t": "Mayor que 107 mm2 (4/0 AWG) hasta 177 mm2 (350 kcmil)"
-    },
-    {
-     "t": "no mayores a"
     },
     {
      "t": "40"
@@ -7127,9 +6790,6 @@
      "t": "Mayor que 177 mm2 (350 kcmil) hasta 253 mm2 (500 kcmil)"
     },
     {
-     "t": ""
-    },
-    {
      "t": "35"
     },
     {
@@ -7139,9 +6799,6 @@
    [
     {
      "t": "Mayor que 253 mm2 (500 kcmil) hasta 380 mm2 (750 kcmil)"
-    },
-    {
-     "t": ""
     },
     {
      "t": "30"
@@ -7155,9 +6812,6 @@
      "t": "Mayor que 380 mm2 (750 kcmil)"
     },
     {
-     "t": ""
-    },
-    {
      "t": "25"
     },
     {
@@ -7167,7 +6821,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.848,
+  "quality": 0.8,
   "regions": [
    {
     "page": 126,
@@ -8348,7 +8002,7 @@
    136
   ],
   "page": 136,
-  "cols": 3,
+  "cols": 2,
   "header_rows": 1,
   "intro": "",
   "rows": [
@@ -8357,10 +8011,7 @@
      "t": "Distancia por encima del techo hasta la base del tubo conduit milímetros"
     },
     {
-     "t": "Sumador de temperatura"
-    },
-    {
-     "t": "ºC"
+     "t": "Sumador de temperatura ºC"
     }
    ],
    [
@@ -8369,9 +8020,6 @@
     },
     {
      "t": "33"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -8380,9 +8028,6 @@
     },
     {
      "t": "22"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -8391,9 +8036,6 @@
     },
     {
      "t": "17"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -8402,15 +8044,12 @@
     },
     {
      "t": "14"
-    },
-    {
-     "t": ""
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.636,
+  "quality": 0.6,
   "regions": [
    {
     "page": 136,
@@ -25482,7 +25121,7 @@
    157
   ],
   "page": 157,
-  "cols": 6,
+  "cols": 4,
   "header_rows": 2,
   "intro": "",
   "rows": [
@@ -25492,8 +25131,10 @@
      "cs": 2
     },
     {
-     "t": "Columna A1 Columna B2",
-     "cs": 4
+     "t": "Columna A1"
+    },
+    {
+     "t": "Columna B2"
     }
    ],
    [
@@ -25504,16 +25145,8 @@
      "t": "AWG o kcmil"
     },
     {
-     "t": ""
-    },
-    {
-     "t": "milímetros"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "milímetros",
+     "cs": 2
     }
    ],
    [
@@ -25527,15 +25160,7 @@
      "t": "2.03"
     },
     {
-     "t": "",
-     "rs": 2
-    },
-    {
      "t": "1.52"
-    },
-    {
-     "t": "",
-     "rs": 2
     }
    ],
    [
@@ -25563,15 +25188,7 @@
      "t": "2.41"
     },
     {
-     "t": "",
-     "rs": 2
-    },
-    {
      "t": "1.78"
-    },
-    {
-     "t": "",
-     "rs": 2
     }
    ],
    [
@@ -25599,15 +25216,7 @@
      "t": "2.79"
     },
     {
-     "t": "",
-     "rs": 2
-    },
-    {
      "t": "2.29"
-    },
-    {
-     "t": "",
-     "rs": 2
     }
    ],
    [
@@ -25635,15 +25244,7 @@
      "t": "3.56"
     },
     {
-     "t": "",
-     "rs": 2
-    },
-    {
      "t": "3.05"
-    },
-    {
-     "t": "",
-     "rs": 2
     }
    ],
    [
@@ -27895,7 +27496,12 @@
   "grid": "rejilla",
   "notes": [
    "1. El espacio para realizar los dobleces en los terminales se debe medir en una línea recta desde el extremo de la terminal de conexión o del conector del alambre en dirección perpendicular a la pared del embebido en concreto.",
-   "2. Para las terminales removibles y de tendido de cables para un solo alambre, se permitirá que el espacio para el doblado se reduzca en la siguiente cantidad de milímetros: a 12.7 milímetros b 25.4 milímetros c 38.1 milímetros d 50.8 milímetros e 76.2 milímetros"
+   "2. Para las terminales removibles y de tendido de cables para un solo alambre, se permitirá que el espacio para el doblado se reduzca en la siguiente cantidad de milímetros:",
+   "a 12.7 milímetros",
+   "b 25.4 milímetros",
+   "c 38.1 milímetros",
+   "d 50.8 milímetros",
+   "e 76.2 milímetros"
   ],
   "quality": 0.995,
   "regions": [
@@ -31154,189 +30760,185 @@
   "rows": [
    [
     {
-     "t": ""
+     "t": "Ancho interior de la charola portacables",
+     "rs": 3
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Area de ocupación máxima permisible para cables multiconductores"
+     "t": "Area de ocupación máxima permisible para cables multiconductores",
+     "cs": 2
     }
    ],
    [
     {
-     "t": ""
+     "t": "Charolas portacables tipo escalera, tipo malla o fondo ventilado, 392-22(a)(1)"
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Charolas portacables tipo escalera, tipo malla o fondo ventilado, 392-22(a)(1) Charolas portacables tipo fondo sólido, 392-22(a)(3)"
+     "t": "Charolas portacables tipo fondo sólido, 392-22(a)(3)"
     }
    ],
    [
     {
-     "t": "Ancho charola"
+     "t": "2a Columna 1 Columna Aplicable sólo por 392- Aplicable sólo por 22(a)(1)(b) 392-22(a)(1)(c)"
     },
     {
-     "t": "interior de portacables"
-    },
-    {
-     "t": "la Columna 1 Aplicable sólo por 392- 22(a)(1)(b) Columna 2a Aplicable sólo por 392-22(a)(1)(c) Columna 3 Aplicable sólo por 392-22(a)(3)(b) Columna 4a Aplicable sólo por 392- 22(a)(3)(c)"
+     "t": "4a Columna 3 Columna Aplicable sólo por Aplicable sólo por 392- 392-22(a)(3)(b) 22(a)(3)(c)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "cm"
     },
     {
-     "t": "mm2 mm2 mm2 mm2"
+     "t": "mm2 mm2"
+    },
+    {
+     "t": "mm2 mm2"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "5"
     },
     {
-     "t": "1 500 1 500 - (30 Sd) 1 200 1 200 - (30 Sd)"
+     "t": "1 500 1 500 - (30 Sd)"
+    },
+    {
+     "t": "1 200 1 200 - (30 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "10"
     },
     {
-     "t": "3 000 3 000 - (30 Sd) 2 300 2 300 - (30 Sd)"
+     "t": "3 000 3 000 - (30 Sd)"
+    },
+    {
+     "t": "2 300 2 300 - (30 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "15"
     },
     {
-     "t": "4 500 4 500 - (30 Sd) 3 500 3 500 - (30 Sd)"
+     "t": "4 500 4 500 - (30 Sd)"
+    },
+    {
+     "t": "3 500 3 500 - (30 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "20"
     },
     {
-     "t": "6 000 6 000 - (30 Sd) 4 500 4 500 - (30 Sd)"
+     "t": "6 000 6 000 - (30 Sd)"
+    },
+    {
+     "t": "4 500 4 500 - (30 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "22.5"
     },
     {
-     "t": "6 800 6 800 - (30 Sd) 5 100 5 100 - (25 Sd)"
+     "t": "6 800 6 800 - (30 Sd)"
+    },
+    {
+     "t": "5 100 5 100 - (25 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "30"
     },
     {
-     "t": "9 000 9 000 - (30 Sd) 7 100 7 100 - (25 Sd)"
+     "t": "9 000 9 000 - (30 Sd)"
+    },
+    {
+     "t": "7 100 7 100 - (25 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "40"
     },
     {
-     "t": "12 000 12 000 - (30 Sd) 9 400 9 400 - (30 Sd)"
+     "t": "12 000 12 000 - (30 Sd)"
+    },
+    {
+     "t": "9 400 9 400 - (30 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "45"
     },
     {
-     "t": "13 500 13 500 - (30 Sd) 10 600 10 600 - (25 Sd)"
+     "t": "13 500 13 500 - (30 Sd)"
+    },
+    {
+     "t": "10 600 10 600 - (25 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "50"
     },
     {
-     "t": "15 000 15 000 - (30 Sd) 11 800 11 800 - (30 Sd)"
+     "t": "15 000 15 000 - (30 Sd)"
+    },
+    {
+     "t": "11 800 11 800 - (30 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "60"
     },
     {
-     "t": "18 000 18 000 - (30 Sd) 14 200 14 200 - (25 Sd)"
+     "t": "18 000 18 000 - (30 Sd)"
+    },
+    {
+     "t": "14 200 14 200 - (25 Sd)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "75"
     },
     {
-     "t": "22 500 22 500 - (30 Sd) 17 700 17 700 - (25 Sd)"
+     "t": "22 500 22 500 - (30 Sd)"
+    },
+    {
+     "t": "17 700 17 700 - (25 Sd)"
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "90"
     },
     {
-     "t": "27 000 27 000 - (30 Sd) 21 300 21 300 - (25 Sd)"
+     "t": "27 000 27 000 - (30 Sd)"
+    },
+    {
+     "t": "21 300 21 300 - (25 Sd)"
     }
    ]
   ],
   "grid": "huecos",
-  "notes": [],
-  "quality": 0.581,
+  "notes": [
+   "a Se deben calcular las áreas de ocupación máxima permisible de las columnas 2 y 4. Por ejemplo, la ocupación máxima permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4500 menos (30 multiplicado por Sd).",
+   "b El término Sd de las columnas 2 y 4 es la suma de los diámetros, en milímetros, de todos los cables multiconductores de 107 mm2 (4/0AWG) y más grandes instalados en la misma charola con cables más pequeños."
+  ],
+  "quality": 0.467,
   "regions": [
    {
     "page": 231,
     "y0": 124.8681640625,
-    "y1": 391.48,
+    "y1": 441.4598693847656,
     "id": "392-22(a)",
     "article": 392
    }
@@ -31544,48 +31146,30 @@
    233
   ],
   "page": 233,
-  "cols": 4,
+  "cols": 2,
   "header_rows": 3,
   "intro": "",
   "rows": [
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Ancho interior de la charola portacables",
+     "rs": 2
     },
     {
      "t": "Area de ocupación máxima permisible para cables multiconductores Charolas portacables tipo escalera o fondo ventilado"
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Ancho interior de la charola portacables",
-     "cs": 2
-    },
-    {
-     "t": "Columna 1 Columna 2a Aplicable sólo por 392-22(b)(1)(b) Aplicable sólo por 392-22(b)(1)(c)",
-     "cs": 2
+     "t": "Columna 1 Columna 2a Aplicable sólo por 392-22(b)(1)(b) Aplicable sólo por 392-22(b)(1)(c)"
     }
    ],
    [
-    {
-     "t": "",
-     "rs": 13
-    },
     {
      "t": "Centímetros"
     },
     {
      "t": "mm2 mm2"
-    },
-    {
-     "t": "",
-     "rs": 13
     }
    ],
    [
@@ -31686,13 +31270,16 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "a Se deben calcular las áreas de ocupación máxima permisible de las columnas 2 . Por ejemplo, la ocupación máxima permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4200 menos (28 multiplicado por Sd). El término Sd de las columnas 2 es la suma de los diámetros, en milímetros, de todos los cables individuales de 507 mm2 y más mayores instalados en la misma charola con cables más pequeños.",
+   "2) Charolas de canal ventilado. Cuando una charola portacables de canal ventilado de 5, 7.50, 10 o 15 centímetros de ancho contenga cables de un solo conductor, la suma de los diámetros de todos los cables de un solo conductor no debe exceder el ancho interior del canal. c) Número de cables de media tensión y tipo MC (más de 2000 volts) en charolas portacables. El número de cables de más de"
+  ],
   "quality": 0.586,
   "regions": [
    {
     "page": 233,
     "y0": 192.3681640625,
-    "y1": 402.02,
+    "y1": 497.9228515625,
     "id": "392-22(b)(1)",
     "article": 392
    }
@@ -31839,13 +31426,16 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "a        Area de la sección transversal total de los dos peraltes de las charolas tipo escalera o charolas portacables con fondo, o área de la sección transversal mínima del metal en las charolas de canal o las construidas de una pieza.",
+   "b        No se deben utilizar charolas portacables de acero como conductores de puesta a tierra de los equipos en los circuitos con protección contra falla a tierra mayor a 600 amperes. No se deben utilizar charolas portacables de aluminio como conductores de puesta a tierra de los equipos en los circuitos con protección contra falla a tierra mayor a 2000 amperes."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 234,
     "y0": 272.6181640625,
-    "y1": 470.27,
+    "y1": 527.7098999023438,
     "id": "392-60(a)",
     "article": 392
    }
@@ -31860,7 +31450,7 @@
    238
   ],
   "page": 238,
-  "cols": 5,
+  "cols": 2,
   "header_rows": 1,
   "intro": "",
   "rows": [
@@ -31869,33 +31459,12 @@
      "t": "Tipo de cable"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Sección"
-    },
-    {
-     "t": "Artículo"
+     "t": "Sección Artículo"
     }
    ],
    [
     {
      "t": "Cable con aislamiento mineral y cubierta metálica"
-    },
-    {
-     "t": "",
-     "rs": 5
-    },
-    {
-     "t": "",
-     "rs": 7
-    },
-    {
-     "t": "",
-     "rs": 3
     },
     {
      "t": "332"
@@ -31914,8 +31483,7 @@
      "t": "Cable de media tensión"
     },
     {
-     "t": "328",
-     "rs": 2
+     "t": "328"
     }
    ],
    [
@@ -31923,8 +31491,7 @@
      "t": "Cable de potencia limitada para charola portacables"
     },
     {
-     "t": "725-154(c) y 725-179(e)",
-     "rs": 4
+     "t": "725-154(c) y 725-179(e)"
     }
    ],
    [
@@ -31937,8 +31504,7 @@
    ],
    [
     {
-     "t": "Cable multiconductor para alimentadores y circuitos derivados subterráneos",
-     "cs": 4
+     "t": "Cable multiconductor para alimentadores y circuitos derivados subterráneos"
     },
     {
      "t": "340"
@@ -31949,25 +31515,14 @@
      "t": "Cables de fuerza y control para charola portacables"
     },
     {
-     "t": ""
-    },
-    {
      "t": "336",
      "rs": 2
     }
    ],
    [
     {
-     "t": "Otros cables multiconductores, de control, de señalización ensamblados en fábrica que están identificados para ese uso"
-    },
-    {
-     "t": "o"
-    },
-    {
-     "t": "de"
-    },
-    {
-     "t": "fuerza"
+     "t": "Otros cables multiconductores, de control, de señalización o de fuerza ensamblados en fábrica que están identificados para ese uso",
+     "cs": 2
     }
    ]
   ],
@@ -37262,19 +36817,16 @@
    245
   ],
   "page": 245,
-  "cols": 3,
+  "cols": 2,
   "header_rows": 1,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Número de conductores Por"
+     "t": "Número de conductores"
     },
     {
-     "t": "ciento que se debe aplicar a los Tablas 400-5(a) y 400-5(b)"
-    },
-    {
-     "t": "valores de las"
+     "t": "Por ciento que se debe aplicar a los valores de las Tablas 400-5(a) y 400-5(b)"
     }
    ],
    [
@@ -37283,9 +36835,6 @@
     },
     {
      "t": "80"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -37294,9 +36843,6 @@
     },
     {
      "t": "70"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -37305,9 +36851,6 @@
     },
     {
      "t": "50"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -37316,9 +36859,6 @@
     },
     {
      "t": "45"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -37327,9 +36867,6 @@
     },
     {
      "t": "40"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -37338,15 +36875,12 @@
     },
     {
      "t": "35"
-    },
-    {
-     "t": ""
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.667,
+  "quality": 0.643,
   "regions": [
    {
     "page": 245,
@@ -38566,8 +38100,13 @@
    ],
    [
     {
-     "t": "Garajes comerciales, hangares para aeronaves, gasolineras y estaciones 511, 513, 514, 515, 516 y de servicio, plantas de almacenamiento a granel, procesos de aplicación 517 Parte D por rociado, procesos de inmersión y recubrimiento y lugares de inhalación de gases anestésicos",
-     "cs": 3
+     "t": "Garajes comerciales, hangares para aeronaves, gasolineras y estaciones de servicio, plantas de almacenamiento a granel, procesos de aplicación por rociado, procesos de inmersión y recubrimiento y lugares de inhalación de gases anestésicos 511,"
+    },
+    {
+     "t": "513, 514, 515, 516 517 Parte D"
+    },
+    {
+     "t": "y"
     }
    ],
    [
@@ -38583,11 +38122,13 @@
    ],
    [
     {
-     "t": "Lugares peligrosos (clasificados)"
+     "t": "Lugares peligrosos (clasificados) 500,"
     },
     {
-     "t": "500, 501, 502 503, 504, 505",
-     "cs": 2
+     "t": "501, 502 503, 504,"
+    },
+    {
+     "t": "505"
     }
    ],
    [
@@ -38598,8 +38139,7 @@
      "t": "410"
     },
     {
-     "t": "",
-     "rs": 6
+     "t": ""
     }
    ],
    [
@@ -38608,6 +38148,9 @@
     },
     {
      "t": "670"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -38616,6 +38159,9 @@
     },
     {
      "t": "675"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -38624,6 +38170,9 @@
     },
     {
      "t": "430"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -38632,6 +38181,9 @@
     },
     {
      "t": "470"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -38640,12 +38192,15 @@
     },
     {
      "t": "450"
+    },
+    {
+     "t": ""
     }
    ]
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.9,
+  "quality": 0.909,
   "regions": [
    {
     "page": 262,
@@ -38836,294 +38391,174 @@
    300
   ],
   "page": 300,
-  "cols": 4,
+  "cols": 2,
   "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Letra"
+     "t": "Letra código"
     },
     {
-     "t": "código"
-    },
-    {
-     "t": "Kilovoltamperes por caballo de fuerza con bloqueado"
-    },
-    {
-     "t": "el rotor"
+     "t": "Kilovoltamperes por caballo de fuerza con el rotor bloqueado"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "A"
     },
     {
      "t": "0 – 3.14"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "B"
     },
     {
      "t": "3.15 – 3.54"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "C"
     },
     {
      "t": "3.55 – 3.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "D"
     },
     {
      "t": "4.0 – 4.49"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "E"
     },
     {
      "t": "4.50 – 4.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "F"
     },
     {
      "t": "5.0 – 5.59"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "G"
     },
     {
      "t": "5.60 – 6.29"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "H"
     },
     {
      "t": "6.30 – 7.09"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "J"
     },
     {
      "t": "7.10 – 7.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "K"
     },
     {
      "t": "8.0 – 8.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "L"
     },
     {
      "t": "9.0 – 9.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "M"
     },
     {
      "t": "10.0 – 11.19"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "N"
     },
     {
      "t": "11.20 – 12.49"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "P"
     },
     {
      "t": "12.50 – 13.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "R"
     },
     {
      "t": "14.0 – 15.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "S"
     },
     {
      "t": "16.0 – 17.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "T"
     },
     {
      "t": "18.0 – 19.99"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "U"
     },
     {
      "t": "20.0 – 22.39"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "V"
     },
     {
      "t": "22.40 en adelante"
-    },
-    {
-     "t": ""
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.571,
+  "quality": 0.55,
   "regions": [
    {
     "page": 300,
@@ -39996,22 +39431,17 @@
    303
   ],
   "page": 303,
-  "cols": 4,
+  "cols": 3,
   "header_rows": 2,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Tamaño o designación alimentador"
+     "t": "Tamaño o designación de conductor alimentador",
+     "cs": 2
     },
     {
-     "t": "de conductor"
-    },
-    {
-     "t": "Volumen mínimo utilizable conductor de alimentador"
-    },
-    {
-     "t": "por cada"
+     "t": "Volumen mínimo utilizable por cada conductor de alimentador"
     }
    ],
    [
@@ -40023,9 +39453,6 @@
     },
     {
      "t": "cm3"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -40037,9 +39464,6 @@
     },
     {
      "t": "16"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -40051,9 +39475,6 @@
     },
     {
      "t": "20"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -40065,15 +39486,12 @@
     },
     {
      "t": "37"
-    },
-    {
-     "t": ""
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.75,
+  "quality": 0.714,
   "regions": [
    {
     "page": 303,
@@ -40435,7 +39853,7 @@
    309
   ],
   "page": 309,
-  "cols": 4,
+  "cols": 3,
   "header_rows": 4,
   "intro": "",
   "rows": [
@@ -40447,10 +39865,7 @@
      "t": "Sistema de alimentación"
     },
     {
-     "t": "Número y ubicación dispositivos de protección sobrecarga tales como de disparo o relevadores"
-    },
-    {
-     "t": "de los contra bobinas"
+     "t": "Número y ubicación de los dispositivos de protección contra sobrecarga tales como bobinas de disparo o relevadores"
     }
    ],
    [
@@ -40458,13 +39873,10 @@
      "t": "Monofásico de corriente alterna o corriente continua"
     },
     {
-     "t": "De dos hilos, una fase de corriente alterna corriente continua ninguno puesto a tierra."
+     "t": "De dos hilos, una fase de corriente alterna o corriente continua ninguno puesto a tierra."
     },
     {
-     "t": "o 1 en cualquier conductor."
-    },
-    {
-     "t": ""
+     "t": "1 en cualquier conductor."
     }
    ],
    [
@@ -40472,13 +39884,10 @@
      "t": "Monofásico de corriente alterna o corriente continua"
     },
     {
-     "t": "De dos hilos, una fase de corriente alterna corriente continua, un conductor puesto a tierra."
+     "t": "De dos hilos, una fase de corriente alterna o corriente continua, un conductor puesto a tierra."
     },
     {
-     "t": "o 1 en el conductor de fase."
-    },
-    {
-     "t": ""
+     "t": "1 en el conductor de fase."
     }
    ],
    [
@@ -40486,13 +39895,10 @@
      "t": "Monofásico de corriente alterna o corriente continua"
     },
     {
-     "t": "3 hilos, una fase de corriente alterna o corriente continua, con conductor del neutro puesto tierra."
+     "t": "3 hilos, una fase de corriente alterna o corriente continua, con conductor del neutro puesto a tierra."
     },
     {
-     "t": "a 1 en cualquier conductor de"
-    },
-    {
-     "t": "fase."
+     "t": "1 en cualquier conductor de fase."
     }
    ],
    [
@@ -40504,9 +39910,6 @@
     },
     {
      "t": "1 en el conductor de fase."
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -40518,9 +39921,6 @@
     },
     {
      "t": "2, uno en cada fase."
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -40532,9 +39932,6 @@
     },
     {
      "t": "2 en los conductores de fase."
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -40542,13 +39939,10 @@
      "t": "Dos fases de corriente alterna"
     },
     {
-     "t": "4 hilos, dos fases de corriente alterna, puesto tierra .o no puesto a tierra"
+     "t": "4 hilos, dos fases de corriente alterna, puesto a tierra .o no puesto a tierra"
     },
     {
-     "t": "a 2, 1 por cada fase conductores de fase."
-    },
-    {
-     "t": "en los"
+     "t": "2, 1 por cada fase en los conductores de fase."
     }
    ],
    [
@@ -40559,10 +39953,7 @@
      "t": "Neutro puesto a tierra o 5 hilos, dos fases de corriente alterna, no puesto a tierra."
     },
     {
-     "t": "2, 1 por fase en cualquier fase no puesto a tierra."
-    },
-    {
-     "t": "hilo de"
+     "t": "2, 1 por fase en cualquier hilo de fase no puesto a tierra."
     }
    ],
    [
@@ -40574,9 +39965,6 @@
     },
     {
      "t": "3, 1 en cada fase *"
-    },
-    {
-     "t": ""
     }
    ]
   ],
@@ -40584,7 +39972,7 @@
   "notes": [
    "*Excepción: No se requerirá una unidad de protección contra sobrecarga en cada fase cuando se proporcione protección contra sobrecarga por otros medios aprobados. 430-40. Relevadores de sobrecarga. Los relevadores de sobrecarga y otros dispositivos para la protección de los motores contra sobrecarga, que no sean capaces de abrir cortocircuitos o fallas a tierra, deben estar protegidos por fusibles o interruptores automáticos con valores nominales o ajustes que cumplan lo establecido en 430-52, o por un protector de motores contra cortocircuito, de acuerdo con 430-52. Excepción: Cuando estén aprobados para su instalación en grupo y marcados con el tamaño máximo del fusible o interruptor automático de tiempo inverso mediante el cual deben estar protegidos, los dispositivos de protección contra sobrecarga se deben"
   ],
-  "quality": 0.912,
+  "quality": 0.9,
   "regions": [
    {
     "page": 309,
@@ -47136,22 +46524,17 @@
    412
   ],
   "page": 412,
-  "cols": 4,
-  "header_rows": 3,
+  "cols": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": ""
-    },
-    {
      "t": "Surtidor"
     },
     {
-     "t": "Extensión de la superficie clasificada"
-    },
-    {
-     "t": ""
+     "t": "Extensión de la superficie clasificada",
+     "cs": 2
     }
    ],
    [
@@ -47159,61 +46542,49 @@
      "t": ""
     },
     {
-     "t": ""
+     "t": "Clase I, División 1"
     },
     {
-     "t": "Clase I, División 1 Clase I, División 2"
-    },
-    {
-     "t": ""
+     "t": "Clase I, División 2"
     }
    ],
    [
     {
-     "t": "Gas natural"
+     "t": "Gas natural comprimido"
     },
     {
-     "t": "comprimido"
+     "t": "Todo el espacio dentro de la cubierta del surtidor"
     },
     {
-     "t": "Todo el espacio dentro de la cubierta del surtidor 1.50 metros en todas direcciones desde la cubierta surtidor"
-    },
-    {
-     "t": "las del"
+     "t": "1.50 metros en todas las direcciones desde la cubierta del surtidor"
     }
    ],
    [
     {
-     "t": "Gas natural"
+     "t": "Gas natural licuado"
     },
     {
-     "t": "licuado"
+     "t": "Todo el espacio dentro de la cubierta del surtidor y 1.50 metros en todas las direcciones desde la cubierta del surtidor"
     },
     {
-     "t": "Todo el espacio dentro de la cubierta del surtidor y 1.50 metros en todas las direcciones desde la cubierta del surtidor Desde 1.50 metros hasta metros en todas las direcciones desde la cubierta del surtidor"
-    },
-    {
-     "t": "3.00"
+     "t": "Desde 1.50 metros hasta 3.00 metros en todas las direcciones desde la cubierta del surtidor"
     }
    ],
    [
     {
-     "t": "Gas de"
+     "t": "Gas de petróleo licuado"
     },
     {
-     "t": "petróleo licuado"
+     "t": "Todo el espacio dentro de la cubierta del surtidor; 45 centímetros desde la superficie exterior de la cubierta del surtidor hasta una elevación de 1.20 metros arriba de la base del surtidor; toda la fosa o espacio abierto por debajo del surtidor y dentro de 6.00 metros horizontalmente de cualquier arista de la cubierta del surtidor cuando la fosa o trinchera no está ventilada mecánicamente."
     },
     {
-     "t": "Todo el espacio dentro de la cubierta del surtidor; 45 centímetros desde la superficie exterior de la cubierta del surtidor hasta una elevación de 1.20 metros arriba de la base del surtidor; toda la fosa o espacio abierto por debajo del surtidor y dentro de 6.00 metros horizontalmente de cualquier arista de la cubierta del surtidor cuando la fosa o trinchera no está ventilada mecánicamente. Hasta 45 centímetros sobre el del piso y dentro de 6.00 horizontalmente de cualquier de la cubierta del surtidor, incluyendo fosas y trincheras de esta área cuando se provee ventilación mecánica adecuada"
-    },
-    {
-     "t": "nivel metros arista dentro con"
+     "t": "Hasta 45 centímetros sobre el nivel del piso y dentro de 6.00 metros horizontalmente de cualquier arista de la cubierta del surtidor, incluyendo fosas y trincheras dentro de esta área cuando se provee con ventilación mecánica adecuada"
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.8,
+  "quality": 0.769,
   "regions": [
    {
     "page": 412,
@@ -48418,84 +47789,54 @@
    465
   ],
   "page": 465,
-  "cols": 4,
+  "cols": 2,
   "header_rows": 1,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Parte la"
+     "t": "Parte de la carga de alumbrado del escenario a la cual se le aplica el factor de demanda (voltamperes)"
     },
     {
-     "t": "de la carga de alumbrado del escenario a cual se le aplica el factor de demanda (voltamperes)"
-    },
-    {
-     "t": "Factor de demanda alimentador %"
-    },
-    {
-     "t": "del"
+     "t": "Factor de demanda del alimentador %"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "Primeros 50 000 o menos"
     },
     {
      "t": "100"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "De 50 001 a 100 000"
     },
     {
      "t": "75"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "De 100 001 a 200 000"
     },
     {
      "t": "60"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "Excedente a 200 000"
     },
     {
      "t": "50"
-    },
-    {
-     "t": ""
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.667,
+  "quality": 0.6,
   "regions": [
    {
     "page": 465,
@@ -50095,70 +49436,46 @@
    523
   ],
   "page": 523,
-  "cols": 4,
+  "cols": 2,
   "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Distancias"
+     "t": "Distancias entre aisladores de tensión extremos o soportes intermedios del tipo mordaza metros"
     },
     {
-     "t": "entre aisladores de tensión extremos o soportes intermedios del tipo mordaza metros"
-    },
-    {
-     "t": "Tamaño mínimo del mm2 (AWG)"
-    },
-    {
-     "t": "alambre"
+     "t": "Tamaño mínimo del alambre mm2 (AWG)"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "Menos de 9.0"
     },
     {
      "t": "13.3 (6)"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "9.0 a 18.0"
     },
     {
      "t": "21.2 (4)"
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "más de 18.0"
     },
     {
      "t": "33.6 (2)"
-    },
-    {
-     "t": ""
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.9,
+  "quality": 0.875,
   "regions": [
    {
     "page": 523,
@@ -51838,30 +51155,16 @@
    592
   ],
   "page": 591,
-  "cols": 3,
-  "header_rows": 2,
-  "intro": "",
+  "cols": 2,
+  "header_rows": 1,
+  "intro": "Factores de corrección para temperaturas ambiente menores a 25 °C (Se multiplica el tensión nominal de circuito abierto por el factor de corrección aplicable que se muestra a continuación)",
   "rows": [
-   [
-    {
-     "t": "Factores de corrección para 25 °C (Se multiplica el tensión factor de corrección aplicable que"
-    },
-    {
-     "t": "temperaturas ambiente nominal de circuito abierto se muestra a continuación)"
-    },
-    {
-     "t": "menores a por el"
-    }
-   ],
    [
     {
      "t": "Temperatura ambiente (ºC)"
     },
     {
      "t": "Factor"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51870,9 +51173,6 @@
     },
     {
      "t": "1.02"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51881,9 +51181,6 @@
     },
     {
      "t": "1.04"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51892,9 +51189,6 @@
     },
     {
      "t": "1.06"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51903,9 +51197,6 @@
     },
     {
      "t": "1.08"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51914,9 +51205,6 @@
     },
     {
      "t": "1.10"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51925,9 +51213,6 @@
     },
     {
      "t": "1.12"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51936,9 +51221,6 @@
     },
     {
      "t": "1.14"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51947,9 +51229,6 @@
     },
     {
      "t": "1.16"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51958,9 +51237,6 @@
     },
     {
      "t": "1.18"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51969,9 +51245,6 @@
     },
     {
      "t": "1.20"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51980,9 +51253,6 @@
     },
     {
      "t": "1.21"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -51991,9 +51261,6 @@
     },
     {
      "t": "1.23"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -52002,15 +51269,12 @@
     },
     {
      "t": "1.25"
-    },
-    {
-     "t": ""
     }
    ]
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.581,
+  "quality": 0.536,
   "regions": [
    {
     "page": 591,
@@ -57348,7 +56612,8 @@
    ],
    [
     {
-     "t": ""
+     "t": "",
+     "rs": 2
     },
     {
      "t": "15 kV"
@@ -57371,13 +56636,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": "Más de 15"
-    },
-    {
-     "t": "kV hasta 50 kV"
+     "t": "Más de 15 kV hasta 50 kV",
+     "cs": 2
     },
     {
      "t": "-"
@@ -57393,9 +56653,9 @@
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.913,
+  "quality": 0.889,
   "regions": [
    {
     "page": 710,
@@ -61519,14 +60779,11 @@
    739
   ],
   "page": 739,
-  "cols": 3,
+  "cols": 2,
   "header_rows": 2,
   "intro": "",
   "rows": [
    [
-    {
-     "t": ""
-    },
     {
      "t": "Tipo de lugar"
     },
@@ -61536,19 +60793,16 @@
    ],
    [
     {
-     "t": "Frente de tableros Parte posterior Pupitres de Cuarto de baterías Pasillos y escaleras Alumbrado de Areas de maniobra Areas de tránsito General"
+     "t": "Frente de tableros de control con instrumentos, diversos e interruptores, etc. Parte posterior de los tableros o áreas dentro de tableros \"dúplex\" Pupitres de distribución o de trabajo Cuarto de baterías Pasillos y escaleras (medida al nivel del piso) Alumbrado de emergencia, en cualquier área Areas de maniobra Areas de tránsito de personal y vehículos General"
     },
     {
-     "t": "de control con instrumentos, diversos e de los tableros o áreas dentro de tableros \"dúplex\" distribución o de trabajo (medida al nivel del piso) emergencia, en cualquier área de personal y vehículos"
-    },
-    {
-     "t": "interruptores, etc. 270 55 270 110 55 11 160 110 22"
+     "t": "270 55 270 110 55 11 160 110 22"
     }
    ]
   ],
-  "grid": "huecos",
+  "grid": "rejilla",
   "notes": [],
-  "quality": 0.8,
+  "quality": 0.75,
   "regions": [
    {
     "page": 739,
@@ -72890,13 +72144,16 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "a El número de hilos varía",
+   "b No está disponible el tamaño 14 AWG (2.1 mm) en aluminio"
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 752,
     "y0": 162.3525390625,
-    "y1": 386.97,
+    "y1": 412.1942443847656,
     "id": "10",
     "article": null
    }

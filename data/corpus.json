@@ -5324,7 +5324,7 @@
      "notes": [
       {
        "label": "NOTA",
-       "text": "Los valores unitarios de estos cálculos se basan en condiciones de carga mínima y un factor de potencia del 100 por ciento y puede ser que no provean la capacidad suficiente para la instalación considerada. a Ver 220-14(j) b Ver 220-14(k)",
+       "text": "Los valores unitarios de estos cálculos se basan en condiciones de carga mínima y un factor de potencia del 100 por ciento y puede ser que no provean la capacidad suficiente para la instalación considerada.",
        "seq": 3
       }
      ],
@@ -6722,8 +6722,6 @@
     "220-14",
     "220-14(h)",
     "220-14(i)",
-    "220-14(j)",
-    "220-14(k)",
     "220-16",
     "220-18(b)",
     "220-3",
@@ -42123,7 +42121,7 @@
        "label": "a",
        "kind": "alpha",
        "level": 1,
-       "text": "El número de cables multiconductores de 2000 volts o menos, permitidos en una sola charola portacables, no debe exceder lo establecido en esta sección. Los tamaños de los conductores que se indican, se aplican tanto a conductores de cobre como de aluminio. a Se deben calcular las áreas de ocupación máxima permisible de las columnas 2 y 4. Por ejemplo, la ocupación máxima permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4500 menos (30 multiplicado por Sd). b El término Sd de las columnas 2 y 4 es la suma de los diámetros, en milímetros, de todos los cables multiconductores de 107 mm2 (4/0AWG) y más grandes instalados en la misma charola con cables más pequeños.",
+       "text": "El número de cables multiconductores de 2000 volts o menos, permitidos en una sola charola portacables, no debe exceder lo establecido en esta sección. Los tamaños de los conductores que se indican, se aplican tanto a conductores de cobre como de aluminio.",
        "children": [
         {
          "id": "392-22(a)(1)",
@@ -42361,7 +42359,7 @@
            "label": "d",
            "kind": "letter",
            "level": 3,
-           "text": "Cuando cualquiera de los cables de un solo conductor instalados sea de 21.2 mm2 (4 AWG) hasta 107 mm2 (4/0 AWG), la suma de los diámetros de todos los cables de un solo conductor no debe exceder el ancho de la charola. permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4200 menos (28 multiplicado por Sd). El término Sd de las columnas 2 es la suma de los diámetros, en milímetros, de todos los cables individuales de 507 mm2 y más mayores instalados en la misma charola con cables más pequeños.",
+           "text": "Cuando cualquiera de los cables de un solo conductor instalados sea de 21.2 mm2 (4 AWG) hasta 107 mm2 (4/0 AWG), la suma de los diámetros de todos los cables de un solo conductor no debe exceder el ancho de la charola. 2000 volts permitido en una sola charola portacables no debe exceder los requisitos de esta sección. La suma de los diámetros de los cables de un solo conductor y multiconductores no debe exceder el ancho de la charola portacables y los cables deben estar instalados en una sola capa. Cuando los cables de un solo conductor vayan en grupos de tres conductores o cuatro conductores o atados formando grupos por circuitos, la suma de los diámetros de los conductores individuales no debe exceder el ancho de la charola portacables y estos grupos se deben instalar en un sola capa.",
            "children": [],
            "notes": [],
            "exceptions": [],
@@ -42376,33 +42374,11 @@
          "notes": [],
          "exceptions": [],
          "title": "Charolas portacables de tipo escalera o de fondo ventilado"
-        },
-        {
-         "id": "392-22(b)(2)",
-         "label": "2",
-         "kind": "num",
-         "level": 2,
-         "text": "Cuando una charola portacables de canal ventilado de 5, 7.50, 10 o 15 centímetros de ancho contenga cables de un solo conductor, la suma de los diámetros de todos los cables de un solo conductor no debe exceder el ancho interior del canal.",
-         "children": [],
-         "notes": [],
-         "exceptions": [],
-         "title": "Charolas de canal ventilado"
         }
        ],
        "notes": [],
        "exceptions": [],
        "title": "Número de cables de un solo conductor de 2000 volts o menos en charolas portacables"
-      },
-      {
-       "id": "392-22(c)",
-       "label": "c",
-       "kind": "alpha",
-       "level": 1,
-       "text": "El número de cables de más de 2000 volts permitido en una sola charola portacables no debe exceder los requisitos de esta sección. La suma de los diámetros de los cables de un solo conductor y multiconductores no debe exceder el ancho de la charola portacables y los cables deben estar instalados en una sola capa. Cuando los cables de un solo conductor vayan en grupos de tres conductores o cuatro conductores o atados formando grupos por circuitos, la suma de los diámetros de los conductores individuales no debe exceder el ancho de la charola portacables y estos grupos se deben instalar en un sola capa.",
-       "children": [],
-       "notes": [],
-       "exceptions": [],
-       "title": "Número de cables de media tensión y tipo MC (más de 2000 volts) en charolas portacables"
       }
      ],
      "notes": [],
@@ -42509,7 +42485,7 @@
        "notes": [
         {
          "label": "NOTA",
-         "text": "Ejemplos de conductores que no sean de fuerza incluyen los cables de fibra óptica no conductores y los circuitos de Clase 2 y Clase 3 de control remoto, señalización y de potencia limitada. fondo, o área de la sección transversal mínima del metal en las charolas de canal o las construidas de una pieza. b No se deben utilizar charolas portacables de acero como conductores de puesta a tierra de los equipos en los circuitos con protección contra falla a tierra mayor a 600 amperes. No se deben utilizar charolas portacables de aluminio como conductores de puesta a tierra de los equipos en los circuitos con protección contra falla a tierra mayor a 2000 amperes.",
+         "text": "Ejemplos de conductores que no sean de fuerza incluyen los cables de fibra óptica no conductores y los circuitos de Clase 2 y Clase 3 de control remoto, señalización y de potencia limitada.",
          "seq": 5
         }
        ],
@@ -140977,7 +140953,7 @@
          "label": "5",
          "kind": "paren",
          "level": 2,
-         "text": "Su área y diámetro total son los de la circunferencia circunscrita 1. Estos valores se basan en las siguientes constantes: conductores del tipo RHH con trenzado de Clase B, en configuración acunada. La conductividad de los alambres es del 100 por ciento IACS para cobre y del 61 por ciento IACS para aluminio; la del conduit de aluminio es del 45 por ciento IACS. No se tiene en cuenta la reactancia capacitiva, que es insignificante a estas tensiones. Estos valores de resistencia sólo son válidos a 75 °C y para los parámetros dados, pero son representativos para los tipos de alambres para 600 volts que operen a 60 Hz. 2. La impedancia (Z) eficaz se define como R cos (θ )+ X sen(θ ), en donde θ es el ángulo del factor de potencia del circuito. Al multiplicar la corriente por la impedancia eficaz se obtiene una buena aproximación de la caída de tensión de línea a neutro. Los valores de impedancia eficaz de esta tabla sólo son válidos con un factor de potencia de 0.85. Para cualquier otro factor de potencia (FP) del circuito, la impedancia eficaz (Ze) se puede calcular a partir de los valores de R y XL dados en esta tabla, como sigue: Ze = R x FP + XL sen [arc cos (FP)]. a El número de hilos varía b No está disponible el tamaño 14 AWG (2.1 mm) en aluminio Tablas 11(A) y 11(B) Para propósitos de certificación, las Tablas 11(A) y 11(B) proporcionan las limitaciones exigidas para las fuentes de alimentación de Clase 2 y de Clase 3. La Tabla 11(A) se aplica a las fuentes de corriente alterna, y la Tabla 11(B) a las fuentes de corriente continua. La alimentación para los circuitos de Clase 2 y de Clase 3 debe ser: 1) limitada por sí misma, por lo cual no requiere protección contra sobrecorriente, o 2) no limitada por sí misma, por lo cual requiere de una combinación de fuente de alimentación y protección contra sobrecorriente. Las fuentes de alimentación diseñadas para interconexión deben estar aprobadas para ese propósito. Las fuentes de alimentación de Clase 2 y de Clase 3 deben estar marcadas en forma duradera y donde sea fácilmente visible, para indicar la clase de alimentación y sus valores eléctricos nominales. Una fuente de alimentación de Clase 2 que no sea adecuada para su uso en lugares mojados debe estar así marcada.",
+         "text": "Su área y diámetro total son los de la circunferencia circunscrita 1. Estos valores se basan en las siguientes constantes: conductores del tipo RHH con trenzado de Clase B, en configuración acunada. La conductividad de los alambres es del 100 por ciento IACS para cobre y del 61 por ciento IACS para aluminio; la del conduit de aluminio es del 45 por ciento IACS. No se tiene en cuenta la reactancia capacitiva, que es insignificante a estas tensiones. Estos valores de resistencia sólo son válidos a 75 °C y para los parámetros dados, pero son representativos para los tipos de alambres para 600 volts que operen a 60 Hz. 2. La impedancia (Z) eficaz se define como R cos (θ )+ X sen(θ ), en donde θ es el ángulo del factor de potencia del circuito. Al multiplicar la corriente por la impedancia eficaz se obtiene una buena aproximación de la caída de tensión de línea a neutro. Los valores de impedancia eficaz de esta tabla sólo son válidos con un factor de potencia de 0.85. Para cualquier otro factor de potencia (FP) del circuito, la impedancia eficaz (Ze) se puede calcular a partir de los valores de R y XL dados en esta tabla, como sigue: Ze = R x FP + XL sen [arc cos (FP)]. Tablas 11(A) y 11(B) Para propósitos de certificación, las Tablas 11(A) y 11(B) proporcionan las limitaciones exigidas para las fuentes de alimentación de Clase 2 y de Clase 3. La Tabla 11(A) se aplica a las fuentes de corriente alterna, y la Tabla 11(B) a las fuentes de corriente continua. La alimentación para los circuitos de Clase 2 y de Clase 3 debe ser: 1) limitada por sí misma, por lo cual no requiere protección contra sobrecorriente, o 2) no limitada por sí misma, por lo cual requiere de una combinación de fuente de alimentación y protección contra sobrecorriente. Las fuentes de alimentación diseñadas para interconexión deben estar aprobadas para ese propósito. Las fuentes de alimentación de Clase 2 y de Clase 3 deben estar marcadas en forma duradera y donde sea fácilmente visible, para indicar la clase de alimentación y sus valores eléctricos nominales. Una fuente de alimentación de Clase 2 que no sea adecuada para su uso en lugares mojados debe estar así marcada.",
          "children": [],
          "notes": [
           {

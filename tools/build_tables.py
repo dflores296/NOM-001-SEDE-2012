@@ -31,6 +31,10 @@ from collections import defaultdict
 RULE_MAX = 2.5      # grosor máximo de un rect para contarlo como línea
 GAP_MIN = 3.0       # ancho mínimo de un hueco para separar columnas
 ROW_MIN_H = 4.0     # alto mínimo de una banda para ser fila
+CORTE_PESO = 0.10   # cuánto descuenta una palabra partida por fila (best_edges)
+CORTE_MIN = 0.25    # cortes por fila que se toleran sin descontar nada
+RALA_PESO = 0.15    # cuánto descuenta una columna casi sin datos
+RALA_MIN = 0.25     # por debajo de esta fracción de filas con dato, es rala
 
 
 def unaccent(s):
@@ -492,19 +496,42 @@ def column_edges_by_body(words, bands):
 
 
 def column_candidates(words, bands, vert=None):
-    """Conjuntos de fronteras a evaluar: rejilla, huecos y filas de datos."""
+    """[(fronteras, dibujada)] a evaluar: rejilla, huecos y filas de datos.
+
+    `dibujada` dice si el reparto sale de las líneas del PDF o de deducirlo
+    del texto. La distinción importa al puntuar: solo el trazado puede avalar
+    que una celda cruce una frontera.
+    """
     out = []
     if vert:
         e = edges_from_rules(vert, bands)
         if len(e) >= 2:
-            out.append(e)
+            out.append((e, True))
     g = column_edges_by_gaps(words, bands)
     if len(g) >= 2:
-        out.append(g)
+        out.append((g, False))
     b = column_edges_by_body(words, bands)
     if len(b) >= 2:
-        out.append(b)
+        out.append((b, False))
     return out
+
+
+def split_words(words, bands, edges):
+    """Palabras partidas por una frontera interior, por fila con texto.
+
+    Se normaliza por filas para poder comparar el corte entre tablas de
+    tamaños muy distintos con el mismo peso.
+    """
+    dentro, filas = [], 0
+    for b in bands:
+        ws = [w for w in words if b[0] - 1 <= (w[1] + w[3]) / 2 <= b[1] + 1]
+        if ws:
+            filas += 1
+            dentro += ws
+    if not filas:
+        return 0.0
+    n = sum(1 for x in edges[1:-1] for w in dentro if w[0] < x - 0.5 < w[2])
+    return n / filas
 
 
 def best_edges(words, bands, vert=None):
@@ -519,16 +546,49 @@ def best_edges(words, bands, vert=None):
     abría el problema contrario: en la Tabla 220-56, que tiene dos columnas,
     los huecos proponían cuatro —dos de ellas enteramente vacías— y ganaban por
     ser más. Una columna vacía no es información, es un corte inventado.
+
+    A la nota se le descuenta además cuántas PALABRAS parte en dos el reparto.
+    `grid_score` mide la fracción de celdas con varios números juntos, así que
+    partir de más aumenta el denominador y sube la nota aunque el corte sea
+    falso: premia la sobre-segmentación por construcción. En la Tabla 220-42,
+    de tres columnas, los huecos proponían cinco —cortando «Parte» del resto
+    de su título— y ganaban 0.750 contra 0.719; en la 220-3 proponían cuatro,
+    empatadas a 1.000, y se llevaban el desempate por tener más columnas.
+
+    Una palabra partida en dos delata el corte inventado, porque el PDF nunca
+    parte una palabra entre dos celdas. Es un descuento pequeño, no un veto:
+    un encabezado fusionado cruza fronteras de verdad, y en la 310-104(e) el
+    reparto correcto de 12 columnas cruza casi dos palabras por fila sin que
+    ninguna sobre. Solo se aplica a los repartos DEDUCIDOS del texto; en los
+    dibujados manda la línea, que es la que decide qué está fusionado. Aun así
+    compiten por nota, así que un esqueleto dibujado pobre —dos columnas donde
+    hay doce— sigue perdiendo.
+
+    El descuento fuerte se lo lleva la columna RALA: la que casi no tiene
+    datos. Es lo que delata a la 220-42, donde el corte falso deja una columna
+    con «Parte» en 3 de 12 filas y otra con «(%)» en 1 de 12, y lo que
+    distingue ese caso del de una columna legítimamente escasa. Una columna
+    del todo vacía la sigue cazando `vacias`, que es su forma extrema.
     """
     best, best_key = None, None
-    for e in column_candidates(words, bands, vert):
+    for e, dibujada in column_candidates(words, bands, vert):
         g = build_grid(words, bands, e)
         if not g:
             continue
         ncols = len(e) - 1
-        vacias = sum(1 for c in range(ncols)
-                     if not any(row[c].strip() for row in g if c < len(row)))
-        key = (round(grid_score(g), 3), -vacias, ncols)
+        llenado = [sum(1 for row in g if c < len(row) and row[c].strip()) / len(g)
+                   for c in range(ncols)]
+        vacias = sum(1 for f in llenado if f == 0)
+        ralas = sum(1 for f in llenado if f < RALA_MIN)
+        # Con holgura: un roce suelto no significa nada —un acento que asoma,
+        # una palabra que se derrama— y sin ella el descuento rompía empates
+        # que el número de columnas resolvía bien. En la 250-3, de tres
+        # columnas, un solo cruce en 20 filas bastaba para que ganara el
+        # reparto de dos que funde «Artículo» con «Sección».
+        cortadas = (0.0 if dibujada else
+                    max(0.0, split_words(words, bands, e) - CORTE_MIN))
+        nota = grid_score(g) - RALA_PESO * ralas - CORTE_PESO * cortadas
+        key = (round(nota, 3), -vacias, ncols)
         if best_key is None or key > best_key:
             best, best_key = e, key
     return best or []
@@ -638,6 +698,29 @@ PIE_GAP = 16.0      # separación máxima para considerar que la línea sigue al
 PIE_ALTO = 90.0     # hasta dónde se busca por debajo de la rejilla
 
 
+def marca_superindice(ln):
+    """¿La línea abre con un marcador de nota al pie en superíndice?
+
+    La Tabla 220-12 llama a sus notas con letras voladas: «Unidades de
+    vivienda_a» arriba y «a Ver 220-14(j)» al pie. Con el marcador en letra no
+    hay asterisco ni «NOTA» que reconocer, así que esas dos líneas no se
+    recogían con la tabla y build_corpus las leía como texto del artículo: se
+    quedaban pegadas al final de la NOTA que va ARRIBA de la tabla, que
+    terminaba en «...la instalación considerada. a Ver 220-14(j) b Ver
+    220-14(k)».
+
+    El PDF sí lo distingue: deja el marcador en un span propio y más pequeño
+    que el texto que le sigue. Eso lo separa del inciso «a) Aparatos...», que
+    va en un solo span del tamaño del cuerpo.
+    """
+    sp = [s for s in ln['spans'] if s['text'].strip()]
+    if len(sp) < 2:
+        return False
+    marca = sp[0]['text'].strip()
+    return (len(marca) == 1 and marca.isalnum()
+            and sp[0]['size'] < sp[1]['size'] - 0.3)
+
+
 def footnotes_below(page, ybase):
     """Notas al pie inmediatamente debajo de la rejilla: (textos, y final)."""
     lineas = []
@@ -645,14 +728,15 @@ def footnotes_below(page, ybase):
         for ln in blk.get('lines', []):
             txt = ''.join(sp['text'] for sp in ln['spans']).strip()
             if txt and ln['bbox'][1] > ybase - 2:
-                lineas.append((ln['bbox'][1], ln['bbox'][3], txt))
+                lineas.append((ln['bbox'][1], ln['bbox'][3], txt,
+                               marca_superindice(ln)))
     lineas.sort()
 
     notas, y_fin, prev = [], ybase, ybase
-    for y0, y1, txt in lineas:
+    for y0, y1, txt, superindice in lineas:
         if y0 - prev > PIE_GAP or y0 - ybase > PIE_ALTO:
             break
-        if RE_PIE.match(txt):
+        if RE_PIE.match(txt) or superindice:
             notas.append(txt)
         elif notas and not RE_CAPTION.match(unaccent(txt)):
             notas[-1] += ' ' + txt        # continuación de la nota anterior
@@ -1002,11 +1086,15 @@ def main():
                and len(body[0][0]['t'].split()) >= 6):
             intro = (intro + ' ' + body.pop(0)[0]['t']).strip()
 
-        # el encabezado son las filas iniciales sin ningún número suelto
+        # el encabezado son las filas iniciales sin ningún número suelto.
+        # Un número puede arrastrar pegada la letra volada que llama a una
+        # nota al pie ("39b" en la 220-12): sigue siendo un dato, y sin
+        # admitirla la primera fila de la tabla —Bancos— se publicaba como
+        # segundo renglón de encabezado, en negritas y con estilo de título.
         head = 0
         for r in body[:4]:
             cells = [c['t'] for c in r if c['t'].strip()]
-            if cells and not any(re.fullmatch(r'[\d.,/\-]+', c.strip()) for c in cells):
+            if cells and not any(re.fullmatch(r'[\d.,/\-]+[a-z]?', c.strip()) for c in cells):
                 head += 1
             else:
                 break
