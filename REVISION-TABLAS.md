@@ -16,7 +16,7 @@ con varios valores juntos) · **rejilla** de dónde salieron las columnas: `dibu
 son las líneas del PDF, `huecos` son los espacios entre palabras, que es mucho menos
 fiable y no recupera celdas combinadas.
 
-**21 de 218 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**22 de 218 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (2)
 
@@ -27,14 +27,13 @@ Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a mucho
 | [ ] | `400-4` | Cordones y cables flexibles (Ver 400-4) | 241, 242, 243, 244 | 22 | 0.75 | dibujada | 132×14 |
 | [ ] | `402-3` | Cables para artefactos | 248, 249 | 4 | 0.79 | dibujada | 34×9 |
 
-## 2 · Dudosas (2)
+## 2 · Dudosas (1)
 
 Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 
 | | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|
 | [ ] | `922-15(a)` | Separación mínima en cualquier dirección (milímetros) | 711, 712 | 2 | 0.73 | **huecos** | 22×6 |
-| [ ] | `210-24` | Resumen de requisitos de los circuitos derivados | 38 | 2 | 0.79 | **huecos** | 11×6 |
 
 ## 3 · Verificación de control (13)
 

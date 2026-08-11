@@ -1809,8 +1809,8 @@
    38
   ],
   "page": 38,
-  "cols": 6,
-  "header_rows": 0,
+  "cols": 11,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -1818,19 +1818,24 @@
      "t": "Clasificación de circuito (amperes)"
     },
     {
-     "t": "15"
+     "t": "15",
+     "cs": 2
     },
     {
-     "t": "20"
+     "t": "20",
+     "cs": 2
     },
     {
-     "t": "30"
+     "t": "30",
+     "cs": 2
     },
     {
-     "t": "40"
+     "t": "40",
+     "cs": 2
     },
     {
-     "t": "50"
+     "t": "50",
+     "cs": 2
     }
    ],
    [
@@ -1838,19 +1843,34 @@
      "t": "Conductores (tamaño mínimo)"
     },
     {
-     "t": "mm2 AWG"
+     "t": "mm2"
     },
     {
-     "t": "mm2 AWG"
+     "t": "AWG"
     },
     {
-     "t": "mm2 AWG"
+     "t": "mm2"
     },
     {
-     "t": "mm2 AWG"
+     "t": "AWG"
     },
     {
-     "t": "mm2 AWG"
+     "t": "mm2"
+    },
+    {
+     "t": "AWG"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "AWG"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "AWG"
     }
    ],
    [
@@ -1858,19 +1878,34 @@
      "t": "Conductores del circuito*"
     },
     {
-     "t": "2.08 14"
+     "t": "2.08"
     },
     {
-     "t": "3.31 12"
+     "t": "14"
     },
     {
-     "t": "5.26 10"
+     "t": "3.31"
     },
     {
-     "t": "8.37 8"
+     "t": "12"
     },
     {
-     "t": "13.3 6"
+     "t": "5.26"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
     }
    ],
    [
@@ -1878,30 +1913,43 @@
      "t": "Derivaciones"
     },
     {
-     "t": "2.08 14",
-     "rs": 2
+     "t": "2.08"
     },
     {
-     "t": "2.08 14",
-     "rs": 2
+     "t": "14"
     },
     {
-     "t": "2.08 14",
-     "rs": 2
+     "t": "2.08"
     },
     {
-     "t": "3.31 12",
-     "rs": 2
+     "t": "14"
     },
     {
-     "t": "3.31 12",
-     "rs": 2
+     "t": "2.08"
+    },
+    {
+     "t": "14"
+    },
+    {
+     "t": "3.31"
+    },
+    {
+     "t": "12"
+    },
+    {
+     "t": "3.31"
+    },
+    {
+     "t": "12"
     }
    ],
    [
     {
-     "t": "Cables y cordones de artefactos eléctricos, véase 240-5",
-     "cs": 2
+     "t": "Cables y cordones de artefactos eléctricos, véase 240-5"
+    },
+    {
+     "t": "",
+     "cs": 10
     }
    ],
    [
@@ -1909,19 +1957,24 @@
      "t": "Protección contra sobrecorriente (amperes)"
     },
     {
-     "t": "15"
+     "t": "15",
+     "cs": 2
     },
     {
-     "t": "20"
+     "t": "20",
+     "cs": 2
     },
     {
-     "t": "30"
+     "t": "30",
+     "cs": 2
     },
     {
-     "t": "40"
+     "t": "40",
+     "cs": 2
     },
     {
-     "t": "50"
+     "t": "50",
+     "cs": 2
     }
    ],
    [
@@ -1929,19 +1982,8 @@
      "t": "Dispositivos de salida:"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "",
+     "cs": 10
     }
    ],
    [
@@ -1949,19 +1991,24 @@
      "t": "Portalámparas permitidos"
     },
     {
-     "t": "De cualquier tipo"
+     "t": "De cualquier tipo",
+     "cs": 2
     },
     {
-     "t": "De cualquier tipo"
+     "t": "De cualquier tipo",
+     "cs": 2
     },
     {
-     "t": "Servicio pesado"
+     "t": "Servicio pesado",
+     "cs": 2
     },
     {
-     "t": "Servicio pesado"
+     "t": "Servicio pesado",
+     "cs": 2
     },
     {
-     "t": "Servicio pesado"
+     "t": "Servicio pesado",
+     "cs": 2
     }
    ],
    [
@@ -1969,19 +2016,24 @@
      "t": "Capacidad nominal del contacto, en amperes**"
     },
     {
-     "t": "15 máx."
+     "t": "15 máx.",
+     "cs": 2
     },
     {
-     "t": "15 o 20"
+     "t": "15 o 20",
+     "cs": 2
     },
     {
-     "t": "30"
+     "t": "30",
+     "cs": 2
     },
     {
-     "t": "40 o 50"
+     "t": "40 o 50",
+     "cs": 2
     },
     {
-     "t": "50"
+     "t": "50",
+     "cs": 2
     }
    ],
    [
@@ -1989,19 +2041,24 @@
      "t": "Carga Máxima"
     },
     {
-     "t": "15"
+     "t": "15",
+     "cs": 2
     },
     {
-     "t": "20"
+     "t": "20",
+     "cs": 2
     },
     {
-     "t": "30"
+     "t": "30",
+     "cs": 2
     },
     {
-     "t": "40"
+     "t": "40",
+     "cs": 2
     },
     {
-     "t": "50"
+     "t": "50",
+     "cs": 2
     }
    ],
    [
@@ -2009,29 +2066,34 @@
      "t": "Carga Permisible"
     },
     {
-     "t": "Ver 210-23(a)"
+     "t": "Ver 210-23(a)",
+     "cs": 2
     },
     {
-     "t": "Ver 210-23(a)"
+     "t": "Ver 210-23(a)",
+     "cs": 2
     },
     {
-     "t": "Ver 210-23(b)"
+     "t": "Ver 210-23(b)",
+     "cs": 2
     },
     {
-     "t": "Ver 210-23(c)"
+     "t": "Ver 210-23(c)",
+     "cs": 2
     },
     {
-     "t": "Ver 210-23 (c)"
+     "t": "Ver 210-23 (c)",
+     "cs": 2
     }
    ]
   ],
   "grid": "huecos",
   "notes": [
    "* Estos tamaños se refieren a conductores de cobre.",
-   "** Para la capacidad de los contactos instalados para alumbrado de descarga conectados con cordón y clavija, véase 410- 62(c).",
+   "** Para la capacidad de los contactos instalados para alumbrado de descarga conectados con cordón y clavija, véase 410-62(c).",
    "NOTA: Se permite que la protección contra sobrecorriente sea de valor igual o menor que la clasificación del circuito"
   ],
-  "quality": 0.786,
+  "quality": 1.0,
   "regions": [
    {
     "page": 38,
@@ -2040,7 +2102,8 @@
     "id": "210-24",
     "article": 210
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "220-3",
