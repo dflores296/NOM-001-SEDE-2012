@@ -1,0 +1,50 @@
+---
+import { linkify, tablaSlug } from '../lib/nom.js';
+const { t } = Astro.props;
+const head = t.rows.slice(0, t.header_rows || 0);
+const body = t.rows.slice(t.header_rows || 0);
+const dudosa = t.quality < 0.8;
+---
+<figure class="tabla" id={tablaSlug(t.id)}>
+  <figcaption>
+    <span class="tid">Tabla {t.id}</span>
+    {t.title}
+    <a class="anchor" href={`#${tablaSlug(t.id)}`} aria-label="Enlace a esta tabla">#</a>
+  </figcaption>
+
+  {dudosa && (
+    <p class="tabla-aviso">
+      La separación en columnas de esta tabla no pudo reconstruirse con
+      confianza desde el PDF. Contrástala con la página {t.pages[0]} del
+      documento original antes de usarla.
+    </p>
+  )}
+
+  <div class="tabla-scroll">
+    <table>
+      {head.length > 0 && (
+        <thead>
+          {head.map((r) => (
+            <tr>{r.map((c) => <th set:html={linkify(c)} />)}</tr>
+          ))}
+        </thead>
+      )}
+      <tbody>
+        {body.map((r) => (
+          <tr>{r.map((c) => <td set:html={linkify(c)} />)}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {t.notes?.length > 0 && (
+    <div class="tabla-notas">
+      {t.notes.map((n) => <p set:html={linkify(n)} />)}
+    </div>
+  )}
+
+  <div class="tabla-pie">
+    {t.rows.length} filas · {t.cols} columnas · página{t.pages.length > 1 ? 's' : ''}{' '}
+    {t.pages.join(', ')} del PDF
+  </div>
+</figure>

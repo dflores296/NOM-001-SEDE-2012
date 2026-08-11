@@ -21,6 +21,8 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | `data/corpus.json` | Corpus estructurado completo |
 | `data/definiciones.json` | Las 185 definiciones del Artículo 100 |
 | `data/grafo.json` | Grafo de referencias cruzadas con backlinks |
+| `data/tablas.json` | Las tablas reconstruidas como datos, con calidad estimada |
+| `data/tablas_por_revisar.json` | Tablas cuya reconstrucción conviene contrastar |
 | `data/indice.json` | Índice plano `id → {título, artículo, página}` |
 | `data/validacion.json` | Métricas de cobertura del parseo |
 | `tools/` | Los cuatro scripts que generan todo lo anterior desde el PDF |
@@ -38,6 +40,8 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | Referencias enlazadas | 4 942 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 99.99 % |
+| Tablas reconstruidas | 209 |
+| Tablas de alta confianza | 107 |
 
 ## El identificador canónico
 
@@ -64,6 +68,7 @@ pip install pymupdf
 python3 tools/extract_index.py NOM-001-SEDE-2012.pdf INDICE.txt
 python3 tools/build_corpus.py  NOM-001-SEDE-2012.pdf data/
 python3 tools/build_graph.py   data/
+python3 tools/build_tables.py  NOM-001-SEDE-2012.pdf data/
 python3 tools/build_search.py  data/ site/public/data/
 python3 tools/check_corpus.py  data/     # falla si el parseo se degrada
 
@@ -111,21 +116,41 @@ encontrar:
 - [x] **Fase 1** — Corpus estructurado
 - [x] **Fase 2** — Grafo de referencias cruzadas y backlinks
 - [x] **Fase 3** — Sitio navegable con búsqueda y uso sin conexión
-- [ ] **Fase 4** — Tablas como datos
+- [x] **Fase 4** — Tablas como datos
 - [ ] **Fase 5** — Búsqueda semántica y servidor MCP
 - [ ] **Fase 6** — Calculadoras (ampacidad, caída de tensión, llenado de tubería)
 
-### Sobre la Fase 4
+### Cómo se reconstruyeron las tablas
 
-Las tablas son el trabajo pesado que queda. En la capa de texto del PDF se
-aplanan a un valor por línea y pierden filas y columnas por completo; la
-detección geométrica tampoco las recupera, colapsa varias filas en una celda.
+En la capa de texto del PDF las tablas se aplanan a un valor por línea y
+pierden filas y columnas por completo; `find_tables()` de PyMuPDF tampoco las
+recupera, colapsa varias filas en una celda. Lo que sí funciona es aprovechar
+que el PDF se imprimió desde HTML y conserva las líneas de la rejilla como
+rectángulos vectoriales:
 
-Hay un atajo: el PDF no es un documento nativo, es una impresión de Chrome de
-`dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha el 19/11/2019 (lo
-delatan los metadatos, productor `Skia/PDF`, y el pie en las 780 páginas). Si se
-consigue ese HTML, las tablas vienen como `<table><tr><td>` y la fase más cara
-del proyecto se vuelve la más barata.
+- **Filas**: de las líneas horizontales y de los extremos verticales de los
+  bordes de celda. Varias tablas no dibujan horizontales y en cambio cada celda
+  traza su propio borde izquierdo, segmentado fila por fila.
+- **Columnas**: se prueban dos métodos y se elige el mejor por tabla. Uno usa
+  las líneas verticales de la rejilla; el otro proyecta las palabras sobre el
+  eje x y busca franjas sin tinta. Ninguno gana siempre: hay tablas con rejilla
+  completa y otras que solo trazan el borde exterior. Se puntúa cada resultado
+  —una celda con varios números sueltos delata que la separación falló— y gana
+  el que separa mejor.
+- **Continuación entre páginas**: las tablas largas siguen en la página
+  siguiente sin repetir el título, así que se sigue la rejilla; y terminan donde
+  empieza el título de la siguiente tabla, esté donde esté en la página.
+
+**Esto es aproximado y se publica como tal.** Cada tabla lleva una calidad
+estimada; las que no llegan a 0.80 salen marcadas en el sitio con un aviso para
+contrastar contra el PDF, y se listan en `data/tablas_por_revisar.json`. Es
+preferible señalar la duda que presentar 209 tablas con la misma confianza.
+
+Sigue en pie el atajo para mejorarlas: el PDF no es un documento nativo, es una
+impresión de Chrome de `dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha
+el 19/11/2019 (lo delatan los metadatos, productor `Skia/PDF`, y el pie en las
+780 páginas). Con ese HTML las tablas vendrían como `<table><tr><td>` y no
+habría que inferir nada.
 
 ## Licencia
 

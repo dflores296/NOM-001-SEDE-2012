@@ -19,6 +19,11 @@ MIN = {
     'cobertura_pct': 99.5,
 }
 
+# Tablas: umbrales aparte, porque su reconstrucción es aproximada por
+# naturaleza y conviene vigilar que no se degrade, no que sea perfecta.
+MIN_TABLAS = 200
+MIN_TABLAS_FIABLES = 100
+
 
 def walk(n):
     yield n
@@ -63,16 +68,33 @@ def main():
         if any(nums[i] <= nums[i - 1] for i in range(1, len(nums))):
             fails.append('artículo %d: secciones fuera de orden' % a['num'])
 
+    tpath = os.path.join(d, 'tablas.json')
+    if os.path.exists(tpath):
+        tabs = json.load(open(tpath))
+        if len(tabs) < MIN_TABLAS:
+            fails.append('tablas = %d, se esperaban >= %d' % (len(tabs), MIN_TABLAS))
+        fiables = sum(1 for t in tabs if t['quality'] >= 0.95)
+        if fiables < MIN_TABLAS_FIABLES:
+            fails.append('tablas de alta confianza = %d, se esperaban >= %d'
+                         % (fiables, MIN_TABLAS_FIABLES))
+        sin_grid = [t['id'] for t in tabs if t['cols'] < 2]
+        if len(sin_grid) > 12:
+            fails.append('%d tablas quedaron en una sola columna' % len(sin_grid))
+
     if fails:
         print('VERIFICACIÓN FALLIDA')
         for f in fails:
             print('  - %s' % f)
         sys.exit(1)
 
-    print('Verificación correcta: %d artículos, %d secciones, %d incisos, '
-          'cobertura %.2f%%, 0 referencias rotas.'
-          % (val['articulos'], val['secciones'], val['incisos'],
-             val['cobertura_pct']))
+    msg = ('Verificación correcta: %d artículos, %d secciones, %d incisos, '
+           'cobertura %.2f%%, 0 referencias rotas.'
+           % (val['articulos'], val['secciones'], val['incisos'],
+              val['cobertura_pct']))
+    if os.path.exists(tpath):
+        msg += ('\n  Tablas: %d reconstruidas, %d de alta confianza.'
+                % (len(tabs), fiables))
+    print(msg)
 
 
 if __name__ == '__main__':

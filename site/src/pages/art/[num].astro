@@ -1,7 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Sub from '../../components/Sub.astro';
-import { articles, chapters, linkify, backlinks } from '../../lib/nom.js';
+import Tabla from '../../components/Tabla.astro';
+import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug }
+  from '../../lib/nom.js';
 
 export function getStaticPaths() {
   return articles.map((a) => ({ params: { num: String(a.num) }, props: { a } }));
@@ -26,6 +28,24 @@ const prev = i > 0 ? articles[i - 1] : null;
 const next = i < articles.length - 1 ? articles[i + 1] : null;
 
 const bl = Object.fromEntries(a.sections.map((s) => [s.id, backlinks(s.id)]));
+
+// Cada tabla se coloca tras la última sección que la precede en el documento,
+// que es donde el texto la invoca; así se lee en su contexto en lugar de
+// quedar amontonada al final del artículo.
+const tabs = tablasPorArticulo.get(a.num) || [];
+const trasSeccion = new Map();
+const sueltas = [];
+for (const t of tabs) {
+  let prev = null;
+  for (const s of a.sections) {
+    if ((s.page ?? 0) <= t.page) prev = s.id;
+    else break;
+  }
+  if (prev) {
+    if (!trasSeccion.has(prev)) trasSeccion.set(prev, []);
+    trasSeccion.get(prev).push(t);
+  } else sueltas.push(t);
+}
 ---
 
 <Base
@@ -113,8 +133,13 @@ const bl = Object.fromEntries(a.sections.map((s) => [s.id, backlinks(s.id)]));
               )}
             </section>
           ))}
+          {g.secs.map((s) =>
+            (trasSeccion.get(s.id) || []).map((t) => <Tabla t={t} />)
+          )}
         </>
       ))}
+
+      {sueltas.map((t) => <Tabla t={t} />)}
 
       <nav class="pager">
         {prev && (
@@ -132,6 +157,14 @@ const bl = Object.fromEntries(a.sections.map((s) => [s.id, backlinks(s.id)]));
       {a.sections.map((s) => (
         <a href={`#${s.id}`}><span class="mono">{s.id}</span> {s.title}</a>
       ))}
+      {tabs.length > 0 && (
+        <>
+          <h3>Tablas ({tabs.length})</h3>
+          {tabs.map((t) => (
+            <a href={`#${tablaSlug(t.id)}`}><span class="mono">Tabla {t.id}</span></a>
+          ))}
+        </>
+      )}
     </aside>
   </div>
 </Base>

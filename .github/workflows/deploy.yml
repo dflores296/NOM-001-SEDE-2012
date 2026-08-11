@@ -34,6 +34,7 @@ jobs:
         run: |
           python3 tools/build_corpus.py NOM-001-SEDE-2012.pdf data/
           python3 tools/build_graph.py data/
+          python3 tools/build_tables.py NOM-001-SEDE-2012.pdf data/
           python3 tools/build_search.py data/ site/public/data/
 
       - name: Verificar cobertura del parseo
