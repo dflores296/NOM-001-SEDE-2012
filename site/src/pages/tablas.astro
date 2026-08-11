@@ -57,6 +57,7 @@ const revisar = tablas.filter((t) => t.quality < 0.8).length;
             <span>{t.title}</span>
             <em>
               {t.rows.length} filas · {t.cols} col.
+              {t.informativa ? ' · informativa' : ''}
               {t.quality < 0.8 ? ' · por revisar' : ''}
             </em>
           </a>

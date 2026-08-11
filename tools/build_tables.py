@@ -49,6 +49,15 @@ RE_CAPTION = re.compile(
 
 RE_NOTE = re.compile(r'^\s*(?:\*+|NOTA|Nota)\b')
 
+# Dos tablas del artículo 310 llevan pegada al título la advertencia de que su
+# contenido es informativo y no normativo. Es información importante, pero no
+# es el nombre de la tabla: separarla deja el título legible y permite marcar
+# la tabla como informativa allí donde se muestre.
+RE_INFORMATIVA = re.compile(
+    r'\s*Esta\s+tabla\s+no\s+es\s+parte\s+de\s+los\s+requerimientos\s+y\s+'
+    r'especificaciones\s+de\s+la\s+NOM,?\s*se\s+incluye\s+'
+    r'[uú]nicamente\s+con\s+prop[oó]sitos\s+informativos\.?\s*', re.I)
+
 
 def cluster(vals, tol=2.0):
     out = []
@@ -625,8 +634,13 @@ def find_captions(doc):
                     if not extra or not solo[j] or RE_CAPTION.match(unaccent(extra)):
                         break
                     title += ' ' + extra
+                title = re.sub(r'\s+', ' ', title).strip()
+                informativa = bool(RE_INFORMATIVA.search(title))
+                if informativa:
+                    title = RE_INFORMATIVA.sub(' ', title).strip()
                 caps.append({'page': pno + 1, 'y': lines[i]['bbox'][1],
-                             'id': tid, 'title': re.sub(r'\s+', ' ', title).strip()})
+                             'id': tid, 'title': title,
+                             'informativa': informativa})
     return caps
 
 
@@ -853,6 +867,7 @@ def main():
         tables.append({
             'id': cap['id'],
             'title': cap['title'],
+            'informativa': cap.get('informativa', False),
             'article': art,
             'pages': npages or [cap['page']],
             'page': cap['page'],

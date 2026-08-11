@@ -14,8 +14,25 @@ const alcance = (c) => (c.cs > 1 ? 'colgroup' : 'col');
   <figcaption>
     <span class="tid">Tabla {t.id}</span>
     {t.title}
+    {/* La norma advierte en el propio título que estas tablas son
+        informativas y no normativas. Es un dato de peso distinto al nombre
+        de la tabla, así que se muestra aparte y no diluido en la frase. */}
+    {t.informativa && (
+      <span
+        class="tag-info"
+        title="La norma señala que esta tabla no es parte de sus requerimientos y especificaciones; se incluye únicamente con propósitos informativos."
+      >Informativa</span>
+    )}
     <a class="anchor" href={`#${tablaSlug(t.id)}`} aria-label="Enlace a esta tabla">#</a>
   </figcaption>
+
+  {t.informativa && (
+    <p class="tabla-info">
+      <b>No es parte de los requerimientos de la NOM.</b> La norma la incluye
+      únicamente con propósitos informativos, así que no se puede invocar como
+      exigencia en una verificación.
+    </p>
+  )}
 
   {dudosa && (
     <p class="tabla-aviso">
