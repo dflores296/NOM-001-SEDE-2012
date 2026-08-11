@@ -16,20 +16,18 @@ con varios valores juntos) · **rejilla** de dónde salieron las columnas: `dibu
 son las líneas del PDF, `huecos` son los espacios entre palabras, que es mucho menos
 fiable y no recupera celdas combinadas.
 
-**18 de 218 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**21 de 218 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (4)
+## 1 · Prioridad alta (2)
 
 Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|
 | [ ] | `400-4` | Cordones y cables flexibles (Ver 400-4) | 241, 242, 243, 244 | 22 | 0.75 | dibujada | 132×14 |
-| [ ] | `250-66` | Conductor del electrodo de puesta a tierra para sistemas de corriente… | 98 | 9 | 0.79 | dibujada | 10×8 |
-| [ ] | `392-22(a)` | Area de ocupación permisible para cables multiconductores en charolas… | 231 | 2 | 0.47 | **huecos** | 16×3 |
 | [ ] | `402-3` | Cables para artefactos | 248, 249 | 4 | 0.79 | dibujada | 34×9 |
 
-## 2 · Dudosas (3)
+## 2 · Dudosas (2)
 
 Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 
@@ -37,7 +35,6 @@ Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 |---|---|---|---|---|---|---|---|
 | [ ] | `922-15(a)` | Separación mínima en cualquier dirección (milímetros) | 711, 712 | 2 | 0.73 | **huecos** | 22×6 |
 | [ ] | `210-24` | Resumen de requisitos de los circuitos derivados | 38 | 2 | 0.79 | **huecos** | 11×6 |
-| [ ] | `430-7(b)` | Letras de código de indicación para rotor bloqueado | 300 | 1 | 0.55 | dibujada | 20×2 |
 
 ## 3 · Verificación de control (13)
 

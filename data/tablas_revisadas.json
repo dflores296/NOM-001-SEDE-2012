@@ -1521,5 +1521,685 @@
    ]
   ],
   "notes": []
+ },
+ "430-7(b)": {
+  "verificada": "2026-08-11",
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Letra código"
+    },
+    {
+     "t": "Kilovoltamperes por caballo de fuerza con el rotor bloqueado"
+    }
+   ],
+   [
+    {
+     "t": "A"
+    },
+    {
+     "t": "0 – 3.14"
+    }
+   ],
+   [
+    {
+     "t": "B"
+    },
+    {
+     "t": "3.15 – 3.54"
+    }
+   ],
+   [
+    {
+     "t": "C"
+    },
+    {
+     "t": "3.55 – 3.99"
+    }
+   ],
+   [
+    {
+     "t": "D"
+    },
+    {
+     "t": "4.0 – 4.49"
+    }
+   ],
+   [
+    {
+     "t": "E"
+    },
+    {
+     "t": "4.50 – 4.99"
+    }
+   ],
+   [
+    {
+     "t": "F"
+    },
+    {
+     "t": "5.0 – 5.59"
+    }
+   ],
+   [
+    {
+     "t": "G"
+    },
+    {
+     "t": "5.60 – 6.29"
+    }
+   ],
+   [
+    {
+     "t": "H"
+    },
+    {
+     "t": "6.30 – 7.09"
+    }
+   ],
+   [
+    {
+     "t": "J"
+    },
+    {
+     "t": "7.10 – 7.99"
+    }
+   ],
+   [
+    {
+     "t": "K"
+    },
+    {
+     "t": "8.0 – 8.99"
+    }
+   ],
+   [
+    {
+     "t": "L"
+    },
+    {
+     "t": "9.0 – 9.99"
+    }
+   ],
+   [
+    {
+     "t": "M"
+    },
+    {
+     "t": "10.0 – 11.19"
+    }
+   ],
+   [
+    {
+     "t": "N"
+    },
+    {
+     "t": "11.20 – 12.49"
+    }
+   ],
+   [
+    {
+     "t": "P"
+    },
+    {
+     "t": "12.50 – 13.99"
+    }
+   ],
+   [
+    {
+     "t": "R"
+    },
+    {
+     "t": "14.0 – 15.99"
+    }
+   ],
+   [
+    {
+     "t": "S"
+    },
+    {
+     "t": "16.0 – 17.99"
+    }
+   ],
+   [
+    {
+     "t": "T"
+    },
+    {
+     "t": "18.0 – 19.99"
+    }
+   ],
+   [
+    {
+     "t": "U"
+    },
+    {
+     "t": "20.0 – 22.39"
+    }
+   ],
+   [
+    {
+     "t": "V"
+    },
+    {
+     "t": "22.40 en adelante"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "250-66": {
+  "verificada": "2026-08-11",
+  "cols": 8,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Tamaño del mayor conductor de entrada a la acometida o área equivalente para conductores en paralelo a",
+     "cs": 4
+    },
+    {
+     "t": "Tamaño del conductor al electrodo de puesta a tierra",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Cobre",
+     "cs": 2
+    },
+    {
+     "t": "Aluminio",
+     "cs": 2
+    },
+    {
+     "t": "Cobre",
+     "cs": 2
+    },
+    {
+     "t": "Aluminio b",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "AWG o kcmil"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "AWG o kcmil"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "AWG o kcmil"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "AWG o kcmil"
+    }
+   ],
+   [
+    {
+     "t": "33.6 o menor"
+    },
+    {
+     "t": "2 o menor"
+    },
+    {
+     "t": "53.50 o menor"
+    },
+    {
+     "t": "1/0 o menor"
+    },
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    }
+   ],
+   [
+    {
+     "t": "42.4 o 53.5"
+    },
+    {
+     "t": "1 o 1/0"
+    },
+    {
+     "t": "67.40 o 85.00"
+    },
+    {
+     "t": "2/0 o 3/0"
+    },
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    }
+   ],
+   [
+    {
+     "t": "67.4 o 85.0"
+    },
+    {
+     "t": "2/0 o 3/0"
+    },
+    {
+     "t": "107 o 127"
+    },
+    {
+     "t": "4/0 o 250"
+    },
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "Más de 85.0 a 177"
+    },
+    {
+     "t": "Más de 3/0 a 350"
+    },
+    {
+     "t": "Más de 127 a 253"
+    },
+    {
+     "t": "Más de 250 a 500"
+    },
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    }
+   ],
+   [
+    {
+     "t": "Más de 177 a 304.0"
+    },
+    {
+     "t": "Más de 350 a 600"
+    },
+    {
+     "t": "Más de 253 a 456"
+    },
+    {
+     "t": "Más de 500 a 900"
+    },
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    }
+   ],
+   [
+    {
+     "t": "Más de 304 a 557.38"
+    },
+    {
+     "t": "Más de 600 a 1100"
+    },
+    {
+     "t": "Más de 456 a 887"
+    },
+    {
+     "t": "Más de 900 a 1750"
+    },
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    }
+   ],
+   [
+    {
+     "t": "Más de 557.38"
+    },
+    {
+     "t": "Más de 1100"
+    },
+    {
+     "t": "Más de 887"
+    },
+    {
+     "t": "Más de 1750"
+    },
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    }
+   ]
+  ],
+  "notes": [
+   "Cuando no hay conductores de acometida, el tamaño del conductor del electrodo de puesta a tierra se deberá determinar por el tamaño equivalente del conductor más grande de acometida requerido para la carga a alimentar."
+  ]
+ },
+ "392-22(a)": {
+  "verificada": "2026-08-11",
+  "cols": 5,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Ancho interior de la charola portacables",
+     "rs": 3
+    },
+    {
+     "t": "Area de ocupación máxima permisible para cables multiconductores",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Charolas portacables tipo escalera, tipo malla o fondo ventilado, 392-22(a)(1)",
+     "cs": 2
+    },
+    {
+     "t": "Charolas portacables tipo fondo sólido, 392-22(a)(3)",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Columna 1 Aplicable sólo por 392-22(a)(1)(b)"
+    },
+    {
+     "t": "Columna 2a Aplicable sólo por 392-22(a)(1)(c)"
+    },
+    {
+     "t": "Columna 3 Aplicable sólo por 392-22(a)(3)(b)"
+    },
+    {
+     "t": "Columna 4a Aplicable sólo por 392-22(a)(3)(c)"
+    }
+   ],
+   [
+    {
+     "t": "cm"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "mm2"
+    }
+   ],
+   [
+    {
+     "t": "5"
+    },
+    {
+     "t": "1 500"
+    },
+    {
+     "t": "1 500 - (30 Sd)"
+    },
+    {
+     "t": "1 200"
+    },
+    {
+     "t": "1 200 - (30 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "10"
+    },
+    {
+     "t": "3 000"
+    },
+    {
+     "t": "3 000 - (30 Sd)"
+    },
+    {
+     "t": "2 300"
+    },
+    {
+     "t": "2 300 - (30 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "15"
+    },
+    {
+     "t": "4 500"
+    },
+    {
+     "t": "4 500 - (30 Sd)"
+    },
+    {
+     "t": "3 500"
+    },
+    {
+     "t": "3 500 - (30 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "20"
+    },
+    {
+     "t": "6 000"
+    },
+    {
+     "t": "6 000 - (30 Sd)"
+    },
+    {
+     "t": "4 500"
+    },
+    {
+     "t": "4 500 - (30 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "22.5"
+    },
+    {
+     "t": "6 800"
+    },
+    {
+     "t": "6 800 - (30 Sd)"
+    },
+    {
+     "t": "5 100"
+    },
+    {
+     "t": "5 100 - (25 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "30"
+    },
+    {
+     "t": "9 000"
+    },
+    {
+     "t": "9 000 - (30 Sd)"
+    },
+    {
+     "t": "7 100"
+    },
+    {
+     "t": "7 100 - (25 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "40"
+    },
+    {
+     "t": "12 000"
+    },
+    {
+     "t": "12 000 - (30 Sd)"
+    },
+    {
+     "t": "9 400"
+    },
+    {
+     "t": "9 400 - (30 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "45"
+    },
+    {
+     "t": "13 500"
+    },
+    {
+     "t": "13 500 - (30 Sd)"
+    },
+    {
+     "t": "10 600"
+    },
+    {
+     "t": "10 600 - (25 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "50"
+    },
+    {
+     "t": "15 000"
+    },
+    {
+     "t": "15 000 - (30 Sd)"
+    },
+    {
+     "t": "11 800"
+    },
+    {
+     "t": "11 800 - (30 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "60"
+    },
+    {
+     "t": "18 000"
+    },
+    {
+     "t": "18 000 - (30 Sd)"
+    },
+    {
+     "t": "14 200"
+    },
+    {
+     "t": "14 200 - (25 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "75"
+    },
+    {
+     "t": "22 500"
+    },
+    {
+     "t": "22 500 - (30 Sd)"
+    },
+    {
+     "t": "17 700"
+    },
+    {
+     "t": "17 700 - (25 Sd)"
+    }
+   ],
+   [
+    {
+     "t": "90"
+    },
+    {
+     "t": "27 000"
+    },
+    {
+     "t": "27 000 - (30 Sd)"
+    },
+    {
+     "t": "21 300"
+    },
+    {
+     "t": "21 300 - (25 Sd)"
+    }
+   ]
+  ],
+  "notes": [
+   "a Se deben calcular las áreas de ocupación máxima permisible de las columnas 2 y 4. Por ejemplo, la ocupación máxima permisible, en milímetros cuadrados, para una charola portacables de 15 centímetros de ancho en la columna 2, debe ser 4500 menos (30 multiplicado por Sd).",
+   "b El término Sd de las columnas 2 y 4 es la suma de los diámetros, en milímetros, de todos los cables multiconductores de 107 mm2 (4/0AWG) y más grandes instalados en la misma charola con cables más pequeños."
+  ]
  }
 }

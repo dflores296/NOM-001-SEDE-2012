@@ -1,25 +1,5 @@
 [
  {
-  "id": "392-22(a)",
-  "quality": 0.467,
-  "cols": 3,
-  "rows": 16,
-  "pages": [
-   231
-  ],
-  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de tipo escalera, fondo ventilado, tipo malla o fondo sólido para cables de 2000 volts o menos."
- },
- {
-  "id": "430-7(b)",
-  "quality": 0.55,
-  "cols": 2,
-  "rows": 20,
-  "pages": [
-   300
-  ],
-  "title": "Letras de código de indicación para rotor bloqueado"
- },
- {
   "id": "922-15(a)",
   "quality": 0.726,
   "cols": 6,
@@ -52,16 +32,6 @@
    38
   ],
   "title": "Resumen de requisitos de los circuitos derivados"
- },
- {
-  "id": "250-66",
-  "quality": 0.786,
-  "cols": 8,
-  "rows": 10,
-  "pages": [
-   98
-  ],
-  "title": "Conductor del electrodo de puesta a tierra para sistemas de corriente alterna"
  },
  {
   "id": "402-3",
