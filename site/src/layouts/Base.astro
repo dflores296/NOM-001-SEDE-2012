@@ -52,6 +52,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <option value="sistema">Sistema</option>
             <option value="claro">Claro</option>
             <option value="sepia">Sepia</option>
+            <option value="alba">Alba</option>
             <option value="oscuro">Oscuro</option>
             <option value="noche">Noche</option>
             <option value="carbon">Carbón</option>
@@ -185,11 +186,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         let saved = 'sistema';
         try { saved = localStorage.getItem('nom-tema') || 'sistema'; } catch (e) {}
         temaSel.value = saved;
+        // La barra del navegador en móvil también sigue al tema: si se deja
+        // fija en el café original, un tema oscuro queda con una franja
+        // marrón encima que no es de ninguna de las paletas.
+        const barra = () => {
+          const meta = document.querySelector('meta[name="theme-color"]');
+          const bg = getComputedStyle(document.documentElement)
+            .getPropertyValue('--bg').trim();
+          if (meta && bg) meta.setAttribute('content', bg);
+        };
+        barra();
         temaSel.addEventListener('change', () => {
           const v = temaSel.value;
           if (v === 'sistema') delete document.documentElement.dataset.theme;
           else document.documentElement.dataset.theme = v;
           try { localStorage.setItem('nom-tema', v); } catch (e) {}
+          barra();
         });
       }
 
