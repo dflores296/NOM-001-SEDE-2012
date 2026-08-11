@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Sub from '../../components/Sub.astro';
 import Tabla from '../../components/Tabla.astro';
-import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug }
+import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug, BASE }
   from '../../lib/nom.js';
 
 export function getStaticPaths() {
@@ -103,6 +103,15 @@ for (const t of tabs) {
 
               {s.text && <p set:html={linkify(s.text)} />}
 
+              {s.figures?.map((f) => (
+                <figure class="fig">
+                  <img src={`${BASE}/img/${f.src}`}
+                       alt={`Figura de la página ${f.page} del PDF`}
+                       width={f.w} height={f.h} loading="lazy" />
+                  <figcaption>Página {f.page} del PDF</figcaption>
+                </figure>
+              ))}
+
               {s.definitions?.length > 0 && (
                 <dl class="defs-sec">
                   {s.definitions.map((d) => (
@@ -118,7 +127,16 @@ for (const t of tabs) {
                 ...(s.notes || []).map((n) => ({ ...n, k: 'nota' })),
                 ...(s.exceptions || []).map((n) => ({ ...n, k: 'exc' })),
               ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0)).map((n) => (
-                <div class={n.k}><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
+                <div class={n.k}>
+                  <span class="lb">{n.label}</span><span set:html={linkify(n.text)} />
+                  {n.items?.length > 0 && (
+                    <ul class="anot-items">
+                      {n.items.map((it) => (
+                        <li><span class="lbl">({it.label})</span> <span set:html={linkify(it.text)} /></li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               ))}
 
               {s.children?.length > 0 && (

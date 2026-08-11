@@ -77,12 +77,86 @@ def load_pages(pdf):
     return [doc[i].get_text() for i in range(doc.page_count)]
 
 
-def build_linemap(pages):
-    """Devuelve (lineas, pagina_de_cada_linea) del documento completo."""
+# Marcador de imagen dentro del flujo de líneas. Las fórmulas de la norma están
+# embebidas como imágenes, no como texto, así que hay que insertarlas en el
+# lugar exacto donde aparecen o se pierden: en 310-15(b)(2) la ecuación del
+# factor de corrección desaparecía y el texto saltaba de "usando la siguiente
+# ecuación:" directo a la tabla.
+IMG_MARK = '\x00IMG:'
+
+
+def extract_images(pdf, img_dir):
+    """Guarda las imágenes del PDF y devuelve [(pagina, y, archivo, w, h)]."""
+    import pymupdf
+    doc = pymupdf.open(pdf)
+    os.makedirs(img_dir, exist_ok=True)
+    out, seen = [], {}
+    for pno in range(doc.page_count):
+        page = doc[pno]
+        for info in page.get_images(full=True):
+            xref = info[0]
+            rects = page.get_image_rects(xref)
+            if not rects:
+                continue
+            name = 'fig-%d.png' % xref
+            if xref not in seen:
+                pix = pymupdf.Pixmap(doc, xref)
+                if pix.n - pix.alpha >= 4:
+                    pix = pymupdf.Pixmap(pymupdf.csRGB, pix)
+                pix.save(os.path.join(img_dir, name))
+                seen[xref] = (pix.width, pix.height)
+            w, h = seen[xref]
+            for r in rects:
+                out.append((pno + 1, r.y0, name, round(r.width), round(r.height)))
+    return out
+
+
+# Un encabezado nunca se omite, aunque caiga dentro de una zona de tabla: el
+# alto detectado de una tabla puede pasarse de largo y tragarse la sección que
+# viene justo debajo. Sin esta salvaguarda desaparecían 110-36, 210-3, 550-32,
+# 922-16 y 922-17.
+RE_KEEP = re.compile(
+    r'^(?:ARTICULO\s+\d{3}|[A-M]\.\s+[0-9A-ZÁÉÍÓÚÑ]|'
+    r'\d{3}-\d{1,3}(?:\.\s*|\s+)[0-9A-ZÁÉÍÓÚÑ])')
+
+
+def build_linemap(pages, pdf=None, skip=None, images=None):
+    """Devuelve (lineas, pagina_de_cada_linea) del documento completo.
+
+    `skip` son zonas [(pagina, y0, y1)] que se omiten: las ocupa una tabla, y
+    su texto plano es una ristra de números sin estructura que, si se deja,
+    reaparece como un párrafo ilegible dentro de la sección.
+    """
+    import pymupdf
+    doc = pymupdf.open(pdf) if pdf else None
+    skip = skip or {}
+    imgs = {}
+    for pno, y, name, w, h in (images or []):
+        imgs.setdefault(pno, []).append((y, name, w, h))
+
     lines, pageno = [], []
-    for pno, raw in enumerate(pages, start=1):
-        for ln in clean_page(raw).split('\n'):
-            lines.append(ln.rstrip())
+    for pno in range(1, len(pages) + 1):
+        items = []
+        if doc is not None:
+            for blk in doc[pno - 1].get_text('dict')['blocks']:
+                for ln in blk.get('lines', []):
+                    txt = ''.join(sp['text'] for sp in ln['spans'])
+                    items.append((ln['bbox'][1], txt))
+        else:
+            items = [(0, t) for t in pages[pno - 1].split('\n')]
+        for y, name, w, h in imgs.get(pno, []):
+            items.append((y, '%s%s:%d:%d' % (IMG_MARK, name, w, h)))
+        items.sort(key=lambda z: z[0])
+
+        zonas = skip.get(pno, [])
+        for y, txt in items:
+            if (not txt.startswith(IMG_MARK)
+                    and not RE_KEEP.match(unaccent(txt.strip()))
+                    and any(a <= y <= b for a, b in zonas)):
+                continue
+            if NOISE.match(txt.strip()):
+                continue
+            lines.append(txt.rstrip())
             pageno.append(pno)
     return lines, pageno
 
@@ -159,6 +233,13 @@ def parse_article(num, lines, pageno, lo, hi):
     # intercalan y su orden importa: una excepción que en el documento precede
     # a una nota no puede mostrarse después. `seq` conserva el orden original.
     seq = itertools.count()
+    # Nota o excepción vigente y el tipo de marcador de SU lista. Una nota que
+    # termina en dos puntos suele continuar con una enumeración que le
+    # pertenece: en 310-15(b) los "(1)(2)(3)" son los factores que enumera la
+    # NOTA, no incisos del artículo. Meterlos al árbol desplazaba los "1)2)3)"
+    # reales, y "Factores de corrección" acababa en 310-15(b)(3)(2) en vez de
+    # en 310-15(b)(2).
+    annot = [None, None]
 
     def commit():
         nonlocal buf
@@ -169,7 +250,7 @@ def parse_article(num, lines, pageno, lo, hi):
         buf = []
 
     def rank(kind, label):
-        return int(label) if kind == 'num' else ord(label)
+        return int(label) if kind in ('num', 'paren') else ord(label)
 
     def new_sub(label, kind, title_text):
         """Crea un inciso al nivel que corresponde y lo engancha al padre.
@@ -199,7 +280,7 @@ def parse_article(num, lines, pageno, lo, hi):
             parent = stack[-1]['node'] if stack else sec
         if parent is None:
             return False
-        wrap = {'alpha': '(%s)', 'num': '(%s)', 'letter': '%s.'}[kind]
+        wrap = {'alpha': '(%s)', 'num': '(%s)', 'paren': '(%s)', 'letter': '%s.'}[kind]
         node = {'id': parent['id'] + (wrap % label),
                 'label': label, 'kind': kind, 'level': len(stack) + 1, 'text': '',
                 'children': [], 'notes': [], 'exceptions': []}
@@ -222,6 +303,16 @@ def parse_article(num, lines, pageno, lo, hi):
             continue
         u = unaccent(ln)
 
+        # --- imagen (fórmula o figura): se cuelga del nodo vigente
+        if ln.startswith(IMG_MARK):
+            name, w, h = ln[len(IMG_MARK):].rsplit(':', 2)
+            owner = stack[-1]['node'] if stack else sec
+            if owner is not None:
+                owner.setdefault('figures', []).append(
+                    {'src': name, 'w': int(w), 'h': int(h),
+                     'page': pageno[i], 'seq': next(seq)})
+            continue
+
         # --- encabezado de sección: 210-8. Título.
         m = RE_SEC.match(u)
         if m:
@@ -236,6 +327,7 @@ def parse_article(num, lines, pageno, lo, hi):
                 continue
             last_sec = n_sec
             commit()
+            annot[0] = annot[1] = None
             sid = m.group(1)
             rest = ln[len(m.group(1)) + 1:].lstrip()
             mt = re.match(r'^([^.]{2,120})\.\s*(.*)$', rest)
@@ -272,6 +364,7 @@ def parse_article(num, lines, pageno, lo, hi):
                         'seq': next(seq)}
                 owner.setdefault('notes', []).append(node)
                 target = node
+                annot[0], annot[1] = node, None
             continue
 
         # --- Excepción (idem: la continuación pertenece a la excepción)
@@ -285,6 +378,7 @@ def parse_article(num, lines, pageno, lo, hi):
                         'seq': next(seq)}
                 owner.setdefault('exceptions', []).append(node)
                 target = node
+                annot[0], annot[1] = node, None
             continue
 
         # --- término de una sección de definiciones
@@ -303,7 +397,7 @@ def parse_article(num, lines, pageno, lo, hi):
         #     escribe 1 509 incisos de la primera forma y 2 765 de la segunda.
         #     Reconocer solo una dejaba la otra como texto corrido dentro del
         #     inciso anterior, que es lo que rompía la estructura de 310-15.
-        for rx, kind in ((RE_SUB_A, 'alpha'), (RE_SUB_N, 'num'),
+        for rx, kind in ((RE_SUB_A, 'alpha'), (RE_SUB_N, 'paren'),
                          (RE_SUB_P, 'num'), (RE_SUB_L, 'letter')):
             m = rx.match(u)
             if m:
@@ -311,7 +405,27 @@ def parse_article(num, lines, pageno, lo, hi):
         else:
             m = None
         if m and sec is not None:
+            # Mientras la enumeración conserve el mismo tipo de marcador con
+            # que arrancó, sigue perteneciendo a la nota; un marcador de otro
+            # tipo indica que la nota terminó y vuelve a mandar la estructura.
+            # Solo se considera que la lista pertenece a la nota si la nota
+            # ANUNCIA una enumeración, es decir si termina en dos puntos
+            # ("...uno o más de los siguientes factores:"). Sin esa condición
+            # la nota se tragaba los incisos que simplemente venían después:
+            # en 310-15(a), "2) Selección de la ampacidad" es hermano de
+            # "1) Tablas", no un elemento de la NOTA que los separa.
+            # El volcado va ANTES de mirar los dos puntos: la nota puede
+            # ocupar varias líneas y su texto no está completo hasta aquí.
             commit()
+            if (annot[0] is not None
+                    and annot[0].get('text', '').rstrip().endswith(':')
+                    and (annot[1] is None or annot[1] == kind)):
+                annot[1] = kind
+                annot[0].setdefault('items', []).append(
+                    {'label': m.group(1), 'text': ln[m.end(1) + 1:].strip()})
+                target = annot[0]['items'][-1]
+                continue
+            annot[0] = annot[1] = None
             if new_sub(m.group(1), kind, ln[m.end(1) + 1:].strip()):
                 continue
 
@@ -378,7 +492,19 @@ def main():
     os.makedirs(out, exist_ok=True)
 
     pages = load_pages(pdf)
-    lines, pageno = build_linemap(pages)
+
+    # Zonas ocupadas por tablas, producidas por build_tables. Se omiten para
+    # que el contenido de una tabla no reaparezca como párrafo corrido.
+    skip = {}
+    rpath = os.path.join(out, 'tablas_regiones.json')
+    if os.path.exists(rpath):
+        for r in json.load(open(rpath)):
+            skip.setdefault(r['page'], []).append((r['y0'], r['y1']))
+
+    img_dir = os.environ.get('NOM_IMG_DIR', 'site/public/img')
+    images = extract_images(pdf, img_dir)
+
+    lines, pageno = build_linemap(pages, pdf=pdf, skip=skip, images=images)
     toc, chapters, titulos = parse_toc(pages)
     starts = find_articles(lines, pageno, toc)
 
@@ -439,6 +565,8 @@ def main():
     # -------------------------------------------------------------- validación
     n_sec = sum(len(a['sections']) for a in articles)
     n_sub = sum(len(list(walk(s))) - 1 for a in articles for s in a['sections'])
+    n_figs = sum(len(x.get('figures', [])) for a in articles
+                 for s in a['sections'] for x in walk(s))
     n_notes = sum(len(x.get('notes', [])) for a in articles
                   for s in a['sections'] for x in walk(s))
     n_exc = sum(len(x.get('exceptions', [])) for a in articles
@@ -473,7 +601,7 @@ def main():
                         r'\w+', unaccent(z['term'] + ' ' + z['text']).lower()))
         for j in range(lo, hi):
             ln = lines[j].strip()
-            if len(ln) < 25:
+            if len(ln) < 25 or ln.startswith(IMG_MARK):
                 continue
             w = re.findall(r'\w+', unaccent(ln).lower())
             if not w:
@@ -495,6 +623,7 @@ def main():
         'notas': n_notes,
         'excepciones': n_exc,
         'definiciones': len(definitions),
+        'figuras': n_figs,
         'referencias_distintas': len(set(r for a in articles for r in a['refs'])),
         'lineas_contenido': lines_total,
         'lineas_no_capturadas': lines_lost,
@@ -513,6 +642,9 @@ def main():
     print('Notas          : %d' % n_notes)
     print('Excepciones    : %d' % n_exc)
     print('Definiciones   : %d' % len(definitions))
+    print('Figuras        : %d en %s' % (
+        sum(len(x.get('figures', [])) for a in articles
+            for s2 in a['sections'] for x in walk(s2)), img_dir))
     print('Referencias    : %d distintas' % val['referencias_distintas'])
     print('Cobertura      : %.2f%% (%d de %d líneas de contenido)'
           % (val['cobertura_pct'], lines_total - lines_lost, lines_total))

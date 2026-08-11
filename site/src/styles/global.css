@@ -389,3 +389,20 @@ dl.defs-sec > div {
 }
 dl.defs-sec dt { font-weight: 650; margin-bottom: 0.1rem; }
 dl.defs-sec dd { margin: 0; color: var(--text-dim); font-size: 0.94rem; }
+
+/* Fórmulas y figuras. En la norma las ecuaciones están embebidas como imagen,
+   no como texto, así que se muestran tal cual vienen del PDF. */
+figure.fig { margin: 0.9rem 0; text-align: center; }
+figure.fig img {
+  max-width: 100%; height: auto;
+  background: #fff; border: 1px solid var(--border-soft);
+  border-radius: var(--radius); padding: 0.5rem;
+}
+figure.fig figcaption {
+  font-size: 0.74rem; color: var(--text-faint); margin-top: 0.3rem;
+}
+
+/* Enumeraciones que pertenecen a una nota o excepción, no al articulado. */
+ul.anot-items { list-style: none; margin: 0.4rem 0 0; padding-left: 0.9rem; }
+ul.anot-items li { margin: 0.22rem 0; }
+ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); }
