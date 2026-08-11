@@ -55,6 +55,33 @@ Salieron limpias y son muy citadas. Conviene mirarlas justamente por eso: una ta
 | [ ] | `430-22(e)` | Servicio por régimen de tiempo. | 304 | 4 | 0.97 | dibujada | 7×5 |
 | [ ] | `725-154(g)` | Sustituciones de los cables | 638, 639 | 4 | 1.00 | dibujada | 10×2 |
 
+## Cómo se corrige una tabla
+
+La reconstrucción automática llegó hasta donde llega y el PDF no va a cambiar, así
+que a partir de aquí las tablas se corrigen **a mano** sobre el PDF, no tocando el
+algoritmo. El procedimiento:
+
+1. Renderizar la zona de la tabla desde el PDF (los campos `regions` de
+   `data/tablas.json` dan página y coordenadas) y compararla con lo publicado.
+2. Escribir la versión corregida en `data/tablas_revisadas.json`, con la fecha en
+   `verificada`. Se aplica ENCIMA de lo reconstruido, así que sobrevive a que
+   `build_tables.py` regenere todo en cada publicación —editar `data/tablas.json`
+   directamente NO sirve: se sobrescribe—.
+3. Correr el proceso completo en el orden del README y `check_corpus.py`, que valida
+   las filas corregidas igual que las automáticas: si las columnas no cuadran,
+   detiene el despliegue.
+
+Dos cosas que conviene saber antes de empezar:
+
+- **La calidad estimada da falsas alarmas.** Penaliza las celdas con varios números,
+  y un rango («De 50 001 a 100 000», «127 – 507», «0 – 3.14») es un valor legítimo.
+  Varias tablas señaladas resultaron estar perfectas; se marcan verificadas sin
+  tocarles un dato.
+- **Y también se queda corta.** Hay tablas peores de lo que dice su nota: las que el
+  PDF no separa con líneas horizontales colapsan todas sus filas en una sola, y eso
+  la métrica no lo ve. Conviene mirar el número de filas contra el PDF, no solo la
+  calidad.
+
 ## Qué mirar en cada tabla
 
 - **Número de columnas.** Si el PDF tiene 8 y aquí ves 5, se fusionaron.
@@ -74,3 +101,14 @@ Salieron limpias y son muy citadas. Conviene mirarlas justamente por eso: una ta
 
 Cada tabla del sitio trae un enlace «¿Ves un error? Repórtalo» que abre un issue con
 el número y la página ya rellenados.
+
+## Lo que falta
+
+- Las tablas que siguen listadas arriba. Las tres grandes que quedaron al final
+  —`400-4` (132×14, cuatro páginas), `402-3` (34×9) y `922-15(a)`— son las más
+  laboriosas. La `922-15(a)` está peor de lo que indica su nota: se tragó un bloque
+  entero de texto del artículo como si fuera una nota al pie y arrastró además la
+  tabla siguiente por debajo.
+- Un repaso rápido a las que **no** están señaladas. Nunca se han contrastado contra
+  el PDF; que la reconstrucción saliera limpia no garantiza que sea fiel, y una
+  tabla equivocada que *parece* correcta es la más peligrosa de todas.
