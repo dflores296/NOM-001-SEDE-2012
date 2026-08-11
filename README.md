@@ -42,7 +42,7 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | Referencias rotas | 0 |
 | Cobertura del texto | 99.96 % |
 | Tablas reconstruidas | 218 |
-| Tablas de alta confianza | 154 |
+| Tablas de alta confianza | 153 |
 
 ## El identificador canónico
 
@@ -138,7 +138,7 @@ rectángulos vectoriales:
   eje x y busca franjas sin tinta. Ninguno gana siempre: hay tablas con rejilla
   completa y otras que solo trazan el borde exterior. Se puntúa cada resultado
   —una celda con varios números sueltos delata que la separación falló— y gana
-  el que separa mejor. De 218 tablas, 157 traen rejilla dibujada.
+  el que separa mejor. De 218 tablas, 144 traen rejilla dibujada.
 - **Celdas combinadas**: el PDF fusiona celdas en el encabezado para que se
   entienda —«Rango de temperatura del conductor» cubre las tres columnas de
   60/75/90 °C, y «Temperatura ambiente (°C)» ocupa dos filas—. Esa jerarquía
