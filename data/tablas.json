@@ -29751,19 +29751,14 @@
    202
   ],
   "page": 201,
-  "cols": 4,
+  "cols": 3,
   "header_rows": 2,
   "intro": "",
   "rows": [
    [
     {
-     "t": ""
-    },
-    {
-     "t": "Tamaño del"
-    },
-    {
-     "t": "conduit"
+     "t": "Tamaño del conduit",
+     "cs": 2
     },
     {
      "t": "Separación máxima entre los soportes"
@@ -29771,10 +29766,7 @@
    ],
    [
     {
-     "t": "Designación"
-    },
-    {
-     "t": "métrica"
+     "t": "Designación métrica"
     },
     {
      "t": "Tamaño comercial"
@@ -29784,9 +29776,6 @@
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "16 - 27"
     },
@@ -29799,9 +29788,6 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "35 - 53"
     },
     {
@@ -29813,8 +29799,7 @@
    ],
    [
     {
-     "t": "63 -78",
-     "cs": 2
+     "t": "63 -78"
     },
     {
      "t": "2 ½ - 3"
@@ -29825,8 +29810,7 @@
    ],
    [
     {
-     "t": "91 - 129",
-     "cs": 2
+     "t": "91 - 129"
     },
     {
      "t": "3 ½ - 5"
@@ -29836,9 +29820,6 @@
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "155"
     },
@@ -29852,7 +29833,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.682,
+  "quality": 1.0,
   "regions": [
    {
     "page": 201,
@@ -29868,7 +29849,8 @@
     "id": "355-30",
     "article": 355
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "355-44",
@@ -36941,7 +36923,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.643,
+  "quality": 1.0,
   "regions": [
    {
     "page": 245,
@@ -36950,7 +36932,8 @@
     "id": "400-5(a)(3)",
     "article": 400
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "402-3",
@@ -39552,7 +39535,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.714,
+  "quality": 1.0,
   "regions": [
    {
     "page": 303,
@@ -39561,7 +39544,8 @@
     "id": "430-12(c)(2)",
     "article": 430
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "430-22(e)",
@@ -46586,12 +46570,13 @@
   ],
   "page": 412,
   "cols": 3,
-  "header_rows": 4,
+  "header_rows": 2,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Surtidor"
+     "t": "Surtidor",
+     "rs": 2
     },
     {
      "t": "Extensión de la superficie clasificada",
@@ -46599,9 +46584,6 @@
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "Clase I, División 1"
     },
@@ -46645,7 +46627,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.769,
+  "quality": 1.0,
   "regions": [
    {
     "page": 412,
@@ -46654,7 +46636,8 @@
     "id": "514-3(b)(2)",
     "article": 514
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "515-3",
@@ -47897,7 +47880,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.6,
+  "quality": 1.0,
   "regions": [
    {
     "page": 465,
@@ -47906,7 +47889,8 @@
     "id": "530-19(a)",
     "article": 530
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "550-31",
@@ -48036,7 +48020,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.786,
+  "quality": 1.0,
   "regions": [
    {
     "page": 481,
@@ -48045,7 +48029,8 @@
     "id": "550-31",
     "article": 550
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "551-73(a)",
@@ -48175,7 +48160,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.781,
+  "quality": 1.0,
   "regions": [
    {
     "page": 493,
@@ -48184,7 +48169,8 @@
     "id": "551-73(a)",
     "article": 551
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "552-10(e)(1)",
@@ -51247,7 +51233,7 @@
  },
  {
   "id": "690-7",
-  "title": "Factores de corrección de la tensión para",
+  "title": "Factores de corrección de la tensión para módulos de silicio cristalino y multicristalino",
   "informativa": false,
   "article": 690,
   "pages": [
@@ -51373,7 +51359,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.536,
+  "quality": 1.0,
   "regions": [
    {
     "page": 591,
@@ -51389,7 +51375,8 @@
     "id": "690-7",
     "article": 690
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "690-31(c)",
@@ -57643,7 +57630,7 @@
   ],
   "page": 715,
   "cols": 4,
-  "header_rows": 2,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -57657,7 +57644,7 @@
      "t": "Mayor que 8.7 kV hasta 50 kV"
     },
     {
-     "t": "(5) Mayor que 50 kV"
+     "t": "Mayor que 50 kV (5)"
     }
    ],
    [
@@ -57682,16 +57669,22 @@
      "t": "15"
     },
     {
-     "t": "15 más 1 por cada kV en kV(4) exceso de 8.7"
+     "t": "15 más 1 por cada kV en exceso de 8.7 kV(4)"
     },
     {
-     "t": "58.5 más 1 por cada kV kV(4) en exceso de 50"
+     "t": "58.5 más 1 por cada kV en exceso de 50 kV(4)"
     }
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.583,
+  "notes": [
+   "(1) Las tensiones son entre fases.",
+   "(2) Véase la Excepción 3 de la Sección 922-22.",
+   "(3) Para circuitos eléctricos de hasta 750 volts esta separación puede reducirse a 2.50 centímetros.",
+   "(4) El factor puede reducirse a 0.65 centímetros por kilovolts para retenidas de ancla.",
+   "(5) La separación adicional para tensiones mayores a 50 kilovolts se debe incrementar un 3 por ciento por cada 300 metros de altura en exceso de 1000 metros sobre el nivel del mar."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 715,
@@ -57700,7 +57693,8 @@
     "id": "922-22(a)",
     "article": 922
    }
-  ]
+  ],
+  "verificada": "2026-08-11"
  },
  {
   "id": "922-31(e)(2)",

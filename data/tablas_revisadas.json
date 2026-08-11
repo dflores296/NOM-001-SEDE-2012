@@ -788,5 +788,738 @@
    ]
   ],
   "notes": []
+ },
+ "922-22(a)": {
+  "verificada": "2026-08-11",
+  "cols": 4,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Separación de conductores verticales y derivados a:"
+    },
+    {
+     "t": "Hasta 8.7 kV"
+    },
+    {
+     "t": "Mayor que 8.7 kV hasta 50 kV"
+    },
+    {
+     "t": "Mayor que 50 kV (5)"
+    }
+   ],
+   [
+    {
+     "t": "Superficies de soportes"
+    },
+    {
+     "t": "7.5 (2)(3)"
+    },
+    {
+     "t": "7.5 más 0.5 por cada kV en exceso de 8.7 kV"
+    },
+    {
+     "t": "27.5 más 0. por cada kV en exceso de 50 kV"
+    }
+   ],
+   [
+    {
+     "t": "Mensajeros y retenidas"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "15 más 1 por cada kV en exceso de 8.7 kV(4)"
+    },
+    {
+     "t": "58.5 más 1 por cada kV en exceso de 50 kV(4)"
+    }
+   ]
+  ],
+  "notes": [
+   "(1) Las tensiones son entre fases.",
+   "(2) Véase la Excepción 3 de la Sección 922-22.",
+   "(3) Para circuitos eléctricos de hasta 750 volts esta separación puede reducirse a 2.50 centímetros.",
+   "(4) El factor puede reducirse a 0.65 centímetros por kilovolts para retenidas de ancla.",
+   "(5) La separación adicional para tensiones mayores a 50 kilovolts se debe incrementar un 3 por ciento por cada 300 metros de altura en exceso de 1000 metros sobre el nivel del mar."
+  ]
+ },
+ "514-3(b)(2)": {
+  "verificada": "2026-08-11",
+  "cols": 3,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Surtidor",
+     "rs": 2
+    },
+    {
+     "t": "Extensión de la superficie clasificada",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Clase I, División 1"
+    },
+    {
+     "t": "Clase I, División 2"
+    }
+   ],
+   [
+    {
+     "t": "Gas natural comprimido"
+    },
+    {
+     "t": "Todo el espacio dentro de la cubierta del surtidor"
+    },
+    {
+     "t": "1.50 metros en todas las direcciones desde la cubierta del surtidor"
+    }
+   ],
+   [
+    {
+     "t": "Gas natural licuado"
+    },
+    {
+     "t": "Todo el espacio dentro de la cubierta del surtidor y 1.50 metros en todas las direcciones desde la cubierta del surtidor"
+    },
+    {
+     "t": "Desde 1.50 metros hasta 3.00 metros en todas las direcciones desde la cubierta del surtidor"
+    }
+   ],
+   [
+    {
+     "t": "Gas de petróleo licuado"
+    },
+    {
+     "t": "Todo el espacio dentro de la cubierta del surtidor; 45 centímetros desde la superficie exterior de la cubierta del surtidor hasta una elevación de 1.20 metros arriba de la base del surtidor; toda la fosa o espacio abierto por debajo del surtidor y dentro de 6.00 metros horizontalmente de cualquier arista de la cubierta del surtidor cuando la fosa o trinchera no está ventilada mecánicamente."
+    },
+    {
+     "t": "Hasta 45 centímetros sobre el nivel del piso y dentro de 6.00 metros horizontalmente de cualquier arista de la cubierta del surtidor, incluyendo fosas y trincheras dentro de esta área cuando se provee con ventilación mecánica adecuada"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "430-12(c)(2)": {
+  "verificada": "2026-08-11",
+  "cols": 3,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación de conductor alimentador",
+     "cs": 2
+    },
+    {
+     "t": "Volumen mínimo utilizable por cada conductor de alimentador"
+    }
+   ],
+   [
+    {
+     "t": "mm2"
+    },
+    {
+     "t": "(AWG)"
+    },
+    {
+     "t": "cm3"
+    }
+   ],
+   [
+    {
+     "t": "2.08"
+    },
+    {
+     "t": "14"
+    },
+    {
+     "t": "16"
+    }
+   ],
+   [
+    {
+     "t": "3.31 y 5.26"
+    },
+    {
+     "t": "12 y 10"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "8.37 y 13.3"
+    },
+    {
+     "t": "8 y 6"
+    },
+    {
+     "t": "37"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "530-19(a)": {
+  "verificada": "2026-08-11",
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Parte de la carga de alumbrado del escenario a la cual se le aplica el factor de demanda (voltamperes)"
+    },
+    {
+     "t": "Factor de demanda del alimentador %"
+    }
+   ],
+   [
+    {
+     "t": "Primeros 50 000 o menos"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "De 50 001 a 100 000"
+    },
+    {
+     "t": "75"
+    }
+   ],
+   [
+    {
+     "t": "De 100 001 a 200 000"
+    },
+    {
+     "t": "60"
+    }
+   ],
+   [
+    {
+     "t": "Excedente a 200 000"
+    },
+    {
+     "t": "50"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "400-5(a)(3)": {
+  "verificada": "2026-08-11",
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Número de conductores"
+    },
+    {
+     "t": "Por ciento que se debe aplicar a los valores de las Tablas 400-5(a) y 400-5(b)"
+    }
+   ],
+   [
+    {
+     "t": "4 - 6"
+    },
+    {
+     "t": "80"
+    }
+   ],
+   [
+    {
+     "t": "7 - 9"
+    },
+    {
+     "t": "70"
+    }
+   ],
+   [
+    {
+     "t": "10 - 20"
+    },
+    {
+     "t": "50"
+    }
+   ],
+   [
+    {
+     "t": "21 - 30"
+    },
+    {
+     "t": "45"
+    }
+   ],
+   [
+    {
+     "t": "31 - 40"
+    },
+    {
+     "t": "40"
+    }
+   ],
+   [
+    {
+     "t": "41 y más"
+    },
+    {
+     "t": "35"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "355-30": {
+  "verificada": "2026-08-11",
+  "cols": 3,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Tamaño del conduit",
+     "cs": 2
+    },
+    {
+     "t": "Separación máxima entre los soportes"
+    }
+   ],
+   [
+    {
+     "t": "Designación métrica"
+    },
+    {
+     "t": "Tamaño comercial"
+    },
+    {
+     "t": "Metros"
+    }
+   ],
+   [
+    {
+     "t": "16 - 27"
+    },
+    {
+     "t": "½ - 1"
+    },
+    {
+     "t": "0.9"
+    }
+   ],
+   [
+    {
+     "t": "35 - 53"
+    },
+    {
+     "t": "1 ¼ - 2"
+    },
+    {
+     "t": "1.5"
+    }
+   ],
+   [
+    {
+     "t": "63 -78"
+    },
+    {
+     "t": "2 ½ - 3"
+    },
+    {
+     "t": "1.8"
+    }
+   ],
+   [
+    {
+     "t": "91 - 129"
+    },
+    {
+     "t": "3 ½ - 5"
+    },
+    {
+     "t": "2.1"
+    }
+   ],
+   [
+    {
+     "t": "155"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "2.5"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "550-31": {
+  "verificada": "2026-08-11",
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Número de casas móviles"
+    },
+    {
+     "t": "Factor de Demanda"
+    }
+   ],
+   [
+    {
+     "t": "1"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "2"
+    },
+    {
+     "t": "55"
+    }
+   ],
+   [
+    {
+     "t": "3"
+    },
+    {
+     "t": "44"
+    }
+   ],
+   [
+    {
+     "t": "4"
+    },
+    {
+     "t": "39"
+    }
+   ],
+   [
+    {
+     "t": "5"
+    },
+    {
+     "t": "33"
+    }
+   ],
+   [
+    {
+     "t": "6"
+    },
+    {
+     "t": "29"
+    }
+   ],
+   [
+    {
+     "t": "7 a 9"
+    },
+    {
+     "t": "28"
+    }
+   ],
+   [
+    {
+     "t": "10 a 12"
+    },
+    {
+     "t": "27"
+    }
+   ],
+   [
+    {
+     "t": "13 a 15"
+    },
+    {
+     "t": "26"
+    }
+   ],
+   [
+    {
+     "t": "16 a 21"
+    },
+    {
+     "t": "25"
+    }
+   ],
+   [
+    {
+     "t": "22 a 40"
+    },
+    {
+     "t": "24"
+    }
+   ],
+   [
+    {
+     "t": "41 a 60"
+    },
+    {
+     "t": "23"
+    }
+   ],
+   [
+    {
+     "t": "61 y en adelante"
+    },
+    {
+     "t": "22"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "551-73(a)": {
+  "verificada": "2026-08-11",
+  "cols": 4,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Número de lugares para vehículos de recreo"
+    },
+    {
+     "t": "Factor de demanda Por ciento"
+    },
+    {
+     "t": "Número de lugares para vehículos de recreo"
+    },
+    {
+     "t": "Factor de demanda Por ciento"
+    }
+   ],
+   [
+    {
+     "t": "1"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "10 a 12"
+    },
+    {
+     "t": "50"
+    }
+   ],
+   [
+    {
+     "t": "2"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "13 a 15"
+    },
+    {
+     "t": "48"
+    }
+   ],
+   [
+    {
+     "t": "3"
+    },
+    {
+     "t": "80"
+    },
+    {
+     "t": "16 a 18"
+    },
+    {
+     "t": "47"
+    }
+   ],
+   [
+    {
+     "t": "4"
+    },
+    {
+     "t": "75"
+    },
+    {
+     "t": "19 a 21"
+    },
+    {
+     "t": "45"
+    }
+   ],
+   [
+    {
+     "t": "5"
+    },
+    {
+     "t": "65"
+    },
+    {
+     "t": "22 a 24"
+    },
+    {
+     "t": "43"
+    }
+   ],
+   [
+    {
+     "t": "6"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "25 a 35"
+    },
+    {
+     "t": "42"
+    }
+   ],
+   [
+    {
+     "t": "7 a 9"
+    },
+    {
+     "t": "55"
+    },
+    {
+     "t": "36 y más"
+    },
+    {
+     "t": "41"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "690-7": {
+  "verificada": "2026-08-11",
+  "title": "Factores de corrección de la tensión para módulos de silicio cristalino y multicristalino",
+  "intro": "Factores de corrección para temperaturas ambiente menores a 25 °C (Se multiplica el tensión nominal de circuito abierto por el factor de corrección aplicable que se muestra a continuación)",
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Temperatura ambiente (ºC)"
+    },
+    {
+     "t": "Factor"
+    }
+   ],
+   [
+    {
+     "t": "-36 a -40"
+    },
+    {
+     "t": "1.02"
+    }
+   ],
+   [
+    {
+     "t": "19 a 15"
+    },
+    {
+     "t": "1.04"
+    }
+   ],
+   [
+    {
+     "t": "14 a 10"
+    },
+    {
+     "t": "1.06"
+    }
+   ],
+   [
+    {
+     "t": "9 a 5"
+    },
+    {
+     "t": "1.08"
+    }
+   ],
+   [
+    {
+     "t": "4 a 0"
+    },
+    {
+     "t": "1.10"
+    }
+   ],
+   [
+    {
+     "t": "-1 a -5"
+    },
+    {
+     "t": "1.12"
+    }
+   ],
+   [
+    {
+     "t": "-6 a -10"
+    },
+    {
+     "t": "1.14"
+    }
+   ],
+   [
+    {
+     "t": "24 a 20"
+    },
+    {
+     "t": "1.16"
+    }
+   ],
+   [
+    {
+     "t": "-11 a -15"
+    },
+    {
+     "t": "1.18"
+    }
+   ],
+   [
+    {
+     "t": "-16 a -20"
+    },
+    {
+     "t": "1.20"
+    }
+   ],
+   [
+    {
+     "t": "-21 a -25"
+    },
+    {
+     "t": "1.21"
+    }
+   ],
+   [
+    {
+     "t": "-26 a -30"
+    },
+    {
+     "t": "1.23"
+    }
+   ],
+   [
+    {
+     "t": "-31 a -35"
+    },
+    {
+     "t": "1.25"
+    }
+   ]
+  ],
+  "notes": []
  }
 }
