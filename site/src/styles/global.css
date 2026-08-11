@@ -258,6 +258,50 @@ a.xref {
   white-space: nowrap;
 }
 
+/* ---------------------------------------------------------------- tablas */
+figure.tabla { margin: 2rem 0; scroll-margin-top: 70px; }
+figure.tabla figcaption {
+  font-size: 0.9rem; font-weight: 600; line-height: 1.4;
+  margin-bottom: 0.5rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+figure.tabla .tid {
+  font-family: var(--mono); color: var(--accent); margin-right: 0.4rem;
+}
+figure.tabla:hover .anchor { opacity: 1; }
+
+/* La tabla desborda dentro de SU contenedor, nunca la página: en la norma hay
+   tablas de 14 columnas que en un teléfono no caben de ninguna forma. */
+.tabla-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  background: var(--panel);
+  -webkit-overflow-scrolling: touch;
+}
+.tabla-scroll table { border-collapse: collapse; width: 100%; font-size: 0.84rem; }
+.tabla-scroll th, .tabla-scroll td {
+  border: 1px solid var(--border-soft);
+  padding: 0.32rem 0.5rem; text-align: left; vertical-align: top;
+  white-space: nowrap;
+}
+.tabla-scroll thead th {
+  background: var(--bg-soft); font-weight: 650;
+  position: sticky; top: 0; z-index: 1;
+  white-space: normal; min-width: 5rem;
+}
+.tabla-scroll tbody tr:nth-child(even) { background: var(--bg-soft); }
+.tabla-scroll tbody tr:hover { background: var(--accent-soft); }
+
+.tabla-aviso {
+  background: var(--warn-bg); border: 1px solid var(--warn-br);
+  border-radius: var(--radius); padding: 0.5rem 0.7rem;
+  font-size: 0.82rem; color: var(--text-dim); margin: 0 0 0.5rem;
+}
+.tabla-notas { font-size: 0.82rem; color: var(--text-dim); margin-top: 0.5rem; }
+.tabla-notas p { margin: 0.25rem 0; }
+.tabla-pie { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.4rem; }
+
 /* backlinks */
 .backlinks { margin-top: 0.7rem; font-size: 0.82rem; }
 .backlinks summary { cursor: pointer; color: var(--text-faint); }

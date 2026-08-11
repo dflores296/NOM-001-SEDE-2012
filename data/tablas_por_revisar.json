@@ -1,0 +1,625 @@
+[
+ {
+  "id": "310-60(c)(82)",
+  "quality": 0.118,
+  "cols": 1,
+  "rows": 34,
+  "pages": [
+   152
+  ],
+  "title": "Ampacidad de conductores individuales de aluminio, aislados, directamente enterrados , con base en una"
+ },
+ {
+  "id": "430-247",
+  "quality": 0.157,
+  "cols": 2,
+  "rows": 26,
+  "pages": [
+   324
+  ],
+  "title": "Corriente a plena carga para motores de corriente continua"
+ },
+ {
+  "id": "310-60(c)(85)",
+  "quality": 0.162,
+  "cols": 3,
+  "rows": 35,
+  "pages": [
+   154
+  ],
+  "title": "Ampacidad de tres ternas de conductores individuales de cobre, aislados, directamente enterrados, con"
+ },
+ {
+  "id": "922-12(a)(2)",
+  "quality": 0.211,
+  "cols": 3,
+  "rows": 7,
+  "pages": [
+   710
+  ],
+  "title": "Separación horizontal mínima \"S\" de"
+ },
+ {
+  "id": "310-60(c)(77)",
+  "quality": 0.221,
+  "cols": 2,
+  "rows": 49,
+  "pages": [
+   148
+  ],
+  "title": "Ampacidad de tres conductores de cobre, individualmente aislados, en ductos eléctricos subterráneos"
+ },
+ {
+  "id": "310-60(c)(71)",
+  "quality": 0.278,
+  "cols": 2,
+  "rows": 18,
+  "pages": [
+   145
+  ],
+  "title": "Ampacidad de cables de tres conductores de cobre, aislados, separados en el aire, con base en"
+ },
+ {
+  "id": "314-16(a)",
+  "quality": 0.33,
+  "cols": 4,
+  "rows": 26,
+  "pages": [
+   164
+  ],
+  "title": "Cajas metálicas"
+ },
+ {
+  "id": "326-116",
+  "quality": 0.4,
+  "cols": 2,
+  "rows": 5,
+  "pages": [
+   177
+  ],
+  "title": "Dimensiones del conduit"
+ },
+ {
+  "id": "630-31(a)(2)",
+  "quality": 0.429,
+  "cols": 3,
+  "rows": 3,
+  "pages": [
+   548
+  ],
+  "title": "Factores de multiplicación del régimen de trabajo para soldadoras por resistencia"
+ },
+ {
+  "id": "110-34(a)",
+  "quality": 0.5,
+  "cols": 4,
+  "rows": 9,
+  "pages": [
+   26,
+   27
+  ],
+  "title": "Distancia mínima del espacio de trabajo en una instalación eléctrica"
+ },
+ {
+  "id": "430-251(b)",
+  "quality": 0.525,
+  "cols": 2,
+  "rows": 31,
+  "pages": [
+   326
+  ],
+  "title": "Conversión de corriente polifásica máxima a rotor bloqueado, diseños B, C, y D, para la selección de medios"
+ },
+ {
+  "id": "326-112",
+  "quality": 0.556,
+  "cols": 3,
+  "rows": 3,
+  "pages": [
+   177
+  ],
+  "title": "Espesor del papel separador"
+ },
+ {
+  "id": "310-60(c)(83)",
+  "quality": 0.564,
+  "cols": 4,
+  "rows": 35,
+  "pages": [
+   152,
+   153
+  ],
+  "title": "Ampacidad de tres conductores de cobre, aislados, alambrados dentro de una cubierta general (cable de"
+ },
+ {
+  "id": "430-7(b)",
+  "quality": 0.571,
+  "cols": 4,
+  "rows": 20,
+  "pages": [
+   300
+  ],
+  "title": "Letras de código de indicación para rotor bloqueado"
+ },
+ {
+  "id": "250-66",
+  "quality": 0.58,
+  "cols": 6,
+  "rows": 10,
+  "pages": [
+   98
+  ],
+  "title": "Conductor del electrodo de puesta a tierra para sistemas de corriente alterna"
+ },
+ {
+  "id": "392-22(a)",
+  "quality": 0.581,
+  "cols": 3,
+  "rows": 16,
+  "pages": [
+   231
+  ],
+  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de tipo escalera, fondo"
+ },
+ {
+  "id": "922-22(a)",
+  "quality": 0.583,
+  "cols": 4,
+  "rows": 3,
+  "pages": [
+   715
+  ],
+  "title": "o en 922-15."
+ },
+ {
+  "id": "922-12(a)(1)",
+  "quality": 0.588,
+  "cols": 2,
+  "rows": 15,
+  "pages": [
+   709
+  ],
+  "title": "Separación horizontal mínima entre conductores(1)"
+ },
+ {
+  "id": "310-106(a)",
+  "quality": 0.6,
+  "cols": 4,
+  "rows": 9,
+  "pages": [
+   158
+  ],
+  "title": "Tamaño o designación mínimo de los conductores"
+ },
+ {
+  "id": "392-22(b)(1)",
+  "quality": 0.6,
+  "cols": 3,
+  "rows": 15,
+  "pages": [
+   233
+  ],
+  "title": "para el ancho correspondiente de la charola."
+ },
+ {
+  "id": "922-15(a)",
+  "quality": 0.605,
+  "cols": 5,
+  "rows": 22,
+  "pages": [
+   711,
+   712
+  ],
+  "title": "Separación mínima en cualquier dirección (milímetros)"
+ },
+ {
+  "id": "310-15(b)(3)(c)",
+  "quality": 0.636,
+  "cols": 3,
+  "rows": 5,
+  "pages": [
+   136
+  ],
+  "title": "Ajustes a la temperatura ambiente para canalizaciones circulares"
+ },
+ {
+  "id": "352-30",
+  "quality": 0.643,
+  "cols": 2,
+  "rows": 7,
+  "pages": [
+   196
+  ],
+  "title": "Soportes para tubo conduit rígido de policloruro de vinilo (PVC)"
+ },
+ {
+  "id": "355-30",
+  "quality": 0.647,
+  "cols": 4,
+  "rows": 7,
+  "pages": [
+   201,
+   202
+  ],
+  "title": "Soportes para tubo conduit de resina termofija reforzada (RTRC)"
+ },
+ {
+  "id": "392-22(a)(6)",
+  "quality": 0.647,
+  "cols": 4,
+  "rows": 8,
+  "pages": [
+   232
+  ],
+  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal sólido para"
+ },
+ {
+  "id": "625-29(d)(2)",
+  "quality": 0.656,
+  "cols": 4,
+  "rows": 16,
+  "pages": [
+   542
+  ],
+  "title": "Ventilación mínima requerida en ft3/min, por cada número total de vehículos eléctricos que pueden ser"
+ },
+ {
+  "id": "310-60(c)(69)",
+  "quality": 0.667,
+  "cols": 3,
+  "rows": 22,
+  "pages": [
+   144
+  ],
+  "title": "Ampacidad de conductores de cobre individuales, aislados, y separados en el aire, con base en"
+ },
+ {
+  "id": "310-60(c)(72)",
+  "quality": 0.667,
+  "cols": 3,
+  "rows": 17,
+  "pages": [
+   146
+  ],
+  "title": "Ampacidad de cables de tres conductores de aluminio, aislados, separados en el aire, con base en"
+ },
+ {
+  "id": "310-60(c)(73)",
+  "quality": 0.667,
+  "cols": 3,
+  "rows": 18,
+  "pages": [
+   146
+  ],
+  "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de cobre, en tubo"
+ },
+ {
+  "id": "392-22(a)(5)",
+  "quality": 0.667,
+  "cols": 3,
+  "rows": 6,
+  "pages": [
+   232
+  ],
+  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal ventilado"
+ },
+ {
+  "id": "400-5(a)(3)",
+  "quality": 0.667,
+  "cols": 3,
+  "rows": 7,
+  "pages": [
+   245
+  ],
+  "title": "Factores de ajuste para más de tres conductores de fase en un cable o cordón flexible"
+ },
+ {
+  "id": "430-29",
+  "quality": 0.667,
+  "cols": 2,
+  "rows": 9,
+  "pages": [
+   306
+  ],
+  "title": "Factores de ampacidad del conductor para resistencias de potencia"
+ },
+ {
+  "id": "530-19(a)",
+  "quality": 0.667,
+  "cols": 4,
+  "rows": 5,
+  "pages": [
+   465
+  ],
+  "title": "Factores de demanda para el alumbrado del escenario"
+ },
+ {
+  "id": "725-179",
+  "quality": 0.667,
+  "cols": 2,
+  "rows": 3,
+  "pages": [
+   640,
+   641
+  ],
+  "title": "Marcado de los cables"
+ },
+ {
+  "id": "810-52",
+  "quality": 0.667,
+  "cols": 3,
+  "rows": 5,
+  "pages": [
+   674
+  ],
+  "title": "Tamaño de los conductores para exteriores."
+ },
+ {
+  "id": "922-93(b)(1)",
+  "quality": 0.667,
+  "cols": 3,
+  "rows": 2,
+  "pages": [
+   725,
+   726
+  ],
+  "title": "Porcentaje de tensión mecánica máxima del cable de acero a 0 °C sin carga de viento o hielo"
+ },
+ {
+  "id": "400-5(a)(2)",
+  "quality": 0.669,
+  "cols": 6,
+  "rows": 26,
+  "pages": [
+   245
+  ],
+  "title": "Ampacidad de los cables tipo SC, SCE, SCT, PPE, G, G-GC y W (Basada en una temperatura ambiente de 30"
+ },
+ {
+  "id": "430-250",
+  "quality": 0.672,
+  "cols": 6,
+  "rows": 30,
+  "pages": [
+   325
+  ],
+  "title": "Corriente a plena carga de motores trifásicos de corriente alterna"
+ },
+ {
+  "id": "430-72(b)",
+  "quality": 0.676,
+  "cols": 4,
+  "rows": 9,
+  "pages": [
+   314
+  ],
+  "title": "Ajuste máximo de los dispositivos de protección contra sobrecorriente en amperes"
+ },
+ {
+  "id": "310-60(c)(67)",
+  "quality": 0.68,
+  "cols": 3,
+  "rows": 18,
+  "pages": [
+   143
+  ],
+  "title": "Ampacidad permisible de cables monoconductores de cobre aislados en configuración tríplex al aire,"
+ },
+ {
+  "id": "310-60(c)(86)",
+  "quality": 0.681,
+  "cols": 3,
+  "rows": 34,
+  "pages": [
+   154,
+   155
+  ],
+  "title": "Ampacidad de tres ternas de conductores individuales de aluminio, aislados, directamente enterrados, con"
+ },
+ {
+  "id": "310-60(c)(81)",
+  "quality": 0.684,
+  "cols": 3,
+  "rows": 35,
+  "pages": [
+   151,
+   152
+  ],
+  "title": "Ampacidad de conductores individuales de cobre, aislados, directamente enterrados, con base en una"
+ },
+ {
+  "id": "430-251(a)",
+  "quality": 0.688,
+  "cols": 3,
+  "rows": 12,
+  "pages": [
+   326
+  ],
+  "title": "Conversión de corrientes monofásicas a rotor bloqueado, para la selección de los medios de desconexión y"
+ },
+ {
+  "id": "310-104(e)",
+  "quality": 0.692,
+  "cols": 3,
+  "rows": 15,
+  "pages": [
+   158
+  ],
+  "title": "Espesor del aislamiento para cables con dieléctricos sólidos, con pantalla metálica, para 2001 a 35 000 volts"
+ },
+ {
+  "id": "310-60(c)(75)",
+  "quality": 0.7,
+  "cols": 3,
+  "rows": 18,
+  "pages": [
+   147
+  ],
+  "title": "Ampacidad de cables de tres conductores de cobre aislados y en un tubo conduit físicamente aislado"
+ },
+ {
+  "id": "326-24",
+  "quality": 0.7,
+  "cols": 2,
+  "rows": 5,
+  "pages": [
+   177
+  ],
+  "title": "Radio mínimo de curvatura"
+ },
+ {
+  "id": "810-16(a)",
+  "quality": 0.7,
+  "cols": 3,
+  "rows": 5,
+  "pages": [
+   672
+  ],
+  "title": "Tamaño de los conductores de antena exterior para estaciones receptoras"
+ },
+ {
+  "id": "348-22",
+  "quality": 0.704,
+  "cols": 4,
+  "rows": 7,
+  "pages": [
+   192
+  ],
+  "title": "Número máximo de conductores aislados en el tubo conduit"
+ },
+ {
+  "id": "922-93(a)(1)",
+  "quality": 0.727,
+  "cols": 3,
+  "rows": 5,
+  "pages": [
+   725
+  ],
+  "title": "Tamaño mínimo de conductores de cobre"
+ },
+ {
+  "id": "430-10(b)",
+  "quality": 0.745,
+  "cols": 3,
+  "rows": 16,
+  "pages": [
+   301
+  ],
+  "title": "Espacio mínimo para el acomodo del alambrado en las terminales en los envolventes de los controladores de"
+ },
+ {
+  "id": "220-42",
+  "quality": 0.75,
+  "cols": 5,
+  "rows": 12,
+  "pages": [
+   47
+  ],
+  "title": "Factores de demanda de cargas de alumbrado"
+ },
+ {
+  "id": "430-12(c)(2)",
+  "quality": 0.75,
+  "cols": 4,
+  "rows": 5,
+  "pages": [
+   303
+  ],
+  "title": "Volúmenes utilizables (Terminales fijos)"
+ },
+ {
+  "id": "490-24",
+  "quality": 0.753,
+  "cols": 4,
+  "rows": 23,
+  "pages": [
+   350
+  ],
+  "title": "Espacio mínimo de seguridad de las partes vivas"
+ },
+ {
+  "id": "310-60(c)(79)",
+  "quality": 0.758,
+  "cols": 4,
+  "rows": 50,
+  "pages": [
+   149,
+   150
+  ],
+  "title": "Ampacidad de tres conductores de cobre aislados, alambrados dentro de una cubierta general (cable"
+ },
+ {
+  "id": "310-60(c)(80)",
+  "quality": 0.758,
+  "cols": 4,
+  "rows": 50,
+  "pages": [
+   150,
+   151
+  ],
+  "title": "Ampacidad de tres conductores de aluminio aislados, alambrados dentro de una cubierta general (cable de"
+ },
+ {
+  "id": "400-4",
+  "quality": 0.772,
+  "cols": 14,
+  "rows": 132,
+  "pages": [
+   241,
+   242,
+   243,
+   244
+  ],
+  "title": "Cordones y cables flexibles (Ver 400-4)"
+ },
+ {
+  "id": "310-15(b)(7)",
+  "quality": 0.775,
+  "cols": 4,
+  "rows": 14,
+  "pages": [
+   137
+  ],
+  "title": "Tipos y tamaño o designación de conductores para alimentadores monofásicos, de 3 hilos de 120/240"
+ },
+ {
+  "id": "110-34(e)",
+  "quality": 0.778,
+  "cols": 3,
+  "rows": 4,
+  "pages": [
+   27
+  ],
+  "title": "Altura de las partes vivas sin proteger sobre el espacio de trabajo"
+ },
+ {
+  "id": "210-24",
+  "quality": 0.786,
+  "cols": 6,
+  "rows": 11,
+  "pages": [
+   38
+  ],
+  "title": "Resumen de requisitos de los circuitos derivados"
+ },
+ {
+  "id": "550-31",
+  "quality": 0.786,
+  "cols": 2,
+  "rows": 14,
+  "pages": [
+   481
+  ],
+  "title": "Factores de demanda para conductores de entrada"
+ },
+ {
+  "id": "551-73(a)",
+  "quality": 0.788,
+  "cols": 5,
+  "rows": 8,
+  "pages": [
+   493
+  ],
+  "title": "Factores de demanda para los conductores de entrada"
+ }
+]
