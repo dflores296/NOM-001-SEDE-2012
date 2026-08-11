@@ -492,6 +492,37 @@ def clean_words(page, ymin=-1):
             if w[1] > ymin and not RE_PAGE_NOISE.match(w[4].strip())]
 
 
+# Una nota al pie empieza con asterisco o con "NOTA". Lo que sigue en la
+# línea de abajo, más pegado que un párrafo normal, es su continuación.
+RE_PIE = re.compile(r'^\s*(?:\*+|NOTA\b|Nota\b|\d+\s*[).])')
+PIE_GAP = 16.0      # separación máxima para considerar que la línea sigue al pie
+PIE_ALTO = 90.0     # hasta dónde se busca por debajo de la rejilla
+
+
+def footnotes_below(page, ybase):
+    """Notas al pie inmediatamente debajo de la rejilla: (textos, y final)."""
+    lineas = []
+    for blk in page.get_text('dict')['blocks']:
+        for ln in blk.get('lines', []):
+            txt = ''.join(sp['text'] for sp in ln['spans']).strip()
+            if txt and ln['bbox'][1] > ybase - 2:
+                lineas.append((ln['bbox'][1], ln['bbox'][3], txt))
+    lineas.sort()
+
+    notas, y_fin, prev = [], ybase, ybase
+    for y0, y1, txt in lineas:
+        if y0 - prev > PIE_GAP or y0 - ybase > PIE_ALTO:
+            break
+        if RE_PIE.match(txt):
+            notas.append(txt)
+        elif notas and not RE_CAPTION.match(unaccent(txt)):
+            notas[-1] += ' ' + txt        # continuación de la nota anterior
+        else:
+            break
+        y_fin, prev = max(y_fin, y1 + 2), y1
+    return notas, y_fin
+
+
 def contiguous(bands, max_gap=26.0):
     """Recorta la lista de bandas donde la rejilla se interrumpe."""
     if not bands:
@@ -612,9 +643,60 @@ def main():
         # tabla no sirve: las coordenadas son relativas a cada página y la del
         # título suele traer solo el encabezado, cuyo trazado no coincide con
         # el del cuerpo. Lo que sí se comparte es el número de columnas.
+        art = None
+        m = re.match(r'^(\d{3})-', cap['id'])
+        if m and int(m.group(1)) in art_nums:
+            art = int(m.group(1))
+
         regions = [{'page': pno, 'y0': (cap['y'] - 4 if pno == cap['page'] else bands[0][0] - 2),
-                    'y1': bands[-1][1] + 2, 'id': cap['id']}
+                    'y1': bands[-1][1] + 2, 'id': cap['id'], 'article': art}
                    for pno, bands in extent]
+
+        # Las notas al pie van DEBAJO de la rejilla, fuera del rectángulo que
+        # se recorta. Si se dejan ahí, build_corpus las lee como texto corrido
+        # y acaban pegadas al párrafo anterior: en 310-60(c)(4) la nota del
+        # artículo terminó con nueve "* Consulte 310-60(c)(4)..." seguidos,
+        # uno por cada tabla de las páginas siguientes.
+        # El título puede quedar al pie de una página y la tabla empezar en la
+        # siguiente. Entonces la zona del título no está en ninguna región y
+        # sus renglones se cuelan en el texto del artículo: las cuatro líneas
+        # del título de la 310-60(c)(78) acabaron dentro de una NOTA del 310.
+        if cap['page'] not in [p for p, _ in extent]:
+            regions.insert(0, {'page': cap['page'], 'y0': cap['y'] - 4,
+                               'y1': doc[cap['page'] - 1].rect.y1,
+                               'id': cap['id'], 'article': art})
+
+        # Un título de tabla de varios renglones: los siguientes empiezan en
+        # minúscula o con paréntesis, nunca con mayúscula de frase nueva.
+        # No sirve cortar donde empieza la rejilla: la detección de filas
+        # arranca en el propio título, así que su primera banda cae encima de
+        # estos renglones. Se recorren hacia abajo y se para en el primero que
+        # no continúa la frase.
+        seguidas = []
+        for blk in doc[cap['page'] - 1].get_text('dict')['blocks']:
+            for ln in blk.get('lines', []):
+                if ln['bbox'][1] > cap['y'] + 6:
+                    seguidas.append((ln['bbox'][1],
+                                     ''.join(sp['text'] for sp in ln['spans']).strip()))
+        cont, prev = [], cap['y']
+        for y, txt in sorted(seguidas):
+            if not txt or RE_PAGE_NOISE.match(txt):
+                continue
+            if y - prev > 20 or not (txt[0].islower() or txt[0] == '('):
+                break
+            cont.append(txt)
+            prev = y
+        if cont:
+            cap['title'] = re.sub(
+                r'\s+', ' ', cap['title'] + ' ' + ' '.join(cont)).strip()
+
+        pie = []
+        porpag = {r['page']: r for r in regions}
+        for pno, bands in extent:
+            texto, y1 = footnotes_below(doc[pno - 1], bands[-1][1])
+            if texto:
+                pie += texto
+                porpag[pno]['y1'] = max(porpag[pno]['y1'], y1)
         rows, npages, per_page = [], [], []
         for pno, bands in extent:
             page = doc[pno - 1]
@@ -679,6 +761,7 @@ def main():
             if cel:
                 rows += cel
                 npages.append(pno)
+        # las de dentro de la rejilla van primero; después las de debajo
         notes = []
         if not rows:
             continue
@@ -693,6 +776,7 @@ def main():
                 body.append(row)
         if not body:
             continue
+        notes += pie
 
         ncols = max(row_width(r) for r in body)
         # una fila más angosta que la tabla se completa por la derecha
@@ -723,11 +807,6 @@ def main():
                and body[0][0].get('cs', 1) == ncols
                and len(body[0][0]['t'].split()) >= 6):
             intro = (intro + ' ' + body.pop(0)[0]['t']).strip()
-
-        art = None
-        m = re.match(r'^(\d{3})-', cap['id'])
-        if m and int(m.group(1)) in art_nums:
-            art = int(m.group(1))
 
         # el encabezado son las filas iniciales sin ningún número suelto
         head = 0

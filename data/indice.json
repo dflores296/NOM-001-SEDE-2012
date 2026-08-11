@@ -695,30 +695,6 @@
   "chapter": 1,
   "page": 25
  },
- "110-31(a)(1)": {
-  "kind": "inciso",
-  "id": "110-31(a)(1)",
-  "title": "Paredes y techo",
-  "article": 110,
-  "chapter": 1,
-  "page": 25
- },
- "110-31(a)(2)": {
-  "kind": "inciso",
-  "id": "110-31(a)(2)",
-  "title": "Pisos",
-  "article": 110,
-  "chapter": 1,
-  "page": 25
- },
- "110-31(a)(3)": {
-  "kind": "inciso",
-  "id": "110-31(a)(3)",
-  "title": "Puertas",
-  "article": 110,
-  "chapter": 1,
-  "page": 25
- },
  "110-31(a)(4)": {
   "kind": "inciso",
   "id": "110-31(a)(4)",
@@ -2435,14 +2411,6 @@
   "kind": "inciso",
   "id": "210-21(b)(2)",
   "title": "Carga total conectada con cordón y clavija",
-  "article": 210,
-  "chapter": 2,
-  "page": 37
- },
- "210-21(b)(3)": {
-  "kind": "inciso",
-  "id": "210-21(b)(3)",
-  "title": "Valor nominal del contacto",
   "article": 210,
   "chapter": 2,
   "page": 37
@@ -16031,34 +15999,10 @@
   "chapter": 3,
   "page": 164
  },
- "314-16(a)(1)": {
-  "kind": "inciso",
-  "id": "314-16(a)(1)",
-  "title": "Cajas estándar",
-  "article": 314,
-  "chapter": 3,
-  "page": 164
- },
- "314-16(a)(2)": {
-  "kind": "inciso",
-  "id": "314-16(a)(2)",
-  "title": "Otras cajas",
-  "article": 314,
-  "chapter": 3,
-  "page": 164
- },
  "314-16(b)": {
   "kind": "inciso",
   "id": "314-16(b)",
   "title": "Cálculos de la ocupación de la caja",
-  "article": 314,
-  "chapter": 3,
-  "page": 164
- },
- "314-16(b)(1)": {
-  "kind": "inciso",
-  "id": "314-16(b)(1)",
-  "title": "Ocupación por los conductores",
   "article": 314,
   "chapter": 3,
   "page": 164
@@ -37775,49 +37719,41 @@
   "chapter": 4,
   "page": 314
  },
- "430-72(c)": {
+ "430-72(b)(2)(1)": {
   "kind": "inciso",
-  "id": "430-72(c)",
-  "title": "Transformador del circuito de control",
-  "article": 430,
-  "chapter": 4,
-  "page": 314
- },
- "430-72(c)(1)": {
-  "kind": "inciso",
-  "id": "430-72(c)(1)",
+  "id": "430-72(b)(2)(1)",
   "title": "Conformidad con el Artículo 725",
   "article": 430,
   "chapter": 4,
   "page": 314
  },
- "430-72(c)(2)": {
+ "430-72(b)(2)(2)": {
   "kind": "inciso",
-  "id": "430-72(c)(2)",
+  "id": "430-72(b)(2)(2)",
   "title": "Conformidad con el Artículo 450",
   "article": 430,
   "chapter": 4,
   "page": 314
  },
- "430-72(c)(3)": {
+ "430-72(b)(2)(3)": {
   "kind": "inciso",
-  "id": "430-72(c)(3)",
+  "id": "430-72(b)(2)(3)",
   "title": "Menos de 50 voltamperes",
   "article": 430,
   "chapter": 4,
   "page": 314
  },
- "430-72(c)(4)": {
+ "430-72(b)(2)(4)": {
   "kind": "inciso",
-  "id": "430-72(c)(4)",
+  "id": "430-72(b)(2)(4)",
   "title": "Primario de menos de 2 amperes",
   "article": 430,
   "chapter": 4,
   "page": 314
  },
- "430-72(c)(5)": {
+ "430-72(b)(2)(5)": {
   "kind": "inciso",
-  "id": "430-72(c)(5)",
+  "id": "430-72(b)(2)(5)",
   "title": "Otros medios",
   "article": 430,
   "chapter": 4,
@@ -39995,14 +39931,6 @@
   "kind": "inciso",
   "id": "450-4(a)",
   "title": "Protección contra sobrecorriente",
-  "article": 450,
-  "chapter": 4,
-  "page": 336
- },
- "450-4(b)": {
-  "kind": "inciso",
-  "id": "450-4(b)",
-  "title": "Transformador conectado en campo como autotransformador",
   "article": 450,
   "chapter": 4,
   "page": 336
@@ -46663,14 +46591,6 @@
   "chapter": 5,
   "page": 388
  },
- "505-9(d)(1)": {
-  "kind": "inciso",
-  "id": "505-9(d)(1)",
-  "title": "Clasificación de temperatura",
-  "article": 505,
-  "chapter": 5,
-  "page": 388
- },
  "505-9(e)": {
   "kind": "inciso",
   "id": "505-9(e)",
@@ -49315,22 +49235,6 @@
   "kind": "inciso",
   "id": "515-8(a)(3)",
   "title": "Las áreas adicionales pueden ser clasificadas se requiera por la presencia de ot",
-  "article": 515,
-  "chapter": 5,
-  "page": 417
- },
- "515-8(b)": {
-  "kind": "inciso",
-  "id": "515-8(b)",
-  "title": "Aislamiento",
-  "article": 515,
-  "chapter": 5,
-  "page": 417
- },
- "515-8(c)": {
-  "kind": "inciso",
-  "id": "515-8(c)",
-  "title": "Alambrado no metálico",
   "article": 515,
   "chapter": 5,
   "page": 417
@@ -54047,73 +53951,57 @@
   "chapter": 5,
   "page": 460
  },
- "522-24(a)": {
+ "522-24(1)": {
   "kind": "inciso",
-  "id": "522-24(a)",
-  "title": "Dos o más circuitos de control",
-  "article": 522,
-  "chapter": 5,
-  "page": 460
- },
- "522-24(b)": {
-  "kind": "inciso",
-  "id": "522-24(b)",
-  "title": "Circuitos de control con circuitos de fuerza",
-  "article": 522,
-  "chapter": 5,
-  "page": 460
- },
- "522-24(b)(1)": {
-  "kind": "inciso",
-  "id": "522-24(b)(1)",
+  "id": "522-24(1)",
   "title": "En un cable, envolvente o canalización",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(b)(2)": {
+ "522-24(2)": {
   "kind": "inciso",
-  "id": "522-24(b)(2)",
+  "id": "522-24(2)",
   "title": "En centros de control ensamblados en fábrica o en campo",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(b)(3)": {
+ "522-24(3)": {
   "kind": "inciso",
-  "id": "522-24(b)(3)",
+  "id": "522-24(3)",
   "title": "En un pozo de inspección",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(b)(3)(1)": {
+ "522-24(3)(1)": {
   "kind": "inciso",
-  "id": "522-24(b)(3)(1)",
+  "id": "522-24(3)(1)",
   "title": "Los conductores del circuito de control o de fuerza estén en un cable con envolv",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(b)(3)(2)": {
+ "522-24(3)(2)": {
   "kind": "inciso",
-  "id": "522-24(b)(3)(2)",
+  "id": "522-24(3)(2)",
   "title": "Los conductores estén separados permanentemente de los conductores de fuerza por",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(b)(3)(3)": {
+ "522-24(3)(3)": {
   "kind": "inciso",
-  "id": "522-24(b)(3)(3)",
+  "id": "522-24(3)(3)",
   "title": "Los conductores estén separados permanente y eficazmente de los conductores de f",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(b)(3)(4)": {
+ "522-24(3)(4)": {
   "kind": "inciso",
-  "id": "522-24(b)(3)(4)",
+  "id": "522-24(3)(4)",
   "title": "En charolas portacables, cuando los conductores del circuito de control y los co",
   "article": 522,
   "chapter": 5,
@@ -64823,34 +64711,10 @@
   "chapter": 6,
   "page": 541
  },
- "625-29(d)(2)": {
+ "625-29(d)(1)(2)": {
   "kind": "inciso",
-  "id": "625-29(d)(2)",
-  "title": "Otros valores",
-  "article": 625,
-  "chapter": 6,
-  "page": 541
- },
- "625-29(d)(2)(1)": {
-  "kind": "inciso",
-  "id": "625-29(d)(2)(1)",
-  "title": "Instalaciones monofásicas:",
-  "article": 625,
-  "chapter": 6,
-  "page": 541
- },
- "625-29(d)(2)(2)": {
-  "kind": "inciso",
-  "id": "625-29(d)(2)(2)",
-  "title": "Instalaciones trifásicas: vehículos eléctricos, sean determinados por cálculos e",
-  "article": 625,
-  "chapter": 6,
-  "page": 541
- },
- "625-29(d)(4)": {
-  "kind": "inciso",
-  "id": "625-29(d)(4)",
-  "title": "Circuitos alimentadores",
+  "id": "625-29(d)(1)(2)",
+  "title": "Instalaciones trifásicas:",
   "article": 625,
   "chapter": 6,
   "page": 541
@@ -88531,22 +88395,6 @@
   "kind": "seccion",
   "id": "922-101",
   "title": "Generalidades",
-  "article": 922,
-  "chapter": 9,
-  "page": 727
- },
- "922-101(a)": {
-  "kind": "inciso",
-  "id": "922-101(a)",
-  "title": "En postes de madera y de concreto se debe considerar que las retenidas llevan la",
-  "article": 922,
-  "chapter": 9,
-  "page": 727
- },
- "922-101(b)": {
-  "kind": "inciso",
-  "id": "922-101(b)",
-  "title": "En líneas que crucen sobre vías férreas, las estructuras adyacentes deben resist",
   "article": 922,
   "chapter": 9,
   "page": 727
