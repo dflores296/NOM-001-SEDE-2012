@@ -19,7 +19,7 @@ veces y como "ARTÍCULO" (con acento) 2 veces -- artículos 250 y 555. Todo
 emparejamiento normaliza acentos pero CONSERVA mayúsculas, que es lo que
 distingue el encabezado "ARTICULO 250" de la referencia en prosa "el Artículo 250".
 """
-import json, os, re, sys, unicodedata
+import itertools, json, os, re, sys, unicodedata
 from collections import OrderedDict
 
 # ------------------------------------------------------------------ utilidades
@@ -43,9 +43,16 @@ RE_ARTICLE = re.compile(r'^ARTICULO\s+(\d{3})\s*$', re.M)
 RE_PART    = re.compile(r'^([A-M])\.\s+([0-9A-ZÁÉÍÓÚÑ].{0,110})$')
 RE_NOTE    = re.compile(r'^(NOTA[^:]{0,40}):\s*(.*)$')
 RE_EXC     = re.compile(r'^(Excepci[oó]n[^:]{0,60}):\s*(.*)$')
-RE_SUB_A   = re.compile(r'^([a-z])\)\s+(.*)$')          # a)  nivel 1
-RE_SUB_N   = re.compile(r'^\((\d{1,2})\)\s+(.*)$')      # (1) nivel 2
-RE_SUB_L   = re.compile(r'^([a-z])\.\s+(.*)$')          # a.  nivel 3
+RE_SUB_A   = re.compile(r'^([a-z])\)\s+(.*)$')          # a)
+RE_SUB_N   = re.compile(r'^\((\d{1,2})\)\s+(.*)$')      # (1)
+RE_SUB_P   = re.compile(r'^(\d{1,2})\)\s+(.*)$')        # 1)  sin paréntesis inicial
+RE_SUB_L   = re.compile(r'^([a-z])\.\s+(.*)$')          # a.
+
+# Dentro de una sección de definiciones, cada término abre línea propia y sus
+# continuaciones siguen en minúscula. Sin esto, todas las definiciones de la
+# sección se funden en un solo párrafo corrido e ilegible.
+RE_DEF = re.compile(r'^([0-9A-ZÁÉÍÓÚÑ][^.:]{2,95})[.:]\s+(\S.*)$')
+RE_DEF_TITLE = re.compile(r'^Definicion')
 RE_REF     = re.compile(r'\b(\d{3}-\d{1,3}(?:\([a-z0-9]{1,3}\))*)')
 RE_TBLREF  = re.compile(r'Tabla\s+(\d{3}-[\w().\-]+|\d{1,2}[A-Z]?(?:\([A-Z]\))?)')
 
@@ -148,6 +155,10 @@ def parse_article(num, lines, pageno, lo, hi):
     buf = []            # acumulador de texto libre
     target = None       # dónde va `buf`
     last_sec = 0        # nº de la última sección aceptada (control de monotonía)
+    # Notas y excepciones se guardan en listas separadas, pero en la norma se
+    # intercalan y su orden importa: una excepción que en el documento precede
+    # a una nota no puede mostrarse después. `seq` conserva el orden original.
+    seq = itertools.count()
 
     def commit():
         nonlocal buf
@@ -257,7 +268,8 @@ def parse_article(num, lines, pageno, lo, hi):
             owner = stack[-1]['node'] if stack else sec
             if owner is not None:
                 node = {'label': ln.split(':', 1)[0].strip(),
-                        'text': ln.split(':', 1)[1].strip()}
+                        'text': ln.split(':', 1)[1].strip(),
+                        'seq': next(seq)}
                 owner.setdefault('notes', []).append(node)
                 target = node
             continue
@@ -269,13 +281,30 @@ def parse_article(num, lines, pageno, lo, hi):
             owner = stack[-1]['node'] if stack else sec
             if owner is not None:
                 node = {'label': ln.split(':', 1)[0].strip(),
-                        'text': ln.split(':', 1)[1].strip()}
+                        'text': ln.split(':', 1)[1].strip(),
+                        'seq': next(seq)}
                 owner.setdefault('exceptions', []).append(node)
                 target = node
             continue
 
+        # --- término de una sección de definiciones
+        if (sec is not None and not stack
+                and RE_DEF_TITLE.match(unaccent(sec.get('title', '')))):
+            m = RE_DEF.match(ln)
+            if m and not RE_NOTE.match(u) and not RE_EXC.match(u):
+                commit()
+                node = {'term': m.group(1).strip(), 'text': m.group(2).strip()}
+                sec.setdefault('definitions', []).append(node)
+                target = node
+                continue
+
         # --- incisos
-        for rx, kind in ((RE_SUB_A, 'alpha'), (RE_SUB_N, 'num'), (RE_SUB_L, 'letter')):
+        #     'N)' y '(N)' son el mismo nivel con distinta tipografía: la norma
+        #     escribe 1 509 incisos de la primera forma y 2 765 de la segunda.
+        #     Reconocer solo una dejaba la otra como texto corrido dentro del
+        #     inciso anterior, que es lo que rompía la estructura de 310-15.
+        for rx, kind in ((RE_SUB_A, 'alpha'), (RE_SUB_N, 'num'),
+                         (RE_SUB_P, 'num'), (RE_SUB_L, 'letter')):
             m = rx.match(u)
             if m:
                 break
@@ -327,6 +356,9 @@ def collect_refs(node, out):
             out.add(m.group(1))
     for n in node.get('notes', []) + node.get('exceptions', []):
         for m in RE_REF.finditer(n.get('text', '')):
+            out.add(m.group(1))
+    for d in node.get('definitions', []):
+        for m in RE_REF.finditer(d['term'] + ' ' + d['text']):
             out.add(m.group(1))
     for ch in node.get('children', []):
         collect_refs(ch, out)
@@ -436,6 +468,9 @@ def main():
                     (x.get('title') or '') + ' ' + (x.get('text') or '')).lower()))
                 for z in x.get('notes', []) + x.get('exceptions', []):
                     got.update(re.findall(r'\w+', unaccent(z['text']).lower()))
+                for z in x.get('definitions', []):
+                    got.update(re.findall(
+                        r'\w+', unaccent(z['term'] + ' ' + z['text']).lower()))
         for j in range(lo, hi):
             ln = lines[j].strip()
             if len(ln) < 25:
@@ -450,7 +485,7 @@ def main():
                     lost_examples.append({'articulo': n, 'linea': ln[:120]})
 
     empty = [s['id'] for a in articles for s in a['sections']
-             if not (s.get('text') or s.get('children'))]
+             if not (s.get('text') or s.get('children') or s.get('definitions'))]
 
     val = {
         'articulos': len(articles),

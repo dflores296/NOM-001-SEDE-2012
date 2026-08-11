@@ -103,11 +103,22 @@ for (const t of tabs) {
 
               {s.text && <p set:html={linkify(s.text)} />}
 
-              {s.notes?.map((n) => (
-                <div class="nota"><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
-              ))}
-              {s.exceptions?.map((n) => (
-                <div class="exc"><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
+              {s.definitions?.length > 0 && (
+                <dl class="defs-sec">
+                  {s.definitions.map((d) => (
+                    <div>
+                      <dt>{d.term}</dt>
+                      <dd set:html={linkify(d.text)} />
+                    </div>
+                  ))}
+                </dl>
+              )}
+
+              {[
+                ...(s.notes || []).map((n) => ({ ...n, k: 'nota' })),
+                ...(s.exceptions || []).map((n) => ({ ...n, k: 'exc' })),
+              ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0)).map((n) => (
+                <div class={n.k}><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
               ))}
 
               {s.children?.length > 0 && (

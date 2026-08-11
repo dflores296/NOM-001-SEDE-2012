@@ -5,17 +5,28 @@ const { node } = Astro.props;
 // El marcador se decide por el TIPO de inciso, no por su profundidad: la
 // misma "a." puede aparecer a distintos niveles según el artículo.
 const label = node.kind === 'letter' ? `${node.label}.` : `(${node.label})`;
+// Notas y excepciones se intercalan en la norma y su orden importa: se
+// reordenan por su posición original en el documento, no por tipo.
+const anot = [
+  ...(node.notes || []).map((n) => ({ ...n, k: 'nota' })),
+  ...(node.exceptions || []).map((n) => ({ ...n, k: 'exc' })),
+].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0));
 ---
 <li class="sub" id={node.id}>
   <span class="lbl">{label}</span>
   {node.title && <span class="st">{node.title}. </span>}
   <span set:html={linkify(node.text)} />
 
-  {node.notes?.map((n) => (
-    <div class="nota"><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
-  ))}
-  {node.exceptions?.map((n) => (
-    <div class="exc"><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
+  {node.definitions?.length > 0 && (
+    <dl class="defs-sec">
+      {node.definitions.map((d) => (
+        <div><dt>{d.term}</dt><dd set:html={linkify(d.text)} /></div>
+      ))}
+    </dl>
+  )}
+
+  {anot.map((n) => (
+    <div class={n.k}><span class="lb">{n.label}</span><span set:html={linkify(n.text)} /></div>
   ))}
 
   {node.children?.length > 0 && (
