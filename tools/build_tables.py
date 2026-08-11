@@ -205,8 +205,16 @@ def crosses(words, x, ya, yb):
                for w in words)
 
 
-def cell_rects(words, bands, edges, vert, horz):
-    """Rectángulos maximales de la rejilla -> [(fila, col, rowspan, colspan)]."""
+def cell_rects(words, bands, edges, vert, horz, solo_cruces=False):
+    """Rectángulos maximales de la rejilla -> [(fila, col, rowspan, colspan)].
+
+    Con `solo_cruces` una celda se ensancha únicamente si hay una palabra
+    montada sobre la frontera, y no por el mero hecho de que a la derecha no
+    haya nada. Se usa cuando la tabla no dibuja verticales: allí una celda de
+    datos vacía es información —en la 220-55 la columna C queda en blanco en
+    las filas 31-40, 51-60 y 61+— y ensancharla pondría el valor de la columna
+    B a caballo entre dos columnas.
+    """
     nR, nC = len(bands), len(edges) - 1
     taken = [[False] * nC for _ in range(nR)]
     out = []
@@ -223,7 +231,8 @@ def cell_rects(words, bands, edges, vert, horz):
             k = j + 1
             while (k < nC and not has_vline(vert, edges[k], ya, yb)
                    and (crosses(words, edges[k], ya, yb)
-                        or not words_in(words, edges[k], edges[k + 1], ya, yb))):
+                        or (not solo_cruces
+                            and not words_in(words, edges[k], edges[k + 1], ya, yb)))):
                 k += 1
             # Alto: baja mientras no haya NINGUNA señal de frontera. Se exigen
             # las tres: ni horizontal dibujada, ni corte del borde izquierdo,
@@ -242,7 +251,7 @@ def cell_rects(words, bands, edges, vert, horz):
     return out
 
 
-def build_cells(words, bands, edges, vert, horz):
+def build_cells(words, bands, edges, vert, horz, solo_cruces=False):
     """Filas de celdas {t, cs, rs} a partir del trazado de la página."""
     if len(edges) < 3 or not bands:
         return []
@@ -252,7 +261,7 @@ def build_cells(words, bands, edges, vert, horz):
     bands = [b for b in bands if words_in(words, edges[0] - 1e6, edges[-1] + 1e6, *b)]
     if not bands:
         return []
-    rects = cell_rects(words, bands, edges, vert, horz)
+    rects = cell_rects(words, bands, edges, vert, horz, solo_cruces)
     owner = {}
     for i, j, rs, cs in rects:
         for a in range(i, i + rs):
@@ -371,8 +380,70 @@ def grid_score(grid):
     return 1.0 - bad / len(cells)
 
 
+def row_clusters(words_of_row):
+    """Grupos de palabras de una fila separados por huecos, de izq. a der."""
+    ws = sorted(words_of_row, key=lambda w: w[0])
+    if not ws:
+        return []
+    grupos = [[ws[0]]]
+    for w in ws[1:]:
+        if w[0] - max(x[2] for x in grupos[-1]) >= GAP_MIN:
+            grupos.append([w])
+        else:
+            grupos[-1].append(w)
+    return grupos
+
+
+def column_edges_by_body(words, bands):
+    """Fronteras de columna deducidas SOLO de las filas de datos.
+
+    Los encabezados de varias líneas se derraman por encima de los huecos que
+    separan las columnas y los tapan. En la Tabla 220-55 el trozo de título
+    "8 ¾ kW )" cae justo en la franja que separa la Columna A de la B, así que
+    ambas se fundían en una sola celda con los dos valores juntos ("80 80"), y
+    la palabra "no" del título de la Columna C se salía por la derecha y creaba
+    una columna entera vacía.
+
+    Las filas de datos sí respetan la rejilla. Se agrupan las palabras de cada
+    fila por huecos, se toma el número de grupos más repetido —el cuerpo de la
+    tabla manda sobre el encabezado, que siempre es minoría— y se proyecta solo
+    esas filas.
+    """
+    if not bands:
+        return []
+    por_fila = []
+    for b in bands:
+        ws = [w for w in words if b[0] - 1 <= (w[1] + w[3]) / 2 <= b[1] + 1]
+        if ws:
+            por_fila.append((b, row_clusters(ws)))
+    if len(por_fila) < 4:
+        return []
+
+    conteo = defaultdict(int)
+    for _, gr in por_fila:
+        conteo[len(gr)] += 1
+    modal = max(conteo, key=lambda k: (conteo[k], k))
+    if modal < 2 or conteo[modal] < 3:
+        return []
+
+    cuerpo = [gr for _, gr in por_fila if len(gr) == modal]
+    # cada columna es la envolvente de su grupo en todas las filas del cuerpo
+    izq = [min(g[0][0] for g in (gr[i] for gr in cuerpo)) for i in range(modal)]
+    der = [max(w[2] for gr in cuerpo for w in gr[i]) for i in range(modal)]
+    for i in range(modal):
+        izq[i] = min(w[0] for gr in cuerpo for w in gr[i])
+
+    edges = [izq[0] - 2]
+    for i in range(1, modal):
+        if izq[i] <= der[i - 1]:
+            return []                      # columnas solapadas: no es fiable
+        edges.append((der[i - 1] + izq[i]) / 2)
+    edges.append(der[-1] + 2)
+    return [round(e, 2) for e in edges]
+
+
 def column_candidates(words, bands, vert=None):
-    """Conjuntos de fronteras a evaluar: la rejilla dibujada y los huecos."""
+    """Conjuntos de fronteras a evaluar: rejilla, huecos y filas de datos."""
     out = []
     if vert:
         e = edges_from_rules(vert, bands)
@@ -381,6 +452,9 @@ def column_candidates(words, bands, vert=None):
     g = column_edges_by_gaps(words, bands)
     if len(g) >= 2:
         out.append(g)
+    b = column_edges_by_body(words, bands)
+    if len(b) >= 2:
+        out.append(b)
     return out
 
 
@@ -733,6 +807,12 @@ def main():
                 break
             cont.append(txt)
             prev = y
+        # La continuación del título ya la resuelve find_captions con el
+        # bloque de texto del PDF, que agrupa la frase completa y distingue una
+        # línea de título de una fila de tabla por su altura. Volver a
+        # añadirla aquí la duplicaba: el de la Tabla 220-55 salía con la
+        # segunda mitad repetida.
+        cont = [c for c in cont if c not in cap['title']]
         if cont:
             cap['title'] = re.sub(
                 r'\s+', ' ', cap['title'] + ' ' + ' '.join(cont)).strip()
@@ -771,6 +851,17 @@ def main():
             pla = flat_cells(build_grid(ws, bands, edges))
             if cel and grid_score(cell_text(cel)) >= grid_score(cell_text(pla)) - 0.02:
                 return cel, len(re_) - 1, 'rejilla'
+            # Sin verticales dibujadas la tabla se quedaba sin fusiones, y un
+            # encabezado que cubre varias columnas salía partido en trozos
+            # sueltos: en la 220-55, "Factor de demanda (%)" aparecía como
+            # "Factor de" y "demanda (%)" en celdas distintas. Las fusiones
+            # también se ven en el texto —una palabra montada sobre la frontera
+            # significa que la celda la cruza—, así que se prueba el mismo
+            # modelo con las fronteras deducidas de las filas de datos.
+            fus = build_cells(ws, bands, edges, vert, horz, solo_cruces=True)
+            if (fus and len(edges) - 1 == max((row_width(r) for r in fus), default=0)
+                    and grid_score(cell_text(fus)) >= grid_score(cell_text(pla)) - 0.02):
+                return fus, len(edges) - 1, 'huecos'
             return pla, len(edges) - 1, 'huecos'
 
         modelos = {z[0]: modelo(z) for z in per_page}

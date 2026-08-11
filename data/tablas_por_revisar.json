@@ -1,25 +1,5 @@
 [
  {
-  "id": "326-116",
-  "quality": 0.4,
-  "cols": 2,
-  "rows": 5,
-  "pages": [
-   177
-  ],
-  "title": "Dimensiones del conduit"
- },
- {
-  "id": "314-16(a)",
-  "quality": 0.423,
-  "cols": 3,
-  "rows": 26,
-  "pages": [
-   164
-  ],
-  "title": "Cajas metálicas"
- },
- {
   "id": "630-31(a)(2)",
   "quality": 0.429,
   "cols": 3,
@@ -81,8 +61,8 @@
  },
  {
   "id": "392-22(b)(1)",
-  "quality": 0.6,
-  "cols": 3,
+  "quality": 0.586,
+  "cols": 4,
   "rows": 15,
   "pages": [
    233
@@ -98,26 +78,6 @@
    136
   ],
   "title": "Ajustes a la temperatura ambiente para canalizaciones circulares expuestas a la luz solar en o por encima de azoteas"
- },
- {
-  "id": "220-55",
-  "quality": 0.656,
-  "cols": 4,
-  "rows": 32,
-  "pages": [
-   49
-  ],
-  "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe"
- },
- {
-  "id": "392-22(a)(5)",
-  "quality": 0.667,
-  "cols": 3,
-  "rows": 6,
-  "pages": [
-   232
-  ],
-  "title": "Area de ocupación permisible para cables multiconductores en charolas portacables de canal ventilado para cables de 2000 volts o menos"
  },
  {
   "id": "400-5(a)(3)",
@@ -162,16 +122,6 @@
   "title": "Porcentaje de tensión mecánica máxima del cable de acero a 0 °C sin carga de viento o hielo"
  },
  {
-  "id": "310-60(c)(67)",
-  "quality": 0.68,
-  "cols": 3,
-  "rows": 18,
-  "pages": [
-   143
-  ],
-  "title": "Ampacidad permisible de cables monoconductores de cobre aislados en configuración tríplex al aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*"
- },
- {
   "id": "355-30",
   "quality": 0.682,
   "cols": 4,
@@ -183,38 +133,8 @@
   "title": "Soportes para tubo conduit de resina termofija reforzada (RTRC)"
  },
  {
-  "id": "326-24",
-  "quality": 0.7,
-  "cols": 2,
-  "rows": 5,
-  "pages": [
-   177
-  ],
-  "title": "Radio mínimo de curvatura"
- },
- {
-  "id": "348-22",
-  "quality": 0.704,
-  "cols": 4,
-  "rows": 7,
-  "pages": [
-   192
-  ],
-  "title": "Número máximo de conductores aislados en el tubo conduit metálico flexible con designación métrica de 12 (tamaño comercial de 3/8)*"
- },
- {
-  "id": "922-93(a)(1)",
-  "quality": 0.727,
-  "cols": 3,
-  "rows": 5,
-  "pages": [
-   725
-  ],
-  "title": "Tamaño mínimo de conductores de cobre"
- },
- {
   "id": "922-15(a)",
-  "quality": 0.737,
+  "quality": 0.726,
   "cols": 6,
   "rows": 22,
   "pages": [
@@ -232,16 +152,6 @@
    47
   ],
   "title": "Factores de demanda de cargas de alumbrado"
- },
- {
-  "id": "310-104(e)",
-  "quality": 0.75,
-  "cols": 10,
-  "rows": 15,
-  "pages": [
-   158
-  ],
-  "title": "Espesor del aislamiento para cables con dieléctricos sólidos, con pantalla metálica, para 2001 a 35 000 volts"
  },
  {
   "id": "430-12(c)(2)",
@@ -267,36 +177,6 @@
   "title": "Cordones y cables flexibles (Ver 400-4)"
  },
  {
-  "id": "922-12(a)(1)",
-  "quality": 0.769,
-  "cols": 2,
-  "rows": 15,
-  "pages": [
-   709
-  ],
-  "title": "Separación horizontal mínima entre conductores(1)"
- },
- {
-  "id": "310-15(b)(7)",
-  "quality": 0.775,
-  "cols": 4,
-  "rows": 14,
-  "pages": [
-   137
-  ],
-  "title": "Tipos y tamaño o designación de conductores para alimentadores monofásicos, de 3 hilos de 120/240 volts para viviendas. Tipos de conductores RHH, RHW, RHW-2, THHN, THHW, THHW-LS, THW, THW-LS, THW-2, THWN, THWN-2, volts para viviendas. Tipos de conductores RHH, RHW, RHW-2, THHN, THHW, THHW-LS, THW, THW-LS, THW-2, THWN, THWN-2,"
- },
- {
-  "id": "110-34(e)",
-  "quality": 0.778,
-  "cols": 3,
-  "rows": 4,
-  "pages": [
-   27
-  ],
-  "title": "Altura de las partes vivas sin proteger sobre el espacio de trabajo"
- },
- {
   "id": "551-73(a)",
   "quality": 0.781,
   "cols": 4,
@@ -309,7 +189,7 @@
  {
   "id": "210-24",
   "quality": 0.786,
-  "cols": 6,
+  "cols": 7,
   "rows": 11,
   "pages": [
    38
@@ -335,15 +215,5 @@
    481
   ],
   "title": "Factores de demanda para conductores de entrada de acometida y alimentadores"
- },
- {
-  "id": "922-12(a)(2)",
-  "quality": 0.797,
-  "cols": 11,
-  "rows": 7,
-  "pages": [
-   710
-  ],
-  "title": "Separación horizontal mínima \"S\" de conductores en sus soportes fijos, de acuerdo con su flecha"
  }
 ]
