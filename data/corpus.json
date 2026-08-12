@@ -1106,7 +1106,7 @@
      "title": "General",
      "part": "C",
      "page": 25,
-     "text": "Los conductores y equipos usados en circuitos de más de 600 volts deben cumplir con la Parte A de este artículo y equipos situados en el lado de alimentación del punto de servicio.",
+     "text": "Los conductores y equipos usados en circuitos de más de 600 volts deben cumplir con la Parte A de este artículo y con 110-30 a 110-40, que complementan o modifican la Parte A. En ningún caso se deben aplicar las disposiciones de esta parte a equipos situados en el lado de alimentación del punto de servicio.",
      "children": [],
      "notes": [],
      "exceptions": []
@@ -1882,6 +1882,7 @@
     "110-26(e)(1)",
     "110-27(a)(2)",
     "110-28",
+    "110-30",
     "110-31",
     "110-31(b)(1)",
     "110-31(d)",
@@ -1890,6 +1891,7 @@
     "110-34(c)",
     "110-34(e)",
     "110-36",
+    "110-40",
     "210-70(a)(1)",
     "240-86(a)",
     "240-86(b)",
@@ -3902,10 +3904,34 @@
           {
            "id": "210-21(b)(2)",
            "seq": 41
+          }
+         ]
+        },
+        {
+         "id": "210-21(b)(3)",
+         "label": "3",
+         "kind": "num",
+         "level": 2,
+         "text": "Cuando se conecten dos o más contactos o salidas a un circuito derivado, la capacidad nominal de los contactos debe corresponder a los valores de la Tabla 210-21(b)(3) o, si es de más de 50 amperes, la capacidad nominal del contacto no debe ser menor a la capacidad nominal del circuito derivado.",
+         "children": [],
+         "notes": [],
+         "exceptions": [
+          {
+           "label": "Excepción 1",
+           "text": "Se permite que los contactos instalados exclusivamente para usar una o más máquinas de soldar por arco conectadas con cordón y clavija, tenga una capacidad nominal no menor a la ampacidad mínima de los conductores del circuito derivado, tal como se permite en 630-11(a) o (b) para las máquinas de soldar por arco.",
+           "seq": 42
           },
           {
+           "label": "Excepción 2",
+           "text": "Se permite que el valor nominal en amperes de un contacto instalado para iluminación con lámparas de descarga eléctrica, se base en lo que se indica en 410-62(c).",
+           "seq": 43
+          }
+         ],
+         "title": "Valor nominal del contacto",
+         "tables": [
+          {
            "id": "210-21(b)(3)",
-           "seq": 42
+           "seq": 44
           }
          ]
         },
@@ -3970,7 +3996,7 @@
         {
          "label": "Excepción",
          "text": "Los circuitos derivados para aparatos pequeños, los circuitos derivados para lavadora y los circuitos derivados para cuartos de baño exigidos para las unidades de vivienda en 210-11(c)(1), (c)(2) y (c)(3), sólo deben alimentar las salidas de contactos especificadas en esa sección.",
-         "seq": 43
+         "seq": 45
         }
        ],
        "title": "Circuitos derivados de 15 y 20 amperes"
@@ -4024,7 +4050,7 @@
      "tables": [
       {
        "id": "210-24",
-       "seq": 44
+       "seq": 46
       }
      ]
     },
@@ -4254,12 +4280,12 @@
             {
              "label": "Excepción 1",
              "text": "Además de los contactos exigidos enumerados en 210-52, se permitirá que sean alimentados por un circuito derivado de uso general los contactos controlados con interruptor, como se define en 210-70(a)(1), Excepción 1.",
-             "seq": 46
+             "seq": 48
             },
             {
              "label": "Excepción 2",
              "text": "Se permitirá que la salida de contactos para equipos de refrigeración se alimente de un circuito derivado independiente de 15 amperes o mayor.",
-             "seq": 47
+             "seq": 49
             }
            ],
            "title": "Salidas para contactos alimentados"
@@ -4276,12 +4302,12 @@
             {
              "label": "Excepción 1",
              "text": "Un contacto instalado exclusivamente para la alimentación y soporte de un reloj eléctrico en cualquiera de los cuartos especificados en (b)(1) anterior.",
-             "seq": 48
+             "seq": 50
             },
             {
              "label": "Excepción 2",
              "text": "Los contactos instalados para conectar equipos e iluminación suplementarios de estufas de gas, hornos de gas y parrillas de gas montadas sobre la cubierta.",
-             "seq": 49
+             "seq": 51
             }
            ],
            "title": "Ninguna otra salida"
@@ -4320,7 +4346,7 @@
             {
              "label": "Excepción",
              "text": "No se requieren salidas de contactos en una pared directamente por detrás de una estufa, una parrilla de cubierta o un fregadero en la instalación que se describe en la Figura 210-52(c)(1).",
-             "seq": 51
+             "seq": 53
             }
            ],
            "title": "Espacio de pared de la cubierta",
@@ -4330,7 +4356,7 @@
              "w": 303,
              "h": 360,
              "page": 40,
-             "seq": 50
+             "seq": 52
             }
            ]
           },
@@ -4378,14 +4404,14 @@
             {
              "label": "NOTA",
              "text": "Véase 406-5(e) para los requisitos para la instalación de contactos en las cubiertas.",
-             "seq": 52
+             "seq": 54
             }
            ],
            "exceptions": [
             {
              "label": "Excepción a (5)",
              "text": "Para cumplir las condiciones especiales especificadas en (1) o (2), se permitirá que las salidas de contacto vayan montadas a no más de 30 centímetros por debajo de la cubierta. Los contactos montados por debajo de la cubierta, de acuerdo con esta excepción, no se deben localizar donde la cubierta sobresalga más de 15 centímetros de su base de apoyo:",
-             "seq": 53,
+             "seq": 55,
              "items": [
               {
                "label": "1",
@@ -4416,7 +4442,7 @@
           {
            "label": "NOTA",
            "text": "Véase 406-5(e) para los requisitos para la instalación de contactos en las cubiertas.",
-           "seq": 54
+           "seq": 56
           }
          ],
          "exceptions": [],
@@ -4479,12 +4505,12 @@
           {
            "label": "Excepción 1",
            "text": "En una unidad de vivienda que sea un apartamento o área de vivienda en un edificio multifamiliar, en la que haya instalaciones de lavado en el mismo inmueble disponibles para todos los ocupantes del mismo, no se exigirá el contacto para lavadora.",
-           "seq": 55
+           "seq": 57
           },
           {
            "label": "Excepción 2",
            "text": "En viviendas distintas de las unifamiliares en las que no haya o no estén permitidas instalaciones de lavandería, no es necesario un contacto para lavadora.",
-           "seq": 56
+           "seq": 58
           }
          ],
          "title": "Areas de lavadora"
@@ -4548,7 +4574,7 @@
         {
          "label": "NOTA",
          "text": "Los calentadores eléctricos tipo zoclo aprobados, incluyen instrucciones que pueden prohibir su instalación debajo de las salidas de contactos.",
-         "seq": 45
+         "seq": 47
         }
        ],
        "exceptions": []
@@ -4611,14 +4637,14 @@
       {
        "label": "NOTA",
        "text": "Véase 210-8 para los requisitos de interruptores de circuito por falla a tierra.",
-       "seq": 58
+       "seq": 60
       }
      ],
      "exceptions": [
       {
        "label": "Excepción",
        "text": "No se exigirá un contacto en viviendas unifamiliares y bifamiliares, para el mantenimiento de enfriadores evaporativos.",
-       "seq": 57
+       "seq": 59
       }
      ]
     },
@@ -4648,12 +4674,12 @@
           {
            "label": "Excepción 1",
            "text": "En otros lugares diferentes de cocinas y cuartos de baño se permite uno o más contactos controlados mediante interruptor de pared en lugar de salidas de alumbrado.",
-           "seq": 59
+           "seq": 61
           },
           {
            "label": "Excepción 2",
            "text": "Se permite que las salidas de alumbrado estén controladas por sensores de presencia que (1) Sean complementarios a los interruptores de pared, o (2) estén situados donde se instalan normalmente los interruptores de pared y estén equipados con un control manual adicional que permita que el sensor funcione como interruptor de pared.",
-           "seq": 60
+           "seq": 62
           }
          ],
          "title": "Cuartos habitables"
@@ -4697,7 +4723,7 @@
             {
              "label": "Excepción a (a), (b) y (c) anteriores",
              "text": "En pasillos, escaleras y accesos exteriores, se permite el control remoto, central o automático del alumbrado.",
-             "seq": 61
+             "seq": 63
             }
            ]
           }
@@ -4734,12 +4760,12 @@
         {
          "label": "Excepción 1",
          "text": "En otros lugares diferentes de cuartos de cocina y cuartos de baño se permitirán uno o más contactos controlados mediante un interruptor de pared para cubrir las necesidades de alumbrado.",
-         "seq": 62
+         "seq": 64
         },
         {
          "label": "Excepción 2",
          "text": "Se permitirá que las salidas de alumbrado estén controladas por sensores de presencia que: (1) sean adicionales a los interruptores de pared o (2) estén situados donde se instalan normalmente los interruptores de pared y estén equipados con un control manual adicional que permita que el sensor funcione como interruptor de pared.",
-         "seq": 63
+         "seq": 65
         }
        ],
        "title": "Habitaciones de huéspedes"
@@ -4769,6 +4795,7 @@
     "210-20",
     "210-21",
     "210-21(b)(2)",
+    "210-21(b)(3)",
     "210-23(a)(1)",
     "210-24",
     "210-52",
@@ -4798,6 +4825,7 @@
     "406-5(e)",
     "410-104",
     "410-138",
+    "410-62(c)",
     "410-93",
     "422-14",
     "422-31",
@@ -5872,7 +5900,7 @@
      "notes": [
       {
        "label": "NOTA. 2",
-       "text": "Véase la Tabla 220-56 para equipos de cocción comerciales. aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3). de cocción de más de 1.75 kW pero no más de 8.75 kW y multiplicar la suma por los factores de demanda de las columnas A o B, según el número de aparatos. Cuando la potencia nominal de los aparatos de cocción corresponda a las columnas A y B, se deben aplicar los factores de demanda de cada columna a los aparatos de esa columna y sumar los resultados. 4.- Carga del circuito derivado: Se permite calcular la carga del circuito derivado de una estufa según la Tabla 220-55. La carga del circuito de un horno de pared o de una estufa montada en la superficie del mueble de cocina debe ser el valor de la placa de datos del aparato. La carga de un circuito derivado de una estufa montada en la superficie del mueble de cocina y no más de dos hornos de pared, conectados todos al mismo circuito derivado y situados en la misma cocina, debe calcularse sumando los valores de la placa de datos de cada aparato y considerando ese total como equivalente a una estufa. 5.- Esta Tabla se aplica también a aparatos de cocción de más de 1.75 kW utilizados en programas de instrucción.",
+       "text": "Véase la Tabla 220-56 para equipos de cocción comerciales. aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3).",
        "seq": 16
       }
      ],
@@ -21547,9 +21575,14 @@
        "notes": [],
        "exceptions": [
         {
+         "label": "Excepción 1",
+         "text": "Se permitirá el cable tipo MI bajo un edificio sin instalación en una canalización, cuando esté embebido de concreto, relleno u otro material de mampostería de acuerdo con 332-10(6) o en tramos subterráneos si están protegidos adecuadamente contra daños físicos y condiciones corrosivas de acuerdo con 332-10(10).",
+         "seq": 19
+        },
+        {
          "label": "Excepción 2",
          "text": "Se permitirá el cable tipo MC directamente enterrado o revestido en concreto bajo un edificio, sin instalación en una canalización de acuerdo con 330-10(a)(5) y en lugares mojados de acuerdo con 330-10(a)(11).",
-         "seq": 19
+         "seq": 20
         }
        ],
        "title": "Cables subterráneos bajo edificios",
@@ -21659,7 +21692,7 @@
         {
          "label": "NOTA",
          "text": "Cuando se tenga la presencia de gases o vapores peligrosos sellar el tubo conduit o las canalizaciones subterráneas que entren a los edificios.",
-         "seq": 20
+         "seq": 21
         }
        ],
        "exceptions": [],
@@ -21688,12 +21721,12 @@
         {
          "label": "Excepción 1",
          "text": "Se permitirán que los conductores sean instalados en paralelo en canalizaciones, cables multiconductores o cables conductores individuales directamente enterrados. Cada cable multiconductor o canalización debe contener todos los conductores del mismo circuito, incluidos los conductores de puesta a tierra del equipo. Cada cable conductor individual directamente enterrado, se debe localizar lo más cerca posible en la zanja con los cables conductores individuales en el mismo juego paralelo de conductores en el circuito, incluidos los conductores de puesta a tierra de equipos.",
-         "seq": 21
+         "seq": 22
         },
         {
          "label": "Excepción 2",
          "text": "Se permitirán instalaciones de fase separada, polaridad, conductor puesto a tierra y conductor de unión y de puesta a tierra del equipo en cables o canalizaciones no metálicas con recubrimiento no metálico o forro no magnético situadas muy cerca unas de otras, cuando los conductores estén en paralelo como lo permite 310-10(h), y cuando se cumplen las condiciones de 300-20(b).",
-         "seq": 22
+         "seq": 23
         }
        ],
        "title": "Conductores del mismo circuito"
@@ -21709,7 +21742,7 @@
         {
          "label": "NOTA",
          "text": "Esta sección reconoce los bucles en \"S\" en las transiciones de directamente enterrado a canalizaciones, en las juntas de expansión en las canalizaciones ascendentes hasta los equipos fijos y, en general, la realización de conexiones flexibles a los equipos sujetos a asentamientos o levantamientos.",
-         "seq": 23
+         "seq": 24
         }
        ],
        "exceptions": [],
@@ -21783,7 +21816,7 @@
         {
          "label": "Excepción",
          "text": "No se exigirá que el acero inoxidable tenga recubrimiento protector.",
-         "seq": 24
+         "seq": 25
         }
        ],
        "title": "Equipo metálico ferroso"
@@ -21844,14 +21877,14 @@
         {
          "label": "NOTA",
          "text": "En general, los lugares en los cuales se manejan y almacenan productos químicos, ácidos y/o alcalinos pueden presentar condiciones severas de corrosión especialmente si son lugares húmedos o mojados. Existen condiciones severas de corrosión en áreas de plantas empacadoras de carne, tenerías, pegamentos, algunos establos, instalaciones muy cercanas al mar y a las albercas, áreas donde se utilizan productos químicos para deshielo y sótanos o cuartos de almacenamiento para cueros, crudos, materiales para embalar, fertilizantes, sal y productos químicos a granel.",
-         "seq": 26
+         "seq": 27
         }
        ],
        "exceptions": [
         {
          "label": "Excepción",
          "text": "Se permite la instalación de canalizaciones, cajas y accesorios no metálicas sin la separación mínima en superficies de concreto, tabique, azulejo o superficies similares.",
-         "seq": 25
+         "seq": 26
         }
        ],
        "title": "Lugares mojados en interiores"
@@ -21889,7 +21922,7 @@
         {
          "label": "NOTA",
          "text": "Las Tablas 352-44 y 355-44 suministran información sobre la expansión para el policloruro de vinilo, (PVC) y para tubo conduit de resina termofija reforzada (RTRC), respectivamente. Se puede determinar un número nominal para tubo conduit de acero al multiplicar la longitud de expansión de la Tabla 352-44 por 0.20. El coeficiente de expansión de la tubería eléctrica de acero, tubo conduit metálico semipesado y tubo conduit pesado, es de 1.170 x 10-5 (0.0000117 milímetros por cada milímetro de tubo conduit por cada grado centígrado de cambio de temperatura). Se puede determinar un número nominal para tubo conduit de aluminio y tubería metálica eléctrica de aluminio multiplicando la longitud de expansión de la Tabla 352-44 por 0.40. El coeficiente de expansión para tubería metálica eléctrica de aluminio y tubo conduit metálico pesado de aluminio es de 2.34 x 10-5 (0.0000234 milímetros por cada milímetro de tubo conduit por cada grado centígrado de cambio de temperatura).",
-         "seq": 27
+         "seq": 28
         }
        ],
        "exceptions": [],
@@ -21931,12 +21964,12 @@
       {
        "label": "Excepción 1",
        "text": "No se exigirá que secciones cortas de canalizaciones, usadas para brindar soporte o protección a los ensambles de cables contra daño físico, sean continuas eléctricamente.",
-       "seq": 28
+       "seq": 29
       },
       {
        "label": "Excepción 2",
        "text": "No se exigirá que los envolventes de equipos que se van a aislar, según lo permite 250-96(b), estén unidos eléctricamente a la canalización metálica.",
-       "seq": 29
+       "seq": 30
       }
      ]
     },
@@ -21966,7 +21999,7 @@
           {
            "label": "Excepción",
            "text": "Se permitirá que el sistema de soporte del plafón sostenga el alambrado y el equipo que ha sido probado como parte del ensamble resistente al fuego.",
-           "seq": 30
+           "seq": 31
           }
          ],
          "title": "Ensambles resistentes al fuego"
@@ -21983,7 +22016,7 @@
           {
            "label": "Excepción",
            "text": "Se permitirá que el sistema de soporte del ensamble sostenga el alambrado del circuito derivado y el equipo asociado, si está instalado de acuerdo con las instrucciones del fabricante del ensamble.",
-           "seq": 31
+           "seq": 32
           }
          ],
          "title": "Ensambles no resistentes al fuego"
@@ -22062,12 +22095,12 @@
       {
        "label": "Excepción 1",
        "text": "No se exigirá que las secciones cortas de canalizaciones, utilizadas como soporte o protección de los ensambles de cables contra daño físico, sean continuas mecánicamente.",
-       "seq": 32
+       "seq": 33
       },
       {
        "label": "Excepción 2",
        "text": "No se exigirá que las canalizaciones ni los cables instalados en el fondo de equipos con fondo abierto, como tableros de distribución, centros de control de motores y transformadores montados sobre plataforma o en el suelo se fijen mecánicamente al equipo.",
-       "seq": 33
+       "seq": 34
       }
      ]
     },
@@ -22116,7 +22149,7 @@
       {
        "label": "Excepción",
        "text": "No se exigirá que los conductores no empalmados o que no terminan en el punto de salida, de conexiones o punto de interrupción cumplan con lo especificado en esta sección.",
-       "seq": 34
+       "seq": 35
       }
      ]
     },
@@ -22182,7 +22215,7 @@
         {
          "label": "NOTA",
          "text": "Véanse 334-30(c), 545-10, 550-15(i), 551-47(e) Excepción 1; y 552-48(e), Excepción 1.",
-         "seq": 35
+         "seq": 36
         }
        ],
        "exceptions": [],
@@ -22313,7 +22346,7 @@
       {
        "label": "NOTA",
        "text": "Véanse las siguientes secciones de esta NOM: Tubo conduit metálico semipesado, 342-22; Tubo conduit metálico pesado, 344-22; Tubo conduit metálico flexible, 348-22; Tubo conduit metálico flexible hermético a los líquidos, 350-22; Tubo conduit PVC, 352-22; Tubo conduit de HDPE, 353-22; RTRC, 355-22; Tubo conduit no metálico flexible hermético a los líquidos, 356-22; Tubo conduit metálico ligero, 358-22; Tubo conduit metálico flexible, 360-22; Tubo conduit no metálico, 362-22; Canalizaciones en pisos celulares de concreto, 372-11; Canalizaciones en pisos metálicos celulares, 374-5; Ductos metálicos, 376-22, Ductos no metálicos, 378-22; Canalizaciones metálicas superficiales, 386-22; Canalizaciones no metálicas superficiales, 388-22; Canalizaciones bajo el piso, 390-6; Cables para artefactos, 402-7; Teatros, 520-6; Anuncios, 600-31(c); Elevadores, 620-33; Equipos de procesamiento, amplificación y reproducción de señal de audio, 640-23(a) y 640-24; Circuitos Clase 1, Clase 2 y Clase 3, Artículo 725; Circuitos de alarmas contra incendios, Artículo 760; y Cables de fibra óptica y canalizaciones, Artículo 770.",
-       "seq": 36
+       "seq": 37
       }
      ],
      "exceptions": []
@@ -22337,7 +22370,7 @@
         {
          "label": "Excepción",
          "text": "No se exigirá que las secciones cortas de canalizaciones usadas para contener conductores o ensamble de cables para protección contra el daño físico, se instalen completas entre los puntos de salida, unión o empalme.",
-         "seq": 37
+         "seq": 38
         }
        ],
        "title": "Tramos completos"
@@ -22376,14 +22409,14 @@
         {
          "label": "Excepción",
          "text": "Un cable con armadura de alambre de acero se debe sostener en la parte superior del tramo vertical con un soporte para cable que sujete a la armadura. Se permitirá instalar en el extremo inferior del conducto vertical un dispositivo de seguridad que sostenga el cable, en el caso de que éste se deslice por el interior del soporte de la armadura de cable con alambre. Se permitirá instalar otros soportes adicionales de tipo cuña que alivien los esfuerzos causados en las terminales de los equipos por la expansión del cable bajo carga.",
-         "seq": 39
+         "seq": 40
         }
        ],
        "title": "Intervalos de separación máximos",
        "tables": [
         {
          "id": "300-19(a)",
-         "seq": 38
+         "seq": 39
         }
        ]
       },
@@ -22473,12 +22506,12 @@
         {
          "label": "Excepción 1",
          "text": "Se permitirá la instalación de los conductores de puesta a tierra del equipo, para algunas instalaciones existentes, separados de los conductores de su circuito asociado, si están tendidos de acuerdo con las disposiciones de 250-130(c).",
-         "seq": 40
+         "seq": 41
         },
         {
          "label": "Excepción 2",
          "text": "Se permitirá instalar un solo conductor en un envolvente ferromagnético y usarlo para calentamiento por efecto superficial, de acuerdo con las disposiciones de 426-42 y 427-47.",
-         "seq": 41
+         "seq": 42
         }
        ],
        "title": "Agrupamiento de conductores"
@@ -22511,14 +22544,14 @@
           {
            "label": "NOTA",
            "text": "Como el aluminio es un metal no magnético, no se producirá calentamiento por histéresis, sin embargo, las corrientes inducidas estarán presentes. Tales corrientes no son de magnitud suficiente como para que requieran el agrupamiento de los conductores ni otro tratamiento especial cuando pasan los conductores a través de paredes de aluminio.",
-           "seq": 43
+           "seq": 44
           }
          ],
          "exceptions": [
           {
            "label": "Excepción",
            "text": "En el caso de circuitos de alimentación para sistemas de alumbrado de vacío o de descarga eléctrica, o de anuncios o aparatos de rayos X, las corrientes que pasan por los conductores son tan pequeñas que, cuando estos conductores están ubicados en envolventes metálicos o pasan a través de metales, se pueden despreciar los efectos del calentamiento por inducción.",
-           "seq": 42
+           "seq": 43
           }
          ]
         }
@@ -22542,7 +22575,7 @@
       {
        "label": "NOTA",
        "text": "Los catálogos de materiales eléctricos para la construcción, contienen listados de limitaciones que son necesarias para mantener la clasificación de resistencia al fuego de un ensamble en el que se han hecho penetraciones o aberturas. Los reglamentos de construcción también contienen limitaciones sobre las penetraciones de membrana en lados opuestos de ensambles para pared resistente al fuego. Un ejemplo es la separación mínima horizontal de 60 centímetros que se aplica usualmente entre cajas instaladas en las caras opuestas de una pared. En estos catálogos de productos se puede encontrar la ayuda necesaria para cumplir con lo establecido en 300-21.",
-       "seq": 44
+       "seq": 45
       }
      ],
      "exceptions": []
@@ -22640,7 +22673,7 @@
           {
            "label": "Excepción",
            "text": "Se permitirán los sistemas de ventiladores integrales, si están identificados específicamente para uso dentro de un espacio de manejo de aire.",
-           "seq": 48
+           "seq": 49
           }
          ],
          "title": "Equipo"
@@ -22650,14 +22683,14 @@
         {
          "label": "NOTA 1",
          "text": "El espacio sobre un plafón colgante, usado para propósitos de manejo de aire ambiental es un ejemplo del tipo de otros espacios a los cuales se aplica esta sección.",
-         "seq": 46
+         "seq": 47
         }
        ],
        "exceptions": [
         {
          "label": "Excepción",
          "text": "Esta sección no se debe aplicar a los espacios entre vigas o columnas de unidades de vivienda en donde el alambrado pasa a través de estos espacios, perpendicular a la dimensión más grande de tales espacios.",
-         "seq": 47
+         "seq": 48
         }
        ],
        "title": "Otros espacios usados para ventilación ambiental (Plenums)"
@@ -22678,7 +22711,7 @@
       {
        "label": "NOTA",
        "text": "Véase el Artículo 424, Parte F con respecto a los calentadores de ductos.",
-       "seq": 45
+       "seq": 46
       }
      ],
      "exceptions": []
@@ -22848,7 +22881,7 @@
         {
          "label": "Excepción",
          "text": "En los empalmes de un sistema de alambrado, se permitirá interrumpir y traslapar los blindajes metálicos de los cables de un solo conductor enterrados directamente, manteniendo una separación constante entre fases. Si los blindajes son interrumpidos y traslapados, cada sección de blindaje se debe poner a tierra en un punto.",
-         "seq": 49
+         "seq": 50
         }
        ],
        "title": "Empalmes"
@@ -22917,12 +22950,12 @@
         {
          "label": "NOTAS GENERALES",
          "text": "1. Se permitirán profundidades menores cuando se exige altura de los conductores o cables para las terminaciones o los empalmes o cuando se necesita tener acceso. 2. Cuando la roca sólida evita el cumplimento con las especificaciones de profundidad de la cubierta de esta tabla, el alambrado se debe instalar en una canalización metálica o no metálica directamente enterrada. La canalización debe estar cubierta con un mínimo de 5 centímetros de concreto que se extienda hasta la roca. 3. En establecimientos industriales, cuando las condiciones de mantenimiento y supervisión garantizan que personas calificadas atenderán la instalación, se permitirá que los requisitos mínimos de profundidad de la cubierta, para conductos diferentes del tubo conduit metálico pesado y el tubo conduit metálico semipesado, se reduzcan 15 centímetros por cada 5 centímetros de concreto o equivalente, colocado totalmente dentro de la zanja por encima de la instalación subterránea.",
-         "seq": 51
+         "seq": 52
         },
         {
          "label": "NOTAS ESPECIFICAS",
          "text": "",
-         "seq": 52
+         "seq": 53
         }
        ],
        "exceptions": [],
@@ -22930,7 +22963,7 @@
        "tables": [
         {
          "id": "300-50",
-         "seq": 50
+         "seq": 51
         }
        ]
       }
@@ -22971,6 +23004,8 @@
     "330-10(a)(11)",
     "330-10(a)(5)",
     "330-31",
+    "332-10(10)",
+    "332-10(6)",
     "332-31",
     "334-30(c)",
     "334-40(b)",
@@ -24990,7 +25025,7 @@
        "label": "a",
        "kind": "alpha",
        "level": 1,
-       "text": "Los conductores no se deben doblar dentro de un gabinete o caja de desconexión a menos que exista un canal cuyo ancho esté de acuerdo con la Tabla 312-6 (a). Los conductores en paralelo, según se indica en 310- 10(h) se deben considerar en base al número de conductores en paralelo. alambre (en la dirección en que el alambre sale de la terminal) hasta la pared, barrera u obstrucción.",
+       "text": "Los conductores no se deben doblar dentro de un gabinete o caja de desconexión a menos que exista un canal cuyo ancho esté de acuerdo con la Tabla 312-6 (a). Los conductores en paralelo, según se indica en 310- 10(h) se deben considerar en base al número de conductores en paralelo.",
        "children": [],
        "notes": [],
        "exceptions": [],
@@ -25029,7 +25064,7 @@
          "notes": [
           {
            "label": "NOTA",
-           "text": "La desviación es la distancia medida a lo largo de la pared del envolvente, desde el eje de la línea de centro de la terminal, hasta una línea que pasa por el centro de la abertura del envolvente. compacto, con tamaño o designación hasta de 1000 kcmil y fabricados utilizando material para conductores de aleación de aluminio con grado eléctrico serie AA-8000, de acuerdo con 310- 106(b).",
+           "text": "La desviación es la distancia medida a lo largo de la pared del envolvente, desde el eje de la línea de centro de la terminal, hasta una línea que pasa por el centro de la abertura del envolvente.",
            "seq": 8
           }
          ],

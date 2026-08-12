@@ -20,32 +20,23 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**34 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**43 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (43)
+## 1 · Prioridad alta (34)
 
 Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `312-6(a)` | Espacio mínimo para el doblado de los cables en las terminales, y anch… | 161 | 11 | 1.00 | **sí** | dibujada | 17×7 |
-| [ ] | `220-55` | Factores de demanda y cargas para estufas eléctricas domésticas, horno… | 49 | 8 | 0.98 | **sí** | **huecos** | 32×4 |
-| [ ] | `310-15(b)(17)` | Ampacidades permisibles de conductores individuales aislados para tens… | 138, 139 | 7 | 1.00 | **sí** | dibujada | 34×8 |
 | [ ] | `310-60(c)(70)` | Ampacidad de conductores individuales de aluminio, aislados, separados… | 144, 145 | 5 | 0.99 | **sí** | **huecos** | 21×8 |
-| [ ] | `430-251(a)` | Conversión de corrientes monofásicas a rotor bloqueado, para la selecc… | 326 | 5 | 1.00 | **sí** | dibujada | 12×5 |
-| [ ] | `430-251(b)` | Conversión de corriente polifásica máxima a rotor bloqueado, diseños B… | 326 | 5 | 1.00 | **sí** | dibujada | 31×8 |
-| [ ] | `210-21(b)(2)` | Carga máxima conectada a un contacto por medio de un cordón y clavija. | 37 | 4 | 0.92 | **sí** | dibujada | 5×3 |
 | [ ] | `11(A)` | Limitaciones de las fuentes de alimentación de corriente alterna de Cl… | 752, 753 | 4 | 0.95 | **sí** | dibujada | 9×10 |
-| [ ] | `300-5` | Requisitos de profundidad mínima en instalaciones de 0 a 600 volts | 121 | 4 | 0.96 | **sí** | dibujada | 11×6 |
 | [ ] | `310-60(c)(69)` | Ampacidad de conductores de cobre individuales, aislados, y separados… | 144 | 4 | 0.98 | **sí** | dibujada | 22×8 |
-| [ ] | `110-28` | Tipos de envolvente | 24, 25 | 4 | 1.00 | **sí** | dibujada | 26×19 |
 | [ ] | `400-5(a)(1)` | Ampacidad permisible para cables y cordones flexibles a temperatura am… | 244, 245 | 4 | 1.00 | **sí** | dibujada | 17×6 |
 | [ ] | `400-5(a)(2)` | Ampacidad de los cables tipo SC, SCE, SCT, PPE, G, G-GC y W (Basada en… | 245 | 4 | 1.00 | **sí** | dibujada | 26×11 |
 | [ ] | `314-16(a)` | Cajas metálicas | 164 | 3 | 0.92 | **sí** | **huecos** | 26×10 |
 | [ ] | `830-47` | Requisitos de profundidad mínima de los sistemas de comunicaciones de… | 688 | 3 | 0.96 | **sí** | dibujada | 7×4 |
 | [ ] | `310-60(c)(86)` | Ampacidad de tres ternas de conductores individuales de aluminio, aisl… | 154, 155 | 3 | 0.99 | **sí** | **huecos** | 34×6 |
 | [ ] | `310-15(b)(20)` | Ampacidades de no más de tres conductores individuales aislados para T… | 139, 140 | 3 | 0.99 | **sí** | dibujada | 26×6 |
-| [ ] | `312-6(b)` | Espacio mínimo para el doblado del alambre en las terminales | 161, 162 | 3 | 0.99 | **sí** | dibujada | 29×7 |
 | [ ] | `430-97` | Espacio mínimo entre partes metálicas desnudas | 317 | 3 | 1.00 | **sí** | dibujada | 6×4 |
 | [ ] | `770-154(a)` | Aplicaciones canalizaciones y cable de fibra óptica aprobados, y ensam… | 656, 657 | 3 | 1.00 | **sí** | dibujada | 24×10 |
 | [ ] | `800-154(a)` | Aplicaciones de alambres, cables y canalizaciones de comunicaciones ap… | 668, 669 | 3 | 1.00 | **sí** | dibujada | 27×12 |
