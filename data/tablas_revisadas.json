@@ -54265,5 +54265,234 @@
     "article": 430
    }
   ]
+ },
+ "430-12(c)(1)": {
+  "verificada": "2026-08-12"
+ },
+ "430-22(e)": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Clasificación del servicio",
+     "rs": 3
+    },
+    {
+     "t": "Porcentajes del valor nominal de corriente de las placas de características",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Motor especificado para"
+    },
+    {
+     "t": "Motor especificado para"
+    },
+    {
+     "t": "Motor especificado para"
+    },
+    {
+     "t": "Motor especificado para funcionamiento"
+    }
+   ],
+   [
+    {
+     "t": "5 minutos"
+    },
+    {
+     "t": "15 minutos"
+    },
+    {
+     "t": "30 y 60 minutos"
+    },
+    {
+     "t": "continuo"
+    }
+   ],
+   [
+    {
+     "t": "Servicio de corto tiempo: Accionamiento de válvulas, elevación o descenso de rodillos, etc."
+    },
+    {
+     "t": "110"
+    },
+    {
+     "t": "120"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "Servicio intermitente: Elevadores y montacargas, máquinas de herramientas, bombas, puentes levadizos, plataformas giratorias, etc. (Para soldadoras de arco, ver 630-11)."
+    },
+    {
+     "t": "85"
+    },
+    {
+     "t": "85"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "140"
+    }
+   ],
+   [
+    {
+     "t": "Servicio periódico: Rodillos, máquinas de manipulación de minerales y carbón, etc."
+    },
+    {
+     "t": "85"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "95"
+    },
+    {
+     "t": "140"
+    }
+   ],
+   [
+    {
+     "t": "Servicio variable"
+    },
+    {
+     "t": "110"
+    },
+    {
+     "t": "120"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "200"
+    }
+   ]
+  ],
+  "notes": [
+   "Cualquier motor debe ser considerado como de ciclo continuo, a menos que la naturaleza de los aparatos que accione sea tal que el motor no operará continuamente con carga bajo cualquier condición de operación."
+  ]
+ },
+ "430-23(c)": {
+  "verificada": "2026-08-12"
+ },
+ "430-29": {
+  "verificada": "2026-08-12"
+ },
+ "430-37": {
+  "verificada": "2026-08-12",
+  "header_rows": 1,
+  "notes": [
+   "*Excepción: No se requerirá una unidad de protección contra sobrecarga en cada fase cuando se proporcione protección contra sobrecarga por otros medios aprobados."
+  ]
+ },
+ "430-72(b)": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "NOTA 1. Valor especificado en 310-15, según sea aplicable.",
+   "NOTA 2. 400 por ciento del valor especificado en la Tabla 310-15(b)(17) para conductores a 60 °C.",
+   "NOTA 3. 300 por ciento del valor especificado en la Tabla 310-15(b)(16) para conductores a 60 °C."
+  ]
+ },
+ "440-3(d)": {
+  "verificada": "2026-08-12",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Equipo/ocupación"
+    },
+    {
+     "t": "Artículo"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "1 Capacitores"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "1 460-9"
+    }
+   ],
+   [
+    {
+     "t": "1 Estudios de cine, televisión y lugares similares"
+    },
+    {
+     "t": "1 530"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "2 Garajes comerciales, hangares de aviones, gasolinera estaciones de servicio, plantas de almacenamiento a granel, procesos de aplicación por pulverización, inmersión y recubrimiento, y lugares donde se inhalen gases anestésicos"
+    },
+    {
+     "t": "2 511, 513, 514, 515, 516 y 517 Parte D"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "3 Lugares peligrosos (clasificados)"
+    },
+    {
+     "t": "3 500-503 y 505"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "4 Resistencias y reactancias"
+    },
+    {
+     "t": "4 470"
+    },
+    {
+     "t": ""
+    }
+   ]
+  ]
+ },
+ "450-3(b)": {
+  "verificada": "2026-08-12",
+  "header_rows": 2,
+  "notes": [
+   "Cuando el 125 por ciento de la corriente no corresponde a un valor estándar de un fusible o interruptor automático no ajustable, se permitirá elegir el valor nominal estándar inmediatamente superior.",
+   "Cuando se exija protección contra sobrecorriente en el secundario, se permitirá que el dispositivo de sobrecorriente del secundario esté compuesto por máximo seis interruptores automáticos o seis grupos de fusibles agrupados en un lugar. Cuando se utilicen dispositivos múltiples de protección contra sobrecorriente, el total de todos los valores nominales de los dispositivos no deben exceder el valor permitido para un solo dispositivo de protección contra sobrecorriente.",
+   "Se permitirá que un transformador equipado por el fabricante con protección térmica coordinada contra sobrecarga y dispuesta para interrumpir la corriente del primario, tenga protección contra sobrecorriente en el primario con valor nominal o ajuste a un valor de corriente que no sea más de seis veces la corriente nominal del transformador, para transformadores que no tienen una impedancia de más del 6 por ciento y no más de cuatro veces la corriente nominal del transformador, para transformadores que tienen una impedancia de más del 6 por ciento pero no más del 10 por ciento."
+  ]
+ },
+ "490-24": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "Los valores dados corresponden a las distancias mínimas de seguridad para partes rígidas y conductores desnudos en condiciones de servicio favorables. Estas distancias se deben aumentar para condiciones de movimiento de los conductores o bajo condiciones de servicio desfavorables, o cuando las limitaciones de espacio lo permitan. La selección de la tensión de impulso no disruptivo asociado para una tensión del sistema particular, se determina por las características del equipo de protección contra sobretensiones."
+  ]
+ },
+ "500-8(d)(2)": {
+  "verificada": "2026-08-12"
  }
 }
