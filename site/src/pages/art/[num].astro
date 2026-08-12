@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Sub from '../../components/Sub.astro';
 import Tabla from '../../components/Tabla.astro';
 import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug,
-         tablaPorId, BASE } from '../../lib/nom.js';
+         tablaPorId, rotuloTabla, BASE } from '../../lib/nom.js';
 
 export function getStaticPaths() {
   return articles.map((a) => ({ params: { num: String(a.num) }, props: { a } }));
@@ -190,7 +190,7 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
         <>
           <h3>Tablas ({tabs.length})</h3>
           {tabs.map((t) => (
-            <a href={`#${tablaSlug(t.id)}`}><span class="mono">Tabla {t.id}</span></a>
+            <a href={`#${tablaSlug(t.id)}`}><span class="mono">{rotuloTabla(t)}</span></a>
           ))}
         </>
       )}

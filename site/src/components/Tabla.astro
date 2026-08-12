@@ -1,5 +1,5 @@
 ---
-import { linkify, tablaSlug } from '../lib/nom.js';
+import { linkify, tablaSlug, rotuloTabla, subtituloTabla } from '../lib/nom.js';
 const { t } = Astro.props;
 const head = t.rows.slice(0, t.header_rows || 0);
 const body = t.rows.slice(t.header_rows || 0);
@@ -11,11 +11,19 @@ const dudosa = t.quality < 0.8 && !t.verificada;
 // sola: `scope` se lo dice a los lectores de pantalla, que si no leen el
 // título equivocado en cada dato.
 const alcance = (c) => (c.cs > 1 ? 'colgroup' : 'col');
+
+// Las celdas se miden por su contenido y no envuelven, para que "0.824 – 1.31"
+// no se parta en dos renglones. Pero la norma mete párrafos enteros en alguna
+// celda —"Tres de algodón, uno exterior retardante de la flama y resistente a
+// la humedad"—, y esas sí tienen que envolver o la tabla se va a metros de
+// ancho. El corte está por encima de la frase más larga que conviene dejar
+// entera ("Alambrado para artefactos", "Cubierta no metálica").
+const larga = (c) => ((c.t || '').length > 28 ? 'larga' : undefined);
 ---
 <figure class="tabla" id={tablaSlug(t.id)}>
   <figcaption>
-    <span class="tid">Tabla {t.id}</span>
-    {t.title}
+    <span class="tid">{rotuloTabla(t)}</span>
+    {subtituloTabla(t)}
     {/* La norma advierte en el propio título que estas tablas son
         informativas y no normativas. Es un dato de peso distinto al nombre
         de la tabla, así que se muestra aparte y no diluido en la frase. */}
@@ -44,6 +52,10 @@ const alcance = (c) => (c.cs > 1 ? 'colgroup' : 'col');
     </p>
   )}
 
+  {/* La caja se ciñe a la tabla en lugar de ocupar la columna entera: un
+      marco a todo lo ancho alrededor de una tabla de dos columnas se lee como
+      si faltara contenido a los lados. */}
+  <div class="tabla-caja">
   {/* En el PDF esta frase es una celda fusionada a todo lo ancho, encima del
       encabezado. Repartida en celdas quedaba como títulos de columna sin
       sentido, así que se presenta como lo que es: la entrada a la tabla. */}
@@ -66,12 +78,13 @@ const alcance = (c) => (c.cs > 1 ? 'colgroup' : 'col');
         {body.map((r) => (
           <tr>
             {r.map((c) => (
-              <td colspan={c.cs} rowspan={c.rs} set:html={linkify(c.t)} />
+              <td colspan={c.cs} rowspan={c.rs} class={larga(c)} set:html={linkify(c.t)} />
             ))}
           </tr>
         ))}
       </tbody>
     </table>
+  </div>
   </div>
 
   {t.notes?.length > 0 && (
@@ -89,9 +102,9 @@ const alcance = (c) => (c.cs > 1 ? 'colgroup' : 'col');
     {t.pages.join(', ')} del PDF ·{' '}
     <a
       href={`https://github.com/dflores296/NOM-001-SEDE-2012/issues/new?title=${
-        encodeURIComponent('Tabla ' + t.id + ': revisar valores')
+        encodeURIComponent(rotuloTabla(t) + ': revisar valores')
       }&body=${encodeURIComponent(
-        'Tabla ' + t.id + ' (página ' + t.pages.join(', ') + ' del PDF)\n\n' +
+        rotuloTabla(t) + ' (página ' + t.pages.join(', ') + ' del PDF)\n\n' +
         'Qué está mal:\n\nQué dice el PDF:\n'
       )}`}
       rel="noopener"

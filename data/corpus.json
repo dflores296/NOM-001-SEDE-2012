@@ -135880,13 +135880,19 @@
        "label": "c",
        "kind": "alpha",
        "level": 1,
-       "text": "La separación vertical entre conductores no debe ser menor que la siguiente: Longitud del claro (m) Separación (cm) Hasta 45 10 Más de 45 a 60 15 Más de 60 a 75 20 Más de 75 a 90 30",
+       "text": "La separación vertical entre conductores no debe ser menor que la siguiente:",
        "children": [],
        "notes": [],
        "exceptions": [
         {
          "label": "Excepción",
          "text": "Si los conductores tienen separadores intermedios adecuados, el espaciamiento vertical puede ser como mínimo de 10 centímetros en cualquier caso.",
+         "seq": 14
+        }
+       ],
+       "tables": [
+        {
+         "id": "922-17(c)",
          "seq": 13
         }
        ]
@@ -135998,12 +136004,12 @@
         {
          "label": "Excepción 1",
          "text": "Este requisito no se aplica en caso de que se tenga establecida la práctica de que los trabajadores no suban más allá de los conductores y del equipo, a menos que estén desenergizados.",
-         "seq": 14
+         "seq": 15
         },
         {
          "label": "Excepción 2",
          "text": "Este requisito no se aplica si el espacio para subir puede ser obtenido con el desplazamiento temporal de los conductores, utilizando equipo para trabajar con línea energizada.",
-         "seq": 15
+         "seq": 16
         }
        ],
        "title": "Espacio para subir entre conductores"
@@ -136020,7 +136026,7 @@
         {
          "label": "Excepción",
          "text": "Si se instala un tramo longitudinal en el lado o esquina de la estructura donde se encuentre el espacio para subir, el ancho de este espacio debe medirse horizontalmente del centro de la estructura hacia los conductores eléctricos más próximos sobre la cruceta, siempre que se cumplan las dos condiciones siguientes:",
-         "seq": 16,
+         "seq": 17,
          "items": [
           {
            "label": "1",
@@ -136089,7 +136095,7 @@
        "tables": [
         {
          "id": "922-19(e)",
-         "seq": 17
+         "seq": 18
         }
        ]
       }
@@ -136230,7 +136236,7 @@
          "w": 347,
          "h": 214,
          "page": 714,
-         "seq": 18
+         "seq": 19
         }
        ]
       }
@@ -136267,7 +136273,7 @@
        "tables": [
         {
          "id": "922-21",
-         "seq": 19
+         "seq": 20
         }
        ]
       }
@@ -136380,7 +136386,7 @@
            "tables": [
             {
              "id": "922-22(a)",
-             "seq": 20
+             "seq": 21
             }
            ]
           },
@@ -136545,7 +136551,7 @@
          "tables": [
           {
            "id": "922-31(e)(2)",
-           "seq": 21
+           "seq": 22
           }
          ]
         }
@@ -136610,7 +136616,7 @@
      "tables": [
       {
        "id": "922-33",
-       "seq": 22
+       "seq": 23
       }
      ]
     },
@@ -136674,7 +136680,7 @@
         {
          "label": "Excepción",
          "text": "En cruzamientos sobre vías de ferrocarril en la Zona I, debe aplicarse a la altura un incremento de 1.50 centímetros por cada metro del claro en exceso de 75 metros. Los incrementos anteriores no requieren ser mayores que el resultado de la diferencia aritmética entre las flechas finales calculadas para el claro, en reposo y temperaturas en el conductor de 50 °C y 15 °C,",
-         "seq": 23
+         "seq": 24
         }
        ],
        "title": "Tensión mayor que 50 kilovolts a tierra"
@@ -136780,7 +136786,7 @@
          "tables": [
           {
            "id": "922-43",
-           "seq": 25
+           "seq": 26
           }
          ]
         }
@@ -136791,7 +136797,7 @@
        "tables": [
         {
          "id": "922-41",
-         "seq": 24
+         "seq": 25
         }
        ]
       }
@@ -136923,7 +136929,7 @@
         {
          "label": "Excepción",
          "text": "Cuando la tensión no excede de 300 volts a tierra y los cables son de los tipos mencionados en 922-4(b), las separaciones vertical y horizontal pueden ser reducidas a un mínimo de 60.00 centímetros y 90.00 centímetros respectivamente medidas a 15 °C sin deflexión por viento.",
-         "seq": 26
+         "seq": 27
         }
        ]
       }
@@ -136950,7 +136956,7 @@
         {
          "label": "Excepción",
          "text": "Este requisito no se aplica cuando por limitaciones de espacio no es posible ubicar los conductores suministradores en otra disposición. Por otra parte, las estructuras de la línea deben estar separadas de las tomas de agua contra incendio por una distancia mínima de 1.00 metro.",
-         "seq": 27
+         "seq": 28
         }
        ]
       },
@@ -137007,7 +137013,7 @@
         {
          "label": "Excepción",
          "text": "Este requisito no se aplica a retenidas, mensajeros, cables de guarda, neutros como los descritos en 922-4(d) y cables aislados.",
-         "seq": 28
+         "seq": 29
         }
        ],
        "title": "Separaciones básicas"
@@ -137116,13 +137122,13 @@
            "w": 184,
            "h": 260,
            "page": 720,
-           "seq": 30
+           "seq": 31
           }
          ],
          "tables": [
           {
            "id": "922-55",
-           "seq": 31
+           "seq": 32
           }
          ]
         }
@@ -137133,7 +137139,7 @@
        "tables": [
         {
          "id": "922-54",
-         "seq": 29
+         "seq": 30
         }
        ]
       }
@@ -137171,7 +137177,7 @@
         {
          "label": "Excepción",
          "text": "Las separaciones no requieren incrementarse cuando los claros sean iguales o menores a 100 metros (75 metros en la zona de carga I) y la temperatura del conductor no excedan de 50 °C. Para claros a nivel, cuando la separación no se localice a la mitad del claro, el incremento anterior puede reducirse multiplicando por los siguientes factores: Distancia del punto de cruce a la estructura más cercana, Factor en por ciento de la longitud del claro 5 0.19 10 0.36 15 0.51 20 0.64 25 0.75 30 0.84 35 0.91 40 0.96 45 0.99 50 1.00 Interpólese para valores intermedios.",
-         "seq": 32
+         "seq": 33
         }
        ],
        "title": "Claros mayores al claro básico"
@@ -137318,7 +137324,7 @@
        "w": 440,
        "h": 324,
        "page": 723,
-       "seq": 33
+       "seq": 34
       }
      ]
     },
@@ -137334,7 +137340,7 @@
      "tables": [
       {
        "id": "922-83",
-       "seq": 34
+       "seq": 35
       }
      ]
     },
@@ -137369,7 +137375,7 @@
        "tables": [
         {
          "id": "922-84",
-         "seq": 35
+         "seq": 36
         }
        ]
       }
@@ -137389,7 +137395,7 @@
      "tables": [
       {
        "id": "922-84(a)",
-       "seq": 36
+       "seq": 37
       }
      ]
     },
@@ -137493,7 +137499,7 @@
           {
            "label": "Excepción",
            "text": "En el caso de ruptura de cables en estructuras tipo H semiflexibles, donde deben considerarse solamente las cargas vertical y longitudinal actuando simultáneamente.",
-           "seq": 37
+           "seq": 38
           }
          ]
         }
@@ -137543,7 +137549,7 @@
          "tables": [
           {
            "id": "922-93(a)(1)",
-           "seq": 38
+           "seq": 39
           }
          ]
         },
@@ -137623,7 +137629,7 @@
          "tables": [
           {
            "id": "922-93(b)(1)",
-           "seq": 39
+           "seq": 40
           }
          ]
         },
@@ -137789,7 +137795,7 @@
        "tables": [
         {
          "id": "922-93",
-         "seq": 40
+         "seq": 41
         }
        ]
       }
@@ -137809,7 +137815,7 @@
      "tables": [
       {
        "id": "922-94",
-       "seq": 41
+       "seq": 42
       }
      ]
     },

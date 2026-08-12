@@ -56341,6 +56341,75 @@
   "verificada": "2026-08-12"
  },
  {
+  "id": "922-17(c)",
+  "title": null,
+  "sin_numero": true,
+  "informativa": false,
+  "article": 922,
+  "pages": [
+   712
+  ],
+  "page": 712,
+  "cols": 2,
+  "header_rows": 1,
+  "intro": "",
+  "rows": [
+   [
+    {
+     "t": "Longitud del claro (m)"
+    },
+    {
+     "t": "Separación (cm)"
+    }
+   ],
+   [
+    {
+     "t": "Hasta 45"
+    },
+    {
+     "t": "10"
+    }
+   ],
+   [
+    {
+     "t": "Más de 45 a 60"
+    },
+    {
+     "t": "15"
+    }
+   ],
+   [
+    {
+     "t": "Más de 60 a 75"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "Más de 75 a 90"
+    },
+    {
+     "t": "30"
+    }
+   ]
+  ],
+  "grid": "dibujada",
+  "notes": [],
+  "quality": 1.0,
+  "regions": [
+   {
+    "page": 712,
+    "y0": 578.0,
+    "y1": 665.0,
+    "id": "922-17(c)",
+    "article": 922
+   }
+  ],
+  "verificada": "2026-08-12"
+ },
+ {
   "id": "922-19(e)",
   "title": "Separación horizontal mínima entre conductores que limitan el espacio para subir(1)",
   "informativa": false,
