@@ -32379,5 +32379,363 @@
     "article": 922
    }
   ]
+ },
+ "922-41": {
+  "verificada": "2026-08-12",
+  "title": "Altura mínima de conductores sobre el suelo, agua o vías férreas (m)(1)",
+  "cols": 10,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Superficie bajo los conductores",
+     "rs": 3
+    },
+    {
+     "t": "Cables para retenidas, mensajeros, guarda o neutros(2)",
+     "rs": 3
+    },
+    {
+     "t": "Conductores para comunicación",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Conductores suministradores",
+     "cs": 6
+    }
+   ],
+   [
+    {
+     "t": "Aislados",
+     "cs": 2
+    },
+    {
+     "t": "Línea abierta",
+     "cs": 2
+    },
+    {
+     "t": "Trolebuses, trenes eléctricos y sus mensajeros",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Aislados"
+    },
+    {
+     "t": "Desnudo"
+    },
+    {
+     "t": "Hasta 750 V"
+    },
+    {
+     "t": "Mayor que 750 V"
+    },
+    {
+     "t": "Hasta 750 V"
+    },
+    {
+     "t": "Mayor que 750 V a 22 kV"
+    },
+    {
+     "t": "Hasta 750 V(4)"
+    },
+    {
+     "t": "Mayor que 750 V a 22 kV"
+    }
+   ],
+   [
+    {
+     "t": "Vías férreas (excepto trenes eléctricos)"
+    },
+    {
+     "t": "7.2"
+    },
+    {
+     "t": "7.2"
+    },
+    {
+     "t": "7.3"
+    },
+    {
+     "t": "7.3"
+    },
+    {
+     "t": "7.5"
+    },
+    {
+     "t": "7.5"
+    },
+    {
+     "t": "8.1"
+    },
+    {
+     "t": "6.7"
+    },
+    {
+     "t": "6.7"
+    }
+   ],
+   [
+    {
+     "t": "Con tránsito de vehículos(7)(8) o maquinaria agrícola"
+    },
+    {
+     "t": "4.7"
+    },
+    {
+     "t": "4.7"
+    },
+    {
+     "t": "4.9"
+    },
+    {
+     "t": "4.9"
+    },
+    {
+     "t": "5.0"
+    },
+    {
+     "t": "5.0"
+    },
+    {
+     "t": "5.6"
+    },
+    {
+     "t": "5.5"
+    },
+    {
+     "t": "6.1"
+    }
+   ],
+   [
+    {
+     "t": "Sin tránsito de vehículos"
+    },
+    {
+     "t": "2.9"
+    },
+    {
+     "t": "2.9"
+    },
+    {
+     "t": "3.6"
+    },
+    {
+     "t": "3.6(6)"
+    },
+    {
+     "t": "3.8"
+    },
+    {
+     "t": "3.8"
+    },
+    {
+     "t": "4.4"
+    },
+    {
+     "t": "4.9"
+    },
+    {
+     "t": "5.5"
+    }
+   ],
+   [
+    {
+     "t": "Aguas sin navegación"
+    },
+    {
+     "t": "4.0"
+    },
+    {
+     "t": "4.0"
+    },
+    {
+     "t": "4.4"
+    },
+    {
+     "t": "4.4"
+    },
+    {
+     "t": "4.6"
+    },
+    {
+     "t": "4.6"
+    },
+    {
+     "t": "5.2"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "Aguas navegables(9)"
+    },
+    {
+     "t": "Incluyendo(10) ríos, lagos, presas y canales con un área sin obstrucción. Donde exista navegación con botes de vela aumentar 1.50 metros",
+     "cs": 9
+    }
+   ],
+   [
+    {
+     "t": "a. Hasta 8 ha"
+    },
+    {
+     "t": "5.3"
+    },
+    {
+     "t": "5.3"
+    },
+    {
+     "t": "5.5"
+    },
+    {
+     "t": "5.5"
+    },
+    {
+     "t": "5.6"
+    },
+    {
+     "t": "5.6"
+    },
+    {
+     "t": "6.2"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "b. Mayor a 8 hasta 80 ha"
+    },
+    {
+     "t": "7.8"
+    },
+    {
+     "t": "7.8"
+    },
+    {
+     "t": "7.9"
+    },
+    {
+     "t": "7.9"
+    },
+    {
+     "t": "8.1"
+    },
+    {
+     "t": "8.1"
+    },
+    {
+     "t": "8.7"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "c. Mayor a 80 hasta 800 ha"
+    },
+    {
+     "t": "9.6"
+    },
+    {
+     "t": "9.6"
+    },
+    {
+     "t": "9.7"
+    },
+    {
+     "t": "9.7"
+    },
+    {
+     "t": "9.9"
+    },
+    {
+     "t": "9.9"
+    },
+    {
+     "t": "10.5"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "d. Más de 800 ha"
+    },
+    {
+     "t": "11.4"
+    },
+    {
+     "t": "11.4"
+    },
+    {
+     "t": "11.6"
+    },
+    {
+     "t": "11.6"
+    },
+    {
+     "t": "11.7"
+    },
+    {
+     "t": "11.7"
+    },
+    {
+     "t": "12.3"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ]
+  ],
+  "notes": [
+   "(1) Las tensiones son entre fases para circuitos no conectados efectivamente a tierra y de fase a tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
+   "(2) Los conductores neutros a que se refiere esta columna son los descritos en 922-4(d).",
+   "(4) En pasajes subterráneos, túneles o puentes, puede reducirse la altura sobre el piso o vías, indicada en esta columna.",
+   "(6) Esta altura puede reducirse a 3.00 metros para los cables aislados con tensión hasta de 150 volts a tierra, localizados a la entrada de edificios.",
+   "(7) Para conductores de comunicación, aislados o los descritos en la nota 2, cuando crucen o su trayectoria sea a lo largo de callejones, entradas a cocheras o estacionamientos, esta altura puede reducirse a 4.50 metros.",
+   "(8) Estas alturas no consideran los posibles cambios de nivel de la superficie de carreteras, calles, callejones, entre otros, debidos a mantenimiento.",
+   "(9) La altura de los conductores sobre el nivel del agua debe basarse en el más alto nivel histórico que haya alcanzado el agua. La altura sobre ríos y canales debe basarse en el área más grande que resulte de considerar una longitud de 1600 metros de río o canal, que incluya al cruce.",
+   "(10) En cruzamientos sobre aguas navegables, se debe tener en cuenta, además, lo establecido en la reglamentación en materia de navegación."
+  ],
+  "regions": [
+   {
+    "page": 717,
+    "y0": 710.4033203125,
+    "y1": 794.0,
+    "id": "922-41",
+    "article": 922
+   },
+   {
+    "page": 718,
+    "y0": -3.0,
+    "y1": 421.0,
+    "id": "922-41",
+    "article": 922
+   }
+  ]
  }
 }

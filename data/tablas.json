@@ -56922,18 +56922,18 @@
    718
   ],
   "page": 717,
-  "cols": 11,
-  "header_rows": 4,
+  "cols": 10,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
     {
      "t": "Superficie bajo los conductores",
-     "rs": 2
+     "rs": 3
     },
     {
-     "t": "Cables para retenidas, mensajeros,",
-     "rs": 2
+     "t": "Cables para retenidas, mensajeros, guarda o neutros(2)",
+     "rs": 3
     },
     {
      "t": "Conductores para comunicación",
@@ -56942,7 +56942,7 @@
     },
     {
      "t": "Conductores suministradores",
-     "cs": 7
+     "cs": 6
     }
    ],
    [
@@ -56955,37 +56955,8 @@
      "cs": 2
     },
     {
-     "t": "Trolebuses, eléctricos",
+     "t": "Trolebuses, trenes eléctricos y sus mensajeros",
      "cs": 2
-    },
-    {
-     "t": "trenes y sus"
-    }
-   ],
-   [
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "guarda o neutros(2)",
-     "rs": 2
-    },
-    {
-     "t": "",
-     "cs": 2
-    },
-    {
-     "t": "",
-     "cs": 2
-    },
-    {
-     "t": "",
-     "cs": 2
-    },
-    {
-     "t": "mensajeros",
-     "cs": 3
     }
    ],
    [
@@ -57008,58 +56979,42 @@
      "t": "Mayor que 750 V a 22 kV"
     },
     {
-     "t": "(4) Hasta 750 V"
+     "t": "Hasta 750 V(4)"
     },
     {
-     "t": "Mayor que 750 V a 22 kV",
-     "cs": 2
+     "t": "Mayor que 750 V a 22 kV"
     }
    ],
    [
     {
-     "t": "Vías férreas (excepto trenes eléctricos)",
-     "rs": 2
+     "t": "Vías férreas (excepto trenes eléctricos)"
     },
-    {
-     "t": ""
-    },
-    {
-     "t": "7.2",
-     "rs": 2
-    },
-    {
-     "t": "7.3",
-     "rs": 2
-    },
-    {
-     "t": "7.3",
-     "rs": 2
-    },
-    {
-     "t": "7.5",
-     "rs": 2
-    },
-    {
-     "t": "7.5",
-     "rs": 2
-    },
-    {
-     "t": "8.1",
-     "rs": 2
-    },
-    {
-     "t": "6.7",
-     "rs": 2
-    },
-    {
-     "t": "6.7",
-     "cs": 2,
-     "rs": 2
-    }
-   ],
-   [
     {
      "t": "7.2"
+    },
+    {
+     "t": "7.2"
+    },
+    {
+     "t": "7.3"
+    },
+    {
+     "t": "7.3"
+    },
+    {
+     "t": "7.5"
+    },
+    {
+     "t": "7.5"
+    },
+    {
+     "t": "8.1"
+    },
+    {
+     "t": "6.7"
+    },
+    {
+     "t": "6.7"
     }
    ],
    [
@@ -57089,9 +57044,6 @@
     },
     {
      "t": "5.5"
-    },
-    {
-     "t": ""
     },
     {
      "t": "6.1"
@@ -57126,9 +57078,6 @@
      "t": "4.9"
     },
     {
-     "t": ""
-    },
-    {
      "t": "5.5"
     }
    ],
@@ -57161,19 +57110,16 @@
      "t": "-"
     },
     {
-     "t": ""
-    },
-    {
      "t": "-"
     }
    ],
    [
     {
-     "t": "navegables(9) Aguas"
+     "t": "Aguas navegables(9)"
     },
     {
      "t": "Incluyendo(10) ríos, lagos, presas y canales con un área sin obstrucción. Donde exista navegación con botes de vela aumentar 1.50 metros",
-     "cs": 10
+     "cs": 9
     }
    ],
    [
@@ -57202,8 +57148,7 @@
      "t": "6.2"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "-"
@@ -57235,8 +57180,7 @@
      "t": "8.7"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "-"
@@ -57268,8 +57212,7 @@
      "t": "10.5"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "-"
@@ -57301,8 +57244,7 @@
      "t": "12.3"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "-"
@@ -57310,8 +57252,17 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.96,
+  "notes": [
+   "(1) Las tensiones son entre fases para circuitos no conectados efectivamente a tierra y de fase a tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
+   "(2) Los conductores neutros a que se refiere esta columna son los descritos en 922-4(d).",
+   "(4) En pasajes subterráneos, túneles o puentes, puede reducirse la altura sobre el piso o vías, indicada en esta columna.",
+   "(6) Esta altura puede reducirse a 3.00 metros para los cables aislados con tensión hasta de 150 volts a tierra, localizados a la entrada de edificios.",
+   "(7) Para conductores de comunicación, aislados o los descritos en la nota 2, cuando crucen o su trayectoria sea a lo largo de callejones, entradas a cocheras o estacionamientos, esta altura puede reducirse a 4.50 metros.",
+   "(8) Estas alturas no consideran los posibles cambios de nivel de la superficie de carreteras, calles, callejones, entre otros, debidos a mantenimiento.",
+   "(9) La altura de los conductores sobre el nivel del agua debe basarse en el más alto nivel histórico que haya alcanzado el agua. La altura sobre ríos y canales debe basarse en el área más grande que resulte de considerar una longitud de 1600 metros de río o canal, que incluya al cruce.",
+   "(10) En cruzamientos sobre aguas navegables, se debe tener en cuenta, además, lo establecido en la reglamentación en materia de navegación."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 717,
@@ -57323,12 +57274,13 @@
    {
     "page": 718,
     "y0": -3.0,
-    "y1": 248.31,
+    "y1": 421.0,
     "id": "922-41",
     "article": 922
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "922-43",
