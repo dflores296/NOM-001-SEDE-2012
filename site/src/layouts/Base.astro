@@ -99,7 +99,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             const docs = await r.json();
             const ms = new MiniSearch({
               fields: ['id', 'title', 'text'],
-              storeFields: ['id', 'title', 'art', 'artTitle'],
+              storeFields: ['id', 'title', 'art', 'artTitle', 'kind', 'tid', 'sinNumero'],
               searchOptions: { boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15 },
             });
             ms.addAll(docs);
@@ -109,13 +109,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         return loading;
       }
 
+      // Misma regla que tablaSlug() en site/src/lib/nom.js: hay que
+      // repetirla aquí porque este script corre en el navegador y no puede
+      // arrastrar el bundle de nom.js (que importa corpus.json entero).
+      function tablaSlug(id) {
+        return 'tabla-' + String(id).replace(/[^\w-]+/g, '-').replace(/-+$/g, '');
+      }
+
       // El Artículo 100 no tiene secciones numeradas: sus 185 definiciones
       // viven en el glosario. Sin este desvío, buscar "ampacidad" llevaba a
       // una página de artículo vacía cuyo único contenido era un cartel
-      // pidiendo ir al glosario.
-      function href(id, art) {
-        if (art === 100) return `${base}/glosario/#${defSlug(id)}`;
-        return `${base}/art/${art}#${String(id).split('(')[0]}`;
+      // pidiendo ir al glosario. Las tablas del Capítulo 10 tampoco cuelgan
+      // de ningún artículo (r.art viene null) y se publican aparte, en
+      // /tablas; las demás se anclan dentro de su artículo.
+      function href(r) {
+        if (r.kind === 'def') return `${base}/glosario/#${defSlug(r.id)}`;
+        if (r.kind === 'tabla') {
+          const slug = tablaSlug(r.tid);
+          return r.art ? `${base}/art/${r.art}#${slug}` : `${base}/tablas#${slug}`;
+        }
+        return `${base}/art/${r.art}#${String(r.id).split('(')[0]}`;
       }
 
       function render(list, q) {
@@ -125,14 +138,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           return;
         }
         box.innerHTML = list
-          .map(
-            (r) =>
-              `<a role="option" href="${href(r.id, r.art)}">
-                 <span class="rid">${r.id}</span>
+          .map((r) => {
+            const esTabla = r.kind === 'tabla';
+            const rid = esTabla
+              ? (r.sinNumero ? `Tabla del ${r.tid}` : `Tabla ${r.tid}`)
+              : r.id;
+            const rsn = r.art ? `Art. ${r.art} · ${r.artTitle || ''}` : (r.artTitle || '');
+            return `<a role="option" href="${href(r)}">
+                 <span class="rid">${rid}</span>
                  <span class="rti">${r.title || ''}</span>
-                 <span class="rsn">Art. ${r.art} · ${r.artTitle || ''}</span>
-               </a>`
-          )
+                 <span class="rsn">${rsn}</span>
+               </a>`;
+          })
           .join('');
         box.classList.add('open');
         sel = -1;
