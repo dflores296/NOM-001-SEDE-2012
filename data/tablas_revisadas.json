@@ -47909,6 +47909,245 @@
     "id": "922-19(e)",
     "article": 922
    }
+  ],
+  "cols": 6,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Conductores que limitan el espacio para subir",
+     "cs": 2
+    },
+    {
+     "t": "Separación horizontal en centímetros(4) en estructuras que soporten conductores:",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Tipo"
+    },
+    {
+     "t": "Tensión(1)"
+    },
+    {
+     "t": "Comunicación"
+    },
+    {
+     "t": "Eléctricos"
+    },
+    {
+     "t": "Eléctricos arriba de conductores de comunicación"
+    },
+    {
+     "t": "Comunicación arriba de conductores eléctricos(2)"
+    }
+   ],
+   [
+    {
+     "t": "Comunicación",
+     "rs": 2
+    },
+    {
+     "t": "Hasta 150 V"
+    },
+    {
+     "t": "Sin requisitos"
+    },
+    {
+     "t": "--"
+    },
+    {
+     "t": "(3)"
+    },
+    {
+     "t": "Ningún requisito"
+    }
+   ],
+   [
+    {
+     "t": "Más de 150 V"
+    },
+    {
+     "t": "60 recomendado"
+    },
+    {
+     "t": "--"
+    },
+    {
+     "t": "(3)"
+    },
+    {
+     "t": "60 recomendado"
+    }
+   ],
+   [
+    {
+     "t": "Eléctricos aislados"
+    },
+    {
+     "t": "Todas las tensiones"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "--"
+    },
+    {
+     "t": "(3)"
+    },
+    {
+     "t": "Ningún requisito"
+    }
+   ],
+   [
+    {
+     "t": "Eléctricos aislados con mensajero desnudo"
+    },
+    {
+     "t": "Todas las tensiones"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "75"
+    }
+   ],
+   [
+    {
+     "t": "Eléctricos en línea abierta o conductores forrados",
+     "rs": 2
+    },
+    {
+     "t": "Hasta 750 V"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "75"
+    }
+   ],
+   [
+    {
+     "t": "Más de 750 V hasta 15 kV"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "75"
+    },
+    {
+     "t": "75"
+    },
+    {
+     "t": "75"
+    }
+   ],
+   [
+    {
+     "t": "",
+     "rs": 5
+    },
+    {
+     "t": "Más de15 kV hasta 28 kV"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "90"
+    }
+   ],
+   [
+    {
+     "t": "Más de 28 kV hasta 38 kV"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "--"
+    }
+   ],
+   [
+    {
+     "t": "Más de 38 kV hasta 50 kV"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "117"
+    },
+    {
+     "t": "117"
+    },
+    {
+     "t": "--"
+    }
+   ],
+   [
+    {
+     "t": "Más de 50 kV hasta 73 kV"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "140"
+    },
+    {
+     "t": "140"
+    },
+    {
+     "t": "--"
+    }
+   ],
+   [
+    {
+     "t": "Más de 73 kV"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "Más de 140(5)"
+    },
+    {
+     "t": "--"
+    },
+    {
+     "t": "--"
+    }
+   ]
   ]
  },
  "922-21": {
@@ -47931,31 +48170,23 @@
   "rows": [
    [
     {
-     "t": ""
+     "t": "Superficie bajo las partes energizadas",
+     "rs": 2
     },
     {
-     "t": "Equipo"
+     "t": "Equipo efectivamente conectado a tierra",
+     "rs": 2
     },
     {
-     "t": "Equipos no conectados"
+     "t": "Equipos no puestos a tierra conectados a circuitos",
+     "cs": 2
     },
     {
-     "t": "puestos a tierra a circuitos"
-    },
-    {
-     "t": "Partes vivas protegidas"
-    },
-    {
-     "t": "rígidas no"
+     "t": "Partes vivas rígidas no protegidas",
+     "cs": 2
     }
    ],
    [
-    {
-     "t": "Superficie bajo las partes energizadas"
-    },
-    {
-     "t": "efectivamente conectado a tierra"
-    },
     {
      "t": "Hasta 750 V"
     },
@@ -48013,7 +48244,8 @@
   "notes": [
    "(1) Las tensiones son entre fases para circuitos no conectados efectivamente a tierra y de fase a tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
    "(2) Esta altura puede reducirse a 3.00 metros para las partes vivas y puntas de cables aislados como los descritos en la Sección 922-4(b)(2) y 922-4(b)(3), de hasta 150 V a tierra, localizadas a la entrada de edificios."
-  ]
+  ],
+  "header_rows": 2
  },
  "922-55": {
   "verificada": "2026-08-12",
