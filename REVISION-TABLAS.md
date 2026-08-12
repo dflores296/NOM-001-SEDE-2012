@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**141 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**151 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (79)
+## 4 · Sin señales (69)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `310-60(c)(74)` | Ampacidad de cables de tres conductores o ternas de cables individuale… | 146, 147 | 0 | 0.98 | — | **huecos** | 17×6 |
-| [ ] | `310-60(c)(76)` | Ampacidad de cables de tres conductores de aluminio aislados, en un tu… | 147, 148 | 2 | 1.00 | — | **huecos** | 17×6 |
-| [ ] | `310-60(c)(80)` | Ampacidad de tres conductores de aluminio aislados, alambrados dentro… | 150, 151 | 0 | 1.00 | — | **huecos** | 50×6 |
-| [ ] | `310-60(c)(81)` | Ampacidad de conductores individuales de cobre, aislados, directamente… | 151, 152 | 1 | 0.99 | — | **huecos** | 35×6 |
-| [ ] | `326-116` | Dimensiones del conduit | 177 | 1 | 1.00 | — | **huecos** | 5×4 |
-| [ ] | `326-24` | Radio mínimo de curvatura | 177 | 1 | 1.00 | — | **huecos** | 5×3 |
-| [ ] | `326-80` | Ampacidad de los cables tipo IGS | 177 | 1 | 1.00 | — | **huecos** | 10×6 |
-| [ ] | `344-30(b)(2)` | Soportes para tubo conduit metálico pesado | 191 | 2 | 1.00 | — | dibujada | 7×3 |
-| [ ] | `352-30` | Soportes para tubo conduit rígido de policloruro de vinilo (PVC) | 196 | 3 | 0.80 | — | dibujada | 7×3 |
-| [ ] | `354-24` | Radio mínimo de curvatura para tubo conduit subterráneo no metálico co… | 199, 200 | 2 | 1.00 | — | **huecos** | 11×3 |
 | [ ] | `355-44` | Características de expansión del tubo conduit de resina termofija refo… | 202 | 1 | 1.00 | — | dibujada | 21×2 |
 | [ ] | `360-24(a)` | Radios mínimos de curvatura para uso en flexión | 207 | 1 | 1.00 | — | dibujada | 5×3 |
 | [ ] | `360-24(b)` | Radios mínimos para dobleces fijos | 207 | 1 | 1.00 | — | dibujada | 5×3 |
