@@ -33407,5 +33407,119 @@
    ]
   ],
   "notes": []
+ },
+ "300-19(a)": {
+  "verificada": "2026-08-12",
+  "title": "Separación entre los soportes de los conductores",
+  "cols": 4,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación del conductor",
+     "rs": 3
+    },
+    {
+     "t": "Soporte de los conductores en canalizaciones verticales no mayores a",
+     "rs": 10
+    },
+    {
+     "t": "Conductores",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Aluminio o aluminio recubierto de cobre"
+    },
+    {
+     "t": "Cobre"
+    }
+   ],
+   [
+    {
+     "t": "metros",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Desde 0.824 mm2 (18 AWG) hasta 8.37 mm2 (8 AWG)"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "30"
+    }
+   ],
+   [
+    {
+     "t": "Desde 13.3 mm2 (6 AWG) hasta 53.5 mm2 (1/0 AWG)"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "30"
+    }
+   ],
+   [
+    {
+     "t": "Desde 67.4 mm2 (2/0 AWG) hasta 107 mm2 (4/0 AWG)"
+    },
+    {
+     "t": "55"
+    },
+    {
+     "t": "25"
+    }
+   ],
+   [
+    {
+     "t": "Mayor que 107 mm2 (4/0 AWG) hasta 177 mm2 (350 kcmil)"
+    },
+    {
+     "t": "40"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "Mayor que 177 mm2 (350 kcmil) hasta 253 mm2 (500 kcmil)"
+    },
+    {
+     "t": "35"
+    },
+    {
+     "t": "15"
+    }
+   ],
+   [
+    {
+     "t": "Mayor que 253 mm2 (500 kcmil) hasta 380 mm2 (750 kcmil)"
+    },
+    {
+     "t": "30"
+    },
+    {
+     "t": "10"
+    }
+   ],
+   [
+    {
+     "t": "Mayor que 380 mm2 (750 kcmil)"
+    },
+    {
+     "t": "25"
+    },
+    {
+     "t": "10"
+    }
+   ]
+  ],
+  "notes": []
  }
 }

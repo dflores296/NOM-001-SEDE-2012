@@ -6626,11 +6626,11 @@
    [
     {
      "t": "Tamaño o designación del conductor",
-     "rs": 2
+     "rs": 3
     },
     {
-     "t": "Soporte de los conductores en",
-     "rs": 2
+     "t": "Soporte de los conductores en canalizaciones verticales no mayores a",
+     "rs": 10
     },
     {
      "t": "Conductores",
@@ -6639,7 +6639,7 @@
    ],
    [
     {
-     "t": "Aluminio o"
+     "t": "Aluminio o aluminio recubierto de cobre"
     },
     {
      "t": "Cobre"
@@ -6647,60 +6647,19 @@
    ],
    [
     {
-     "t": "",
-     "rs": 3
-    },
-    {
-     "t": "canalizaciones verticales",
-     "rs": 3
-    },
-    {
-     "t": "aluminio recubierto de cobre",
-     "rs": 2
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
      "t": "metros",
-     "cs": 2,
-     "rs": 2
-    }
-   ],
-   [
-    {
-     "t": "",
      "cs": 2
     }
    ],
    [
     {
-     "t": "Desde 0.824 mm2 (18 AWG) hasta 8.37 mm2 (8 AWG)",
-     "rs": 2
+     "t": "Desde 0.824 mm2 (18 AWG) hasta 8.37 mm2 (8 AWG)"
     },
     {
-     "t": ""
+     "t": "-"
     },
     {
-     "t": "-",
-     "rs": 2
-    },
-    {
-     "t": "30",
-     "rs": 2
-    }
-   ],
-   [
-    {
-     "t": "no mayores a",
-     "rs": 7
+     "t": "30"
     }
    ],
    [
@@ -6772,7 +6731,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.8,
+  "quality": 1.0,
   "regions": [
    {
     "page": 126,
@@ -6789,6 +6748,7 @@
     "article": 300
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
