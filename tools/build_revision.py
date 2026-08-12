@@ -88,10 +88,7 @@ el número y la página ya rellenados.
 
 ## Lo que falta
 
-- Las tablas que siguen listadas arriba.
-- Un repaso rápido a las que **no** están señaladas. Nunca se han contrastado contra
-  el PDF; que la reconstrucción saliera limpia no garantiza que sea fiel, y una
-  tabla equivocada que *parece* correcta es la más peligrosa de todas.
+- Las tablas que siguen listadas arriba, secciones 1 a 4.
 """
 
 
@@ -159,6 +156,15 @@ def main():
          and not x[0].get('encabezado_dudoso') and x[1] >= 5),
         key=lambda x: -x[1],
     )
+    # Lo que ninguna heurística marcó: ni calidad baja, ni columna fantasma,
+    # ni suficientes usos para "verificación de control". Que salgan limpias
+    # no es lo mismo que fieles, y nunca se han contrastado contra el PDF.
+    # Se ordenan por página para revisarlas de corrido junto con el PDF.
+    marcadas = {t['id'] for t, c, p in criticas + dudosas + confianza}
+    sin_senales = sorted(
+        (x for x in info if x[0]['id'] not in marcadas),
+        key=lambda x: (x[0]['pages'][0], x[0]['id']),
+    )
 
     secciones = [
         (
@@ -183,6 +189,14 @@ def main():
             'tres renglones de cada una.',
             confianza,
         ),
+        (
+            f'## 4 · Sin señales ({len(sin_senales)})',
+            'Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, '
+            'ni uso suficiente para "verificación de control"— pero eso no es lo '
+            'mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas '
+            'por página para revisarlas de corrido.',
+            sin_senales,
+        ),
     ]
 
     out = [CABECERA.format(sitio=SITIO).rstrip()]
@@ -201,8 +215,8 @@ def main():
     out_path.write_text('\n\n'.join(out).rstrip() + '\n', encoding='utf-8')
     print(
         f'{out_path}: {len(criticas)} prioridad alta, {len(dudosas)} dudosas, '
-        f'{len(confianza)} verificación de control, {len(verificadas)} '
-        f'verificadas, {len(tablas)} tablas en total.'
+        f'{len(confianza)} verificación de control, {len(sin_senales)} sin '
+        f'señales, {len(verificadas)} verificadas, {len(tablas)} tablas en total.'
     )
 
 

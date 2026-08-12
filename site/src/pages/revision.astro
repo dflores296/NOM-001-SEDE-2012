@@ -56,6 +56,16 @@ const dudosas = info
 const confianza = info
   .filter((x) => x.t.quality >= 0.95 && !x.t.encabezado_dudoso && x.c >= 5)
   .sort((a, b) => b.c - a.c);
+// Lo que ninguna heurística marcó: ni calidad baja, ni columna fantasma, ni
+// uso suficiente para "verificación de control". Que salga limpia no es lo
+// mismo que fiel, y nunca se contrastó contra el PDF. Se ordenan por página
+// para revisarlas de corrido.
+const marcadas = new Set(
+  [...criticas, ...dudosas, ...confianza].map((x) => x.t.id)
+);
+const sinSeñales = info
+  .filter((x) => !marcadas.has(x.t.id))
+  .sort((a, b) => a.t.pages[0] - b.t.pages[0] || a.t.id.localeCompare(b.t.id));
 
 const href = (t) =>
   t.article ? `${base}/art/${t.article}#${tablaSlug(t.id)}` : `${base}/tablas/#${tablaSlug(t.id)}`;
@@ -81,6 +91,7 @@ const href = (t) =>
       <div class="stats">
         <div class="stat"><b>{criticas.length}</b><span>Prioridad alta</span></div>
         <div class="stat"><b>{dudosas.length}</b><span>Dudosas</span></div>
+        <div class="stat"><b>{sinSeñales.length}</b><span>Sin señales</span></div>
         <div class="stat"><b>{verificadas.length}</b><span>Verificadas contra el PDF</span></div>
         <div class="stat"><b>{tablas.length}</b><span>Tablas en total</span></div>
       </div>
@@ -153,6 +164,32 @@ const href = (t) =>
               pág. {t.pages.join(', ')} · {c} usos · calidad {t.quality.toFixed(2)} ·
               {' '}{t.rows.length}×{t.cols}
             </span>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="chap">
+      <h2>4 · Sin señales</h2>
+      <p class="rev-nota">
+        Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso
+        suficiente para "verificación de control"— pero eso no es lo mismo que
+        fieles: nunca se han contrastado contra el PDF. Ordenadas por página para
+        revisarlas de corrido.
+      </p>
+      {sinSeñales.length === 0 && (
+        <p class="rev-vacia">Ninguna: ya están todas contrastadas contra el PDF.</p>
+      )}
+      <ol class="rev">
+        {sinSeñales.map(({ t, c, s }) => (
+          <li>
+            <a href={href(t)}><b class="mono">Tabla {t.id}</b></a>
+            <span class="rev-t">{t.title}</span>
+            <span class="rev-m">
+              pág. {t.pages.join(', ')} · {c} {c === 1 ? 'uso' : 'usos'} ·
+              calidad {t.quality.toFixed(2)} · {t.rows.length}×{t.cols}
+            </span>
+            {s.length > 0 && <span class="rev-s">Qué buscar: {s.join(' · ')}</span>}
           </li>
         ))}
       </ol>

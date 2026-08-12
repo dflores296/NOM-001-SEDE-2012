@@ -103,7 +103,7 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
                 <figure class="fig">
                   <img src={`${BASE}/img/${f.src}`}
                        alt={f.caption || `Figura de la página ${f.page} del PDF`}
-                       width={f.w} height={f.h} loading="lazy" />
+                       width={Math.round(f.w * 4 / 3)} height={Math.round(f.h * 4 / 3)} loading="lazy" />
                   <figcaption>{f.caption || `Página ${f.page} del PDF`}</figcaption>
                 </figure>
               ))}
