@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**121 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**131 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (99)
+## 4 · Sin señales (89)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `220-86` | Método opcional - Factores de demanda para conductores de alimentadore… | 53 | 2 | 0.88 | — | dibujada | 4×2 |
-| [ ] | `220-88` | Método opcional - Cálculos de la carga permitida para los conductores… | 53 | 1 | 0.80 | — | dibujada | 5×3 |
-| [ ] | `220-102` | Método para calcular las cargas de instalaciones agrícolas que no sean… | 54 | 2 | 1.00 | — | dibujada | 4×2 |
-| [ ] | `220-103` | Método para calcular la carga total de una instalación agrícola | 54 | 2 | 1.00 | — | dibujada | 5×2 |
-| [ ] | `225-3` | Otros Artículos | 54, 55 | 1 | 0.98 | — | **huecos** | 25×2 |
-| [ ] | `225-60` | Libramientos sobre carretera, pasillos, rieles, agua y campo abierto | 59 | 2 | 1.00 | — | dibujada | 8×2 |
-| [ ] | `225-61` | Libramientos sobre edificios y otras estructuras | 59 | 1 | 1.00 | — | **huecos** | 8×3 |
-| [ ] | `230-51(c)` | Soportes y separación de los conductores individuales de recepción del… | 65 | 0 | 1.00 | — | dibujada | 6×4 |
-| [ ] | `240-3` | Otros artículos | 71, 72 | 2 | 0.98 | — | **huecos** | 36×2 |
-| [ ] | `300-16(c)` | Designación métrica y tamaños comerciales | 118 | 0 | 1.00 | — | **huecos** | 14×2 |
 | [ ] | `300-50` | Requisitos de profundidad mínimaa | 130 | 2 | 0.95 | — | dibujada | 7×7 |
 | [ ] | `310-15(b)(2)(a)` | Factores de Corrección basados en una temperatura ambiente de 30 °C. | 134 | 3 | 1.00 | — | dibujada | 18×4 |
 | [ ] | `310-15(b)(3)(a)` | Factores de ajuste para más de tres conductores portadores de corrient… | 135 | 2 | 1.00 | — | dibujada | 7×2 |
