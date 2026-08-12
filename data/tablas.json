@@ -52872,12 +52872,8 @@
      "rs": 3
     },
     {
-     "t": "Tamaño mínimo de los conductores, cuando la tramo es:",
-     "cs": 4
-    },
-    {
-     "t": "longitud máxima del",
-     "cs": 2
+     "t": "Tamaño mínimo de los conductores, cuando la longitud máxima del tramo es:",
+     "cs": 6
     }
    ],
    [
@@ -52963,7 +52959,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.962,
+  "quality": 1.0,
   "regions": [
    {
     "page": 672,
@@ -52973,6 +52969,7 @@
     "article": 810
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -53059,7 +53056,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.944,
+  "quality": 1.0,
   "regions": [
    {
     "page": 674,
@@ -53069,6 +53066,7 @@
     "article": 810
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -53081,7 +53079,7 @@
   ],
   "page": 682,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -53137,6 +53135,7 @@
     "article": 820
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -53149,7 +53148,7 @@
   ],
   "page": 683,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -53194,7 +53193,9 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Los tipos de cable están aprobados en orden descendente en cuanto a su clasificación de resistencia al fuego."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -53205,6 +53206,7 @@
     "article": 820
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -53864,7 +53866,7 @@
   ],
   "page": 694,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -53928,6 +53930,7 @@
     "article": 830
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -54715,6 +54718,7 @@
     "article": 921
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -55064,7 +55068,14 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Bases:",
+   "Temperatura total máxima en el conductor: 75 °C",
+   "Temperatura ambiente: 25 °C",
+   "Velocidad del viento: 0.6 m/s Factor de emisividad: 0.5",
+   "Frecuencia: 60 hertz",
+   "*Conductor de cobre duro con 97.3 por ciento de conductividad"
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -55075,6 +55086,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -55248,34 +55260,8 @@
      "t": ""
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Separación"
-    },
-    {
-     "t": "S en"
-    },
-    {
-     "t": "milímetros"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Separación S en milímetros",
+     "cs": 10
     }
    ],
    [
@@ -55318,34 +55304,12 @@
      "t": "Tensión (entre fases) Volts"
     },
     {
-     "t": ""
+     "t": "Ecuación 1 Hasta 33.6 mm2 (2 AWG)",
+     "cs": 5
     },
     {
-     "t": "Hasta"
-    },
-    {
-     "t": "Ecuación 33.6 mm2"
-    },
-    {
-     "t": "1 (2 AWG)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Mayor a"
-    },
-    {
-     "t": "Ecuación 33.6 mm2"
-    },
-    {
-     "t": "2 (2 AWG)"
-    },
-    {
-     "t": ""
+     "t": "Ecuación 2 Mayor a 33.6 mm2 (2 AWG)",
+     "cs": 5
     }
    ],
    [
@@ -55491,7 +55455,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.846,
+  "quality": 1.0,
   "regions": [
    {
     "page": 710,
@@ -55501,7 +55465,8 @@
     "article": 922
    }
   ],
-  "encabezado_dudoso": false
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": true
  },
  {
   "id": "922-13(a)",
@@ -55585,7 +55550,7 @@
    [
     {
      "t": "Eléctricos con tensión entre conductores volts:",
-     "rs": 3
+     "rs": 5
     },
     {
      "t": "Hasta 750 (1)",
@@ -55624,7 +55589,8 @@
    ],
    [
     {
-     "t": "Más de 8.7 kV hasta"
+     "t": "Más de 8.7 kV hasta 15 kV",
+     "rs": 2
     },
     {
      "t": "Si se trabaja con línea viva"
@@ -55643,13 +55609,6 @@
     }
    ],
    [
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "15 kV"
-    },
     {
      "t": "Si no se trabaja con línea viva"
     },
@@ -55686,8 +55645,10 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.889,
+  "notes": [
+   "(1) Los valores de esta columna (o renglón) se aplican también a cables aislados, así como a conductores neutros conectados efectivamente a tierra, en circuitos hasta de 22 kilovolts a tierra."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 710,
@@ -55704,6 +55665,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -56558,7 +56520,9 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Interpolar para valores intermedios"
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -56569,6 +56533,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
