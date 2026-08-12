@@ -38095,6 +38095,7 @@
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -38249,8 +38250,10 @@
    ],
    [
     {
-     "t": "Servicio intermitente: Elevadores y montacargas, máquinas 85 de herramientas, bombas, puentes levadizos, plataformas giratorias, etc. (Para soldadoras de arco, ver 630-11).",
-     "cs": 2
+     "t": "Servicio intermitente: Elevadores y montacargas, máquinas de herramientas, bombas, puentes levadizos, plataformas giratorias, etc. (Para soldadoras de arco, ver 630-11)."
+    },
+    {
+     "t": "85"
     },
     {
      "t": "85"
@@ -38298,8 +38301,10 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.966,
+  "notes": [
+   "Cualquier motor debe ser considerado como de ciclo continuo, a menos que la naturaleza de los aparatos que accione sea tal que el motor no operará continuamente con carga bajo cualquier condición de operación."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 304,
@@ -38309,6 +38314,7 @@
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -38401,6 +38407,7 @@
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -38522,6 +38529,7 @@
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -38534,7 +38542,7 @@
   ],
   "page": 309,
   "cols": 3,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -38650,9 +38658,9 @@
   ],
   "grid": "huecos",
   "notes": [
-   "*Excepción: No se requerirá una unidad de protección contra sobrecarga en cada fase cuando se proporcione protección contra sobrecarga por otros medios aprobados. 430-40. Relevadores de sobrecarga. Los relevadores de sobrecarga y otros dispositivos para la protección de los motores contra sobrecarga, que no sean capaces de abrir cortocircuitos o fallas a tierra, deben estar protegidos por fusibles o interruptores automáticos con valores nominales o ajustes que cumplan lo establecido en 430-52, o por un protector de motores contra cortocircuito, de acuerdo con 430-52. Excepción: Cuando estén aprobados para su instalación en grupo y marcados con el tamaño máximo del fusible o interruptor automático de tiempo inverso mediante el cual deben estar protegidos, los dispositivos de protección contra sobrecarga se deben"
+   "*Excepción: No se requerirá una unidad de protección contra sobrecarga en cada fase cuando se proporcione protección contra sobrecarga por otros medios aprobados."
   ],
-  "quality": 0.9,
+  "quality": 1.0,
   "regions": [
    {
     "page": 309,
@@ -38662,6 +38670,7 @@
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -39075,7 +39084,7 @@
   "notes": [
    "NOTA 1. Valor especificado en 310-15, según sea aplicable.",
    "NOTA 2. 400 por ciento del valor especificado en la Tabla 310-15(b)(17) para conductores a 60 °C.",
-   "NOTA 3. 300 por ciento del valor especificado en la Tabla 310-15(b)(16) para conductores a 60 °C. c) Transformador del circuito de control. Cuando se suministre un transformador para el circuito de control de motores, dicho transformador debe estar protegido de acuerdo con lo siguiente: Excepción: La protección contra sobrecorriente se debe omitir cuando la apertura del circuito de control pudiera crear una situación de riesgo, como por ejemplo, el circuito de control de un motor de una bomba contra incendios y similares."
+   "NOTA 3. 300 por ciento del valor especificado en la Tabla 310-15(b)(16) para conductores a 60 °C."
   ],
   "quality": 1.0,
   "regions": [
@@ -39087,6 +39096,7 @@
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -42704,16 +42714,13 @@
    327
   ],
   "page": 327,
-  "cols": 4,
-  "header_rows": 2,
+  "cols": 3,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
     {
      "t": "Equipo/ocupación"
-    },
-    {
-     "t": ""
     },
     {
      "t": "Artículo"
@@ -42730,11 +42737,7 @@
      "t": ""
     },
     {
-     "t": ""
-    },
-    {
-     "t": "1 460-9",
-     "rs": 5
+     "t": "1 460-9"
     }
    ],
    [
@@ -42742,10 +42745,10 @@
      "t": "1 Estudios de cine, televisión y lugares similares"
     },
     {
-     "t": "1"
+     "t": "1 530"
     },
     {
-     "t": "530"
+     "t": ""
     }
    ],
    [
@@ -42753,10 +42756,10 @@
      "t": "2 Garajes comerciales, hangares de aviones, gasolinera estaciones de servicio, plantas de almacenamiento a granel, procesos de aplicación por pulverización, inmersión y recubrimiento, y lugares donde se inhalen gases anestésicos"
     },
     {
-     "t": "2"
+     "t": "2 511, 513, 514, 515, 516 y 517 Parte D"
     },
     {
-     "t": "511, 513, 514, 515, 516 y 517 Parte D"
+     "t": ""
     }
    ],
    [
@@ -42764,10 +42767,10 @@
      "t": "3 Lugares peligrosos (clasificados)"
     },
     {
-     "t": "3"
+     "t": "3 500-503 y 505"
     },
     {
-     "t": "500-503 y 505"
+     "t": ""
     }
    ],
    [
@@ -42775,16 +42778,16 @@
      "t": "4 Resistencias y reactancias"
     },
     {
-     "t": "4"
+     "t": "4 470"
     },
     {
-     "t": "470"
+     "t": ""
     }
    ]
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.941,
+  "quality": 1.0,
   "regions": [
    {
     "page": 327,
@@ -42794,6 +42797,7 @@
     "article": 440
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -43005,7 +43009,7 @@
   ],
   "page": 336,
   "cols": 6,
-  "header_rows": 4,
+  "header_rows": 2,
   "intro": "",
   "rows": [
    [
@@ -43081,7 +43085,11 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Cuando el 125 por ciento de la corriente no corresponde a un valor estándar de un fusible o interruptor automático no ajustable, se permitirá elegir el valor nominal estándar inmediatamente superior.",
+   "Cuando se exija protección contra sobrecorriente en el secundario, se permitirá que el dispositivo de sobrecorriente del secundario esté compuesto por máximo seis interruptores automáticos o seis grupos de fusibles agrupados en un lugar. Cuando se utilicen dispositivos múltiples de protección contra sobrecorriente, el total de todos los valores nominales de los dispositivos no deben exceder el valor permitido para un solo dispositivo de protección contra sobrecorriente.",
+   "Se permitirá que un transformador equipado por el fabricante con protección térmica coordinada contra sobrecarga y dispuesta para interrumpir la corriente del primario, tenga protección contra sobrecorriente en el primario con valor nominal o ajuste a un valor de corriente que no sea más de seis veces la corriente nominal del transformador, para transformadores que no tienen una impedancia de más del 6 por ciento y no más de cuatro veces la corriente nominal del transformador, para transformadores que tienen una impedancia de más del 6 por ciento pero no más del 10 por ciento."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -43092,6 +43100,7 @@
     "article": 450
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -43597,8 +43606,10 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.993,
+  "notes": [
+   "Los valores dados corresponden a las distancias mínimas de seguridad para partes rígidas y conductores desnudos en condiciones de servicio favorables. Estas distancias se deben aumentar para condiciones de movimiento de los conductores o bajo condiciones de servicio desfavorables, o cuando las limitaciones de espacio lo permitan. La selección de la tensión de impulso no disruptivo asociado para una tensión del sistema particular, se determina por las características del equipo de protección contra sobretensiones."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 350,
@@ -43608,6 +43619,7 @@
     "article": 490
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -43860,6 +43872,7 @@
     "article": 500
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {

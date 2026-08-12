@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**161 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**171 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (59)
+## 4 · Sin señales (49)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `430-12(c)(1)` | Espacio para las terminales (Terminales fijas) | 303 | 1 | 1.00 | — | dibujada | 5×3 |
-| [ ] | `430-22(e)` | Servicio por régimen de tiempo. | 304 | 4 | 0.97 | — | dibujada | 7×5 |
-| [ ] | `430-23(c)` | Conductor del secundario | 305 | 1 | 1.00 | — | dibujada | 8×2 |
-| [ ] | `430-29` | Factores de ampacidad del conductor para resistencias de potencia | 306 | 2 | 1.00 | — | dibujada | 9×3 |
-| [ ] | `430-37` | Dispositivos de sobrecarga para protección del motor | 309 | 3 | 0.90 | — | **huecos** | 10×3 |
-| [ ] | `430-72(b)` | Ajuste máximo de los dispositivos de protección contra sobrecorriente… | 314 | 4 | 1.00 | — | dibujada | 9×8 |
-| [ ] | `440-3(d)` | Otros artículos | 327 | 1 | 0.94 | — | **huecos** | 6×4 |
-| [ ] | `450-3(b)` | Valor nominal o ajuste máximo de la protección contra sobrecorriente p… | 336 | 1 | 1.00 | — | dibujada | 4×6 |
-| [ ] | `490-24` | Espacio mínimo de seguridad de las partes vivas | 350 | 2 | 0.99 | — | dibujada | 23×7 |
-| [ ] | `500-8(d)(2)` | Temperaturas Clase II | 361 | 1 | 1.00 | — | dibujada | 6×4 |
 | [ ] | `504-10(b)` | Evaluación para la clasificación T4 de acuerdo con el tamaño y la temp… | 381 | 1 | 1.00 | — | dibujada | 4×2 |
 | [ ] | `505-7(d)` | Distancia mínima de las obstrucciones desde aberturas bridadas a prueb… | 387 | 1 | 1.00 | — | dibujada | 5×2 |
 | [ ] | `505-9(c)(1)(2)` | Grupos de clasificación de gas | 388 | 2 | 1.00 | — | dibujada | 2×2 |
