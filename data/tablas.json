@@ -31781,7 +31781,7 @@
      "cs": 2
     },
     {
-     "t": "Espesor nominal del aislamiento1"
+     "t": "Espesor nominal del aislamiento (1)"
     },
     {
      "t": "Malla sobre cada conductor",
@@ -31792,12 +31792,8 @@
      "rs": 2
     },
     {
-     "t": "",
-     "rs": 2
-    },
-    {
      "t": "Uso",
-     "cs": 2,
+     "cs": 3,
      "rs": 2
     }
    ],
@@ -31853,8 +31849,11 @@
      "rs": 2
     },
     {
-     "t": "Colgantes o Lugares portátiles secos",
-     "cs": 2,
+     "t": "Colgantes o portátiles",
+     "rs": 2
+    },
+    {
+     "t": "Lugares secos",
      "rs": 2
     },
     {
@@ -31922,8 +31921,12 @@
      "rs": 8
     },
     {
-     "t": "Alumbrado y control Lugares no de elevadores clasificados",
-     "cs": 3,
+     "t": "Alumbrado y control de elevadores",
+     "rs": 8
+    },
+    {
+     "t": "Lugares no clasificados",
+     "cs": 2,
      "rs": 8
     }
    ],
@@ -32010,22 +32013,28 @@
    ],
    [
     {
-     "t": "Cable para"
+     "t": "Cable para elevador",
+     "rs": 4
     },
     {
-     "t": "EO"
+     "t": "EO Ver Nota 7. Ver Nota 12.",
+     "rs": 4
     },
     {
-     "t": "300"
+     "t": "300 ó 600",
+     "rs": 4
     },
     {
-     "t": "20 - 2"
+     "t": "20 - 2",
+     "rs": 4
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 4
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo",
+     "rs": 4
     },
     {
      "t": "0.5191 -1.31"
@@ -32037,35 +32046,24 @@
      "t": "0.51"
     },
     {
-     "t": "Algodón"
+     "t": "Algodón",
+     "rs": 4
     },
     {
-     "t": "Tres de"
+     "t": "Tres de algodón, uno exterior retardante de la flama y resistente a la humedad. Ver Nota 5.",
+     "rs": 2
     },
     {
-     "t": "Alumbrado y control Lugares no",
-     "cs": 3
+     "t": "Alumbrado y control de elevadores",
+     "rs": 4
+    },
+    {
+     "t": "Lugares no clasificados",
+     "cs": 2,
+     "rs": 2
     }
    ],
    [
-    {
-     "t": "elevador"
-    },
-    {
-     "t": "Ver Nota 7. Ver Nota 12."
-    },
-    {
-     "t": "ó 600"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
     {
      "t": "2.08 -3.31"
     },
@@ -32074,42 +32072,9 @@
     },
     {
      "t": "0.76"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "algodón, uno exterior retardante de la flama y resistente a la humedad. Ver Nota 5."
-    },
-    {
-     "t": "de elevadores"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "clasificados"
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
     {
      "t": "3.31 -5.26"
     },
@@ -32120,40 +32085,16 @@
      "t": "1.14"
     },
     {
-     "t": ""
+     "t": "Una de algodón y una cubierta de neopreno. Ver Nota 5.",
+     "rs": 2
     },
     {
-     "t": "Una de algodón"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Lugares"
+     "t": "Lugares clasificados (peligrosos)",
+     "cs": 2,
+     "rs": 2
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
     {
      "t": "8.37 – 33.6"
     },
@@ -32162,26 +32103,12 @@
     },
     {
      "t": "1.52"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "y una cubierta de neopreno. Ver Nota 5."
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "clasificados (peligrosos)"
     }
    ],
    [
     {
-     "t": "Cable para elevador"
+     "t": "Cable para elevador",
+     "rs": 2
     },
     {
      "t": "ETP Ver Nota 7. Ver Nota 12."
@@ -32190,22 +32117,28 @@
      "t": "300 ó 600"
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 2
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 2
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 2
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 2
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 2
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 2
     },
     {
      "t": "Rayón"
@@ -32214,19 +32147,12 @@
      "t": "Termoplástico"
     },
     {
-     "t": "Lugares"
-    },
-    {
-     "t": "clasificados"
-    },
-    {
-     "t": "(peligrosos)"
+     "t": "Lugares clasificados (peligrosos)",
+     "cs": 3,
+     "rs": 2
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "ETT Ver Nota 7. Ver Nota 12."
     },
@@ -32234,57 +32160,36 @@
      "t": "300 ó 600"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Ninguno"
     },
     {
      "t": "Uno de algodón o equivalente y una cubierta termoplástica"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Cable para"
+     "t": "Cable para vehículo eléctrico",
+     "rs": 18
     },
     {
-     "t": "EV"
+     "t": "EV",
+     "rs": 5
     },
     {
-     "t": "600"
+     "t": "600",
+     "rs": 5
     },
     {
-     "t": "18 – 500"
+     "t": "18 – 500 Ver nota 13",
+     "rs": 5
     },
     {
-     "t": "2 o más, y"
+     "t": "2 o más, y conductor(es) de puesta a tierra, más cables opcionales de datos híbridos, señalización, comunicaciones y fibra óptica",
+     "rs": 6
     },
     {
-     "t": "Termofijo con"
+     "t": "Termofijo con nylon opcional. Ver Nota 14.",
+     "rs": 6
     },
     {
      "t": "0.824 – 1.31"
@@ -32296,40 +32201,27 @@
      "t": "0.76 (0.51)"
     },
     {
-     "t": "Opcional"
+     "t": "Opcional",
+     "rs": 6
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo",
+     "rs": 6
     },
     {
-     "t": "Cargador de"
+     "t": "Cargador de vehículo eléctrico",
+     "rs": 6
     },
     {
-     "t": "Lugares"
+     "t": "Lugares mojados",
+     "rs": 6
     },
     {
-     "t": "Uso extra"
+     "t": "Uso extra rudo",
+     "rs": 5
     }
    ],
    [
-    {
-     "t": "vehículo eléctrico"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Ver nota"
-    },
-    {
-     "t": "conductor(es) de puesta a tierra,"
-    },
-    {
-     "t": "nylon opcional. Ver Nota 14."
-    },
     {
      "t": "2.08 – 5.26"
     },
@@ -32338,42 +32230,9 @@
     },
     {
      "t": "1.14 (0.76)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "vehículo eléctrico"
-    },
-    {
-     "t": "mojados"
-    },
-    {
-     "t": "rudo"
     }
    ],
    [
-    {
-     "t": "eléctrico"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "13"
-    },
-    {
-     "t": "puesta a tierra, más cables"
-    },
-    {
-     "t": "Ver Nota 14."
-    },
     {
      "t": "8.37 -33.6"
     },
@@ -32382,42 +32241,9 @@
     },
     {
      "t": "1.52 (1.14)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "eléctrico"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "más cables opcionales de"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "42.4 – 107"
     },
@@ -32426,42 +32252,9 @@
     },
     {
      "t": "203 (1.52)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "datos híbridos, señalización,"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "127 -253"
     },
@@ -32470,27 +32263,9 @@
     },
     {
      "t": "2.41 (1.90) Ver Nota 14."
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "EVJ"
     },
@@ -32499,12 +32274,6 @@
     },
     {
      "t": "18 – 12 Ver nota 13"
-    },
-    {
-     "t": "comunicaciones y fibra óptica"
-    },
-    {
-     "t": ""
     },
     {
      "t": "0.824 – 3.31"
@@ -32516,39 +32285,29 @@
      "t": "0.76 (0.51) Ver Nota 14."
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Uso rudo"
     }
    ],
    [
     {
-     "t": ""
+     "t": "EVE",
+     "rs": 5
     },
     {
-     "t": "EVE"
+     "t": "600",
+     "rs": 5
     },
     {
-     "t": "600"
+     "t": "18 – 500 Ver nota 13",
+     "rs": 5
     },
     {
-     "t": "18 – 500 Ver nota 13"
+     "t": "2 o más, y conductores de puesta a tierra, más cables opcionales de datos híbridos, señalización, comunicaciones y fibra óptica",
+     "rs": 6
     },
     {
-     "t": "2 o más, y conductores de puesta a tierra, más cables"
-    },
-    {
-     "t": "Elastómero termoplástico con nylon opcional. Ver Nota 14."
+     "t": "Elastómero termoplástico con nylon opcional. Ver Nota 14.",
+     "rs": 6
     },
     {
      "t": "0.824 – 1.31"
@@ -32560,40 +32319,27 @@
      "t": "0.76 (0.51)"
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 6
     },
     {
-     "t": "Elastómero termoplástico"
+     "t": "Elastómero termoplástico",
+     "rs": 6
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 6
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 6
     },
     {
-     "t": "Uso extra rudo"
+     "t": "Uso extra rudo",
+     "rs": 5
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "opcionales de datos híbridos,"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "2.08 – 5.26"
     },
@@ -32602,42 +32348,9 @@
     },
     {
      "t": "1.14 (0.76)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "datos híbridos, señalización,"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "8.37 -33.6"
     },
@@ -32646,42 +32359,9 @@
     },
     {
      "t": "1.52 (1.14)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "comunicaciones"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "42.4 – 107"
     },
@@ -32690,42 +32370,9 @@
     },
     {
      "t": "203 (1.52)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "y fibra óptica"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "127 -253"
     },
@@ -32734,27 +32381,9 @@
     },
     {
      "t": "2.41 (1.90) Ver Nota 14."
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "EVJE"
     },
@@ -32763,12 +32392,6 @@
     },
     {
      "t": "18 – 12 Ver nota 13"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     },
     {
      "t": "0.824 – 3.31"
@@ -32780,39 +32403,29 @@
      "t": "0.76 (0.51) Ver Nota 14."
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Uso rudo"
     }
    ],
    [
     {
-     "t": ""
+     "t": "EVT",
+     "rs": 5
     },
     {
-     "t": "EVT"
+     "t": "600",
+     "rs": 5
     },
     {
-     "t": "600"
+     "t": "18 – 500 Ver nota 13",
+     "rs": 5
     },
     {
-     "t": "18 – 500"
+     "t": "2 o más, y conductores de puesta a tierra, más cables opcionales de datos híbridos, señalización, comunicaciones y fibra óptica",
+     "rs": 6
     },
     {
-     "t": "2 o más, y"
-    },
-    {
-     "t": "Termo- plástico"
+     "t": "Termoplástico con nylon opcional. Ver Nota 14.",
+     "rs": 6
     },
     {
      "t": "0.824 – 1.31"
@@ -32824,40 +32437,27 @@
      "t": "0.76 (0.051)"
     },
     {
-     "t": "Opcional"
+     "t": "Opcional",
+     "rs": 6
     },
     {
-     "t": "Termoplástico"
+     "t": "Termoplástico",
+     "rs": 6
     },
     {
-     "t": "Cargador de"
+     "t": "Cargador de vehículo eléctrico",
+     "rs": 6
     },
     {
-     "t": "Lugares"
+     "t": "Lugares mojados",
+     "rs": 6
     },
     {
-     "t": "Uso extra"
+     "t": "Uso extra rudo",
+     "rs": 5
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Ver nota"
-    },
-    {
-     "t": "conductores de puesta a tierra,"
-    },
-    {
-     "t": "con nylon opcional. Ver Nota"
-    },
     {
      "t": "2.08 – 5.26"
     },
@@ -32866,42 +32466,9 @@
     },
     {
      "t": "1.14 (0.76)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "vehículo eléctrico"
-    },
-    {
-     "t": "mojados"
-    },
-    {
-     "t": "rudo"
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "13"
-    },
-    {
-     "t": "puesta a tierra, más cables"
-    },
-    {
-     "t": "opcional. Ver Nota 14."
-    },
     {
      "t": "8.37 -33.6"
     },
@@ -32910,42 +32477,9 @@
     },
     {
      "t": "1.52 (1.14)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "eléctrico"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "más cables opcionales de"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "42.4 – 107"
     },
@@ -32954,42 +32488,9 @@
     },
     {
      "t": "203 (1.52)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "datos híbridos, señalización,"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "127 -253"
     },
@@ -32998,27 +32499,9 @@
     },
     {
      "t": "2.41 (1.90) Ver Nota 14."
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "EVJT"
     },
@@ -33027,12 +32510,6 @@
     },
     {
      "t": "18 – 12 Ver nota 13"
-    },
-    {
-     "t": "comunicaciones y fibra óptica"
-    },
-    {
-     "t": ""
     },
     {
      "t": "0.824 – 3.31"
@@ -33044,39 +32521,33 @@
      "t": "0.76 (0.051) Ver Nota 14"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Uso rudo"
     }
    ],
    [
     {
-     "t": "Cable de"
+     "t": "Cable de energía portátil",
+     "rs": 6
     },
     {
-     "t": "G"
+     "t": "G",
+     "rs": 3
     },
     {
-     "t": "2000"
+     "t": "2000",
+     "rs": 3
     },
     {
-     "t": "12 - 500"
+     "t": "12 - 500",
+     "rs": 3
     },
     {
-     "t": "2-6, más"
+     "t": "2-6, más conductores de puesta a tierra",
+     "rs": 3
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo",
+     "rs": 3
     },
     {
      "t": "3.31 – 33.6"
@@ -33088,40 +32559,20 @@
      "t": "1.52"
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 6
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo resistente al aceite",
+     "rs": 3
     },
     {
-     "t": "Portátil"
-    },
-    {
-     "t": "y uso extra"
-    },
-    {
-     "t": "rudo"
+     "t": "Portátil y uso extra rudo",
+     "cs": 3,
+     "rs": 6
     }
    ],
    [
-    {
-     "t": "energía portátil"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "conductores de puesta a tierra"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "42.4 – 107"
     },
@@ -33130,42 +32581,9 @@
     },
     {
      "t": "2.03"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "resistente al aceite"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "puesta a tierra"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "127 - 253"
     },
@@ -33174,41 +32592,28 @@
     },
     {
      "t": "2.41"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "aceite"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": ""
+     "t": "G-GC",
+     "rs": 3
     },
     {
-     "t": "G-GC"
+     "t": "2000",
+     "rs": 3
     },
     {
-     "t": "2000"
+     "t": "12 - 500",
+     "rs": 3
     },
     {
-     "t": "12 - 500"
+     "t": "3-6, más conductores de puesta a tierra y 1 conductor de verificación de tierra",
+     "rs": 3
     },
     {
-     "t": "3-6, más conductores de"
-    },
-    {
-     "t": "Termofijo"
+     "t": "Termofijo",
+     "rs": 3
     },
     {
      "t": "3.31 – 33.6"
@@ -33220,40 +32625,11 @@
      "t": "1.52"
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Termofijo resistente al"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Termofijo resistente al aceite",
+     "rs": 3
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "conductores de puesta a tierra y"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "42.4 – 107"
     },
@@ -33262,42 +32638,9 @@
     },
     {
      "t": "2.03"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "resistente al aceite"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "1 conductor de verificación de tierra"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "127 - 253"
     },
@@ -33306,41 +32649,32 @@
     },
     {
      "t": "2.41"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Cordón de"
+     "t": "Cordón de calentador",
+     "rs": 2
     },
     {
-     "t": "HPD"
+     "t": "HPD",
+     "rs": 2
     },
     {
-     "t": "300"
+     "t": "300",
+     "rs": 2
     },
     {
-     "t": "18 - 12"
+     "t": "18 - 12",
+     "rs": 2
     },
     {
-     "t": "2, 3 o 4"
+     "t": "2, 3 o 4",
+     "rs": 2
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo",
+     "rs": 2
     },
     {
      "t": "0.824 – 1.31"
@@ -33352,40 +32686,27 @@
      "t": "0.38"
     },
     {
-     "t": "Ninguno"
+     "t": "Ninguno",
+     "rs": 2
     },
     {
-     "t": "Algodón o"
+     "t": "Algodón o rayón",
+     "rs": 2
     },
     {
-     "t": "Calentadores"
+     "t": "Calentadores portátiles",
+     "rs": 2
     },
     {
-     "t": "Lugares"
+     "t": "Lugares secos",
+     "rs": 2
     },
     {
-     "t": "Uso no"
+     "t": "Uso no rudo",
+     "rs": 2
     }
    ],
    [
-    {
-     "t": "calentador"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
     {
      "t": "2.08 – 3.31"
     },
@@ -33394,41 +32715,32 @@
     },
     {
      "t": "0.76"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "rayón"
-    },
-    {
-     "t": "portátiles"
-    },
-    {
-     "t": "secos"
-    },
-    {
-     "t": "rudo"
     }
    ],
    [
     {
-     "t": "Cordón"
+     "t": "Cordón paralelo de calentador",
+     "rs": 3
     },
     {
-     "t": "HPN"
+     "t": "HPN Ver Nota 8.",
+     "rs": 3
     },
     {
-     "t": "300"
+     "t": "300",
+     "rs": 3
     },
     {
-     "t": "18 - 12"
+     "t": "18 - 12",
+     "rs": 3
     },
     {
-     "t": "2 o 3"
+     "t": "2 o 3",
+     "rs": 3
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo resistente al aceite",
+     "rs": 3
     },
     {
      "t": "0.824 – 1.31"
@@ -33440,40 +32752,27 @@
      "t": "1.14"
     },
     {
-     "t": "Ninguno"
+     "t": "Ninguno",
+     "rs": 3
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo resistente al aceite",
+     "rs": 3
     },
     {
-     "t": "Portátil"
+     "t": "Portátil",
+     "rs": 3
     },
     {
-     "t": "Lugares"
+     "t": "Lugares húmedos",
+     "rs": 3
     },
     {
-     "t": "Uso no"
+     "t": "Uso no rudo",
+     "rs": 3
     }
    ],
    [
-    {
-     "t": "paralelo de calentador"
-    },
-    {
-     "t": "Ver Nota 8."
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "resistente al aceite"
-    },
     {
      "t": "2.08"
     },
@@ -33482,42 +32781,9 @@
     },
     {
      "t": "1.52"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "resistente al aceite"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "húmedos"
-    },
-    {
-     "t": "rudo"
     }
    ],
    [
-    {
-     "t": "calentador"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
     {
      "t": "3.31"
     },
@@ -33526,26 +32792,12 @@
     },
     {
      "t": "2.41"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "aceite"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Cordones de calentador con"
+     "t": "Cordones de calentador con cubierta termofija",
+     "rs": 3
     },
     {
      "t": "HSJ"
@@ -33557,7 +32809,8 @@
      "t": "18 - 12"
     },
     {
-     "t": "2, 3 o 4"
+     "t": "2, 3 o 4",
+     "rs": 3
     },
     {
      "t": "Termofijo"
@@ -33572,25 +32825,26 @@
      "t": "0.76"
     },
     {
-     "t": "Ninguno"
+     "t": "Ninguno",
+     "rs": 3
     },
     {
      "t": "Algodón y Termofijo"
     },
     {
-     "t": "Portátil o calentador"
+     "t": "Portátil o calentador portátil",
+     "rs": 3
     },
     {
-     "t": "Lugares húmedos"
+     "t": "Lugares húmedos",
+     "rs": 3
     },
     {
-     "t": "Uso rudo"
+     "t": "Uso rudo",
+     "rs": 3
     }
    ],
    [
-    {
-     "t": "cubierta termofija"
-    },
     {
      "t": "HSJO"
     },
@@ -33601,40 +32855,27 @@
      "t": "18 - 12"
     },
     {
-     "t": ""
+     "t": "Termofijo resistente al aceite",
+     "rs": 2
     },
     {
-     "t": "Termofijo resistente al aceite"
+     "t": "2.08 – 3.31",
+     "rs": 2
     },
     {
-     "t": "2.08 – 3.31"
+     "t": "14-12",
+     "rs": 2
     },
     {
-     "t": "14-12"
+     "t": "1.14",
+     "rs": 2
     },
     {
-     "t": "1.14"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Algodón y termofijo"
-    },
-    {
-     "t": "portátil"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Algodón y termofijo resistente al aceite",
+     "rs": 2
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "HSJOO"
     },
@@ -33643,41 +32884,12 @@
     },
     {
      "t": "18 - 12"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "resistente al aceite"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Cordones"
+     "t": "Cordones paralelos no integrados",
+     "rs": 6
     },
     {
      "t": "NISP-1"
@@ -33689,10 +32901,12 @@
      "t": "20 – 18"
     },
     {
-     "t": "2 ó 3"
+     "t": "2 ó 3",
+     "rs": 6
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo",
+     "rs": 2
     },
     {
      "t": "0.519–0.824"
@@ -33704,25 +32918,27 @@
      "t": "0.38"
     },
     {
-     "t": "Ninguno"
+     "t": "Ninguno",
+     "rs": 6
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo",
+     "rs": 2
     },
     {
-     "t": "Colgante o"
+     "t": "Colgante o portátil",
+     "rs": 6
     },
     {
-     "t": "Lugares"
+     "t": "Lugares húmedos",
+     "rs": 6
     },
     {
-     "t": "Uso no"
+     "t": "Uso no rudo",
+     "rs": 6
     }
    ],
    [
-    {
-     "t": "paralelos no integrados"
-    },
     {
      "t": "NISP-2"
     },
@@ -33733,12 +32949,6 @@
      "t": "18 – 16"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "0.824 – 1.31"
     },
     {
@@ -33746,27 +32956,9 @@
     },
     {
      "t": "0.76"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "portátil"
-    },
-    {
-     "t": "húmedos"
-    },
-    {
-     "t": "rudo"
     }
    ],
    [
-    {
-     "t": "integrados"
-    },
     {
      "t": "NISPE-1 Ver Nota 8"
     },
@@ -33777,10 +32969,8 @@
      "t": "20 – 18"
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Elastómero termoplástico"
+     "t": "Elastómero termoplástico",
+     "rs": 2
     },
     {
      "t": "0.519-0.824"
@@ -33792,25 +32982,11 @@
      "t": "0.38"
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Elastómero termoplástico"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Elastómero termoplástico",
+     "rs": 2
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "NISPE-2 Ver Nota 8"
     },
@@ -33821,12 +32997,6 @@
      "t": "18 – 16"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "0.824 – 1.31"
     },
     {
@@ -33834,27 +33004,9 @@
     },
     {
      "t": "0.76"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "NISPT-1 Ver Nota 8."
     },
@@ -33865,10 +33017,8 @@
      "t": "20 -18"
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Termoplástico"
+     "t": "Termoplástico",
+     "rs": 2
     },
     {
      "t": "0.5191-0.824"
@@ -33880,25 +33030,11 @@
      "t": "0.38"
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Termo-plástico"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Termoplástico",
+     "rs": 2
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "NISPT-2 Ver Nota 8"
     },
@@ -33909,12 +33045,6 @@
      "t": "18 - 16"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "0.824 – 1.31"
     },
     {
@@ -33922,29 +33052,16 @@
     },
     {
      "t": "0.76"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
     {
-     "t": "Cordón portátil"
+     "t": "Cordón portátil torcido",
+     "rs": 2
     },
     {
-     "t": "PD"
+     "t": "PD",
+     "rs": 2
     },
     {
      "t": "300"
@@ -33953,10 +33070,12 @@
      "t": "18 – 16"
     },
     {
-     "t": "2 o más"
+     "t": "2 o más",
+     "rs": 2
     },
     {
-     "t": "Termofijo o"
+     "t": "Termofijo o termoplástico",
+     "rs": 2
     },
     {
      "t": "0.824 – 1.31"
@@ -33968,39 +33087,32 @@
      "t": "0.76"
     },
     {
-     "t": "Algodón"
+     "t": "Algodón",
+     "rs": 2
     },
     {
-     "t": "Algodón o"
+     "t": "Algodón o rayón",
+     "rs": 2
     },
     {
-     "t": "Colgante o"
+     "t": "Colgante o portátil",
+     "rs": 2
     },
     {
-     "t": "Lugares"
+     "t": "Lugares secos",
+     "rs": 2
     },
     {
-     "t": "Uso no"
+     "t": "Uso no rudo",
+     "rs": 2
     }
    ],
    [
-    {
-     "t": "torcido"
-    },
-    {
-     "t": ""
-    },
     {
      "t": "600"
     },
     {
      "t": "14 – 10"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "termoplástico"
     },
     {
      "t": "2.08 – 5.26"
@@ -34010,41 +33122,32 @@
     },
     {
      "t": "1.14"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "rayón"
-    },
-    {
-     "t": "portátil"
-    },
-    {
-     "t": "secos"
-    },
-    {
-     "t": "rudo"
     }
    ],
    [
     {
-     "t": "Cable de"
+     "t": "Cable de energía portátil",
+     "rs": 3
     },
     {
-     "t": "PPE"
+     "t": "PPE",
+     "rs": 3
     },
     {
-     "t": "2000"
+     "t": "2000",
+     "rs": 3
     },
     {
-     "t": "12 – 5000"
+     "t": "12 – 5000",
+     "rs": 3
     },
     {
-     "t": "1-6, más"
+     "t": "1-6, más conductores de puesta a tierra opcionales",
+     "rs": 3
     },
     {
-     "t": "Elastómero"
+     "t": "Elastómero termoplástico",
+     "rs": 3
     },
     {
      "t": "3.31 – 33.6"
@@ -34056,46 +33159,20 @@
      "t": "1.52"
     },
     {
-     "t": ""
+     "t": "",
+     "rs": 3
     },
     {
-     "t": "Elastómero"
+     "t": "Elastómero termoplástico resistente al aceite",
+     "rs": 3
     },
     {
-     "t": "Portátil,"
-    },
-    {
-     "t": "uso extra"
-    },
-    {
-     "t": "rudo"
+     "t": "Portátil, uso extra rudo",
+     "cs": 3,
+     "rs": 3
     }
    ],
    [
-    {
-     "t": "energía portátil",
-     "rs": 2
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "conductores de puesta a tierra opcionales",
-     "rs": 2
-    },
-    {
-     "t": "termoplástico",
-     "rs": 2
-    },
     {
      "t": "42.4 - 107"
     },
@@ -34104,19 +33181,6 @@
     },
     {
      "t": "2.03"
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "termoplástico resistente al aceite",
-     "rs": 2
-    },
-    {
-     "t": "",
-     "cs": 3,
-     "rs": 2
     }
    ],
    [
@@ -34246,7 +33310,7 @@
      "rs": 3
     },
     {
-     "t": "Termofijo4"
+     "t": "Termofijo (4)"
     },
     {
      "t": "Portátil, uso extra rudo",
@@ -34265,7 +33329,7 @@
      "t": "Elastómero termoplástico"
     },
     {
-     "t": "Elastómero termoplástico4"
+     "t": "Elastómero termoplástico (4)"
     }
    ],
    [
@@ -34279,7 +33343,7 @@
      "t": "Termoplástico"
     },
     {
-     "t": "Termoplástico4"
+     "t": "Termoplástico (4)"
     }
    ],
    [
@@ -35053,7 +34117,8 @@
    ],
    [
     {
-     "t": "Cordón paralelo"
+     "t": "Cordón paralelo termoplástico",
+     "rs": 8
     },
     {
      "t": "SPT-1"
@@ -35062,44 +34127,49 @@
      "t": "300"
     },
     {
-     "t": "20 - 18"
+     "t": "20 - 18",
+     "rs": 2
     },
     {
      "t": "2 ó 3"
     },
     {
-     "t": "Termo plástico"
+     "t": "Termoplástico",
+     "rs": 8
     },
     {
-     "t": "0.519-0.824"
+     "t": "0.519-0.824",
+     "rs": 2
     },
     {
-     "t": "20 - 18"
+     "t": "20 - 18",
+     "rs": 2
     },
     {
-     "t": "0.76"
+     "t": "0.76",
+     "rs": 2
     },
     {
-     "t": "Ninguno"
+     "t": "Ninguno",
+     "rs": 8
     },
     {
-     "t": "Ninguno"
+     "t": "Ninguno",
+     "rs": 8
     },
     {
-     "t": "Colgante o portátil"
+     "t": "Colgante o portátil",
+     "rs": 4
     },
     {
      "t": "Lugares húmedos"
     },
     {
-     "t": "Uso no rudo"
+     "t": "Uso no rudo",
+     "rs": 8
     }
    ],
    [
-    {
-     "t": "plástico",
-     "rs": 4
-    },
     {
      "t": "SPT-1W Ver Nota 15"
     },
@@ -35107,42 +34177,10 @@
      "t": "300"
     },
     {
-     "t": ""
-    },
-    {
      "t": "2"
     },
     {
-     "t": "",
-     "rs": 4
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "",
-     "rs": 4
-    },
-    {
-     "t": "",
-     "rs": 4
-    },
-    {
-     "t": "",
-     "rs": 3
-    },
-    {
      "t": "Lugares húmedos y mojados"
-    },
-    {
-     "t": "",
-     "rs": 4
     }
    ],
    [
@@ -35191,31 +34229,70 @@
    ],
    [
     {
-     "t": "SPT-3"
+     "t": "SPT-3",
+     "rs": 4
     },
     {
-     "t": "300"
+     "t": "300",
+     "rs": 4
     },
     {
-     "t": "18 - 10"
+     "t": "18 - 10",
+     "rs": 4
     },
     {
-     "t": "2 ó 3"
+     "t": "2 ó 3",
+     "rs": 4
     },
     {
-     "t": "0.824 – 1.31 2.08 3.31 5.26"
+     "t": "0.824 – 1.31"
     },
     {
-     "t": "18 - 16 14 12 10"
+     "t": "18 - 16"
     },
     {
-     "t": "1.52 2.03 2.41 2.80"
+     "t": "1.52"
     },
     {
-     "t": "Refrigeradores, aire acondicionado para cuartos y lo permitido en 422-16(b)"
+     "t": "Refrigeradores, aire acondicionado para cuartos y lo permitido en 422-16(b)",
+     "rs": 4
     },
     {
-     "t": "Lugares húmedos"
+     "t": "Lugares húmedos",
+     "rs": 4
+    }
+   ],
+   [
+    {
+     "t": "2.08"
+    },
+    {
+     "t": "14"
+    },
+    {
+     "t": "2.03"
+    }
+   ],
+   [
+    {
+     "t": "3.31"
+    },
+    {
+     "t": "12"
+    },
+    {
+     "t": "2.41"
+    }
+   ],
+   [
+    {
+     "t": "5.26"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "2.80"
     }
    ],
    [
@@ -35662,7 +34739,7 @@
     },
     {
      "t": "Ninguno",
-     "rs": 2
+     "rs": 5
     },
     {
      "t": "Termoplástico"
@@ -35679,44 +34756,101 @@
    ],
    [
     {
-     "t": "Cable de energía portátil"
+     "t": "Cable de energía portátil",
+     "rs": 4
     },
     {
-     "t": "W"
+     "t": "W",
+     "rs": 4
     },
     {
-     "t": "2000"
+     "t": "2000",
+     "rs": 4
     },
     {
-     "t": "12 – 500 501 - 1000"
+     "t": "12 – 500 501 - 1000",
+     "rs": 4
     },
     {
-     "t": "1-6 1"
+     "t": "1-6 1",
+     "rs": 4
     },
     {
-     "t": "Termofijo"
+     "t": "Termofijo",
+     "rs": 4
     },
     {
-     "t": "3.31 – 33.6 42.4 – 107 127 – 253 254 - 507"
+     "t": "3.31 – 33.6"
     },
     {
-     "t": "12 -2 1 - 4/0 250 - 500 501 - 1000"
+     "t": "12 -2"
     },
     {
-     "t": "1.52 2.03 2.41 2.80"
+     "t": "1.52"
     },
     {
-     "t": "Termofijo resistente al aceite"
+     "t": "Termofijo resistente al aceite",
+     "rs": 4
     },
     {
      "t": "Portátil, uso extra rudo",
-     "cs": 3
+     "cs": 3,
+     "rs": 4
+    }
+   ],
+   [
+    {
+     "t": "42.4 – 107"
+    },
+    {
+     "t": "1 - 4/0"
+    },
+    {
+     "t": "2.03"
+    }
+   ],
+   [
+    {
+     "t": "127 – 253"
+    },
+    {
+     "t": "250 - 500"
+    },
+    {
+     "t": "2.41"
+    }
+   ],
+   [
+    {
+     "t": "254 - 507"
+    },
+    {
+     "t": "501 - 1000"
+    },
+    {
+     "t": "2.80"
     }
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.753,
+  "notes": [
+   "(1) Ver la Nota 10.",
+   "(2) La cubierta exterior requerida en algunos cables de conductores individuales puede ser integrada con el aislamiento.",
+   "(3) Todos los tipos de la Tabla 400-4 deben ser conductores individuales torcidos, excepto para los tipos HPN, SP-1, SP-2, SP-3, SPE-1, SPE-2, SPE-3, SPT-1, SPT-2, STP-3, TPT, NISP-1, NISP-2, NISPT-1, NISPT-2, NISPE-1, NISPE-2 y las versiones de cables paralelos de tres conductores de los cables SRD, SRDE y SRDT.",
+   "(4) Se permitirán cables tipo TPT, TS y TST en tramos que no excedan los 2.50 metros cuando vayan unidos directamente o mediante un tipo de clavija de conexión especial a aparatos portátiles de 50 watts nominales o menos y de tal naturaleza que resulte esencial una gran flexibilidad del cordón.",
+   "(5) Como sustituto del trenzado interno se permitirá utilizar cintas rellenas de hule o de tela barnizada.",
+   "(6) En los escenarios de los teatros, en los garajes y en otros lugares donde esta NOM autorice cordones flexibles, se permitirá el uso de cables tipo G, G-GC, S, SC, SCE, SCT, SE, SEO, SEOO, SO, SOO, ST, STO, STOO, PPE y W.",
+   "(7) Los cables móviles de elevadores para circuitos de control y señalización, deben incluir rellenos no metálicos para mantener su forma concéntrica. Los cables deben tener elementos de soporte de acero como exige 620-41 para la suspensión. En lugares sometidos a humedad excesiva, vapores o gases corrosivos, se permitirá utilizar elementos de soporte de otros materiales. Cuando se utilicen elementos de soporte de acero, deben ir rectos a través del centro del ensamble del cable y no deben cablearse con los hilos de cobre de los conductores. Además de los conductores utilizados para circuitos de control y señalización, se permitirá que los cables para elevadores tipos E, EO, ETP y ETT lleven incorporados uno o más pares telefónicos con tamaño o designación de 0.519 mm2 (20 AWG), uno o más cables coaxiales o una o más fibras ópticas. Se permitirá que los pares conductores con tamaño o designación de 0.519 mm2 (20 AWG) estén cubiertos con un blindaje adecuado para circuitos de comunicaciones telefónicas, de audio o de alta frecuencia; los cables coaxiales consisten en un conductor central, un aislamiento y un blindaje para usar en circuitos de comunicaciones para vídeo o radiofrecuencia. La fibra óptica debe ir recubierta adecuadamente con un termoplástico retardante de la flama. El aislamiento de los conductores debe ser hule o termoplástico, de un espesor no menor al especificado para los demás conductores de ese tipo particular de cable. La armadura metálica debe tener su propio recubrimiento protector. Cuando se utilicen, se permitirá que estos componentes vayan incorporados en cualquier capa del ensamble del cable, pero no deben ir en línea recta a través del centro del ensamble.",
+   "(8) El tercer conductor en el tipo HPN sólo se debe utilizar como un conductor de puesta a tierra de los equipos. El aislamiento del conductor de puesta a tierra de equipos para los tipos SPE-1, SPE-2, SPE-3, SPT-1, SPT-2, SPT-3, NISPT-1, NISPT-2, NISPE.10 y NISPE-2 se permitirá que sea un polímero termofijo.",
+   "(9) Los conductores individuales de todos los cordones, excepto los de los cordones resistentes al calor, deben llevar aislamiento de termoplástico o termofijo excepto que el conductor de puesta a tierra de los equipos, cuando se utilice, debe cumplir lo establecido en 400-23 (b).",
+   "(10) Cuando la tensión entre dos conductores cuales quiera sea mayor de 300 volts pero no exceda los 600 volts, los cordones flexibles con tamaño o designación de 5.26 mm2 (10 AWG) y de espesor como mínimo, a menos que se utilicen cordones tipo S, SE, SEO, SEOO, menores deben tener sus conductores individuales con aislamiento termoplástico o termofijo de 1.14 mm2 SO, SOO, ST, STO o STOO.",
+   "(11) Se permitirá que los aislamientos y recubrimientos exteriores que cumplan los requisitos de retardante de la flama, baja emisión de humos y baja emisión de gas ácido halogenado y que estén así aprobados tengan la con el sufijo LS.",
+   "(12) Los cables de elevadores en tamaño o designación de 0.519 mm2 (20 AWG) hasta 2.08 mm2 (14 AWG) son de 300 volts nominales y los de 5.26 mm2 (10 AWG) hasta 33.6 mm2 (2 AWG) son de 600 volts nominales. El cable de 3.31 mm2 (12 AWG) está especificado para 300 volts nominales con un aislamiento de 0.76 milímetros de espesor y para de 600 volts con un aislamiento de 1.14 milímetros de espesor.",
+   "(13) El tamaño o designación del conductor para los cables tipo EV, EVJ, EVE, EVJE, EVT y EVJT se aplica solamente para circuitos de potencia no limitada. Los conductores para circuitos de potencia limitada (de datos, señalización o comunicaciones) se pueden ampliar más allá del intervalo del tamaño o designación AWG establecido. Todos los conductores deben estar aislados para el mismo valor de tensión nominal del cable.",
+   "(14) Entre paréntesis se indica el espesor del aislamiento de los cables de nylon tipo EV, EVJ, EVE, EVJE, EVT y EVJT.",
+   "(15) Se permitirá que los cordones que cumplen con los requisitos para cordones en exteriores y que están aprobados como tales, se designen como resistentes al agua y a la intemperie con el sufijo \"W\" después de la designación del tipo de código. Los cordones con el sufijo \"W\" son adecuados para uso en lugares mojados y son resistentes a la luz del sol."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 241,
@@ -35742,11 +34876,12 @@
    {
     "page": 244,
     "y0": 9.77,
-    "y1": 432.05,
+    "y1": 708.0,
     "id": "400-4",
     "article": 400
    }
-  ]
+  ],
+  "verificada": "2026-08-12"
  },
  {
   "id": "400-5(a)(1)",
@@ -37183,7 +36318,7 @@
      "t": "HF"
     },
     {
-     "t": "Etileno cloro- trifluoroetileno"
+     "t": "Etileno clorotrifluoroetileno"
     },
     {
      "t": "0.824 – 2.08"
@@ -37212,7 +36347,7 @@
      "t": "HFF"
     },
     {
-     "t": "Etileno cloro- trifluoroetileno"
+     "t": "Etileno clorotrifluoroetileno"
     },
     {
      "t": "0.824 – 2.08"
@@ -37253,8 +36388,7 @@
      "rs": 2
     },
     {
-     "t": "0.14 0.21",
-     "rs": 2
+     "t": "0.14"
     },
     {
      "t": "Ninguna",
@@ -37274,6 +36408,9 @@
     },
     {
      "t": "Cinta de polimida aromática"
+    },
+    {
+     "t": "0.21"
     },
     {
      "t": "Alambrado para artefactos"
@@ -37299,8 +36436,7 @@
      "rs": 2
     },
     {
-     "t": "0.14 0.21",
-     "rs": 2
+     "t": "0.14"
     },
     {
      "t": "Ninguna",
@@ -37320,6 +36456,9 @@
     },
     {
      "t": "Cinta de polimida aromática"
+    },
+    {
+     "t": "0.21"
     },
     {
      "t": "Alambrado para artefactos"
@@ -37443,7 +36582,7 @@
    ],
    [
     {
-     "t": "Cable para artefactos de propileno-etileno"
+     "t": "Cable para artefactos de propileno-etileno fluorado, sólido o 7 hilos – trenzado"
     },
     {
      "t": "PGF"
@@ -37468,35 +36607,6 @@
     },
     {
      "t": "Alambrado para artefactos"
-    }
-   ],
-   [
-    {
-     "t": "fluorado, sólido o 7 hilos – trenzado"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -37536,7 +36646,7 @@
      "t": "PTF"
     },
     {
-     "t": "Politetra- fluoroetileno extruido"
+     "t": "Politetrafluoroetileno extruido"
     },
     {
      "t": "0.824 – 2.08"
@@ -37565,7 +36675,7 @@
      "t": "PTFF"
     },
     {
-     "t": "Politetra- fluoroetileno extruido"
+     "t": "Politetrafluoroetileno extruido"
     },
     {
      "t": "0.824 – 2.08"
@@ -37965,7 +37075,7 @@
      "t": "ZF"
     },
     {
-     "t": "Etileno- tetrafluoro- etileno modificado"
+     "t": "Etileno-tetrafluoroetileno modificado"
     },
     {
      "t": "0.824 – 2.08"
@@ -37994,7 +37104,7 @@
      "t": "ZFF"
     },
     {
-     "t": "Etileno- tetrafluoro- etileno modificado"
+     "t": "Etileno-tetrafluoroetileno modificado"
     },
     {
      "t": "0.824 – 2.08"
@@ -38023,7 +37133,7 @@
      "t": "ZHF"
     },
     {
-     "t": "Etileno- tetrafluoro- etileno modificado"
+     "t": "Etileno-tetrafluoroetileno modificado"
     },
     {
      "t": "0.824 – 2.08"
@@ -38047,10 +37157,9 @@
   ],
   "grid": "rejilla",
   "notes": [
-   "*Se permitirá que los aislamientos y cubiertas exteriores aprobados estén marcados como no propagadores de incendio, baja emisión de humo y gas ácido, pueden identificarse con el sufijo \"LS\". 402-5. Ampacidad permisible de cables para artefactos. La ampacidad permisible de los cables para artefactos debe ser como se especifica en la Tabla 402-5. No se debe utilizar ningún conductor en condiciones tales que su temperatura de operación exceda la especificada en la Tabla 402-3 para el tipo de aislamiento involucrado.",
-   "NOTA: Para los límites de temperatura de los conductores, véase 310-15(a)(3)."
+   "*Se permitirá que los aislamientos y cubiertas exteriores aprobados estén marcados como no propagadores de incendio, baja emisión de humo y gas ácido, pueden identificarse con el sufijo \"LS\"."
   ],
-  "quality": 0.793,
+  "quality": 1.0,
   "regions": [
    {
     "page": 248,
@@ -38062,11 +37171,12 @@
    {
     "page": 249,
     "y0": -3.0,
-    "y1": 703.4228515625,
+    "y1": 648.0,
     "id": "402-3",
     "article": 402
    }
-  ]
+  ],
+  "verificada": "2026-08-12"
  },
  {
   "id": "402-5",
@@ -56981,41 +56091,32 @@
   ],
   "page": 711,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 2,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Separación de los"
+     "t": "Separación de los conductores de línea entre:",
+     "rs": 2
     },
     {
-     "t": "En estructuras líneas"
+     "t": "En estructuras que soporten líneas de:",
+     "cs": 2
     },
     {
-     "t": "que soporten de:"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Líneas de suministro"
-    },
-    {
-     "t": "(Tensión entre fases)"
+     "t": "Líneas de suministro (Tensión entre fases)",
+     "cs": 3
     }
    ],
    [
     {
-     "t": "conductores de línea entre:"
-    },
-    {
      "t": "Sólo de comunicación"
     },
     {
-     "t": "Comunicación eléctricas"
+     "t": "Comunicación y eléctricas"
     },
     {
-     "t": "y De 0 hasta 8.7 kV"
+     "t": "De 0 hasta 8.7 kV"
     },
     {
      "t": "Mayor que 8.7 kV hasta 50 kV"
@@ -57026,22 +56127,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Conductores"
-    },
-    {
-     "t": "verticales o"
-    },
-    {
-     "t": "derivados:"
-    },
-    {
-     "t": ""
+     "t": "Conductores verticales o derivados:",
+     "cs": 6
     }
    ],
    [
@@ -57075,7 +56162,7 @@
      "t": "75"
     },
     {
-     "t": "150(5)"
+     "t": "150 (5)"
     },
     {
      "t": "150 más 10 por cada kV en exceso de 8.7 kV"
@@ -57086,22 +56173,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": "Retenidas"
-    },
-    {
-     "t": "y mensajeros"
-    },
-    {
-     "t": "sujetos a la"
-    },
-    {
-     "t": "misma estructura:"
-    },
-    {
-     "t": ""
+     "t": "Retenidas y mensajeros sujetos a la misma estructura:",
+     "cs": 6
     }
    ],
    [
@@ -57132,7 +56205,7 @@
      "t": "75"
     },
     {
-     "t": "150(1)"
+     "t": "150 (1)"
     },
     {
      "t": "150"
@@ -57152,7 +56225,7 @@
      "t": "75"
     },
     {
-     "t": "150(1)"
+     "t": "150 (1)"
     },
     {
      "t": "150"
@@ -57166,22 +56239,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Superficie"
-    },
-    {
-     "t": "de crucetas"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Superficie de crucetas",
+     "cs": 6
     }
    ],
    [
@@ -57189,16 +56248,16 @@
      "t": "Superficie de crucetas"
     },
     {
-     "t": "75(2)"
+     "t": "75 (2)"
     },
     {
-     "t": "75(2)"
+     "t": "75 (2)"
     },
     {
-     "t": "75(6)(7)"
+     "t": "75 (6)(7)"
     },
     {
-     "t": "75 más 5.0 por cada kV en exceso de 8.7 kV(6) (7) (8)"
+     "t": "75 más 5.0 por cada kV en exceso de 8.7 kV (6)(7)(8)"
     },
     {
      "t": "280 más 5.0 por cada kV en exceso de 50 kV"
@@ -57206,82 +56265,28 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Superficie"
-    },
-    {
-     "t": "de estructuras:"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "t": "Superficie de estructuras:",
+     "cs": 6
     }
    ],
    [
     {
-     "t": "Que soporten líneas"
+     "t": "Que soporten líneas de comunicación y eléctricas"
     },
     {
      "t": "--"
     },
     {
-     "t": "125(2)"
+     "t": "125 (2)"
     },
     {
-     "t": "125(3)(6)(7)125"
+     "t": "125 (3)(6)(7)"
     },
     {
-     "t": "más 5.0 por cada kV"
+     "t": "125 más 5.0 por cada kV en exceso de 8.7 kV (6)(7)"
     },
     {
-     "t": "330 más 5.0 por cada kV"
-    }
-   ],
-   [
-    {
-     "t": "de comunicación y eléctricas"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "en exceso de 8.7 kV(6)(7)"
-    },
-    {
-     "t": "en exceso de 50 kV"
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "75 más 5.0 por cada kV"
-    },
-    {
-     "t": "280 más 5.0 por cada kV"
+     "t": "330 más 5.0 por cada kV en exceso de 50 kV"
     }
    ],
    [
@@ -57289,145 +56294,34 @@
      "t": "Otras"
     },
     {
-     "t": "75(2)"
+     "t": "75 (2)"
     },
     {
      "t": "--"
     },
     {
-     "t": "75(6)(7)"
+     "t": "75 (6)(7)"
     },
     {
-     "t": "75 más 5.0 por cada kV en exceso de 8.7 kV(6)(7)"
+     "t": "75 más 5.0 por cada kV en exceso de 8.7 kV (6)(7)"
     },
     {
      "t": "280 más 5.0 por cada kV en exceso de 50 kV"
     }
-   ],
-   [
-    {
-     "t": "(1) En estructuras que o menos de los cubierta aislante efectivamente puesta más bajo y arriba del (2) Los conductores crucetas, o en la (3) Esta separación conductores de distancia puede puede ser reducida (4) Para conductores por ciento por cada tensión mayor que (5) Para circuitos de (6) Un conductor neutro 22 kilovolts a tierra, (7) Para líneas eléctricas en la sección 922-4(b), (8) En circuitos con 4(d), puede utilizarse superficie de las 922-16. Separación entre circuitos hasta de 50 kilovolts entre conductores, siempre que se cumpla con una o más a) Que los circuitos ocupen lados b) En líneas construidas con distancia mínima requerida por el c) Los conductores de tensión posiciones más distantes. d) Uno de los dos circuitos de kilovolts, siempre que los dos se instalen 922-17. Espaciamiento entre separación vertical menor que la colocadas verticalmente, que estén a) La tensión máxima entre descritos en 922-4(b)(1) y (2), los cuales b) Todos los conductores deben c) La separación vertical entre"
-    },
-    {
-     "t": "soporten líneas conductores eléctricos adecuada en el a tierra, o conductor de de comunicación superficie de postes. solamente comunicación. reducirse a 75 a 25 milímetros. de circuitos 300 metros de 50 kilovolts, 750 volts o que esté puede sujetarse abiertas de esta separación conductor neutro la tensión de crucetas. de diferente pueden de las opuestos de crucetas voladas espacio para subir, menor deben comunicación de acuerdo conductores indicada en firmemente conductores no pueden ser del mismo conductores no"
-    },
-    {
-     "t": "de comunicación y de comunicación tramo cercano tiene un aislador comunicación pueden se aplica a Cuando los milímetros, excepto con tensión mayor altura en exceso deben determinarse menos, esta separación puesto a tierra directamente a 750 volts o menos puede efectivamente fase a neutro tensión colocarse en la condiciones siguientes: la estructura. o soportadas estipulado en ocupar las para la operación con los incisos soportados 922-13, cuando sujetos a un lado debe ser mayor ser de cualquier material. debe ser menor"
-    },
-    {
-     "t": "y eléctricas, a la al conductor tipo retenida, más alto. sujetarse en conductores conductores para que 50 de 1000 con base en puede efectivamente a la estructura. y cables reducirse a 25 puesto a para determinar colocados misma en sus 922-19, posiciones de líneas (a) o (b) en bastidores estén de la estructura que 750 tensión. que la"
-    },
-    {
-     "t": "en las que sus retenidas vez, dichas retenidas deben eléctrico. Esto no es localizado a un nivel menor soportes colocados en la eléctricos colocados en la eléctricos estén arriba de los conductores eléctricos de 0 a kilovolts, la separación adicional metros sobre el nivel mar. la tensión máxima de reducirse a 75 milímetros. lo largo de la línea y asociado eléctricos de cualquier milímetros. tierra, que cumpla con lo la separación entre los en la misma cruceta. cruceta, con circuitos de dos extremos, los circuitos para el circuito de tensión más próximas a la eléctricas y el otro anteriores y pertenezcan verticales. Los colocados en bastidores y se cumpla con las V, excepto cuando se siguiente:"
-    },
-    {
-     "t": "pasen a 300 milímetros ser protegidas con una necesario si la retenida está del conductor eléctrico base o a los lados de las misma estructura debajo de de comunicación, esta 750 volts, cuya separación se debe incrementar 3 Todas las separaciones para operación. con circuitos de hasta tensión, de los tipos descritos indicado en la sección 922- conductores de fase y la Los circuitos eléctricos con tensión tensión inmediata superior o inferior, deben estar separados por una mayor. estructura, y los de tensión mayor las un circuito eléctrico de menos de 8.7 a la misma empresa. conductores pueden instalarse a una verticales o en ménsulas separadas siguientes condiciones: trate de cables aislados de los tipos"
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": "Longitud"
-    },
-    {
-     "t": "del claro (m)"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Separación (cm)"
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Hasta 45"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "10"
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": "Más"
-    },
-    {
-     "t": "de 45 a 60"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "15"
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": "Más"
-    },
-    {
-     "t": "de 60 a 75"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "20"
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": "Más"
-    },
-    {
-     "t": "de 75 a 90"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "30"
-    },
-    {
-     "t": ""
-    }
    ]
   ],
   "grid": "huecos",
-  "notes": [],
-  "quality": 0.726,
+  "notes": [
+   "(1) En estructuras que soporten líneas de comunicación y eléctricas, en las que sus retenidas pasen a 300 milímetros o menos de los conductores eléctricos y de comunicación a la vez, dichas retenidas deben ser protegidas con una cubierta aislante adecuada en el tramo cercano al conductor eléctrico. Esto no es necesario si la retenida está efectivamente puesta a tierra, o tiene un aislador tipo retenida, localizado a un nivel menor del conductor eléctrico más bajo y arriba del conductor de comunicación más alto.",
+   "(2) Los conductores de comunicación pueden sujetarse en soportes colocados en la base o a los lados de las crucetas, o en la superficie de postes.",
+   "(3) Esta separación solamente se aplica a conductores eléctricos colocados en la misma estructura debajo de conductores de comunicación. Cuando los conductores eléctricos estén arriba de los de comunicación, esta distancia puede reducirse a 75 milímetros, excepto para conductores eléctricos de 0 a 750 volts, cuya separación puede ser reducida a 25 milímetros.",
+   "(4) Para conductores de circuitos con tensión mayor que 50 kilovolts, la separación adicional se debe incrementar 3 por ciento por cada 300 metros de altura en exceso de 1000 metros sobre el nivel mar. Todas las separaciones para tensión mayor que 50 kilovolts, deben determinarse con base en la tensión máxima de operación.",
+   "(5) Para circuitos de 750 volts o menos, esta separación puede reducirse a 75 milímetros.",
+   "(6) Un conductor neutro que esté puesto a tierra efectivamente a lo largo de la línea y asociado con circuitos de hasta 22 kilovolts a tierra, puede sujetarse directamente a la estructura.",
+   "(7) Para líneas eléctricas abiertas de 750 volts o menos y cables eléctricos de cualquier tensión, de los tipos descritos en la sección 922-4(b), esta separación puede reducirse a 25 milímetros.",
+   "(8) En circuitos con conductor neutro efectivamente puesto a tierra, que cumpla con lo indicado en la sección 922-4(d), puede utilizarse la tensión de fase a neutro para determinar la separación entre los conductores de fase y la superficie de las crucetas."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 711,
@@ -57439,11 +56333,12 @@
    {
     "page": 712,
     "y0": 10.5,
-    "y1": 660.85,
+    "y1": 355.0,
     "id": "922-15(a)",
     "article": 922
    }
-  ]
+  ],
+  "verificada": "2026-08-12"
  },
  {
   "id": "922-19(e)",

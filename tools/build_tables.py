@@ -875,8 +875,14 @@ def find_captions(doc):
 # `verificada`: el sitio deja de pedir que se contraste con el PDF y la lista
 # de revisión la da por cerrada.
 
+# `regions` entra en la lista porque el recorte también se equivoca: la
+# 922-15(a) se llevaba dentro de la tabla dos secciones enteras del artículo
+# 922, y la 400-4 dejaba fuera sus quince notas, que acababan pegadas al
+# texto de 400-5(c). Corregir dónde termina la tabla es parte de corregirla:
+# de aquí salen las zonas que build_corpus recorta del flujo de texto, así
+# que la revisión a mano devuelve al artículo lo que no era suyo.
 CAMPOS_REVISABLES = ('title', 'cols', 'header_rows', 'intro', 'rows', 'notes',
-                     'informativa')
+                     'informativa', 'regions')
 
 
 def apply_revisiones(tables, path):

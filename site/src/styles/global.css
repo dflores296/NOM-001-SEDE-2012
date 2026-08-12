@@ -442,6 +442,11 @@ footer.bot a { color: var(--text-dim); }
 
 /* ------------------------------------------------------ lista de revisión */
 .rev-nota { color: var(--text-dim); font-size: 0.88rem; margin: -0.2rem 0 0.9rem; }
+.rev-vacia {
+  color: var(--text-dim); font-size: 0.92rem; margin: 0;
+  padding: 0.7rem 0.9rem;
+  border: 1px dashed var(--border-soft); border-radius: var(--radius);
+}
 ol.rev { list-style: none; counter-reset: r; margin: 0; padding: 0; }
 ol.rev li {
   counter-increment: r;

@@ -85,6 +85,11 @@ const href = (t) =>
         Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a muchos
         cálculos.
       </p>
+      {/* Una lista vacía aquí es una buena noticia. Sin decirlo, el hueco se
+          lee como si la página hubiera fallado al cargar. */}
+      {criticas.length === 0 && (
+        <p class="rev-vacia">Ninguna: ya están todas contrastadas contra el PDF.</p>
+      )}
       <ol class="rev">
         {criticas.map(({ t, c, s }) => (
           <li>
@@ -105,6 +110,9 @@ const href = (t) =>
       <p class="rev-nota">
         Bajo el umbral de confianza, pero poco citadas. Menos urgentes.
       </p>
+      {dudosas.length === 0 && (
+        <p class="rev-vacia">Ninguna: ya están todas contrastadas contra el PDF.</p>
+      )}
       <ol class="rev">
         {dudosas.map(({ t, c, s }) => (
           <li>

@@ -16,26 +16,21 @@ con varios valores juntos) · **rejilla** de dónde salieron las columnas: `dibu
 son las líneas del PDF, `huecos` son los espacios entre palabras, que es mucho menos
 fiable y no recupera celdas combinadas.
 
-**22 de 218 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**25 de 218 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (2)
+## 1 · Prioridad alta (0)
 
 Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a muchos cálculos.
 
-| | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |
-|---|---|---|---|---|---|---|---|
-| [ ] | `400-4` | Cordones y cables flexibles (Ver 400-4) | 241, 242, 243, 244 | 22 | 0.75 | dibujada | 132×14 |
-| [ ] | `402-3` | Cables para artefactos | 248, 249 | 4 | 0.79 | dibujada | 34×9 |
+Ninguna: ya están todas contrastadas contra el PDF.
 
-## 2 · Dudosas (1)
+## 2 · Dudosas (0)
 
 Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 
-| | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |
-|---|---|---|---|---|---|---|---|
-| [ ] | `922-15(a)` | Separación mínima en cualquier dirección (milímetros) | 711, 712 | 2 | 0.73 | **huecos** | 22×6 |
+Ninguna: ya están todas contrastadas contra el PDF.
 
-## 3 · Verificación de control (13)
+## 3 · Verificación de control (14)
 
 Salieron limpias y son muy citadas. Conviene mirarlas justamente por eso: una tabla equivocada que *parece* correcta es más peligrosa que una marcada como dudosa. Basta comprobar dos o tres renglones de cada una.
 
@@ -52,6 +47,7 @@ Salieron limpias y son muy citadas. Conviene mirarlas justamente por eso: una ta
 | [ ] | `314-16(b)` | Volumen que es requerido considerar para cada conductor | 165 | 5 | 1.00 | dibujada | 9×3 |
 | [ ] | `500-8(c)` | Clasificación de la temperatura superficial máxima | 360 | 5 | 1.00 | dibujada | 15×2 |
 | [ ] | `110-28` | Tipos de envolvente | 24, 25 | 4 | 1.00 | dibujada | 26×19 |
+| [ ] | `402-5` | Ampacidad admisible de alambres para artefactos | 249, 250 | 4 | 1.00 | **huecos** | 6×3 |
 | [ ] | `430-22(e)` | Servicio por régimen de tiempo. | 304 | 4 | 0.97 | dibujada | 7×5 |
 | [ ] | `725-154(g)` | Sustituciones de los cables | 638, 639 | 4 | 1.00 | dibujada | 10×2 |
 
@@ -104,11 +100,7 @@ el número y la página ya rellenados.
 
 ## Lo que falta
 
-- Las tablas que siguen listadas arriba. Las tres grandes que quedaron al final
-  —`400-4` (132×14, cuatro páginas), `402-3` (34×9) y `922-15(a)`— son las más
-  laboriosas. La `922-15(a)` está peor de lo que indica su nota: se tragó un bloque
-  entero de texto del artículo como si fuera una nota al pie y arrastró además la
-  tabla siguiente por debajo.
+- Las tablas que siguen listadas arriba.
 - Un repaso rápido a las que **no** están señaladas. Nunca se han contrastado contra
   el PDF; que la reconstrucción saliera limpia no garantiza que sea fiel, y una
   tabla equivocada que *parece* correcta es la más peligrosa de todas.
