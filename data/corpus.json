@@ -136734,85 +136734,8 @@
        "label": "b",
        "kind": "alpha",
        "level": 1,
-       "text": "Para tensiones mayores a 22 kilovolts, la altura básica anterior debe incrementarse 1.00 centímetro por cada kilovolt en exceso de 22 kilovolts. a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
-       "children": [
-        {
-         "id": "922-43(b)(2)",
-         "label": "2",
-         "kind": "paren",
-         "level": 2,
-         "text": "Los conductores neutros a que se refiere esta columna son los descritos en 922-4(d).",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-43(b)(4)",
-         "label": "4",
-         "kind": "paren",
-         "level": 2,
-         "text": "En pasajes subterráneos, túneles o puentes, puede reducirse la altura sobre el piso o vías, indicada en esta columna.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-43(b)(6)",
-         "label": "6",
-         "kind": "paren",
-         "level": 2,
-         "text": "Esta altura puede reducirse a 3.00 metros para los cables aislados con tensión hasta de 150 volts a tierra, localizados a la entrada de edificios.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-43(b)(7)",
-         "label": "7",
-         "kind": "paren",
-         "level": 2,
-         "text": "Para conductores de comunicación, aislados o los descritos en la nota 2, cuando crucen o su trayectoria sea a lo largo de callejones, entradas a cocheras o estacionamientos, esta altura puede reducirse a 4.50 metros.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-43(b)(8)",
-         "label": "8",
-         "kind": "paren",
-         "level": 2,
-         "text": "Estas alturas no consideran los posibles cambios de nivel de la superficie de carreteras, calles, callejones, entre otros, debidos a mantenimiento.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-43(b)(9)",
-         "label": "9",
-         "kind": "paren",
-         "level": 2,
-         "text": "La altura de los conductores sobre el nivel del agua debe basarse en el más alto nivel histórico que haya alcanzado el agua. La altura sobre ríos y canales debe basarse en el área más grande que resulte de considerar una longitud de 1600 metros de río o canal, que incluya al cruce.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-43(b)(10)",
-         "label": "10",
-         "kind": "paren",
-         "level": 2,
-         "text": "En cruzamientos sobre aguas navegables, se debe tener en cuenta, además, lo establecido en la reglamentación en materia de navegación.",
-         "children": [],
-         "notes": [],
-         "exceptions": [],
-         "tables": [
-          {
-           "id": "922-43",
-           "seq": 26
-          }
-         ]
-        }
-       ],
+       "text": "Para tensiones mayores a 22 kilovolts, la altura básica anterior debe incrementarse 1.00 centímetro por cada kilovolt en exceso de 22 kilovolts.",
+       "children": [],
        "notes": [],
        "exceptions": [],
        "title": "Altura adicional",
@@ -136820,6 +136743,10 @@
         {
          "id": "922-41",
          "seq": 25
+        },
+        {
+         "id": "922-43",
+         "seq": 26
         }
        ]
       }
