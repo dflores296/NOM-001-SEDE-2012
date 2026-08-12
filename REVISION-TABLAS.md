@@ -20,15 +20,14 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**77 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**78 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (11)
+## 1 · Prioridad alta (10)
 
 Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `922-33` | Separación vertical entre conductores soportados en diferentes estruct… | 717 | 2 | 0.92 | **sí** | dibujada | 10×9 |
 | [ ] | `922-41` | Altura mínima de conductores sobre el suelo, agua o vías férreas (m)(1… | 717, 718 | 2 | 0.96 | **sí** | dibujada | 14×11 |
 | [ ] | `430-12(b)` | Medidas mínimas de las cajas terminales para conexiones de cable a cab… | 302 | 1 | 0.91 | **sí** | dibujada | 28×10 |
 | [ ] | `11(B)` | Limitaciones de las fuentes de alimentación de corriente continua de C… | 753 | 1 | 0.94 | **sí** | dibujada | 8×11 |

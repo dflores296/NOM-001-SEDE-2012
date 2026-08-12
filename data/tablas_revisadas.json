@@ -32131,5 +32131,253 @@
    "1) Cajas estándar. El volumen para las cajas estándar, que no tienen marcado el volumen, debe ser el que se indica en la Tabla 314-16(a).",
    "2) Otras cajas. Las cajas de 1640 cm3 o menos, distintas de las descritas en la Tabla 314-16(a) y las cajas no metálicas, deben ir marcadas por el fabricante de modo legible y duradero con el volumen en cm3. Las cajas descritas en la Tabla 314-16(a) que tengan mayor volumen del indicado en la tabla, pueden tener marcado su volumen en cm3 como exige esta Sección."
   ]
+ },
+ "922-33": {
+  "verificada": "2026-08-12",
+  "title": "Separación vertical entre conductores soportados en diferentes estructuras (m)(1)",
+  "cols": 9,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "",
+     "cs": 3,
+     "rs": 3
+    },
+    {
+     "t": "Conductores",
+     "cs": 2
+    },
+    {
+     "t": "Conductores suministradores",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Neutro, guarda y retenidas(2)",
+     "rs": 2
+    },
+    {
+     "t": "Comunicaciones y mensajeros",
+     "rs": 2
+    },
+    {
+     "t": "Aislados",
+     "cs": 2
+    },
+    {
+     "t": "Línea abierta",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "0 a 750 V"
+    },
+    {
+     "t": "Más de 750 V"
+    },
+    {
+     "t": "0 a 750 V(3)"
+    },
+    {
+     "t": "Más de 750V a 22 kV"
+    }
+   ],
+   [
+    {
+     "t": "Conductores",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Neutro, guarda y retenidas(2)"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "1.2"
+    }
+   ],
+   [
+    {
+     "t": "Comunicaciones y mensajeros"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.8"
+    }
+   ],
+   [
+    {
+     "t": "Conductores suministradores",
+     "rs": 5
+    },
+    {
+     "t": "Aislados",
+     "rs": 2
+    },
+    {
+     "t": "0 a 750 V"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    }
+   ],
+   [
+    {
+     "t": "Más de 750 V"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "1.2"
+    }
+   ],
+   [
+    {
+     "t": "Línea abierta",
+     "rs": 2
+    },
+    {
+     "t": "0 a 750 V(3)"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "1.2"
+    }
+   ],
+   [
+    {
+     "t": "Más de 750 V a 22 kV"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.8"
+    },
+    {
+     "t": "0.6"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.2"
+    }
+   ],
+   [
+    {
+     "t": "Trolebuses, trenes, sus retenidas y mensajeros(3)",
+     "cs": 2
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.8"
+    }
+   ]
+  ],
+  "notes": [
+   "(1) Las tensiones son entre fases para circuitos no conectados efectivamente a tierra y de fase a tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
+   "(2) Los conductores neutros a que se refiere esta columna (o renglón) son los descritos en la sección 922-4(d).",
+   "(3) Los conductores suministradores de trolebuses y trenes de más de 750 volts, deben tener una separación mínima de 1.80 metros."
+  ],
+  "regions": [
+   {
+    "page": 717,
+    "y0": 159.3525390625,
+    "y1": 440.0,
+    "id": "922-33",
+    "article": 922
+   }
+  ]
  }
 }
