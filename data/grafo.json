@@ -1,7 +1,7 @@
 {
  "meta": {
-  "aristas": 4636,
-  "nodos_con_salida": 2903,
+  "aristas": 4637,
+  "nodos_con_salida": 2904,
   "nodos_con_entrada": 1925,
   "referencias_rotas": 0
  },
@@ -4464,6 +4464,11 @@
   {
    "from": "314-16(a)",
    "to": "tabla:314-16(a)",
+   "type": "tabla"
+  },
+  {
+   "from": "314-16(b)(1)",
+   "to": "tabla:314-16(b)",
    "type": "tabla"
   },
   {
@@ -25158,6 +25163,9 @@
   "314-16(a)": [
    "tabla:314-16(a)"
   ],
+  "314-16(b)(1)": [
+   "tabla:314-16(b)"
+  ],
   "314-16(b)(2)": [
    "tabla:314-16(b)"
   ],
@@ -36760,6 +36768,7 @@
   ],
   "tabla:314-16": [
    "314-16(a)",
+   "314-16(b)(1)",
    "314-16(b)(2)",
    "314-16(b)(3)",
    "314-16(b)(4)",
@@ -41360,8 +41369,8 @@
    "ambiguo": true
   },
   "314-16(b)": {
-   "explicitas": 5,
-   "usos": 5,
+   "explicitas": 6,
+   "usos": 6,
    "ambiguo": true
   },
   "326-24": {
