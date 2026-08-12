@@ -71422,11 +71422,9 @@
      "rs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Número de hilos",
-     "cs": 2
+     "cs": 3,
+     "rs": 1
     }
    ],
    [
@@ -71658,7 +71656,8 @@
     "article": null
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "11(A)",
