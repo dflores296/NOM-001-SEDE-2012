@@ -79,6 +79,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <script>
       import MiniSearch from 'minisearch';
+      import { defSlug } from '../lib/slug.js';
 
       const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       const input = document.getElementById('q');
@@ -108,7 +109,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         return loading;
       }
 
+      // El Artículo 100 no tiene secciones numeradas: sus 185 definiciones
+      // viven en el glosario. Sin este desvío, buscar "ampacidad" llevaba a
+      // una página de artículo vacía cuyo único contenido era un cartel
+      // pidiendo ir al glosario.
       function href(id, art) {
+        if (art === 100) return `${base}/glosario/#${defSlug(id)}`;
         return `${base}/art/${art}#${String(id).split('(')[0]}`;
       }
 
