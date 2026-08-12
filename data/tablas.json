@@ -86,8 +86,8 @@
    25
   ],
   "page": 24,
-  "cols": 19,
-  "header_rows": 2,
+  "cols": 11,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
@@ -96,22 +96,14 @@
      "rs": 3
     },
     {
-     "t": "",
-     "cs": 7
-    },
-    {
      "t": "Para uso exterior",
-     "cs": 11
+     "cs": 10
     }
    ],
    [
     {
-     "t": "Número del tipo",
-     "cs": 9
-    },
-    {
-     "t": "de envolvente",
-     "cs": 9
+     "t": "Número del tipo de envolvente",
+     "cs": 10
     }
    ],
    [
@@ -122,39 +114,25 @@
      "t": "3R"
     },
     {
-     "t": "3S",
-     "cs": 2
+     "t": "3S"
     },
     {
-     "t": "3X",
-     "cs": 2
+     "t": "3X"
     },
     {
-     "t": "3RX",
-     "cs": 2
+     "t": "3RX"
     },
     {
-     "t": "3SX",
-     "cs": 2
+     "t": "3SX"
     },
     {
-     "t": "4",
-     "cs": 2
-    },
-    {
-     "t": ""
+     "t": "4"
     },
     {
      "t": "4X"
     },
     {
-     "t": ""
-    },
-    {
      "t": "6"
-    },
-    {
-     "t": ""
     },
     {
      "t": "6P"
@@ -168,28 +146,28 @@
      "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X X X",
-     "cs": 6
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
+    },
+    {
+     "t": "X"
+    },
+    {
+     "t": "X"
     },
     {
      "t": "X"
@@ -203,28 +181,28 @@
      "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X X X",
-     "cs": 6
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
+    },
+    {
+     "t": "X"
+    },
+    {
+     "t": "X"
     },
     {
      "t": "X"
@@ -238,32 +216,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "- X",
-     "cs": 4
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
+    },
+    {
+     "t": "-"
     },
     {
      "t": "-"
@@ -277,28 +251,28 @@
      "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "- X X",
-     "cs": 6
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
+    },
+    {
+     "t": "X"
+    },
+    {
+     "t": "X"
     },
     {
      "t": "X"
@@ -312,32 +286,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "- X",
-     "cs": 4
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
+    },
+    {
+     "t": "X"
     },
     {
      "t": "X"
@@ -351,32 +321,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X X",
-     "cs": 4
+     "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "X"
+    },
+    {
+     "t": "-"
     },
     {
      "t": "X"
@@ -390,36 +356,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
      "t": "X"
@@ -433,36 +391,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "X"
@@ -474,26 +424,14 @@
      "rs": 3
     },
     {
-     "t": "",
-     "cs": 7
-    },
-    {
-     "t": "Para uso",
-     "cs": 2
-    },
-    {
-     "t": "interior",
-     "cs": 9
+     "t": "Para uso interior",
+     "cs": 10
     }
    ],
    [
     {
-     "t": "Número del tipo",
-     "cs": 9
-    },
-    {
-     "t": "de envolvente",
-     "cs": 9
+     "t": "Número del tipo de envolvente",
+     "cs": 10
     }
    ],
    [
@@ -501,36 +439,28 @@
      "t": "1"
     },
     {
-     "t": "2",
-     "cs": 2
+     "t": "2"
     },
     {
-     "t": "4",
-     "cs": 2
+     "t": "4"
     },
     {
-     "t": "4X",
-     "cs": 2
+     "t": "4X"
     },
     {
-     "t": "5",
-     "cs": 2
+     "t": "5"
     },
     {
-     "t": "6",
-     "cs": 2
+     "t": "6"
     },
     {
-     "t": "6P",
-     "cs": 2
+     "t": "6P"
     },
     {
-     "t": "12",
-     "cs": 2
+     "t": "12"
     },
     {
-     "t": "12K",
-     "cs": 2
+     "t": "12K"
     },
     {
      "t": "13"
@@ -544,36 +474,28 @@
      "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
      "t": "X"
@@ -587,36 +509,28 @@
      "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
      "t": "X"
@@ -630,36 +544,28 @@
      "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
      "t": "X"
@@ -673,36 +579,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
      "t": "X"
@@ -716,36 +614,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
      "t": "X"
@@ -753,51 +643,37 @@
    ],
    [
     {
-     "t": "Agua por lavado con manguera"
+     "t": "Agua por lavado con manguera y salpicadura"
     },
     {
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
-    },
-    {
-     "t": "-",
-     "cs": 2
-    },
-    {
-     "t": "X",
-     "cs": 2
-    },
-    {
-     "t": "X",
-     "cs": 2
-    },
-    {
-     "t": "-",
-     "cs": 2
-    },
-    {
-     "t": "-",
-     "cs": 2
+     "t": "X"
     },
     {
      "t": "-"
-    }
-   ],
-   [
+    },
     {
-     "t": "y salpicadura",
-     "cs": 19
+     "t": "X"
+    },
+    {
+     "t": "X"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
     }
    ],
    [
@@ -808,36 +684,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
      "t": "X"
@@ -851,36 +719,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "X"
@@ -894,36 +754,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "X"
@@ -937,36 +789,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "-"
@@ -980,36 +824,28 @@
      "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "X",
-     "cs": 2
+     "t": "X"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "cs": 2
+     "t": "-"
     },
     {
      "t": "-"
@@ -1018,7 +854,9 @@
   ],
   "grid": "rejilla",
   "notes": [
-   "* El mecanismo debe ser operable cuando está cubierto con hielo. El término hermético a la lluvia generalmente se usa junto con envolventes tipo 3, 3S, 3SX, 3X, 4, 4X, 6 y 6P. El término a prueba de lluvia generalmente se usa junto con envolventes tipo 3R y 3RX. El término hermético al agua generalmente se usa junto con envolventes tipo 4, 4X, 6, 6P. El término hermético al goteo generalmente se usa junto con envolventes tipo 2, 5, 12, 12K y 13. El término hermético al polvo generalmente se usa junto con envolventes tipo 3, 3S, 3SX, 3X, 5, 12, 12K y 13. Los rangos de protección contra el acceso (IP) se pueden consultar en el Apéndice D.2 Clasificación IEC. C. Más de 600 volts 110-30. General. Los conductores y equipos usados en circuitos de más de 600 volts deben cumplir con la Parte A de este artículo y"
+   "* El mecanismo debe ser operable cuando está cubierto con hielo.",
+   "El término hermético a la lluvia generalmente se usa junto con envolventes tipo 3, 3S, 3SX, 3X, 4, 4X, 6 y 6P. El término a prueba de lluvia generalmente se usa junto con envolventes tipo 3R y 3RX. El término hermético al agua generalmente se usa junto con envolventes tipo 4, 4X, 6, 6P. El término hermético al goteo generalmente se usa junto con envolventes tipo 2, 5, 12, 12K y 13. El término hermético al polvo generalmente se usa junto con envolventes tipo 3, 3S, 3SX, 3X, 5, 12, 12K y 13.",
+   "Los rangos de protección contra el acceso (IP) se pueden consultar en el Apéndice D.2 Clasificación IEC."
   ],
   "quality": 1.0,
   "regions": [
@@ -1032,12 +870,13 @@
    {
     "page": 25,
     "y0": 12.73,
-    "y1": 204.6376953125,
+    "y1": 168.0,
     "id": "110-28",
     "article": 110
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "110-31",
@@ -1669,11 +1508,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Amperes",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -1711,20 +1547,19 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [
-   "3) Valor nominal del contacto. Cuando se conecten dos o más contactos o salidas a un circuito derivado, la capacidad nominal de los contactos debe corresponder a los valores de la Tabla 210-21(b)(3) o, si es de más de 50 amperes, la capacidad nominal del contacto no debe ser menor a la capacidad nominal del circuito derivado. Excepción 1: Se permite que los contactos instalados exclusivamente para usar una o más máquinas de soldar por arco conectadas con cordón y clavija, tenga una capacidad nominal no menor a la ampacidad mínima de los conductores del circuito derivado, tal como se permite en 630-11(a) o (b) para las máquinas de soldar por arco. Excepción 2: Se permite que el valor nominal en amperes de un contacto instalado para iluminación con lámparas de descarga eléctrica, se base en lo que se indica en 410-62(c)."
-  ],
-  "quality": 0.923,
+  "notes": [],
+  "quality": 1.0,
   "regions": [
    {
     "page": 37,
     "y0": 452.5830078125,
-    "y1": 642.6376953125,
+    "y1": 545.0,
     "id": "210-21(b)(2)",
     "article": 210
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "210-21(b)(3)",
@@ -3036,7 +2871,7 @@
  },
  {
   "id": "220-55",
-  "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe",
+  "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3). aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3). aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3). aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3).",
   "informativa": false,
   "article": 220,
   "pages": [
@@ -3049,28 +2884,24 @@
   "rows": [
    [
     {
-     "t": ""
+     "t": "Número de aparatos",
+     "rs": 2
     },
     {
      "t": "Factor de demanda (%)",
      "cs": 2
     },
     {
-     "t": "Columna C"
+     "t": "Columna C Demanda máxima (kW) no más de 12 kW )",
+     "rs": 2
     }
    ],
    [
-    {
-     "t": "Número de aparatos"
-    },
     {
      "t": "Columna A (menos de 3 ½ kW )"
     },
     {
      "t": "Columna B (de 3 ½ kW hasta 8 ¾ kW )"
-    },
-    {
-     "t": "Demanda máxima (kW) no más de 12 kW )"
     }
    ],
    [
@@ -3491,9 +3322,11 @@
   "notes": [
    "1.- Todas las estufas del mismo valor nominal y de más de 12 kW hasta 27 kW. Para estufas individuales de más de 12 kW pero no más de 27 kW, se debe aumentar la demanda máxima de la columna C un 5 por ciento por cada kW adicional o fracción por encima de los 12 kW.",
    "2.- Las estufas de más de 8.75 kW hasta 27 kW de distinto valor nominal. Para estufas con potencia individual de más de 8.75 kW y de diferente capacidad nominal, pero que no superen los 27 kW, se debe calcular un valor promedio sumando las capacidades nominales de todas las estufas para obtener la carga total conectada (utilizando 12 kW por cada estufa de menos de 12 kW) y dividiendo entre el número total de estufas. Después se debe aumentar la demanda máxima de la columna C un 5 por ciento por cada kW o fracción en que este valor promedio exceda de 12 kW.",
-   "3.- De más de 1.75 kW hasta 8.75 kW. En lugar del método de la columna C, se permite añadir la potencia nominal de todos los aparatos"
+   "3.- De más de 1.75 kW hasta 8.75 kW. En lugar del método de la columna C, se permite añadir la potencia nominal de todos los aparatos de cocción de más de 1.75 kW pero no más de 8.75 kW y multiplicar la suma por los factores de demanda de las columnas A o B, según el número de aparatos. Cuando la potencia nominal de los aparatos de cocción corresponda a las columnas A y B, se deben aplicar los factores de demanda de cada columna a los aparatos de esa columna y sumar los resultados.",
+   "4.- Carga del circuito derivado: Se permite calcular la carga del circuito derivado de una estufa según la Tabla 220-55. La carga del circuito de un horno de pared o de una estufa montada en la superficie del mueble de cocina debe ser el valor de la placa de datos del aparato. La carga de un circuito derivado de una estufa montada en la superficie del mueble de cocina y no más de dos hornos de pared, conectados todos al mismo circuito derivado y situados en la misma cocina, debe calcularse sumando los valores de la placa de datos de cada aparato y considerando ese total como equivalente a una estufa.",
+   "5.- Esta Tabla se aplica también a aparatos de cocción de más de 1.75 kW utilizados en programas de instrucción."
   ],
-  "quality": 0.984,
+  "quality": 1.0,
   "regions": [
    {
     "page": 48,
@@ -3505,12 +3338,13 @@
    {
     "page": 49,
     "y0": 39.21,
-    "y1": 594.9633178710938,
+    "y1": 692.0,
     "id": "220-55",
     "article": 220
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "220-56",
@@ -6564,12 +6398,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "centímetros",
-     "cs": 3
+     "cs": 5
     }
    ],
    [
@@ -6733,17 +6563,18 @@
    "4. Cuando se usa uno de los métodos de alambrado presentados en las columnas 1-3 para uno de los tipos de circuitos de las columnas 4 y 5, se permitirá enterrar los cables a la menor profundidad.",
    "5. Si se encuentra roca sólida que impide cumplir con la profundidad especificada en esta Tabla, el alambrado se debe instalar en canalizaciones metálicas o no metálicas permitidas directamente enterradas. Las canalizaciones se deben cubrir con un mínimo de 5 centímetros de concreto que penetre hasta la roca. Excepción 1: Se permitirá el cable tipo MI bajo un edificio sin instalación en una canalización, cuando esté embebido de concreto, relleno u otro material de mampostería de acuerdo con 332-10(6) o en tramos subterráneos si están protegidos adecuadamente contra"
   ],
-  "quality": 0.964,
+  "quality": 1.0,
   "regions": [
    {
     "page": 121,
     "y0": 203.6181640625,
-    "y1": 703.4228515625,
+    "y1": 678.0,
     "id": "300-5",
     "article": 300
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "300-19(a)",
@@ -9313,11 +9144,8 @@
      "rs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(a)]",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -9356,7 +9184,7 @@
      "t": "TIPOS RHW, THHW, THHW-LS, THW, THW-LS, THWN, XHHW, USE, ZW"
     },
     {
-     "t": "TIPOS TBS, SA, SIS, FEP, FEPB, MI, RHH, RHW-2, THHN, THHW, THHW-LS, THW-2, THWN- 2, USE-2, XHH, XHHW, XHHW- 2, ZW-2"
+     "t": "TIPOS TBS, SA, SIS, FEP, FEPB, MI, RHH, RHW-2, THHN, THHW, THHW-LS, THW-2, THWN-2, USE-2, XHH, XHHW, XHHW-2, ZW-2"
     },
     {
      "t": "TIPOS UF"
@@ -9370,11 +9198,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "COBRE",
-     "cs": 2
+     "cs": 3
     },
     {
      "t": "ALUMINIO O ALUMINIO RECUBIERTO DE COBRE",
@@ -10167,7 +9992,7 @@
    "* Véase 310-15(b)(2) para los factores de corrección de la ampacidad cuando la temperatura ambiente es diferente a 30 °C.",
    "** Véase 240-4(d) para limitaciones de protección contra sobrecorriente del conductor."
   ],
-  "quality": 0.996,
+  "quality": 1.0,
   "regions": [
    {
     "page": 138,
@@ -10184,7 +10009,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-15(b)(18)",
@@ -26569,7 +26395,7 @@
   ],
   "page": 161,
   "cols": 7,
-  "header_rows": 1,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
@@ -26578,11 +26404,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Alambres por cada terminal",
-     "cs": 4
+     "cs": 5
     }
    ],
    [
@@ -26940,18 +26763,21 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "El espacio para realizar los dobleces en las terminales se debe medir en línea recta desde el extremo de la terminal o del conector del alambre (en la dirección en que el alambre sale de la terminal) hasta la pared, barrera u obstrucción."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 161,
     "y0": 264.3681640625,
-    "y1": 455.22,
+    "y1": 470.0,
     "id": "312-6(a)",
     "article": 312
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "312-6(b)",
@@ -26964,7 +26790,7 @@
   ],
   "page": 161,
   "cols": 7,
-  "header_rows": 1,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
@@ -26973,16 +26799,14 @@
      "cs": 3
     },
     {
-     "t": ""
-    },
-    {
      "t": "Alambres por cada terminal",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
     {
-     "t": "mm2"
+     "t": "mm2",
+     "rs": 2
     },
     {
      "t": "AWG o kcmil",
@@ -27003,19 +26827,14 @@
    ],
    [
     {
-     "t": "Todos los otros conductores",
-     "cs": 2
+     "t": "Todos los otros conductores"
     },
     {
-     "t": "Conductores de aleación de aluminio AA-8000, de trenzado compacto, (ver la NOTA 3)",
-     "cs": 2
+     "t": "Conductores de aleación de aluminio AA-8000, de trenzado compacto, (ver la NOTA 3)"
     },
     {
      "t": "centímetros",
-     "cs": 2
-    },
-    {
-     "t": ""
+     "cs": 4
     }
    ],
    [
@@ -27625,9 +27444,10 @@
    "b 25.4 milímetros",
    "c 38.1 milímetros",
    "d 50.8 milímetros",
-   "e 76.2 milímetros"
+   "e 76.2 milímetros",
+   "3. Se permitirá que en esta columna se determine el espacio exigido para el doblado del alambre para conductores de aluminio de trenzado compacto, con tamaño o designación hasta de 1000 kcmil y fabricados utilizando material para conductores de aleación de aluminio con grado eléctrico serie AA-8000, de acuerdo con 310-106(b)."
   ],
-  "quality": 0.995,
+  "quality": 1.0,
   "regions": [
    {
     "page": 161,
@@ -27639,12 +27459,13 @@
    {
     "page": 162,
     "y0": 15.02,
-    "y1": 474.2485046386719,
+    "y1": 496.0,
     "id": "312-6(b)",
     "article": 312
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "314-16(a)",
@@ -42440,7 +42261,7 @@
   "page": 326,
   "cols": 5,
   "header_rows": 3,
-  "intro": "",
+  "intro": "Para su uso solamente con 430-110, 440-12, 440-41 y 455-8(c).",
   "rows": [
    [
     {
@@ -42469,11 +42290,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Amperes",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -42642,11 +42460,12 @@
     "article": 430
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "430-251(b)",
-  "title": "Conversión de corriente polifásica máxima a rotor bloqueado, diseños B, C, y D, para la selección de medios de desconexión y controladores, determinados a partir del valor nominal de potencia en caballos de fuerza y la letra de diseño de desconexión y controladores, determinados a partir del valor nominal de potencia en caballos de fuerza y la letra de diseño",
+  "title": "Conversión de corriente polifásica máxima a rotor bloqueado, diseños B, C, y D, para la selección de medios de desconexión y controladores, determinados a partir del valor nominal de potencia en caballos de fuerza y la letra de diseño",
   "informativa": false,
   "article": 430,
   "pages": [
@@ -42655,7 +42474,7 @@
   "page": 326,
   "cols": 8,
   "header_rows": 4,
-  "intro": "",
+  "intro": "Para su uso solamente con 430-110, 440-12, 440-41 y 455-8(c).",
   "rows": [
    [
     {
@@ -42667,11 +42486,8 @@
      "rs": 4
     },
     {
-     "t": "Corriente máxima a rotor bloqueado, en amperes motores de dos de diseño B, C y D*",
-     "cs": 5
-    },
-    {
-     "t": "y tres fases"
+     "t": "Corriente máxima a rotor bloqueado, en amperes motores de dos y tres fases de diseño B, C y D*",
+     "cs": 6
     }
    ],
    [
@@ -42716,12 +42532,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Amperes",
-     "cs": 4
+     "cs": 6
     }
    ],
    [
@@ -43441,7 +43253,8 @@
     "article": 430
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "440-3(d)",
