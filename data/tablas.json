@@ -71696,36 +71696,22 @@
   "rows": [
    [
     {
-     "t": "Fuente de"
+     "t": "Fuente de alimentación",
+     "cs": 2
     },
     {
-     "t": "alimentación"
+     "t": "Fuente de alimentación limitada por sí misma. (No se requiere protección contra sobrecorriente)",
+     "cs": 3
     },
     {
-     "t": "Fuente de alimentación requiere"
-    },
-    {
-     "t": "limitada por protección contra"
-    },
-    {
-     "t": "sí misma. (No se sobrecorriente)"
-    },
-    {
-     "t": "Fuente de alimentación requiere"
-    },
-    {
-     "t": "no limitada protección contra"
-    },
-    {
-     "t": "por sí misma. (Se sobrecorriente)"
+     "t": "Fuente de alimentación no limitada por sí misma. (Se requiere protección contra sobrecorriente)",
+     "cs": 3
     }
    ],
    [
     {
-     "t": "Tensión de la fuente Vmax 1)"
-    },
-    {
-     "t": "(volts)(Véase la Nota"
+     "t": "Tensión de la fuente Vmax (volts)(Véase la Nota 1)",
+     "cs": 2
     },
     {
      "t": "0 hasta 20"
@@ -71748,10 +71734,8 @@
    ],
    [
     {
-     "t": "Limitaciones de potencia (véase la"
-    },
-    {
-     "t": "VAmax (voltamperes) Nota 1)"
+     "t": "Limitaciones de potencia VAmax (voltamperes) (véase la Nota 1)",
+     "cs": 2
     },
     {
      "t": "-"
@@ -71774,10 +71758,8 @@
    ],
    [
     {
-     "t": "Limitaciones de (véase la"
-    },
-    {
-     "t": "corriente Imax (amperes) Nota 1)"
+     "t": "Limitaciones de corriente Imax (amperes) (véase la Nota 1)",
+     "cs": 2
     },
     {
      "t": "8"
@@ -71800,10 +71782,8 @@
    ],
    [
     {
-     "t": "Protección máxima (amperes)"
-    },
-    {
-     "t": "contra sobrecorriente"
+     "t": "Protección máxima contra sobrecorriente (amperes)",
+     "cs": 2
     },
     {
      "t": "-"
@@ -71826,7 +71806,8 @@
    ],
    [
     {
-     "t": "Valores nominales máximos de la fuente"
+     "t": "Valores nominales máximos de la fuente de alimentación por placa de características",
+     "rs": 2
     },
     {
      "t": "VA (voltamperes)"
@@ -71852,9 +71833,6 @@
    ],
    [
     {
-     "t": "de alimentación por placa de características"
-    },
-    {
      "t": "Corriente (amperes)"
     },
     {
@@ -71878,8 +71856,11 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
-  "quality": 0.893,
+  "notes": [
+   "1. Vmáx, Imáx y VAmáx se determinan como sigue: Vmáx: Tensión máxima de salida independientemente de la carga con la entrada nominal aplicada. Imáx: corriente máxima de salida bajo cualquier carga no capacitiva, incluida la de cortocircuito, y con la protección contra sobrecorriente, si se usa, conectada en derivación. Cuando un transformador limita la corriente de salida, los límites de Imáx se aplican después de 1 minuto de funcionamiento. Cuando se usa una impedancia de limitación de corriente, listada para ese propósito, en combinación con un transformador de potencia no limitada o una fuente de energía almacenada, como por ejemplo una batería de acumulador, para limitar la corriente de salida, los límites de Imáx se aplican después de 5 segundos. VAmáx: Salida máxima en voltamperes después de 1 minuto de funcionamiento, independientemente de la carga y con el dispositivo de protección contra sobrecorriente, si se usa, conectado en derivación. La impedancia de limitación de corriente no se debe conectar en derivación cuando se determinan Imáx y VAmáx.",
+   "2. Si la fuente de alimentación es un transformador, VAmáx es 350 o menos, cuando Vmáx es igual o menor a 15."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 754,
@@ -71889,6 +71870,7 @@
     "article": null
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -71906,36 +71888,22 @@
   "rows": [
    [
     {
-     "t": "Fuente de"
+     "t": "Fuente de alimentación",
+     "cs": 2
     },
     {
-     "t": "alimentación"
+     "t": "Fuente de alimentación limitada por sí misma. (No se requiere protección contra sobrecorriente)",
+     "cs": 3
     },
     {
-     "t": "Fuente de (No se requiere"
-    },
-    {
-     "t": "alimentación limitada protección contra"
-    },
-    {
-     "t": "por sí misma. sobrecorriente)"
-    },
-    {
-     "t": "Fuente de (Se requiere"
-    },
-    {
-     "t": "alimentación no limitada protección contra"
-    },
-    {
-     "t": "por sí misma. sobrecorriente)"
+     "t": "Fuente de alimentación no limitada por sí misma. (Se requiere protección contra sobrecorriente)",
+     "cs": 3
     }
    ],
    [
     {
-     "t": "Tensión de la fuente Nota"
-    },
-    {
-     "t": "Vmax (volts) (Véase la 1)"
+     "t": "Tensión de la fuente Vmax (volts)(Véase la Nota 1)",
+     "cs": 2
     },
     {
      "t": "0 hasta 20"
@@ -71958,10 +71926,8 @@
    ],
    [
     {
-     "t": "Limitaciones de potencia (véase la"
-    },
-    {
-     "t": "VAmax (voltamperes) Nota 1)"
+     "t": "Limitaciones de potencia VAmax (voltamperes) (véase la Nota 1)",
+     "cs": 2
     },
     {
      "t": "-"
@@ -71984,10 +71950,8 @@
    ],
    [
     {
-     "t": "Limitaciones de (véase la"
-    },
-    {
-     "t": "corriente Imax (amperes) Nota 1)"
+     "t": "Limitaciones de corriente Imax (amperes) (véase la Nota 1)",
+     "cs": 2
     },
     {
      "t": "8"
@@ -72010,10 +71974,8 @@
    ],
    [
     {
-     "t": "Protección máxima (amperes)"
-    },
-    {
-     "t": "contra sobrecorriente"
+     "t": "Protección máxima contra sobrecorriente (amperes)",
+     "cs": 2
     },
     {
      "t": "-"
@@ -72036,7 +71998,8 @@
    ],
    [
     {
-     "t": "Valores nominales máximos de la fuente"
+     "t": "Valores nominales máximos de la fuente de alimentación por placa de características",
+     "rs": 2
     },
     {
      "t": "VA (voltamperes)"
@@ -72062,9 +72025,6 @@
    ],
    [
     {
-     "t": "de alimentación por placa de características"
-    },
-    {
      "t": "Corriente (amperes)"
     },
     {
@@ -72088,17 +72048,21 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
-  "quality": 0.893,
+  "notes": [
+   "1. Vmáx, Imáx y VAmáx se determinan como sigue: Vmáx: Tensión máxima de salida independientemente de la carga con la entrada nominal aplicada. Imáx: corriente máxima de salida bajo cualquier carga no capacitiva, incluida la de cortocircuito, y con la protección contra sobrecorriente, si se usa, conectada en derivación. Cuando un transformador limita la corriente de salida, los límites de Imáx se aplican después de 1 minuto de funcionamiento. Cuando se usa una impedancia de limitación de corriente, listada para ese propósito, en combinación con un transformador de potencia no limitada o una fuente de energía almacenada, como por ejemplo una batería de acumulador, para limitar la corriente de salida, los límites de Imáx se aplican después de 5 segundos. VAmáx: Salida máxima en voltamperes después de 1 minuto de funcionamiento, independientemente de la carga y con el dispositivo de protección contra sobrecorriente, si se usa, conectado en derivación. La impedancia de limitación de corriente no se debe conectar en derivación cuando se determinan Imáx y VAmáx.",
+   "2. Si la fuente de alimentación es un transformador, VAmáx es 350 o menos, cuando Vmáx es igual o menor a 15."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 754,
     "y0": 181.1025390625,
-    "y1": 332.26,
+    "y1": 550.0,
     "id": "12(B)",
     "article": null
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  }
 ]
