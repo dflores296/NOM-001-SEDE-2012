@@ -33521,5 +33521,135 @@
    ]
   ],
   "notes": []
+ },
+ "240-4(g)": {
+  "verificada": "2026-08-12",
+  "title": "Aplicaciones de conductores específicos",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Conductor"
+    },
+    {
+     "t": "Artículo"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "Conductores de alimentación de convertidores de fase"
+    },
+    {
+     "t": "455"
+    },
+    {
+     "t": "455-7"
+    }
+   ],
+   [
+    {
+     "t": "Conductores de circuitos de aparatos operados por motor"
+    },
+    {
+     "t": "422, Parte B"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Conductores de circuitos de capacitores"
+    },
+    {
+     "t": "460"
+    },
+    {
+     "t": "460-8(b) y 460-25(a) hasta (d)"
+    }
+   ],
+   [
+    {
+     "t": "Conductores de circuitos de control e instrumentación (Tipo ITC)"
+    },
+    {
+     "t": "727"
+    },
+    {
+     "t": "727-9"
+    }
+   ],
+   [
+    {
+     "t": "Conductores de circuitos de control remoto, señalización y potencia limitada"
+    },
+    {
+     "t": "725"
+    },
+    {
+     "t": "725-43, 725-45, 725-121 y Capítulo 10, Tablas 11(a) y 11(b)"
+    }
+   ],
+   [
+    {
+     "t": "Conductores de circuitos de equipo de aire acondicionado y refrigeración"
+    },
+    {
+     "t": "440, Partes C y F"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Conductores de circuitos de motores y control de motores"
+    },
+    {
+     "t": "430, Parte C, D, E, F y G"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Conductores de circuitos de sistemas de alarma contra incendio"
+    },
+    {
+     "t": "760"
+    },
+    {
+     "t": "760-43, 760-45, 760-121 y Capítulo 10 Tablas 12(a) y 12(b)"
+    }
+   ],
+   [
+    {
+     "t": "Conductores de circuitos para soldadoras eléctricas"
+    },
+    {
+     "t": "630"
+    },
+    {
+     "t": "630-12 y 630-32"
+    }
+   ],
+   [
+    {
+     "t": "Conductores de enlace secundario"
+    },
+    {
+     "t": "450"
+    },
+    {
+     "t": "450-6"
+    }
+   ]
+  ],
+  "notes": []
  }
 }
