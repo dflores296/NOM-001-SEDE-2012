@@ -20,15 +20,14 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**85 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**86 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (8)
+## 1 · Prioridad alta (7)
 
 Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `11(B)` | Limitaciones de las fuentes de alimentación de corriente continua de C… | 753 | 1 | 0.94 | **sí** | dibujada | 8×11 |
 | [ ] | `922-54` | Separación de conductores a edificios y otras construcciones excepto p… | 719, 720 | 1 | 0.95 | **sí** | dibujada | 16×10 |
 | [ ] | `450-3(a)` | Valor nominal o ajuste máximo de la protección contra sobrecorriente p… | 335, 336 | 1 | 0.97 | **sí** | **huecos** | 14×5 |
 | [ ] | `4` | Dimensiones y porcentaje disponible para los conductores del área del… | 743, 744, 745, 746, 747 | 1 | 1.00 | **sí** | dibujada | 168×8 |

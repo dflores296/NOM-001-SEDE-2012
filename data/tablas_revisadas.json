@@ -34321,5 +34321,247 @@
     "article": 430
    }
   ]
+ },
+ "11(B)": {
+  "verificada": "2026-08-12",
+  "title": "Limitaciones de las fuentes de alimentación de corriente continua de Clase 2 y de Clase 3",
+  "cols": 11,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Fuente de alimentación",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Fuente de alimentación limitada por sí misma. (No se requiere protección contra sobrecorriente)",
+     "cs": 5
+    },
+    {
+     "t": "Fuente de alimentación no limitada por sí misma. (Se requiere protección contra sobrecorriente)",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Clase 2",
+     "cs": 4
+    },
+    {
+     "t": "Clase 3"
+    },
+    {
+     "t": "Clase 2",
+     "cs": 3
+    },
+    {
+     "t": "Clase 3"
+    }
+   ],
+   [
+    {
+     "t": "Tensión de la fuente Vmax (volts) (Véase la Nota 1)",
+     "cs": 2
+    },
+    {
+     "t": "0 hasta 20*"
+    },
+    {
+     "t": "Más de 20 y hasta 30*"
+    },
+    {
+     "t": "Más de 30 y hasta 60*"
+    },
+    {
+     "t": "Más de 60 y hasta 150"
+    },
+    {
+     "t": "Más de 60 y hasta 100"
+    },
+    {
+     "t": "0 hasta 20*"
+    },
+    {
+     "t": "Más de 20 y hasta 60*"
+    },
+    {
+     "t": "Más de 60 y hasta 100"
+    },
+    {
+     "t": "Más de 100 y hasta 150"
+    }
+   ],
+   [
+    {
+     "t": "Limitaciones de potencia VAmax (voltamperes) (véase la Nota 1)",
+     "cs": 2
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "250 (véase Nota 3)"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "N.A"
+    }
+   ],
+   [
+    {
+     "t": "Limitaciones de corriente Imax (amperes) (véase la Nota 1)",
+     "cs": 2
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "150/Vmax"
+    },
+    {
+     "t": "0.005"
+    },
+    {
+     "t": "150/Vmax"
+    },
+    {
+     "t": "1000/Vmax"
+    },
+    {
+     "t": "1000/Vmax"
+    },
+    {
+     "t": "1000/Vmax"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "Protección máxima contra sobrecorriente (amperes)",
+     "cs": 2
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "5"
+    },
+    {
+     "t": "100/Vmax"
+    },
+    {
+     "t": "100/Vmax"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "Valores nominales máximos de la fuente de alimentación por placa de características",
+     "rs": 2
+    },
+    {
+     "t": "VA (voltamperes)"
+    },
+    {
+     "t": "5.0 x Vmax"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "0.005 x Vmax"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "5.0 x Vmax"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "Corriente (amperes)"
+    },
+    {
+     "t": "5"
+    },
+    {
+     "t": "100/Vmax"
+    },
+    {
+     "t": "100/Vmax"
+    },
+    {
+     "t": "0.005"
+    },
+    {
+     "t": "100/Vmax"
+    },
+    {
+     "t": "5"
+    },
+    {
+     "t": "100/Vmax"
+    },
+    {
+     "t": "100/Vmax"
+    },
+    {
+     "t": "100/Vmax"
+    }
+   ]
+  ],
+  "notes": [
+   "* Los intervalos de tensión presentados son para corriente continua permanente en interiores o en donde no es probable que haya humedad. Para condiciones de corriente continua interrumpida o de contacto con la humedad, véase la Nota 4."
+  ]
  }
 }
