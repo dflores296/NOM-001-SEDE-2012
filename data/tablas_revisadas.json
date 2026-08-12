@@ -33651,5 +33651,179 @@
    ]
   ],
   "notes": []
+ },
+ "430-5": {
+  "verificada": "2026-08-12",
+  "title": "Otros Artículos",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Equipo/inmueble"
+    },
+    {
+     "t": "Artículo"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "Bombas contra incendios"
+    },
+    {
+     "t": "695"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Capacitores"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "460-8,460-9"
+    }
+   ],
+   [
+    {
+     "t": "Elevadores, montaplatos, escaleras y pasillos mecánicos, elevadores de sillas de ruedas y elevadores para sillas de ruedas"
+    },
+    {
+     "t": "620"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Equipos de refrigeración y aire acondicionado"
+    },
+    {
+     "t": "440"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Estudios cinematográficos, de televisión y lugares similares"
+    },
+    {
+     "t": "530"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Garajes comerciales, hangares de aviación, gasolineras y estaciones de servicio, plantas de almacenamiento a granel, aplicación por pulverización, procesos de inmersión y recubrimiento, lugares de anestesiado por inhalación"
+    },
+    {
+     "t": "511, 513, 514, 515, 516 y 517 Parte D"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Grúas y montacargas"
+    },
+    {
+     "t": "610"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Lugares (clasificados como) peligrosos"
+    },
+    {
+     "t": "500 - 503 y 505"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Maquinaria industrial"
+    },
+    {
+     "t": "670"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Máquinas de riego accionadas o controladas eléctricamente"
+    },
+    {
+     "t": "675"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Proyectores cinematográficos"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "540-11 y 540-20"
+    }
+   ],
+   [
+    {
+     "t": "Resistencias y reactores"
+    },
+    {
+     "t": "470"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Teatros, áreas de audiencia de estudios cinematográficos y de televisión y lugares similares"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "520-48"
+    }
+   ],
+   [
+    {
+     "t": "Transformadores y bóvedas para transformadores"
+    },
+    {
+     "t": "450"
+    },
+    {
+     "t": ""
+    }
+   ]
+  ],
+  "notes": []
  }
 }
