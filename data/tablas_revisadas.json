@@ -33318,5 +33318,94 @@
    ]
   ],
   "notes": []
+ },
+ "725-154(g)": {
+  "verificada": "2026-08-12",
+  "title": "Sustituciones de los cables",
+  "cols": 2,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tipo de Cable"
+    },
+    {
+     "t": "Sustituciones permitidas"
+    }
+   ],
+   [
+    {
+     "t": "CL3P"
+    },
+    {
+     "t": "CMP"
+    }
+   ],
+   [
+    {
+     "t": "CL2P"
+    },
+    {
+     "t": "CMP, CL3P"
+    }
+   ],
+   [
+    {
+     "t": "CL3R"
+    },
+    {
+     "t": "CMP, CL3P, CMR"
+    }
+   ],
+   [
+    {
+     "t": "CL2R"
+    },
+    {
+     "t": "CMP, CL3P, CL2P, CMR, CL3R"
+    }
+   ],
+   [
+    {
+     "t": "PLTC"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "CL3"
+    },
+    {
+     "t": "CMP, CL3P, CMR, CL3R, CMG, CM, PLTC"
+    }
+   ],
+   [
+    {
+     "t": "CL2"
+    },
+    {
+     "t": "CMP, CL3P, CL2P, CMR, CL3R, CL2R, CMG, CM, PLTC, CL3"
+    }
+   ],
+   [
+    {
+     "t": "CL3X"
+    },
+    {
+     "t": "CMP, CL3P, CMR, CL3R, CMG, CM, PLTC, CL3, CMX"
+    }
+   ],
+   [
+    {
+     "t": "CL2X"
+    },
+    {
+     "t": "CMP, CL3P, CL2P, CMR, CL3R, CL2R, CMG, CM, PLTC, CL3, CL2, CMX, CL3X"
+    }
+   ]
+  ],
+  "notes": []
  }
 }
