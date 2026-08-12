@@ -58106,7 +58106,11 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Para altitudes mayores a 2500 metros, debe investigarse respecto a depósitos de hielo en cables y estructuras.",
+   "Para cualquiera de las zonas (excepto la Zona I), pueden considerarse los espesores de hielo de la Zona I, con una temperatura de -5 °C.",
+   "El peso del hielo se considera de 913 kilogramos por metro cúbico"
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -58117,6 +58121,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -58245,6 +58250,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -58310,7 +58316,9 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Para valores intermedios de altura puede interpolarse linealmente."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -58321,6 +58329,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -58333,7 +58342,7 @@
   ],
   "page": 725,
   "cols": 3,
-  "header_rows": 4,
+  "header_rows": 2,
   "intro": "",
   "rows": [
    [
@@ -58389,7 +58398,9 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "Los conductores deben ser resistentes a la corrosión que pueda provocar el ambiente donde se instalen."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -58400,6 +58411,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -59265,9 +59277,9 @@
   "grid": "rejilla",
   "notes": [
    "1. Las tensiones son entre fases.",
-   "2. En cruzamientos de líneas, la construcción de la línea superior debe ser igual o mayor que la de la línea inferior. J. Retenidas 922-101. Generalidades. a) En postes de madera y de concreto se debe considerar que las retenidas llevan la resultante de la carga total en la dirección en que actúen. b) En líneas que crucen sobre vías férreas, las estructuras adyacentes deben resistir las cargas transversal y longitudinal señaladas"
+   "2. En cruzamientos de líneas, la construcción de la línea superior debe ser igual o mayor que la de la línea inferior."
   ],
-  "quality": 0.976,
+  "quality": 1.0,
   "regions": [
    {
     "page": 727,
@@ -59277,6 +59289,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -59335,7 +59348,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.8,
+  "quality": 1.0,
   "regions": [
    {
     "page": 729,
@@ -59345,6 +59358,7 @@
     "article": 923
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -59367,10 +59381,8 @@
      "rs": 2
     },
     {
-     "t": "En líneas con tensión"
-    },
-    {
-     "t": "entre conductores"
+     "t": "En líneas con tensión entre conductores",
+     "cs": 2
     }
    ],
    [
@@ -59394,7 +59406,7 @@
    ],
    [
     {
-     "t": "No expuesto a tránsito de"
+     "t": "No expuesto a tránsito de vehículos."
     },
     {
      "t": "3.8"
@@ -59402,22 +59414,15 @@
     {
      "t": "4.4"
     }
-   ],
-   [
-    {
-     "t": "vehículos."
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    }
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.917,
+  "notes": [
+   "Observaciones:",
+   "1. Para tensiones mayores a 22 kilovolts, las alturas especificadas en la última columna deben incrementarse 1.00 centímetro por cada kilovolts en exceso de 22 kilovolts.",
+   "2. Cuando se instalen terminales de baja tensión en paredes, la altura mínima debe ser de 2.90 metros."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 730,
@@ -59434,6 +59439,7 @@
     "article": 923
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -59514,6 +59520,7 @@
     "article": 923
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -59563,7 +59570,9 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Previo acuerdo entre las partes involucradas, pueden reducirse estas separaciones."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -59574,6 +59583,7 @@
     "article": 923
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {

@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**211 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**220 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,21 +40,11 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (9)
+## 4 · Sin señales (0)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
-| | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
-|---|---|---|---|---|---|---|---|---|
-| [ ] | `922-83` | Condiciones meteorológicas para el cálculo de cargas mecánicas | 723 | 2 | 1.00 | — | dibujada | 8×5 |
-| [ ] | `922-84` | Presiones de viento mínimas para diseño de estructura | 724 | 2 | 1.00 | — | dibujada | 7×5 |
-| [ ] | `922-84(a)` | Factor de incremento de presión de viento por altura de estructura | 724 | 1 | 1.00 | — | dibujada | 6×2 |
-| [ ] | `922-93(a)(1)` | Tamaño mínimo de conductores de cobre | 725 | 1 | 1.00 | — | **huecos** | 5×3 |
-| [ ] | `922-94` | Clase de construcción requerida para líneas aéreas | 727 | 1 | 0.98 | — | dibujada | 12×5 |
-| [ ] | `923-3(f)(1)` | Separación mínima entre cables eléctricos y de comunicación propia del… | 729 | 1 | 0.80 | — | dibujada | 5×2 |
-| [ ] | `923-5(a)` | Altura mínima de partes vivas de terminales en metros | 730, 731 | 1 | 0.92 | — | dibujada | 5×3 |
-| [ ] | `923-11` | Profundidad mínima de los ductos o bancos de ductos | 735 | 1 | 1.00 | — | dibujada | 6×2 |
-| [ ] | `923-12(b)` | Separación mínima entre ductos o bancos de ductos y con respecto a otr… | 735 | 2 | 1.00 | — | dibujada | 4×2 |
+Ninguna: ya están todas contrastadas contra el PDF.
 
 ## Cómo se corrige una tabla
 

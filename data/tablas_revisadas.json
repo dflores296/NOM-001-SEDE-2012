@@ -58617,5 +58617,98 @@
   "notes": [
    "Interpolar para valores intermedios"
   ]
+ },
+ "922-83": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "Para altitudes mayores a 2500 metros, debe investigarse respecto a depósitos de hielo en cables y estructuras.",
+   "Para cualquiera de las zonas (excepto la Zona I), pueden considerarse los espesores de hielo de la Zona I, con una temperatura de -5 °C.",
+   "El peso del hielo se considera de 913 kilogramos por metro cúbico"
+  ]
+ },
+ "922-84": {
+  "verificada": "2026-08-12"
+ },
+ "922-84(a)": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "Para valores intermedios de altura puede interpolarse linealmente."
+  ]
+ },
+ "922-93(a)(1)": {
+  "verificada": "2026-08-12",
+  "header_rows": 2,
+  "notes": [
+   "Los conductores deben ser resistentes a la corrosión que pueda provocar el ambiente donde se instalen."
+  ]
+ },
+ "922-94": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "1. Las tensiones son entre fases.",
+   "2. En cruzamientos de líneas, la construcción de la línea superior debe ser igual o mayor que la de la línea inferior."
+  ]
+ },
+ "923-3(f)(1)": {
+  "verificada": "2026-08-12"
+ },
+ "923-5(a)": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Lugar de instalación",
+     "rs": 2
+    },
+    {
+     "t": "En líneas con tensión entre conductores",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Hasta 750 V"
+    },
+    {
+     "t": "De 750 a 22 000 V"
+    }
+   ],
+   [
+    {
+     "t": "Expuesto a tránsito de vehículos."
+    },
+    {
+     "t": "5.0"
+    },
+    {
+     "t": "5.6"
+    }
+   ],
+   [
+    {
+     "t": "No expuesto a tránsito de vehículos."
+    },
+    {
+     "t": "3.8"
+    },
+    {
+     "t": "4.4"
+    }
+   ]
+  ],
+  "notes": [
+   "Observaciones:",
+   "1. Para tensiones mayores a 22 kilovolts, las alturas especificadas en la última columna deben incrementarse 1.00 centímetro por cada kilovolts en exceso de 22 kilovolts.",
+   "2. Cuando se instalen terminales de baja tensión en paredes, la altura mínima debe ser de 2.90 metros."
+  ]
+ },
+ "923-11": {
+  "verificada": "2026-08-12"
+ },
+ "923-12(b)": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "Previo acuerdo entre las partes involucradas, pueden reducirse estas separaciones."
+  ]
  }
 }
