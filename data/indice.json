@@ -87871,18 +87871,10 @@
   "chapter": 9,
   "page": 719
  },
- "922-55(b)(1)": {
-  "kind": "inciso",
-  "id": "922-55(b)(1)",
-  "title": "Las tensiones son de fase a tierra para circuitos puestos a tierra y entre fases",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
  "922-55(b)(2)": {
   "kind": "inciso",
   "id": "922-55(b)(2)",
-  "title": "Los conductores neutros a que se refiere esta columna son los descritos en 922-4(d)",
+  "title": "Los cables aislados a que se refiere este renglón son los descritos en 922-4(b)(",
   "article": 922,
   "chapter": 9,
   "page": 719
@@ -87890,7 +87882,7 @@
  "922-55(b)(3)": {
   "kind": "inciso",
   "id": "922-55(b)(3)",
-  "title": "Cuando el espacio disponible no permita este valor, la separación puede reducirs",
+  "title": "Cuando la línea esté sobre lugares transitados, ya sea encima o cerca del puente",
   "article": 922,
   "chapter": 9,
   "page": 719
@@ -87898,46 +87890,6 @@
  "922-55(b)(4)": {
   "kind": "inciso",
   "id": "922-55(b)(4)",
-  "title": "Cuando el espacio disponible no permita este valor, la separación puede reducirs",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
- "922-55(b)(5)": {
-  "kind": "inciso",
-  "id": "922-55(b)(5)",
-  "title": "Un techo, balcón o área es considerada accesible a personas, si el medio de acce",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
- "922-55(b)(6)": {
-  "kind": "inciso",
-  "id": "922-55(b)(6)",
-  "title": "Ver figura 922-54 conectados a tierra y para otros circuitos donde las fallas a ",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
- "922-55(b)(6)(2)": {
-  "kind": "inciso",
-  "id": "922-55(b)(6)(2)",
-  "title": "Los cables aislados a que se refiere este renglón son los descritos en 922-4(b)(",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
- "922-55(b)(6)(3)": {
-  "kind": "inciso",
-  "id": "922-55(b)(6)(3)",
-  "title": "Cuando la línea esté sobre lugares transitados, ya sea encima o cerca del puente",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
- "922-55(b)(6)(4)": {
-  "kind": "inciso",
-  "id": "922-55(b)(6)(4)",
   "title": "Los apoyos de puentes de acero, hechos sobre pilares de ladrillo, concreto o mam",
   "article": 922,
   "chapter": 9,

@@ -57421,12 +57421,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 3
-    },
-    {
      "t": "En edificios",
-     "cs": 7
+     "cs": 10
     }
    ],
    [
@@ -57464,7 +57460,7 @@
      "t": "1.50"
     },
     {
-     "t": "(4) 2.00"
+     "t": "2.00(4)"
     }
    ],
    [
@@ -57667,15 +57663,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
-     "t": "Anuncios,"
-    },
-    {
-     "t": "chimeneas, antenas y tanques con agua",
-     "cs": 7
+     "t": "Anuncios, chimeneas, antenas y tanques con agua",
+     "cs": 10
     }
    ],
    [
@@ -57744,8 +57733,15 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.955,
+  "notes": [
+   "(1) Las tensiones son de fase a tierra para circuitos puestos a tierra y entre fases para circuitos no conectados a tierra.",
+   "(2) Los conductores neutros a que se refiere esta columna son los descritos en 922-4(d). Los cables eléctricos aislados son los descritos en la Sección 922-4(b)(1) de cualquier tensión, así como los descritos en la Sección 922-4(b)(2) y 922-4(b)(3), en tensiones de 0 a 750 volts.",
+   "(3) Cuando el espacio disponible no permita este valor, la separación puede reducirse a un mínimo de 1.00 metro.",
+   "(4) Cuando el espacio disponible no permita este valor, la separación puede reducirse a un mínimo de 1.50 metros. En esta condición el claro interpostal máximo debe ser de 50.00 metros.",
+   "(5) Un techo, balcón o área es considerada accesible a personas, si el medio de acceso es a través de una puerta, rampa o escalera permanente.",
+   "(6) Ver figura 922-54."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 719,
@@ -57757,12 +57753,13 @@
    {
     "page": 720,
     "y0": 24.0,
-    "y1": 109.56,
+    "y1": 200.0,
     "id": "922-54",
     "article": 922
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "922-55",

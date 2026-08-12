@@ -136971,35 +136971,24 @@
        "label": "b",
        "kind": "alpha",
        "level": 1,
-       "text": "Debe colocarse una protección aislante para evitar que en caso de que se zafe el trole del transporte haga contacto simultáneamente con el conductor alimentador y la estructura del puente.",
+       "text": "Debe colocarse una protección aislante para evitar que en caso de que se zafe el trole del transporte haga contacto simultáneamente con el conductor alimentador y la estructura del puente. conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
        "children": [
-        {
-         "id": "922-55(b)(1)",
-         "label": "1",
-         "kind": "paren",
-         "level": 2,
-         "text": "Las tensiones son de fase a tierra para circuitos puestos a tierra y entre fases para circuitos no conectados a tierra.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
         {
          "id": "922-55(b)(2)",
          "label": "2",
          "kind": "paren",
          "level": 2,
-         "text": "Los cables eléctricos aislados son los descritos en la Sección 922-4(b)(1) de cualquier tensión, así como los descritos en la Sección 922-4(b)(2) y 922-4(b)(3), en tensiones de 0 a 750 volts.",
+         "text": "Los cables aislados a que se refiere este renglón son los descritos en 922-4(b)(2) y (b)(3), y los conductores neutros son los descritos en (d) de la misma Sección.",
          "children": [],
          "notes": [],
-         "exceptions": [],
-         "title": "Los conductores neutros a que se refiere esta columna son los descritos en 922-4(d)"
+         "exceptions": []
         },
         {
          "id": "922-55(b)(3)",
          "label": "3",
          "kind": "paren",
          "level": 2,
-         "text": "Cuando el espacio disponible no permita este valor, la separación puede reducirse a un mínimo de 1.00 metro.",
+         "text": "Cuando la línea esté sobre lugares transitados, ya sea encima o cerca del puente, se aplican también los requisitos indicados  en 922-40.",
          "children": [],
          "notes": [],
          "exceptions": []
@@ -137009,76 +136998,10 @@
          "label": "4",
          "kind": "paren",
          "level": 2,
-         "text": "Cuando el espacio disponible no permita este valor, la separación puede reducirse a un mínimo de 1.50 metros. En esta condición el claro interpostal máximo debe ser de 50.00 metros.",
+         "text": "Los apoyos de puentes de acero, hechos sobre pilares de ladrillo, concreto o mampostería, que requieran acceso frecuente para inspección, deben considerarse como partes fácilmente accesibles.",
          "children": [],
          "notes": [],
          "exceptions": []
-        },
-        {
-         "id": "922-55(b)(5)",
-         "label": "5",
-         "kind": "paren",
-         "level": 2,
-         "text": "Un techo, balcón o área es considerada accesible a personas, si el medio de acceso es a través de una puerta, rampa o escalera permanente.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-55(b)(6)",
-         "label": "6",
-         "kind": "paren",
-         "level": 2,
-         "text": "Ver figura 922-54 conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
-         "children": [
-          {
-           "id": "922-55(b)(6)(2)",
-           "label": "2",
-           "kind": "paren",
-           "level": 3,
-           "text": "Los cables aislados a que se refiere este renglón son los descritos en 922-4(b)(2) y (b)(3), y los conductores neutros son los descritos en (d) de la misma Sección.",
-           "children": [],
-           "notes": [],
-           "exceptions": []
-          },
-          {
-           "id": "922-55(b)(6)(3)",
-           "label": "3",
-           "kind": "paren",
-           "level": 3,
-           "text": "Cuando la línea esté sobre lugares transitados, ya sea encima o cerca del puente, se aplican también los requisitos indicados  en 922-40.",
-           "children": [],
-           "notes": [],
-           "exceptions": []
-          },
-          {
-           "id": "922-55(b)(6)(4)",
-           "label": "4",
-           "kind": "paren",
-           "level": 3,
-           "text": "Los apoyos de puentes de acero, hechos sobre pilares de ladrillo, concreto o mampostería, que requieran acceso frecuente para inspección, deben considerarse como partes fácilmente accesibles.",
-           "children": [],
-           "notes": [],
-           "exceptions": []
-          }
-         ],
-         "notes": [],
-         "exceptions": [],
-         "figures": [
-          {
-           "src": "fig-1501.png",
-           "w": 184,
-           "h": 260,
-           "page": 720,
-           "seq": 31
-          }
-         ],
-         "tables": [
-          {
-           "id": "922-55",
-           "seq": 32
-          }
-         ]
         }
        ],
        "notes": [],
@@ -137088,6 +137011,19 @@
         {
          "id": "922-54",
          "seq": 30
+        },
+        {
+         "id": "922-55",
+         "seq": 32
+        }
+       ],
+       "figures": [
+        {
+         "src": "fig-1501.png",
+         "w": 184,
+         "h": 260,
+         "page": 720,
+         "seq": 31
         }
        ]
       }
@@ -137920,7 +137856,6 @@
     "922-4(b)",
     "922-4(b)(1)",
     "922-4(b)(2)",
-    "922-4(b)(3)",
     "922-4(c)",
     "922-4(d)",
     "922-40",

@@ -35619,5 +35619,410 @@
     "article": 830
    }
   ]
+ },
+ "922-54": {
+  "verificada": "2026-08-12",
+  "title": "Separación de conductores a edificios y otras construcciones excepto puentes (m)(1)",
+  "cols": 10,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Separaciones",
+     "rs": 3
+    },
+    {
+     "t": "Retenidas, mensajeros, cables de guarda y neutros(2)",
+     "rs": 3
+    },
+    {
+     "t": "Conductores de comunicación",
+     "cs": 2
+    },
+    {
+     "t": "Conductores suministradores",
+     "cs": 4
+    },
+    {
+     "t": "Partes vivas rígidas sin protección",
+     "cs": 2,
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "Aislados",
+     "rs": 2
+    },
+    {
+     "t": "Sin aislar",
+     "rs": 2
+    },
+    {
+     "t": "Aislados",
+     "cs": 2
+    },
+    {
+     "t": "Línea abierta",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "De 0 a 750 V"
+    },
+    {
+     "t": "Más de 750 V"
+    },
+    {
+     "t": "De 0 a 750 V"
+    },
+    {
+     "t": "Más de 750 V a 22 kV"
+    },
+    {
+     "t": "De 0 a 750 V"
+    },
+    {
+     "t": "Más de 750 V a 22 kV"
+    }
+   ],
+   [
+    {
+     "t": "En edificios",
+     "cs": 10
+    }
+   ],
+   [
+    {
+     "t": "Horizontal",
+     "cs": 10
+    }
+   ],
+   [
+    {
+     "t": "A paredes"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.70(3)"
+    },
+    {
+     "t": "1.70(3)"
+    },
+    {
+     "t": "2.30(4)"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "2.00(4)"
+    }
+   ],
+   [
+    {
+     "t": "A ventanas"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.70(3)"
+    },
+    {
+     "t": "1.70(3)"
+    },
+    {
+     "t": "2.30(4)"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "2.00"
+    }
+   ],
+   [
+    {
+     "t": "A balcones y áreas accesibles a (5) personas"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "1.40"
+    },
+    {
+     "t": "1.70"
+    },
+    {
+     "t": "1.70"
+    },
+    {
+     "t": "2.30"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "2.00"
+    }
+   ],
+   [
+    {
+     "t": "Vertical",
+     "cs": 10
+    }
+   ],
+   [
+    {
+     "t": "Arriba o abajo de techos y salientes no accesibles a (5) personas"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "3.0"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "3.2"
+    },
+    {
+     "t": "3.2"
+    },
+    {
+     "t": "3.8"
+    },
+    {
+     "t": "3.0"
+    },
+    {
+     "t": "3.6"
+    }
+   ],
+   [
+    {
+     "t": "Balcones, arriba o abajo de techos y salientes accesibles a (5) personas"
+    },
+    {
+     "t": "3.2"
+    },
+    {
+     "t": "3.2"
+    },
+    {
+     "t": "3.4"
+    },
+    {
+     "t": "3.2"
+    },
+    {
+     "t": "3.5"
+    },
+    {
+     "t": "3.5"
+    },
+    {
+     "t": "4.1"
+    },
+    {
+     "t": "3.4"
+    },
+    {
+     "t": "4.0"
+    }
+   ],
+   [
+    {
+     "t": "Sobre techos accesibles a automóviles(6)"
+    },
+    {
+     "t": "3.2"
+    },
+    {
+     "t": "3.2"
+    },
+    {
+     "t": "3.4"
+    },
+    {
+     "t": "3.2"
+    },
+    {
+     "t": "3.5"
+    },
+    {
+     "t": "3.5"
+    },
+    {
+     "t": "4.1"
+    },
+    {
+     "t": "3.4"
+    },
+    {
+     "t": "4.0"
+    }
+   ],
+   [
+    {
+     "t": "Sobre techos accesibles a vehículos para carga(6)"
+    },
+    {
+     "t": "4.7"
+    },
+    {
+     "t": "4.7"
+    },
+    {
+     "t": "4.9"
+    },
+    {
+     "t": "4.7"
+    },
+    {
+     "t": "5.0"
+    },
+    {
+     "t": "5.0"
+    },
+    {
+     "t": "5.6"
+    },
+    {
+     "t": "4.9"
+    },
+    {
+     "t": "5.5"
+    }
+   ],
+   [
+    {
+     "t": "Anuncios, chimeneas, antenas y tanques con agua",
+     "cs": 10
+    }
+   ],
+   [
+    {
+     "t": "Horizontal"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "1.70(3)"
+    },
+    {
+     "t": "1.70(3)"
+    },
+    {
+     "t": "2.30(4)"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "2.00(4)"
+    }
+   ],
+   [
+    {
+     "t": "Vertical (arriba o abajo)"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "1.70"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "1.80"
+    },
+    {
+     "t": "1.80"
+    },
+    {
+     "t": "2.45"
+    },
+    {
+     "t": "1.70"
+    },
+    {
+     "t": "2.30"
+    }
+   ]
+  ],
+  "notes": [
+   "(1) Las tensiones son de fase a tierra para circuitos puestos a tierra y entre fases para circuitos no conectados a tierra.",
+   "(2) Los conductores neutros a que se refiere esta columna son los descritos en 922-4(d). Los cables eléctricos aislados son los descritos en la Sección 922-4(b)(1) de cualquier tensión, así como los descritos en la Sección 922-4(b)(2) y 922-4(b)(3), en tensiones de 0 a 750 volts.",
+   "(3) Cuando el espacio disponible no permita este valor, la separación puede reducirse a un mínimo de 1.00 metro.",
+   "(4) Cuando el espacio disponible no permita este valor, la separación puede reducirse a un mínimo de 1.50 metros. En esta condición el claro interpostal máximo debe ser de 50.00 metros.",
+   "(5) Un techo, balcón o área es considerada accesible a personas, si el medio de acceso es a través de una puerta, rampa o escalera permanente.",
+   "(6) Ver figura 922-54."
+  ],
+  "regions": [
+   {
+    "page": 719,
+    "y0": 513.9033203125,
+    "y1": 794.0,
+    "id": "922-54",
+    "article": 922
+   },
+   {
+    "page": 720,
+    "y0": 24.0,
+    "y1": 200.0,
+    "id": "922-54",
+    "article": 922
+   }
+  ]
  }
 }
