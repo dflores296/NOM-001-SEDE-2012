@@ -43885,7 +43885,7 @@
   ],
   "page": 381,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -43893,7 +43893,7 @@
      "t": "Area superficial total, excluyendo las puntas de conductores"
     },
     {
-     "t": "Requisito para la clasificación T4 (con base en la temperatura ambiente de 40 ºC)"
+     "t": "Requisito para la clasificación T4 (con base en la temperatura ambiente de 40 °C)"
     }
    ],
    [
@@ -43923,7 +43923,7 @@
   ],
   "grid": "rejilla",
   "notes": [
-   "* Basada en una temperatura ambiente de 40 °C. Reducir a 1.2 watts con temperatura ambiente de 60 ºC o a 1.0 watt con temperatura ambiente de 80 ºC"
+   "* Basada en una temperatura ambiente de 40 °C. Reducir a 1.2 watts con temperatura ambiente de 60 °C o a 1.0 watt con temperatura ambiente de 80 °C"
   ],
   "quality": 1.0,
   "regions": [
@@ -43935,6 +43935,7 @@
     "article": 504
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -44001,6 +44002,7 @@
     "article": 505
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -44013,7 +44015,7 @@
   ],
   "page": 388,
   "cols": 2,
-  "header_rows": 2,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -44026,10 +44028,26 @@
    ],
    [
     {
-     "t": "IIC IIB IIA"
+     "t": "IIC"
     },
     {
-     "t": "Ver 505-6(a) Ver 505-6(b) Ver 505-6(c)"
+     "t": "Ver 505-6(a)"
+    }
+   ],
+   [
+    {
+     "t": "IIB"
+    },
+    {
+     "t": "Ver 505-6(b)"
+    }
+   ],
+   [
+    {
+     "t": "IIA"
+    },
+    {
+     "t": "Ver 505-6(c)"
     }
    ]
   ],
@@ -44045,6 +44063,7 @@
     "article": 505
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -44085,24 +44104,46 @@
    ],
    [
     {
-     "t": "db e"
+     "t": "db"
     },
     {
-     "t": "Envolvente a prueba de llama Seguridad aumentada"
+     "t": "Envolvente a prueba de llama"
     },
     {
-     "t": "1 1"
+     "t": "1"
     }
    ],
    [
     {
-     "t": "eb ia"
+     "t": "e"
     },
     {
-     "t": "Seguridad aumentada Seguridad intrínseca"
+     "t": "Seguridad aumentada"
     },
     {
-     "t": "1 0"
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "eb"
+    },
+    {
+     "t": "Seguridad aumentada"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "ia"
+    },
+    {
+     "t": "Seguridad intrínseca"
+    },
+    {
+     "t": "0"
     }
    ],
    [
@@ -44118,13 +44159,24 @@
    ],
    [
     {
-     "t": "ic [ia]"
+     "t": "ic"
     },
     {
-     "t": "Seguridad intrínseca Aparatos asociados"
+     "t": "Seguridad intrínseca"
     },
     {
-     "t": "2 No clasificados**"
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "[ia]"
+    },
+    {
+     "t": "Aparatos asociados"
+    },
+    {
+     "t": "No clasificados**"
     }
    ],
    [
@@ -44140,13 +44192,24 @@
    ],
    [
     {
-     "t": "[ic] m"
+     "t": "[ic]"
     },
     {
-     "t": "Aparatos asociados Encapsulado"
+     "t": "Aparatos asociados"
     },
     {
-     "t": "No clasificados** 1"
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "m"
+    },
+    {
+     "t": "Encapsulado"
+    },
+    {
+     "t": "1"
     }
    ],
    [
@@ -44184,24 +44247,53 @@
    ],
    [
     {
-     "t": "nAc nC"
+     "t": "nAc"
     },
     {
-     "t": "Equipos que no producen chispas Equipos que producen chispa en los cuales los contactos están protegidos adecuadamente, por otra técnica que no sean las envolventes con respiración restringida"
+     "t": "Equipos que no producen chispas"
     },
     {
-     "t": "2 2"
+     "t": "2"
     }
    ],
    [
     {
-     "t": "nCc nR nRc"
+     "t": "nC"
     },
     {
-     "t": "Equipos que producen chispa en los cuales los contactos están protegidos adecuadamente, por otra técnica que no sean las envolventes con respiración restringida Envolventes con respiración restringida"
+     "t": "Equipos que producen chispa en los cuales los contactos están protegidos adecuadamente, por otra técnica que no sean las envolventes con respiración restringida"
     },
     {
-     "t": "2 2"
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "nCc"
+    },
+    {
+     "t": "Equipos que producen chispa en los cuales los contactos están protegidos adecuadamente, por otra técnica que no sean las envolventes con respiración restringida"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "nR"
+    },
+    {
+     "t": "Envolventes con respiración restringida",
+     "rs": 2
+    },
+    {
+     "t": "2",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "nRc"
     }
    ],
    [
@@ -44217,13 +44309,24 @@
    ],
    [
     {
-     "t": "ob px"
+     "t": "ob"
     },
     {
-     "t": "Inmersión en aceite Presurización"
+     "t": "Inmersión en aceite"
     },
     {
-     "t": "1 1"
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "px"
+    },
+    {
+     "t": "Presurización"
+    },
+    {
+     "t": "1"
     }
    ],
    [
@@ -44250,34 +44353,66 @@
    ],
    [
     {
-     "t": "pyb pz"
+     "t": "pyb"
     },
     {
-     "t": "Presurización Presurización"
+     "t": "Presurización"
     },
     {
-     "t": "1 2"
+     "t": "1"
     }
    ],
    [
     {
-     "t": "pzc q qb"
+     "t": "pz"
     },
     {
-     "t": "Presurización Relleno con polvo Relleno con polvo"
+     "t": "Presurización"
     },
     {
-     "t": "2 1 1"
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "pzc"
+    },
+    {
+     "t": "Presurización"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "q"
+    },
+    {
+     "t": "Relleno con polvo"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "qb"
+    },
+    {
+     "t": "Relleno con polvo"
+    },
+    {
+     "t": "1"
     }
    ]
   ],
   "grid": "rejilla",
   "notes": [
    "* No se considera el uso cuando se utiliza una combinación de técnicas.",
-   "** Se permitirá instalar aparatos asociados en un lugar peligroso (clasificado) si están protegidos adecuadamente usando otro tipo de protección.",
-   "1) Clasificación de temperatura. El equipo debe estar marcado indicando la temperatura de funcionamiento o la clase de temperatura referenciada para un ambiente a 40 °C, o la temperatura ambiente más alta si el equipo está dimensionado y marcado para una temperatura ambiente mayor que 40 °C. Si se da la clase de temperatura, se debe indicar usando la clase de temperatura (código T) que se muestra en la Tabla 505-9(d)(1). El equipo eléctrico diseñado para uso en un intervalo de temperatura ambiente entre – 20 °C y + 40 °C debe tener un marcado de no temperatura ambiente."
+   "** Se permitirá instalar aparatos asociados en un lugar peligroso (clasificado) si están protegidos adecuadamente usando otro tipo de protección."
   ],
-  "quality": 0.877,
+  "quality": 1.0,
   "regions": [
    {
     "page": 389,
@@ -44294,6 +44429,7 @@
     "article": 505
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -44306,7 +44442,7 @@
   ],
   "page": 390,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -44378,6 +44514,7 @@
     "article": 505
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -44417,88 +44554,209 @@
    ],
    [
     {
-     "t": "ia ibD"
+     "t": "ia"
     },
     {
-     "t": "Protección mediante seguridad intrínseca Protección mediante seguridad intrínseca"
+     "t": "Protección mediante seguridad intrínseca"
     },
     {
-     "t": "20 21"
+     "t": "20"
     }
    ],
    [
     {
-     "t": "ib [iaD]"
+     "t": "ibD"
     },
     {
-     "t": "Protección mediante seguridad intrínseca Aparatos asociados"
+     "t": "Protección mediante seguridad intrínseca"
     },
     {
-     "t": "21 No clasificados**"
+     "t": "21"
     }
    ],
    [
     {
-     "t": "[ia] [ibD]"
+     "t": "ib"
     },
     {
-     "t": "Aparatos asociados Aparatos asociados"
+     "t": "Protección mediante seguridad intrínseca"
     },
     {
-     "t": "No clasificados** No clasificados**"
+     "t": "21"
     }
    ],
    [
     {
-     "t": "[ib] maD"
+     "t": "[iaD]"
     },
     {
-     "t": "Aparatos asociados Protección mediante encapsulación"
+     "t": "Aparatos asociados"
     },
     {
-     "t": "No clasificados** 20"
+     "t": "No clasificados**"
     }
    ],
    [
     {
-     "t": "ma mbD"
+     "t": "[ia]"
     },
     {
-     "t": "Protección mediante encapsulación Protección mediante encapsulación"
+     "t": "Aparatos asociados"
     },
     {
-     "t": "20 21"
+     "t": "No clasificados**"
     }
    ],
    [
     {
-     "t": "mb pD"
+     "t": "[ibD]"
     },
     {
-     "t": "Protección mediante encapsulación Protección mediante presurización"
+     "t": "Aparatos asociados"
     },
     {
-     "t": "21 21"
+     "t": "No clasificados**"
     }
    ],
    [
     {
-     "t": "p pb tD ta tb tc"
+     "t": "[ib]"
     },
     {
-     "t": "Protección mediante presurización Protección mediante presurización Protección mediante envolventes Protección mediante envolventes Protección mediante envolventes Protección mediante envolventes"
+     "t": "Aparatos asociados"
     },
     {
-     "t": "21 21 21 21 21 22"
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "maD"
+    },
+    {
+     "t": "Protección mediante encapsulación"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "ma"
+    },
+    {
+     "t": "Protección mediante encapsulación"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "mbD"
+    },
+    {
+     "t": "Protección mediante encapsulación"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "mb"
+    },
+    {
+     "t": "Protección mediante encapsulación"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "pD"
+    },
+    {
+     "t": "Protección mediante presurización"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "p"
+    },
+    {
+     "t": "Protección mediante presurización"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "pb"
+    },
+    {
+     "t": "Protección mediante presurización"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "tD"
+    },
+    {
+     "t": "Protección mediante envolventes"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "ta"
+    },
+    {
+     "t": "Protección mediante envolventes"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "tb"
+    },
+    {
+     "t": "Protección mediante envolventes"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "tc"
+    },
+    {
+     "t": "Protección mediante envolventes"
+    },
+    {
+     "t": "22"
     }
    ]
   ],
   "grid": "huecos",
   "notes": [
    "* No se considera el uso cuando se utiliza una combinación de técnicas.",
-   "** Se permite instalar aparatos asociados en un lugar peligroso (clasificado) si está protegido adecuadamente usando otro tipo de protección. 401/780 www.dof.gob.mx/normasOficiales/4951/SENER/SENER.html"
+   "** Se permite instalar aparatos asociados en un lugar peligroso (clasificado) si está protegido adecuadamente usando otro tipo de protección."
   ],
-  "quality": 0.852,
+  "quality": 1.0,
   "regions": [
    {
     "page": 401,
@@ -44508,6 +44766,7 @@
     "article": 506
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -44522,7 +44781,7 @@
   ],
   "page": 410,
   "cols": 4,
-  "header_rows": 2,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -44586,21 +44845,27 @@
      "t": "Exterior"
     },
     {
-     "t": "2",
-     "rs": 2
+     "t": "2"
     },
     {
-     "t": "2",
-     "rs": 2
+     "t": "2"
     },
     {
-     "t": "Hasta 45.00 centímetros sobre el nivel de piso, que se extiende 6.00 metros horizontalmente en todas las direcciones desde la envolvente del dispensario",
-     "rs": 2
+     "t": "Hasta 45.00 centímetros sobre el nivel de piso, que se extiende 6.00 metros horizontalmente en todas las direcciones desde la envolvente del dispensario"
     }
    ],
    [
     {
      "t": "Interior"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -44608,12 +44873,10 @@
      "t": "Con ventilación mecánica"
     },
     {
-     "t": "2",
-     "rs": 2
+     "t": "2"
     },
     {
-     "t": "2",
-     "rs": 2
+     "t": "2"
     },
     {
      "t": "Hasta 45.00 centímetros sobre el nivel de piso, que se extiende 6.00 metros horizontalmente en todas las direcciones de la envolvente del dispensario."
@@ -44622,6 +44885,12 @@
    [
     {
      "t": "Con ventilación natural"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
     },
     {
      "t": "Hasta 45.00 centímetros sobre el nivel de piso, que se extiende 7.50 metros horizontalmente en todas las direcciones de la envolvente del dispensario"
@@ -44769,10 +45038,11 @@
    ],
    [
     {
-     "t": "Tiendas, bodegas, baños"
+     "t": "Tiendas, bodegas, baños incluyendo estructuras (tales como las módulos de servicio) sobre o adyacentes a los surtidores (dispensarios).",
+     "rs": 3
     },
     {
-     "t": "incluyendo estructuras No clasificada"
+     "t": "No clasificada"
     },
     {
      "t": "No clasificada"
@@ -44783,10 +45053,7 @@
    ],
    [
     {
-     "t": "(tales como las módulos de adyacentes a los surtidores"
-    },
-    {
-     "t": "servicio) sobre o (dispensarios). 1"
+     "t": "1"
     },
     {
      "t": "1"
@@ -44796,9 +45063,6 @@
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "2"
     },
@@ -44839,10 +45103,11 @@
    ],
    [
     {
-     "t": "Carcasa, terminales, techo, área"
+     "t": "Carcasa, terminales, techo, área de dique",
+     "rs": 2
     },
     {
-     "t": "de dique 1"
+     "t": "1"
     },
     {
      "t": "1"
@@ -44852,9 +45117,6 @@
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "2"
     },
@@ -44993,10 +45255,10 @@
    ],
    [
     {
-     "t": "Sistema de procesamiento de"
+     "t": "Sistema de procesamiento de vapor"
     },
     {
-     "t": "vapor"
+     "t": ""
     },
     {
      "t": ""
@@ -45021,10 +45283,10 @@
    ],
    [
     {
-     "t": "Equipos con envolventes de"
+     "t": "Equipos con envolventes de protección"
     },
     {
-     "t": "protección 2"
+     "t": "2"
     },
     {
      "t": "2"
@@ -45035,30 +45297,16 @@
    ],
    [
     {
-     "t": "Equipo sin envolventes de"
-    },
-    {
-     "t": "protección 2"
+     "t": "Equipo sin envolventes de protección"
     },
     {
      "t": "2"
     },
     {
-     "t": "Dentro de 45.00 centímetros de equipos que contengan gases o líquidos inflamables, que se"
-    }
-   ],
-   [
-    {
-     "t": ""
+     "t": "2"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "extiende horizontalmente en todas las direcciones y hacia abajo a nivel de piso."
+     "t": "Dentro de 45.00 centímetros de equipos que contengan gases o líquidos inflamables, que se extiende horizontalmente en todas las direcciones y hacia abajo a nivel de piso."
     }
    ],
    [
@@ -45147,8 +45395,11 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
-  "quality": 0.895,
+  "notes": [
+   "1 Para las aplicaciones marítimas, nivel del suelo significa la superficie de un muelle que se encuentra arriba del agua.",
+   "2 Ver Figura 514-3."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 410,
@@ -45172,6 +45423,7 @@
     "article": 514
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -45617,21 +45869,7 @@
      "t": "2"
     },
     {
-     "t": "Area entre 90 centímetros y 1.50 metros"
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "desde la abertura de ventilación o llenado, extendiéndose en todas las direcciones. Además, hasta 45 centímetros sobre el piso o el nivel del suelo dentro de un radio horizontal de 3.00 metros desde las aberturas de ventilación o llenado."
+     "t": "Area entre 90 centímetros y 1.50 metros desde la abertura de ventilación o llenado, extendiéndose en todas las direcciones. Además, hasta 45 centímetros sobre el piso o el nivel del suelo dentro de un radio horizontal de 3.00 metros desde las aberturas de ventilación o llenado."
     }
    ],
    [
@@ -45900,7 +46138,7 @@
    ],
    [
     {
-     "t": "Carga a través de domo cerrado con control de"
+     "t": "Carga a través de domo cerrado con control de vapores"
     },
     {
      "t": "2"
@@ -45909,21 +46147,7 @@
      "t": "2"
     },
     {
-     "t": "Hasta 90 centímetros del punto de conexión"
-    }
-   ],
-   [
-    {
-     "t": "vapores"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "de las líneas tanto de llenado como de vapor, extendiéndose en todas las direcciones."
+     "t": "Hasta 90 centímetros del punto de conexión de las líneas tanto de llenado como de vapor, extendiéndose en todas las direcciones."
     }
    ],
    [
@@ -46034,8 +46258,11 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.899,
+  "notes": [
+   "1 La liberación de líquidos de Clase I puede generar vapores hasta el punto en que todo el edificio, y posiblemente la zona que la rodea, deban considerarse lugares Clase I, División 2 o Zona 2.",
+   "2 Al clasificar la extensión del área, se debe tener en cuenta el hecho de que los vagones y camiones cisterna pueden tener distintas posiciones. Por tanto, se deben usar los extremos de las posiciones de carga o descarga."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 414,
@@ -46066,6 +46293,7 @@
     "article": 515
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -46291,23 +46519,28 @@
   ],
   "grid": "rejilla",
   "notes": [
-   "*La ampacidad indicada es la de los cordones y multiconductores donde únicamente tres conductores de cobre son portadores de corriente tal como se describe en 400-5. Si la cantidad de conductores portadores de corriente en un cordón o cable excede de tres, y el factor de diversidad de carga es de un mínimo de 50 por ciento, la ampacidad de cada conductor debe reducirse como se muestra en la siguiente tabla:"
+   "*La ampacidad indicada es la de los cordones y multiconductores donde únicamente tres conductores de cobre son portadores de corriente tal como se describe en 400-5. Si la cantidad de conductores portadores de corriente en un cordón o cable excede de tres, y el factor de diversidad de carga es de un mínimo de 50 por ciento, la ampacidad de cada conductor debe reducirse como se muestra en la siguiente tabla:",
+   "Temperatura final del aislamiento. En ningún caso los conductores deben asociarse entre sí con respecto a la clase de circuito, al método de alambrado utilizado, o al número de conductores, de tal forma que el límite de temperatura de los conductores sea rebasado.",
+   "Un conductor de neutro que porta solamente la corriente de desbalanceo de otros conductores del mismo circuito, no necesita considerarse como un conductor portador de corriente.",
+   "En un circuito de tres conductores que conste de dos conductores de fase y el neutro de un sistema de 3 fases, 4 hilos conectado en estrella, el conductor del neutro porta aproximadamente la misma corriente que los otros conductores con corrientes de línea a neutro, y debe considerarse como un conductor portador de corriente.",
+   "En un circuito de 3 fases, 4 hilos conectado en estrella, en donde la mayor parte de la carga son cargas no lineales, hay corrientes armónicas presentes en el conductor del neutro, y por lo tanto el neutro debe considerarse como un conductor portador de corriente."
   ],
-  "quality": 0.943,
+  "quality": 1.0,
   "regions": [
    {
     "page": 454,
     "y0": 24.24560546875,
-    "y1": 294.02,
+    "y1": 405.0,
     "id": "520-44",
     "article": 520
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
   "id": "522-22",
-  "title": "Ampacidad del conductor basada en conductores de cobre con aislamiento para 60ºC y 75ºC en una temperatura ambiente de 30ºC",
+  "title": "Ampacidad del conductor basada en conductores de cobre con aislamiento para 60 °C y 75 °C en una temperatura ambiente de 30 °C",
   "informativa": false,
   "article": 522,
   "pages": [
@@ -46330,10 +46563,10 @@
    ],
    [
     {
-     "t": "60 ºC"
+     "t": "60 °C"
     },
     {
-     "t": "75 ºC"
+     "t": "75 °C"
     }
    ],
    [
@@ -46427,8 +46660,8 @@
   ],
   "grid": "rejilla",
   "notes": [
-   "1. Para temperaturas ambiente diferentes de 30ºC, se utilizan los factores de corrección de temperatura de la Tabla 310- 15(b)(16).",
-   "2. Los ajustes de la ampacidad para conductores con aislamiento para 90 ºC o más se deben basar en las ampacidades en la columna de 75ºC. a) Dos o más circuitos de control. Se permitirá que los circuitos de control ocupen el mismo cable, charola portacables, envolvente o canalización sin considerar si los circuitos individuales son de corriente alterna o de corriente continua, siempre que todos los conductores estén aislados para la tensión máxima de cualquier conductor en el cable, charola portacables, envolvente o canalización. b) Circuitos de control con circuitos de fuerza. Se permitirá que los circuitos de control se instalen con los conductores de fuerza tal como se especifica en (1) a (3) siguientes:"
+   "1. Para temperaturas ambiente diferentes de 30 °C, se utilizan los factores de corrección de temperatura de la Tabla 310-15(b)(16).",
+   "2. Los ajustes de la ampacidad para conductores con aislamiento para 90 °C o más se deben basar en las ampacidades en la columna de 75 °C."
   ],
   "quality": 1.0,
   "regions": [
@@ -46440,6 +46673,7 @@
     "article": 522
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {

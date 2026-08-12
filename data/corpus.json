@@ -83261,7 +83261,7 @@
          "label": "3",
          "kind": "num",
          "level": 2,
-         "text": "Los conductores aterrizados (neutros) deben ser blancos sin franja o deben estar identificados por una marca blanca en sus terminaciones. Los conductores de puesta a tierra deben ser verdes con o sin franja amarilla o deben estar identificados por una marca verde en sus terminaciones. circuito, al método de alambrado utilizado, o al número de conductores, de tal forma que el límite de temperatura de los conductores sea rebasado. Un conductor de neutro que porta solamente la corriente de desbalanceo de otros conductores del mismo circuito, no necesita considerarse como un conductor portador de corriente. En un circuito de tres conductores que conste de dos conductores de fase y el neutro de un sistema de 3 fases, 4 hilos conectado en estrella, el conductor del neutro porta aproximadamente la misma corriente que los otros conductores con corrientes de línea a neutro, y debe considerarse como un conductor portador de corriente. En un circuito de 3 fases, 4 hilos conectado en estrella, en donde la mayor parte de la carga son cargas no lineales, hay corrientes armónicas presentes en el conductor del neutro, y por lo tanto el neutro debe considerarse como un conductor portador de corriente.",
+         "text": "Los conductores aterrizados (neutros) deben ser blancos sin franja o deben estar identificados por una marca blanca en sus terminaciones. Los conductores de puesta a tierra deben ser verdes con o sin franja amarilla o deben estar identificados por una marca verde en sus terminaciones.",
          "children": [],
          "notes": [],
          "exceptions": [],
