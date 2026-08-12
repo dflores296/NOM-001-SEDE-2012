@@ -32737,5 +32737,586 @@
     "article": 922
    }
   ]
+ },
+ "250-3": {
+  "verificada": "2026-08-12",
+  "title": "Requisitos adicionales de unión y puesta a tierra",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Conductor/Equipo"
+    },
+    {
+     "t": "Artículo"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "Acometidas"
+    },
+    {
+     "t": "230"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Albercas, fuentes e instalaciones similares"
+    },
+    {
+     "t": "680"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Anuncios eléctricos e iluminación de contorno"
+    },
+    {
+     "t": "600"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Bucle cerrado y distribución programada de potencia"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "780-3"
+    }
+   ],
+   [
+    {
+     "t": "Cajas de salida, de dispositivos, de jalado y de empalmes, caja de conexiones y herrajes"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "314-4, 314-25"
+    }
+   ],
+   [
+    {
+     "t": "Capacitores"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "460-10, 460-27"
+    }
+   ],
+   [
+    {
+     "t": "Casas móviles y estacionamientos para casas móviles"
+    },
+    {
+     "t": "550"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Celdas electrolíticas"
+    },
+    {
+     "t": "668"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Charolas portacables"
+    },
+    {
+     "t": "392"
+    },
+    {
+     "t": "392-60"
+    }
+   ],
+   [
+    {
+     "t": "Circuitos de comunicaciones"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Circuitos derivados"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "210-5, 210-6, 406-3"
+    }
+   ],
+   [
+    {
+     "t": "Circuitos y equipos que operan a menos de 50 volts"
+    },
+    {
+     "t": "720"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Conductores para alambrado general"
+    },
+    {
+     "t": "310"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Contactos del tipo de puesta a tierra, adaptadores, conectores de cordón y clavijas de conexión"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "406-9"
+    }
+   ],
+   [
+    {
+     "t": "Contactos y conectores de cordón"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "406-3"
+    }
+   ],
+   [
+    {
+     "t": "Cordones y cables flexibles"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "400-22, 400-23"
+    }
+   ],
+   [
+    {
+     "t": "Cuerpos de agua naturales y artificiales"
+    },
+    {
+     "t": "682"
+    },
+    {
+     "t": "682-30, 682-31, 682-32, 682-33"
+    }
+   ],
+   [
+    {
+     "t": "Construcciones agrícolas"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "547-9 y 547-10"
+    }
+   ],
+   [
+    {
+     "t": "Construcciones flotantes"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "553-8, 553-10, 553-11"
+    }
+   ],
+   [
+    {
+     "t": "Conductor/Equipo"
+    },
+    {
+     "t": "Artículo"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "Elevadores, montaplatos, escaleras eléctricas, pasillos móviles, elevadores de sillas de ruedas y elevadores para sillas de ruedas"
+    },
+    {
+     "t": "620"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Ensamble de cables con aislamiento en envolvente metálica"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "370-9"
+    }
+   ],
+   [
+    {
+     "t": "Equipo de calentamiento dieléctrico y por inducción"
+    },
+    {
+     "t": "665"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Equipo de radio y televisión"
+    },
+    {
+     "t": "810"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Equipo de rayos X"
+    },
+    {
+     "t": "660"
+    },
+    {
+     "t": "517-78"
+    }
+   ],
+   [
+    {
+     "t": "Equipo de tecnología de la información"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "645-15"
+    }
+   ],
+   [
+    {
+     "t": "Equipo eléctrico fijo para descongelar y derretir nieve"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "426-27"
+    }
+   ],
+   [
+    {
+     "t": "Equipo fijo de calefacción eléctrica, para tuberías y recipientes"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "427-29, 427-48"
+    }
+   ],
+   [
+    {
+     "t": "Equipo para procesamiento, amplificación y reproducción de señales de audio"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "640-7"
+    }
+   ],
+   [
+    {
+     "t": "Estudios de cine y televisión y lugares similares"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "530-20, 530-64(b)"
+    }
+   ],
+   [
+    {
+     "t": "Grúas y montacargas"
+    },
+    {
+     "t": "610"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Instituciones del cuidado de la salud"
+    },
+    {
+     "t": "517"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Interruptores"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "404-12"
+    }
+   ],
+   [
+    {
+     "t": "Lugares peligrosos (clasificados)"
+    },
+    {
+     "t": "500-517"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Luminarias y equipo de iluminación"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "410-40, 410-42, 410-46, 410-155(b)"
+    }
+   ],
+   [
+    {
+     "t": "Luminarias, portalámparas y lámparas"
+    },
+    {
+     "t": "410"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Maquinaria industrial"
+    },
+    {
+     "t": "670"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Máquinas de irrigación impulsadas o controladas eléctricamente"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "675-11(c), 675-12, 675-13, 675-14, 675-15"
+    }
+   ],
+   [
+    {
+     "t": "Marinas y muelles"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "555-15"
+    }
+   ],
+   [
+    {
+     "t": "Métodos de alambrado subterráneo para más de 600 volts"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "300-50(c)"
+    }
+   ],
+   [
+    {
+     "t": "Motores, circuitos de motores y controladores"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Organos de tubos"
+    },
+    {
+     "t": "650"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Tableros de distribución"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "408-40"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de distribución de antenas comunales de radio y televisión"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "820-93,820-100, 820-103"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas intrínsecamente seguros"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "504-5"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas solares fotovoltaicos"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "690-41, 690-42, 690-43, 690-45, 690-47"
+    }
+   ],
+   [
+    {
+     "t": "Tableros de distribución y tableros de alumbrado y control"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "408-3(d)"
+    }
+   ],
+   [
+    {
+     "t": "Teatros, áreas de espectadores en estudios cinematográficos y de televisión y lugares similares"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "520-81"
+    }
+   ],
+   [
+    {
+     "t": "Transformadores y bóvedas de transformadores"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "450-10"
+    }
+   ],
+   [
+    {
+     "t": "Uso e identificación de conductores puestos a tierra"
+    },
+    {
+     "t": "200"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Vehículos de recreo y estacionamientos para vehículos de recreo"
+    },
+    {
+     "t": "551"
+    },
+    {
+     "t": ""
+    }
+   ]
+  ],
+  "notes": []
  }
 }
