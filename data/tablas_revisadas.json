@@ -54494,5 +54494,2153 @@
  },
  "500-8(d)(2)": {
   "verificada": "2026-08-12"
+ },
+ "504-10(b)": {
+  "verificada": "2026-08-12",
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Area superficial total, excluyendo las puntas de conductores"
+    },
+    {
+     "t": "Requisito para la clasificación T4 (con base en la temperatura ambiente de 40 °C)"
+    }
+   ],
+   [
+    {
+     "t": "<20 mm2"
+    },
+    {
+     "t": "Temperatura superficial ≤275 °C"
+    }
+   ],
+   [
+    {
+     "t": "≥20 mm²≤10 cm2"
+    },
+    {
+     "t": "Temperatura superficial ≤200 °C"
+    }
+   ],
+   [
+    {
+     "t": "≥20 mm2"
+    },
+    {
+     "t": "Potencia que no excede 1.3 W*"
+    }
+   ]
+  ],
+  "notes": [
+   "* Basada en una temperatura ambiente de 40 °C. Reducir a 1.2 watts con temperatura ambiente de 60 °C o a 1.0 watt con temperatura ambiente de 80 °C"
+  ]
+ },
+ "505-7(d)": {
+  "verificada": "2026-08-12"
+ },
+ "505-9(c)(1)(2)": {
+  "verificada": "2026-08-12",
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Grupo de gases"
+    },
+    {
+     "t": "Comentario"
+    }
+   ],
+   [
+    {
+     "t": "IIC"
+    },
+    {
+     "t": "Ver 505-6(a)"
+    }
+   ],
+   [
+    {
+     "t": "IIB"
+    },
+    {
+     "t": "Ver 505-6(b)"
+    }
+   ],
+   [
+    {
+     "t": "IIA"
+    },
+    {
+     "t": "Ver 505-6(c)"
+    }
+   ]
+  ]
+ },
+ "505-9(c)(2)(4)": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Designación"
+    },
+    {
+     "t": "Técnica"
+    },
+    {
+     "t": "Zona *"
+    }
+   ],
+   [
+    {
+     "t": "d"
+    },
+    {
+     "t": "Envolvente a prueba de llama"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "db"
+    },
+    {
+     "t": "Envolvente a prueba de llama"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "e"
+    },
+    {
+     "t": "Seguridad aumentada"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "eb"
+    },
+    {
+     "t": "Seguridad aumentada"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "ia"
+    },
+    {
+     "t": "Seguridad intrínseca"
+    },
+    {
+     "t": "0"
+    }
+   ],
+   [
+    {
+     "t": "ib"
+    },
+    {
+     "t": "Seguridad intrínseca"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "ic"
+    },
+    {
+     "t": "Seguridad intrínseca"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "[ia]"
+    },
+    {
+     "t": "Aparatos asociados"
+    },
+    {
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "[ib]"
+    },
+    {
+     "t": "Aparatos asociados"
+    },
+    {
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "[ic]"
+    },
+    {
+     "t": "Aparatos asociados"
+    },
+    {
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "m"
+    },
+    {
+     "t": "Encapsulado"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "ma"
+    },
+    {
+     "t": "Encapsulado"
+    },
+    {
+     "t": "0"
+    }
+   ],
+   [
+    {
+     "t": "mb"
+    },
+    {
+     "t": "Encapsulado"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "nA"
+    },
+    {
+     "t": "Equipos que no producen chispas"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "nAc"
+    },
+    {
+     "t": "Equipos que no producen chispas"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "nC"
+    },
+    {
+     "t": "Equipos que producen chispa en los cuales los contactos están protegidos adecuadamente, por otra técnica que no sean las envolventes con respiración restringida"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "nCc"
+    },
+    {
+     "t": "Equipos que producen chispa en los cuales los contactos están protegidos adecuadamente, por otra técnica que no sean las envolventes con respiración restringida"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "nR"
+    },
+    {
+     "t": "Envolventes con respiración restringida",
+     "rs": 2
+    },
+    {
+     "t": "2",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "nRc"
+    }
+   ],
+   [
+    {
+     "t": "O"
+    },
+    {
+     "t": "Inmersión en aceite"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "ob"
+    },
+    {
+     "t": "Inmersión en aceite"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "px"
+    },
+    {
+     "t": "Presurización"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "pxb"
+    },
+    {
+     "t": "Presurización"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "py"
+    },
+    {
+     "t": "Presurización"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "pyb"
+    },
+    {
+     "t": "Presurización"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "pz"
+    },
+    {
+     "t": "Presurización"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "pzc"
+    },
+    {
+     "t": "Presurización"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "q"
+    },
+    {
+     "t": "Relleno con polvo"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "qb"
+    },
+    {
+     "t": "Relleno con polvo"
+    },
+    {
+     "t": "1"
+    }
+   ]
+  ],
+  "notes": [
+   "* No se considera el uso cuando se utiliza una combinación de técnicas.",
+   "** Se permitirá instalar aparatos asociados en un lugar peligroso (clasificado) si están protegidos adecuadamente usando otro tipo de protección."
+  ]
+ },
+ "505-9(d)(1)": {
+  "verificada": "2026-08-12",
+  "header_rows": 1
+ },
+ "506-9(c)(2)(3)": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Designación"
+    },
+    {
+     "t": "Técnica"
+    },
+    {
+     "t": "Zona *"
+    }
+   ],
+   [
+    {
+     "t": "iaD"
+    },
+    {
+     "t": "Protección mediante seguridad intrínseca"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "ia"
+    },
+    {
+     "t": "Protección mediante seguridad intrínseca"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "ibD"
+    },
+    {
+     "t": "Protección mediante seguridad intrínseca"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "ib"
+    },
+    {
+     "t": "Protección mediante seguridad intrínseca"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "[iaD]"
+    },
+    {
+     "t": "Aparatos asociados"
+    },
+    {
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "[ia]"
+    },
+    {
+     "t": "Aparatos asociados"
+    },
+    {
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "[ibD]"
+    },
+    {
+     "t": "Aparatos asociados"
+    },
+    {
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "[ib]"
+    },
+    {
+     "t": "Aparatos asociados"
+    },
+    {
+     "t": "No clasificados**"
+    }
+   ],
+   [
+    {
+     "t": "maD"
+    },
+    {
+     "t": "Protección mediante encapsulación"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "ma"
+    },
+    {
+     "t": "Protección mediante encapsulación"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "mbD"
+    },
+    {
+     "t": "Protección mediante encapsulación"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "mb"
+    },
+    {
+     "t": "Protección mediante encapsulación"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "pD"
+    },
+    {
+     "t": "Protección mediante presurización"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "p"
+    },
+    {
+     "t": "Protección mediante presurización"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "pb"
+    },
+    {
+     "t": "Protección mediante presurización"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "tD"
+    },
+    {
+     "t": "Protección mediante envolventes"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "ta"
+    },
+    {
+     "t": "Protección mediante envolventes"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "tb"
+    },
+    {
+     "t": "Protección mediante envolventes"
+    },
+    {
+     "t": "21"
+    }
+   ],
+   [
+    {
+     "t": "tc"
+    },
+    {
+     "t": "Protección mediante envolventes"
+    },
+    {
+     "t": "22"
+    }
+   ]
+  ],
+  "notes": [
+   "* No se considera el uso cuando se utiliza una combinación de técnicas.",
+   "** Se permite instalar aparatos asociados en un lugar peligroso (clasificado) si está protegido adecuadamente usando otro tipo de protección."
+  ]
+ },
+ "514-3(b)(1)": {
+  "verificada": "2026-08-12",
+  "cols": 4,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Area"
+    },
+    {
+     "t": "División Grupo D"
+    },
+    {
+     "t": "Zona Grupo IIA"
+    },
+    {
+     "t": "Extensión del área peligrosa (clasificada)1"
+    }
+   ],
+   [
+    {
+     "t": "Surtidores (dispensarios) (excepto del tipo elevado)2"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Bajo el contenedor del surtidor (dispensario)"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el espacio dentro y bajo el la fosa del surtidor o el contenedor."
+    }
+   ],
+   [
+    {
+     "t": "Dispensario"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Alrededor de 45.00 centímetros de la envolvente del dispensario o la parte de la envolvente del contenedor del dispensario que contiene componentes para manejo de líquidos que se extiende horizontalmente en todas direcciones y hacia abajo a nivel de piso."
+    }
+   ],
+   [
+    {
+     "t": "Exterior"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 45.00 centímetros sobre el nivel de piso, que se extiende 6.00 metros horizontalmente en todas las direcciones desde la envolvente del dispensario"
+    }
+   ],
+   [
+    {
+     "t": "Interior"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Con ventilación mecánica"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 45.00 centímetros sobre el nivel de piso, que se extiende 6.00 metros horizontalmente en todas las direcciones de la envolvente del dispensario."
+    }
+   ],
+   [
+    {
+     "t": "Con ventilación natural"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "Hasta 45.00 centímetros sobre el nivel de piso, que se extiende 7.50 metros horizontalmente en todas las direcciones de la envolvente del dispensario"
+    }
+   ],
+   [
+    {
+     "t": "Surtidores (dispensarios) - Tipo elevado"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Espacio dentro de la envolvente del dispensario y todo el equipo eléctrico integral con la manguera del dispensario o la pistola de despacho."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 45.00 centímetros de la envolvente del dispensario, que se extiende horizontalmente en todas las direcciones y hacia abajo a nivel de piso."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 45.00 centímetros sobre el nivel del piso, que se extiende 6.00 metros horizontalmente en todas las direcciones desde un punto verticalmente por debajo del exterior de la envolvente del dispensario."
+    }
+   ],
+   [
+    {
+     "t": "Bombas remotas"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Exteriores"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el espacio dentro de una fosa o caja debajo del nivel de piso, cualquier parte de la cual esté a menos de 3 metros horizontalmente desde cualquier punto exterior de la bomba."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 1.00 metro de cualquier borde de la bomba, que se extiende horizontalmente en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 45.00 centímetros sobre el nivel de piso, que se extiende 3.00 metros horizontalmente en todas las direcciones desde cualquier punto exterior de la bomba."
+    }
+   ],
+   [
+    {
+     "t": "Interiores"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el espacio dentro de una fosa."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 1.50 metros de cualquier punto exterior de la bomba, que se extiende en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 1.00 metro sobre el nivel de piso, que se extiende 7.50 metros horizontalmente en todas las direcciones desde cualquier punto exterior de la bomba."
+    }
+   ],
+   [
+    {
+     "t": "Tiendas, bodegas, baños incluyendo estructuras (tales como las módulos de servicio) sobre o adyacentes a los surtidores (dispensarios).",
+     "rs": 3
+    },
+    {
+     "t": "No clasificada"
+    },
+    {
+     "t": "No clasificada"
+    },
+    {
+     "t": "Excepto como se indica a continuación"
+    }
+   ],
+   [
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el volumen, si hay alguna abertura en el cuarto dentro la extensión de una área División 1 o Zona 1."
+    }
+   ],
+   [
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Todo el volumen, si hay alguna abertura en el cuarto dentro la extensión de una área División 2 o Zona 2."
+    }
+   ],
+   [
+    {
+     "t": "Tanque sobre piso"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "En el interior del tanque"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Todo el volumen interior"
+    }
+   ],
+   [
+    {
+     "t": "Carcasa, terminales, techo, área de dique",
+     "rs": 2
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el espacio dentro del dique, donde la altura del dique supere la distancia del tanque a la pared interior del dique por más del 50 por ciento de la circunferencia del tanque."
+    }
+   ],
+   [
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Todo el espacio dentro del dique, donde la altura del dique no supere la distancia de la pared del tanque al interior de la pared del dique por más del 50 por ciento de la circunferencia del tanque."
+    }
+   ],
+   [
+    {
+     "t": "Venteo"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 3.00 metros de la carcasa, terminales o techo del tanque"
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Dentro de 1.50 metros de extremo abierto de venteo, que se extiende en todas las direcciones"
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Entre 1.50 y 3.00 metros desde el extremo abierto de venteo, que se extiende en todas las direcciones"
+    }
+   ],
+   [
+    {
+     "t": "Tanque subterráneo"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "En el interior del tanque"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Todo el volumen interior"
+    }
+   ],
+   [
+    {
+     "t": "Boquillas de llenado"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el espacio dentro de una fosa o una caja debajo del nivel de piso, cualquier parte que esté dentro de una área peligrosa (clasificada) División 1 o División 2 o dentro de una área peligrosa (clasificada) Zona 1 o Zona 2."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 45.00 centímetros por encima del nivel de piso, que se extiende 1.50 metros horizontalmente en todas las direcciones desde cualquier conexión hermética de llenado y se extiende 3 metros horizontalmente en todas las direcciones desde cualquier conexión enroscada de llenado."
+    }
+   ],
+   [
+    {
+     "t": "Venteo"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Dentro de 1.50 metros desde el extremo abierto de venteo, que se extiende en todas las direcciones"
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Entre 1.50 y 3.00 metros desde el extremo abierto de venteo, que se extiende en todas las direcciones"
+    }
+   ],
+   [
+    {
+     "t": "Sistema de procesamiento de vapor"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Fosas"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el espacio dentro de una fosa o una caja debajo del nivel de piso, cualquier parte de la cual: (1) se encuentra dentro de una área peligrosa (clasificada) División 1 o División 2, (2) se encuentra dentro de una área peligrosa (clasificada) Zona 1 o Zona 2; (3) aloja cualquier equipo utilizado para transferir o procesar vapores."
+    }
+   ],
+   [
+    {
+     "t": "Equipos con envolventes de protección"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Todo el espacio dentro de la envolvente."
+    }
+   ],
+   [
+    {
+     "t": "Equipo sin envolventes de protección"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 45.00 centímetros de equipos que contengan gases o líquidos inflamables, que se extiende horizontalmente en todas las direcciones y hacia abajo a nivel de piso."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 45.00 centímetros sobre el nivel del piso a menos de 3.00 metros horizontalmente de los equipos de procesamiento de vapor"
+    }
+   ],
+   [
+    {
+     "t": "- Envolventes de equipos"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el espacio dentro de la envolvente, si hay vapor o líquido inflamable en condiciones normales de operación."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Todo el espacio dentro de la envolvente, si no hay vapor o líquido inflamable en condiciones normales de operación."
+    }
+   ],
+   [
+    {
+     "t": "- Extracción por vacío"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 45.00 centímetros del ventilador, que se extiende horizontalmente en todas las direcciones y hacia abajo a nivel de piso."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 45.00 centímetros por encima del nivel de piso, que se extiende 3.00 metros horizontalmente en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": "Bóveda"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Espacio interior completo, si líquidos Clase I están almacenados dentro."
+    }
+   ]
+  ],
+  "notes": [
+   "1 Para las aplicaciones marítimas, nivel del suelo significa la superficie de un muelle que se encuentra arriba del agua.",
+   "2 Ver Figura 514-3."
+  ]
+ },
+ "515-3": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Lugar"
+    },
+    {
+     "t": "NOM Clase I, División"
+    },
+    {
+     "t": "Zona"
+    },
+    {
+     "t": "Extensión del área clasificada"
+    }
+   ],
+   [
+    {
+     "t": "Equipo interior cuando puedan existir mezclas inflamables de aire - vapor bajo funcionamiento normal."
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "La totalidad del área asociada con dicho equipo cuando hay gases o vapores inflamables continuamente o por largos periodos de tiempo."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Area dentro de 1.50 metros de cualquier borde de tal equipo, que se extiende en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area entre 1.5 y 2.5 metros de cualquier borde de tal equipo, que se extiende en todas las direcciones; también el espacio hasta 90 centímetros por encima del piso o el nivel del suelo desde 1.50 hasta 7.50 metros horizontalmente desde cualquier borde del equipo.1"
+    }
+   ],
+   [
+    {
+     "t": "Equipo exterior cuando pueda haber mezclas inflamables de aire - vapor bajo funcionamiento normal."
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "La totalidad del área asociada con dicho equipo cuando hay gases o vapores inflamables continuamente o por largos periodos de tiempo."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Area dentro 90 centímetros de cualquier borde de tal equipo, que se extiende en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area entre 90 centímetros y 2.50 metros de cualquier borde de tal equipo, que se extiende en todas las direcciones; también el espacio hasta 90 centímetros por encima del piso o el nivel del suelo desde 90 centímetros hasta 3.00 metros horizontalmente desde cualquier borde del equipo"
+    }
+   ],
+   [
+    {
+     "t": "Instalaciones de tanques de almacenamiento dentro de edificios"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todo el equipo localizado debajo del nivel del suelo."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Cualquier equipo localizado en o por encima del suelo ."
+    }
+   ],
+   [
+    {
+     "t": "Tanque - sobre el suelo"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Interior del techo fijo del tanque."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Area dentro del dique, en donde la altura del dique es mayor que la distancia desde el tanque hasta el dique por más del 50 por ciento de la circunferencia del tanque."
+    }
+   ],
+   [
+    {
+     "t": "Casco, extremos o techo del tanque y área del dique"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 3.00 metros desde el casco del tanque, los extremos o el techo del tanque. También el área dentro del dique hasta el nivel superior de la pared del dique."
+    }
+   ],
+   [
+    {
+     "t": "Ventilación"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Area dentro de la abertura o tubería de ventilación."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Area dentro de 1.50 metros del extremo abierto de la ventilación, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area entre 1.50 y 3.00 metros desde el extremo abierto de ventilación, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": "Techo flotante con techo exterior fijo"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Area entre las secciones del techo flotante y el techo fijo y dentro del casco del tanque."
+    }
+   ],
+   [
+    {
+     "t": "Techo flotante sin techo exterior fijo"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Area por encima del techo flotante y dentro del casco del tanque."
+    }
+   ],
+   [
+    {
+     "t": "Abertura para llenado del tanque subterráneo"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Cualquier foso o espacio bajo el nivel del suelo, si cualquier parte está dentro de un lugar clasificado como División 1 o 2 o Zona 1 o 2."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 45 centímetros sobre el nivel del suelo, dentro de un radio horizontal de 3.00 metros desde cualquier conexión de llenado floja y dentro de un radio horizontal de 1.50 metros desde una conexión de llenado apretada."
+    }
+   ],
+   [
+    {
+     "t": "Ventilación - Descargando hacia arriba"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Area interior de la abertura o tubería de ventilación."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Hasta 90 centímetros del extremo abierto de ventilación, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area entre 90 centímetros y 1.50 metros del extremo abierto de ventilación, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": "Llenado de tambores de 200 litros y contenedores – en exteriores o interiores"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Area dentro del tambor o contenedor."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Dentro de 90 centímetros de las aberturas de ventilación y llenado, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area entre 90 centímetros y 1.50 metros desde la abertura de ventilación o llenado, extendiéndose en todas las direcciones. Además, hasta 45 centímetros sobre el piso o el nivel del suelo dentro de un radio horizontal de 3.00 metros desde las aberturas de ventilación o llenado."
+    }
+   ],
+   [
+    {
+     "t": "Bombas, purgadores, accesorios de vaciado,"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "En el interior"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 1.50 metros de cualquier borde de estos dispositivos, extendiéndose en todas las direcciones. Además, hasta 90 centímetros sobre el nivel del piso o suelo, y dentro de 7.50 metros horizontalmente desde cualquier borde de tales dispositivos."
+    }
+   ],
+   [
+    {
+     "t": "En el exterior"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Dentro de 90 centímetros de cualquier borde de estos dispositivos, extendiéndose en todas las direcciones. Además hasta 45 centímetros sobre el nivel del suelo y dentro de 3.00 metros horizontalmente desde cualquier borde de tales dispositivos."
+    }
+   ],
+   [
+    {
+     "t": "Fosos y sumideros"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Sin ventilación mecánica"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Toda el área dentro del foso o sumidero si cualquier parte está dentro de un lugar clasificado como División 1 o 2, o Zona 1 o 2."
+    }
+   ],
+   [
+    {
+     "t": "Con ventilación mecánica adecuada"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Toda el área dentro del foso o sumidero si cualquier parte está dentro de un lugar clasificado como División 1 o 2, o Zona 1 o 2."
+    }
+   ],
+   [
+    {
+     "t": "Que contengan válvulas, accesorios o tuberías y no estén dentro de un lugar clasificado de la División 1 o 2, o Zona 1 o 2."
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Todo el foso o sumidero."
+    }
+   ],
+   [
+    {
+     "t": "Zanjas de drenaje, separadores, fosa de contención."
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "En el exterior"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area hasta 45 centímetros sobre la zanja, separador o fosa. Además, área hasta 45 centímetros sobre el nivel del suelo, y hasta 4.50 metros horizontalmente desde cualquier borde."
+    }
+   ],
+   [
+    {
+     "t": "En el interior"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "Misma clasificación que para los fosos."
+    }
+   ],
+   [
+    {
+     "t": "Carga de camiones cisterna y vagones cisterna2 por el domo abierto."
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Area dentro del tanque"
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Hasta 90 centímetros del borde del domo, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area entre 90 centímetros y 4.50 metros desde el borde del domo, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": "Carga a través de conexiones en el fondo del tanque con ventilación atmosférica"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "Area dentro del tanque"
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Hasta 90 centímetros del punto de ventilación a la atmósfera, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area entre 90 centímetros y 4.50 metros desde el punto de ventilación a la atmósfera, extendiéndose en todas las direcciones. Además, hasta 45 centímetros sobre el suelo dentro de un radio horizontal de 3.00 metros desde el punto de conexión de carga."
+    }
+   ],
+   [
+    {
+     "t": "Oficinas y cuartos de baño"
+    },
+    {
+     "t": "No clasificado",
+     "cs": 2
+    },
+    {
+     "t": "Si en estos cuartos hay alguna abertura dentro de la extensión de un lugar interior clasificado, el cuarto se debe clasificar lo mismo que si la pared, reborde o tabique no existieran."
+    }
+   ],
+   [
+    {
+     "t": "Carga a través de domo cerrado con ventilación atmosférica"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Hasta 90 centímetros del extremo abierto de ventilación, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area entre 90 centímetros y 4.50 metros desde el extremo abierto de ventilación, extendiéndose en todas las direcciones. Además hasta 90 centímetros del borde del domo extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": "Carga a través de domo cerrado con control de vapores"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 90 centímetros del punto de conexión de las líneas tanto de llenado como de vapor, extendiéndose en todas las direcciones."
+    }
+   ],
+   [
+    {
+     "t": "Carga por el fondo del tanque con control de vapor y cualquier descarga por el fondo del tanque."
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Hasta 90 centímetros del punto de conexión, extendiéndose en todas las direcciones. Además, hasta 45 centímetros sobre el suelo dentro de un radio horizontal de 3.00 metros desde el punto de conexión."
+    }
+   ],
+   [
+    {
+     "t": "Almacenamiento y taller de reparación de camiones cisterna"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "Todos los fosos o espacios bajo el nivel del piso."
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Area de hasta 45 centímetros sobre el nivel del piso o del suelo en todo el garaje de almacenamiento o taller."
+    }
+   ],
+   [
+    {
+     "t": "Garajes para vehículos diferentes de camiones cisterna"
+    },
+    {
+     "t": "No clasificado",
+     "cs": 2
+    },
+    {
+     "t": "Si en estos cuartos hay alguna abertura dentro de la extensión de un lugar exterior clasificado, todo el cuarto se debe clasificar igual que la clasificación del área en el punto de la abertura."
+    }
+   ],
+   [
+    {
+     "t": "Almacenaje exterior de barriles"
+    },
+    {
+     "t": "Clasificado",
+     "cs": 2
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Recintos internos o casilleros de almacenamiento usados para el almacenamiento de líquidos de Clase I"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "Todo el recinto."
+    }
+   ],
+   [
+    {
+     "t": "Almacenamiento interior cuando no hay transferencia de líquidos inflamables"
+    },
+    {
+     "t": "No clasificado",
+     "cs": 2
+    },
+    {
+     "t": "Si hay cualquier abertura hacia estos cuartos dentro de la extensión de un lugar interior clasificado, el cuarto se debe clasificar lo mismo que sí la pared, reborde o tabique no existieran."
+    }
+   ],
+   [
+    {
+     "t": "Muelles y embarcaderos"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "Ver la Figura 515-3."
+    }
+   ]
+  ],
+  "notes": [
+   "1 La liberación de líquidos de Clase I puede generar vapores hasta el punto en que todo el edificio, y posiblemente la zona que la rodea, deban considerarse lugares Clase I, División 2 o Zona 2.",
+   "2 Al clasificar la extensión del área, se debe tener en cuenta el hecho de que los vagones y camiones cisterna pueden tener distintas posiciones. Por tanto, se deben usar los extremos de las posiciones de carga o descarga."
+  ]
+ },
+ "520-44": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "*La ampacidad indicada es la de los cordones y multiconductores donde únicamente tres conductores de cobre son portadores de corriente tal como se describe en 400-5. Si la cantidad de conductores portadores de corriente en un cordón o cable excede de tres, y el factor de diversidad de carga es de un mínimo de 50 por ciento, la ampacidad de cada conductor debe reducirse como se muestra en la siguiente tabla:",
+   "Temperatura final del aislamiento. En ningún caso los conductores deben asociarse entre sí con respecto a la clase de circuito, al método de alambrado utilizado, o al número de conductores, de tal forma que el límite de temperatura de los conductores sea rebasado.",
+   "Un conductor de neutro que porta solamente la corriente de desbalanceo de otros conductores del mismo circuito, no necesita considerarse como un conductor portador de corriente.",
+   "En un circuito de tres conductores que conste de dos conductores de fase y el neutro de un sistema de 3 fases, 4 hilos conectado en estrella, el conductor del neutro porta aproximadamente la misma corriente que los otros conductores con corrientes de línea a neutro, y debe considerarse como un conductor portador de corriente.",
+   "En un circuito de 3 fases, 4 hilos conectado en estrella, en donde la mayor parte de la carga son cargas no lineales, hay corrientes armónicas presentes en el conductor del neutro, y por lo tanto el neutro debe considerarse como un conductor portador de corriente."
+  ],
+  "regions": [
+   {
+    "page": 454,
+    "y0": 24.24560546875,
+    "y1": 405.0,
+    "id": "520-44",
+    "article": 520
+   }
+  ]
+ },
+ "522-22": {
+  "verificada": "2026-08-12",
+  "title": "Ampacidad del conductor basada en conductores de cobre con aislamiento para 60 °C y 75 °C en una temperatura ambiente de 30 °C",
+  "rows": [
+   [
+    {
+     "t": "Tamaño del conductor (AWG)",
+     "rs": 2
+    },
+    {
+     "t": "Ampacidad",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "60 °C"
+    },
+    {
+     "t": "75 °C"
+    }
+   ],
+   [
+    {
+     "t": "30"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "0.5"
+    }
+   ],
+   [
+    {
+     "t": "28"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "0.8"
+    }
+   ],
+   [
+    {
+     "t": "26"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1"
+    }
+   ],
+   [
+    {
+     "t": "24"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "2"
+    }
+   ],
+   [
+    {
+     "t": "22"
+    },
+    {
+     "t": "3"
+    },
+    {
+     "t": "3"
+    }
+   ],
+   [
+    {
+     "t": "20"
+    },
+    {
+     "t": "5"
+    },
+    {
+     "t": "5"
+    }
+   ],
+   [
+    {
+     "t": "18"
+    },
+    {
+     "t": "7"
+    },
+    {
+     "t": "7"
+    }
+   ],
+   [
+    {
+     "t": "16"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "10"
+    }
+   ]
+  ],
+  "notes": [
+   "1. Para temperaturas ambiente diferentes de 30 °C, se utilizan los factores de corrección de temperatura de la Tabla 310-15(b)(16).",
+   "2. Los ajustes de la ampacidad para conductores con aislamiento para 90 °C o más se deben basar en las ampacidades en la columna de 75 °C."
+  ]
  }
 }

@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**171 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**181 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (49)
+## 4 · Sin señales (39)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `504-10(b)` | Evaluación para la clasificación T4 de acuerdo con el tamaño y la temp… | 381 | 1 | 1.00 | — | dibujada | 4×2 |
-| [ ] | `505-7(d)` | Distancia mínima de las obstrucciones desde aberturas bridadas a prueb… | 387 | 1 | 1.00 | — | dibujada | 5×2 |
-| [ ] | `505-9(c)(1)(2)` | Grupos de clasificación de gas | 388 | 2 | 1.00 | — | dibujada | 2×2 |
-| [ ] | `505-9(c)(2)(4)` | Designación de tipos de protección | 389, 390 | 3 | 0.88 | — | dibujada | 19×3 |
-| [ ] | `505-9(d)(1)` | Clasificación de la temperatura superficial máxima para equipos eléctr… | 390 | 2 | 1.00 | — | dibujada | 7×2 |
-| [ ] | `506-9(c)(2)(3)` | Designación de tipos de protección | 401 | 1 | 0.85 | — | **huecos** | 9×3 |
-| [ ] | `514-3(b)(1)` | Areas peligrosas (clasificadas) Clase I: Estaciones de servicio y gaso… | 410, 411, 412 | 3 | 0.90 | — | **huecos** | 45×4 |
-| [ ] | `515-3` | Clasificación eléctrica de las áreas | 414, 415, 416, 417 | 2 | 0.90 | — | dibujada | 55×4 |
-| [ ] | `520-44` | Ampacidad permitida para cordones de uso extra rudo aprobados con una… | 454 | 4 | 0.94 | — | dibujada | 14×5 |
-| [ ] | `522-22` | Ampacidad del conductor basada en conductores de cobre con aislamiento… | 460 | 2 | 1.00 | — | dibujada | 10×3 |
 | [ ] | `552-10(e)(1)` | Protección contra sobrecorriente para baja tensión | 496 | 0 | 1.00 | — | **huecos** | 6×4 |
 | [ ] | `555-12` | Factores de demanda | 507 | 3 | 1.00 | — | dibujada | 9×2 |
 | [ ] | `610-14(a)` | Ampacidades para conductores de cobre aislados basados en una temperat… | 522, 523 | 3 | 1.00 | — | dibujada | 39×8 |
