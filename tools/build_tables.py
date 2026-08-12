@@ -884,6 +884,38 @@ def find_captions(doc):
 CAMPOS_REVISABLES = ('title', 'cols', 'header_rows', 'intro', 'rows', 'notes',
                      'informativa', 'regions')
 
+# Y alguna tabla no está ahí abajo en absoluto. La norma imprime unas cuantas
+# sin «Tabla N» delante —la del inciso 922-17(c), con los cuatro tramos de
+# claro y su separación— y el detector de títulos no puede verlas: no hay
+# título que detectar. Se quedaban como texto corrido dentro del inciso
+# («Longitud del claro (m) Separación (cm) Hasta 45 10 Más de 45 a 60 15…»).
+# Estas se dan de alta aquí, y por eso tienen que traer entero lo que a las
+# demás les pone la reconstrucción.
+CAMPOS_ALTA = ('article', 'pages', 'cols', 'header_rows', 'rows', 'regions')
+
+
+def tabla_nueva(tid, rev):
+    """Tabla que no salió de la reconstrucción: viene entera del JSON."""
+    return {
+        'id': tid,
+        'title': rev.get('title'),
+        # Sin número propio no se puede citar, y el sitio no debe inventarle
+        # uno: lo que lleva por identificador es el inciso donde está impresa.
+        'sin_numero': True,
+        'informativa': rev.get('informativa', False),
+        'article': rev['article'],
+        'pages': rev['pages'],
+        'page': rev['pages'][0],
+        'cols': rev['cols'],
+        'header_rows': rev['header_rows'],
+        'intro': rev.get('intro', ''),
+        'rows': rev['rows'],
+        'grid': 'dibujada',
+        'notes': rev.get('notes', []),
+        'quality': 1.0,
+        'regions': rev['regions'],
+    }
+
 
 def apply_revisiones(tables, path):
     """Aplica data/tablas_revisadas.json sobre las tablas reconstruidas."""
@@ -896,8 +928,15 @@ def apply_revisiones(tables, path):
     for tid, rev in revs.items():
         t = porid.get(tid)
         if t is None:
-            raise SystemExit(
-                'tablas_revisadas.json: la tabla %r no existe en el PDF' % tid)
+            faltan = [k for k in CAMPOS_ALTA if k not in rev]
+            if faltan:
+                raise SystemExit(
+                    'tablas_revisadas.json: la tabla %r no existe en el PDF; '
+                    'para darla de alta le faltan %s'
+                    % (tid, ', '.join(faltan)))
+            t = tabla_nueva(tid, rev)
+            tables.append(t)
+            porid[tid] = t
         for k in CAMPOS_REVISABLES:
             if k in rev:
                 t[k] = rev[k]
@@ -1173,6 +1212,9 @@ def main():
         })
 
     revisadas = apply_revisiones(tables, os.path.join(out, 'tablas_revisadas.json'))
+    # Las dadas de alta a mano se añaden al final; el orden del archivo es el
+    # del documento y de él salen los listados del sitio.
+    tables.sort(key=lambda t: (t['regions'][0]['page'], t['regions'][0]['y0']))
 
     json.dump(tables, open(os.path.join(out, 'tablas.json'), 'w'),
               ensure_ascii=False, indent=1)

@@ -19,6 +19,7 @@
   --bg-soft: #f2efea;
   --panel: #ffffff;
   --border: #e0dbd2;
+  --rejilla: #bdb4a5;
   --border-soft: #ece8e1;
   --text: #23201c;
   --text-dim: #6a6359;
@@ -44,6 +45,7 @@
   --bg-soft: #ece4d3;
   --panel: #fbf7ee;
   --border: #d9cdb6;
+  --rejilla: #bcab8b;
   --border-soft: #e5dcc9;
   --text: #3b3428;
   --text-dim: #6d6353;
@@ -64,6 +66,7 @@
   --bg-soft: #eaeef2;
   --panel: #ffffff;
   --border: #d0d9e0;
+  --rejilla: #a8b8c4;
   --border-soft: #e3e9ee;
   --text: #1a2126;
   --text-dim: #566670;
@@ -81,6 +84,7 @@
   --bg-soft: #232427;
   --panel: #1f2023;
   --border: #35373b;
+  --rejilla: #4e5158;
   --border-soft: #2a2c2f;
   --text: #dfe1e4;
   --text-dim: #a2a6ac;
@@ -98,6 +102,7 @@
   --bg-soft: #151618;
   --panel: #121314;
   --border: #26282b;
+  --rejilla: #3c4045;
   --border-soft: #1c1e20;
   --text: #ccd0d4;
   --text-dim: #8d9298;
@@ -115,6 +120,7 @@
   --bg-soft: #1f1e1b;
   --panel: #1c1b18;
   --border: #34322d;
+  --rejilla: #4c4941;
   --border-soft: #292824;
   --text: #e8e4dd;
   --text-dim: #a8a196;
@@ -133,6 +139,7 @@
     --bg-soft: #232427;
     --panel: #1f2023;
     --border: #35373b;
+    --rejilla: #4e5158;
     --border-soft: #2a2c2f;
     --text: #dfe1e4;
     --text-dim: #a2a6ac;
@@ -343,42 +350,58 @@ figure.tabla .tid {
 }
 figure.tabla:hover .anchor { opacity: 1; }
 
+/* La caja se ciñe a lo que mida la tabla y se centra en la columna. Con el
+   marco a todo lo ancho, la tabla del 922-17(c) —dos columnas— quedaba
+   flotando en medio de un recuadro vacío. */
+.tabla-caja { width: fit-content; max-width: 100%; margin: 0 auto; }
+
 /* La tabla desborda dentro de SU contenedor, nunca la página: en la norma hay
    tablas de 14 columnas que en un teléfono no caben de ninguna forma. */
 .tabla-scroll {
   overflow-x: auto;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--rejilla);
   border-radius: var(--radius);
   background: var(--panel);
   -webkit-overflow-scrolling: touch;
 }
-.tabla-scroll table { border-collapse: collapse; width: 100%; font-size: 0.84rem; }
+/* Ancho por contenido, no por contenedor. Estirar una tabla de tres columnas
+   a todo lo ancho separa el rótulo de su dato con un vacío que hay que cruzar
+   con la vista; midiendo por contenido, cada columna ocupa lo que ocupa y la
+   fila se lee de un tirón. Las anchas siguen desbordando en su propio
+   contenedor, que para eso está el scroll. */
+.tabla-scroll table {
+  border-collapse: collapse;
+  width: auto; max-width: 100%; margin: 0 auto;
+  font-size: 0.84rem;
+}
+/* Todo centrado, como en el PDF del DOF: son tablas de valores, y un número
+   centrado bajo su encabezado centrado se lee en vertical sin perder la
+   columna. Es además lo que hace que una celda fusionada se vea repartida
+   sobre las columnas que cubre. */
 .tabla-scroll th, .tabla-scroll td {
-  border: 1px solid var(--border-soft);
-  padding: 0.32rem 0.5rem; text-align: left; vertical-align: top;
+  border: 1px solid var(--rejilla);
+  padding: 0.34rem 0.6rem; text-align: center; vertical-align: middle;
   white-space: nowrap;
 }
 .tabla-scroll thead th {
   background: var(--bg-soft); font-weight: 650;
-  white-space: normal; min-width: 5rem;
+  white-space: normal;
 }
-/* Un encabezado que abarca varias columnas se centra sobre ellas: así se ve
-   de un vistazo qué columnas cuelgan de él, que es justo para lo que el PDF
-   fusiona esas celdas. */
-.tabla-scroll thead th[colspan] { text-align: center; }
-.tabla-scroll th[rowspan], .tabla-scroll td[rowspan] { vertical-align: middle; }
+/* Los textos largos —«Tres de algodón, uno exterior retardante de la flama»—
+   no caben en una línea a ningún ancho razonable, así que estos sí envuelven,
+   con un tope para que no se estiren hasta ocupar media pantalla. */
+.tabla-scroll td.larga { white-space: normal; min-width: 11rem; max-width: 24rem; }
 
 /* La frase que en el PDF va fusionada a todo lo ancho, encima del encabezado.
    Se presenta pegada a la tabla para que se lea como parte de ella. */
 .tabla-intro {
-  margin: 0; padding: 0.5rem 0.7rem;
+  margin: 0; padding: 0.5rem 0.7rem; max-width: 44rem;
   font-size: 0.82rem; color: var(--text-dim);
   background: var(--bg-soft);
-  border: 1px solid var(--border-soft); border-bottom: 0;
+  border: 1px solid var(--rejilla); border-bottom: 0;
   border-radius: var(--radius) var(--radius) 0 0;
 }
 .tabla-intro + .tabla-scroll { border-top-left-radius: 0; border-top-right-radius: 0; }
-.tabla-scroll tbody tr:nth-child(even) { background: var(--bg-soft); }
 .tabla-scroll tbody tr:hover { background: var(--accent-soft); }
 
 .tabla-aviso {
