@@ -22946,61 +22946,8 @@
        "kind": "alpha",
        "level": 1,
        "text": "Cuando una canalización entra desde un sistema subterráneo, el extremo que se encuentra dentro del edificio se debe sellar con un compuesto identificado, con el fin de impedir la entrada de humedad o gases, o se debe colocar de manera que se impida el contacto de la humedad con las partes vivas.",
-       "children": [
-        {
-         "id": "300-50(f)(a)",
-         "label": "a",
-         "kind": "alpha",
-         "level": 2,
-         "text": "Profundidad mínima se define como la distancia más corta, en milímetros, medida entre un punto en la superficie superior de cualquier conductor, cable, tubo conduit u otra canalización enterrada directamente, y la superficie superior del nivel terminado del terreno, concreto u otra cubierta similar.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "300-50(f)(b)",
-         "label": "b",
-         "kind": "alpha",
-         "level": 2,
-         "text": "Todos los otros sistemas no metálicos requerirán 5 centímetros de concreto o su equivalente sobre el conduit, adicional a la profundidad que se indica en la tabla.",
-         "children": [],
-         "notes": [],
-         "exceptions": [],
-         "title": "Aprobado para uso directamente enterrado sin revestimiento"
-        },
-        {
-         "id": "300-50(f)(c)",
-         "label": "c",
-         "kind": "alpha",
-         "level": 2,
-         "text": "La losa debe sobresalir de la instalación subterránea un mínimo de 15 centímetros, y se debe colocar una cinta de advertencia u otro medio eficaz y adecuado para las condiciones, sobre la instalación subterránea.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "300-50(f)(d)",
-         "label": "d",
-         "kind": "alpha",
-         "level": 2,
-         "text": "La ubicación de cables subterráneos enterrados directamente que no están encerrados ni protegidos con concreto y están enterrados a 75 centímetros o más por debajo del suelo, se debe identificar con una cinta de advertencia que se coloca en la zanja por lo menos a 30 centímetros por encima de los cables.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        }
-       ],
-       "notes": [
-        {
-         "label": "NOTAS GENERALES",
-         "text": "1. Se permitirán profundidades menores cuando se exige altura de los conductores o cables para las terminaciones o los empalmes o cuando se necesita tener acceso. 2. Cuando la roca sólida evita el cumplimento con las especificaciones de profundidad de la cubierta de esta tabla, el alambrado se debe instalar en una canalización metálica o no metálica directamente enterrada. La canalización debe estar cubierta con un mínimo de 5 centímetros de concreto que se extienda hasta la roca. 3. En establecimientos industriales, cuando las condiciones de mantenimiento y supervisión garantizan que personas calificadas atenderán la instalación, se permitirá que los requisitos mínimos de profundidad de la cubierta, para conductos diferentes del tubo conduit metálico pesado y el tubo conduit metálico semipesado, se reduzcan 15 centímetros por cada 5 centímetros de concreto o equivalente, colocado totalmente dentro de la zanja por encima de la instalación subterránea.",
-         "seq": 52
-        },
-        {
-         "label": "NOTAS ESPECIFICAS",
-         "text": "",
-         "seq": 53
-        }
-       ],
+       "children": [],
+       "notes": [],
        "exceptions": [],
        "title": "Sello de la canalización",
        "tables": [
@@ -23697,7 +23644,7 @@
            "label": "a",
            "kind": "alpha",
            "level": 3,
-           "text": "Cuando el número de conductores portadores de corriente en una canalización o cable es mayor de tres, o cuando los conductores individuales o cables multiconductores se instalan sin conservar su separación en una longitud continua mayor de 60 centímetros y no están instalados en canalizaciones, la ampacidad permisible de cada conductor se debe reducir como se ilustra en la Tabla 310-15(b)(3)(a). Cada conductor portador de corriente de un grupo de conductores en paralelo se debe contar como un conductor portador de corriente. Cuando conductores de sistemas diferentes, como se establece en 300-3, están instalados en una canalización o cable común, los factores de ajuste mostrados en la Tabla 310-15(B(3))(a) se deben aplicar únicamente a los conductores de fuerza y alumbrado (Artículos 210, 215, 220 y 230). ¹Es el número total de conductores en la canalización o cable ajustado de acuerdo con 310-15(b)(5) y (6).",
+           "text": "Cuando el número de conductores portadores de corriente en una canalización o cable es mayor de tres, o cuando los conductores individuales o cables multiconductores se instalan sin conservar su separación en una longitud continua mayor de 60 centímetros y no están instalados en canalizaciones, la ampacidad permisible de cada conductor se debe reducir como se ilustra en la Tabla 310-15(b)(3)(a). Cada conductor portador de corriente de un grupo de conductores en paralelo se debe contar como un conductor portador de corriente. Cuando conductores de sistemas diferentes, como se establece en 300-3, están instalados en una canalización o cable común, los factores de ajuste mostrados en la Tabla 310-15(B(3))(a) se deben aplicar únicamente a los conductores de fuerza y alumbrado (Artículos 210, 215, 220 y 230).",
            "children": [
             {
              "id": "310-15(b)(3)(a)(1)",
@@ -24856,7 +24803,6 @@
     "310-15(b)(21)",
     "310-15(b)(3)(a)",
     "310-15(b)(3)(c)",
-    "310-15(b)(5)",
     "310-15(b)(7)",
     "310-15(c)",
     "310-60",

@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**131 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**141 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (89)
+## 4 · Sin señales (79)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `300-50` | Requisitos de profundidad mínimaa | 130 | 2 | 0.95 | — | dibujada | 7×7 |
-| [ ] | `310-15(b)(2)(a)` | Factores de Corrección basados en una temperatura ambiente de 30 °C. | 134 | 3 | 1.00 | — | dibujada | 18×4 |
-| [ ] | `310-15(b)(3)(a)` | Factores de ajuste para más de tres conductores portadores de corrient… | 135 | 2 | 1.00 | — | dibujada | 7×2 |
-| [ ] | `310-15(b)(7)` | Tipos y tamaño o designación de conductores para alimentadores monofás… | 137 | 1 | 1.00 | — | **huecos** | 14×5 |
-| [ ] | `310-15(b)(18)` | Ampacidades permisibles de conductores aislados para tensiones hasta e… | 139 | 2 | 1.00 | — | dibujada | 17×6 |
-| [ ] | `310-60(c)(4)` | Factores de corrección a temperatura ambiente | 142, 143 | 1 | 1.00 | — | dibujada | 20×3 |
-| [ ] | `310-60(c)(68)` | Ampacidad de cables de ternas de conductores individuales de aluminio,… | 143, 144 | 2 | 1.00 | — | **huecos** | 17×6 |
-| [ ] | `310-60(c)(71)` | Ampacidad de cables de tres conductores de cobre, aislados, separados… | 145 | 0 | 1.00 | — | **huecos** | 18×6 |
-| [ ] | `310-60(c)(72)` | Ampacidad de cables de tres conductores de aluminio, aislados, separad… | 146 | 1 | 1.00 | — | **huecos** | 17×6 |
-| [ ] | `310-60(c)(73)` | Ampacidad de cables de tres conductores o ternas de cables individuale… | 146 | 0 | 1.00 | — | **huecos** | 18×6 |
 | [ ] | `310-60(c)(74)` | Ampacidad de cables de tres conductores o ternas de cables individuale… | 146, 147 | 0 | 0.98 | — | **huecos** | 17×6 |
 | [ ] | `310-60(c)(76)` | Ampacidad de cables de tres conductores de aluminio aislados, en un tu… | 147, 148 | 2 | 1.00 | — | **huecos** | 17×6 |
 | [ ] | `310-60(c)(80)` | Ampacidad de tres conductores de aluminio aislados, alambrados dentro… | 150, 151 | 0 | 1.00 | — | **huecos** | 50×6 |
