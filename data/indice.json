@@ -86983,30 +86983,6 @@
   "chapter": 9,
   "page": 708
  },
- "922-12(b)(2)": {
-  "kind": "inciso",
-  "id": "922-12(b)(2)",
-  "title": "Para conductores que tengan flecha aparente de 1.00 metro y tensiones máximas de",
-  "article": 922,
-  "chapter": 9,
-  "page": 708
- },
- "922-12(b)(3)": {
-  "kind": "inciso",
-  "id": "922-12(b)(3)",
-  "title": "La separación para conductores del mismo circuito, con tensión mayor que 50 kilo",
-  "article": 922,
-  "chapter": 9,
-  "page": 708
- },
- "922-12(b)(4)": {
-  "kind": "inciso",
-  "id": "922-12(b)(4)",
-  "title": "Para conductores de diferentes circuitos con tensión mayor que 50 kilovolts, la ",
-  "article": 922,
-  "chapter": 9,
-  "page": 708
- },
  "922-13": {
   "kind": "seccion",
   "id": "922-13",
@@ -87263,38 +87239,6 @@
   "chapter": 9,
   "page": 713
  },
- "922-19(g)(2)": {
-  "kind": "inciso",
-  "id": "922-19(g)(2)",
-  "title": "Esta posición relativa de líneas no es recomendable y debe evitarse.",
-  "article": 922,
-  "chapter": 9,
-  "page": 713
- },
- "922-19(g)(3)": {
-  "kind": "inciso",
-  "id": "922-19(g)(3)",
-  "title": "El espacio para subir debe ser el mismo que el requerido para los conductores el",
-  "article": 922,
-  "chapter": 9,
-  "page": 713
- },
- "922-19(g)(4)": {
-  "kind": "inciso",
-  "id": "922-19(g)(4)",
-  "title": "Para la utilización de estas separaciones, los trabajadores deben tener presente",
-  "article": 922,
-  "chapter": 9,
-  "page": 713
- },
- "922-19(g)(5)": {
-  "kind": "inciso",
-  "id": "922-19(g)(5)",
-  "title": "Para tensiones mayores agregar 1.00 centímetro por kilovolt en exceso de 73 kilo",
-  "article": 922,
-  "chapter": 9,
-  "page": 713
- },
  "922-20": {
   "kind": "seccion",
   "id": "922-20",
@@ -87410,7 +87354,7 @@
  "922-21(b)": {
   "kind": "inciso",
   "id": "922-21(b)",
-  "title": "Las separaciones, deben ser las indicadas en la Tabla 922-21. tierra para circui",
+  "title": "Las separaciones, deben ser las indicadas en la Tabla 922-21.",
   "article": 922,
   "chapter": 9,
   "page": 715
@@ -87867,30 +87811,6 @@
   "kind": "inciso",
   "id": "922-55(b)",
   "title": "Protección de conductores alimentadores de trolebús ubicados abajo de puentes",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
- "922-55(b)(2)": {
-  "kind": "inciso",
-  "id": "922-55(b)(2)",
-  "title": "Los cables aislados a que se refiere este renglón son los descritos en 922-4(b)(",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
- "922-55(b)(3)": {
-  "kind": "inciso",
-  "id": "922-55(b)(3)",
-  "title": "Cuando la línea esté sobre lugares transitados, ya sea encima o cerca del puente",
-  "article": 922,
-  "chapter": 9,
-  "page": 719
- },
- "922-55(b)(4)": {
-  "kind": "inciso",
-  "id": "922-55(b)(4)",
-  "title": "Los apoyos de puentes de acero, hechos sobre pilares de ladrillo, concreto o mam",
   "article": 922,
   "chapter": 9,
   "page": 719

@@ -135646,45 +135646,8 @@
        "label": "b",
        "kind": "alpha",
        "level": 1,
-       "text": "Cuando se usen aisladores de suspensión con movimiento libre, la separación entre los conductores debe aumentarse para que, al inclinarse una cadena de aisladores hasta formar un ángulo de 30 grados con la vertical, la separación sea igual o mayor que la obtenida por medio del inciso a) anterior. son a tierra. Para determinar la separación entre conductores de la misma fase pero de diferentes circuitos, el conductor con menor tensión debe ser considerado como puesto a tierra.",
-       "children": [
-        {
-         "id": "922-12(b)(2)",
-         "label": "2",
-         "kind": "paren",
-         "level": 2,
-         "text": "Para conductores que tengan flecha aparente de 1.00 metro y tensiones máximas de 8.7 kilovolts, respectivamente, en los que se hayan utilizado normalmente separaciones de 250 a 300 milímetros, pueden continuarse aplicando dichas separaciones, siempre que se cumpla con lo indicado en 922-12(a)(2).",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-12(b)(3)",
-         "label": "3",
-         "kind": "paren",
-         "level": 2,
-         "text": "La separación para conductores del mismo circuito, con tensión mayor que 50 kilovolts, debe determinarse de conformidad con lo establecido en la sección 922-12(a)(2).",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-12(b)(4)",
-         "label": "4",
-         "kind": "paren",
-         "level": 2,
-         "text": "Para conductores de diferentes circuitos con tensión mayor que 50 kilovolts, la separación adicional se debe incrementar 3 por ciento por cada 300 metros de altura en exceso de 1 000 metros sobre el nivel del mar. Todas las separaciones para tensiones superiores a 50 kilovolts, deben determinarse con base en la tensión máxima de operación.",
-         "children": [],
-         "notes": [],
-         "exceptions": [],
-         "tables": [
-          {
-           "id": "922-12(a)(2)",
-           "seq": 7
-          }
-         ]
-        }
-       ],
+       "text": "Cuando se usen aisladores de suspensión con movimiento libre, la separación entre los conductores debe aumentarse para que, al inclinarse una cadena de aisladores hasta formar un ángulo de 30 grados con la vertical, la separación sea igual o mayor que la obtenida por medio del inciso a) anterior.",
+       "children": [],
        "notes": [],
        "exceptions": [],
        "title": "En aisladores de suspensión",
@@ -135692,6 +135655,10 @@
         {
          "id": "922-12(a)(1)",
          "seq": 6
+        },
+        {
+         "id": "922-12(a)(2)",
+         "seq": 7
         }
        ]
       }
@@ -136098,49 +136065,8 @@
        "label": "g",
        "kind": "alpha",
        "level": 1,
-       "text": "Los tramos verticales protegidos con tubo conduit u otras cubiertas protectoras similares, que estén sujetos firmemente a la estructura sin separadores, no se considera que obstruyan el espacio para subir. los que la tensión es a tierra. Cuando los conductores son de diferente circuito, la tensión entre ellos debe ser la suma aritmética de las tensiones de cada conductor de puesta a tierra, para un circuito conectado a tierra, o de fase a fase si se trata de un circuito no conectado a tierra.",
-       "children": [
-        {
-         "id": "922-19(g)(2)",
-         "label": "2",
-         "kind": "paren",
-         "level": 2,
-         "text": "Esta posición relativa de líneas no es recomendable y debe evitarse.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-19(g)(3)",
-         "label": "3",
-         "kind": "paren",
-         "level": 2,
-         "text": "El espacio para subir debe ser el mismo que el requerido para los conductores eléctricos colocados inmediatamente arriba, con un máximo de 75.00 centímetros.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-19(g)(4)",
-         "label": "4",
-         "kind": "paren",
-         "level": 2,
-         "text": "Para la utilización de estas separaciones, los trabajadores deben tener presentes las normas de operación y seguridad para líneas de que se trate.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-19(g)(5)",
-         "label": "5",
-         "kind": "paren",
-         "level": 2,
-         "text": "Para tensiones mayores agregar 1.00 centímetro por kilovolt en exceso de 73 kilovolts",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        }
-       ],
+       "text": "Los tramos verticales protegidos con tubo conduit u otras cubiertas protectoras similares, que estén sujetos firmemente a la estructura sin separadores, no se considera que obstruyan el espacio para subir.",
+       "children": [],
        "notes": [],
        "exceptions": [],
        "title": "Espacio para subir frente a conductores verticales",
@@ -136318,7 +136244,7 @@
        "label": "b",
        "kind": "alpha",
        "level": 1,
-       "text": "Las separaciones, deben ser las indicadas en la Tabla 922-21. tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
+       "text": "Las separaciones, deben ser las indicadas en la Tabla 922-21.",
        "children": [],
        "notes": [],
        "exceptions": [],
@@ -136971,39 +136897,8 @@
        "label": "b",
        "kind": "alpha",
        "level": 1,
-       "text": "Debe colocarse una protección aislante para evitar que en caso de que se zafe el trole del transporte haga contacto simultáneamente con el conductor alimentador y la estructura del puente. conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
-       "children": [
-        {
-         "id": "922-55(b)(2)",
-         "label": "2",
-         "kind": "paren",
-         "level": 2,
-         "text": "Los cables aislados a que se refiere este renglón son los descritos en 922-4(b)(2) y (b)(3), y los conductores neutros son los descritos en (d) de la misma Sección.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-55(b)(3)",
-         "label": "3",
-         "kind": "paren",
-         "level": 2,
-         "text": "Cuando la línea esté sobre lugares transitados, ya sea encima o cerca del puente, se aplican también los requisitos indicados  en 922-40.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "922-55(b)(4)",
-         "label": "4",
-         "kind": "paren",
-         "level": 2,
-         "text": "Los apoyos de puentes de acero, hechos sobre pilares de ladrillo, concreto o mampostería, que requieran acceso frecuente para inspección, deben considerarse como partes fácilmente accesibles.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        }
-       ],
+       "text": "Debe colocarse una protección aislante para evitar que en caso de que se zafe el trole del transporte haga contacto simultáneamente con el conductor alimentador y la estructura del puente.",
+       "children": [],
        "notes": [],
        "exceptions": [],
        "title": "Protección de conductores alimentadores de trolebús ubicados abajo de puentes",
@@ -137855,10 +137750,8 @@
     "922-33",
     "922-4(b)",
     "922-4(b)(1)",
-    "922-4(b)(2)",
     "922-4(c)",
     "922-4(d)",
-    "922-40",
     "922-41",
     "922-43",
     "922-52",

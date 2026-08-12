@@ -55067,7 +55067,7 @@
   ],
   "page": 709,
   "cols": 2,
-  "header_rows": 2,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -55080,10 +55080,8 @@
    ],
    [
     {
-     "t": "Línea de comunicación"
-    },
-    {
-     "t": "abierta: (excepto en transposiciones)"
+     "t": "Línea de comunicación abierta: (excepto en transposiciones)",
+     "cs": 2
     }
    ],
    [
@@ -55104,10 +55102,8 @@
    ],
    [
     {
-     "t": "Alimentadores"
-    },
-    {
-     "t": "para transporte eléctrico(2):"
+     "t": "Alimentadores para transporte eléctrico(2):",
+     "cs": 2
     }
    ],
    [
@@ -55128,10 +55124,8 @@
    ],
    [
     {
-     "t": "Conductores"
-    },
-    {
-     "t": "eléctricos del mismo circuito:"
+     "t": "Conductores eléctricos del mismo circuito:",
+     "cs": 2
     }
    ],
    [
@@ -55160,10 +55154,8 @@
    ],
    [
     {
-     "t": "Conductores"
-    },
-    {
-     "t": "eléctricos de diferentes circuitos:"
+     "t": "Conductores eléctricos de diferentes circuitos:",
+     "cs": 2
     }
    ],
    [
@@ -55192,17 +55184,30 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
-  "quality": 0.8,
+  "notes": [
+   "(1) Todas las tensiones son entre fases, excepto para alimentadores de transporte eléctrico, las cuales son a tierra. Para determinar la separación entre conductores de la misma fase pero de diferentes circuitos, el conductor con menor tensión debe ser considerado como puesto a tierra.",
+   "(2) Para conductores que tengan flecha aparente de 1.00 metro y tensiones máximas de 8.7 kilovolts, respectivamente, en los que se hayan utilizado normalmente separaciones de 250 a 300 milímetros, pueden continuarse aplicando dichas separaciones, siempre que se cumpla con lo indicado en 922-12(a)(2).",
+   "(3) La separación para conductores del mismo circuito, con tensión mayor que 50 kilovolts, debe determinarse de conformidad con lo establecido en la sección 922-12(a)(2).",
+   "(4) Para conductores de diferentes circuitos con tensión mayor que 50 kilovolts, la separación adicional se debe incrementar 3 por ciento por cada 300 metros de altura en exceso de 1 000 metros sobre el nivel del mar. Todas las separaciones para tensiones superiores a 50 kilovolts, deben determinarse con base en la tensión máxima de operación."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 709,
     "y0": 376.6533203125,
-    "y1": 641.27,
+    "y1": 794.0,
+    "id": "922-12(a)(1)",
+    "article": 922
+   },
+   {
+    "page": 710,
+    "y0": 20.0,
+    "y1": 60.0,
     "id": "922-12(a)(1)",
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -56263,8 +56268,14 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.94,
+  "notes": [
+   "(1) Todas las tensiones son entre los dos conductores que limitan el espacio para subir, excepto para conductores de comunicación, en los que la tensión es a tierra. Cuando los conductores son de diferente circuito, la tensión entre ellos debe ser la suma aritmética de las tensiones de cada conductor de puesta a tierra, para un circuito conectado a tierra, o de fase a fase si se trata de un circuito no conectado a tierra.",
+   "(2) Esta posición relativa de líneas no es recomendable y debe evitarse.",
+   "(3) El espacio para subir debe ser el mismo que el requerido para los conductores eléctricos colocados inmediatamente arriba, con un máximo de 75.00 centímetros.",
+   "(4) Para la utilización de estas separaciones, los trabajadores deben tener presentes las normas de operación y seguridad para líneas de que se trate.",
+   "(5) Para tensiones mayores agregar 1.00 centímetro por kilovolt en exceso de 73 kilovolts."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 713,
@@ -56276,11 +56287,12 @@
    {
     "page": 714,
     "y0": -3.0,
-    "y1": 143.32,
+    "y1": 235.0,
     "id": "922-19(e)",
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -56330,17 +56342,20 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.875,
+  "notes": [
+   "(1) Las tensiones son entre fases para circuitos no conectados efectivamente a tierra y de fase a tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 715,
     "y0": 182.6025390625,
-    "y1": 294.77,
+    "y1": 335.0,
     "id": "922-21",
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -57257,31 +57272,14 @@
     {
      "t": "4.45"
     }
-   ],
-   [
-    {
-     "t": "(1) Las tensiones son entre fases para efectivamente conectados a tierra y para automático. (2) Esta altura puede reducirse a 3.00 la Sección 922-4(b)(2) y 922-4(b)(3), de"
-    },
-    {
-     "t": "circuitos no conectados otros circuitos metros para las partes hasta 150 V a tierra,"
-    },
-    {
-     "t": "efectivamente donde las fallas vivas y puntas localizadas a"
-    },
-    {
-     "t": "a tierra y de a tierra sean de cables aislados la entrada de"
-    },
-    {
-     "t": "fase a tierra aisladas como los edificios."
-    },
-    {
-     "t": "para circuitos con interruptor descritos en"
-    }
    ]
   ],
   "grid": "huecos",
-  "notes": [],
-  "quality": 0.931,
+  "notes": [
+   "(1) Las tensiones son entre fases para circuitos no conectados efectivamente a tierra y de fase a tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
+   "(2) Esta altura puede reducirse a 3.00 metros para las partes vivas y puntas de cables aislados como los descritos en la Sección 922-4(b)(2) y 922-4(b)(3), de hasta 150 V a tierra, localizadas a la entrada de edificios."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 718,
@@ -57291,6 +57289,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -57968,17 +57967,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.955,
+  "notes": [
+   "(1) Las tensiones son entre fases para circuitos no conectados efectivamente a tierra y de fase a tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
+   "(2) Los cables aislados a que se refiere este renglón son los descritos en 922-4(b)(2) y (b)(3), y los conductores neutros son los descritos en (d) de la misma Sección.",
+   "(3) Cuando la línea esté sobre lugares transitados, ya sea encima o cerca del puente, se aplican también los requisitos indicados en 922-40.",
+   "(4) Los apoyos de puentes de acero, hechos sobre pilares de ladrillo, concreto o mampostería, que requieran acceso frecuente para inspección, deben considerarse como partes fácilmente accesibles."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 720,
     "y0": 466.6533203125,
-    "y1": 687.06,
+    "y1": 794.0,
     "id": "922-55",
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
