@@ -715,7 +715,7 @@
          "label": "1",
          "kind": "num",
          "level": 2,
-         "text": "La profundidad del espacio de trabajo en la dirección a las partes vivas no debe ser menor a la indicada en la Tabla 110-26(a)(1) a menos que cumplan los requisitos que se indican en (1)(a), (1)(b) o (1)(c). Las distancias deben medirse desde las partes vivas expuestas o desde el envolvente o la abertura si las partes vivas están encerradas. 1. Partes vivas expuestas en un lado y no vivas ni conectadas a tierra en el otro lado del espacio de trabajo, o partes vivas expuestas a ambos lados, protegidas eficazmente por materiales aislantes. 2. Partes vivas expuestas a un lado y conectadas a tierra al otro lado. Las paredes de concreto, ladrillo o mosaico se deben considerar como puestas a tierra. 3. Partes vivas expuestas en ambos lados del espacio de trabajo.",
+         "text": "La profundidad del espacio de trabajo en la dirección a las partes vivas no debe ser menor a la indicada en la Tabla 110-26(a)(1) a menos que cumplan los requisitos que se indican en (1)(a), (1)(b) o (1)(c). Las distancias deben medirse desde las partes vivas expuestas o desde el envolvente o la abertura si las partes vivas están encerradas.",
          "children": [
           {
            "id": "110-26(a)(1)a.",
@@ -1126,6 +1126,45 @@
        "text": "Cuando se requiera o se especifique una bóveda para conductores y equipos, que operen arriba de 600 volts, aplicará lo siguiente:",
        "children": [
         {
+         "id": "110-31(a)(1)",
+         "label": "1",
+         "kind": "num",
+         "level": 2,
+         "text": "Se deben construir con materiales de resistencia estructural adecuada para las condiciones del lugar, con una clasificación de resistencia mínima al fuego de 3 horas. Para el propósito de esta sección, no se permite la construcción con polines de madera y paneles prefabricados.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Paredes y techo"
+        },
+        {
+         "id": "110-31(a)(2)",
+         "label": "2",
+         "kind": "num",
+         "level": 2,
+         "text": "Los pisos de las bóvedas en contacto con la tierra deben ser de concreto con un espesor no menor a 10 centímetros, pero cuando la bóveda se construya con un espacio vacío u otros pisos debajo de ella, el piso debe tener la resistencia estructural adecuada para la carga impuesta sobre él y una resistencia mínima al fuego de 3 horas.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Pisos"
+        },
+        {
+         "id": "110-31(a)(3)",
+         "label": "3",
+         "kind": "num",
+         "level": 2,
+         "text": "Cada puerta que conduzca a una bóveda desde el interior del edificio será provista con una puerta de ajuste hermético que tenga una clasificación de resistencia mínima al fuego de 3 horas.",
+         "children": [],
+         "notes": [],
+         "exceptions": [
+          {
+           "label": "Excepción a (1), (2) y (3) anteriores",
+           "text": "Cuando la bóveda está protegida con rociadores automáticos de agua, de bióxido de carbono o de gas halón, se permite la construcción con clasificación de resistencia mínima al fuego de 1 hora.",
+           "seq": 17
+          }
+         ],
+         "title": "Puertas"
+        },
+        {
          "id": "110-31(a)(4)",
          "label": "4",
          "kind": "num",
@@ -1155,13 +1194,7 @@
         }
        ],
        "notes": [],
-       "exceptions": [
-        {
-         "label": "Excepción a (1), (2) y (3) anteriores",
-         "text": "Cuando la bóveda está protegida con rociadores automáticos de agua, de bióxido de carbono o de gas halón, se permite la construcción con clasificación de resistencia mínima al fuego de 1 hora.",
-         "seq": 17
-        }
-       ],
+       "exceptions": [],
        "title": "Bóvedas eléctricas",
        "tables": [
         {
@@ -1374,7 +1407,7 @@
        "exceptions": [
         {
          "label": "Excepción",
-         "text": "No se exigirá espacio de trabajo en la parte posterior de equipos tales como tableros de distribución de frente muerto o ensambles de control en los que no haya partes intercambiables o ajustables (como fusibles o interruptores) en su parte posterior y donde todas las conexiones son accesibles desde lugares que no sean la parte posterior. Cuando se requiera acceso por la parte posterior para trabajar en partes no energizadas de la parte posterior del envolvente del equipo, debe haber un espacio de trabajo mínimo de 80 centímetros medidos horizontalmente. 601-2 500",
+         "text": "No se exigirá espacio de trabajo en la parte posterior de equipos tales como tableros de distribución de frente muerto o ensambles de control en los que no haya partes intercambiables o ajustables (como fusibles o interruptores) en su parte posterior y donde todas las conexiones son accesibles desde lugares que no sean la parte posterior. Cuando se requiera acceso por la parte posterior para trabajar en partes no energizadas de la parte posterior del envolvente del equipo, debe haber un espacio de trabajo mínimo de 80 centímetros medidos horizontalmente.",
          "seq": 19
         }
        ],
@@ -1914,7 +1947,6 @@
     "430-233",
     "450-3",
     "490-24",
-    "601-2",
     "921-24(b)"
    ]
   },

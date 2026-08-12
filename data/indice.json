@@ -695,6 +695,30 @@
   "chapter": 1,
   "page": 25
  },
+ "110-31(a)(1)": {
+  "kind": "inciso",
+  "id": "110-31(a)(1)",
+  "title": "Paredes y techo",
+  "article": 110,
+  "chapter": 1,
+  "page": 25
+ },
+ "110-31(a)(2)": {
+  "kind": "inciso",
+  "id": "110-31(a)(2)",
+  "title": "Pisos",
+  "article": 110,
+  "chapter": 1,
+  "page": 25
+ },
+ "110-31(a)(3)": {
+  "kind": "inciso",
+  "id": "110-31(a)(3)",
+  "title": "Puertas",
+  "article": 110,
+  "chapter": 1,
+  "page": 25
+ },
  "110-31(a)(4)": {
   "kind": "inciso",
   "id": "110-31(a)(4)",
