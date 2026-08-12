@@ -5177,17 +5177,6 @@
    ],
    [
     {
-     "t": "Conductor/Equipo"
-    },
-    {
-     "t": "Artículo"
-    },
-    {
-     "t": "Sección"
-    }
-   ],
-   [
-    {
      "t": "Elevadores, montaplatos, escaleras eléctricas, pasillos móviles, elevadores de sillas de ruedas y elevadores para sillas de ruedas"
     },
     {
@@ -6588,7 +6577,7 @@
   ],
   "page": 126,
   "cols": 4,
-  "header_rows": 3,
+  "header_rows": 0,
   "intro": "",
   "rows": [
    [
@@ -50603,7 +50592,7 @@
   ],
   "page": 638,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [

@@ -32966,17 +32966,6 @@
    ],
    [
     {
-     "t": "Conductor/Equipo"
-    },
-    {
-     "t": "Artículo"
-    },
-    {
-     "t": "Sección"
-    }
-   ],
-   [
-    {
      "t": "Elevadores, montaplatos, escaleras eléctricas, pasillos móviles, elevadores de sillas de ruedas y elevadores para sillas de ruedas"
     },
     {
@@ -33323,7 +33312,7 @@
   "verificada": "2026-08-12",
   "title": "Sustituciones de los cables",
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "rows": [
    [
     {
@@ -33412,7 +33401,7 @@
   "verificada": "2026-08-12",
   "title": "Separación entre los soportes de los conductores",
   "cols": 4,
-  "header_rows": 3,
+  "header_rows": 0,
   "rows": [
    [
     {
