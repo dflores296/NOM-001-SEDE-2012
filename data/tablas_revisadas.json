@@ -50174,5 +50174,1484 @@
     "article": 300
    }
   ]
+ },
+ "310-15(b)(2)(a)": {
+  "verificada": "2026-08-12"
+ },
+ "310-15(b)(7)": {
+  "verificada": "2026-08-12"
+ },
+ "310-60(c)(4)": {
+  "verificada": "2026-08-12"
+ },
+ "300-50": {
+  "verificada": "2026-08-12",
+  "title": "Requisitos de profundidad mínimaᵃ",
+  "rows": [
+   [
+    {
+     "t": "Tensión del circuito",
+     "rs": 4
+    },
+    {
+     "t": "Condiciones generales (no especificadas de otra manera)",
+     "cs": 3
+    },
+    {
+     "t": "Condiciones especiales(se usan si es aplicable)",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Columna 1"
+    },
+    {
+     "t": "Columna 2"
+    },
+    {
+     "t": "Columna 3"
+    },
+    {
+     "t": "Columna 4"
+    },
+    {
+     "t": "Columna 5"
+    },
+    {
+     "t": "Columna 6"
+    }
+   ],
+   [
+    {
+     "t": "Cables enterrados directamenteᵈ"
+    },
+    {
+     "t": "Tubo conduit RTRC, PVC, y HDPEᵇ"
+    },
+    {
+     "t": "Tubo conduit metálico pesado y semipesado"
+    },
+    {
+     "t": "Canalizaciones bajo edificios o losas de concreto exteriores, con espesor mínimoᶜ de 10 centímetros"
+    },
+    {
+     "t": "Cables en canalizaciones de aeropuertos o áreas adyacentes en donde se prohíbe el paso"
+    },
+    {
+     "t": "Areas sometidas a tráfico vehicular tales como vías principales y Comerciales para estacionamiento"
+    }
+   ],
+   [
+    {
+     "t": "Centímetros",
+     "cs": 6
+    }
+   ],
+   [
+    {
+     "t": "Mayor de 600 volts hasta 22 kilovolts"
+    },
+    {
+     "t": "75"
+    },
+    {
+     "t": "45"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "45"
+    },
+    {
+     "t": "60"
+    }
+   ],
+   [
+    {
+     "t": "Mayor de 22 kilovolts hasta 40 kilovolts"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "45"
+    },
+    {
+     "t": "60"
+    }
+   ],
+   [
+    {
+     "t": "Mayor de 40 kilovolts"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "75"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "45"
+    },
+    {
+     "t": "60"
+    }
+   ]
+  ],
+  "notes": [
+   "NOTAS GENERALES:",
+   "1. Se permitirán profundidades menores cuando se exige altura de los conductores o cables para las terminaciones o los empalmes o cuando se necesita tener acceso.",
+   "2. Cuando la roca sólida evita el cumplimento con las especificaciones de profundidad de la cubierta de esta tabla, el alambrado se debe instalar en una canalización metálica o no metálica directamente enterrada. La canalización debe estar cubierta con un mínimo de 5 centímetros de concreto que se extienda hasta la roca.",
+   "3. En establecimientos industriales, cuando las condiciones de mantenimiento y supervisión garantizan que personas calificadas atenderán la instalación, se permitirá que los requisitos mínimos de profundidad de la cubierta, para conductos diferentes del tubo conduit metálico pesado y el tubo conduit metálico semipesado, se reduzcan 15 centímetros por cada 5 centímetros de concreto o equivalente, colocado totalmente dentro de la zanja por encima de la instalación subterránea.",
+   "NOTAS ESPECIFICAS:",
+   "a) Profundidad mínima se define como la distancia más corta, en milímetros, medida entre un punto en la superficie superior de cualquier conductor, cable, tubo conduit u otra canalización enterrada directamente, y la superficie superior del nivel terminado del terreno, concreto u otra cubierta similar.",
+   "b) Aprobado para uso directamente enterrado sin revestimiento. Todos los otros sistemas no metálicos requerirán 5 centímetros de concreto o su equivalente sobre el conduit, adicional a la profundidad que se indica en la tabla.",
+   "c) La losa debe sobresalir de la instalación subterránea un mínimo de 15 centímetros, y se debe colocar una cinta de advertencia u otro medio eficaz y adecuado para las condiciones, sobre la instalación subterránea.",
+   "d) La ubicación de cables subterráneos enterrados directamente que no están encerrados ni protegidos con concreto y están enterrados a 75 centímetros o más por debajo del suelo, se debe identificar con una cinta de advertencia que se coloca en la zanja por lo menos a 30 centímetros por encima de los cables."
+  ],
+  "regions": [
+   {
+    "page": 130,
+    "y0": 194.4189453125,
+    "y1": 603.0,
+    "id": "300-50",
+    "article": 300
+   }
+  ]
+ },
+ "310-15(b)(3)(a)": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "¹Es el número total de conductores en la canalización o cable ajustado de acuerdo con 310-15(b)(5) y (6)."
+  ],
+  "regions": [
+   {
+    "page": 135,
+    "y0": 427.1181640625,
+    "y1": 630.0,
+    "id": "310-15(b)(3)(a)",
+    "article": 310
+   }
+  ]
+ },
+ "310-15(b)(18)": {
+  "verificada": "2026-08-12",
+  "title": "Ampacidades permisibles de conductores aislados para tensiones hasta e incluyendo 2000 volts, de 150 °C hasta 250 °C. No más de tres conductores portadores de corriente en canalizaciones o cables y basadas en una temperatura ambiente del aire de 40 °C*"
+ },
+ "310-60(c)(68)": {
+  "verificada": "2026-08-12",
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "mm2",
+     "rs": 3
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 3
+    },
+    {
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "70"
+    },
+    {
+     "t": "77"
+    },
+    {
+     "t": "75"
+    },
+    {
+     "t": "84"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "110"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "125"
+    },
+    {
+     "t": "135"
+    },
+    {
+     "t": "130"
+    },
+    {
+     "t": "150"
+    }
+   ],
+   [
+    {
+     "t": "42.4"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "145"
+    },
+    {
+     "t": "160"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "175"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "170"
+    },
+    {
+     "t": "185"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "200"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "215"
+    },
+    {
+     "t": "200"
+    },
+    {
+     "t": "230"
+    }
+   ],
+   [
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "230"
+    },
+    {
+     "t": "265"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "265"
+    },
+    {
+     "t": "290"
+    },
+    {
+     "t": "270"
+    },
+    {
+     "t": "305"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "295"
+    },
+    {
+     "t": "325"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "335"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "365"
+    },
+    {
+     "t": "405"
+    },
+    {
+     "t": "370"
+    },
+    {
+     "t": "415"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "460"
+    },
+    {
+     "t": "510"
+    },
+    {
+     "t": "460"
+    },
+    {
+     "t": "515"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "600"
+    },
+    {
+     "t": "665"
+    },
+    {
+     "t": "590"
+    },
+    {
+     "t": "660"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "715"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": "700"
+    },
+    {
+     "t": "780"
+    }
+   ]
+  ]
+ },
+ "310-60(c)(71)": {
+  "verificada": "2026-08-12",
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "mm2",
+     "rs": 3
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 3
+    },
+    {
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "59"
+    },
+    {
+     "t": "66"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "79"
+    },
+    {
+     "t": "88"
+    },
+    {
+     "t": "93"
+    },
+    {
+     "t": "105"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "115"
+    },
+    {
+     "t": "120"
+    },
+    {
+     "t": "135"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "140"
+    },
+    {
+     "t": "154"
+    },
+    {
+     "t": "165"
+    },
+    {
+     "t": "185"
+    }
+   ],
+   [
+    {
+     "t": "42.4"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "160"
+    },
+    {
+     "t": "180"
+    },
+    {
+     "t": "185"
+    },
+    {
+     "t": "210"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "185"
+    },
+    {
+     "t": "205"
+    },
+    {
+     "t": "215"
+    },
+    {
+     "t": "240"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "215"
+    },
+    {
+     "t": "240"
+    },
+    {
+     "t": "245"
+    },
+    {
+     "t": "275"
+    }
+   ],
+   [
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "280"
+    },
+    {
+     "t": "285"
+    },
+    {
+     "t": "315"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "285"
+    },
+    {
+     "t": "320"
+    },
+    {
+     "t": "325"
+    },
+    {
+     "t": "360"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "320"
+    },
+    {
+     "t": "355"
+    },
+    {
+     "t": "360"
+    },
+    {
+     "t": "400"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "395"
+    },
+    {
+     "t": "440"
+    },
+    {
+     "t": "435"
+    },
+    {
+     "t": "490"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "485"
+    },
+    {
+     "t": "545"
+    },
+    {
+     "t": "535"
+    },
+    {
+     "t": "600"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "615"
+    },
+    {
+     "t": "685"
+    },
+    {
+     "t": "670"
+    },
+    {
+     "t": "745"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "705"
+    },
+    {
+     "t": "790"
+    },
+    {
+     "t": "770"
+    },
+    {
+     "t": "860"
+    }
+   ]
+  ]
+ },
+ "310-60(c)(72)": {
+  "verificada": "2026-08-12",
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "mm2",
+     "rs": 3
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 3
+    },
+    {
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "61"
+    },
+    {
+     "t": "68"
+    },
+    {
+     "t": "72"
+    },
+    {
+     "t": "80"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "81"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "95"
+    },
+    {
+     "t": "105"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "110"
+    },
+    {
+     "t": "120"
+    },
+    {
+     "t": "125"
+    },
+    {
+     "t": "145"
+    }
+   ],
+   [
+    {
+     "t": "42.4"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "125"
+    },
+    {
+     "t": "140"
+    },
+    {
+     "t": "145"
+    },
+    {
+     "t": "165"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "145"
+    },
+    {
+     "t": "160"
+    },
+    {
+     "t": "170"
+    },
+    {
+     "t": "185"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "170"
+    },
+    {
+     "t": "185"
+    },
+    {
+     "t": "190"
+    },
+    {
+     "t": "215"
+    }
+   ],
+   [
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "215"
+    },
+    {
+     "t": "220"
+    },
+    {
+     "t": "245"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "255"
+    },
+    {
+     "t": "285"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "280"
+    },
+    {
+     "t": "280"
+    },
+    {
+     "t": "315"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "310"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "385"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "385"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "425"
+    },
+    {
+     "t": "475"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "495"
+    },
+    {
+     "t": "550"
+    },
+    {
+     "t": "540"
+    },
+    {
+     "t": "600"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "585"
+    },
+    {
+     "t": "650"
+    },
+    {
+     "t": "635"
+    },
+    {
+     "t": "705"
+    }
+   ]
+  ]
+ },
+ "310-60(c)(73)": {
+  "verificada": "2026-08-12",
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "mm2",
+     "rs": 3
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 3
+    },
+    {
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "55"
+    },
+    {
+     "t": "61"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "75"
+    },
+    {
+     "t": "84"
+    },
+    {
+     "t": "83"
+    },
+    {
+     "t": "93"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "97"
+    },
+    {
+     "t": "110"
+    },
+    {
+     "t": "110"
+    },
+    {
+     "t": "120"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "130"
+    },
+    {
+     "t": "145"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "165"
+    }
+   ],
+   [
+    {
+     "t": "42.4"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "155"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "170"
+    },
+    {
+     "t": "190"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "180"
+    },
+    {
+     "t": "200"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "215"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "205"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "255"
+    }
+   ],
+   [
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "240"
+    },
+    {
+     "t": "270"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "290"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "280"
+    },
+    {
+     "t": "305"
+    },
+    {
+     "t": "295"
+    },
+    {
+     "t": "330"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "315"
+    },
+    {
+     "t": "355"
+    },
+    {
+     "t": "330"
+    },
+    {
+     "t": "365"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "385"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "395"
+    },
+    {
+     "t": "440"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "475"
+    },
+    {
+     "t": "530"
+    },
+    {
+     "t": "480"
+    },
+    {
+     "t": "535"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "600"
+    },
+    {
+     "t": "665"
+    },
+    {
+     "t": "585"
+    },
+    {
+     "t": "655"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "690"
+    },
+    {
+     "t": "770"
+    },
+    {
+     "t": "675"
+    },
+    {
+     "t": "755"
+    }
+   ]
+  ]
  }
 }

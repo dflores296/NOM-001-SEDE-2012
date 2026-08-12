@@ -6734,7 +6734,7 @@
  },
  {
   "id": "300-50",
-  "title": "Requisitos de profundidad mínimaa",
+  "title": "Requisitos de profundidad mínimaᵃ",
   "informativa": false,
   "article": 300,
   "pages": [
@@ -6781,16 +6781,16 @@
    ],
    [
     {
-     "t": "Cables enterrados directamented"
+     "t": "Cables enterrados directamenteᵈ"
     },
     {
-     "t": "Tubo conduit RTRC, PVC, y HDPEb"
+     "t": "Tubo conduit RTRC, PVC, y HDPEᵇ"
     },
     {
      "t": "Tubo conduit metálico pesado y semipesado"
     },
     {
-     "t": "Canalizaciones bajo edificios o losas de concreto exteriores, con espesor mínimoc de 10 centímetros"
+     "t": "Canalizaciones bajo edificios o losas de concreto exteriores, con espesor mínimoᶜ de 10 centímetros"
     },
     {
      "t": "Cables en canalizaciones de aeropuertos o áreas adyacentes en donde se prohíbe el paso"
@@ -6876,17 +6876,28 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.946,
+  "notes": [
+   "NOTAS GENERALES:",
+   "1. Se permitirán profundidades menores cuando se exige altura de los conductores o cables para las terminaciones o los empalmes o cuando se necesita tener acceso.",
+   "2. Cuando la roca sólida evita el cumplimento con las especificaciones de profundidad de la cubierta de esta tabla, el alambrado se debe instalar en una canalización metálica o no metálica directamente enterrada. La canalización debe estar cubierta con un mínimo de 5 centímetros de concreto que se extienda hasta la roca.",
+   "3. En establecimientos industriales, cuando las condiciones de mantenimiento y supervisión garantizan que personas calificadas atenderán la instalación, se permitirá que los requisitos mínimos de profundidad de la cubierta, para conductos diferentes del tubo conduit metálico pesado y el tubo conduit metálico semipesado, se reduzcan 15 centímetros por cada 5 centímetros de concreto o equivalente, colocado totalmente dentro de la zanja por encima de la instalación subterránea.",
+   "NOTAS ESPECIFICAS:",
+   "a) Profundidad mínima se define como la distancia más corta, en milímetros, medida entre un punto en la superficie superior de cualquier conductor, cable, tubo conduit u otra canalización enterrada directamente, y la superficie superior del nivel terminado del terreno, concreto u otra cubierta similar.",
+   "b) Aprobado para uso directamente enterrado sin revestimiento. Todos los otros sistemas no metálicos requerirán 5 centímetros de concreto o su equivalente sobre el conduit, adicional a la profundidad que se indica en la tabla.",
+   "c) La losa debe sobresalir de la instalación subterránea un mínimo de 15 centímetros, y se debe colocar una cinta de advertencia u otro medio eficaz y adecuado para las condiciones, sobre la instalación subterránea.",
+   "d) La ubicación de cables subterráneos enterrados directamente que no están encerrados ni protegidos con concreto y están enterrados a 75 centímetros o más por debajo del suelo, se debe identificar con una cinta de advertencia que se coloca en la zanja por lo menos a 30 centímetros por encima de los cables."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 130,
     "y0": 194.4189453125,
-    "y1": 433.59,
+    "y1": 603.0,
     "id": "300-50",
     "article": 300
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -7160,6 +7171,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -7875,17 +7887,20 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "¹Es el número total de conductores en la canalización o cable ajustado de acuerdo con 310-15(b)(5) y (6)."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 135,
     "y0": 427.1181640625,
-    "y1": 603.04,
+    "y1": 630.0,
     "id": "310-15(b)(3)(a)",
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -8204,6 +8219,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -9986,7 +10002,7 @@
  },
  {
   "id": "310-15(b)(18)",
-  "title": "Ampacidades permisibles de conductores aislados para tensiones hasta e incluyendo 2000 volts, de 150",
+  "title": "Ampacidades permisibles de conductores aislados para tensiones hasta e incluyendo 2000 volts, de 150 °C hasta 250 °C. No más de tres conductores portadores de corriente en canalizaciones o cables y basadas en una temperatura ambiente del aire de 40 °C*",
   "informativa": false,
   "article": 310,
   "pages": [
@@ -10331,6 +10347,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -12063,6 +12080,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -12435,76 +12453,44 @@
   ],
   "page": 143,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Tamaño"
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "o designación"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura nominal [Véase la Tabla"
-    },
-    {
-     "t": "del conductor 310-104(c)]"
-    },
-    {
-     "t": ""
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
     }
    ],
    [
     {
-     "t": "mm2"
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": "AWG o"
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": "para 2 001-5"
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "Ampacidad 000 volts"
-    },
-    {
-     "t": "para 5 001-35"
-    },
-    {
-     "t": "Ampacidad 000 volts"
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "mm2"
-    },
-    {
-     "t": "o kcmil"
-    },
-    {
-     "t": "Temperatura"
-    },
-    {
-     "t": "de los conductores"
-    },
-    {
-     "t": "de media tensión"
-    },
-    {
-     "t": "en °C"
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": "kcmil"
-    },
     {
      "t": "90"
     },
@@ -12800,6 +12786,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -13908,76 +13895,44 @@
   ],
   "page": 145,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": ""
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "Tamaño o designación"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura nominal [Véase la Tabla"
-    },
-    {
-     "t": "del conductor 310-104(c)]"
-    },
-    {
-     "t": ""
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
     }
    ],
    [
     {
-     "t": ""
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": "AWG"
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": "para 2 001-5"
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "Ampacidad 000 volts"
-    },
-    {
-     "t": "para 5 001-35"
-    },
-    {
-     "t": "Ampacidad 000 volts"
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": "o"
-    },
-    {
-     "t": "Temperatura"
-    },
-    {
-     "t": "de los conductores"
-    },
-    {
-     "t": "de media"
-    },
-    {
-     "t": "tensión en °C"
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
     }
    ],
    [
-    {
-     "t": "mm2"
-    },
-    {
-     "t": "kcmil"
-    },
     {
      "t": "90"
     },
@@ -14286,6 +14241,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -14298,76 +14254,44 @@
   ],
   "page": 145,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Tamaño"
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "o designación"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura nominal [Véase la Tabla"
-    },
-    {
-     "t": "del conductor 310-104(c)]"
-    },
-    {
-     "t": ""
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
     }
    ],
    [
     {
-     "t": ""
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": ""
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": "para 2 001-5"
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "Ampacidad 000 volts"
-    },
-    {
-     "t": "para 5 001-35"
-    },
-    {
-     "t": "Ampacidad 000 volts"
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura"
-    },
-    {
-     "t": "de los conductores"
-    },
-    {
-     "t": "de media"
-    },
-    {
-     "t": "tensión en °C"
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
     }
    ],
    [
-    {
-     "t": "mm2"
-    },
-    {
-     "t": "AWG o kcmil"
-    },
     {
      "t": "90"
     },
@@ -14663,6 +14587,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -14675,76 +14600,44 @@
   ],
   "page": 146,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Tamaño"
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "o designación"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura nominal [Véase la Tabla"
-    },
-    {
-     "t": "del conductor 310-104(c)]"
-    },
-    {
-     "t": ""
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
     }
    ],
    [
     {
-     "t": ""
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": ""
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": "para 2 001-5"
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "Ampacidad 000 volts"
-    },
-    {
-     "t": "para 5 001-35"
-    },
-    {
-     "t": "Ampacidad 000 volts"
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura"
-    },
-    {
-     "t": "de los conductores"
-    },
-    {
-     "t": "de media"
-    },
-    {
-     "t": "tensión en °C"
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
     }
    ],
    [
-    {
-     "t": "mm2"
-    },
-    {
-     "t": "AWG o kcmil"
-    },
     {
      "t": "90"
     },
@@ -15053,6 +14946,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
