@@ -36024,5 +36024,192 @@
     "article": 922
    }
   ]
+ },
+ "450-3(a)": {
+  "verificada": "2026-08-12",
+  "title": "Valor nominal o ajuste máximo de la protección contra sobrecorriente para transformadores de más de 600 volts (como porcentaje de la corriente nominal del transformador).",
+  "cols": 7,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Limitaciones sobre el lugar",
+     "rs": 3
+    },
+    {
+     "t": "Impedancia nominal del transformador",
+     "rs": 3
+    },
+    {
+     "t": "",
+     "cs": 2
+    },
+    {
+     "t": "Protección del secundario (ver la Nota 2)",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Protección del primario, más de 600 volts",
+     "cs": 2
+    },
+    {
+     "t": "Más de 600 volts",
+     "cs": 2
+    },
+    {
+     "t": "600 volts o menos"
+    }
+   ],
+   [
+    {
+     "t": "Interruptor automático (ver la Nota 4)"
+    },
+    {
+     "t": "Valor nominal del fusible"
+    },
+    {
+     "t": "Interruptor automático (ver la Nota 4)"
+    },
+    {
+     "t": "Valor nominal del fusible"
+    },
+    {
+     "t": "Valor nominal del interruptor automático o fusible"
+    }
+   ],
+   [
+    {
+     "t": "Cualquier lugar",
+     "rs": 2
+    },
+    {
+     "t": "No más del 6%"
+    },
+    {
+     "t": "600% (ver Nota 1)"
+    },
+    {
+     "t": "300% (ver Nota 1)"
+    },
+    {
+     "t": "300% (ver Nota 1)"
+    },
+    {
+     "t": "250% (ver Nota 1)"
+    },
+    {
+     "t": "125% (ver Nota 1)"
+    }
+   ],
+   [
+    {
+     "t": "Más del 6%, pero máximo el 10%"
+    },
+    {
+     "t": "400% (ver Nota 1)"
+    },
+    {
+     "t": "300% (ver Nota 1)"
+    },
+    {
+     "t": "250% (ver Nota 1)"
+    },
+    {
+     "t": "225% (ver Nota 1)"
+    },
+    {
+     "t": "125% (ver Nota 1)"
+    }
+   ],
+   [
+    {
+     "t": "Lugares supervisados únicamente (ver Nota 3).",
+     "rs": 3
+    },
+    {
+     "t": "Cualquiera"
+    },
+    {
+     "t": "300%"
+    },
+    {
+     "t": "250%"
+    },
+    {
+     "t": "No se exige"
+    },
+    {
+     "t": "No se exige"
+    },
+    {
+     "t": "No se exige"
+    }
+   ],
+   [
+    {
+     "t": "No más del 6%"
+    },
+    {
+     "t": "600%"
+    },
+    {
+     "t": "300%"
+    },
+    {
+     "t": "300% (ver Nota 5)"
+    },
+    {
+     "t": "250% (ver Nota 5)"
+    },
+    {
+     "t": "250% (ver Nota 5)"
+    }
+   ],
+   [
+    {
+     "t": "Más del 6% pero máximo el 10%"
+    },
+    {
+     "t": "400%"
+    },
+    {
+     "t": "300%"
+    },
+    {
+     "t": "250% (ver Nota 5)"
+    },
+    {
+     "t": "250% (ver Nota 5)"
+    },
+    {
+     "t": "250% (ver Nota 5)"
+    }
+   ]
+  ],
+  "notes": [
+   "1. Cuando el valor nominal del fusible o el ajuste del interruptor automático exigido no correspondan a un valor nominal o ajuste estándares, se permitirá tomar el valor nominal o ajuste estándar inmediatamente superior.",
+   "2. Cuando se exija protección contra sobrecorriente del secundario, se permitirá que el dispositivo de protección contra sobrecorriente del secundario esté compuesto por un máximo de seis interruptores automáticos o seis grupos de fusibles agrupados en un lugar. Cuando se utilicen dispositivos múltiples de protección contra sobrecorriente, el total de los valores nominales de los dispositivos no debe exceder el valor permitido para un solo dispositivo de protección contra sobrecorriente. Si como dispositivo de protección contra sobrecorriente se utilizan tanto interruptores como fusibles, el total de los valores nominales del dispositivo no debe exceder el permitido para los fusibles.",
+   "3. Un lugar supervisado es aquel en que las condiciones de mantenimiento y supervisión aseguren que solamente personal calificado supervisará y prestará servicio a la instalación de transformadores.",
+   "4. Los fusibles accionados electrónicamente que se puedan ajustar para abrir a una corriente específica se deben ajustar de acuerdo con los ajustes para interruptores automáticos.",
+   "5. Se permitirá que un transformador equipado por el fabricante con protección térmica coordinada contra sobrecarga no tenga protección independiente del secundario."
+  ],
+  "regions": [
+   {
+    "page": 335,
+    "y0": 531.3681640625,
+    "y1": 775.77,
+    "id": "450-3(a)",
+    "article": 450
+   },
+   {
+    "page": 336,
+    "y0": 11.27,
+    "y1": 143.0,
+    "id": "450-3(a)",
+    "article": 450
+   }
+  ]
  }
 }
