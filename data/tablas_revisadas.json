@@ -15480,5 +15480,5000 @@
     "article": 300
    }
   ]
+ },
+ "310-60(c)(69)": {
+  "verificada": "2026-08-12",
+  "cols": 8,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 6
+    }
+   ],
+   [
+    {
+     "t": "mm2",
+     "rs": 3
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 3
+    },
+    {
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 5 001-15 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 15 001-35 000 volts",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 6
+    }
+   ],
+   [
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "83"
+    },
+    {
+     "t": "93"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "110"
+    },
+    {
+     "t": "120"
+    },
+    {
+     "t": "110"
+    },
+    {
+     "t": "125"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "145"
+    },
+    {
+     "t": "160"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "165"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "190"
+    },
+    {
+     "t": "215"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "215"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "42.4"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "250"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "290"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "290"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "290"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "330"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "335"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "330"
+    }
+   ],
+   [
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "385"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "385"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "380"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "400"
+    },
+    {
+     "t": "445"
+    },
+    {
+     "t": "400"
+    },
+    {
+     "t": "445"
+    },
+    {
+     "t": "395"
+    },
+    {
+     "t": "445"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "445"
+    },
+    {
+     "t": "495"
+    },
+    {
+     "t": "445"
+    },
+    {
+     "t": "495"
+    },
+    {
+     "t": "440"
+    },
+    {
+     "t": "490"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "550"
+    },
+    {
+     "t": "615"
+    },
+    {
+     "t": "550"
+    },
+    {
+     "t": "610"
+    },
+    {
+     "t": "545"
+    },
+    {
+     "t": "605"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "695"
+    },
+    {
+     "t": "775"
+    },
+    {
+     "t": "685"
+    },
+    {
+     "t": "765"
+    },
+    {
+     "t": "680"
+    },
+    {
+     "t": "755"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "900"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "885"
+    },
+    {
+     "t": "990"
+    },
+    {
+     "t": "870"
+    },
+    {
+     "t": "970"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "1075"
+    },
+    {
+     "t": "1200"
+    },
+    {
+     "t": "1060"
+    },
+    {
+     "t": "1185"
+    },
+    {
+     "t": "1040"
+    },
+    {
+     "t": "1160"
+    }
+   ],
+   [
+    {
+     "t": "633"
+    },
+    {
+     "t": "1250"
+    },
+    {
+     "t": "1230"
+    },
+    {
+     "t": "1370"
+    },
+    {
+     "t": "1210"
+    },
+    {
+     "t": "1350"
+    },
+    {
+     "t": "1185"
+    },
+    {
+     "t": "1320"
+    }
+   ],
+   [
+    {
+     "t": "760"
+    },
+    {
+     "t": "1500"
+    },
+    {
+     "t": "1365"
+    },
+    {
+     "t": "1525"
+    },
+    {
+     "t": "1345"
+    },
+    {
+     "t": "1500"
+    },
+    {
+     "t": "1315"
+    },
+    {
+     "t": "1465"
+    }
+   ],
+   [
+    {
+     "t": "887"
+    },
+    {
+     "t": "1750"
+    },
+    {
+     "t": "1495"
+    },
+    {
+     "t": "1665"
+    },
+    {
+     "t": "1470"
+    },
+    {
+     "t": "1640"
+    },
+    {
+     "t": "1430"
+    },
+    {
+     "t": "1595"
+    }
+   ],
+   [
+    {
+     "t": "1010"
+    },
+    {
+     "t": "2000"
+    },
+    {
+     "t": "1605"
+    },
+    {
+     "t": "1790"
+    },
+    {
+     "t": "1575"
+    },
+    {
+     "t": "1755"
+    },
+    {
+     "t": "1535"
+    },
+    {
+     "t": "1710"
+    }
+   ]
+  ],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ]
+ },
+ "310-60(c)(70)": {
+  "verificada": "2026-08-12",
+  "cols": 8,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 6
+    }
+   ],
+   [
+    {
+     "t": "mm2",
+     "rs": 3
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 3
+    },
+    {
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 5 001-15 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 15 001-35 000 volts",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 6
+    }
+   ],
+   [
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "90"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "85"
+    },
+    {
+     "t": "95"
+    },
+    {
+     "t": "87"
+    },
+    {
+     "t": "97"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "115"
+    },
+    {
+     "t": "125"
+    },
+    {
+     "t": "115"
+    },
+    {
+     "t": "130"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "165"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "170"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "42.4"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "195"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "200"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "200"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "200"
+    },
+    {
+     "t": "225"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "230"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "235"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "230"
+    },
+    {
+     "t": "260"
+    }
+   ],
+   [
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "270"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "270"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "270"
+    },
+    {
+     "t": "300"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "310"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "310"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "310"
+    },
+    {
+     "t": "345"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "385"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "385"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "380"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "480"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "480"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "475"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "545"
+    },
+    {
+     "t": "605"
+    },
+    {
+     "t": "535"
+    },
+    {
+     "t": "600"
+    },
+    {
+     "t": "530"
+    },
+    {
+     "t": "590"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "710"
+    },
+    {
+     "t": "790"
+    },
+    {
+     "t": "700"
+    },
+    {
+     "t": "780"
+    },
+    {
+     "t": "685"
+    },
+    {
+     "t": "765"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "855"
+    },
+    {
+     "t": "950"
+    },
+    {
+     "t": "840"
+    },
+    {
+     "t": "940"
+    },
+    {
+     "t": "825"
+    },
+    {
+     "t": "920"
+    }
+   ],
+   [
+    {
+     "t": "633"
+    },
+    {
+     "t": "1250"
+    },
+    {
+     "t": "980"
+    },
+    {
+     "t": "1095"
+    },
+    {
+     "t": "970"
+    },
+    {
+     "t": "1080"
+    },
+    {
+     "t": "950"
+    },
+    {
+     "t": "1055"
+    }
+   ],
+   [
+    {
+     "t": "760"
+    },
+    {
+     "t": "1500"
+    },
+    {
+     "t": "1105"
+    },
+    {
+     "t": "1230"
+    },
+    {
+     "t": "1085"
+    },
+    {
+     "t": "1215"
+    },
+    {
+     "t": "1060"
+    },
+    {
+     "t": "1180"
+    }
+   ],
+   [
+    {
+     "t": "887"
+    },
+    {
+     "t": "1750"
+    },
+    {
+     "t": "1215"
+    },
+    {
+     "t": "1355"
+    },
+    {
+     "t": "1195"
+    },
+    {
+     "t": "1335"
+    },
+    {
+     "t": "1165"
+    },
+    {
+     "t": "1300"
+    }
+   ],
+   [
+    {
+     "t": "1013"
+    },
+    {
+     "t": "2000"
+    },
+    {
+     "t": "1320"
+    },
+    {
+     "t": "1475"
+    },
+    {
+     "t": "1295"
+    },
+    {
+     "t": "1445"
+    },
+    {
+     "t": "1265"
+    },
+    {
+     "t": "1410"
+    }
+   ]
+  ],
+  "notes": [
+   "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
+  ]
+ },
+ "400-5(a)(1)": {
+  "verificada": "2026-08-12",
+  "title": "Ampacidad permisible para cables y cordones flexibles a temperatura ambiente de 30 °C. Ver 400-13 y la Tabla 400-4",
+  "cols": 6,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Conductor de cobre",
+     "cs": 2
+    },
+    {
+     "t": "Termoplásticos Tipos"
+    },
+    {
+     "t": "Termofijos tipos",
+     "cs": 2
+    },
+    {
+     "t": "Tipos: HPD, HSJ, HSJO, HSJOO",
+     "rs": 4
+    }
+   ],
+   [
+    {
+     "t": "",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "TPT y TST",
+     "rs": 3
+    },
+    {
+     "t": "C, E, EO, PD, S, SJ, SJO, SHOW, SJOO, SJOOW, SO, SOW, SOO, SOOW, SP-1, SP-2, SP-3, SRD, SV, SVO y SVOO",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Termoplásticos Tipos ET, ETLB, ETP, ETT, SE, SEW, SEO, SEOW, SEOOW, SJE, SJEW, SJEO, SJEOW, SJEOOW, SJT, SJTW, SJTO, SJTOW, SJTOO, SJTOOW, SPE-1, SPE-2, SPE-3, SPT-1, SPT-1W, SPT-2, SPT-2W, SPT-3, ST, SRDE, SRDT, STO, STOW, STOO, STOOW, SVE, SVEO, SVT, SVTO y STVOO",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Area mm2"
+    },
+    {
+     "t": "AWG"
+    },
+    {
+     "t": "Columna A+"
+    },
+    {
+     "t": "Columna B+"
+    }
+   ],
+   [
+    {
+     "t": "0.102"
+    },
+    {
+     "t": "27*"
+    },
+    {
+     "t": "0.5"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "0.519"
+    },
+    {
+     "t": "20"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "5**"
+    },
+    {
+     "t": "***"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "0.824"
+    },
+    {
+     "t": "18"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "7"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "10"
+    }
+   ],
+   [
+    {
+     "t": "1.04"
+    },
+    {
+     "t": "17"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "9"
+    },
+    {
+     "t": "12"
+    },
+    {
+     "t": "13"
+    }
+   ],
+   [
+    {
+     "t": "1.31"
+    },
+    {
+     "t": "16"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "13"
+    },
+    {
+     "t": "15"
+    }
+   ],
+   [
+    {
+     "t": "1.65"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "12"
+    },
+    {
+     "t": "16"
+    },
+    {
+     "t": "17"
+    }
+   ],
+   [
+    {
+     "t": "2.08"
+    },
+    {
+     "t": "14"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "18"
+    },
+    {
+     "t": "20"
+    }
+   ],
+   [
+    {
+     "t": "3.31"
+    },
+    {
+     "t": "12"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "20"
+    },
+    {
+     "t": "25"
+    },
+    {
+     "t": "30"
+    }
+   ],
+   [
+    {
+     "t": "5.26"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "25"
+    },
+    {
+     "t": "30"
+    },
+    {
+     "t": "35"
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "35"
+    },
+    {
+     "t": "40"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "45"
+    },
+    {
+     "t": "55"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "70"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "80"
+    },
+    {
+     "t": "95"
+    },
+    {
+     "t": "-"
+    }
+   ]
+  ],
+  "notes": [
+   "* Cordón de oropel (tinsel).",
+   "** Sólo cables para elevadores.",
+   "*** 7 amperes sólo para cables de elevadores; 2 amperes para otros tipos.",
+   "+Las corrientes permisibles bajo la columna A se aplican a cordones de tres conductores y otros multiconductores conectados a equipos de utilización, de modo que sólo tres conductores son portadores de corriente. Las corrientes permisibles bajo la columna B se aplican a cordones de 2 conductores y otros cordones multiconductores conectados a equipos de utilización, de modo que sólo dos conductores son portadores de corriente."
+  ]
+ },
+ "400-5(a)(2)": {
+  "verificada": "2026-08-12",
+  "title": "Ampacidad de los cables tipo SC, SCE, SCT, PPE, G, G-GC y W (Basada en una temperatura ambiente de 30 °C. Véase la tabla 400-4)",
+  "cols": 11,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Conductor de cobre Tamaño o designación",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Temperatura nominal del cable",
+     "cs": 9
+    }
+   ],
+   [
+    {
+     "t": "60 °C",
+     "cs": 3
+    },
+    {
+     "t": "75 °C",
+     "cs": 3
+    },
+    {
+     "t": "90 °C",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Area mm2"
+    },
+    {
+     "t": "AWG o kcmil"
+    },
+    {
+     "t": "D1"
+    },
+    {
+     "t": "E2"
+    },
+    {
+     "t": "F3"
+    },
+    {
+     "t": "D1"
+    },
+    {
+     "t": "E2"
+    },
+    {
+     "t": "F3"
+    },
+    {
+     "t": "D1"
+    },
+    {
+     "t": "E2"
+    },
+    {
+     "t": "F3"
+    }
+   ],
+   [
+    {
+     "t": "3.31"
+    },
+    {
+     "t": "12"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "31"
+    },
+    {
+     "t": "26"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "37"
+    },
+    {
+     "t": "31"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "42"
+    },
+    {
+     "t": "35"
+    }
+   ],
+   [
+    {
+     "t": "5.26"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "44"
+    },
+    {
+     "t": "37"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "52"
+    },
+    {
+     "t": "43"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "59"
+    },
+    {
+     "t": "49"
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "60"
+    },
+    {
+     "t": "55"
+    },
+    {
+     "t": "48"
+    },
+    {
+     "t": "70"
+    },
+    {
+     "t": "65"
+    },
+    {
+     "t": "57"
+    },
+    {
+     "t": "80"
+    },
+    {
+     "t": "74"
+    },
+    {
+     "t": "65"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "80"
+    },
+    {
+     "t": "72"
+    },
+    {
+     "t": "63"
+    },
+    {
+     "t": "95"
+    },
+    {
+     "t": "88"
+    },
+    {
+     "t": "77"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "99"
+    },
+    {
+     "t": "87"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "96"
+    },
+    {
+     "t": "84"
+    },
+    {
+     "t": "125"
+    },
+    {
+     "t": "115"
+    },
+    {
+     "t": "101"
+    },
+    {
+     "t": "140"
+    },
+    {
+     "t": "130"
+    },
+    {
+     "t": "114"
+    }
+   ],
+   [
+    {
+     "t": "26.7"
+    },
+    {
+     "t": "3"
+    },
+    {
+     "t": "120"
+    },
+    {
+     "t": "13"
+    },
+    {
+     "t": "99"
+    },
+    {
+     "t": "145"
+    },
+    {
+     "t": "135"
+    },
+    {
+     "t": "118"
+    },
+    {
+     "t": "165"
+    },
+    {
+     "t": "152"
+    },
+    {
+     "t": "133"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "140"
+    },
+    {
+     "t": "128"
+    },
+    {
+     "t": "112"
+    },
+    {
+     "t": "170"
+    },
+    {
+     "t": "152"
+    },
+    {
+     "t": "133"
+    },
+    {
+     "t": "190"
+    },
+    {
+     "t": "174"
+    },
+    {
+     "t": "152"
+    }
+   ],
+   [
+    {
+     "t": "42.2"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "165"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "131"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "178"
+    },
+    {
+     "t": "156"
+    },
+    {
+     "t": "220"
+    },
+    {
+     "t": "202"
+    },
+    {
+     "t": "177"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "173"
+    },
+    {
+     "t": "151"
+    },
+    {
+     "t": "230"
+    },
+    {
+     "t": "207"
+    },
+    {
+     "t": "181"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "234"
+    },
+    {
+     "t": "205"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "199"
+    },
+    {
+     "t": "174"
+    },
+    {
+     "t": "265"
+    },
+    {
+     "t": "238"
+    },
+    {
+     "t": "208"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "271"
+    },
+    {
+     "t": "237"
+    }
+   ],
+   [
+    {
+     "t": "85"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "230"
+    },
+    {
+     "t": "201"
+    },
+    {
+     "t": "310"
+    },
+    {
+     "t": "275"
+    },
+    {
+     "t": "241"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "313"
+    },
+    {
+     "t": "274"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "265"
+    },
+    {
+     "t": "232"
+    },
+    {
+     "t": "360"
+    },
+    {
+     "t": "317"
+    },
+    {
+     "t": "277"
+    },
+    {
+     "t": "405"
+    },
+    {
+     "t": "361"
+    },
+    {
+     "t": "316"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "340"
+    },
+    {
+     "t": "296"
+    },
+    {
+     "t": "259"
+    },
+    {
+     "t": "405"
+    },
+    {
+     "t": "354"
+    },
+    {
+     "t": "310"
+    },
+    {
+     "t": "455"
+    },
+    {
+     "t": "402"
+    },
+    {
+     "t": "352"
+    }
+   ],
+   [
+    {
+     "t": "152"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "375"
+    },
+    {
+     "t": "330"
+    },
+    {
+     "t": "289"
+    },
+    {
+     "t": "445"
+    },
+    {
+     "t": "395"
+    },
+    {
+     "t": "346"
+    },
+    {
+     "t": "505"
+    },
+    {
+     "t": "449"
+    },
+    {
+     "t": "393"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "420"
+    },
+    {
+     "t": "363"
+    },
+    {
+     "t": "318"
+    },
+    {
+     "t": "505"
+    },
+    {
+     "t": "435"
+    },
+    {
+     "t": "381"
+    },
+    {
+     "t": "570"
+    },
+    {
+     "t": "495"
+    },
+    {
+     "t": "433"
+    }
+   ],
+   [
+    {
+     "t": "203"
+    },
+    {
+     "t": "400"
+    },
+    {
+     "t": "455"
+    },
+    {
+     "t": "392"
+    },
+    {
+     "t": "343"
+    },
+    {
+     "t": "545"
+    },
+    {
+     "t": "469"
+    },
+    {
+     "t": "410"
+    },
+    {
+     "t": "615"
+    },
+    {
+     "t": "535"
+    },
+    {
+     "t": "468"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "515"
+    },
+    {
+     "t": "448"
+    },
+    {
+     "t": "392"
+    },
+    {
+     "t": "620"
+    },
+    {
+     "t": "537"
+    },
+    {
+     "t": "470"
+    },
+    {
+     "t": "700"
+    },
+    {
+     "t": "613"
+    },
+    {
+     "t": "536"
+    }
+   ],
+   [
+    {
+     "t": "304"
+    },
+    {
+     "t": "600"
+    },
+    {
+     "t": "575"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "690"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "780"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "355"
+    },
+    {
+     "t": "700"
+    },
+    {
+     "t": "630"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "755"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "855"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "655"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "785"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "885"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "405"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": "680"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "815"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "920"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "456"
+    },
+    {
+     "t": "900"
+    },
+    {
+     "t": "730"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "870"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "985"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "780"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "935"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1055"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ]
+  ],
+  "notes": [
+   "1 Las ampacidades bajo la columna D se permitirán para cables de un solo conductor tipo SC, SCE, SCT, PPE y W sólo cuando los conductores individuales no estén instalados en canalizaciones ni estén en contacto físico entre sí, excepto en tramos no mayores a 60 centímetros cuando atraviesen la pared de un envolvente.",
+   "2 Las ampacidades bajo la columna E se aplican a cables de 2 conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo dos conductores conduzcan corriente.",
+   "3 Las ampacidades bajo la columna F se aplican a cables de tres conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo tres conductores conduzcan corriente."
+  ],
+  "regions": [
+   {
+    "page": 245,
+    "y0": 301.8681640625,
+    "y1": 630.0,
+    "id": "400-5(a)(2)",
+    "article": 400
+   }
+  ]
+ },
+ "770-154(a)": {
+  "verificada": "2026-08-12",
+  "cols": 10,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Aplicaciones",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Cables, canalizaciones, y ensambles enrutadores de cables tipo",
+     "cs": 8
+    }
+   ],
+   [
+    {
+     "t": "OFNP, OFCP"
+    },
+    {
+     "t": "OFNR, OFCR"
+    },
+    {
+     "t": "OFNG, OFCG, OFN, OFC"
+    },
+    {
+     "t": "Ensambles enrutadores de cables para ductos verticales"
+    },
+    {
+     "t": "Ensambles enrutadores de cables para propósito general"
+    },
+    {
+     "t": "Canalizaciones de fibra óptica para plenums"
+    },
+    {
+     "t": "Canalizaciones de fibra óptica para ductos verticales"
+    },
+    {
+     "t": "Canalizaciones de fibra óptica para propósito general"
+    }
+   ],
+   [
+    {
+     "t": "En Ductos prefabricados como se describen en 300-22(b)",
+     "rs": 2
+    },
+    {
+     "t": "En ductos prefabricados"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones que cumplen con 300-22(b)"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En otro espacios usados para aire ambiental como se describe en 300-22(c)",
+     "rs": 5
+    },
+    {
+     "t": "En otros espacios usados para aire ambiental"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas que cumplen 300-22(c)"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones y fibra óptica para plenum"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas portacables metálicas abiertas"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Soportado por charolas portables metálicas"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En ductos verticales",
+     "rs": 7
+    },
+    {
+     "t": "En tendidos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En espacios a prueba de fuego"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "Canalizaciones para comunicaciones y fibra óptica en plenums"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Canalizaciones para comunicaciones y fibra óptica en ductos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Ensambles enrutadores de cables en ductos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En viviendas"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "Dentro de edificios que no haya espacios para manejo de aire y ductos verticales",
+     "rs": 7
+    },
+    {
+     "t": "General"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "Soportado por charolas portacables"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En bastidores de distribución y marcos de conexión"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En alguna canalización reconocida en el capítulo 3"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para fibra óptica y comunicaciones en plenums"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para fibra óptica y comunicaciones en ductos verticales, y ensambles enrutadores de cables en ductos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para fibra óptica y comunicaciones de propósito general, y ensambles enrutadores de cables de propósito general"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Una \"N\" en la tabla indica que el tipo de cable no se permite sea instalado en la aplicación. Una \"S\" indica que el cable se permite sea instalado en la aplicación, sujeto a las limitaciones descritas en 770-110 y 770-113. Parte E del Artículo 770 cubre los métodos de instalación dentro de los edificios. Esta tabla contiene las aplicaciones aprobadas para canalizaciones y cables de fibra óptica. La definición del punto de entrada se encuentra en el Artículo 770-2. Cables de entrada de fibra óptica que no provengan desde un tubo conduit metálico pesado o tubo conduit metálico semipesado no se consideren en el edificio. Para más información sobre las restricciones de la instalación de cables de fibra óptica en ductos prefabricados ver 770-113 (b).",
+     "cs": 10
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "800-154(a)": {
+  "verificada": "2026-08-12",
+  "cols": 12,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Aplicaciones",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Alambres, Cables y Tipo de Canalizaciones.",
+     "cs": 10
+    }
+   ],
+   [
+    {
+     "t": "CMP"
+    },
+    {
+     "t": "CMR"
+    },
+    {
+     "t": "CMG CM"
+    },
+    {
+     "t": "CMX"
+    },
+    {
+     "t": "CMUC"
+    },
+    {
+     "t": "Cables híbridos de energía y comunicaciones"
+    },
+    {
+     "t": "Alambres de comunicación"
+    },
+    {
+     "t": "Canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "Canalizaciones para comunicaciones en pozos verticales"
+    },
+    {
+     "t": "Canalizaciones de comunicaciones para uso general"
+    }
+   ],
+   [
+    {
+     "t": "En Ductos prefabricados como se describen en 300- 22(b)",
+     "rs": 2
+    },
+    {
+     "t": "En ductos prefabricados"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones que cumplen con 300-22(b)"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En otros espacios usados para aire ambiental como se describe en 300-22(c)",
+     "rs": 5
+    },
+    {
+     "t": "En otros espacios usados para aire ambiental"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas que cumplen con 300- 22(c)"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas portacables metálicas abiertas"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas con la base de metal y cubiertas de metal"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En pozos verticales",
+     "rs": 6
+    },
+    {
+     "t": "En tendidos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En espacios a prueba de fuego"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en pozos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En ensambles de cable para ruteadores en pozos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "En unidades de vivienda de una y dos familias"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "Espacios dentro de edificios que no sean para manejo de aire y pozos verticales",
+     "rs": 11
+    },
+    {
+     "t": "General"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En unidades de vivienda de una y dos familias"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En unidades de vivienda multifamiliar"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En espacios no ocultos"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas portacables"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "Bajo alfombra"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En bastidores de distribución y marcos de conexiones"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En alguna canalización reconocida en el Capítulo 3"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "",
+     "cs": 3,
+     "rs": 3
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en pozos verticales y ensambles de cable para ruteadores en pozos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones de propósito general y ensambles de cable para ruteadores de propósito general"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    }
+   ]
+  ],
+  "notes": [
+   "NOTA 1: Una \"N\" en la tabla indica que el tipo de cable no se permite sea instalado en la aplicación. Una \"S *\" indica que el cable se permite sea instalado en la aplicación, sujeto a las limitaciones descritas en 800-110 y 800-113.",
+   "NOTA 2: Parte E del Artículo 800 cubre los métodos de instalación dentro de los edificios. Esta tabla contiene las aplicaciones aprobadas para alambres, cables y canalizaciones de comunicaciones para su uso en edificios. La definición del punto de entrada se encuentra en el Artículo 800-2. Cables de entrada de comunicaciones que no provengan de un conduit metálico pesado o conduit metálico semipesado no se consideran que estén dentro del edificio.",
+   "NOTA 3: Para más información sobre las restricciones de la instalación de cables de comunicación en ductos prefabricados ver 800-113(b)."
+  ]
+ },
+ "820-154(a)": {
+  "verificada": "2026-08-12",
+  "cols": 6,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Aplicaciones",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Tipos de cable",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "CATVP"
+    },
+    {
+     "t": "CATVR"
+    },
+    {
+     "t": "CATV"
+    },
+    {
+     "t": "CATVX"
+    }
+   ],
+   [
+    {
+     "t": "En ductos prefabricados como se describe en 300-22(b)",
+     "rs": 2
+    },
+    {
+     "t": "En ductos prefabricados como se describe en 300-22(b)"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas que cumplen con 300-22(b)"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "En otros espacios usados para aire ambiental como se describe en 300-22(c)",
+     "rs": 5
+    },
+    {
+     "t": "En otros espacios usados para aire ambiental (Plenums) como se describe en 300-22(c)"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas que cumplen con 300-22(c)"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas portacables metálicas abiertas"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas con la base de metal y cubiertas de metal"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "En pozos verticales",
+     "rs": 7
+    },
+    {
+     "t": "En tendidos verticales"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "En espacios a prueba de fuego"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en pozos verticales"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En ensambles de cable para ruteadores en pozos verticales"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En unidades de vivienda de una y dos familias"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "Espacios dentro de edificios que no sean para manejo de aire y pozos verticales",
+     "rs": 3
+    },
+    {
+     "t": "General"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "En unidades de vivienda de una y dos familias"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "En unidades de vivienda multifamiliar"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "",
+     "rs": 9
+    },
+    {
+     "t": "En espacios no ocultos"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas portacables"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En bastidores de distribución y marcos de conexiones"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En alguna canalización reconocida en el Capítulo 3"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en pozos verticales"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones de propósito general"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En ensambles de cable para ruteadores en pozos verticales"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En ensambles de cable para ruteadores de propósito general"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "Y*"
+    },
+    {
+     "t": "N"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "430-97": {
+  "verificada": "2026-08-12",
+  "cols": 4,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Tensión nominal",
+     "rs": 3
+    },
+    {
+     "t": "Entre partes vivas de polaridad opuesta.",
+     "cs": 2
+    },
+    {
+     "t": "Partes vivas a tierra",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "Sobre la superficie"
+    },
+    {
+     "t": "Libres en el aire"
+    }
+   ],
+   [
+    {
+     "t": "milímetros",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "120 volts nominales máximo"
+    },
+    {
+     "t": "19"
+    },
+    {
+     "t": "12"
+    },
+    {
+     "t": "12"
+    }
+   ],
+   [
+    {
+     "t": "250 volts nominales máximo"
+    },
+    {
+     "t": "31"
+    },
+    {
+     "t": "19"
+    },
+    {
+     "t": "12"
+    }
+   ],
+   [
+    {
+     "t": "600 volts nominales máximo"
+    },
+    {
+     "t": "51"
+    },
+    {
+     "t": "25"
+    },
+    {
+     "t": "25"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "830-47": {
+  "verificada": "2026-08-12",
+  "cols": 4,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Ubicación del circuito o método de alambrado",
+     "rs": 2
+    },
+    {
+     "t": "Conductores directamente enterrados cm"
+    },
+    {
+     "t": "Tubo conduit metálico tipo pesado o tipo semipesado cm"
+    },
+    {
+     "t": "Canalizaciones no metálicas aprobadas directamente enterradas; sin concreto embebido u otra canalización aprobada cm"
+    }
+   ],
+   [
+    {
+     "t": "Centímetros",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Todos los lugares no especificados abajo"
+    },
+    {
+     "t": "46"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "30"
+    }
+   ],
+   [
+    {
+     "t": "En zanjas por debajo de concreto de 5 cm de espesor o equivalente"
+    },
+    {
+     "t": "30"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "15"
+    }
+   ],
+   [
+    {
+     "t": "Bajo una edificación (en canalizaciones solamente)"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "0"
+    },
+    {
+     "t": "0"
+    }
+   ],
+   [
+    {
+     "t": "Bajo una baldosa exterior de concreto de 10 cm de espesor como mínimo, sin tráfico vehicular y que se extiende a no menos de 15 cm más allá de la instalación subterránea"
+    },
+    {
+     "t": "30"
+    },
+    {
+     "t": "10"
+    },
+    {
+     "t": "10"
+    }
+   ],
+   [
+    {
+     "t": "Vías de entrada de las viviendas unifamiliares o bifamiliares y áreas exteriores de parqueo, usadas solamente para propósitos relacionados con las viviendas"
+    },
+    {
+     "t": "30"
+    },
+    {
+     "t": "30"
+    },
+    {
+     "t": "30"
+    }
+   ]
+  ],
+  "notes": [
+   "1. Las canalizaciones aprobadas para enterramiento solamente embebidas en concreto requieren una envoltura de concreto de espesor no menor a 5 centímetros.",
+   "2. Se permite profundidades menores donde los cables suben hasta las terminaciones o empalmes, o cuando de otra manera se exige el acceso a ellos."
+  ]
+ },
+ "310-15(b)(20)": {
+  "verificada": "2026-08-12",
+  "cols": 6,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(a)]",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "",
+     "cs": 2
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "90 °C"
+    }
+   ],
+   [
+    {
+     "t": "mm2",
+     "rs": 2
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 2
+    },
+    {
+     "t": "Tipos RHW, THHW, THHW-LS, THW, THW-LS, THWN, XHHW, ZW"
+    },
+    {
+     "t": "Tipos MI, THHN, THHW, THHW-LS THW-2, THWN-2, RHH, RHW-2, USE-2, XHHW, XHHW-2, ZW-2"
+    },
+    {
+     "t": "Tipos RHW, XHHW"
+    },
+    {
+     "t": "Tipos RHH, XHHW, RHW-2, XHHW-2, USE-2, ZW-2"
+    }
+   ],
+   [
+    {
+     "t": "COBRE",
+     "cs": 2
+    },
+    {
+     "t": "ALUMINIO O ALUMINIO RECUBIERTO DE COBRE",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "57"
+    },
+    {
+     "t": "66"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "76"
+    },
+    {
+     "t": "89"
+    },
+    {
+     "t": "59"
+    },
+    {
+     "t": "69"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "101"
+    },
+    {
+     "t": "117"
+    },
+    {
+     "t": "78"
+    },
+    {
+     "t": "91"
+    }
+   ],
+   [
+    {
+     "t": "26.7"
+    },
+    {
+     "t": "3"
+    },
+    {
+     "t": "118"
+    },
+    {
+     "t": "138"
+    },
+    {
+     "t": "92"
+    },
+    {
+     "t": "107"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "135"
+    },
+    {
+     "t": "158"
+    },
+    {
+     "t": "106"
+    },
+    {
+     "t": "123"
+    }
+   ],
+   [
+    {
+     "t": "42.4"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "158"
+    },
+    {
+     "t": "185"
+    },
+    {
+     "t": "123"
+    },
+    {
+     "t": "144"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "183"
+    },
+    {
+     "t": "214"
+    },
+    {
+     "t": "143"
+    },
+    {
+     "t": "167"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "212"
+    },
+    {
+     "t": "247"
+    },
+    {
+     "t": "165"
+    },
+    {
+     "t": "193"
+    }
+   ],
+   [
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "245"
+    },
+    {
+     "t": "287"
+    },
+    {
+     "t": "192"
+    },
+    {
+     "t": "224"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "287"
+    },
+    {
+     "t": "335"
+    },
+    {
+     "t": "224"
+    },
+    {
+     "t": "262"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "320"
+    },
+    {
+     "t": "374"
+    },
+    {
+     "t": "251"
+    },
+    {
+     "t": "292"
+    }
+   ],
+   [
+    {
+     "t": "152"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "359"
+    },
+    {
+     "t": "419"
+    },
+    {
+     "t": "282"
+    },
+    {
+     "t": "328"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "397"
+    },
+    {
+     "t": "464"
+    },
+    {
+     "t": "312"
+    },
+    {
+     "t": "364"
+    }
+   ],
+   [
+    {
+     "t": "203"
+    },
+    {
+     "t": "400"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "503"
+    },
+    {
+     "t": "339"
+    },
+    {
+     "t": "395"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "496"
+    },
+    {
+     "t": "580"
+    },
+    {
+     "t": "392"
+    },
+    {
+     "t": "458"
+    }
+   ],
+   [
+    {
+     "t": "304"
+    },
+    {
+     "t": "600"
+    },
+    {
+     "t": "553"
+    },
+    {
+     "t": "647"
+    },
+    {
+     "t": "440"
+    },
+    {
+     "t": "514"
+    }
+   ],
+   [
+    {
+     "t": "355"
+    },
+    {
+     "t": "700"
+    },
+    {
+     "t": "610"
+    },
+    {
+     "t": "714"
+    },
+    {
+     "t": "488"
+    },
+    {
+     "t": "570"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "638"
+    },
+    {
+     "t": "747"
+    },
+    {
+     "t": "512"
+    },
+    {
+     "t": "598"
+    }
+   ],
+   [
+    {
+     "t": "405"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": "660"
+    },
+    {
+     "t": "773"
+    },
+    {
+     "t": "532"
+    },
+    {
+     "t": "622"
+    }
+   ],
+   [
+    {
+     "t": "456"
+    },
+    {
+     "t": "900"
+    },
+    {
+     "t": "704"
+    },
+    {
+     "t": "826"
+    },
+    {
+     "t": "572"
+    },
+    {
+     "t": "669"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "748"
+    },
+    {
+     "t": "879"
+    },
+    {
+     "t": "612"
+    },
+    {
+     "t": "716"
+    }
+   ]
+  ],
+  "notes": [
+   "* Véase 310-15(b)(2) para los factores de corrección de la ampacidad cuando la temperatura ambiente es diferente a 40 °C."
+  ]
  }
 }
