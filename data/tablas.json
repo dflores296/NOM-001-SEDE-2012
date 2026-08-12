@@ -6001,11 +6001,8 @@
      "rs": 3
     },
     {
-     "t": ""
-    },
-    {
      "t": "Tamaño",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -6014,10 +6011,8 @@
      "cs": 2
     },
     {
-     "t": "Cable de aluminio"
-    },
-    {
-     "t": "aluminio o con cobre"
+     "t": "Cable de aluminio o aluminio con cobre",
+     "cs": 2
     }
    ],
    [
@@ -6359,18 +6354,22 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Para cumplir con lo establecido en 250-4(a)(5) o (b)(4), el conductor de puesta a tierra de equipos podría ser de mayor tamaño que lo especificado en esta Tabla.",
+   "*Véase 250-120 para restricciones de instalación."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 108,
     "y0": 109.8681640625,
-    "y1": 407.23,
+    "y1": 436.0,
     "id": "250-122",
     "article": 250
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "300-16(c)",
