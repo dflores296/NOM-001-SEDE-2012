@@ -60994,12 +60994,8 @@
    ],
    [
     {
-     "t": "Artículo 342 –",
-     "cs": 3
-    },
-    {
-     "t": "Tubo conduit metálico semipesado (IMC)",
-     "cs": 5
+     "t": "Artículo 342 – Tubo conduit metálico semipesado (IMC)",
+     "cs": 8
     }
    ],
    [
@@ -61338,71 +61334,40 @@
    ],
    [
     {
-     "t": ""
+     "t": "",
+     "cs": 2
     },
     {
-     "t": "Artículo 356 –"
-    },
-    {
-     "t": "Tubo conduit"
-    },
-    {
-     "t": "no metálico flexible hermético a los líquidos (LFNC-B*)",
-     "cs": 5
+     "t": "Artículo 356 – Tubo conduit no metálico flexible hermético a los líquidos (LFNC-B*)",
+     "cs": 6
     }
    ],
    [
     {
-     "t": "Designación"
+     "t": "Designación métrica",
+     "rs": 2
     },
     {
-     "t": "Tamaño"
+     "t": "Tamaño comercial",
+     "rs": 2
     },
     {
-     "t": "Diámetro"
+     "t": "Diámetro interno"
     },
     {
-     "t": "100% del"
+     "t": "100% del área total"
     },
     {
-     "t": "60% del"
+     "t": "60% del área total"
     },
     {
-     "t": "Un"
+     "t": "Un conductor fr = 53%"
     },
     {
-     "t": "Dos"
+     "t": "Dos conductores fr = 31%"
     },
     {
-     "t": "Más de 2"
-    }
-   ],
-   [
-    {
-     "t": "métrica 12",
-     "rs": 3
-    },
-    {
-     "t": "comercial ⅜",
-     "rs": 3
-    },
-    {
-     "t": "interno"
-    },
-    {
-     "t": "área total"
-    },
-    {
-     "t": "área total"
-    },
-    {
-     "t": "conductor fr = 53%"
-    },
-    {
-     "t": "conductores fr = 31%"
-    },
-    {
-     "t": "conductores fr = 40%"
+     "t": "Más de 2 conductores fr = 40%"
     }
    ],
    [
@@ -61426,6 +61391,12 @@
     }
    ],
    [
+    {
+     "t": "12"
+    },
+    {
+     "t": "⅜"
+    },
     {
      "t": "12.5"
     },
@@ -61603,17 +61574,12 @@
    ],
    [
     {
-     "t": ""
+     "t": "",
+     "cs": 2
     },
     {
-     "t": "Artículo 356 –"
-    },
-    {
-     "t": "Tubo conduit"
-    },
-    {
-     "t": "Corresponde a 356.2(2) no metálico flexible hermético a los líquidos (LFNC-A*)",
-     "cs": 5
+     "t": "Corresponde a 356.2(2) Artículo 356 – Tubo conduit no metálico flexible hermético a los líquidos (LFNC-A*)",
+     "cs": 6
     }
    ],
    [
@@ -61848,15 +61814,12 @@
    ],
    [
     {
-     "t": ""
+     "t": "",
+     "cs": 2
     },
     {
-     "t": "Artículo 350 – Tubo conduit metálico",
-     "cs": 3
-    },
-    {
-     "t": "flexible hermético a los líquidos (LFMC)",
-     "cs": 4
+     "t": "Artículo 350 – Tubo conduit metálico flexible hermético a los líquidos (LFMC)",
+     "cs": 6
     }
    ],
    [
@@ -62251,7 +62214,7 @@
      "cs": 2
     },
     {
-     "t": "Artículo 344 –Tubo conduit metálico pesado (RMC)",
+     "t": "Artículo 344 – Tubo conduit metálico pesado (RMC)",
      "cs": 6
     }
    ],
@@ -62643,12 +62606,8 @@
    ],
    [
     {
-     "t": "Artículo 352 – Tubo conduit",
-     "cs": 4
-    },
-    {
-     "t": "rígido de PVC (PVC), Cédula 80",
-     "cs": 4
+     "t": "Artículo 352 – Tubo conduit rígido de PVC (PVC), Cédula 80",
+     "cs": 8
     }
    ],
    [
@@ -63431,12 +63390,8 @@
    ],
    [
     {
-     "t": "Artículo 352 –",
-     "cs": 3
-    },
-    {
-     "t": "Tubo conduit rígido de PVC (PVC), Tipo A",
-     "cs": 5
+     "t": "Artículo 352 – Tubo conduit rígido de PVC (PVC), Tipo A",
+     "cs": 8
     }
    ],
    [
@@ -63801,12 +63756,8 @@
    ],
    [
     {
-     "t": "Artículo 352 – Tubo conduit",
-     "cs": 4
-    },
-    {
-     "t": "rígido de PVC (PVC), Cédula 80",
-     "cs": 4
+     "t": "Artículo 352 – Tubo conduit rígido de PVC (PVC), Cédula 80",
+     "cs": 8
     }
    ],
    [
@@ -64172,7 +64123,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.999,
+  "quality": 1.0,
   "regions": [
    {
     "page": 743,
@@ -64210,6 +64161,7 @@
     "article": null
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": true
  },
  {

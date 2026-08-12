@@ -20,15 +20,14 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**91 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**92 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (4)
+## 1 · Prioridad alta (3)
 
 Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `4` | Dimensiones y porcentaje disponible para los conductores del área del… | 743, 744, 745, 746, 747 | 1 | 1.00 | **sí** | dibujada | 168×8 |
 | [ ] | `5` | Dimensiones de los conductores aislados y cables para artefactos | 747, 748, 749, 750 | 1 | 1.00 | **sí** | dibujada | 187×11 |
 | [ ] | `8` | Propiedades de los conductores | 750, 751 | 1 | 1.00 | **sí** | dibujada | 40×10 |
 | [ ] | `10` | Número de hilos de los cables | 752 | 1 | 1.00 | **sí** | dibujada | 14×5 |
