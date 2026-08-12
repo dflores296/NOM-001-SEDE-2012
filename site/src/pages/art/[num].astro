@@ -3,10 +3,15 @@ import Base from '../../layouts/Base.astro';
 import Sub from '../../components/Sub.astro';
 import Tabla from '../../components/Tabla.astro';
 import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug,
-         tablaPorId, rotuloTabla, BASE } from '../../lib/nom.js';
+         tablaPorId, rotuloTabla, hrefArticulo, BASE } from '../../lib/nom.js';
 
+// El Artículo 100 no genera página. Son las 185 definiciones, que ya viven en
+// el glosario; lo que salía aquí era un cartel pidiendo ir allá. astro.config
+// redirige /art/100 para que los enlaces viejos sigan llegando a su sitio.
 export function getStaticPaths() {
-  return articles.map((a) => ({ params: { num: String(a.num) }, props: { a } }));
+  return articles
+    .filter((a) => a.num !== 100)
+    .map((a) => ({ params: { num: String(a.num) }, props: { a } }));
 }
 
 const { a } = Astro.props;
@@ -60,7 +65,7 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
       {articles
         .filter((x) => x.chapter === a.chapter)
         .map((x) => (
-          <a href={`${base}/art/${x.num}`} class={x.num === a.num ? 'on' : ''}>
+          <a href={hrefArticulo(x.num)} class={x.num === a.num ? 'on' : ''}>
             <span class="mono">{x.num}</span> {x.title}
           </a>
         ))}
@@ -77,16 +82,6 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
           {a.sections.length} secciones · {a.parts.length} partes · página {a.page} del PDF
         </div>
       </div>
-
-      {a.num === 100 && (
-        /* El Artículo 100 son definiciones, no secciones numeradas. Las citas
-           a "Artículo 100" caen aquí, así que hay que llevarlas al glosario. */
-        <div class="aviso">
-          Este artículo es el catálogo de definiciones de la norma y se consulta
-          en el <a href={`${base}/glosario/`}><b>glosario</b></a>, donde están sus
-          {' '}185 términos con buscador.
-        </div>
-      )}
 
       {groups.map((g) => (
         <>
@@ -172,10 +167,10 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
 
       <nav class="pager">
         {prev && (
-          <a href={`${base}/art/${prev.num}`}>← <b class="mono">{prev.num}</b> {prev.title}</a>
+          <a href={hrefArticulo(prev.num)}>← <b class="mono">{prev.num}</b> {prev.title}</a>
         )}
         {next && (
-          <a class="nx" href={`${base}/art/${next.num}`}><b class="mono">{next.num}</b> {next.title} →</a>
+          <a class="nx" href={hrefArticulo(next.num)}><b class="mono">{next.num}</b> {next.title} →</a>
         )}
       </nav>
     </main>

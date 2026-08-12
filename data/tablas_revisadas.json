@@ -1,6 +1,6 @@
 {
  "220-42": {
-  "verificada": "2026-08-11",
+  "verificada": "2026-08-12",
   "cols": 3,
   "header_rows": 1,
   "rows": [
@@ -6871,6 +6871,536 @@
     "id": "922-17(c)",
     "article": 922
    }
+  ]
+ },
+ "220-3": {
+  "verificada": "2026-08-12",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Cálculo"
+    },
+    {
+     "t": "Artículo"
+    },
+    {
+     "t": "Sección o Parte"
+    }
+   ],
+   [
+    {
+     "t": "Alimentadores de tableros de distribución en escenarios - teatros"
+    },
+    {
+     "t": "520"
+    },
+    {
+     "t": "520-27"
+    }
+   ],
+   [
+    {
+     "t": "Bases de cálculo - estacionamientos de vehículos recreativos"
+    },
+    {
+     "t": "551"
+    },
+    {
+     "t": "551-73 (a)"
+    }
+   ],
+   [
+    {
+     "t": "Caída de tensión (cálculo obligatorio) - bombas contra incendios"
+    },
+    {
+     "t": "695"
+    },
+    {
+     "t": "695-7"
+    }
+   ],
+   [
+    {
+     "t": "Caída de tensión (cálculo obligatorio) - equipo eléctrico sensible"
+    },
+    {
+     "t": "647"
+    },
+    {
+     "t": "647-4 (d)"
+    }
+   ],
+   [
+    {
+     "t": "Cálculos de circuitos derivados de más de 600 volts"
+    },
+    {
+     "t": "210"
+    },
+    {
+     "t": "210-19 (b)"
+    }
+   ],
+   [
+    {
+     "t": "Cálculos de la ampacidad- soldadores eléctricos"
+    },
+    {
+     "t": "630"
+    },
+    {
+     "t": "630-11, 630-31"
+    }
+   ],
+   [
+    {
+     "t": "Cálculos de la carga del alimentador y de acometida – marinas y muelles"
+    },
+    {
+     "t": "555"
+    },
+    {
+     "t": "555-12"
+    }
+   ],
+   [
+    {
+     "t": "Cálculos del alimentador de más de 600 volts"
+    },
+    {
+     "t": "215"
+    },
+    {
+     "t": "215-2 (b)"
+    }
+   ],
+   [
+    {
+     "t": "Calentadores de agua tipo almacenamiento"
+    },
+    {
+     "t": "422"
+    },
+    {
+     "t": "422-11 (e)"
+    }
+   ],
+   [
+    {
+     "t": "Capacidad nominal y tamaño - los conductores de grúas y montacargas eléctricos"
+    },
+    {
+     "t": "610"
+    },
+    {
+     "t": "610-14"
+    }
+   ],
+   [
+    {
+     "t": "Carga total para determinar el suministro de energía- casas móviles, casas prefabricadas y estacionamientos de casas móviles"
+    },
+    {
+     "t": "550"
+    },
+    {
+     "t": "550-18 (b)"
+    }
+   ],
+   [
+    {
+     "t": "Conductores - convertidores de fase"
+    },
+    {
+     "t": "455"
+    },
+    {
+     "t": "455-6"
+    }
+   ],
+   [
+    {
+     "t": "Dimensionado de los conductores del alimentador para escenarios en estudios de televisión - Estudios de cine, de televisión y lugares similares"
+    },
+    {
+     "t": "530"
+    },
+    {
+     "t": "530-19"
+    }
+   ],
+   [
+    {
+     "t": "Dimensionado del circuito derivado - equipos eléctricos fijos de calefacción para tuberías y recipientes"
+    },
+    {
+     "t": "427"
+    },
+    {
+     "t": "427-4"
+    }
+   ],
+   [
+    {
+     "t": "Dimensionado del circuito derivado - equipos eléctricos fijos para calefacción de ambiente"
+    },
+    {
+     "t": "424"
+    },
+    {
+     "t": "424-3"
+    }
+   ],
+   [
+    {
+     "t": "Dimensionado del circuito derivado -equipos eléctricos fijos exteriores para deshielo y fusión de nieve"
+    },
+    {
+     "t": "426"
+    },
+    {
+     "t": "426-4"
+    }
+   ],
+   [
+    {
+     "t": "Dimensionado del circuito y corriente - sistemas solares fotovoltaicos"
+    },
+    {
+     "t": "690"
+    },
+    {
+     "t": "690-8"
+    }
+   ],
+   [
+    {
+     "t": "Dimensionado del conductor de alimentación - maquinaria industrial"
+    },
+    {
+     "t": "670"
+    },
+    {
+     "t": "670-4 (a)"
+    }
+   ],
+   [
+    {
+     "t": "Dimensionado del conductor del circuito derivado - equipos de aire acondicionado y de refrigeración"
+    },
+    {
+     "t": "440"
+    },
+    {
+     "t": "Parte D"
+    }
+   ],
+   [
+    {
+     "t": "Dimensionado del conductor del circuito derivado - galvanoplastia"
+    },
+    {
+     "t": "669"
+    },
+    {
+     "t": "669-5"
+    }
+   ],
+   [
+    {
+     "t": "Equipos de carga combinada, de motores y de motores múltiples"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "430-25"
+    }
+   ],
+   [
+    {
+     "t": "Espacios electrificados para estacionamiento de camiones"
+    },
+    {
+     "t": "626"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Factores de demanda del alimentador - elevadores"
+    },
+    {
+     "t": "620"
+    },
+    {
+     "t": "620-14"
+    }
+   ],
+   [
+    {
+     "t": "Factores de demanda del alimentador - motores"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "430-26"
+    }
+   ],
+   [
+    {
+     "t": "Factores de demanda permisibles para sistemas de alambrado eléctrico en estacionamientos - casas móviles, casas prefabricadas y estacionamientos de casas móviles"
+    },
+    {
+     "t": "550"
+    },
+    {
+     "t": "550-31"
+    }
+   ],
+   [
+    {
+     "t": "Líneas - celdas electrolíticas"
+    },
+    {
+     "t": "668"
+    },
+    {
+     "t": "668-3(c)"
+    }
+   ],
+   [
+    {
+     "t": "Máquinas de riego accionadas o controladas eléctricamente"
+    },
+    {
+     "t": "675"
+    },
+    {
+     "t": "675-7(a) y 675‑22(a)"
+    }
+   ],
+   [
+    {
+     "t": "Motores, varios motores o un(os) motor(es) y otra(s) carga(s)"
+    },
+    {
+     "t": "430"
+    },
+    {
+     "t": "430-24"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "220-12": {
+  "verificada": "2026-08-12",
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Tipo del inmueble"
+    },
+    {
+     "t": "Carga unitaria (VA/m2)"
+    }
+   ],
+   [
+    {
+     "t": "Bancos"
+    },
+    {
+     "t": "39 (b)"
+    }
+   ],
+   [
+    {
+     "t": "Casas de huéspedes"
+    },
+    {
+     "t": "17"
+    }
+   ],
+   [
+    {
+     "t": "Clubes"
+    },
+    {
+     "t": "22"
+    }
+   ],
+   [
+    {
+     "t": "Cuarteles y auditorios"
+    },
+    {
+     "t": "11"
+    }
+   ],
+   [
+    {
+     "t": "Depósitos (almacenamiento)"
+    },
+    {
+     "t": "3"
+    }
+   ],
+   [
+    {
+     "t": "Edificios de oficinas"
+    },
+    {
+     "t": "39 (b)"
+    }
+   ],
+   [
+    {
+     "t": "Edificios industriales y comerciales (lugares de almacenamiento)"
+    },
+    {
+     "t": "22"
+    }
+   ],
+   [
+    {
+     "t": "Escuelas"
+    },
+    {
+     "t": "33"
+    }
+   ],
+   [
+    {
+     "t": "Estacionamientos comerciales"
+    },
+    {
+     "t": "6"
+    }
+   ],
+   [
+    {
+     "t": "Hospitales"
+    },
+    {
+     "t": "22"
+    }
+   ],
+   [
+    {
+     "t": "Hoteles y moteles, incluidos apartamentos sin cocineta"
+    },
+    {
+     "t": "22"
+    }
+   ],
+   [
+    {
+     "t": "Iglesias"
+    },
+    {
+     "t": "11"
+    }
+   ],
+   [
+    {
+     "t": "Juzgados"
+    },
+    {
+     "t": "22"
+    }
+   ],
+   [
+    {
+     "t": "Lugares de almacenamiento"
+    },
+    {
+     "t": "3"
+    }
+   ],
+   [
+    {
+     "t": "Peluquerías y salones de belleza"
+    },
+    {
+     "t": "33"
+    }
+   ],
+   [
+    {
+     "t": "Restaurantes"
+    },
+    {
+     "t": "22"
+    }
+   ],
+   [
+    {
+     "t": "Tiendas"
+    },
+    {
+     "t": "33"
+    }
+   ],
+   [
+    {
+     "t": "Unidades de vivienda (a)"
+    },
+    {
+     "t": "33"
+    }
+   ],
+   [
+    {
+     "t": "En cualquiera de las construcciones anteriores, excepto en viviendas unifamiliares y unidades individuales de vivienda bifamiliares y multifamiliares:"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "En cualquiera de las construcciones anteriores, excepto en viviendas unifamiliares y unidades individuales de vivienda bifamiliares y multifamiliares:"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Vestíbulos, pasillos, closets, escaleras"
+    },
+    {
+     "t": "6"
+    }
+   ],
+   [
+    {
+     "t": "Lugares de reunión y auditorios"
+    },
+    {
+     "t": "11"
+    }
+   ],
+   [
+    {
+     "t": "Bodegas"
+    },
+    {
+     "t": "3"
+    }
+   ]
+  ],
+  "notes": [
+   "(a) Ver 220-14(j)",
+   "(b) Ver 220-14(k)"
   ]
  }
 }

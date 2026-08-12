@@ -5,6 +5,9 @@ import { articles, chapters, corpus, grafo, definiciones, tablas } from '../lib/
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const nSec = articles.reduce((n, a) => n + a.sections.length, 0);
 const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8);
+// Las 11 tablas del Capítulo 10 no cuelgan de ningún artículo y se publican
+// juntas en /tablas.
+const cap10 = tablas.filter((t) => t.article == null);
 ---
 
 <Base title="NOM-001-SEDE-2012 — Guía interactiva">
@@ -22,12 +25,6 @@ const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8
         <div class="stat"><b>{grafo.meta.aristas.toLocaleString('es-MX')}</b><span>Referencias enlazadas</span></div>
         <div class="stat"><b>{definiciones.length}</b><span>Definiciones</span></div>
       </div>
-    </div>
-
-    <div class="aviso">
-      Reproducción del texto publicado en el DOF el 29 de noviembre de 2012, con fines de consulta.{' '}
-      <b>No es una edición oficial</b> y no sustituye al documento del Diario Oficial de la
-      Federación ni al criterio de una Unidad de Verificación.
     </div>
 
     <div class="aviso aviso-fuerte">
@@ -80,12 +77,14 @@ const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8
     })}
 
     <div class="chap" id="cap10">
-      <h2><span>Capítulo 10</span>Tablas</h2>
-      <p style="color:var(--text-dim);font-size:.9rem">
-        Las tablas del Capítulo 10 todavía no están estructuradas como datos. En el PDF pierden
-        filas y columnas al extraerse, así que se abordan por separado. Mientras tanto, las
-        referencias a tablas enlazan al artículo que las contiene.
-      </p>
+      <h2><span>Capítulo 10</span>Tablas generales</h2>
+      <div class="grid">
+        <a class="card" href={`${base}/tablas/`}>
+          <b>10</b>
+          <span>Tablas generales</span>
+          <em>{cap10.length} tablas</em>
+        </a>
+      </div>
     </div>
   </div>
 </Base>
