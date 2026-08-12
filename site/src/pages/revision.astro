@@ -4,15 +4,13 @@ import { tablas, grafo, tablaSlug } from '../lib/nom.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-// Cuántas veces cita la norma a cada tabla: una tabla dudosa que nadie
-// consulta importa mucho menos que una fiable de la que cuelga medio capítulo.
-const citas = {};
-for (const e of grafo.edges) {
-  if (e.to.startsWith('tabla:')) {
-    const id = e.to.slice(6);
-    citas[id] = (citas[id] || 0) + 1;
-  }
-}
+// Cuánto se apoya la norma en cada tabla: una tabla dudosa que nadie consulta
+// importa mucho menos que una fiable de la que cuelga medio capítulo. El
+// número lo mide build_graph sobre el texto y no sobre las aristas del grafo,
+// donde una cita desnuda como "250-122" se la lleva la SECCIÓN del mismo
+// número y la tabla se queda sin crédito.
+const uso = grafo.uso_tablas || {};
+const usos = (t) => (uso[t.id] || {}).usos || 0;
 
 const NUM = /(?<!\S)[-+]?\d[\d.,]*(?!\S)/g;
 
@@ -26,6 +24,10 @@ function señales(t) {
   // columnas salen de los huecos entre palabras, que es lo menos fiable.
   if (t.grid === 'huecos') s.push('sin rejilla dibujada en el PDF');
   if (t.header_rows === 0) s.push('sin encabezado detectado');
+  // Una celda vacía en el encabezado junto a un título de grupo es como se ve
+  // una columna inventada: el título cubre una columna de menos y la que
+  // sobra queda colgando de la nada. La calidad no lo detecta.
+  if (t.encabezado_dudoso) s.push('encabezado con una columna de más');
   if (t.pages.length > 1) s.push(`cruza ${t.pages.length} páginas`);
   return s;
 }
@@ -34,12 +36,17 @@ function señales(t) {
 // y dejarlas pidiendo revisión enterraría las que sí faltan.
 const info = tablas
   .filter((t) => !t.verificada)
-  .map((t) => ({
-    t,
-    c: citas[t.id] || 0,
-    s: señales(t),
-    prio: (citas[t.id] || 0) * (1 - t.quality) + (1 - t.quality) + (t.cols < 2 ? 3 : 0),
-  }));
+  .map((t) => {
+    // El riesgo ya no es solo la calidad: un encabezado con la columna
+    // fantasma es un fallo confirmado y la calidad lo da por perfecto.
+    const riesgo = 1 - t.quality + (t.encabezado_dudoso ? 0.6 : 0);
+    return {
+      t,
+      c: usos(t),
+      s: señales(t),
+      prio: usos(t) * riesgo + riesgo + (t.cols < 2 ? 3 : 0),
+    };
+  });
 const verificadas = tablas.filter((t) => t.verificada);
 
 const criticas = info.filter((x) => x.prio >= 1.0).sort((a, b) => b.prio - a.prio);
@@ -47,7 +54,7 @@ const dudosas = info
   .filter((x) => x.prio < 1.0 && x.t.quality < 0.8)
   .sort((a, b) => b.c - a.c || a.t.quality - b.t.quality);
 const confianza = info
-  .filter((x) => x.t.quality >= 0.95 && x.c >= 4)
+  .filter((x) => x.t.quality >= 0.95 && !x.t.encabezado_dudoso && x.c >= 5)
   .sort((a, b) => b.c - a.c);
 
 const href = (t) =>
@@ -63,9 +70,9 @@ const href = (t) =>
       <h1>Qué revisar</h1>
       <p>
         Las tablas se reconstruyeron automáticamente desde el PDF y ese proceso no es exacto.
-        Esta lista está ordenada por <b>impacto por duda</b>: cuántas veces cita la norma a
-        cada tabla, multiplicado por lo insegura que quedó su reconstrucción. Empezar por
-        arriba es lo que más corrige por minuto invertido.
+        Esta lista está ordenada por <b>impacto por duda</b>: cuánto se apoya la norma en cada
+        tabla, multiplicado por lo insegura que quedó su reconstrucción. Empezar por arriba es
+        lo que más corrige por minuto invertido.
       </p>
       <p style="margin-top:.7rem">
         Cada renglón dice qué buscar y en qué página del PDF. Al abrir la tabla encontrarás un
@@ -82,7 +89,8 @@ const href = (t) =>
     <div class="chap">
       <h2>1 · Prioridad alta</h2>
       <p class="rev-nota">
-        Muy citadas y con la reconstrucción insegura. Un error aquí se propaga a muchos
+        Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la
+        firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos
         cálculos.
       </p>
       {/* Una lista vacía aquí es una buena noticia. Sin decirlo, el hueco se
@@ -96,7 +104,7 @@ const href = (t) =>
             <a href={href(t)}><b class="mono">Tabla {t.id}</b></a>
             <span class="rev-t">{t.title}</span>
             <span class="rev-m">
-              pág. {t.pages.join(', ')} del PDF · {c} {c === 1 ? 'cita' : 'citas'} ·
+              pág. {t.pages.join(', ')} del PDF · {c} {c === 1 ? 'uso' : 'usos'} ·
               calidad {t.quality.toFixed(2)} · {t.rows.length}×{t.cols}
             </span>
             {s.length > 0 && <span class="rev-s">Qué buscar: {s.join(' · ')}</span>}
@@ -119,7 +127,7 @@ const href = (t) =>
             <a href={href(t)}><b class="mono">Tabla {t.id}</b></a>
             <span class="rev-t">{t.title}</span>
             <span class="rev-m">
-              pág. {t.pages.join(', ')} · {c} {c === 1 ? 'cita' : 'citas'} ·
+              pág. {t.pages.join(', ')} · {c} {c === 1 ? 'uso' : 'usos'} ·
               calidad {t.quality.toFixed(2)} · {t.rows.length}×{t.cols}
             </span>
             {s.length > 0 && <span class="rev-s">Qué buscar: {s.join(' · ')}</span>}
@@ -131,7 +139,8 @@ const href = (t) =>
     <div class="chap">
       <h2>3 · Verificación de control</h2>
       <p class="rev-nota">
-        Estas salieron limpias y muy citadas. Conviene mirarlas justamente por eso: una tabla
+        Estas salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas
+        justamente por eso: una tabla
         equivocada que <em>parece</em> correcta es más peligrosa que una marcada como dudosa.
         Basta comprobar dos o tres renglones de cada una.
       </p>
@@ -141,7 +150,7 @@ const href = (t) =>
             <a href={href(t)}><b class="mono">Tabla {t.id}</b></a>
             <span class="rev-t">{t.title}</span>
             <span class="rev-m">
-              pág. {t.pages.join(', ')} · {c} citas · calidad {t.quality.toFixed(2)} ·
+              pág. {t.pages.join(', ')} · {c} usos · calidad {t.quality.toFixed(2)} ·
               {' '}{t.rows.length}×{t.cols}
             </span>
           </li>

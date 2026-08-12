@@ -43,6 +43,41 @@ def node_text(n):
     return ' '.join(parts)
 
 
+def uso_de_tablas(tablas, texto, sec_ids):
+    """Cuánto se apoya la norma en cada tabla, contado sobre el texto.
+
+    No sirve contar aristas del grafo: una cita desnuda como "250-122" se
+    resuelve antes a la SECCIÓN del mismo número, que también existe, y la
+    tabla se queda sin crédito —la 250-122 salía con 22 citas cuando el texto
+    la nombra 25 veces solo con la palabra "Tabla" delante—.
+
+    Se cuentan dos formas y se elige la que no engaña para cada tabla:
+
+    - `explicitas`: "Tabla 250-122". Siempre es la tabla, nunca la sección.
+    - `menciones` : el identificador a secas. Vale cuando NO hay una sección
+      con ese mismo id; si la hay, mezcla las dos cosas y no se usa.
+
+    Las del Capítulo 10 se llaman con un número suelto ("Tabla 8"), así que
+    ahí solo cuenta la forma explícita: buscar "8" a secas daría cada 8 del
+    documento.
+    """
+    uso = {}
+    for t in tablas:
+        tid = t['id']
+        esc = re.escape(tid)
+        explicitas = len(re.findall(r'Tablas?\s+' + esc + r'(?![\w(-])', texto))
+        suelto = re.fullmatch(r'\d{1,2}[A-Z]?(?:\([A-Z]\))?', tid)
+        ambiguo = tid in sec_ids
+        if suelto or ambiguo:
+            menciones = explicitas
+        else:
+            menciones = len(re.findall(r'(?<![\w(-])' + esc + r'(?![\w(-])', texto))
+        uso[tid] = {'explicitas': explicitas,
+                    'usos': max(explicitas, menciones),
+                    'ambiguo': bool(ambiguo)}
+    return uso
+
+
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else 'data'
     corpus = json.load(open(os.path.join(out, 'corpus.json')))
@@ -146,6 +181,12 @@ def main():
 
     ranked = sorted(incoming_roll.items(), key=lambda kv: -len(kv[1]))[:30]
 
+    tpath = os.path.join(out, 'tablas.json')
+    tablas = json.load(open(tpath)) if os.path.exists(tpath) else []
+    texto_norma = ' '.join(
+        node_text(n) for a in articles for s_ in a['sections'] for n in walk(s_))
+    uso_tablas = uso_de_tablas(tablas, texto_norma, sec_ids)
+
     graph = {
         'meta': {
             'aristas': len(edges),
@@ -164,6 +205,9 @@ def main():
             for k, v in ranked
         ],
         'rotas': broken[:100],
+        # Cuánto se usa cada tabla, para ordenar la lista de revisión por
+        # dónde duele más un error y no por el orden del documento.
+        'uso_tablas': uso_tablas,
     }
 
     json.dump(graph, open(os.path.join(out, 'grafo.json'), 'w'),

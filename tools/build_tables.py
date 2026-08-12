@@ -917,6 +917,27 @@ def tabla_nueva(tid, rev):
     }
 
 
+def encabezado_dudoso(t):
+    """Firma del reparto de columnas que se inventa una.
+
+    Cuando el algoritmo mete una columna de más, el encabezado lo delata: en
+    la misma fila queda una celda VACÍA junto a un título que abarca varias
+    columnas, y el título acaba cubriendo una columna menos de las que le
+    tocan. Es lo que pasaba en la 310-15(b)(16), donde COBRE cubría dos de las
+    tres columnas de cobre y la de 60 °C colgaba de la celda vacía: cada
+    material quedaba con las ampacidades del otro.
+
+    La calidad estimada no ve nada de esto —mide celdas con varios valores
+    juntos, y aquí los valores están perfectos—, así que estas tablas salían
+    con 1.00 y sin una sola marca.
+    """
+    for row in t['rows'][:t.get('header_rows', 0)]:
+        if (any(not c['t'].strip() for c in row)
+                and any(c.get('cs', 1) > 1 for c in row)):
+            return True
+    return False
+
+
 def apply_revisiones(tables, path):
     """Aplica data/tablas_revisadas.json sobre las tablas reconstruidas."""
     if not os.path.exists(path):
@@ -1215,6 +1236,8 @@ def main():
     # Las dadas de alta a mano se añaden al final; el orden del archivo es el
     # del documento y de él salen los listados del sitio.
     tables.sort(key=lambda t: (t['regions'][0]['page'], t['regions'][0]['y0']))
+    for t in tables:
+        t['encabezado_dudoso'] = encabezado_dudoso(t)
 
     json.dump(tables, open(os.path.join(out, 'tablas.json'), 'w'),
               ensure_ascii=False, indent=1)
