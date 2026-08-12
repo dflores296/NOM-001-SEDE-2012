@@ -901,7 +901,11 @@ def tabla_nueva(tid, rev):
         'title': rev.get('title'),
         # Sin número propio no se puede citar, y el sitio no debe inventarle
         # uno: lo que lleva por identificador es el inciso donde está impresa.
-        'sin_numero': True,
+        # Pero no todas las de alta llegan así: la 5(A) sí trae «Tabla 5 A.-
+        # …» impreso, solo que el recorte automático la fundió con la 5 al no
+        # haber salto de página entre ambas. Si la revisión trae título, la
+        # norma sí la numeró.
+        'sin_numero': not bool(rev.get('title')),
         'informativa': rev.get('informativa', False),
         'article': rev['article'],
         'pages': rev['pages'],

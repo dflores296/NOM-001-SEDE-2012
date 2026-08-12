@@ -42093,6 +42093,11 @@
    "usos": 1,
    "ambiguo": false
   },
+  "5(A)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
   "8": {
    "explicitas": 1,
    "usos": 1,
