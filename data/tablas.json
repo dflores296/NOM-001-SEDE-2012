@@ -7208,11 +7208,8 @@
      "rs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Rango de temperatura de los conductores",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -7830,7 +7827,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-15(b)(3)(a)",
@@ -11244,26 +11242,18 @@
   "rows": [
    [
     {
-     "t": ""
-    },
-    {
      "t": "Conductores de cobre",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 4
     },
     {
      "t": "Conductores de Aluminio AAC",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
     {
-     "t": "Tamaño o"
-    },
-    {
-     "t": "designación"
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
      "t": "Desnudos"
@@ -11841,7 +11831,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(4)",
@@ -15476,22 +15467,17 @@
   ],
   "page": 147,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Tamaño o"
-    },
-    {
-     "t": "designación"
-    },
-    {
-     "t": ""
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -15827,7 +15813,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(76)",
@@ -16217,7 +16204,7 @@
   ],
   "page": 148,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
@@ -16226,11 +16213,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -16273,12 +16257,8 @@
    ],
    [
     {
-     "t": "Un circuito (Véase",
-     "cs": 3
-    },
-    {
-     "t": "la Figura 310-60, Detalle 1)",
-     "cs": 3
+     "t": "Un circuito (Véase la Figura 310-60, Detalle 1)",
+     "cs": 6
     }
    ],
    [
@@ -16563,11 +16543,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Tres circuitos (Véase la Figura 310-60, Detalle 2)",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -16852,11 +16829,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Seis circuitos (Véase la Figura 310-60, Detalle 3)",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -17142,7 +17116,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.993,
+  "quality": 1.0,
   "regions": [
    {
     "page": 148,
@@ -17152,7 +17126,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(78)",
@@ -17164,7 +17139,7 @@
   ],
   "page": 148,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
@@ -17173,11 +17148,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -17220,12 +17192,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Un circuito (Véase la Figura 310-60, Detalle 1)",
-     "cs": 4
+     "cs": 6
     }
    ],
    [
@@ -17490,12 +17458,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Tres circuitos (Véase la Figura 310-60, Detalle 2)",
-     "cs": 4
+     "cs": 6
     }
    ],
    [
@@ -17780,12 +17744,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Seis circuitos (Véase la Figura 310-60, Detalle 3)",
-     "cs": 4
+     "cs": 6
     }
    ],
    [
@@ -18071,7 +18031,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.992,
+  "quality": 1.0,
   "regions": [
    {
     "page": 148,
@@ -18088,7 +18048,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(79)",
@@ -18101,7 +18062,7 @@
   ],
   "page": 149,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "Tabla 310-60(c)(79).- Ampacidad de tres conductores de cobre aislados, alambrados dentro de una cubierta general (cable de tres conductores) en ductos eléctricos subterráneos (un cable por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
   "rows": [
    [
@@ -18110,11 +18071,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -18157,20 +18115,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Un circuito (Véase"
-    },
-    {
-     "t": "la Figura 310-60, Detalle 1)",
-     "cs": 2
-    },
-    {
-     "t": ""
+     "t": "Un circuito (Véase la Figura 310-60, Detalle 1)",
+     "cs": 6
     }
    ],
    [
@@ -18455,17 +18401,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Tres circuitos (Véase la Figura 310-60, Detalle 2)",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 6
     }
    ],
    [
@@ -18750,17 +18687,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Seis circuitos (Véase la Figura 310-60, Detalle 3)",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 6
     }
    ],
    [
@@ -19046,7 +18974,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.993,
+  "quality": 1.0,
   "regions": [
    {
     "page": 149,
@@ -19063,7 +18991,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(80)",
@@ -20826,7 +20755,7 @@
   ],
   "page": 152,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
@@ -20835,11 +20764,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -20882,14 +20808,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": "Un circuito, tres conductores (Véase la Figura 310-60, Detalle",
-     "cs": 4
-    },
-    {
-     "t": "9)"
+     "t": "Un circuito, tres conductores (Véase la Figura 310-60, Detalle 9)",
+     "cs": 6
     }
    ],
    [
@@ -21174,11 +21094,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Dos circuitos, seis conductores (Véase la Figura 310-60, Detalle 10)",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -21464,7 +21381,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.989,
+  "quality": 1.0,
   "regions": [
    {
     "page": 152,
@@ -21474,7 +21391,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(83)",
@@ -21496,44 +21414,25 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
     {
-     "t": "mm2"
-    },
-    {
-     "t": "AWG"
-    },
-    {
-     "t": "Ampacidad",
-     "cs": 2
-    },
-    {
-     "t": "Ampacidad",
-     "cs": 2
-    }
-   ],
-   [
-    {
-     "t": "",
+     "t": "mm2",
      "rs": 3
     },
     {
-     "t": "o kcmil",
+     "t": "AWG o kcmil",
      "rs": 3
     },
     {
-     "t": "para 2 001-5 000 volts",
+     "t": "Ampacidad para 2 001-5 000 volts",
      "cs": 2
     },
     {
-     "t": "para 5 001-35 000 volts",
+     "t": "Ampacidad para 5 001-35 000 volts",
      "cs": 2
     }
    ],
@@ -21559,14 +21458,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": "Un circuito (Véase"
-    },
-    {
-     "t": "la Figura 310-60, Detalle 5)",
-     "cs": 4
+     "t": "Un circuito (Véase la Figura 310-60, Detalle 5)",
+     "cs": 6
     }
    ],
    [
@@ -21851,15 +21744,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": "Dos circuitos (Véase la Figura 310-60,",
-     "cs": 3
-    },
-    {
-     "t": "Detalle 6)",
-     "cs": 2
+     "t": "Dos circuitos (Véase la Figura 310-60, Detalle 6)",
+     "cs": 6
     }
    ],
    [
@@ -22145,7 +22031,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.989,
+  "quality": 1.0,
   "regions": [
    {
     "page": 152,
@@ -22162,7 +22048,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(84)",
@@ -22175,7 +22062,7 @@
   ],
   "page": 153,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
@@ -22184,23 +22071,18 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 2
-    },
-    {
-     "t": ""
+     "cs": 4
     }
    ],
    [
     {
-     "t": "",
-     "rs": 2
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": "AWG"
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
      "t": "Ampacidad para 2 001-5 000 volts",
@@ -22213,21 +22095,12 @@
    ],
    [
     {
-     "t": "o"
-    },
-    {
      "t": "Temperatura de los conductores de media tensión en °C",
      "cs": 4
     }
    ],
    [
     {
-     "t": "mm2"
-    },
-    {
-     "t": "kcmil"
-    },
-    {
      "t": "90"
     },
     {
@@ -22242,20 +22115,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Un circuito (Véase"
-    },
-    {
-     "t": "la Figura 310-60, Detalle 5)",
-     "cs": 2
-    },
-    {
-     "t": ""
+     "t": "Un circuito (Véase la Figura 310-60, Detalle 5)",
+     "cs": 6
     }
    ],
    [
@@ -22540,20 +22401,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Dos circuitos (Véase la Figura 310-60,",
-     "cs": 2
-    },
-    {
-     "t": "Detalle 6)"
-    },
-    {
-     "t": ""
+     "t": "Dos circuitos (Véase la Figura 310-60, Detalle 6)",
+     "cs": 6
     }
    ],
    [
@@ -22839,7 +22688,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.989,
+  "quality": 1.0,
   "regions": [
    {
     "page": 153,
@@ -22856,7 +22705,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(85)",
@@ -22868,7 +22718,7 @@
   ],
   "page": 154,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "Tabla 310-60(c)(85).- Ampacidad de tres ternas de conductores individuales de cobre, aislados, directamente enterrados, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310- 60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C",
   "rows": [
    [
@@ -22877,11 +22727,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -22924,11 +22771,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Un circuito, tres conductores (Véase la Figura 310-60, Detalle 7)",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -23213,11 +23057,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Dos circuitos, seis conductores (Véase la Figura 310-60, Detalle 8)",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -23503,7 +23344,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.989,
+  "quality": 1.0,
   "regions": [
    {
     "page": 154,
@@ -23513,7 +23354,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(86)",
@@ -23526,7 +23368,7 @@
   ],
   "page": 154,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
@@ -23535,11 +23377,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -23582,11 +23421,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Un circuito, tres conductores (Véase la Figura 310-60, Detalle 7)",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -23871,11 +23707,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Dos circuitos, seis conductores (Véase la Figura 310-60, Detalle 8)",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -24161,7 +23994,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.989,
+  "quality": 1.0,
   "regions": [
    {
     "page": 154,
@@ -24178,7 +24011,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-104(a)",
@@ -26185,10 +26019,8 @@
      "rs": 3
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Cobre"
+     "t": "Cobre",
+     "cs": 2
     },
     {
      "t": "Aluminio o aluminio recubierto de cobre",
@@ -26197,11 +26029,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Tamaño o designación",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -26323,7 +26152,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.868,
+  "quality": 1.0,
   "regions": [
    {
     "page": 158,
@@ -26333,7 +26162,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "312-6(a)",
@@ -29005,20 +28835,8 @@
      "t": "AWG"
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Accesorios dentro del conduit",
-     "cs": 4
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "cs": 8
     }
    ],
    [
@@ -29196,7 +29014,8 @@
     "article": 348
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "352-30",
@@ -30943,7 +30762,8 @@
   "rows": [
    [
     {
-     "t": ""
+     "t": "Ancho interior de la charola",
+     "rs": 2
     },
     {
      "t": "Area de ocupación máxima permisible para cables multiconductores",
@@ -30951,9 +30771,6 @@
     }
    ],
    [
-    {
-     "t": "Ancho interior de la charola"
-    },
     {
      "t": "Columna 1 Un sólo cable"
     },
@@ -31018,7 +30835,8 @@
     "article": 392
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "392-22(a)(6)",
@@ -31035,7 +30853,8 @@
   "rows": [
    [
     {
-     "t": ""
+     "t": "Ancho interior de la charola",
+     "rs": 2
     },
     {
      "t": "Area de ocupación máxima permisible para cables multiconductores",
@@ -31043,9 +30862,6 @@
     }
    ],
    [
-    {
-     "t": "Ancho interior de la charola"
-    },
     {
      "t": "Columna 1 Un sólo cable"
     },
@@ -31121,7 +30937,8 @@
     "article": 392
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "392-22(b)(1)",
@@ -48920,7 +48737,7 @@
   ],
   "page": 541,
   "cols": 8,
-  "header_rows": 2,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
@@ -48929,21 +48746,14 @@
      "rs": 3
     },
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Tensión del circuito derivado en volts",
-     "cs": 5
+     "cs": 7
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Monofásico",
-     "cs": 2
+     "cs": 3
     },
     {
      "t": "Trifásico",
@@ -49313,9 +49123,7 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [
-   "2) Otros valores. Para tensiones y corrientes no relacionadas en la tabla 625-29(d)(1) o en la tabla  625-29(d)(2) los requisitos mínimos de ventilación, deben ser calculados por medio de las siguientes fórmulas, según sea aplicable: (1)        Instalaciones monofásicas:"
-  ],
+  "notes": [],
   "quality": 1.0,
   "regions": [
    {
@@ -49328,12 +49136,13 @@
    {
     "page": 542,
     "y0": 26.25,
-    "y1": 89.1572265625,
+    "y1": 45.0,
     "id": "625-29(d)(1)",
     "article": 625
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "625-29(d)(2)",
@@ -49345,7 +49154,7 @@
   ],
   "page": 542,
   "cols": 8,
-  "header_rows": 2,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
@@ -49354,12 +49163,8 @@
      "rs": 3
     },
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Tensión del circuito derivado",
-     "cs": 5
+     "cs": 7
     }
    ],
    [
@@ -49368,14 +49173,8 @@
      "cs": 3
     },
     {
-     "t": ""
-    },
-    {
-     "t": "Volts"
-    },
-    {
-     "t": "trifásico",
-     "cs": 2
+     "t": "Volts trifásico",
+     "cs": 4
     }
    ],
    [
@@ -49741,21 +49540,19 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [
-   "3) Sistemas de ingeniería. Se permite que los requisitos mínimos de ventilación para un sistema de equipo de alimentación para vehículos eléctricos, sean determinados por cálculos específicos en un estudio de ingeniería, realizado por personal calificado, como parte integral de un sistema de ventilación de la totalidad del edificio.",
-   "4) Circuitos alimentadores. El circuito de alimentación para el equipo de ventilación mecánica debe estar enclavado eléctricamente con el equipo de alimentación para vehículos eléctricos, y debe permanecer energizado durante el ciclo completo de carga del vehículo eléctrico. El equipo de alimentación para vehículos eléctricos debe estar marcado de acuerdo con 625-15. Los contactos de los equipos de alimentación para vehículos eléctricos designados para 120 volts, monofásicos, de 15 y 20 amperes, deben marcarse de acuerdo con 625-15(c) y deben estar equipados con un interruptor. El sistema de ventilación mecánica se debe enclavar eléctricamente a través del"
-  ],
+  "notes": [],
   "quality": 1.0,
   "regions": [
    {
     "page": 542,
     "y0": 159.3525390625,
-    "y1": 476.9072265625,
+    "y1": 376.0,
     "id": "625-29(d)(2)",
     "article": 625
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "630-11(a)",

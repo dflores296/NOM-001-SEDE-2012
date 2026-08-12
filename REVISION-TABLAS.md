@@ -20,9 +20,9 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**53 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**70 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (24)
+## 1 · Prioridad alta (14)
 
 Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
 
@@ -30,24 +30,14 @@ Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen 
 |---|---|---|---|---|---|---|---|---|
 | [ ] | `11(A)` | Limitaciones de las fuentes de alimentación de corriente alterna de Cl… | 752, 753 | 4 | 0.95 | **sí** | dibujada | 9×10 |
 | [ ] | `314-16(a)` | Cajas metálicas | 164 | 3 | 0.92 | **sí** | **huecos** | 26×10 |
-| [ ] | `310-60(c)(86)` | Ampacidad de tres ternas de conductores individuales de aluminio, aisl… | 154, 155 | 3 | 0.99 | **sí** | **huecos** | 34×6 |
 | [ ] | `922-33` | Separación vertical entre conductores soportados en diferentes estruct… | 717 | 2 | 0.92 | **sí** | dibujada | 10×9 |
 | [ ] | `310-104(e)` | Espesor del aislamiento para cables con dieléctricos sólidos, con pant… | 158 | 2 | 0.94 | **sí** | **huecos** | 15×12 |
 | [ ] | `922-41` | Altura mínima de conductores sobre el suelo, agua o vías férreas (m)(1… | 717, 718 | 2 | 0.96 | **sí** | dibujada | 14×11 |
-| [ ] | `310-15(b)(2)(b)` | Factores de Corrección basados en una temperatura ambiente de 40 °C. | 134, 135 | 2 | 1.00 | **sí** | dibujada | 27×7 |
-| [ ] | `310-60(c)(75)` | Ampacidad de cables de tres conductores de cobre aislados y en un tubo… | 147 | 2 | 1.00 | **sí** | dibujada | 18×6 |
-| [ ] | `348-22` | Número máximo de conductores aislados en el tubo conduit metálico flex… | 192 | 2 | 1.00 | **sí** | **huecos** | 7×10 |
-| [ ] | `392-22(a)(5)` | Area de ocupación permisible para cables multiconductores en charolas… | 232 | 2 | 1.00 | **sí** | **huecos** | 6×3 |
-| [ ] | `392-22(a)(6)` | Area de ocupación permisible para cables multiconductores en charolas… | 232 | 2 | 1.00 | **sí** | dibujada | 7×3 |
-| [ ] | `625-29(d)(2)` | Ventilación mínima requerida en ft3/min, por cada número total de vehí… | 542 | 2 | 1.00 | **sí** | dibujada | 16×8 |
-| [ ] | `310-106(a)` | Tamaño o designación mínimo de los conductores | 158 | 1 | 0.87 | **sí** | dibujada | 9×5 |
 | [ ] | `430-12(b)` | Medidas mínimas de las cajas terminales para conexiones de cable a cab… | 302 | 1 | 0.91 | **sí** | dibujada | 28×10 |
 | [ ] | `11(B)` | Limitaciones de las fuentes de alimentación de corriente continua de C… | 753 | 1 | 0.94 | **sí** | dibujada | 8×11 |
 | [ ] | `922-54` | Separación de conductores a edificios y otras construcciones excepto p… | 719, 720 | 1 | 0.95 | **sí** | dibujada | 16×10 |
 | [ ] | `450-3(a)` | Valor nominal o ajuste máximo de la protección contra sobrecorriente p… | 335, 336 | 1 | 0.97 | **sí** | **huecos** | 14×5 |
-| [ ] | `310-60(c)(82)` | Ampacidad de conductores individuales de aluminio, aislados, directame… | 152 | 1 | 0.99 | **sí** | dibujada | 34×6 |
 | [ ] | `4` | Dimensiones y porcentaje disponible para los conductores del área del… | 743, 744, 745, 746, 747 | 1 | 1.00 | **sí** | dibujada | 168×8 |
-| [ ] | `310-15(b)(21)` | Ampacidades de conductores desnudos o recubiertos, al aire libre, con… | 140 | 1 | 1.00 | **sí** | dibujada | 23×8 |
 | [ ] | `830-154(a)` | Aplicaciones de cables de comunicaciones de banda ancha para su uso en… | 694, 695 | 1 | 1.00 | **sí** | dibujada | 27×9 |
 | [ ] | `5` | Dimensiones de los conductores aislados y cables para artefactos | 747, 748, 749, 750 | 1 | 1.00 | **sí** | dibujada | 187×11 |
 | [ ] | `8` | Propiedades de los conductores | 750, 751 | 1 | 1.00 | **sí** | dibujada | 40×10 |
