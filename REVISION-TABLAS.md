@@ -20,15 +20,14 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**70 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**71 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (14)
+## 1 · Prioridad alta (13)
 
 Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `11(A)` | Limitaciones de las fuentes de alimentación de corriente alterna de Cl… | 752, 753 | 4 | 0.95 | **sí** | dibujada | 9×10 |
 | [ ] | `314-16(a)` | Cajas metálicas | 164 | 3 | 0.92 | **sí** | **huecos** | 26×10 |
 | [ ] | `922-33` | Separación vertical entre conductores soportados en diferentes estruct… | 717 | 2 | 0.92 | **sí** | dibujada | 10×9 |
 | [ ] | `310-104(e)` | Espesor del aislamiento para cables con dieléctricos sólidos, con pant… | 158 | 2 | 0.94 | **sí** | **huecos** | 15×12 |

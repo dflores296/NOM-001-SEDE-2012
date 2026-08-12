@@ -71291,14 +71291,12 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Clase 2",
      "cs": 2
     },
     {
-     "t": "Clase 3"
+     "t": "Clase 3",
+     "cs": 2
     },
     {
      "t": "Clase 2",
@@ -71431,7 +71429,7 @@
    ],
    [
     {
-     "t": "Valores nominales máximos de la fuente de",
+     "t": "Valores nominales máximos de la fuente de alimentación por datos de placa",
      "rs": 2
     },
     {
@@ -71463,38 +71461,6 @@
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": "alimentación por datos de placa"
-    },
     {
      "t": "Corriente (amperes)"
     },
@@ -71528,7 +71494,7 @@
   "notes": [
    "*Los intervalos de tensión presentados son para corriente alterna sinusoidal en lugares interiores o en donde no es probable que haya humedad. Para condiciones no sinusoidales o de contacto con la humedad, véase la Nota 2."
   ],
-  "quality": 0.952,
+  "quality": 1.0,
   "regions": [
    {
     "page": 752,
@@ -71545,7 +71511,8 @@
     "article": null
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "11(B)",
