@@ -70256,12 +70256,9 @@
      "rs": 3
     },
     {
-     "t": "",
-     "cs": 5
-    },
-    {
      "t": "Ohms al neutro por kilómetro",
-     "cs": 9
+     "cs": 14,
+     "rs": 1
     }
    ],
    [
@@ -71382,7 +71379,10 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. Estos valores se basan en las siguientes constantes: conductores del tipo RHH con trenzado de Clase B, en configuración acunada. La conductividad de los alambres es del 100 por ciento IACS para cobre y del 61 por ciento IACS para aluminio; la del conduit de aluminio es del 45 por ciento IACS. No se tiene en cuenta la reactancia capacitiva, que es insignificante a estas tensiones. Estos valores de resistencia sólo son válidos a 75 °C y para los parámetros dados, pero son representativos para los tipos de alambres para 600 volts que operen a 60 Hz.",
+   "2. La impedancia (Z) eficaz se define como R cos(θ) + X sen(θ), en donde θ es el ángulo del factor de potencia del circuito. Al multiplicar la corriente por la impedancia eficaz se obtiene una buena aproximación de la caída de tensión de línea a neutro. Los valores de impedancia eficaz de esta tabla sólo son válidos con un factor de potencia de 0.85. Para cualquier otro factor de potencia (FP) del circuito, la impedancia eficaz (Ze) se puede calcular a partir de los valores de R y XL dados en esta tabla, como sigue: Ze = R x FP + XL sen [arc cos (FP)]."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -71395,12 +71395,13 @@
    {
     "page": 752,
     "y0": 16.5,
-    "y1": 62.16,
+    "y1": 150.0,
     "id": "9",
     "article": null
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "10",
