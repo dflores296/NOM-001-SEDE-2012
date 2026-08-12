@@ -100937,9 +100937,45 @@
          "kind": "num",
          "level": 2,
          "text": "Para las tensiones y corrientes especificadas en la tabla 625-29(d)(1) o en la tabla 625-29(d)(2) los requisitos mínimos de ventilación deben ser los especificados en la tabla 625-29(d)(1) o en la tabla 625-29(d)(2), para cada uno del total de vehículos eléctricos que se puedan cargar al mismo tiempo.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Valores tabulados",
+         "tables": [
+          {
+           "id": "625-29(d)(1)",
+           "seq": 5
+          }
+         ]
+        },
+        {
+         "id": "625-29(d)(2)",
+         "label": "2",
+         "kind": "num",
+         "level": 2,
+         "text": "Para tensiones y corrientes no relacionadas en la tabla 625-29(d)(1) o en la tabla  625-29(d)(2) los requisitos mínimos de ventilación, deben ser calculados por medio de las siguientes fórmulas, según sea aplicable:",
          "children": [
           {
-           "id": "625-29(d)(1)(2)",
+           "id": "625-29(d)(2)(1)",
+           "label": "1",
+           "kind": "paren",
+           "level": 3,
+           "text": "Instalaciones monofásicas:",
+           "children": [],
+           "notes": [],
+           "exceptions": [],
+           "figures": [
+            {
+             "src": "fig-1128.png",
+             "w": 282,
+             "h": 22,
+             "page": 542,
+             "seq": 6
+            }
+           ]
+          },
+          {
+           "id": "625-29(d)(2)(2)",
            "label": "2",
            "kind": "paren",
            "level": 3,
@@ -100966,22 +101002,29 @@
          ],
          "notes": [],
          "exceptions": [],
-         "title": "Valores tabulados",
-         "tables": [
-          {
-           "id": "625-29(d)(1)",
-           "seq": 5
-          }
-         ],
-         "figures": [
-          {
-           "src": "fig-1128.png",
-           "w": 282,
-           "h": 22,
-           "page": 542,
-           "seq": 6
-          }
-         ]
+         "title": "Otros valores"
+        },
+        {
+         "id": "625-29(d)(3)",
+         "label": "3",
+         "kind": "num",
+         "level": 2,
+         "text": "Se permite que los requisitos mínimos de ventilación para un sistema de equipo de alimentación para vehículos eléctricos, sean determinados por cálculos específicos en un estudio de ingeniería, realizado por personal calificado, como parte integral de un sistema de ventilación de la totalidad del edificio.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Sistemas de ingeniería"
+        },
+        {
+         "id": "625-29(d)(4)",
+         "label": "4",
+         "kind": "num",
+         "level": 2,
+         "text": "El circuito de alimentación para el equipo de ventilación mecánica debe estar enclavado eléctricamente con el equipo de alimentación para vehículos eléctricos, y debe permanecer energizado durante el ciclo completo de carga del vehículo eléctrico. El equipo de alimentación para vehículos eléctricos debe estar marcado de acuerdo con 625-15. Los contactos de los equipos de alimentación para vehículos eléctricos designados para 120 volts, monofásicos, de 15 y 20 amperes, deben marcarse de acuerdo con 625-15(c) y deben estar equipados con un interruptor. El sistema de ventilación mecánica se debe enclavar eléctricamente a través del interruptor del circuito de alimentación del contacto.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Circuitos alimentadores"
         }
        ],
        "notes": [],
@@ -101030,6 +101073,7 @@
     "400-4",
     "400-5(a)(1)",
     "400-5(a)(2)",
+    "625-15",
     "625-15(b)",
     "625-15(c)",
     "625-18",
