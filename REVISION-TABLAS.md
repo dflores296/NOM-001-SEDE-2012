@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**151 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**161 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (69)
+## 4 · Sin señales (59)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `355-44` | Características de expansión del tubo conduit de resina termofija refo… | 202 | 1 | 1.00 | — | dibujada | 21×2 |
-| [ ] | `360-24(a)` | Radios mínimos de curvatura para uso en flexión | 207 | 1 | 1.00 | — | dibujada | 5×3 |
-| [ ] | `360-24(b)` | Radios mínimos para dobleces fijos | 207 | 1 | 1.00 | — | dibujada | 5×3 |
-| [ ] | `384-22` | Dimensiones del canal y área de la sección transversal interior | 224, 225 | 1 | 1.00 | — | dibujada | 12×4 |
-| [ ] | `392-10(a)` | Métodos de alambrado | 229 | 2 | 0.99 | — | **huecos** | 35×2 |
-| [ ] | `392-60(a)` | Requisitos de área de metal para charolas portacables utilizadas como… | 234 | 1 | 1.00 | — | dibujada | 12×3 |
-| [ ] | `402-5` | Ampacidad admisible de alambres para artefactos | 249, 250 | 4 | 1.00 | — | **huecos** | 6×3 |
-| [ ] | `408-5` | Espacio mínimo para los conductores que entran en los envolventes de l… | 259 | 1 | 1.00 | — | dibujada | 4×2 |
-| [ ] | `409-3` | Otros Artículos | 262, 263 | 1 | 0.91 | — | **huecos** | 15×3 |
-| [ ] | `430-10(b)` | Espacio mínimo para el acomodo del alambrado en las terminales en los… | 301 | 1 | 0.95 | — | dibujada | 16×4 |
 | [ ] | `430-12(c)(1)` | Espacio para las terminales (Terminales fijas) | 303 | 1 | 1.00 | — | dibujada | 5×3 |
 | [ ] | `430-22(e)` | Servicio por régimen de tiempo. | 304 | 4 | 0.97 | — | dibujada | 7×5 |
 | [ ] | `430-23(c)` | Conductor del secundario | 305 | 1 | 1.00 | — | dibujada | 8×2 |
