@@ -56037,7 +56037,7 @@
      "cs": 2
     },
     {
-     "t": "centímetros(4) Separación horizontal en en estructuras que soporten conductores:",
+     "t": "Separación horizontal en centímetros(4) en estructuras que soporten conductores:",
      "cs": 4
     }
    ],
@@ -57195,31 +57195,23 @@
   "rows": [
    [
     {
-     "t": ""
+     "t": "Superficie bajo las partes energizadas",
+     "rs": 2
     },
     {
-     "t": "Equipo"
+     "t": "Equipo efectivamente conectado a tierra",
+     "rs": 2
     },
     {
-     "t": "Equipos no conectados"
+     "t": "Equipos no puestos a tierra conectados a circuitos",
+     "cs": 2
     },
     {
-     "t": "puestos a tierra a circuitos"
-    },
-    {
-     "t": "Partes vivas protegidas"
-    },
-    {
-     "t": "rígidas no"
+     "t": "Partes vivas rígidas no protegidas",
+     "cs": 2
     }
    ],
    [
-    {
-     "t": "Superficie bajo las partes energizadas"
-    },
-    {
-     "t": "efectivamente conectado a tierra"
-    },
     {
      "t": "Hasta 750 V"
     },
