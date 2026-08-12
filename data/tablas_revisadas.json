@@ -48236,5 +48236,1120 @@
     "article": 922
    }
   ]
+ },
+ "500-8(c)": {
+  "verificada": "2026-08-12"
+ },
+ "352-44": {
+  "verificada": "2026-08-12"
+ },
+ "314-16(b)": {
+  "verificada": "2026-08-12",
+  "notes": [],
+  "regions": [
+   {
+    "page": 165,
+    "y0": 51.3681640625,
+    "y1": 205.0,
+    "id": "314-16(b)",
+    "article": 314
+   }
+  ]
+ },
+ "430-52": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Tipo de motor",
+     "rs": 2
+    },
+    {
+     "t": "En porcentaje de la corriente a plena carga",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Fusible sin retardo de tiempo1"
+    },
+    {
+     "t": "Fusible de dos elementos1 (con retardo de tiempo)"
+    },
+    {
+     "t": "Interruptor automático de disparo instantáneo"
+    },
+    {
+     "t": "Interruptor automático de tiempo inverso2"
+    }
+   ],
+   [
+    {
+     "t": "Motores monofásicos"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": "250"
+    }
+   ],
+   [
+    {
+     "t": "Motores polifásicos de corriente alterna distintos a los de rotor devanado"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": "250"
+    }
+   ],
+   [
+    {
+     "t": "De jaula de ardilla: diferentes de los de diseño B energéticamente eficientes"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": "250"
+    }
+   ],
+   [
+    {
+     "t": "De diseño B energéticamente eficientes"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "1100"
+    },
+    {
+     "t": "250"
+    }
+   ],
+   [
+    {
+     "t": "Sincrónicos3"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": "250"
+    }
+   ],
+   [
+    {
+     "t": "Con rotor devanado"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "800"
+    },
+    {
+     "t": "150"
+    }
+   ],
+   [
+    {
+     "t": "De corriente continua (tensión constante)"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "150"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "150"
+    }
+   ]
+  ],
+  "notes": [
+   "Para algunas excepciones a los valores especificados, ver 430-54.",
+   "1 Los valores de la columna fusible sin retardo de tiempo se aplican a fusibles de Clase CC de acción retardada.",
+   "2 Los valores de la última columna también cubren los valores nominales de los interruptores automáticos de tiempo inverso no ajustables, que se pueden modificar como se describe en 430-52(c)(1), Excepción 1 y. 2.",
+   "3 Los motores sincrónicos de bajo par y baja velocidad (usualmente 450 rpm o menos), como los utilizados para accionar compresores alternativos, bombas, etc. que arrancan sin carga, no requieren que el valor nominal de los fusibles o el ajuste de los interruptores automáticos sea mayor al 200 por ciento de la corriente a plena carga."
+  ],
+  "regions": [
+   {
+    "page": 310,
+    "y0": 607.8681640625,
+    "y1": 781.02,
+    "id": "430-52",
+    "article": 430
+   },
+   {
+    "page": 311,
+    "y0": 24.77,
+    "y1": 145.0,
+    "id": "430-52",
+    "article": 430
+   }
+  ]
+ },
+ "310-15(b)(19)": {
+  "verificada": "2026-08-12"
+ },
+ "310-60(c)(67)": {
+  "verificada": "2026-08-12",
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "mm2",
+     "rs": 3
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 3
+    },
+    {
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
+    },
+    {
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "105"
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "65"
+    },
+    {
+     "t": "74"
+    },
+    {
+     "t": "––"
+    },
+    {
+     "t": "––"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "99"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "110"
+    }
+   ],
+   [
+    {
+     "t": "21.2"
+    },
+    {
+     "t": "4"
+    },
+    {
+     "t": "120"
+    },
+    {
+     "t": "130"
+    },
+    {
+     "t": "130"
+    },
+    {
+     "t": "140"
+    }
+   ],
+   [
+    {
+     "t": "33.6"
+    },
+    {
+     "t": "2"
+    },
+    {
+     "t": "160"
+    },
+    {
+     "t": "175"
+    },
+    {
+     "t": "170"
+    },
+    {
+     "t": "195"
+    }
+   ],
+   [
+    {
+     "t": "42.4"
+    },
+    {
+     "t": "1"
+    },
+    {
+     "t": "185"
+    },
+    {
+     "t": "205"
+    },
+    {
+     "t": "195"
+    },
+    {
+     "t": "225"
+    }
+   ],
+   [
+    {
+     "t": "53.5"
+    },
+    {
+     "t": "1/0"
+    },
+    {
+     "t": "215"
+    },
+    {
+     "t": "240"
+    },
+    {
+     "t": "225"
+    },
+    {
+     "t": "255"
+    }
+   ],
+   [
+    {
+     "t": "67.4"
+    },
+    {
+     "t": "2/0"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "275"
+    },
+    {
+     "t": "260"
+    },
+    {
+     "t": "295"
+    }
+   ],
+   [
+    {
+     "t": "85.0"
+    },
+    {
+     "t": "3/0"
+    },
+    {
+     "t": "290"
+    },
+    {
+     "t": "320"
+    },
+    {
+     "t": "300"
+    },
+    {
+     "t": "340"
+    }
+   ],
+   [
+    {
+     "t": "107"
+    },
+    {
+     "t": "4/0"
+    },
+    {
+     "t": "335"
+    },
+    {
+     "t": "375"
+    },
+    {
+     "t": "345"
+    },
+    {
+     "t": "390"
+    }
+   ],
+   [
+    {
+     "t": "127"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "375"
+    },
+    {
+     "t": "415"
+    },
+    {
+     "t": "380"
+    },
+    {
+     "t": "430"
+    }
+   ],
+   [
+    {
+     "t": "177"
+    },
+    {
+     "t": "350"
+    },
+    {
+     "t": "465"
+    },
+    {
+     "t": "515"
+    },
+    {
+     "t": "470"
+    },
+    {
+     "t": "525"
+    }
+   ],
+   [
+    {
+     "t": "253"
+    },
+    {
+     "t": "500"
+    },
+    {
+     "t": "580"
+    },
+    {
+     "t": "645"
+    },
+    {
+     "t": "580"
+    },
+    {
+     "t": "650"
+    }
+   ],
+   [
+    {
+     "t": "380"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "750"
+    },
+    {
+     "t": "835"
+    },
+    {
+     "t": "730"
+    },
+    {
+     "t": "820"
+    }
+   ],
+   [
+    {
+     "t": "507"
+    },
+    {
+     "t": "1000"
+    },
+    {
+     "t": "880"
+    },
+    {
+     "t": "980"
+    },
+    {
+     "t": "850"
+    },
+    {
+     "t": "950"
+    }
+   ]
+  ]
+ },
+ "922-93": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "Los factores para madera y concreto están basados en la resistencia a la ruptura y para el acero en su límite de fluencia."
+  ],
+  "rows": [
+   [
+    {
+     "t": "Elemento de estructura",
+     "rs": 4
+    },
+    {
+     "t": "Esfuerzo mecánico",
+     "rs": 4
+    },
+    {
+     "t": "Tensión o tipo estructura",
+     "rs": 4
+    },
+    {
+     "t": "Material",
+     "rs": 4
+    },
+    {
+     "t": "Factor de sobrecarga",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "Ruptura de cables",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "SI"
+    },
+    {
+     "t": "NO"
+    },
+    {
+     "t": "SI"
+    },
+    {
+     "t": "NO"
+    }
+   ],
+   [
+    {
+     "t": "Clase A",
+     "cs": 2
+    },
+    {
+     "t": "Clase B",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Crucetas",
+     "rs": 11
+    },
+    {
+     "t": "Sobrecarga vertical",
+     "rs": 4
+    },
+    {
+     "t": "(hasta 35 kV)",
+     "rs": 2
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "2.0",
+     "cs": 2
+    },
+    {
+     "t": "2.0",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.5",
+     "cs": 2
+    },
+    {
+     "t": "1.3",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "(Más de 35 kV)",
+     "rs": 2
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.3",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Sobrecarga transversal",
+     "rs": 6
+    },
+    {
+     "t": "General",
+     "rs": 3
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "2.5"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "2.0"
+    }
+   ],
+   [
+    {
+     "t": "Concreto"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "2.0"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.7"
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.8"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.5"
+    }
+   ],
+   [
+    {
+     "t": "Deflexiones y remates",
+     "rs": 3
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "2.0"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.7"
+    }
+   ],
+   [
+    {
+     "t": "Concreto"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "1.8"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.5"
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.8"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.5"
+    }
+   ],
+   [
+    {
+     "t": "Sobrecarga longitudinal"
+    },
+    {
+     "t": "Más de 35"
+    },
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "1.6"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "Postes y torres",
+     "rs": 15
+    },
+    {
+     "t": "Sobrecarga vertical",
+     "rs": 3,
+     "cs": 2
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "2.8"
+    },
+    {
+     "t": "3.0"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "2.0"
+    }
+   ],
+   [
+    {
+     "t": "Concreto"
+    },
+    {
+     "t": "2.3"
+    },
+    {
+     "t": "2.5"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.7"
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.3"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.1"
+    }
+   ],
+   [
+    {
+     "t": "Sobrecarga transversal",
+     "rs": 6
+    },
+    {
+     "t": "General",
+     "rs": 3
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "2.5"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "2.0"
+    }
+   ],
+   [
+    {
+     "t": "Concreto"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "2.0"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.7"
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.8"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.5"
+    }
+   ],
+   [
+    {
+     "t": "Deflexiones y remates",
+     "rs": 3
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "2.0"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.7"
+    }
+   ],
+   [
+    {
+     "t": "Concreto"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "1.8"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.5"
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.8"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.5"
+    }
+   ],
+   [
+    {
+     "t": "Sobrecarga longitudinal",
+     "rs": 6
+    },
+    {
+     "t": "General",
+     "rs": 3
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "Concreto"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "Deflexiones y remates",
+     "rs": 3
+    },
+    {
+     "t": "Madera"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "2.0"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.7"
+    }
+   ],
+   [
+    {
+     "t": "Concreto"
+    },
+    {
+     "t": "1.0"
+    },
+    {
+     "t": "1.8"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "1.5"
+    }
+   ],
+   [
+    {
+     "t": "Acero"
+    },
+    {
+     "t": "1.2"
+    },
+    {
+     "t": "1.6"
+    },
+    {
+     "t": "-"
+    },
+    {
+     "t": "-"
+    }
+   ],
+   [
+    {
+     "t": "Retenidas",
+     "rs": 2
+    },
+    {
+     "t": "Carga transversal",
+     "rs": 2
+    },
+    {
+     "t": "Suspensión",
+     "cs": 2
+    },
+    {
+     "t": "2.5",
+     "cs": 2
+    },
+    {
+     "t": "2.0",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Deflexiones y remates",
+     "cs": 2
+    },
+    {
+     "t": "1.5",
+     "cs": 2
+    },
+    {
+     "t": "1.2",
+     "cs": 2
+    }
+   ]
+  ]
  }
 }

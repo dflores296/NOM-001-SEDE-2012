@@ -684,10 +684,26 @@ def build_grid(words, bands, edges):
 
 RE_PAGE_NOISE = re.compile(r'^(?:\d{1,2}/\d{1,2}/\d{4}|SENER|www\.dof\.gob\.mx\S*|\d+/780)$')
 
+# La fuente incrustada del PDF tiene el cmap roto para un puñado de glifos:
+# se ven bien al ojo pero PyMuPDF extrae el código Unicode equivocado. Pasa
+# con el símbolo de grados, que sale como el dígito cero kannada ("90೦C" en
+# vez de "90°C") y con la letra griega fase, que sale como la efe cirílica.
+# Mismo arreglo que en build_corpus.py, aplicado en cada punto donde este
+# script saca texto del PDF.
+GLIFOS_ROTOS = {'೦': '°', 'Ф': 'Φ'}
+
+
+def fix_glifos(s):
+    for malo, bueno in GLIFOS_ROTOS.items():
+        if malo in s:
+            s = s.replace(malo, bueno)
+    return s
+
 
 def clean_words(page, ymin=-1):
     """Palabras de la página, sin el encabezado/pie repetido del PDF."""
-    return [w for w in page.get_text('words')
+    return [(w[0], w[1], w[2], w[3], fix_glifos(w[4]), w[5], w[6], w[7])
+            for w in page.get_text('words')
             if w[1] > ymin and not RE_PAGE_NOISE.match(w[4].strip())]
 
 
@@ -726,7 +742,7 @@ def footnotes_below(page, ybase):
     lineas = []
     for blk in page.get_text('dict')['blocks']:
         for ln in blk.get('lines', []):
-            txt = ''.join(sp['text'] for sp in ln['spans']).strip()
+            txt = fix_glifos(''.join(sp['text'] for sp in ln['spans'])).strip()
             if txt and ln['bbox'][1] > ybase - 2:
                 lineas.append((ln['bbox'][1], ln['bbox'][3], txt,
                                marca_superindice(ln)))
@@ -823,7 +839,7 @@ def find_captions(doc):
             lines = blk.get('lines', [])
             if not lines:
                 continue
-            txts = [''.join(s['text'] for s in ln['spans']).strip() for ln in lines]
+            txts = [fix_glifos(''.join(s['text'] for s in ln['spans'])).strip() for ln in lines]
             ys = [round(ln['bbox'][1], 1) for ln in lines]
             # Una línea que comparte su altura con otra es una FILA de tabla,
             # con sus celdas repartidas a lo ancho; la continuación de un
@@ -986,7 +1002,7 @@ def main():
     # arrastrar su contenido al texto de la sección.
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from build_corpus import parse_toc
-    pages_txt = [doc[i].get_text() for i in range(doc.page_count)]
+    pages_txt = [fix_glifos(doc[i].get_text()) for i in range(doc.page_count)]
     art_nums = sorted(parse_toc(pages_txt)[0])
 
     caps = find_captions(doc)
@@ -1053,7 +1069,7 @@ def main():
             for ln in blk.get('lines', []):
                 if ln['bbox'][1] > cap['y'] + 6:
                     seguidas.append((ln['bbox'][1],
-                                     ''.join(sp['text'] for sp in ln['spans']).strip()))
+                                     fix_glifos(''.join(sp['text'] for sp in ln['spans'])).strip()))
         cont, prev = [], cap['y']
         for y, txt in sorted(seguidas):
             if not txt or RE_PAGE_NOISE.match(txt):

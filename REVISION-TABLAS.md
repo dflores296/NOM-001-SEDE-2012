@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**104 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**111 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -34,19 +34,11 @@ Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 3 · Verificación de control (7)
+## 3 · Verificación de control (0)
 
 Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas justamente por eso: una tabla equivocada que *parece* correcta es más peligrosa que una marcada como dudosa. Basta comprobar dos o tres renglones de cada una.
 
-| | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
-|---|---|---|---|---|---|---|---|---|
-| [ ] | `430-52` | Ajuste máximo de los dispositivos de protección contra cortocircuito y… | 310, 311 | 15 | 1.00 | — | dibujada | 9×5 |
-| [ ] | `310-15(b)(19)` | Ampacidades permisibles de conductores aislados individuales para Tens… | 139 | 9 | 1.00 | — | dibujada | 17×6 |
-| [ ] | `922-93` | Factores de sobrecarga mínimos para cada clase de construcción de líne… | 726, 727 | 6 | 1.00 | — | dibujada | 33×8 |
-| [ ] | `310-60(c)(67)` | Ampacidad permisible de cables monoconductores de cobre aislados en co… | 143 | 5 | 1.00 | — | **huecos** | 18×6 |
-| [ ] | `314-16(b)` | Volumen que es requerido considerar para cada conductor | 165 | 5 | 1.00 | — | dibujada | 9×3 |
-| [ ] | `352-44` | Características de expansión del tubo conduit rígido no metálico de PV… | 196, 197 | 5 | 1.00 | — | dibujada | 21×2 |
-| [ ] | `500-8(c)` | Clasificación de la temperatura superficial máxima | 360 | 5 | 1.00 | — | dibujada | 15×2 |
+Ninguna: ya están todas contrastadas contra el PDF.
 
 ## Cómo se corrige una tabla
 

@@ -10656,6 +10656,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -12050,76 +12051,44 @@
   ],
   "page": 143,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": ""
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "Tamaño o designación"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura nominal [Véase la Tabla"
-    },
-    {
-     "t": "del conductor 310-104(c)]"
-    },
-    {
-     "t": ""
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
     }
    ],
    [
     {
-     "t": "mm2"
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": "AWG o"
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": "para 2 001-5"
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "Ampacidad 000 volts"
-    },
-    {
-     "t": "Ampacidad para 5 001-35"
-    },
-    {
-     "t": "000 volts"
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "mm2"
-    },
-    {
-     "t": "o kcmil"
-    },
-    {
-     "t": "Temperatura"
-    },
-    {
-     "t": "de los conductores"
-    },
-    {
-     "t": "de media tensión"
-    },
-    {
-     "t": "en °C"
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": "kcmil"
-    },
     {
      "t": "90"
     },
@@ -12428,6 +12397,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -28152,19 +28122,18 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [
-   "1) Ocupación por los conductores. Cada conductor que se origina por fuera de la caja y termina o está empalmado dentro de ella, se debe contar una vez, y cada conductor que pase a través de la caja sin empalmes ni terminaciones se debe contar una vez. Cada bucle o espiral de conductores ininterrumpidos no menores al doble de la longitud mínima exigida para los conductores libres, se debe contar dos veces. La ocupación debida a los conductores se debe calcular usando la Tabla 314-16(b). Un conductor que ninguna de sus partes sale la caja, no se cuenta. Excepción: Se permite omitir de los cálculos el conductor o conductores de puesta a tierra de equipos o como máximo cuatro alambres para accesorios de tamaño menor a 2.08 mm2 (14 AWG), o ambos, cuando entran a una caja desde una luminaria con domo o tapa ornamental similar y terminan dentro de esa caja."
-  ],
+  "notes": [],
   "quality": 1.0,
   "regions": [
    {
     "page": 165,
     "y0": 51.3681640625,
-    "y1": 302.9228515625,
+    "y1": 205.0,
     "id": "314-16(b)",
     "article": 314
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -29264,6 +29233,7 @@
     "article": 352
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -38953,14 +38923,8 @@
      "rs": 2
     },
     {
-     "t": "En porcentaje de",
-     "cs": 2
-    },
-    {
-     "t": "la corriente a plena"
-    },
-    {
-     "t": "carga"
+     "t": "En porcentaje de la corriente a plena carga",
+     "cs": 4
     }
    ],
    [
@@ -39081,8 +39045,10 @@
    ],
    [
     {
-     "t": "De corriente continua (tensión constante) 150",
-     "cs": 2
+     "t": "De corriente continua (tensión constante)"
+    },
+    {
+     "t": "150"
     },
     {
      "t": "150"
@@ -39096,7 +39062,12 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Para algunas excepciones a los valores especificados, ver 430-54.",
+   "1 Los valores de la columna fusible sin retardo de tiempo se aplican a fusibles de Clase CC de acción retardada.",
+   "2 Los valores de la última columna también cubren los valores nominales de los interruptores automáticos de tiempo inverso no ajustables, que se pueden modificar como se describe en 430-52(c)(1), Excepción 1 y. 2.",
+   "3 Los motores sincrónicos de bajo par y baja velocidad (usualmente 450 rpm o menos), como los utilizados para accionar compresores alternativos, bombas, etc. que arrancan sin carga, no requieren que el valor nominal de los fusibles o el ajuste de los interruptores automáticos sea mayor al 200 por ciento de la corriente a plena carga."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -39109,11 +39080,12 @@
    {
     "page": 311,
     "y0": 24.77,
-    "y1": 67.48,
+    "y1": 145.0,
     "id": "430-52",
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -43892,7 +43864,7 @@
   "rows": [
    [
     {
-     "t": "೦C Temperatura máxima"
+     "t": "°C Temperatura máxima"
     },
     {
      "t": "Número de identificación"
@@ -44023,6 +43995,7 @@
     "article": 500
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -46323,7 +46296,7 @@
  },
  {
   "id": "520-44",
-  "title": "Ampacidad permitida para cordones de uso extra rudo aprobados con una capacidad térmica de 75೦C y 90೦C",
+  "title": "Ampacidad permitida para cordones de uso extra rudo aprobados con una capacidad térmica de 75°C y 90°C",
   "informativa": false,
   "article": 520,
   "pages": [
@@ -46355,10 +46328,10 @@
      "t": "AWG"
     },
     {
-     "t": "75೦C amperes"
+     "t": "75°C amperes"
     },
     {
-     "t": "90೦C amperes"
+     "t": "90°C amperes"
     },
     {
      "t": "Amperes"
@@ -47889,7 +47862,7 @@
    ],
    [
     {
-     "t": "Temperatura ೦C ambiente",
+     "t": "Temperatura °C ambiente",
      "cs": 2
     },
     {
@@ -50263,7 +50236,7 @@
   "rows": [
    [
     {
-     "t": "Temperatura ambiente Temperatura máxima de ೦C",
+     "t": "Temperatura ambiente Temperatura máxima de °C",
      "cs": 3
     },
     {
@@ -50276,13 +50249,13 @@
      "t": ""
     },
     {
-     "t": "೦C 60"
+     "t": "°C 60"
     },
     {
-     "t": "೦C 75"
+     "t": "°C 75"
     },
     {
-     "t": "೦C 90"
+     "t": "°C 90"
     },
     {
      "t": "105 °C"
@@ -58563,7 +58536,8 @@
      "rs": 4
     },
     {
-     "t": "(hasta 35 kV)"
+     "t": "(hasta 35 kV)",
+     "rs": 2
     },
     {
      "t": "Madera"
@@ -58573,16 +58547,11 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
-     "t": "2.0"
+     "t": "2.0",
+     "cs": 2
     }
    ],
    [
-    {
-     "t": "(hasta 35 kV)"
-    },
     {
      "t": "Acero"
     },
@@ -58591,10 +58560,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
-     "t": "1.3"
+     "t": "1.3",
+     "cs": 2
     }
    ],
    [
@@ -58610,10 +58577,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
-     "t": "-"
+     "t": "-",
+     "cs": 2
     }
    ],
    [
@@ -58625,10 +58590,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
-     "t": "-"
+     "t": "-",
+     "cs": 2
     }
    ],
    [
@@ -58771,12 +58734,12 @@
    [
     {
      "t": "Postes y torres",
-     "rs": 10
+     "rs": 15
     },
     {
      "t": "Sobrecarga vertical",
-     "cs": 2,
-     "rs": 3
+     "rs": 3,
+     "cs": 2
     },
     {
      "t": "Madera"
@@ -58944,10 +58907,12 @@
    ],
    [
     {
-     "t": "Sobrecarga longitudinal"
+     "t": "Sobrecarga longitudinal",
+     "rs": 6
     },
     {
-     "t": "General"
+     "t": "General",
+     "rs": 3
     },
     {
      "t": "Madera"
@@ -58967,18 +58932,6 @@
    ],
    [
     {
-     "t": "",
-     "rs": 6
-    },
-    {
-     "t": "",
-     "rs": 6
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
      "t": "Concreto"
     },
     {
@@ -58996,29 +58949,19 @@
    ],
    [
     {
-     "t": "Acero",
-     "rs": 2
+     "t": "Acero"
     },
     {
-     "t": "1.2",
-     "rs": 2
+     "t": "1.2"
     },
     {
-     "t": "-",
-     "rs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "rs": 2
+     "t": "-"
     },
     {
-     "t": "-",
-     "rs": 2
-    }
-   ],
-   [
-    {
-     "t": ""
+     "t": "-"
     }
    ],
    [
@@ -59094,33 +59037,29 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
-     "t": "2.0"
+     "t": "2.0",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "Deflexiones y"
-    },
-    {
-     "t": "remates"
+     "t": "Deflexiones y remates",
+     "cs": 2
     },
     {
      "t": "1.5",
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
-     "t": "1.2"
+     "t": "1.2",
+     "cs": 2
     }
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Los factores para madera y concreto están basados en la resistencia a la ruptura y para el acero en su límite de fluencia."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -59138,6 +59077,7 @@
     "article": 922
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {

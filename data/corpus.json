@@ -1261,7 +1261,7 @@
      "title": "Espacio de trabajo alrededor de los equipos",
      "part": "C",
      "page": 26,
-     "text": "Alrededor de todo equipo eléctrico debe existir y mantenerse un espacio de acceso y de trabajo suficiente que permita la operación y el mantenimiento fácil y seguro de dicho equipo. Donde haya expuestas partes energizadas, el espacio de trabajo mínimo no debe ser menor a 2.00 metros de altura (medidos verticalmente desde el piso o plataforma) ni menor a 0.90 metros de ancho (medidos paralelamente al equipo). La distancia debe ser la que se requiera en la Sección 110-34(a). En todos los casos, el espacio de trabajo debe ser suficiente para permitir como mínimo una abertura de 90೦ de las puertas o los paneles abisagrados.",
+     "text": "Alrededor de todo equipo eléctrico debe existir y mantenerse un espacio de acceso y de trabajo suficiente que permita la operación y el mantenimiento fácil y seguro de dicho equipo. Donde haya expuestas partes energizadas, el espacio de trabajo mínimo no debe ser menor a 2.00 metros de altura (medidos verticalmente desde el piso o plataforma) ni menor a 0.90 metros de ancho (medidos paralelamente al equipo). La distancia debe ser la que se requiera en la Sección 110-34(a). En todos los casos, el espacio de trabajo debe ser suficiente para permitir como mínimo una abertura de 90° de las puertas o los paneles abisagrados.",
      "children": [],
      "notes": [],
      "exceptions": []
@@ -13039,7 +13039,7 @@
      "title": "Aplicaciones",
      "part": "G",
      "page": 80,
-     "text": "Se permitirá la instalación de un interruptor automático con una sola tensión nominal, por ejemplo 240 volts o 480 volts, en un circuito en el que la tensión nominal entre dos conductores cualesquiera no exceda la tensión del interruptor automático. No se debe utilizar un interruptor automático de dos polos para proteger circuitos trifásicos conectados en delta con una esquina puesta a tierra, a menos que el interruptor automático esté marcado como 1Ф - 3 Ф, para indicar dicha compatibilidad. Se permitirá la instalación de un interruptor automático con dos tensiones separadas por una diagonal, por ejemplo de 120/240 volts o 480Y/277 volts, en un circuito puesto a tierra sólidamente, en el que la tensión de cualquier conductor a tierra no supere el menor de los dos valores de tensión del interruptor automático y además la tensión entre dos conductores cualesquiera no supere la mayor tensión del interruptor automático.",
+     "text": "Se permitirá la instalación de un interruptor automático con una sola tensión nominal, por ejemplo 240 volts o 480 volts, en un circuito en el que la tensión nominal entre dos conductores cualesquiera no exceda la tensión del interruptor automático. No se debe utilizar un interruptor automático de dos polos para proteger circuitos trifásicos conectados en delta con una esquina puesta a tierra, a menos que el interruptor automático esté marcado como 1Φ - 3 Φ, para indicar dicha compatibilidad. Se permitirá la instalación de un interruptor automático con dos tensiones separadas por una diagonal, por ejemplo de 120/240 volts o 480Y/277 volts, en un circuito puesto a tierra sólidamente, en el que la tensión de cualquier conductor a tierra no supere el menor de los dos valores de tensión del interruptor automático y además la tensión entre dos conductores cualesquiera no supere la mayor tensión del interruptor automático.",
      "children": [],
      "notes": [
       {
@@ -25461,6 +25461,23 @@
        "text": "Se deben sumar los volúmenes de los párrafos (1) hasta (5), según aplique. No se exigirá que se asignen volúmenes a accesorios pequeños tales como pasacables o contratuercas.",
        "children": [
         {
+         "id": "314-16(b)(1)",
+         "label": "1",
+         "kind": "num",
+         "level": 2,
+         "text": "Cada conductor que se origina por fuera de la caja y termina o está empalmado dentro de ella, se debe contar una vez, y cada conductor que pase a través de la caja sin empalmes ni terminaciones se debe contar una vez. Cada bucle o espiral de conductores ininterrumpidos no menores al doble de la longitud mínima exigida para los conductores libres, se debe contar dos veces. La ocupación debida a los conductores se debe calcular usando la Tabla 314-16(b). Un conductor que ninguna de sus partes sale la caja, no se cuenta.",
+         "children": [],
+         "notes": [],
+         "exceptions": [
+          {
+           "label": "Excepción",
+           "text": "Se permite omitir de los cálculos el conductor o conductores de puesta a tierra de equipos o como máximo cuatro alambres para accesorios de tamaño menor a 2.08 mm2 (14 AWG), o ambos, cuando entran a una caja desde una luminaria con domo o tapa ornamental similar y terminan dentro de esa caja.",
+           "seq": 7
+          }
+         ],
+         "title": "Ocupación por los conductores"
+        },
+        {
          "id": "314-16(b)(2)",
          "label": "2",
          "kind": "num",
@@ -25610,7 +25627,7 @@
         {
          "label": "Excepción",
          "text": "Cuando se usa cable con forro no metálico o cable multiconductor tipo UF con cajas de un sólo tándem con tamaño no mayor que el de 5.70 x 10 centímetros montadas en las paredes o los plafones, y cuando el cable está sostenido a una distancia no mayor a 20 centímetros de la caja, medidos a lo largo del forro, y cuando el forro se extiende a través de la abertura para cable en no menos de 6 milímetros, no se exigirá la fijación del cable a la caja. Se permitirá la entrada de cables múltiples en la abertura para cable.",
-         "seq": 7
+         "seq": 8
         }
        ],
        "title": "Cajas no metálicas"
@@ -25626,7 +25643,7 @@
         {
          "label": "NOTA",
          "text": "Véase 110-12 (a) con respecto a los requisitos sobre el cierre de las aberturas no utilizadas en canalizaciones.",
-         "seq": 8
+         "seq": 9
         }
        ],
        "exceptions": []
@@ -25677,7 +25694,7 @@
       {
        "label": "Excepción",
        "text": "Se permitirá hacer una extensión superficial desde la cubierta de una caja, cuando la cubierta está diseñada de modo que no es probable que se caiga o pueda ser quitada si sus medios de fijación se aflojan. El método de alambrado debe ser flexible y tener una longitud suficiente que permita retirar la cubierta y tener acceso al interior de la caja, y se debe organizar de forma que la continuidad de cualquier conductor de puesta a tierra sea independiente de la conexión entre la caja y la cubierta.",
-       "seq": 9
+       "seq": 10
       }
      ]
     },
@@ -25790,7 +25807,7 @@
         {
          "label": "Excepción",
          "text": "Se permitirán que los siguientes métodos de alambrado brinden soporte a una caja de cualquier tamaño, incluyendo una caja construida únicamente con una entrada de tubo conduit, siempre y cuando el tamaño de la caja no sea mayor al tamaño más grande del tubo conduit o la tubería:",
-         "seq": 10,
+         "seq": 11,
          "items": [
           {
            "label": "1",
@@ -25829,12 +25846,12 @@
         {
          "label": "Excepción 1",
          "text": "Se permitirá que el tubo conduit metálico pesado o el metálico semipesado brinden soporte a una caja de cualquier tamaño, incluyendo una caja con una sola entrada, siempre y cuando el tamaño de la caja no sea mayor al tamaño más grande del tubo conduit.",
-         "seq": 11
+         "seq": 12
         },
         {
          "label": "Excepción 2",
          "text": "Se permitirá que un tramo ininterrumpido de tubo conduit metálico pesado o metálico semipesado brinde soporte a una caja utilizada para sostener una luminaria o un portalámparas, o para dar soporte a un envolvente para cableado que es parte integral de una luminaria y se usa en lugar de una caja, según se establece en 300-15(b), cuando se cumplen todas las siguientes condiciones:",
-         "seq": 12,
+         "seq": 13,
          "items": [
           {
            "label": "a",
@@ -25969,7 +25986,7 @@
             {
              "label": "Excepción para (2)",
              "text": "Se permitirá que sean montados los dispositivos o equipos de utilización alimentados por conductores más grandes que el tamaño 21.2 mm2 (4 AWG) sobre o en las cajas de empalme y de paso más grandes que 1640 cm³ si el espacio en las terminales cumple con los requisitos de 312-6.",
-             "seq": 13
+             "seq": 14
             }
            ]
           },
@@ -26005,7 +26022,7 @@
             {
              "label": "Excepción para (1) hasta (5)",
              "text": "Se permitirán dispositivos o equipo de utilización aprobados para instalación con cajas especificadas por el fabricante.",
-             "seq": 14
+             "seq": 15
             }
            ]
           }
@@ -26040,7 +26057,7 @@
         {
          "label": "NOTA",
          "text": "Para los requisitos adicionales de puesta a tierra, véase 410-42 para las tapas ornamentales metálicas de luminarias, y 404- 12 y 406-6(b) para placas frontales metálicas.",
-         "seq": 15
+         "seq": 16
         }
        ],
        "exceptions": [],
@@ -26098,7 +26115,7 @@
           {
            "label": "Excepción",
            "text": "Se permitirá que una luminaria o portalámparas montada en la pared que no pese más de 3 kilogramos esté soportada en otras cajas o anillos sencillos que estén fijos a otras cajas, siempre y cuando la luminaria o su yugo de soporte o portalámparas estén fijos a la caja por lo menos con dos tornillos numero 6 o más grandes.",
-           "seq": 16
+           "seq": 17
           }
          ],
          "title": "Salidas de pared"
@@ -26131,7 +26148,7 @@
         {
          "label": "Excepción",
          "text": "Cuando se considere baja la probabilidad de exposición al daño físico, la humedad y la suciedad, se permitirá que las cajas localizadas en pisos elevados de escaparates y lugares similares sean diferentes de aquellas aprobadas para las aplicaciones en el piso. Los contactos y las cubiertas deben estar aprobados como un ensamble para este tipo de lugar.",
-         "seq": 17
+         "seq": 18
         }
        ],
        "title": "Cajas en el piso"
@@ -26159,7 +26176,7 @@
         {
          "label": "Excepción",
          "text": "Se permitirá que el equipo de utilización con un peso no mayor a 3 kilogramos esté soportado en otras cajas o anillos sencillos que estén fijos a otras cajas, siempre y cuando el equipo o su yugo de soporte esté fijo a la caja por lo menos con dos tornillos número 6 o más grandes.",
-         "seq": 18
+         "seq": 19
         }
        ],
        "title": "Equipo de utilización"
@@ -26205,7 +26222,7 @@
           {
            "label": "Excepción",
            "text": "Cuando una entrada para la canalización o cable está en la pared opuesta a una cubierta removible, de una caja se permitirá que la distancia desde esta pared hasta la cubierta cumpla con los requisitos de distancia para un alambre por cada terminal que se indica en la Tabla 312-6(a). La distancia entre las entradas de las canalizaciones que alojan al mismo conductor, no debe ser menor a seis veces el diámetro de la canalización más grande. Si en lugar del tamaño de la canalización en los anteriores incisos (a)(1) y (a)(2) se toma el tamaño del cable, se debe utilizar el diámetro mínimo de la canalización para el número y tamaño de los conductores del cable.",
-           "seq": 20
+           "seq": 21
           }
          ],
          "title": "Tendidos en ángulos o en U, o empalmes"
@@ -26327,7 +26344,7 @@
         {
          "label": "Excepción",
          "text": "Se permitirán barras terminales de puesta a tierra de equipos en envolventes más pequeños.",
-         "seq": 21
+         "seq": 22
         }
        ],
        "title": "Bloques de distribución de fuerza"
@@ -26338,7 +26355,7 @@
       {
        "label": "Excepción",
        "text": "Las cajas de terminales que se suministran con los motores deben cumplir con las disposiciones de 430-12.",
-       "seq": 19
+       "seq": 20
       }
      ]
     },
@@ -26354,7 +26371,7 @@
       {
        "label": "Excepción",
        "text": "Se permitirán cajas y registros aprobados, cuando están cubiertos por graba, agregado liviano o suelo granulado no cohesivo, si su ubicación está identificada de manera eficaz y es accesible para la excavación.",
-       "seq": 22
+       "seq": 23
       }
      ]
     },
@@ -26431,7 +26448,7 @@
         {
          "label": "NOTA",
          "text": "Véase 300-6 con respecto a la limitación en el uso de las cajas y los accesorios protegidos contra la corrosión únicamente con esmalte.",
-         "seq": 23
+         "seq": 24
         }
        ],
        "exceptions": [],
@@ -26449,12 +26466,12 @@
         {
          "label": "Excepción 1",
          "text": "Se permitirá que las cajas aprobadas que demuestren tener características y resistencia equivalentes, sean fabricadas con otros metales o de menor espesor.",
-         "seq": 24
+         "seq": 25
         },
         {
          "label": "Excepción 2",
          "text": "Se permitirá que las paredes de las cajas aprobadas de radio reducido, de las que trata 314-16(c)(2), estén fabricadas con un metal de menor espesor.",
-         "seq": 25
+         "seq": 26
         }
        ],
        "title": "Espesor del metal"
@@ -26689,12 +26706,12 @@
           {
            "label": "Excepción 1",
            "text": "Cuando la entrada de un conductor o cable está en la pared de una caja opuesta a una cubierta removible, se permitirá que la distancia desde esta pared hasta la cubierta no sea menor al radio de curvatura para los conductores, tal como se especifica en 300-34.",
-           "seq": 27
+           "seq": 28
           },
           {
            "label": "Excepción 2",
            "text": "Cuando los cables no son blindados y no están recubiertos con plomo, se permitirá que la distancia de 36 veces el diámetro exterior se reduzca a 24 veces dicho diámetro.",
-           "seq": 28
+           "seq": 29
           }
          ],
          "title": "Distancia a la pared opuesta"
@@ -26711,7 +26728,7 @@
           {
            "label": "Excepción",
            "text": "Cuando los cables no son blindados y no están recubiertos con plomo, se permitirá que la distancia de 36 veces el diámetro exterior se reduzca a 24 veces dicho diámetro.",
-           "seq": 29
+           "seq": 30
           }
          ],
          "title": "Distancia entre la entrada y la salida"
@@ -26737,7 +26754,7 @@
       {
        "label": "Excepción",
        "text": "Las cajas de terminales que se suministran con los motores deben cumplir con las disposiciones de 430-12.",
-       "seq": 26
+       "seq": 27
       }
      ]
     },
@@ -36947,7 +36964,7 @@
      "title": "Dobleces",
      "part": "B",
      "page": 210,
-     "text": "Número de dobleces en un tramo. Entre dos puntos de sujeción, por ejemplo, entre registros o cajas, no debe haber más del equivalente a dos dobleces de 90೦ (180೦ máximo).",
+     "text": "Número de dobleces en un tramo. Entre dos puntos de sujeción, por ejemplo, entre registros o cajas, no debe haber más del equivalente a dos dobleces de 90° (180° máximo).",
      "children": [],
      "notes": [],
      "exceptions": []
@@ -57840,7 +57857,7 @@
             },
             {
              "label": "4",
-             "text": "Se permitirá aumentar la capacidad nominal de un fusible clasificado entre 601 a 6000 amperes, pero sin que en ningún caso exceda el 300 por ciento de la corriente de plena carga. 1 Los valores de la columna fusible sin retardo de tiempo se aplican a fusibles de Clase CC de acción retardada. 2 Los valores de la última columna también cubren los valores nominales de los interruptores automáticos de tiempo inverso no ajustables, que se pueden modificar como se describe en 430-52(c)(1), Excepción 1 y. 2. 3 Los motores sincrónicos de bajo par y baja velocidad (usualmente 450 rpm o menos), como los utilizados para accionar compresores alternativos, bombas, etc. que arrancan sin carga, no requieren que el valor nominal de los fusibles o el ajuste de los interruptores automáticos sea mayor al 200 por ciento de la corriente a plena carga."
+             "text": "Se permitirá aumentar la capacidad nominal de un fusible clasificado entre 601 a 6000 amperes, pero sin que en ningún caso exceda el 300 por ciento de la corriente de plena carga."
             }
            ]
           }
@@ -67070,7 +67087,7 @@
          "label": "2",
          "kind": "num",
          "level": 2,
-         "text": "La temperatura marcada, según lo especificado en (c) anterior, debe ser menor que la temperatura de ignición del polvo específico que pueda encontrarse. Para los polvos orgánicos que se puedan deshidratar o carbonizar, la temperatura de marcado no debe exceder de la temperatura de ignición o 165 ೦C. Se debe suponer que la temperatura de ignición para la cual estaban anteriormente aprobados los equipos para este requisito, es como se indica en la Tabla 500-8(d)(2).",
+         "text": "La temperatura marcada, según lo especificado en (c) anterior, debe ser menor que la temperatura de ignición del polvo específico que pueda encontrarse. Para los polvos orgánicos que se puedan deshidratar o carbonizar, la temperatura de marcado no debe exceder de la temperatura de ignición o 165 °C. Se debe suponer que la temperatura de ignición para la cual estaban anteriormente aprobados los equipos para este requisito, es como se indica en la Tabla 500-8(d)(2).",
          "children": [],
          "notes": [],
          "exceptions": [],
@@ -67162,7 +67179,7 @@
       },
       {
        "label": "NOTA 3",
-       "text": "Las condiciones de bajas temperaturas ambientales requieren una consideración especial. El equipo a prueba de explosión o a prueba de ignición de polvo puede no ser apropiado para usarse en temperaturas menores de -25 ೦C, a menos que esté aprobado para servicio en bajas temperaturas. Sin embargo, a bajas temperaturas ambientales, pueden no existir concentraciones inflamables de vapores en áreas clasificadas como Clase I, División 1, a temperatura ambiente normal.",
+       "text": "Las condiciones de bajas temperaturas ambientales requieren una consideración especial. El equipo a prueba de explosión o a prueba de ignición de polvo puede no ser apropiado para usarse en temperaturas menores de -25 °C, a menos que esté aprobado para servicio en bajas temperaturas. Sin embargo, a bajas temperaturas ambientales, pueden no existir concentraciones inflamables de vapores en áreas clasificadas como Clase I, División 1, a temperatura ambiente normal.",
        "seq": 32
       }
      ],
@@ -70746,7 +70763,7 @@
      "title": "Generalidades",
      "part": null,
      "page": 377,
-     "text": "El equipo instalado en áreas Clase III debe ser capaz de operar a plena carga sin desarrollar en su superficie una temperatura capaz de causar una deshidratación excesiva o carbonización gradual de fibras o pelusas acumuladas. Los materiales orgánicos carbonizados o excesivamente secos tienen una alta probabilidad de encenderse por combustión espontánea. La máxima temperatura en la superficie bajo condiciones de operación, no debe exceder de 165 ೦C para equipo no sujeto a sobrecargas, y 120 °C para equipo (tales como motores y transformadores) que puedan sobrecargarse.",
+     "text": "El equipo instalado en áreas Clase III debe ser capaz de operar a plena carga sin desarrollar en su superficie una temperatura capaz de causar una deshidratación excesiva o carbonización gradual de fibras o pelusas acumuladas. Los materiales orgánicos carbonizados o excesivamente secos tienen una alta probabilidad de encenderse por combustión espontánea. La máxima temperatura en la superficie bajo condiciones de operación, no debe exceder de 165 °C para equipo no sujeto a sobrecargas, y 120 °C para equipo (tales como motores y transformadores) que puedan sobrecargarse.",
      "children": [],
      "notes": [],
      "exceptions": []
@@ -83085,7 +83102,7 @@
      "title": "Aislamiento de conductores",
      "part": "C",
      "page": 453,
-     "text": "Las candilejas, batería de lámparas suspendidas, baterías de lámparas y baterías de contactos, deben alambrarse con conductores que tengan un aislamiento adecuado para la temperatura a la que vayan a operar los conductores, pero no menor que 125೦C. La ampacidad de los conductores de 125೦C debe ser la correspondiente de los conductores de 60೦C. Todas las bajadas de las baterías de conectores debe ser de conductor de 90೦C dimensionado para la ampacidad de cables y cordones de 60೦C que no se extiendan más de 15 centímetros dentro de la batería de conectores. No aplica 310-15(b)(3)(a).",
+     "text": "Las candilejas, batería de lámparas suspendidas, baterías de lámparas y baterías de contactos, deben alambrarse con conductores que tengan un aislamiento adecuado para la temperatura a la que vayan a operar los conductores, pero no menor que 125°C. La ampacidad de los conductores de 125°C debe ser la correspondiente de los conductores de 60°C. Todas las bajadas de las baterías de conectores debe ser de conductor de 90°C dimensionado para la ampacidad de cables y cordones de 60°C que no se extiendan más de 15 centímetros dentro de la batería de conectores. No aplica 310-15(b)(3)(a).",
      "children": [],
      "notes": [
       {
@@ -86288,7 +86305,7 @@
      "title": "Conductores para lámparas y equipos que se calientan",
      "part": "C",
      "page": 468,
-     "text": "Se deben usar conductores aislados con una capacidad de temperatura de operación no menor que 200 ೦C, en todas las lámparas u otros equipos donde la temperatura ambiente en los conductores instalados exceda de 50೦C.",
+     "text": "Se deben usar conductores aislados con una capacidad de temperatura de operación no menor que 200 °C, en todas las lámparas u otros equipos donde la temperatura ambiente en los conductores instalados exceda de 50°C.",
      "children": [],
      "notes": [],
      "exceptions": []
@@ -137112,7 +137129,7 @@
      "title": "Cálculo de cargas mecánicas",
      "part": "H",
      "page": 723,
-     "text": "Las líneas aéreas deben cumplir con los valores de la siguiente tabla, que corresponden a condiciones meteorológicas mínimas de diseño para las diferentes zonas de carga mecánica (ver mapa de la Figura 922-82). estructuras. Para cualquiera de las zonas (excepto la Zona I), pueden considerarse los espesores de hielo de la Zona I, con una temperatura de -5 ೦C. El peso del hielo se considera de 913 kilogramos por metro cúbico",
+     "text": "Las líneas aéreas deben cumplir con los valores de la siguiente tabla, que corresponden a condiciones meteorológicas mínimas de diseño para las diferentes zonas de carga mecánica (ver mapa de la Figura 922-82). estructuras. Para cualquiera de las zonas (excepto la Zona I), pueden considerarse los espesores de hielo de la Zona I, con una temperatura de -5 °C. El peso del hielo se considera de 913 kilogramos por metro cúbico",
      "children": [],
      "notes": [],
      "exceptions": [],

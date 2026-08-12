@@ -29,6 +29,23 @@ def unaccent(s):
     return ''.join(c for c in unicodedata.normalize('NFD', s)
                    if unicodedata.category(c) != 'Mn')
 
+
+# La fuente incrustada del PDF tiene el cmap roto para un puñado de glifos:
+# se ven bien al ojo pero PyMuPDF extrae el código Unicode equivocado. Pasa
+# con el símbolo de grados, que sale como el dígito cero kannada ("165 ೦C"
+# en vez de "165 °C", 24 veces en el documento) y con la letra griega fase,
+# que sale como la efe cirílica ("1Ф - 3 Ф" en vez de "1Φ - 3Φ", en 430-83).
+# Se corrige en la extracción para que ningún camino del parser vuelva a
+# dejarlo pasar.
+GLIFOS_ROTOS = {'೦': '°', 'Ф': 'Φ'}
+
+
+def fix_glifos(s):
+    for malo, bueno in GLIFOS_ROTOS.items():
+        if malo in s:
+            s = s.replace(malo, bueno)
+    return s
+
 NOISE = re.compile(
     r'^[ \t]*(?:\d{1,2}/\d{1,2}/\d{4}|SENER|www\.dof\.gob\.mx\S*|\d+/780)[ \t]*$', re.M)
 
@@ -76,7 +93,7 @@ def sec_re(num):
 def load_pages(pdf):
     import pymupdf
     doc = pymupdf.open(pdf)
-    return [doc[i].get_text() for i in range(doc.page_count)]
+    return [fix_glifos(doc[i].get_text()) for i in range(doc.page_count)]
 
 
 # Marcador de imagen dentro del flujo de líneas. Las fórmulas de la norma están
@@ -154,7 +171,7 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):
         if doc is not None:
             for blk in doc[pno - 1].get_text('dict')['blocks']:
                 for ln in blk.get('lines', []):
-                    txt = ''.join(sp['text'] for sp in ln['spans'])
+                    txt = fix_glifos(''.join(sp['text'] for sp in ln['spans']))
                     items.append((ln['bbox'][1], txt))
         else:
             items = [(0, t) for t in pages[pno - 1].split('\n')]
