@@ -57625,5 +57625,493 @@
  "680-3": {
   "verificada": "2026-08-12",
   "header_rows": 1
+ },
+ "680-8": {
+  "verificada": "2026-08-12",
+  "cols": 4,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Parámetros de libramiento",
+     "rs": 3
+    },
+    {
+     "t": "Suministro de 0-750 volts a tierra, con conductores aislados soportados por un cable mensajero desnudo puesto a tierra eficazmente o conductor neutro puesto a tierra eficazmente",
+     "rs": 2
+    },
+    {
+     "t": "Todos los demás conductores de tensión a tierra",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "0-15 kV"
+    },
+    {
+     "t": "Mayor que 15 a 50 kV"
+    }
+   ],
+   [
+    {
+     "t": "Metros",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "A. Espacios libres en cualquier dirección al nivel del agua, borde de la superficie del agua o base de la plataforma de clavados o balsa permanentemente anclada."
+    },
+    {
+     "t": "6.90"
+    },
+    {
+     "t": "7.50"
+    },
+    {
+     "t": "8.00"
+    }
+   ],
+   [
+    {
+     "t": "B. Espacios libres en cualquier dirección del lugar de observación o de la plataforma de clavados."
+    },
+    {
+     "t": "4.40"
+    },
+    {
+     "t": "5.20"
+    },
+    {
+     "t": "5.50"
+    }
+   ],
+   [
+    {
+     "t": "C. Límite horizontal del libramiento medido desde la pared interior de la alberca"
+    },
+    {
+     "t": "Este límite se debe extender borde exterior de las estructuras mencionadas en (a) y (b) anteriores pero no debe ser menor que 3.00 metros.",
+     "cs": 3
+    }
+   ]
+  ]
+ },
+ "680-10": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "* Las canalizaciones aprobadas para enterrarse sólo cuando están recubiertas de concreto se requiere un recubrimiento no menor a 5 centímetros"
+  ]
+ },
+ "690-31(c)": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Temperatura ambiente °C",
+     "rs": 2
+    },
+    {
+     "t": "Temperatura máxima de operación del conductor",
+     "cs": 4
+    }
+   ],
+   [
+    {
+     "t": "60 °C"
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "105 °C"
+    }
+   ],
+   [
+    {
+     "t": "30"
+    },
+    {
+     "t": "1.00"
+    },
+    {
+     "t": "1.00"
+    },
+    {
+     "t": "1.00"
+    },
+    {
+     "t": "1.00"
+    }
+   ],
+   [
+    {
+     "t": "31-35"
+    },
+    {
+     "t": "0.91"
+    },
+    {
+     "t": "0.94"
+    },
+    {
+     "t": "0.96"
+    },
+    {
+     "t": "0.97"
+    }
+   ],
+   [
+    {
+     "t": "36-40"
+    },
+    {
+     "t": "0.82"
+    },
+    {
+     "t": "0.88"
+    },
+    {
+     "t": "0.91"
+    },
+    {
+     "t": "0.93"
+    }
+   ],
+   [
+    {
+     "t": "41-45"
+    },
+    {
+     "t": "0.71"
+    },
+    {
+     "t": "0.82"
+    },
+    {
+     "t": "0.87"
+    },
+    {
+     "t": "0.89"
+    }
+   ],
+   [
+    {
+     "t": "46-50"
+    },
+    {
+     "t": "0.58"
+    },
+    {
+     "t": "0.75"
+    },
+    {
+     "t": "0.82"
+    },
+    {
+     "t": "0.86"
+    }
+   ],
+   [
+    {
+     "t": "51-55"
+    },
+    {
+     "t": "0.41"
+    },
+    {
+     "t": "0.67"
+    },
+    {
+     "t": "0.76"
+    },
+    {
+     "t": "0.82"
+    }
+   ],
+   [
+    {
+     "t": "56-60"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "0.58"
+    },
+    {
+     "t": "0.71"
+    },
+    {
+     "t": "0.77"
+    }
+   ],
+   [
+    {
+     "t": "61-70"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "0.33"
+    },
+    {
+     "t": "0.58"
+    },
+    {
+     "t": "0.68"
+    }
+   ],
+   [
+    {
+     "t": "71-80"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "0.41"
+    },
+    {
+     "t": "0.58"
+    }
+   ]
+  ]
+ },
+ "705-3": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Equipo/sistema"
+    },
+    {
+     "t": "Artículo"
+    }
+   ],
+   [
+    {
+     "t": "Generadores"
+    },
+    {
+     "t": "445"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas solares fotovoltaicos"
+    },
+    {
+     "t": "690"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de celdas de combustible"
+    },
+    {
+     "t": "692"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas eléctricos eólicos pequeños"
+    },
+    {
+     "t": "694"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de emergencia"
+    },
+    {
+     "t": "700"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de reserva legalmente requeridos"
+    },
+    {
+     "t": "701"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de reserva opcionales"
+    },
+    {
+     "t": "702"
+    }
+   ]
+  ]
+ },
+ "760-154(d)": {
+  "verificada": "2026-08-12",
+  "header_rows": 1
+ },
+ "760-179(i)": {
+  "verificada": "2026-08-12",
+  "header_rows": 1
+ },
+ "770-154(b)": {
+  "verificada": "2026-08-12",
+  "header_rows": 1
+ },
+ "770-179": {
+  "verificada": "2026-08-12",
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Marcado de cables"
+    },
+    {
+     "t": "Tipo"
+    }
+   ],
+   [
+    {
+     "t": "OFNP"
+    },
+    {
+     "t": "Cable no conductor de fibra óptica en plenum"
+    }
+   ],
+   [
+    {
+     "t": "OFCP"
+    },
+    {
+     "t": "Cable conductor de fibra óptica en plenum"
+    }
+   ],
+   [
+    {
+     "t": "OFNR"
+    },
+    {
+     "t": "Cable no conductor de fibra óptica en ducto vertical"
+    }
+   ],
+   [
+    {
+     "t": "OFCR"
+    },
+    {
+     "t": "Cable conductor de fibra óptica en ducto vertical"
+    }
+   ],
+   [
+    {
+     "t": "OFNG"
+    },
+    {
+     "t": "Cable no conductor de fibra óptica para propósito general"
+    }
+   ],
+   [
+    {
+     "t": "OFCG"
+    },
+    {
+     "t": "Cable conductor de fibra óptica para propósito general"
+    }
+   ],
+   [
+    {
+     "t": "OFN"
+    },
+    {
+     "t": "Cable no conductor de fibra óptica para propósito general"
+    }
+   ],
+   [
+    {
+     "t": "OFC"
+    },
+    {
+     "t": "Cable conductor de fibra óptica para propósito general"
+    }
+   ]
+  ]
+ },
+ "800-154(b)": {
+  "verificada": "2026-08-12",
+  "header_rows": 1
+ },
+ "800-179": {
+  "verificada": "2026-08-12",
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Marcado del cable"
+    },
+    {
+     "t": "Tipo"
+    }
+   ],
+   [
+    {
+     "t": "CMP"
+    },
+    {
+     "t": "Cable de comunicaciones en plenum"
+    }
+   ],
+   [
+    {
+     "t": "CMR"
+    },
+    {
+     "t": "Cable de comunicaciones en pozo vertical"
+    }
+   ],
+   [
+    {
+     "t": "CMG"
+    },
+    {
+     "t": "Cable de comunicaciones de usos generales"
+    }
+   ],
+   [
+    {
+     "t": "CM"
+    },
+    {
+     "t": "Cable de comunicaciones de usos generales"
+    }
+   ],
+   [
+    {
+     "t": "CMX"
+    },
+    {
+     "t": "Cable de comunicaciones de uso limitado"
+    }
+   ],
+   [
+    {
+     "t": "CMUC"
+    },
+    {
+     "t": "Cable y alambre de comunicaciones para uso bajo alfombra"
+    }
+   ]
+  ],
+  "notes": [
+   "Los tipos de cable se enumeran en orden decreciente de resistencia al fuego."
+  ]
  }
 }
