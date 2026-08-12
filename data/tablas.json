@@ -5006,8 +5006,7 @@
      "t": "230"
     },
     {
-     "t": "",
-     "rs": 3
+     "t": ""
     }
    ],
    [
@@ -5016,6 +5015,9 @@
     },
     {
      "t": "680"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -5023,8 +5025,10 @@
      "t": "Anuncios eléctricos e iluminación de contorno"
     },
     {
-     "t": "600",
-     "rs": 2
+     "t": "600"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -5032,16 +5036,18 @@
      "t": "Bucle cerrado y distribución programada de potencia"
     },
     {
+     "t": ""
+    },
+    {
      "t": "780-3"
     }
    ],
    [
     {
-     "t": "Cajas de salida, de dispositivos, de jalado y de empalmes, caja de herrajes"
+     "t": "Cajas de salida, de dispositivos, de jalado y de empalmes, caja de conexiones y herrajes"
     },
     {
-     "t": "conexiones y",
-     "rs": 2
+     "t": ""
     },
     {
      "t": "314-4, 314-25"
@@ -5052,8 +5058,10 @@
      "t": "Capacitores"
     },
     {
-     "t": "460-10, 460-27",
-     "rs": 3
+     "t": ""
+    },
+    {
+     "t": "460-10, 460-27"
     }
    ],
    [
@@ -5062,6 +5070,9 @@
     },
     {
      "t": "550"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -5070,6 +5081,9 @@
     },
     {
      "t": "668"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -5080,8 +5094,7 @@
      "t": "392"
     },
     {
-     "t": "392-60",
-     "rs": 2
+     "t": "392-60"
     }
    ],
    [
@@ -5089,8 +5102,10 @@
      "t": "Circuitos de comunicaciones"
     },
     {
-     "t": "800",
-     "rs": 2
+     "t": "800"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -5098,8 +5113,10 @@
      "t": "Circuitos derivados"
     },
     {
-     "t": "210-5, 210-6, 406-3",
-     "rs": 3
+     "t": ""
+    },
+    {
+     "t": "210-5, 210-6, 406-3"
     }
    ],
    [
@@ -5108,6 +5125,9 @@
     },
     {
      "t": "720"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -5116,12 +5136,17 @@
     },
     {
      "t": "310"
+    },
+    {
+     "t": ""
     }
    ],
    [
     {
-     "t": "Contactos del tipo de puesta a tierra, adaptadores, conectores de cordón y clavijas de conexión",
-     "cs": 2
+     "t": "Contactos del tipo de puesta a tierra, adaptadores, conectores de cordón y clavijas de conexión"
+    },
+    {
+     "t": ""
     },
     {
      "t": "406-9"
@@ -5132,8 +5157,7 @@
      "t": "Contactos y conectores de cordón"
     },
     {
-     "t": "",
-     "rs": 2
+     "t": ""
     },
     {
      "t": "406-3"
@@ -5144,6 +5168,9 @@
      "t": "Cordones y cables flexibles"
     },
     {
+     "t": ""
+    },
+    {
      "t": "400-22, 400-23"
     }
    ],
@@ -5152,8 +5179,7 @@
      "t": "Cuerpos de agua naturales y artificiales"
     },
     {
-     "t": "682",
-     "rs": 3
+     "t": "682"
     },
     {
      "t": "682-30, 682-31, 682-32, 682-33"
@@ -5164,12 +5190,18 @@
      "t": "Construcciones agrícolas"
     },
     {
+     "t": ""
+    },
+    {
      "t": "547-9 y 547-10"
     }
    ],
    [
     {
      "t": "Construcciones flotantes"
+    },
+    {
+     "t": ""
     },
     {
      "t": "553-8, 553-10, 553-11"
@@ -5188,10 +5220,10 @@
    ],
    [
     {
-     "t": "Elevadores, montaplatos, escaleras eléctricas, pasillos móviles, elevadores ruedas y elevadores para sillas de ruedas"
+     "t": "Elevadores, montaplatos, escaleras eléctricas, pasillos móviles, elevadores de sillas de ruedas y elevadores para sillas de ruedas"
     },
     {
-     "t": "de sillas de 620"
+     "t": "620"
     },
     {
      "t": ""
@@ -5276,10 +5308,10 @@
    ],
    [
     {
-     "t": "Equipo para procesamiento, amplificación y reproducción de señales de"
+     "t": "Equipo para procesamiento, amplificación y reproducción de señales de audio"
     },
     {
-     "t": "audio"
+     "t": ""
     },
     {
      "t": "640-7"
@@ -5293,7 +5325,7 @@
      "t": ""
     },
     {
-     "t": "530-20, 530- 64(b)"
+     "t": "530-20, 530-64(b)"
     }
    ],
    [
@@ -5348,7 +5380,7 @@
      "t": ""
     },
     {
-     "t": "410-40, 410-42, 410-46, 410- 155(b)"
+     "t": "410-40, 410-42, 410-46, 410-155(b)"
     }
    ],
    [
@@ -5381,7 +5413,7 @@
      "t": ""
     },
     {
-     "t": "675-11(c), 675- 12, 675-13, 675- 14, 675-15"
+     "t": "675-11(c), 675-12, 675-13, 675-14, 675-15"
     }
    ],
    [
@@ -5485,10 +5517,10 @@
    ],
    [
     {
-     "t": "Teatros, áreas de espectadores en estudios cinematográficos y de televisión similares"
+     "t": "Teatros, áreas de espectadores en estudios cinematográficos y de televisión y lugares similares"
     },
     {
-     "t": "y lugares"
+     "t": ""
     },
     {
      "t": "520-81"
@@ -5530,7 +5562,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.991,
+  "quality": 1.0,
   "regions": [
    {
     "page": 84,
@@ -5547,6 +5579,7 @@
     "article": 250
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
