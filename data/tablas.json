@@ -60039,12 +60039,8 @@
   "rows": [
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Artículo 358 – Tubo conduit no metálico (EMT)",
-     "cs": 6
+     "cs": 8
     }
    ],
    [
@@ -60357,12 +60353,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Artículo 362 – Tubo conduit no metálico (ENT)",
-     "cs": 6
+     "cs": 8
     }
    ],
    [
@@ -60649,12 +60641,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Artículo 348 – Tubo conduit metálico flexible (FMC)",
-     "cs": 6
+     "cs": 8
     }
    ],
    [
@@ -61333,12 +61321,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Artículo 356 – Tubo conduit no metálico flexible hermético a los líquidos (LFNC-B*)",
-     "cs": 6
+     "cs": 8
     }
    ],
    [
@@ -61573,12 +61557,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Corresponde a 356.2(2) Artículo 356 – Tubo conduit no metálico flexible hermético a los líquidos (LFNC-A*)",
-     "cs": 6
+     "cs": 8
     }
    ],
    [
@@ -61813,12 +61793,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Artículo 350 – Tubo conduit metálico flexible hermético a los líquidos (LFMC)",
-     "cs": 6
+     "cs": 8
     }
    ],
    [
@@ -62209,12 +62185,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Artículo 344 – Tubo conduit metálico pesado (RMC)",
-     "cs": 6
+     "cs": 8
     }
    ],
    [
@@ -64161,7 +64133,7 @@
    }
   ],
   "verificada": "2026-08-12",
-  "encabezado_dudoso": true
+  "encabezado_dudoso": false
  },
  {
   "id": "5",
