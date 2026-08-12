@@ -1,7 +1,7 @@
 {
  "meta": {
-  "aristas": 4637,
-  "nodos_con_salida": 2904,
+  "aristas": 4638,
+  "nodos_con_salida": 2905,
   "nodos_con_entrada": 1925,
   "referencias_rotas": 0
  },
@@ -1452,7 +1452,12 @@
    "type": "tabla"
   },
   {
-   "from": "225-61(a)",
+   "from": "225-61(b)",
+   "to": "tabla:225-61",
+   "type": "tabla"
+  },
+  {
+   "from": "225-61(b)",
    "to": "cap:9",
    "type": "capitulo"
   },
@@ -23856,6 +23861,9 @@
    "cap:9"
   ],
   "225-61(a)": [
+   "tabla:225-61"
+  ],
+  "225-61(b)": [
    "cap:9",
    "tabla:225-61"
   ],
@@ -35005,11 +35013,12 @@
   ],
   "cap:9": [
    "225-60(c)",
-   "225-61(a)",
+   "225-61(b)",
    "924-24"
   ],
   "tabla:225-61": [
-   "225-61(a)"
+   "225-61(a)",
+   "225-61(b)"
   ],
   "225-37": [
    "230-2(e)"
@@ -41109,8 +41118,8 @@
    "ambiguo": true
   },
   "225-61": {
-   "explicitas": 1,
-   "usos": 1,
+   "explicitas": 2,
+   "usos": 2,
    "ambiguo": true
   },
   "230-51(c)": {

@@ -49542,5 +49542,637 @@
  },
  "220-84": {
   "verificada": "2026-08-12"
+ },
+ "220-86": {
+  "verificada": "2026-08-12"
+ },
+ "220-102": {
+  "verificada": "2026-08-12"
+ },
+ "230-51(c)": {
+  "verificada": "2026-08-12"
+ },
+ "220-88": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "Para calcular la carga total conectada, sume todas las cargas eléctricas, incluyendo tanto las de la calefacción como las de refrigeración.",
+   "Seleccione de la Tabla el factor de demanda aplicable y calcule la carga permitida."
+  ],
+  "regions": [
+   {
+    "page": 53,
+    "y0": 558.3330078125,
+    "y1": 720.0,
+    "id": "220-88",
+    "article": 220
+   }
+  ]
+ },
+ "220-103": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "A esta carga total se suma la carga de la unidad de vivienda de la instalación agrícola calculada según las Partes C o D de este Artículo. Si la unidad de vivienda tiene calefacción eléctrica y la instalación agrícola tiene sistemas de secado eléctrico de grano, no se debe aplicar la Parte D de este Artículo para calcular la carga de la vivienda."
+  ],
+  "regions": [
+   {
+    "page": 54,
+    "y0": 346.0830078125,
+    "y1": 493.0,
+    "id": "220-103",
+    "article": 220
+   }
+  ]
+ },
+ "225-3": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Equipo/Conductores"
+    },
+    {
+     "t": "Artículo"
+    }
+   ],
+   [
+    {
+     "t": "Alambrado sostenido por cable mensajero"
+    },
+    {
+     "t": "396"
+    }
+   ],
+   [
+    {
+     "t": "Alambre a la vista sobre aisladores de"
+    },
+    {
+     "t": "398"
+    }
+   ],
+   [
+    {
+     "t": "Alimentadores"
+    },
+    {
+     "t": "215"
+    }
+   ],
+   [
+    {
+     "t": "Anuncios luminosos eléctricos e iluminación de contorno"
+    },
+    {
+     "t": "600"
+    }
+   ],
+   [
+    {
+     "t": "Casas móviles, casas prefabricadas y estacionamientos de casas móviles"
+    },
+    {
+     "t": "550"
+    }
+   ],
+   [
+    {
+     "t": "Circuitos Clase 1, Clase 2 y Clase 3 de control remoto, de señalización y de potencia limitada"
+    },
+    {
+     "t": "725"
+    }
+   ],
+   [
+    {
+     "t": "Circuitos de comunicaciones"
+    },
+    {
+     "t": "800"
+    }
+   ],
+   [
+    {
+     "t": "Circuitos derivados"
+    },
+    {
+     "t": "210"
+    }
+   ],
+   [
+    {
+     "t": "Conductores para alambrado general"
+    },
+    {
+     "t": "310"
+    }
+   ],
+   [
+    {
+     "t": "Construcciones flotantes"
+    },
+    {
+     "t": "553"
+    }
+   ],
+   [
+    {
+     "t": "Equipo de radio y televisión"
+    },
+    {
+     "t": "810"
+    }
+   ],
+   [
+    {
+     "t": "Equipo eléctrico fijo exterior para deshielo y fusión de nieve"
+    },
+    {
+     "t": "426"
+    }
+   ],
+   [
+    {
+     "t": "Lugares peligrosos(clasificados)"
+    },
+    {
+     "t": "500"
+    }
+   ],
+   [
+    {
+     "t": "Lugares peligrosos (clasificados) - Específicos"
+    },
+    {
+     "t": "510"
+    }
+   ],
+   [
+    {
+     "t": "Máquinas de riego accionadas o controladas eléctricamente"
+    },
+    {
+     "t": "675"
+    }
+   ],
+   [
+    {
+     "t": "Marinas y muelles"
+    },
+    {
+     "t": "555"
+    }
+   ],
+   [
+    {
+     "t": "Más de 600 volts, generalidades"
+    },
+    {
+     "t": "490"
+    }
+   ],
+   [
+    {
+     "t": "Piscinas, fuentes e instalaciones similares"
+    },
+    {
+     "t": "680"
+    }
+   ],
+   [
+    {
+     "t": "Protección contra sobrecorriente"
+    },
+    {
+     "t": "240"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de alarma contra incendios"
+    },
+    {
+     "t": "760"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de distribución de antenas comunales de radio y televisión"
+    },
+    {
+     "t": "820"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas solares fotovoltaicos"
+    },
+    {
+     "t": "690"
+    }
+   ],
+   [
+    {
+     "t": "Unión y puesta a Tierra"
+    },
+    {
+     "t": "250"
+    }
+   ],
+   [
+    {
+     "t": "Uso e identificación de conductores puestos a tierra"
+    },
+    {
+     "t": "200"
+    }
+   ]
+  ]
+ },
+ "225-60": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Ubicación",
+     "rs": 2
+    },
+    {
+     "t": "Libramiento"
+    }
+   ],
+   [
+    {
+     "t": "metros"
+    }
+   ],
+   [
+    {
+     "t": "Areas abiertas sometidas a paso de vehículos, cultivo o pastoreo"
+    },
+    {
+     "t": "5.60"
+    }
+   ],
+   [
+    {
+     "t": "Areas acuáticas no aptas para botes"
+    },
+    {
+     "t": "5.20"
+    }
+   ],
+   [
+    {
+     "t": "Carretera, vías vehiculares lotes de estacionamiento y callejones"
+    },
+    {
+     "t": "5.60"
+    }
+   ],
+   [
+    {
+     "t": "Espacios y vías para peatones y tráfico restringido"
+    },
+    {
+     "t": "4.40"
+    }
+   ],
+   [
+    {
+     "t": "Pasillos"
+    },
+    {
+     "t": "4.10"
+    }
+   ],
+   [
+    {
+     "t": "Rieles"
+    },
+    {
+     "t": "8.10"
+    }
+   ]
+  ]
+ },
+ "225-61": {
+  "verificada": "2026-08-12",
+  "regions": [
+   {
+    "page": 59,
+    "y0": 524.5830078125,
+    "y1": 655.0,
+    "id": "225-61",
+    "article": 225
+   }
+  ]
+ },
+ "240-3": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Equipo"
+    },
+    {
+     "t": "Artículo"
+    }
+   ],
+   [
+    {
+     "t": "Acometidas"
+    },
+    {
+     "t": "230"
+    }
+   ],
+   [
+    {
+     "t": "Anuncios eléctricos e iluminación de contorno"
+    },
+    {
+     "t": "600"
+    }
+   ],
+   [
+    {
+     "t": "Aparatos"
+    },
+    {
+     "t": "422"
+    }
+   ],
+   [
+    {
+     "t": "Elevadores, elevadores montaplatos, escaleras y pasillos móviles; elevadores para sillas de ruedas y elevadores de sillas de ruedas para escaleras."
+    },
+    {
+     "t": "620"
+    }
+   ],
+   [
+    {
+     "t": "Bombas contra incendios"
+    },
+    {
+     "t": "695"
+    }
+   ],
+   [
+    {
+     "t": "Capacitores"
+    },
+    {
+     "t": "460"
+    }
+   ],
+   [
+    {
+     "t": "Celdas electrolíticas"
+    },
+    {
+     "t": "668"
+    }
+   ],
+   [
+    {
+     "t": "Circuitos de Clase 1, Clase 2 y Clase 3 de control remoto, de señalización y de potencia limitada"
+    },
+    {
+     "t": "725"
+    }
+   ],
+   [
+    {
+     "t": "Circuitos derivados"
+    },
+    {
+     "t": "210"
+    }
+   ],
+   [
+    {
+     "t": "Contactos, conectores de cordón y clavijas de conexión"
+    },
+    {
+     "t": "406"
+    }
+   ],
+   [
+    {
+     "t": "Convertidores de fase"
+    },
+    {
+     "t": "455"
+    }
+   ],
+   [
+    {
+     "t": "Electroductos"
+    },
+    {
+     "t": "368"
+    }
+   ],
+   [
+    {
+     "t": "Equipo de aire acondicionado y refrigeración"
+    },
+    {
+     "t": "440"
+    }
+   ],
+   [
+    {
+     "t": "Equipo de calefacción eléctrica fija de tuberías y recipientes"
+    },
+    {
+     "t": "427"
+    }
+   ],
+   [
+    {
+     "t": "Equipo de calentamiento dieléctrico y por inducción"
+    },
+    {
+     "t": "665"
+    }
+   ],
+   [
+    {
+     "t": "Equipo eléctrico exterior fijo de deshielo y fusión de la nieve"
+    },
+    {
+     "t": "426"
+    }
+   ],
+   [
+    {
+     "t": "Equipo eléctrico fijo de calefacción de ambiente"
+    },
+    {
+     "t": "424"
+    }
+   ],
+   [
+    {
+     "t": "Equipos de procesamiento, amplificación y reproducción de señal de audio"
+    },
+    {
+     "t": "640"
+    }
+   ],
+   [
+    {
+     "t": "Equipos de rayos X"
+    },
+    {
+     "t": "660"
+    }
+   ],
+   [
+    {
+     "t": "Estudios de cine y de televisión y lugares similares"
+    },
+    {
+     "t": "530"
+    }
+   ],
+   [
+    {
+     "t": "Generadores"
+    },
+    {
+     "t": "445"
+    }
+   ],
+   [
+    {
+     "t": "Grúas y polipastos"
+    },
+    {
+     "t": "610"
+    }
+   ],
+   [
+    {
+     "t": "Instalaciones en lugares de atención de la salud"
+    },
+    {
+     "t": "517"
+    }
+   ],
+   [
+    {
+     "t": "Lugares de reunión"
+    },
+    {
+     "t": "518"
+    }
+   ],
+   [
+    {
+     "t": "Luminarias, portalámparas y lámparas"
+    },
+    {
+     "t": "410"
+    }
+   ],
+   [
+    {
+     "t": "Maquinaria industrial"
+    },
+    {
+     "t": "670"
+    }
+   ],
+   [
+    {
+     "t": "Motores, circuitos de motores y controladores"
+    },
+    {
+     "t": "430"
+    }
+   ],
+   [
+    {
+     "t": "Organos eléctricos de tubos"
+    },
+    {
+     "t": "650"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de alarma contra incendios"
+    },
+    {
+     "t": "760"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas de emergencia"
+    },
+    {
+     "t": "700"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas solares fotovoltaicos"
+    },
+    {
+     "t": "690"
+    }
+   ],
+   [
+    {
+     "t": "Soldadores eléctricos"
+    },
+    {
+     "t": "630"
+    }
+   ],
+   [
+    {
+     "t": "Tableros de distribución y tableros de alumbrado y control"
+    },
+    {
+     "t": "408"
+    }
+   ],
+   [
+    {
+     "t": "Teatros, áreas de espectadores en estudios cinematográficos y estudios de televisión y lugares similares"
+    },
+    {
+     "t": "520"
+    }
+   ],
+   [
+    {
+     "t": "Transformadores y bóvedas de transformadores"
+    },
+    {
+     "t": "450"
+    }
+   ]
+  ]
+ },
+ "300-16(c)": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "La designación métrica y los tamaños comerciales sirven para propósitos de identificación únicamente y no son dimensiones reales."
+  ],
+  "regions": [
+   {
+    "page": 118,
+    "y0": 282.3681640625,
+    "y1": 490.0,
+    "id": "300-16(c)",
+    "article": 300
+   }
+  ]
  }
 }

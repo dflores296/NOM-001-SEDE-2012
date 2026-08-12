@@ -6691,7 +6691,7 @@
      "title": "Restaurantes nuevos",
      "part": "D",
      "page": 53,
-     "text": "Se permite hacer el cálculo de la carga del alimentador de un restaurante nuevo cuando el alimentador suministra la carga total, según se indica en la Tabla 220-88 en lugar de la Parte C de este Artículo. La protección contra sobrecarga de los conductores debe cumplir lo establecido en 230-90 y 240-4. No se requiere que los conductores del alimentador sean de mayor ampacidad que los de la acometida. Los conductores del alimentador cuya carga sea determinada por este cálculo opcional, pueden tener la carga del neutro determinada como se indica en 220-61. Para calcular la carga total conectada, sume todas las cargas eléctricas, incluyendo tanto las de la calefacción como las de refrigeración. Seleccione de la Tabla el factor de demanda aplicable y calcule la carga permitida.",
+     "text": "Se permite hacer el cálculo de la carga del alimentador de un restaurante nuevo cuando el alimentador suministra la carga total, según se indica en la Tabla 220-88 en lugar de la Parte C de este Artículo. La protección contra sobrecarga de los conductores debe cumplir lo establecido en 230-90 y 240-4. No se requiere que los conductores del alimentador sean de mayor ampacidad que los de la acometida. Los conductores del alimentador cuya carga sea determinada por este cálculo opcional, pueden tener la carga del neutro determinada como se indica en 220-61.",
      "children": [],
      "notes": [],
      "exceptions": [],
@@ -6756,7 +6756,7 @@
      "title": "Cargas en instalaciones agrícolas - carga total",
      "part": "E",
      "page": 54,
-     "text": "La carga total de los conductores de acometida y del equipo de acometida de las instalaciones agrícolas, se debe calcular según la carga de la unidad de vivienda de la instalación agrícola y de los factores de demanda especificados en la Tabla 220-103. Cuando haya equipos en dos o más edificios de la instalación agrícola o cargas que tengan la misma función, dichas cargas se deben calcular según la Tabla 220-102 y se permite combinarlas como una sola carga para poder aplicar la Tabla 220-103 y calcular la carga total. A esta carga total se suma la carga de la unidad de vivienda de la instalación agrícola calculada según las Partes C o D de este Artículo. Si la unidad de vivienda tiene calefacción eléctrica y la instalación agrícola tiene sistemas de secado eléctrico de grano, no se debe aplicar la Parte D de este Artículo para calcular la carga de la vivienda.",
+     "text": "La carga total de los conductores de acometida y del equipo de acometida de las instalaciones agrícolas, se debe calcular según la carga de la unidad de vivienda de la instalación agrícola y de los factores de demanda especificados en la Tabla 220-103. Cuando haya equipos en dos o más edificios de la instalación agrícola o cargas que tengan la misma función, dichas cargas se deben calcular según la Tabla 220-102 y se permite combinarlas como una sola carga para poder aplicar la Tabla 220-103 y calcular la carga total.",
      "children": [],
      "notes": [],
      "exceptions": [],
@@ -8012,7 +8012,23 @@
        "label": "a",
        "kind": "alpha",
        "level": 1,
-       "text": "22 kilovolts a tierra o menos. Los libramientos sobre edificios y otras estructuras de conductores y partes vivas hasta de 22 kilovolts a tierra o menos no deben ser menores a los valores que se indican en la Tabla 225-61. centímetro por cada kilovolt por encima de 22 kilovolts.",
+       "text": "22 kilovolts a tierra o menos. Los libramientos sobre edificios y otras estructuras de conductores y partes vivas hasta de 22 kilovolts a tierra o menos no deben ser menores a los valores que se indican en la Tabla 225-61.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "tables": [
+        {
+         "id": "225-61",
+         "seq": 23
+        }
+       ]
+      },
+      {
+       "id": "225-61(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Los libramientos para las categorías que se indican en la Tabla 225-61 se deben incrementar en 1 centímetro por cada kilovolt por encima de 22 kilovolts.",
        "children": [],
        "notes": [
         {
@@ -8022,12 +8038,7 @@
         }
        ],
        "exceptions": [],
-       "tables": [
-        {
-         "id": "225-61",
-         "seq": 23
-        }
-       ]
+       "title": "De más de 22 kilovolt a tierra"
       }
      ],
      "notes": [],
@@ -21119,7 +21130,7 @@
        "label": "c",
        "kind": "alpha",
        "level": 1,
-       "text": "La designación métrica y tamaños comerciales para tubería conduit, tubería, adaptadores y accesorios asociados se deben designar tal como se indica en la Tabla 300-1(c). propósitos de identificación únicamente y no son dimensiones reales.",
+       "text": "La designación métrica y tamaños comerciales para tubería conduit, tubería, adaptadores y accesorios asociados se deben designar tal como se indica en la Tabla 300-1(c).",
        "children": [],
        "notes": [],
        "exceptions": [],

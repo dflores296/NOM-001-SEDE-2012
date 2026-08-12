@@ -3697,7 +3697,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.875,
+  "quality": 1.0,
   "regions": [
    {
     "page": 53,
@@ -3707,6 +3707,7 @@
     "article": 220
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -3779,17 +3780,21 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.8,
+  "notes": [
+   "Para calcular la carga total conectada, sume todas las cargas eléctricas, incluyendo tanto las de la calefacción como las de refrigeración.",
+   "Seleccione de la Tabla el factor de demanda aplicable y calcule la carga permitida."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 53,
     "y0": 558.3330078125,
-    "y1": 691.48,
+    "y1": 720.0,
     "id": "220-88",
     "article": 220
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -3850,6 +3855,7 @@
     "article": 220
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -3907,17 +3913,20 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "A esta carga total se suma la carga de la unidad de vivienda de la instalación agrícola calculada según las Partes C o D de este Artículo. Si la unidad de vivienda tiene calefacción eléctrica y la instalación agrícola tiene sistemas de secado eléctrico de grano, no se debe aplicar la Parte D de este Artículo para calcular la carga de la vivienda."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 54,
     "y0": 346.0830078125,
-    "y1": 444.01,
+    "y1": 493.0,
     "id": "220-103",
     "article": 220
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -3984,8 +3993,10 @@
    ],
    [
     {
-     "t": "Circuitos Clase 1, Clase 2 y Clase 3 de control remoto, de señalización y de potencia 725 limitada",
-     "cs": 2
+     "t": "Circuitos Clase 1, Clase 2 y Clase 3 de control remoto, de señalización y de potencia limitada"
+    },
+    {
+     "t": "725"
     }
    ],
    [
@@ -4135,7 +4146,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.98,
+  "quality": 1.0,
   "regions": [
    {
     "page": 54,
@@ -4152,6 +4163,7 @@
     "article": 225
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -4169,16 +4181,14 @@
   "rows": [
    [
     {
-     "t": "Ubicación"
+     "t": "Ubicación",
+     "rs": 2
     },
     {
      "t": "Libramiento"
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "metros"
     }
@@ -4244,6 +4254,7 @@
     "article": 225
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -4351,11 +4362,12 @@
    {
     "page": 59,
     "y0": 524.5830078125,
-    "y1": 660.76,
+    "y1": 655.0,
     "id": "225-61",
     "article": 225
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -4464,6 +4476,7 @@
     "article": 230
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -4594,8 +4607,10 @@
    ],
    [
     {
-     "t": "Equipo de calefacción eléctrica fija de tuberías y recipientes 427",
-     "cs": 2
+     "t": "Equipo de calefacción eléctrica fija de tuberías y recipientes"
+    },
+    {
+     "t": "427"
     }
    ],
    [
@@ -4608,8 +4623,10 @@
    ],
    [
     {
-     "t": "Equipo eléctrico exterior fijo de deshielo y fusión de la nieve 426",
-     "cs": 2
+     "t": "Equipo eléctrico exterior fijo de deshielo y fusión de la nieve"
+    },
+    {
+     "t": "426"
     }
    ],
    [
@@ -4622,8 +4639,10 @@
    ],
    [
     {
-     "t": "Equipos de procesamiento, amplificación y reproducción de 640 señal de audio",
-     "cs": 2
+     "t": "Equipos de procesamiento, amplificación y reproducción de señal de audio"
+    },
+    {
+     "t": "640"
     }
    ],
    [
@@ -4748,8 +4767,10 @@
    ],
    [
     {
-     "t": "Teatros, áreas de espectadores en estudios cinematográficos 520 y estudios de televisión y lugares similares",
-     "cs": 2
+     "t": "Teatros, áreas de espectadores en estudios cinematográficos y estudios de televisión y lugares similares"
+    },
+    {
+     "t": "520"
     }
    ],
    [
@@ -4763,7 +4784,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.985,
+  "quality": 1.0,
   "regions": [
    {
     "page": 71,
@@ -4780,6 +4801,7 @@
     "article": 240
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -6321,17 +6343,20 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "La designación métrica y los tamaños comerciales sirven para propósitos de identificación únicamente y no son dimensiones reales."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 118,
     "y0": 282.3681640625,
-    "y1": 475.54,
+    "y1": 490.0,
     "id": "300-16(c)",
     "article": 300
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
