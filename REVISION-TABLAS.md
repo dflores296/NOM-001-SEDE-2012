@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**201 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**211 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (19)
+## 4 · Sin señales (9)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `810-16(a)` | Tamaño de los conductores de antena exterior para estaciones receptora… | 672 | 1 | 0.96 | — | dibujada | 5×7 |
-| [ ] | `810-52` | Tamaño de los conductores para exteriores. | 674 | 1 | 0.94 | — | dibujada | 5×5 |
-| [ ] | `820-154(b)` | Uso y sustituciones permitidas de cable coaxial | 682 | 2 | 1.00 | — | dibujada | 5×2 |
-| [ ] | `820-179` | Marcado en cables coaxiales | 683 | 1 | 1.00 | — | dibujada | 5×2 |
-| [ ] | `830-154(b)` | Sustitución de Cable | 694 | 3 | 1.00 | — | dibujada | 6×2 |
-| [ ] | `921-25(b)` | Resistencia a tierra del sistema. | 704 | 0 | 1.00 | — | dibujada | 4×3 |
-| [ ] | `922-10` | Ampacidad de conductores desnudos en amperes | 708 | 1 | 1.00 | — | dibujada | 20×5 |
-| [ ] | `922-12(a)(2)` | Separación horizontal mínima "S" de conductores en sus soportes fijos,… | 710 | 1 | 0.85 | — | **huecos** | 7×11 |
-| [ ] | `922-13(a)` | Separación vertical mínima entre conductores, en sus soportes en metro… | 710, 711 | 5 | 0.89 | — | dibujada | 9×7 |
-| [ ] | `922-31(e)(2)` | Distancia del punto de cruce a la estructura más cercana | 716 | 1 | 1.00 | — | dibujada | 11×2 |
 | [ ] | `922-83` | Condiciones meteorológicas para el cálculo de cargas mecánicas | 723 | 2 | 1.00 | — | dibujada | 8×5 |
 | [ ] | `922-84` | Presiones de viento mínimas para diseño de estructura | 724 | 2 | 1.00 | — | dibujada | 7×5 |
 | [ ] | `922-84(a)` | Factor de incremento de presión de viento por altura de estructura | 724 | 1 | 1.00 | — | dibujada | 6×2 |
