@@ -10754,44 +10754,24 @@
    ],
    [
     {
-     "t": "mm2"
+     "t": "mm2",
+     "rs": 2
     },
     {
-     "t": "AWG o kcmil"
+     "t": "AWG o kcmil",
+     "rs": 2
     },
     {
-     "t": "Tipos RHW, THHW, THHW-LS, THW, THW-LS, THWN,"
+     "t": "Tipos RHW, THHW, THHW-LS, THW, THW-LS, THWN, XHHW, ZW"
     },
     {
-     "t": "Tipos MI, THHN, THHW, THHW-LS THW- 2, THWN-2, RHH, RHW- 2,"
+     "t": "Tipos MI, THHN, THHW, THHW-LS THW-2, THWN-2, RHH, RHW-2, USE-2, XHHW, XHHW-2, ZW-2"
     },
     {
      "t": "Tipos RHW, XHHW"
     },
     {
      "t": "Tipos RHH, XHHW, RHW-2, XHHW-2, USE-2, ZW-2"
-    }
-   ],
-   [
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "XHHW, ZW"
-    },
-    {
-     "t": "USE-2, XHHW, XHHW-2, ZW-2"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -11229,7 +11209,7 @@
   "notes": [
    "* Véase 310-15(b)(2) para los factores de corrección de la ampacidad cuando la temperatura ambiente es diferente a 40 °C."
   ],
-  "quality": 0.993,
+  "quality": 1.0,
   "regions": [
    {
     "page": 139,
@@ -11246,6 +11226,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": true
  },
  {
@@ -12896,7 +12877,7 @@
   ],
   "page": 144,
   "cols": 8,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
@@ -12905,11 +12886,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -13433,7 +13411,7 @@
   "notes": [
    "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
   ],
-  "quality": 0.981,
+  "quality": 1.0,
   "regions": [
    {
     "page": 144,
@@ -13443,7 +13421,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(70)",
@@ -13456,78 +13435,48 @@
   ],
   "page": 144,
   "cols": 8,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": ""
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "Tamaño o designación"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura nominal [Véase la Tabla"
-    },
-    {
-     "t": "del 310-104(c)]"
-    },
-    {
-     "t": "conductor"
-    },
-    {
-     "t": ""
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 6
     }
    ],
    [
     {
-     "t": "mm2"
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": "AWG"
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": "Ampacidad 000"
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "para 2 001-5 volts"
+     "t": "Ampacidad para 5 001-15 000 volts",
+     "cs": 2
     },
     {
-     "t": "Ampacidad 000"
-    },
-    {
-     "t": "para 5001-15 volts"
-    },
-    {
-     "t": "Ampacidad 35 000"
-    },
-    {
-     "t": "para 15 001- volts"
+     "t": "Ampacidad para 15 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "o kcmil"
-    },
     {
      "t": "Temperatura de los conductores de media tensión en °C",
      "cs": 6
     }
    ],
    [
-    {
-     "t": ""
-    },
     {
      "t": "90"
     },
@@ -13994,7 +13943,7 @@
   "notes": [
    "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
   ],
-  "quality": 0.994,
+  "quality": 1.0,
   "regions": [
    {
     "page": 144,
@@ -14011,7 +13960,8 @@
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-60(c)(71)",
@@ -34801,7 +34751,7 @@
  },
  {
   "id": "400-5(a)(1)",
-  "title": "Ampacidad permisible para cables y cordones flexibles a temperatura ambiente de 30 °C. Ver 400-13 y la",
+  "title": "Ampacidad permisible para cables y cordones flexibles a temperatura ambiente de 30 °C. Ver 400-13 y la Tabla 400-4",
   "informativa": false,
   "article": 400,
   "pages": [
@@ -34826,7 +34776,8 @@
      "cs": 2
     },
     {
-     "t": "Tipos: HPD, HSJ, HSJO,"
+     "t": "Tipos: HPD, HSJ, HSJO, HSJOO",
+     "rs": 4
     }
    ],
    [
@@ -34836,21 +34787,17 @@
      "rs": 2
     },
     {
-     "t": "TPT y TST 0.5",
-     "rs": 4
+     "t": "TPT y TST",
+     "rs": 3
     },
     {
      "t": "C, E, EO, PD, S, SJ, SJO, SHOW, SJOO, SJOOW, SO, SOW, SOO, SOOW, SP-1, SP-2, SP-3, SRD, SV, SVO y SVOO",
      "cs": 2
-    },
-    {
-     "t": "HSJOO -",
-     "rs": 4
     }
    ],
    [
     {
-     "t": "Termoplásticos Tipos ET, ETLB, ETP, ETT, SE, SEW, SEO, SEOW, SEOOW, SJE, SJEW, SJEO, SJEOW, SJEOOW, SJT, SJTW, SJTO, SJTOW, SJTOO, SJTOOW, SPE-1, SPE- 2, SPE-3, SPT-1, SPT-1W, SPT-2, SPT-2W, SPT-3, ST, SRDE, SRDT, STO, STOW, STOO, STOOW, SVE, SVEO, SVT, SVTO y STVOO",
+     "t": "Termoplásticos Tipos ET, ETLB, ETP, ETT, SE, SEW, SEO, SEOW, SEOOW, SJE, SJEW, SJEO, SJEOW, SJEOOW, SJT, SJTW, SJTO, SJTOW, SJTOO, SJTOOW, SPE-1, SPE-2, SPE-3, SPT-1, SPT-1W, SPT-2, SPT-2W, SPT-3, ST, SRDE, SRDT, STO, STOW, STOO, STOOW, SVE, SVEO, SVT, SVTO y STVOO",
      "cs": 2
     }
    ],
@@ -34862,10 +34809,10 @@
      "t": "AWG"
     },
     {
-     "t": "A+ Columna"
+     "t": "Columna A+"
     },
     {
-     "t": "B+ Columna"
+     "t": "Columna B+"
     }
    ],
    [
@@ -34876,10 +34823,16 @@
      "t": "27*"
     },
     {
+     "t": "0.5"
+    },
+    {
      "t": "-"
     },
     {
      "t": "-"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -35127,7 +35080,8 @@
   "notes": [
    "* Cordón de oropel (tinsel).",
    "** Sólo cables para elevadores.",
-   "*** 7 amperes sólo para cables de elevadores; 2 amperes para otros tipos. +Las corrientes permisibles bajo la columna A se aplican a cordones de tres conductores y otros multiconductores conectados a equipos de utilización, de modo que sólo tres conductores son portadores de corriente. Las corrientes permisibles bajo la columna B se aplican a cordones de 2 conductores y otros cordones multiconductores conectados a equipos de utilización, de modo que sólo dos conductores son portadores de corriente."
+   "*** 7 amperes sólo para cables de elevadores; 2 amperes para otros tipos.",
+   "+Las corrientes permisibles bajo la columna A se aplican a cordones de tres conductores y otros multiconductores conectados a equipos de utilización, de modo que sólo tres conductores son portadores de corriente. Las corrientes permisibles bajo la columna B se aplican a cordones de 2 conductores y otros cordones multiconductores conectados a equipos de utilización, de modo que sólo dos conductores son portadores de corriente."
   ],
   "quality": 1.0,
   "regions": [
@@ -35146,11 +35100,12 @@
     "article": 400
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": true
  },
  {
   "id": "400-5(a)(2)",
-  "title": "Ampacidad de los cables tipo SC, SCE, SCT, PPE, G, G-GC y W (Basada en una temperatura ambiente de 30",
+  "title": "Ampacidad de los cables tipo SC, SCE, SCT, PPE, G, G-GC y W (Basada en una temperatura ambiente de 30 °C. Véase la tabla 400-4)",
   "informativa": false,
   "article": 400,
   "pages": [
@@ -35163,43 +35118,27 @@
   "rows": [
    [
     {
-     "t": "Conductor de cobre",
-     "cs": 2
+     "t": "Conductor de cobre Tamaño o designación",
+     "cs": 2,
+     "rs": 2
     },
     {
-     "t": "Temperatura nominal",
-     "cs": 5
-    },
-    {
-     "t": "del cable",
-     "cs": 4
+     "t": "Temperatura nominal del cable",
+     "cs": 9
     }
    ],
    [
     {
-     "t": "Tamaño o designación",
-     "cs": 2
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "60 °C",
-     "cs": 2
-    },
-    {
-     "t": ""
+     "cs": 3
     },
     {
      "t": "75 °C",
-     "cs": 2
-    },
-    {
-     "t": ""
+     "cs": 3
     },
     {
      "t": "90 °C",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -36044,18 +35983,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1 Las ampacidades bajo la columna D se permitirán para cables de un solo conductor tipo SC, SCE, SCT, PPE y W sólo cuando los conductores individuales no estén instalados en canalizaciones ni estén en contacto físico entre sí, excepto en tramos no mayores a 60 centímetros cuando atraviesen la pared de un envolvente.",
+   "2 Las ampacidades bajo la columna E se aplican a cables de 2 conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo dos conductores conduzcan corriente.",
+   "3 Las ampacidades bajo la columna F se aplican a cables de tres conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo tres conductores conduzcan corriente."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 245,
     "y0": 301.8681640625,
-    "y1": 574.44,
+    "y1": 630.0,
     "id": "400-5(a)(2)",
     "article": 400
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "400-5(a)(3)",
@@ -39685,11 +39629,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "milímetros",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -39747,7 +39688,8 @@
     "article": 430
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "430-247",
@@ -51271,13 +51213,14 @@
   ],
   "page": 656,
   "cols": 10,
-  "header_rows": 4,
+  "header_rows": 2,
   "intro": "",
   "rows": [
    [
     {
      "t": "Aplicaciones",
-     "cs": 2
+     "cs": 2,
+     "rs": 2
     },
     {
      "t": "Cables, canalizaciones, y ensambles enrutadores de cables tipo",
@@ -51285,10 +51228,6 @@
     }
    ],
    [
-    {
-     "t": "",
-     "cs": 2
-    },
     {
      "t": "OFNP, OFCP"
     },
@@ -51940,7 +51879,8 @@
     "article": 770
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "770-154(b)",
@@ -52129,7 +52069,7 @@
   ],
   "page": 668,
   "cols": 12,
-  "header_rows": 4,
+  "header_rows": 2,
   "intro": "",
   "rows": [
    [
@@ -52139,12 +52079,8 @@
      "rs": 2
     },
     {
-     "t": "",
-     "cs": 5
-    },
-    {
      "t": "Alambres, Cables y Tipo de Canalizaciones.",
-     "cs": 5
+     "cs": 10
     }
    ],
    [
@@ -53068,7 +53004,8 @@
     "article": 800
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "800-154(b)",
@@ -53567,7 +53504,7 @@
   ],
   "page": 683,
   "cols": 6,
-  "header_rows": 4,
+  "header_rows": 2,
   "intro": "",
   "rows": [
    [
@@ -53577,11 +53514,8 @@
      "rs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Tipos de cable",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -54080,7 +54014,8 @@
     "article": 820
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "830-47",
@@ -54112,11 +54047,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Centímetros",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -54195,7 +54127,7 @@
    "1. Las canalizaciones aprobadas para enterramiento solamente embebidas en concreto requieren una envoltura de concreto de espesor no menor a 5 centímetros.",
    "2. Se permite profundidades menores donde los cables suben hasta las terminaciones o empalmes, o cuando de otra manera se exige el acceso a ellos."
   ],
-  "quality": 0.96,
+  "quality": 1.0,
   "regions": [
    {
     "page": 688,
@@ -54205,7 +54137,8 @@
     "article": 830
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "830-154(b)",

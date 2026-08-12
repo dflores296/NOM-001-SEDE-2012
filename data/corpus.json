@@ -44396,7 +44396,7 @@
        "label": "c",
        "kind": "alpha",
        "level": 1,
-       "text": "Bajo supervisión de ingeniería, se permitirá que las ampacidades del conductor sean calculadas de acuerdo con 310-15(c). 1 Las ampacidades bajo la columna D se permitirán para cables de un solo conductor tipo SC, SCE, SCT, PPE y W sólo cuando los conductores individuales no estén instalados en canalizaciones ni estén en contacto físico entre sí, excepto en tramos no mayores a 60 centímetros cuando atraviesen la pared de un envolvente. 2 Las ampacidades bajo la columna E se aplican a cables de 2 conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo dos conductores conduzcan corriente. 3 Las ampacidades bajo la columna F se aplican a cables de tres conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo tres conductores conduzcan corriente.",
+       "text": "Bajo supervisión de ingeniería, se permitirá que las ampacidades del conductor sean calculadas de acuerdo con 310-15(c).",
        "children": [],
        "notes": [],
        "exceptions": [],

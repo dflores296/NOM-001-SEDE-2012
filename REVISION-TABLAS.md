@@ -20,27 +20,17 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**43 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**53 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (34)
+## 1 · Prioridad alta (24)
 
 Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `310-60(c)(70)` | Ampacidad de conductores individuales de aluminio, aislados, separados… | 144, 145 | 5 | 0.99 | **sí** | **huecos** | 21×8 |
 | [ ] | `11(A)` | Limitaciones de las fuentes de alimentación de corriente alterna de Cl… | 752, 753 | 4 | 0.95 | **sí** | dibujada | 9×10 |
-| [ ] | `310-60(c)(69)` | Ampacidad de conductores de cobre individuales, aislados, y separados… | 144 | 4 | 0.98 | **sí** | dibujada | 22×8 |
-| [ ] | `400-5(a)(1)` | Ampacidad permisible para cables y cordones flexibles a temperatura am… | 244, 245 | 4 | 1.00 | **sí** | dibujada | 17×6 |
-| [ ] | `400-5(a)(2)` | Ampacidad de los cables tipo SC, SCE, SCT, PPE, G, G-GC y W (Basada en… | 245 | 4 | 1.00 | **sí** | dibujada | 26×11 |
 | [ ] | `314-16(a)` | Cajas metálicas | 164 | 3 | 0.92 | **sí** | **huecos** | 26×10 |
-| [ ] | `830-47` | Requisitos de profundidad mínima de los sistemas de comunicaciones de… | 688 | 3 | 0.96 | **sí** | dibujada | 7×4 |
 | [ ] | `310-60(c)(86)` | Ampacidad de tres ternas de conductores individuales de aluminio, aisl… | 154, 155 | 3 | 0.99 | **sí** | **huecos** | 34×6 |
-| [ ] | `310-15(b)(20)` | Ampacidades de no más de tres conductores individuales aislados para T… | 139, 140 | 3 | 0.99 | **sí** | dibujada | 26×6 |
-| [ ] | `430-97` | Espacio mínimo entre partes metálicas desnudas | 317 | 3 | 1.00 | **sí** | dibujada | 6×4 |
-| [ ] | `770-154(a)` | Aplicaciones canalizaciones y cable de fibra óptica aprobados, y ensam… | 656, 657 | 3 | 1.00 | **sí** | dibujada | 24×10 |
-| [ ] | `800-154(a)` | Aplicaciones de alambres, cables y canalizaciones de comunicaciones ap… | 668, 669 | 3 | 1.00 | **sí** | dibujada | 27×12 |
-| [ ] | `820-154(a)` | Aplicaciones de cables coaxiales aprobados para su uso en edificios | 683, 684 | 3 | 1.00 | **sí** | dibujada | 28×6 |
 | [ ] | `922-33` | Separación vertical entre conductores soportados en diferentes estruct… | 717 | 2 | 0.92 | **sí** | dibujada | 10×9 |
 | [ ] | `310-104(e)` | Espesor del aislamiento para cables con dieléctricos sólidos, con pant… | 158 | 2 | 0.94 | **sí** | **huecos** | 15×12 |
 | [ ] | `922-41` | Altura mínima de conductores sobre el suelo, agua o vías férreas (m)(1… | 717, 718 | 2 | 0.96 | **sí** | dibujada | 14×11 |
