@@ -49896,97 +49896,78 @@
   ],
   "page": 571,
   "cols": 4,
-  "header_rows": 4,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
     {
-     "t": ""
+     "t": "Parámetros de libramiento",
+     "rs": 3
     },
     {
-     "t": "Parámetros de libramiento"
+     "t": "Suministro de 0-750 volts a tierra, con conductores aislados soportados por un cable mensajero desnudo puesto a tierra eficazmente o conductor neutro puesto a tierra eficazmente",
+     "rs": 2
     },
     {
-     "t": "Suministro de 0-750 volts a tierra, con conductores aislados soportados por un cable mensajero desnudo puesto a tierra eficazmente"
-    },
-    {
-     "t": "Todos los demás conductores de tensión a tierra"
+     "t": "Todos los demás conductores de tensión a tierra",
+     "cs": 2
     }
    ],
    [
     {
-     "t": ""
+     "t": "0-15 kV"
     },
     {
-     "t": "Parámetros de libramiento"
-    },
-    {
-     "t": "desnudo puesto a tierra eficazmente o conductor neutro puesto a tierra eficazmente"
-    },
-    {
-     "t": "0-15 kV Mayor que 15 a 50 kV"
+     "t": "Mayor que 15 a 50 kV"
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Metros"
-    },
-    {
-     "t": ""
+     "t": "Metros",
+     "cs": 3
     }
    ],
    [
     {
-     "t": "A. del de"
+     "t": "A. Espacios libres en cualquier dirección al nivel del agua, borde de la superficie del agua o base de la plataforma de clavados o balsa permanentemente anclada."
     },
     {
-     "t": "Espacios libres en cualquier dirección al agua, borde de la superficie del agua o la plataforma de clavados o permanentemente anclada."
+     "t": "6.90"
     },
     {
-     "t": "nivel base balsa 6.90"
+     "t": "7.50"
     },
     {
-     "t": "7.50 8.00"
+     "t": "8.00"
     }
    ],
    [
     {
-     "t": "B. de"
+     "t": "B. Espacios libres en cualquier dirección del lugar de observación o de la plataforma de clavados."
     },
     {
-     "t": "Espacios libres en cualquier dirección del observación o de la plataforma de clavados."
+     "t": "4.40"
     },
     {
-     "t": "lugar 4.40"
+     "t": "5.20"
     },
     {
-     "t": "5.20 5.50"
+     "t": "5.50"
     }
    ],
    [
     {
-     "t": "C. la pared"
+     "t": "C. Límite horizontal del libramiento medido desde la pared interior de la alberca"
     },
     {
-     "t": "Límite horizontal del libramiento medido interior de la alberca"
-    },
-    {
-     "t": "desde Este límite se debe extender borde mencionadas en (a) y (b) anteriores pero metros."
-    },
-    {
-     "t": "exterior de las estructuras no debe ser menor que 3.00"
+     "t": "Este límite se debe extender borde exterior de las estructuras mencionadas en (a) y (b) anteriores pero no debe ser menor que 3.00 metros.",
+     "cs": 3
     }
    ]
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.842,
+  "quality": 1.0,
   "regions": [
    {
     "page": 571,
@@ -49996,6 +49977,7 @@
     "article": 680
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -50070,9 +50052,9 @@
   ],
   "grid": "huecos",
   "notes": [
-   "* Las canalizaciones aprobadas para enterrarse sólo cuando están recubiertas de concreto se requiere un recubrimiento no menor a 5 centímetros 680-9. Calentadores eléctricos de agua para alberca. Todos los calentadores eléctricos de agua para alberca deben tener los elementos calentadores divididos en cargas que no excedan 48 amperes y protegidos a no más de 60 amperes. La ampacidad de los conductores de circuito derivado y la capacidad nominal o ajuste del dispositivo de protección contra sobrecorriente no debe ser menor que 125 por ciento de la carga total de la placa de datos. 680-10. Alambrado subterráneo. No se permite el alambrado bajo la alberca o debajo del área en una extensión de 1.50 metros medidos horizontalmente desde las paredes internas de la alberca a menos que este alambrado sea necesario para alimentar los equipos de la alberca permitidos por este Artículo. Cuando la falta de espacio no permita enrutar el alambrado a 1.50 metros o más de la"
+   "* Las canalizaciones aprobadas para enterrarse sólo cuando están recubiertas de concreto se requiere un recubrimiento no menor a 5 centímetros"
   ],
-  "quality": 0.923,
+  "quality": 1.0,
   "regions": [
    {
     "page": 572,
@@ -50082,6 +50064,7 @@
     "article": 680
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -50247,26 +50230,23 @@
   "rows": [
    [
     {
-     "t": "Temperatura ambiente Temperatura máxima de °C",
-     "cs": 3
+     "t": "Temperatura ambiente °C",
+     "rs": 2
     },
     {
-     "t": "operación del conductor",
-     "cs": 2
+     "t": "Temperatura máxima de operación del conductor",
+     "cs": 4
     }
    ],
    [
     {
-     "t": ""
+     "t": "60 °C"
     },
     {
-     "t": "°C 60"
+     "t": "75 °C"
     },
     {
-     "t": "°C 75"
-    },
-    {
-     "t": "°C 90"
+     "t": "90 °C"
     },
     {
      "t": "105 °C"
@@ -50362,8 +50342,7 @@
      "t": "51-55"
     },
     {
-     "t": "0.41",
-     "rs": 4
+     "t": "0.41"
     },
     {
      "t": "0.67"
@@ -50380,6 +50359,9 @@
      "t": "56-60"
     },
     {
+     "t": ""
+    },
+    {
      "t": "0.58"
     },
     {
@@ -50394,8 +50376,10 @@
      "t": "61-70"
     },
     {
-     "t": "0.33",
-     "rs": 2
+     "t": ""
+    },
+    {
+     "t": "0.33"
     },
     {
      "t": "0.58"
@@ -50407,6 +50391,12 @@
    [
     {
      "t": "71-80"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
     },
     {
      "t": "0.41"
@@ -50428,6 +50418,7 @@
     "article": 690
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -50469,10 +50460,18 @@
    ],
    [
     {
-     "t": "Sistemas de celdas de combustible Sistemas eléctricos eólicos pequeños"
+     "t": "Sistemas de celdas de combustible"
     },
     {
-     "t": "692 694"
+     "t": "692"
+    }
+   ],
+   [
+    {
+     "t": "Sistemas eléctricos eólicos pequeños"
+    },
+    {
+     "t": "694"
     }
    ],
    [
@@ -50502,7 +50501,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.929,
+  "quality": 1.0,
   "regions": [
    {
     "page": 627,
@@ -50512,6 +50511,7 @@
     "article": 705
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -50758,7 +50758,7 @@
   ],
   "page": 648,
   "cols": 3,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -50818,6 +50818,7 @@
     "article": 760
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -50830,7 +50831,7 @@
   ],
   "page": 650,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -50878,6 +50879,7 @@
     "article": 760
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -51571,7 +51573,7 @@
   ],
   "page": 657,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -51650,6 +51652,7 @@
     "article": 770
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -51662,7 +51665,7 @@
   ],
   "page": 658,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -51675,50 +51678,66 @@
    ],
    [
     {
-     "t": "OFNP Cable no conductor de fibra óptica en plenum",
-     "cs": 2
+     "t": "OFNP"
+    },
+    {
+     "t": "Cable no conductor de fibra óptica en plenum"
     }
    ],
    [
     {
-     "t": "OFCP Cable conductor de fibra óptica en plenum",
-     "cs": 2
+     "t": "OFCP"
+    },
+    {
+     "t": "Cable conductor de fibra óptica en plenum"
     }
    ],
    [
     {
-     "t": "OFNR Cable no conductor de fibra óptica en ducto vertical",
-     "cs": 2
+     "t": "OFNR"
+    },
+    {
+     "t": "Cable no conductor de fibra óptica en ducto vertical"
     }
    ],
    [
     {
-     "t": "OFCR Cable conductor de fibra óptica en ducto vertical",
-     "cs": 2
+     "t": "OFCR"
+    },
+    {
+     "t": "Cable conductor de fibra óptica en ducto vertical"
     }
    ],
    [
     {
-     "t": "OFNG Cable no conductor de fibra óptica para propósito general",
-     "cs": 2
+     "t": "OFNG"
+    },
+    {
+     "t": "Cable no conductor de fibra óptica para propósito general"
     }
    ],
    [
     {
-     "t": "OFCG Cable conductor de fibra óptica para propósito general",
-     "cs": 2
+     "t": "OFCG"
+    },
+    {
+     "t": "Cable conductor de fibra óptica para propósito general"
     }
    ],
    [
     {
-     "t": "OFN Cable no conductor de fibra óptica para propósito general",
-     "cs": 2
+     "t": "OFN"
+    },
+    {
+     "t": "Cable no conductor de fibra óptica para propósito general"
     }
    ],
    [
     {
-     "t": "OFC Cable conductor de fibra óptica para propósito general",
-     "cs": 2
+     "t": "OFC"
+    },
+    {
+     "t": "Cable conductor de fibra óptica para propósito general"
     }
    ]
   ],
@@ -51734,6 +51753,7 @@
     "article": 770
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -52695,7 +52715,7 @@
   ],
   "page": 669,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -52743,6 +52763,7 @@
     "article": 800
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -52755,7 +52776,7 @@
   ],
   "page": 670,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -52768,43 +52789,57 @@
    ],
    [
     {
-     "t": "CMP Cable de comunicaciones en plenum",
-     "cs": 2
+     "t": "CMP"
+    },
+    {
+     "t": "Cable de comunicaciones en plenum"
     }
    ],
    [
     {
-     "t": "CMR Cable de comunicaciones en pozo vertical",
-     "cs": 2
+     "t": "CMR"
+    },
+    {
+     "t": "Cable de comunicaciones en pozo vertical"
     }
    ],
    [
     {
-     "t": "CMG Cable de comunicaciones de usos generales",
-     "cs": 2
+     "t": "CMG"
+    },
+    {
+     "t": "Cable de comunicaciones de usos generales"
     }
    ],
    [
     {
-     "t": "CM Cable de comunicaciones de usos generales",
-     "cs": 2
+     "t": "CM"
+    },
+    {
+     "t": "Cable de comunicaciones de usos generales"
     }
    ],
    [
     {
-     "t": "CMX Cable de comunicaciones de uso limitado",
-     "cs": 2
+     "t": "CMX"
+    },
+    {
+     "t": "Cable de comunicaciones de uso limitado"
     }
    ],
    [
     {
-     "t": "CMUC Cable y alambre de comunicaciones para uso bajo alfombra",
-     "cs": 2
+     "t": "CMUC"
+    },
+    {
+     "t": "Cable y alambre de comunicaciones para uso bajo alfombra"
     }
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Los tipos de cable se enumeran en orden decreciente de resistencia al fuego."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -52815,6 +52850,7 @@
     "article": 800
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
