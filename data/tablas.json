@@ -27266,14 +27266,8 @@
      "t": "Volumen mínimo"
     },
     {
-     "t": ""
-    },
-    {
      "t": "Número máximo de conductores* mm² (AWG)",
-     "cs": 5
-    },
-    {
-     "t": ""
+     "cs": 7
     }
    ],
    [
@@ -28083,7 +28077,7 @@
    "1) Cajas estándar. El volumen para las cajas estándar, que no tienen marcado el volumen, debe ser el que se indica en la Tabla 314-16(a).",
    "2) Otras cajas. Las cajas de 1640 cm3 o menos, distintas de las descritas en la Tabla 314-16(a) y las cajas no metálicas, deben ir marcadas por el fabricante de modo legible y duradero con el volumen en cm3. Las cajas descritas en la Tabla 314-16(a) que tengan mayor volumen del indicado en la tabla, pueden tener marcado su volumen en cm3 como exige esta Sección."
   ],
-  "quality": 0.921,
+  "quality": 1.0,
   "regions": [
    {
     "page": 164,
@@ -28093,7 +28087,8 @@
     "article": 314
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "314-16(b)",
