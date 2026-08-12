@@ -24256,26 +24256,8 @@
      "notes": [
       {
        "label": "NOTA",
-       "text": "Los aislamientos termoplásticos se pueden endurecer a temperaturas menores a -10 °C. A temperatura normal, los aislamientos termoplásticos también se pueden deformar si están sometidos a presión, tal como en los puntos de soporte. Si se utilizan aislantes termoplásticos en circuitos de corriente continua en lugares mojados, se puede producir electroendósmosis entre el conductor y el aislamiento. 1Columna A: Los aislamientos se limitan a aislamientos de hule natural, SBR y hules a base de butilo. 2Columna B: Los aislamientos son de materiales tales como polietileno de cadena cruzada, etileno propileno y aislamientos compuestos de ellos. tierra se despejarán tan rápido como sea posible pero, en cualquier caso, en menos de 1 minuto. Aunque estos cables son aplicables a la gran mayoría de instalaciones que están en sistemas puestos a tierra, también se permitirá su uso en otros sistemas para los cuales la aplicación de estos cables sea aceptable, siempre que los requisitos anteriores de despeje de las fallas se cumplan al desenergizar por completo la sección que presenta la falla. 2 Nivel de aislamiento del 133 por ciento. Este nivel de aislamiento corresponde al que anteriormente se designaba para sistemas no puestos a tierra. Se permitirá que los cables de esta categoría se apliquen en situaciones en donde los requisitos del tiempo de despeje para la categoría del nivel de 100 por ciento no se pueden cumplir, y aún así existe la seguridad suficiente de que la sección con falla se desenergizará en un tiempo no superior a 1 hora. Igualmente, se permitirá su uso en aplicaciones con nivel de aislamiento de 100 por ciento cuando se desea un aislamiento adicional. 3 Nivel de aislamiento del 173 por ciento. Se permitirá que los cables de esta categoría se apliquen bajo todas las condiciones siguientes:",
-       "seq": 62,
-       "items": [
-        {
-         "label": "1",
-         "text": "En establecimientos industriales cuando las condiciones de mantenimiento y supervisión garanticen que únicamente personas calificadas atenderán la instalación."
-        },
-        {
-         "label": "2",
-         "text": "Cuando los requisitos de tiempo de despeje de la falla de la categoría con nivel del 133 por ciento no se pueden cumplir."
-        },
-        {
-         "label": "3",
-         "text": "Cuando la parada sistemática sea esencial para proteger al equipo y al personal."
-        },
-        {
-         "label": "4",
-         "text": "Existe la seguridad suficiente de que la sección que presenta falla se desenergizará en una parada sistemática. También se permitirá que los cables con este espesor de aislamiento se usen en aplicaciones con nivel de aislamiento del 100 ó 133 por ciento cuando se desea una resistencia adicional del aislamiento."
-        }
-       ]
+       "text": "Los aislamientos termoplásticos se pueden endurecer a temperaturas menores a -10 °C. A temperatura normal, los aislamientos termoplásticos también se pueden deformar si están sometidos a presión, tal como en los puntos de soporte. Si se utilizan aislantes termoplásticos en circuitos de corriente continua en lugares mojados, se puede producir electroendósmosis entre el conductor y el aislamiento.",
+       "seq": 62
       }
      ],
      "exceptions": [],

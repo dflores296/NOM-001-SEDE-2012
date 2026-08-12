@@ -25004,17 +25004,21 @@
    ]
   ],
   "grid": "huecos",
-  "notes": [],
+  "notes": [
+   "1Columna A: Los aislamientos se limitan a aislamientos de hule natural, SBR y hules a base de butilo.",
+   "2Columna B: Los aislamientos son de materiales tales como polietileno de cadena cruzada, etileno propileno y aislamientos compuestos de ellos."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 157,
     "y0": 266.6181640625,
-    "y1": 432.75,
+    "y1": 477.0,
     "id": "310-104(b)",
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -25097,6 +25101,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -25486,6 +25491,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -25497,521 +25503,499 @@
    158
   ],
   "page": 158,
-  "cols": 12,
+  "cols": 24,
   "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
      "t": "Tamaño o designación",
+     "cs": 4,
+     "rs": 2
+    },
+    {
+     "t": "2 001 a 5000 volts",
      "cs": 2,
      "rs": 2
     },
     {
-     "t": "2 001 a 5000 volts"
-    },
-    {
      "t": "5 001 a 8 000 volts",
-     "cs": 3
+     "cs": 6
     },
     {
-     "t": "8 001"
-    },
-    {
-     "t": "a 15 000 volts",
-     "cs": 2
+     "t": "8 001 a 15 000 volts",
+     "cs": 6
     },
     {
      "t": "15 001 a 25 000 volts",
-     "cs": 3
+     "cs": 6
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Nivel de aislamiento del",
-     "cs": 3
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "cs": 18
     }
    ],
    [
     {
      "t": "mm²",
+     "cs": 2,
      "rs": 2
     },
     {
      "t": "AWG o kcmil",
+     "cs": 2,
      "rs": 2
     },
     {
-     "t": "100%1"
-    },
-    {
-     "t": "100%1"
-    },
-    {
-     "t": "133%2"
-    },
-    {
-     "t": "173%3"
-    },
-    {
-     "t": "100%1"
-    },
-    {
-     "t": "133%2"
-    },
-    {
-     "t": "173%3"
-    },
-    {
-     "t": "100%1"
-    },
-    {
-     "t": "133%2"
-    },
-    {
-     "t": "173%3"
-    }
-   ],
-   [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "milímetros",
+     "t": "100%1",
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": "8.37"
-    },
-    {
-     "t": "8"
-    },
-    {
-     "t": "2.29"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    }
-   ],
-   [
-    {
-     "t": "13.3-21.2"
-    },
-    {
-     "t": "6-4"
-    },
-    {
-     "t": "2.29"
-    },
-    {
-     "t": "2.92"
-    },
-    {
-     "t": "3.56"
-    },
-    {
-     "t": "4.45"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    }
-   ],
-   [
-    {
-     "t": "33.6"
-    },
-    {
-     "t": "2"
-    },
-    {
-     "t": "2.29"
-    },
-    {
-     "t": "2.92"
-    },
-    {
-     "t": "3.56"
-    },
-    {
-     "t": "4.45"
-    },
-    {
-     "t": "4.45"
-    },
-    {
-     "t": "5.59"
-    },
-    {
-     "t": "6.6"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    },
-    {
-     "t": "-"
-    }
-   ],
-   [
-    {
-     "t": "42.4"
-    },
-    {
-     "t": "1"
-    },
-    {
-     "t": "2.29"
-    },
-    {
-     "t": "2.92"
-    },
-    {
-     "t": "3.56"
-    },
-    {
-     "t": "4.45"
-    },
-    {
-     "t": "4.45"
-    },
-    {
-     "t": "5.59"
-    },
-    {
-     "t": "6.6"
-    },
-    {
-     "t": "6.60"
-    },
-    {
-     "t": "8.13"
-    },
-    {
-     "t": "10.67"
-    }
-   ],
-   [
-    {
-     "t": "53.5"
-    },
-    {
-     "t": "1/0-2000"
-    },
-    {
-     "t": "2.29"
-    },
-    {
-     "t": "2.92"
-    },
-    {
-     "t": "3.56"
-    },
-    {
-     "t": "4.45"
-    },
-    {
-     "t": "4.45"
-    },
-    {
-     "t": "5.59"
-    },
-    {
-     "t": "6.6"
-    },
-    {
-     "t": "6.60"
-    },
-    {
-     "t": "8.13"
-    },
-    {
-     "t": "10.67"
-    }
-   ],
-   [
-    {
-     "t": "Tamaño o designación",
-     "cs": 3
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "25 001 a 28 000",
+     "t": "100%1",
      "cs": 2
     },
     {
-     "t": "volts"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "28 001 a 35 000 volts",
+     "t": "133%2",
      "cs": 2
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "",
-     "rs": 3
-    },
-    {
-     "t": "AWG"
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Nivel de aislamiento del",
-     "cs": 3
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    }
-   ],
-   [
-    {
-     "t": "o"
-    },
-    {
-     "t": "100%1"
-    },
-    {
-     "t": "133%2"
     },
     {
      "t": "173%3",
      "cs": 2
     },
     {
-     "t": "100%1"
+     "t": "100%1",
+     "cs": 2
     },
     {
-     "t": "133%2"
+     "t": "133%2",
+     "cs": 2
     },
     {
-     "t": "173%3"
+     "t": "173%3",
+     "cs": 2
+    },
+    {
+     "t": "100%1",
+     "cs": 2
+    },
+    {
+     "t": "133%2",
+     "cs": 2
+    },
+    {
+     "t": "173%3",
+     "cs": 2
     }
    ],
    [
-    {
-     "t": "mm²"
-    },
-    {
-     "t": "kcmil"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
     {
      "t": "milímetros",
-     "cs": 2
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
+     "cs": 20
     }
    ],
    [
     {
-     "t": "42.4"
-    },
-    {
-     "t": "",
-     "rs": 2
-    },
-    {
-     "t": "1"
-    },
-    {
-     "t": "7.11",
+     "t": "8.37",
      "cs": 2
     },
     {
-     "t": "8.76"
-    },
-    {
-     "t": "11.30",
+     "t": "8",
      "cs": 2
     },
     {
-     "t": "-"
+     "t": "2.29",
+     "cs": 2
     },
     {
-     "t": "",
-     "rs": 2
+     "t": "-",
+     "cs": 2
     },
     {
-     "t": "-"
+     "t": "-",
+     "cs": 2
     },
     {
-     "t": "-"
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
     }
    ],
    [
     {
-     "t": "53.5-1013 1/0-2000",
+     "t": "13.3-21.2",
+     "cs": 2
+    },
+    {
+     "t": "6-4",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "2.92",
+     "cs": 2
+    },
+    {
+     "t": "3.56",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "33.6",
+     "cs": 2
+    },
+    {
+     "t": "2",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "2.92",
+     "cs": 2
+    },
+    {
+     "t": "3.56",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "5.59",
+     "cs": 2
+    },
+    {
+     "t": "6.6",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "42.4",
+     "cs": 2
+    },
+    {
+     "t": "1",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "2.92",
+     "cs": 2
+    },
+    {
+     "t": "3.56",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "5.59",
+     "cs": 2
+    },
+    {
+     "t": "6.6",
+     "cs": 2
+    },
+    {
+     "t": "6.60",
+     "cs": 2
+    },
+    {
+     "t": "8.13",
+     "cs": 2
+    },
+    {
+     "t": "10.67",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "53.5",
+     "cs": 2
+    },
+    {
+     "t": "1/0-2000",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "2.92",
+     "cs": 2
+    },
+    {
+     "t": "3.56",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "5.59",
+     "cs": 2
+    },
+    {
+     "t": "6.6",
+     "cs": 2
+    },
+    {
+     "t": "6.60",
+     "cs": 2
+    },
+    {
+     "t": "8.13",
+     "cs": 2
+    },
+    {
+     "t": "10.67",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 6,
+     "rs": 2
+    },
+    {
+     "t": "25 001 a 28 000 volts",
+     "cs": 9
+    },
+    {
+     "t": "28 001 a 35 000 volts",
+     "cs": 9
+    }
+   ],
+   [
+    {
+     "t": "Nivel de aislamiento del",
+     "cs": 18
+    }
+   ],
+   [
+    {
+     "t": "mm²",
+     "cs": 3,
+     "rs": 2
+    },
+    {
+     "t": "AWG o kcmil",
+     "cs": 3,
+     "rs": 2
+    },
+    {
+     "t": "100%1",
+     "cs": 3
+    },
+    {
+     "t": "133%2",
+     "cs": 3
+    },
+    {
+     "t": "173%3",
+     "cs": 3
+    },
+    {
+     "t": "100%1",
+     "cs": 3
+    },
+    {
+     "t": "133%2",
+     "cs": 3
+    },
+    {
+     "t": "173%3",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "milímetros",
+     "cs": 18
+    }
+   ],
+   [
+    {
+     "t": "42.4",
+     "cs": 3
+    },
+    {
+     "t": "1",
      "cs": 3
     },
     {
      "t": "7.11",
-     "cs": 2
+     "cs": 3
     },
     {
-     "t": "8.76"
+     "t": "8.76",
+     "cs": 3
     },
     {
      "t": "11.30",
-     "cs": 2
+     "cs": 3
     },
     {
-     "t": "8.76"
+     "t": "-",
+     "cs": 3
     },
     {
-     "t": "10.67"
+     "t": "-",
+     "cs": 3
     },
     {
-     "t": "14.73"
+     "t": "-",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "53.5-1013",
+     "cs": 3
+    },
+    {
+     "t": "1/0-2000",
+     "cs": 3
+    },
+    {
+     "t": "7.11",
+     "cs": 3
+    },
+    {
+     "t": "8.76",
+     "cs": 3
+    },
+    {
+     "t": "11.30",
+     "cs": 3
+    },
+    {
+     "t": "8.76",
+     "cs": 3
+    },
+    {
+     "t": "10.67",
+     "cs": 3
+    },
+    {
+     "t": "14.73",
+     "cs": 3
     }
    ]
   ],
   "grid": "huecos",
-  "notes": [],
-  "quality": 0.937,
+  "notes": [
+   "1 Nivel de aislamiento del 100 por ciento. Se permitirá que los cables de esta categoría se apliquen cuando el sistema tiene protección de relevador de modo que las fallas a tierra se despejarán tan rápido como sea posible pero, en cualquier caso, en menos de 1 minuto. Aunque estos cables son aplicables a la gran mayoría de instalaciones que están en sistemas puestos a tierra, también se permitirá su uso en otros sistemas para los cuales la aplicación de estos cables sea aceptable, siempre que los requisitos anteriores de despeje de las fallas se cumplan al desenergizar por completo la sección que presenta la falla.",
+   "2 Nivel de aislamiento del 133 por ciento. Este nivel de aislamiento corresponde al que anteriormente se designaba para sistemas no puestos a tierra. Se permitirá que los cables de esta categoría se apliquen en situaciones en donde los requisitos del tiempo de despeje para la categoría del nivel de 100 por ciento no se pueden cumplir, y aún así existe la seguridad suficiente de que la sección con falla se desenergizará en un tiempo no superior a 1 hora. Igualmente, se permitirá su uso en aplicaciones con nivel de aislamiento de 100 por ciento cuando se desea un aislamiento adicional.",
+   "3 Nivel de aislamiento del 173 por ciento. Se permitirá que los cables de esta categoría se apliquen bajo todas las condiciones siguientes: (1) En establecimientos industriales cuando las condiciones de mantenimiento y supervisión garanticen que únicamente personas calificadas atenderán la instalación. (2) Cuando los requisitos de tiempo de despeje de la falla de la categoría con nivel del 133 por ciento no se pueden cumplir. (3) Cuando la parada sistemática sea esencial para proteger al equipo y al personal. (4) Existe la seguridad suficiente de que la sección que presenta falla se desenergizará en una parada sistemática.",
+   "También se permitirá que los cables con este espesor de aislamiento se usen en aplicaciones con nivel de aislamiento del 100 ó 133 por ciento cuando se desea una resistencia adicional del aislamiento."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 158,
     "y0": 209.6181640625,
-    "y1": 432.71,
+    "y1": 578.0,
     "id": "310-104(e)",
     "article": 310
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "310-106(a)",
