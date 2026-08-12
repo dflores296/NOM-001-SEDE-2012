@@ -30229,5 +30229,1081 @@
     "article": 310
    }
   ]
+ },
+ "310-104(b)": {
+  "verificada": "2026-08-12",
+  "title": "Espesor del aislamiento para conductores no blindados de tipos RHH y RHW aislados con dieléctricos sólidos y con tensión de operación de 2000 volts",
+  "cols": 4,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2
+    },
+    {
+     "t": "Columna A1"
+    },
+    {
+     "t": "Columna B2"
+    }
+   ],
+   [
+    {
+     "t": "mm²"
+    },
+    {
+     "t": "AWG o kcmil"
+    },
+    {
+     "t": "milímetros",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "2.08-5.26"
+    },
+    {
+     "t": "14–10"
+    },
+    {
+     "t": "2.03"
+    },
+    {
+     "t": "1.52"
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "2.03"
+    },
+    {
+     "t": "1.78"
+    }
+   ],
+   [
+    {
+     "t": "13.3-33.6"
+    },
+    {
+     "t": "6–2"
+    },
+    {
+     "t": "2.41"
+    },
+    {
+     "t": "1.78"
+    }
+   ],
+   [
+    {
+     "t": "42.4-6734"
+    },
+    {
+     "t": "1–2/0"
+    },
+    {
+     "t": "2.79"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "85.0-107"
+    },
+    {
+     "t": "3/0–4/0"
+    },
+    {
+     "t": "2.79"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "108-253"
+    },
+    {
+     "t": "213–500"
+    },
+    {
+     "t": "3.18"
+    },
+    {
+     "t": "2.67"
+    }
+   ],
+   [
+    {
+     "t": "254-507"
+    },
+    {
+     "t": "501–1000"
+    },
+    {
+     "t": "3.56"
+    },
+    {
+     "t": "3.05"
+    }
+   ],
+   [
+    {
+     "t": "508-1013"
+    },
+    {
+     "t": "1001–2000"
+    },
+    {
+     "t": "3.56"
+    },
+    {
+     "t": "3.56"
+    }
+   ]
+  ],
+  "notes": [
+   "1Columna A: Los aislamientos se limitan a aislamientos de hule natural, SBR y hules a base de butilo.",
+   "2Columna B: Los aislamientos son de materiales tales como polietileno de cadena cruzada, etileno propileno y aislamientos compuestos de ellos."
+  ],
+  "regions": [
+   {
+    "page": 157,
+    "y0": 266.6181640625,
+    "y1": 477.0,
+    "id": "310-104(b)",
+    "article": 310
+   }
+  ]
+ },
+ "310-104(c)": {
+  "verificada": "2026-08-12",
+  "title": "Aislamientos y aplicaciones de los conductores de media tensión",
+  "cols": 6,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Nombre genérico"
+    },
+    {
+     "t": "Denominación del cable de media tensión"
+    },
+    {
+     "t": "Temperatura máxima de operación"
+    },
+    {
+     "t": "Aplicaciones previstas"
+    },
+    {
+     "t": "Aislamiento"
+    },
+    {
+     "t": "Cubierta exterior"
+    }
+   ],
+   [
+    {
+     "t": "Dieléctrico sólido de media tensión",
+     "rs": 2
+    },
+    {
+     "t": "90"
+    },
+    {
+     "t": "90 ºC"
+    },
+    {
+     "t": "Lugares secos o mojados",
+     "rs": 2
+    },
+    {
+     "t": "Termoplástico o termofijo",
+     "rs": 2
+    },
+    {
+     "t": "Cubierta, termoplástica o cubierta metálica o armadura",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "105*"
+    },
+    {
+     "t": "105 ºC"
+    }
+   ]
+  ],
+  "notes": [
+   "* Cuando las condiciones de diseño exigen temperaturas del aislamiento mayores que de 90º C."
+  ]
+ },
+ "310-104(d)": {
+  "verificada": "2026-08-12",
+  "title": "Espesor del aislamiento y de la cubierta para cables con dieléctricos sólidos sin pantalla metálica, para 2001 a 5000 volts",
+  "cols": 8,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Lugares secos, conductor individual",
+     "cs": 3
+    },
+    {
+     "t": "Lugares secos o mojados",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Sin Cubierta"
+    },
+    {
+     "t": "Con Cubierta",
+     "cs": 2
+    },
+    {
+     "t": "Monoconductores",
+     "cs": 2
+    },
+    {
+     "t": "Multiconductores*"
+    }
+   ],
+   [
+    {
+     "t": "mm²",
+     "rs": 2
+    },
+    {
+     "t": "AWG o kcmil",
+     "rs": 2
+    },
+    {
+     "t": "Aislamiento"
+    },
+    {
+     "t": "Aislamiento"
+    },
+    {
+     "t": "Cubierta"
+    },
+    {
+     "t": "Aislamiento"
+    },
+    {
+     "t": "Cubierta"
+    },
+    {
+     "t": "Aislamiento"
+    }
+   ],
+   [
+    {
+     "t": "milímetros",
+     "cs": 6
+    }
+   ],
+   [
+    {
+     "t": "8.37"
+    },
+    {
+     "t": "8"
+    },
+    {
+     "t": "2.79"
+    },
+    {
+     "t": "2.29"
+    },
+    {
+     "t": "0.76"
+    },
+    {
+     "t": "3.18"
+    },
+    {
+     "t": "2.03"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "13.3"
+    },
+    {
+     "t": "6"
+    },
+    {
+     "t": "2.79"
+    },
+    {
+     "t": "2.29"
+    },
+    {
+     "t": "0.76"
+    },
+    {
+     "t": "3.18"
+    },
+    {
+     "t": "2.03"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "21.2-33.6"
+    },
+    {
+     "t": "4-2"
+    },
+    {
+     "t": "2.79"
+    },
+    {
+     "t": "2.29"
+    },
+    {
+     "t": "1.14"
+    },
+    {
+     "t": "3.18"
+    },
+    {
+     "t": "2.03"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "42.4-67.4"
+    },
+    {
+     "t": "1-2/0"
+    },
+    {
+     "t": "2.79"
+    },
+    {
+     "t": "2.29"
+    },
+    {
+     "t": "1.14"
+    },
+    {
+     "t": "3.18"
+    },
+    {
+     "t": "2.03"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "85.0-107"
+    },
+    {
+     "t": "3/0-4/0"
+    },
+    {
+     "t": "2.79"
+    },
+    {
+     "t": "2.29"
+    },
+    {
+     "t": "1.65"
+    },
+    {
+     "t": "3.18"
+    },
+    {
+     "t": "2.41"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "108-253"
+    },
+    {
+     "t": "213-500"
+    },
+    {
+     "t": "3.05"
+    },
+    {
+     "t": "2.29"
+    },
+    {
+     "t": "1.65"
+    },
+    {
+     "t": "3.56"
+    },
+    {
+     "t": "2.79"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "254-380"
+    },
+    {
+     "t": "501-750"
+    },
+    {
+     "t": "3.30"
+    },
+    {
+     "t": "2.29"
+    },
+    {
+     "t": "1.65"
+    },
+    {
+     "t": "3.94"
+    },
+    {
+     "t": "3.18"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "381-507"
+    },
+    {
+     "t": "751-1000"
+    },
+    {
+     "t": "3.30"
+    },
+    {
+     "t": "2.29"
+    },
+    {
+     "t": "1.65"
+    },
+    {
+     "t": "3.94"
+    },
+    {
+     "t": "3.18"
+    },
+    {
+     "t": "2.29"
+    }
+   ],
+   [
+    {
+     "t": "508-633"
+    },
+    {
+     "t": "1001-1250"
+    },
+    {
+     "t": "3.56"
+    },
+    {
+     "t": "2.92"
+    },
+    {
+     "t": "1.65"
+    },
+    {
+     "t": "4.32"
+    },
+    {
+     "t": "3.56"
+    },
+    {
+     "t": "2.92"
+    }
+   ],
+   [
+    {
+     "t": "634-760"
+    },
+    {
+     "t": "1251-1500"
+    },
+    {
+     "t": "3.56"
+    },
+    {
+     "t": "2.92"
+    },
+    {
+     "t": "2.03"
+    },
+    {
+     "t": "4.32"
+    },
+    {
+     "t": "3.56"
+    },
+    {
+     "t": "2.92"
+    }
+   ],
+   [
+    {
+     "t": "761-1013"
+    },
+    {
+     "t": "1501-2000"
+    },
+    {
+     "t": "3.56"
+    },
+    {
+     "t": "2.92"
+    },
+    {
+     "t": "2.03"
+    },
+    {
+     "t": "4.32"
+    },
+    {
+     "t": "3.94"
+    },
+    {
+     "t": "3.56"
+    }
+   ]
+  ],
+  "notes": [
+   "* Bajo un recubrimiento común externo como por ejemplo una cubierta, un forro o una armadura."
+  ],
+  "informativa": true
+ },
+ "310-104(e)": {
+  "verificada": "2026-08-12",
+  "title": "Espesor del aislamiento para cables con dieléctricos sólidos, con pantalla metálica, para 2001 a 35 000 volts",
+  "cols": 24,
+  "header_rows": 4,
+  "rows": [
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 4,
+     "rs": 2
+    },
+    {
+     "t": "2 001 a 5000 volts",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "5 001 a 8 000 volts",
+     "cs": 6
+    },
+    {
+     "t": "8 001 a 15 000 volts",
+     "cs": 6
+    },
+    {
+     "t": "15 001 a 25 000 volts",
+     "cs": 6
+    }
+   ],
+   [
+    {
+     "t": "Nivel de aislamiento del",
+     "cs": 18
+    }
+   ],
+   [
+    {
+     "t": "mm²",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "AWG o kcmil",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "100%1",
+     "cs": 2
+    },
+    {
+     "t": "100%1",
+     "cs": 2
+    },
+    {
+     "t": "133%2",
+     "cs": 2
+    },
+    {
+     "t": "173%3",
+     "cs": 2
+    },
+    {
+     "t": "100%1",
+     "cs": 2
+    },
+    {
+     "t": "133%2",
+     "cs": 2
+    },
+    {
+     "t": "173%3",
+     "cs": 2
+    },
+    {
+     "t": "100%1",
+     "cs": 2
+    },
+    {
+     "t": "133%2",
+     "cs": 2
+    },
+    {
+     "t": "173%3",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "milímetros",
+     "cs": 20
+    }
+   ],
+   [
+    {
+     "t": "8.37",
+     "cs": 2
+    },
+    {
+     "t": "8",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "13.3-21.2",
+     "cs": 2
+    },
+    {
+     "t": "6-4",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "2.92",
+     "cs": 2
+    },
+    {
+     "t": "3.56",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "33.6",
+     "cs": 2
+    },
+    {
+     "t": "2",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "2.92",
+     "cs": 2
+    },
+    {
+     "t": "3.56",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "5.59",
+     "cs": 2
+    },
+    {
+     "t": "6.6",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    },
+    {
+     "t": "-",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "42.4",
+     "cs": 2
+    },
+    {
+     "t": "1",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "2.92",
+     "cs": 2
+    },
+    {
+     "t": "3.56",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "5.59",
+     "cs": 2
+    },
+    {
+     "t": "6.6",
+     "cs": 2
+    },
+    {
+     "t": "6.60",
+     "cs": 2
+    },
+    {
+     "t": "8.13",
+     "cs": 2
+    },
+    {
+     "t": "10.67",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "53.5",
+     "cs": 2
+    },
+    {
+     "t": "1/0-2000",
+     "cs": 2
+    },
+    {
+     "t": "2.29",
+     "cs": 2
+    },
+    {
+     "t": "2.92",
+     "cs": 2
+    },
+    {
+     "t": "3.56",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "4.45",
+     "cs": 2
+    },
+    {
+     "t": "5.59",
+     "cs": 2
+    },
+    {
+     "t": "6.6",
+     "cs": 2
+    },
+    {
+     "t": "6.60",
+     "cs": 2
+    },
+    {
+     "t": "8.13",
+     "cs": 2
+    },
+    {
+     "t": "10.67",
+     "cs": 2
+    }
+   ],
+   [
+    {
+     "t": "Tamaño o designación",
+     "cs": 6,
+     "rs": 2
+    },
+    {
+     "t": "25 001 a 28 000 volts",
+     "cs": 9
+    },
+    {
+     "t": "28 001 a 35 000 volts",
+     "cs": 9
+    }
+   ],
+   [
+    {
+     "t": "Nivel de aislamiento del",
+     "cs": 18
+    }
+   ],
+   [
+    {
+     "t": "mm²",
+     "cs": 3,
+     "rs": 2
+    },
+    {
+     "t": "AWG o kcmil",
+     "cs": 3,
+     "rs": 2
+    },
+    {
+     "t": "100%1",
+     "cs": 3
+    },
+    {
+     "t": "133%2",
+     "cs": 3
+    },
+    {
+     "t": "173%3",
+     "cs": 3
+    },
+    {
+     "t": "100%1",
+     "cs": 3
+    },
+    {
+     "t": "133%2",
+     "cs": 3
+    },
+    {
+     "t": "173%3",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "milímetros",
+     "cs": 18
+    }
+   ],
+   [
+    {
+     "t": "42.4",
+     "cs": 3
+    },
+    {
+     "t": "1",
+     "cs": 3
+    },
+    {
+     "t": "7.11",
+     "cs": 3
+    },
+    {
+     "t": "8.76",
+     "cs": 3
+    },
+    {
+     "t": "11.30",
+     "cs": 3
+    },
+    {
+     "t": "-",
+     "cs": 3
+    },
+    {
+     "t": "-",
+     "cs": 3
+    },
+    {
+     "t": "-",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "53.5-1013",
+     "cs": 3
+    },
+    {
+     "t": "1/0-2000",
+     "cs": 3
+    },
+    {
+     "t": "7.11",
+     "cs": 3
+    },
+    {
+     "t": "8.76",
+     "cs": 3
+    },
+    {
+     "t": "11.30",
+     "cs": 3
+    },
+    {
+     "t": "8.76",
+     "cs": 3
+    },
+    {
+     "t": "10.67",
+     "cs": 3
+    },
+    {
+     "t": "14.73",
+     "cs": 3
+    }
+   ]
+  ],
+  "notes": [
+   "1 Nivel de aislamiento del 100 por ciento. Se permitirá que los cables de esta categoría se apliquen cuando el sistema tiene protección de relevador de modo que las fallas a tierra se despejarán tan rápido como sea posible pero, en cualquier caso, en menos de 1 minuto. Aunque estos cables son aplicables a la gran mayoría de instalaciones que están en sistemas puestos a tierra, también se permitirá su uso en otros sistemas para los cuales la aplicación de estos cables sea aceptable, siempre que los requisitos anteriores de despeje de las fallas se cumplan al desenergizar por completo la sección que presenta la falla.",
+   "2 Nivel de aislamiento del 133 por ciento. Este nivel de aislamiento corresponde al que anteriormente se designaba para sistemas no puestos a tierra. Se permitirá que los cables de esta categoría se apliquen en situaciones en donde los requisitos del tiempo de despeje para la categoría del nivel de 100 por ciento no se pueden cumplir, y aún así existe la seguridad suficiente de que la sección con falla se desenergizará en un tiempo no superior a 1 hora. Igualmente, se permitirá su uso en aplicaciones con nivel de aislamiento de 100 por ciento cuando se desea un aislamiento adicional.",
+   "3 Nivel de aislamiento del 173 por ciento. Se permitirá que los cables de esta categoría se apliquen bajo todas las condiciones siguientes: (1) En establecimientos industriales cuando las condiciones de mantenimiento y supervisión garanticen que únicamente personas calificadas atenderán la instalación. (2) Cuando los requisitos de tiempo de despeje de la falla de la categoría con nivel del 133 por ciento no se pueden cumplir. (3) Cuando la parada sistemática sea esencial para proteger al equipo y al personal. (4) Existe la seguridad suficiente de que la sección que presenta falla se desenergizará en una parada sistemática.",
+   "También se permitirá que los cables con este espesor de aislamiento se usen en aplicaciones con nivel de aislamiento del 100 ó 133 por ciento cuando se desea una resistencia adicional del aislamiento."
+  ],
+  "informativa": true,
+  "regions": [
+   {
+    "page": 158,
+    "y0": 209.6181640625,
+    "y1": 578.0,
+    "id": "310-104(e)",
+    "article": 310
+   }
+  ]
  }
 }
