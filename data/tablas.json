@@ -29441,6 +29441,7 @@
     "article": 355
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -29458,22 +29459,18 @@
   "rows": [
    [
     {
-     "t": "Designador métrico"
+     "t": "Designador métrico",
+     "rs": 2
     },
     {
-     "t": "Tamaño comercial"
+     "t": "Tamaño comercial",
+     "rs": 2
     },
     {
      "t": "Radios mínimos para uso en flexión"
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
     {
      "t": "centímetros"
     }
@@ -29524,6 +29521,7 @@
     "article": 360
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -29603,6 +29601,7 @@
     "article": 360
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -29647,7 +29646,7 @@
    ],
    [
     {
-     "t": "13/16 1⅝ x"
+     "t": "1⅝ x 13/16"
     },
     {
      "t": "572"
@@ -29808,6 +29807,7 @@
     "article": 384
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -30104,7 +30104,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.986,
+  "quality": 1.0,
   "regions": [
    {
     "page": 229,
@@ -30114,6 +30114,7 @@
     "article": 392
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -30807,7 +30808,7 @@
      "rs": 2
     },
     {
-     "t": "Area de la sección transversal mínima a de la parte metálica",
+     "t": "Area de la sección transversal mínima de la parte metálicaᵃ",
      "cs": 2
     }
    ],
@@ -30877,7 +30878,7 @@
      "t": "600"
     },
     {
-     "t": "967.5b"
+     "t": "967.5ᵇ"
     },
     {
      "t": "258"
@@ -30943,6 +30944,7 @@
     "article": 392
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -36615,6 +36617,7 @@
     "article": 402
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -36673,6 +36676,7 @@
     "article": 408
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -36686,7 +36690,7 @@
   ],
   "page": 262,
   "cols": 3,
-  "header_rows": 2,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -36708,8 +36712,7 @@
      "t": ""
     },
     {
-     "t": "460-8, 460-9",
-     "rs": 5
+     "t": "460-8, 460-9"
     }
    ],
    [
@@ -36718,6 +36721,9 @@
     },
     {
      "t": "725"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -36726,6 +36732,9 @@
     },
     {
      "t": "210"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -36734,6 +36743,9 @@
     },
     {
      "t": "620"
+    },
+    {
+     "t": ""
     }
    ],
    [
@@ -36742,17 +36754,20 @@
     },
     {
      "t": "440"
+    },
+    {
+     "t": ""
     }
    ],
    [
     {
-     "t": "Garajes comerciales, hangares para aeronaves, gasolineras y estaciones de servicio, plantas de almacenamiento a granel, procesos de aplicación por rociado, procesos de inmersión y recubrimiento y lugares de inhalación de gases anestésicos 511,"
+     "t": "Garajes comerciales, hangares para aeronaves, gasolineras y estaciones de servicio, plantas de almacenamiento a granel, procesos de aplicación por rociado, procesos de inmersión y recubrimiento y lugares de inhalación de gases anestésicos"
     },
     {
-     "t": "513, 514, 515, 516 517 Parte D"
+     "t": "511, 513, 514, 515, 516 y 517 Parte D"
     },
     {
-     "t": "y"
+     "t": ""
     }
    ],
    [
@@ -36768,13 +36783,13 @@
    ],
    [
     {
-     "t": "Lugares peligrosos (clasificados) 500,"
+     "t": "Lugares peligrosos (clasificados)"
     },
     {
-     "t": "501, 502 503, 504,"
+     "t": "500, 501, 502 503, 504, 505"
     },
     {
-     "t": "505"
+     "t": ""
     }
    ],
    [
@@ -36846,7 +36861,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.909,
+  "quality": 1.0,
   "regions": [
    {
     "page": 262,
@@ -36863,6 +36878,7 @@
     "article": 409
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -37258,7 +37274,7 @@
   ],
   "page": 301,
   "cols": 4,
-  "header_rows": 1,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
@@ -37474,18 +37490,19 @@
   ],
   "grid": "rejilla",
   "notes": [
-   "*Cuando sean tres o más los conductores por terminal, el espacio mínimo para el acomodo de los conductores debe cumplir los requisitos del Artículo 312. 430-11. Protección contra líquidos. Se deben proporcionar guardas de protección o envolventes adecuados para proteger las partes expuestas portadoras de corriente de los motores y el aislamiento de las puntas de los motores, cuando se instalen directamente"
+   "*Cuando sean tres o más los conductores por terminal, el espacio mínimo para el acomodo de los conductores debe cumplir los requisitos del Artículo 312."
   ],
-  "quality": 0.948,
+  "quality": 1.0,
   "regions": [
    {
     "page": 301,
     "y0": 497.6181640625,
-    "y1": 752.9228515625,
+    "y1": 720.0,
     "id": "430-10(b)",
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
