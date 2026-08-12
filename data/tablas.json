@@ -47135,6 +47135,7 @@
     "article": 552
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -47238,6 +47239,7 @@
     "article": 555
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -47261,11 +47263,8 @@
      "rs": 2
     },
     {
-     "t": "Hasta cuatro"
-    },
-    {
-     "t": "conductores energizados simultáneamente en canalizaciones o cable*",
-     "cs": 3
+     "t": "Hasta cuatro conductores energizados simultáneamente en canalizaciones o cable*",
+     "cs": 4
     },
     {
      "t": "Hasta tres conductores de corriente alterna (**) o cuatro en corriente continua (*) energizados simultáneamente en canalización o cable.",
@@ -47274,16 +47273,12 @@
    ],
    [
     {
-     "t": "75"
+     "t": "75 °C",
+     "cs": 2
     },
     {
-     "t": "°C"
-    },
-    {
-     "t": "90"
-    },
-    {
-     "t": "°C"
+     "t": "90 °C",
+     "cs": 2
     },
     {
      "t": "125 °C",
@@ -47860,17 +47855,13 @@
      "cs": 2
     },
     {
-     "t": "FACTOR DE CORRECCION PARA",
-     "cs": 3
-    },
-    {
-     "t": "AMPACIDAD",
-     "cs": 3
+     "t": "FACTOR DE CORRECCION PARA AMPACIDAD",
+     "cs": 6
     }
    ],
    [
     {
-     "t": "Temperatura °C ambiente",
+     "t": "Temperatura ambiente °C",
      "cs": 2
     },
     {
@@ -48192,7 +48183,11 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Otros aislamientos indicados en las Tablas 310-13 y aprobados para lugares y temperaturas específicos se permite sustituirlos por los indicados en la Tabla 610-14 (a). Las ampacidades de los conductores utilizados para motores para servicio de 15 minutos, deben ser las de 30 minutos incrementadas en 12%.",
+   "(*) Para cinco a ocho conductores de fuerza energizados simultáneamente en canalización o cable, la ampacidad de cada conductor de fuerza debe ser reducida a un valor equivalente a 80% del valor mostrado en esta tabla.",
+   "(**) Para cuatro a seis conductores de fuerza de corriente alterna energizados simultáneamente de 125 °C y alojados en tubo conduit, canalización o cable, la ampacidad de los conductores de fuerza se reduce a un valor equivalente al 80% del valor mostrado en esta tabla."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -48205,11 +48200,12 @@
    {
     "page": 523,
     "y0": 21.0,
-    "y1": 41.2,
+    "y1": 110.0,
     "id": "610-14(a)",
     "article": 610
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -48331,6 +48327,7 @@
     "article": 610
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -48343,7 +48340,7 @@
   ],
   "page": 523,
   "cols": 2,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -48381,7 +48378,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.875,
+  "quality": 1.0,
   "regions": [
    {
     "page": 523,
@@ -48391,6 +48388,7 @@
     "article": 610
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -48483,6 +48481,7 @@
     "article": 610
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -48589,7 +48588,7 @@
   ],
   "grid": "rejilla",
   "notes": [
-   "NOTA: Los factores de demanda se basan en un régimen de trabajo del 50 por ciento (es decir, la mitad del tiempo funcionando y la mitad del tiempo detenido). 620-15. Capacidad nominal del controlador. La capacidad nominal del controlador debe cumplir con lo requerido en 430-83. Se permite que la capacidad nominal del controlador sea menor que la capacidad del motor del elevador cuando el propio controlador limite 530/780 www.dof.gob.mx/normasOficiales/4951/SENER/SENER.html"
+   "NOTA: Los factores de demanda se basan en un régimen de trabajo del 50 por ciento (es decir, la mitad del tiempo funcionando y la mitad del tiempo detenido)."
   ],
   "quality": 1.0,
   "regions": [
@@ -48601,6 +48600,7 @@
     "article": 620
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -49574,6 +49574,7 @@
     "article": 630
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -49813,6 +49814,7 @@
     "article": 645
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -49825,7 +49827,7 @@
   ],
   "page": 570,
   "cols": 2,
-  "header_rows": 3,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -49881,6 +49883,7 @@
     "article": 680
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {

@@ -97768,7 +97768,7 @@
        "notes": [
         {
          "label": "NOTA",
-         "text": "Para la ampacidad de los conductores entre controladores y resistores véase 430-23. sustituirlos por los indicados en la Tabla 610-14 (a). Las ampacidades de los conductores utilizados para motores para servicio de 15 minutos, deben ser las de 30 minutos incrementadas en 12%. (*) Para cinco a ocho conductores de fuerza energizados simultáneamente en canalización o cable, la ampacidad de cada conductor de fuerza debe ser reducida a un valor equivalente a 80% del valor mostrado en esta tabla. (**) Para cuatro a seis conductores de fuerza de corriente alterna energizados simultáneamente de 125 °C y alojados en tubo conduit, canalización o cable, la ampacidad de los conductores de fuerza se reduce a un valor equivalente al 80% del valor mostrado en esta tabla.",
+         "text": "Para la ampacidad de los conductores entre controladores y resistores véase 430-23.",
          "seq": 1
         }
        ],

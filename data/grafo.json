@@ -1,6 +1,6 @@
 {
  "meta": {
-  "aristas": 4638,
+  "aristas": 4637,
   "nodos_con_salida": 2905,
   "nodos_con_entrada": 1925,
   "referencias_rotas": 0
@@ -15503,11 +15503,6 @@
   },
   {
    "from": "610-14(a)",
-   "to": "tabla:610-14",
-   "type": "tabla"
-  },
-  {
-   "from": "610-14(a)",
    "to": "430-23",
    "type": "seccion"
   },
@@ -30310,7 +30305,6 @@
   ],
   "610-14(a)": [
    "430-23",
-   "tabla:610-14",
    "tabla:610-14(a)"
   ],
   "610-14(b)": [

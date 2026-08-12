@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**181 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**191 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (39)
+## 4 · Sin señales (29)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `552-10(e)(1)` | Protección contra sobrecorriente para baja tensión | 496 | 0 | 1.00 | — | **huecos** | 6×4 |
-| [ ] | `555-12` | Factores de demanda | 507 | 3 | 1.00 | — | dibujada | 9×2 |
-| [ ] | `610-14(a)` | Ampacidades para conductores de cobre aislados basados en una temperat… | 522, 523 | 3 | 1.00 | — | dibujada | 39×8 |
-| [ ] | `610-14(b)` | Factores para determinar la ampacidad de los conductores secundarios e… | 523 | 0 | 1.00 | — | dibujada | 9×3 |
-| [ ] | `610-14(d)` | Tamaño mínimo del conductor de contacto basado en la distancia entre s… | 523 | 1 | 0.88 | — | dibujada | 4×2 |
-| [ ] | `610-14(e)` | Factores de demanda | 523, 524 | 1 | 1.00 | — | dibujada | 7×2 |
-| [ ] | `620-14` | Factores de demanda del alimentador para elevadores | 530 | 1 | 1.00 | — | dibujada | 11×2 |
-| [ ] | `630-11(a)` | Factores de multiplicación para el régimen de trabajo para soldadoras… | 547 | 1 | 1.00 | — | dibujada | 11×3 |
-| [ ] | `645-5` | Tipos de cables permitidos bajo pisos falsos | 556 | 1 | 1.00 | — | dibujada | 8×4 |
-| [ ] | `680-3` | Otros Artículos | 570 | 1 | 1.00 | — | **huecos** | 5×2 |
 | [ ] | `680-8` | Libramientos para conductores aéreos | 571 | 3 | 0.84 | — | **huecos** | 6×4 |
 | [ ] | `680-10` | Profundidad mínima del recubrimiento | 572 | 1 | 0.92 | — | **huecos** | 7×2 |
 | [ ] | `690-31(c)` | Factores de corrección | 596 | 1 | 1.00 | — | **huecos** | 11×5 |
