@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**111 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**121 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -40,22 +40,12 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (109)
+## 4 · Sin señales (99)
 
 Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `110-26(a)(1)` | Espacios de trabajo | 22 | 2 | 1.00 | — | dibujada | 4×4 |
-| [ ] | `110-31` | Distancia mínima desde la cerca hasta las partes vivas | 25 | 1 | 0.88 | — | dibujada | 4×2 |
-| [ ] | `110-34(a)` | Distancia mínima del espacio de trabajo en una instalación eléctrica | 26, 27 | 2 | 0.89 | — | dibujada | 9×4 |
-| [ ] | `110-34(e)` | Altura de las partes vivas sin proteger sobre el espacio de trabajo | 27 | 1 | 0.86 | — | **huecos** | 4×3 |
-| [ ] | `210-2` | Circuitos derivados de propósito específico | 32 | 1 | 0.98 | — | dibujada | 28×3 |
-| [ ] | `210-21(b)(3)` | Capacidad nominal de contactos en circuitos de varias capacidades | 37 | 2 | 0.85 | — | dibujada | 7×2 |
-| [ ] | `220-44` | Factores de demanda para cargas de contactos en inmuebles que no son u… | 48 | 1 | 1.00 | — | dibujada | 3×2 |
-| [ ] | `220-54` | Factores de demanda para secadoras domésticas de ropa | 48 | 2 | 1.00 | — | dibujada | 12×2 |
-| [ ] | `220-56` | Factores de demanda para equipos de cuartos de cocina diferentes a uni… | 50 | 2 | 1.00 | — | **huecos** | 7×2 |
-| [ ] | `220-84` | Cálculo opcional. Factores de demanda para unidades multifamiliares co… | 52 | 2 | 1.00 | — | **huecos** | 24×2 |
 | [ ] | `220-86` | Método opcional - Factores de demanda para conductores de alimentadore… | 53 | 2 | 0.88 | — | dibujada | 4×2 |
 | [ ] | `220-88` | Método opcional - Cálculos de la carga permitida para los conductores… | 53 | 1 | 0.80 | — | dibujada | 5×3 |
 | [ ] | `220-102` | Método para calcular las cargas de instalaciones agrícolas que no sean… | 54 | 2 | 1.00 | — | dibujada | 4×2 |

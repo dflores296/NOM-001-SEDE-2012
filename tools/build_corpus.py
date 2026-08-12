@@ -143,9 +143,15 @@ def extract_images(pdf, img_dir):
 # alto detectado de una tabla puede pasarse de largo y tragarse la sección que
 # viene justo debajo. Sin esta salvaguarda desaparecían 110-36, 210-3, 550-32,
 # 922-16 y 922-17.
+#
+# La forma sin punto exige LETRA después del espacio, no dígito: "384-1
+# Alcance" es un encabezado real, pero "601-2 500" es una celda de la Tabla
+# 110-34(a) —rango de tensión con espacio como separador de miles— y sin esta
+# distinción calzaba con el patrón y se colaba entero en la Excepción de
+# 110-34(a). Es el único caso en las 780 páginas con esa forma.
 RE_KEEP = re.compile(
     r'^(?:ARTICULO\s+\d{3}|[A-M]\.\s+[0-9A-ZÁÉÍÓÚÑ]|'
-    r'\d{3}-\d{1,3}(?:\.\s*|\s+)[0-9A-ZÁÉÍÓÚÑ])')
+    r'\d{3}-\d{1,3}(?:\.\s*[0-9A-ZÁÉÍÓÚÑ]|\s+[A-ZÁÉÍÓÚÑ]))')
 
 
 def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):

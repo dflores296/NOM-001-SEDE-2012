@@ -63,17 +63,23 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Las condiciones son las siguientes:",
+   "1. Partes vivas expuestas en un lado y no vivas ni conectadas a tierra en el otro lado del espacio de trabajo, o partes vivas expuestas a ambos lados, protegidas eficazmente por materiales aislantes.",
+   "2. Partes vivas expuestas a un lado y conectadas a tierra al otro lado. Las paredes de concreto, ladrillo o mosaico se deben considerar como puestas a tierra.",
+   "3. Partes vivas expuestas en ambos lados del espacio de trabajo."
+  ],
   "quality": 1.0,
   "regions": [
    {
     "page": 22,
     "y0": 345.3330078125,
-    "y1": 434.21,
+    "y1": 498.0,
     "id": "110-26(a)(1)",
     "article": 110
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -925,21 +931,18 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [
-   "1) Paredes y techo. Se deben construir con materiales de resistencia estructural adecuada para las condiciones del lugar, con una clasificación de resistencia mínima al fuego de 3 horas. Para el propósito de esta sección, no se permite la construcción con polines de madera y paneles prefabricados.",
-   "2) Pisos. Los pisos de las bóvedas en contacto con la tierra deben ser de concreto con un espesor no menor a 10 centímetros, pero cuando la bóveda se construya con un espacio vacío u otros pisos debajo de ella, el piso debe tener la resistencia estructural adecuada para la carga impuesta sobre él y una resistencia mínima al fuego de 3 horas.",
-   "3) Puertas. Cada puerta que conduzca a una bóveda desde el interior del edificio será provista con una puerta de ajuste hermético"
-  ],
-  "quality": 0.875,
+  "notes": [],
+  "quality": 1.0,
   "regions": [
    {
     "page": 25,
     "y0": 343.0830078125,
-    "y1": 520.3876953125,
+    "y1": 428.0,
     "id": "110-31",
     "article": 110
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -1046,23 +1049,16 @@
     {
      "t": "3.70"
     }
-   ],
-   [
-    {
-     "t": "Donde las condiciones son las siguientes: 1. Partes vivas expuestas en un lado y no activas o conectadas a tierra en el otro lado del espacio de trabajo, o partes vivas expuestas a ambos lados protegidas eficazmente por materiales aislantes. 2. Partes vivas expuestas en un lado del espacio de trabajo y partes conectadas a tierra en el otro lado del espacio de trabajo. Las paredes de concreto, tabique o azulejo se consideran",
-     "cs": 4
-    }
-   ],
-   [
-    {
-     "t": "superficies conectadas a tierra. 3. Partes vivas expuestas en ambos lados del espacio de trabajo.",
-     "cs": 4
-    }
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.889,
+  "notes": [
+   "Donde las condiciones son las siguientes:",
+   "1. Partes vivas expuestas en un lado y no activas o conectadas a tierra en el otro lado del espacio de trabajo, o partes vivas expuestas a ambos lados protegidas eficazmente por materiales aislantes.",
+   "2. Partes vivas expuestas en un lado del espacio de trabajo y partes conectadas a tierra en el otro lado del espacio de trabajo. Las paredes de concreto, tabique o azulejo se consideran superficies conectadas a tierra.",
+   "3. Partes vivas expuestas en ambos lados del espacio de trabajo."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 26,
@@ -1079,6 +1075,7 @@
     "article": 110
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -1090,7 +1087,7 @@
    27
   ],
   "page": 27,
-  "cols": 3,
+  "cols": 2,
   "header_rows": 1,
   "intro": "",
   "rows": [
@@ -1100,9 +1097,6 @@
     },
     {
      "t": "Altura (metros)"
-    },
-    {
-     "t": ""
     }
    ],
    [
@@ -1111,10 +1105,6 @@
     },
     {
      "t": "2.80"
-    },
-    {
-     "t": "",
-     "rs": 2
     }
    ],
    [
@@ -1127,14 +1117,16 @@
    ],
    [
     {
-     "t": "Más de 35 000 2.90+ (0.01 por cada kV arriba de 35 000 volts)",
-     "cs": 3
+     "t": "Más de 35 000"
+    },
+    {
+     "t": "2.90+ (0.01 por cada kV arriba de 35 000 volts)"
     }
    ]
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.857,
+  "quality": 1.0,
   "regions": [
    {
     "page": 27,
@@ -1144,6 +1136,7 @@
     "article": 110
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -1470,7 +1463,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.982,
+  "quality": 1.0,
   "regions": [
    {
     "page": 32,
@@ -1480,6 +1473,7 @@
     "article": 210
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -1631,7 +1625,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.846,
+  "quality": 1.0,
   "regions": [
    {
     "page": 37,
@@ -1641,6 +1635,7 @@
     "article": 210
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -2743,6 +2738,7 @@
     "article": 220
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -2867,6 +2863,7 @@
     "article": 220
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -3428,6 +3425,7 @@
     "article": 220
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -3648,6 +3646,7 @@
     "article": 220
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {

@@ -49351,5 +49351,196 @@
     }
    ]
   ]
+ },
+ "110-26(a)(1)": {
+  "verificada": "2026-08-12",
+  "notes": [
+   "Las condiciones son las siguientes:",
+   "1. Partes vivas expuestas en un lado y no vivas ni conectadas a tierra en el otro lado del espacio de trabajo, o partes vivas expuestas a ambos lados, protegidas eficazmente por materiales aislantes.",
+   "2. Partes vivas expuestas a un lado y conectadas a tierra al otro lado. Las paredes de concreto, ladrillo o mosaico se deben considerar como puestas a tierra.",
+   "3. Partes vivas expuestas en ambos lados del espacio de trabajo."
+  ],
+  "regions": [
+   {
+    "page": 22,
+    "y0": 345.3330078125,
+    "y1": 498.0,
+    "id": "110-26(a)(1)",
+    "article": 110
+   }
+  ]
+ },
+ "110-31": {
+  "verificada": "2026-08-12",
+  "notes": [],
+  "regions": [
+   {
+    "page": 25,
+    "y0": 343.0830078125,
+    "y1": 428.0,
+    "id": "110-31",
+    "article": 110
+   }
+  ]
+ },
+ "110-34(a)": {
+  "verificada": "2026-08-12",
+  "rows": [
+   [
+    {
+     "t": "Tensión a tierra (volts)",
+     "rs": 2
+    },
+    {
+     "t": "Distancia mínima (metros)",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "Condición 1"
+    },
+    {
+     "t": "Condición 2"
+    },
+    {
+     "t": "Condición 3"
+    }
+   ],
+   [
+    {
+     "t": "601-2 500"
+    },
+    {
+     "t": "0.90"
+    },
+    {
+     "t": "1.20"
+    },
+    {
+     "t": "1.50"
+    }
+   ],
+   [
+    {
+     "t": "2 501-9 000"
+    },
+    {
+     "t": "1.20"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "1.80"
+    }
+   ],
+   [
+    {
+     "t": "9 001-25 000"
+    },
+    {
+     "t": "1.50"
+    },
+    {
+     "t": "1.80"
+    },
+    {
+     "t": "2.80"
+    }
+   ],
+   [
+    {
+     "t": "25 001-75 kV"
+    },
+    {
+     "t": "1.80"
+    },
+    {
+     "t": "2.50"
+    },
+    {
+     "t": "3.00"
+    }
+   ],
+   [
+    {
+     "t": "más de 75 kV"
+    },
+    {
+     "t": "2.50"
+    },
+    {
+     "t": "3.00"
+    },
+    {
+     "t": "3.70"
+    }
+   ]
+  ],
+  "notes": [
+   "Donde las condiciones son las siguientes:",
+   "1. Partes vivas expuestas en un lado y no activas o conectadas a tierra en el otro lado del espacio de trabajo, o partes vivas expuestas a ambos lados protegidas eficazmente por materiales aislantes.",
+   "2. Partes vivas expuestas en un lado del espacio de trabajo y partes conectadas a tierra en el otro lado del espacio de trabajo. Las paredes de concreto, tabique o azulejo se consideran superficies conectadas a tierra.",
+   "3. Partes vivas expuestas en ambos lados del espacio de trabajo."
+  ]
+ },
+ "110-34(e)": {
+  "verificada": "2026-08-12",
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Tensión entre fases (volts)"
+    },
+    {
+     "t": "Altura (metros)"
+    }
+   ],
+   [
+    {
+     "t": "601-7500"
+    },
+    {
+     "t": "2.80"
+    }
+   ],
+   [
+    {
+     "t": "7501-35 000"
+    },
+    {
+     "t": "2.90"
+    }
+   ],
+   [
+    {
+     "t": "Más de 35 000"
+    },
+    {
+     "t": "2.90+ (0.01 por cada kV arriba de 35 000 volts)"
+    }
+   ]
+  ],
+  "notes": []
+ },
+ "210-2": {
+  "verificada": "2026-08-12"
+ },
+ "210-21(b)(3)": {
+  "verificada": "2026-08-12"
+ },
+ "220-44": {
+  "verificada": "2026-08-12"
+ },
+ "220-54": {
+  "verificada": "2026-08-12"
+ },
+ "220-56": {
+  "verificada": "2026-08-12"
+ },
+ "220-84": {
+  "verificada": "2026-08-12"
  }
 }
