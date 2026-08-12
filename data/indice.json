@@ -87063,10 +87063,66 @@
   "chapter": 9,
   "page": 712
  },
+ "922-16(a)": {
+  "kind": "inciso",
+  "id": "922-16(a)",
+  "title": "Que los circuitos ocupen lados opuestos de la estructura.",
+  "article": 922,
+  "chapter": 9,
+  "page": 712
+ },
+ "922-16(b)": {
+  "kind": "inciso",
+  "id": "922-16(b)",
+  "title": "En líneas construidas con crucetas voladas o soportadas en sus dos extremos, los",
+  "article": 922,
+  "chapter": 9,
+  "page": 712
+ },
+ "922-16(c)": {
+  "kind": "inciso",
+  "id": "922-16(c)",
+  "title": "Los conductores de tensión menor deben ocupar las posiciones más próximas a la e",
+  "article": 922,
+  "chapter": 9,
+  "page": 712
+ },
+ "922-16(d)": {
+  "kind": "inciso",
+  "id": "922-16(d)",
+  "title": "Uno de los dos circuitos de comunicación para la operación de líneas eléctricas ",
+  "article": 922,
+  "chapter": 9,
+  "page": 712
+ },
  "922-17": {
   "kind": "seccion",
   "id": "922-17",
   "title": "Espaciamiento entre conductores soportados en bastidores verticales",
+  "article": 922,
+  "chapter": 9,
+  "page": 712
+ },
+ "922-17(a)": {
+  "kind": "inciso",
+  "id": "922-17(a)",
+  "title": "La tensión máxima entre conductores no debe ser mayor que 750 V, excepto cuando ",
+  "article": 922,
+  "chapter": 9,
+  "page": 712
+ },
+ "922-17(b)": {
+  "kind": "inciso",
+  "id": "922-17(b)",
+  "title": "Todos los conductores deben ser del mismo material.",
+  "article": 922,
+  "chapter": 9,
+  "page": 712
+ },
+ "922-17(c)": {
+  "kind": "inciso",
+  "id": "922-17(c)",
+  "title": "La separación vertical entre conductores no debe ser menor que la siguiente: Lon",
   "article": 922,
   "chapter": 9,
   "page": 712

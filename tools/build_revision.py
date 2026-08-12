@@ -82,11 +82,7 @@ el número y la página ya rellenados.
 
 ## Lo que falta
 
-- Las tablas que siguen listadas arriba. Las tres grandes que quedaron al final
-  —`400-4` (132×14, cuatro páginas), `402-3` (34×9) y `922-15(a)`— son las más
-  laboriosas. La `922-15(a)` está peor de lo que indica su nota: se tragó un bloque
-  entero de texto del artículo como si fuera una nota al pie y arrastró además la
-  tabla siguiente por debajo.
+- Las tablas que siguen listadas arriba.
 - Un repaso rápido a las que **no** están señaladas. Nunca se han contrastado contra
   el PDF; que la reconstrucción saliera limpia no garantiza que sea fiel, y una
   tabla equivocada que *parece* correcta es la más peligrosa de todas.
@@ -108,6 +104,10 @@ def fila(t, citas):
 
 
 def tabla_md(items):
+    # Una sección vacía es una buena noticia, no una tabla sin filas: el
+    # encabezado suelto se lee como si faltaran datos.
+    if not items:
+        return 'Ninguna: ya están todas contrastadas contra el PDF.'
     cab = '| | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |\n'
     cab += '|---|---|---|---|---|---|---|---|\n'
     return cab + '\n'.join(fila(t, c) for t, c in items)

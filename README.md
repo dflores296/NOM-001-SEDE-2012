@@ -35,14 +35,14 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 |---|---|
 | Artículos | 151 |
 | Secciones | 2 897 |
-| Incisos | 8 279 |
-| Notas / Excepciones | 779 / 981 |
+| Incisos | 8 286 |
+| Notas / Excepciones | 780 / 981 |
 | Definiciones | 185 |
-| Referencias enlazadas | 4 647 |
+| Referencias enlazadas | 4 650 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 99.96 % |
 | Tablas reconstruidas | 218 |
-| Tablas de alta confianza | 153 |
+| Tablas de alta confianza | 177 |
 
 ## El identificador canónico
 
@@ -169,7 +169,14 @@ rectángulos vectoriales:
 **Esto es aproximado y se publica como tal.** Cada tabla lleva una calidad
 estimada; las que no llegan a 0.80 salen marcadas en el sitio con un aviso para
 contrastar contra el PDF, y se listan en `data/tablas_por_revisar.json`. Es
-preferible señalar la duda que presentar 209 tablas con la misma confianza.
+preferible señalar la duda que presentar 218 tablas con la misma confianza.
+
+Veinticinco ya se contrastaron celda por celda contra el PDF y su versión
+corregida vive en `data/tablas_revisadas.json`, que se aplica encima de lo
+reconstruido —ver `REVISION-TABLAS.md`—. Esa corrección a mano incluye dónde
+empieza y termina la tabla: la 922-15(a) se llevaba dentro dos secciones
+enteras del artículo 922, y la 400-4 dejaba fuera sus quince notas, que
+acababan pegadas al texto de 400-5(c).
 
 Sigue en pie el atajo para mejorarlas: el PDF no es un documento nativo, es una
 impresión de Chrome de `dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha

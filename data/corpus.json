@@ -44362,7 +44362,7 @@
        "label": "c",
        "kind": "alpha",
        "level": 1,
-       "text": "Bajo supervisión de ingeniería, se permitirá que las ampacidades del conductor sean calculadas de acuerdo con 310-15(c). 1 Ver la Nota 10. 2 La cubierta exterior requerida en algunos cables de conductores individuales puede ser integrada con el aislamiento. 3 Todos los tipos de la Tabla 400-4 deben ser conductores individuales torcidos, excepto para los tipos HPN, SP-1, SP-2, SP-3, SPE-1, SPE-2, SPE-3, SPT-1, SPT-2, STP-3, TPT, NISP-1, NISP-2, NISPT-1, NISPT-2, NISPE-1, NISPE-2 y las versiones de cables paralelos de tres conductores de los cables SRD, SRDE y SRDT. 4 Se permitirán cables tipo TPT, TS y TST en tramos que no excedan los 2.50 metros cuando vayan unidos directamente o mediante un tipo de clavija de conexión especial a aparatos portátiles de 50 watts nominales o menos y de tal naturaleza que resulte esencial una gran flexibilidad del cordón. 5 Como sustituto del trenzado interno se permitirá utilizar cintas rellenas de hule o de tela barnizada. 6 En los escenarios de los teatros, en los garajes y en otros lugares donde esta NOM autorice cordones flexibles, se permitirá el uso de cables tipo G, G-GC, S, SC, SCE, SCT, SE, SEO, SEOO, SO, SOO, ST, STO, STOO, PPE y W. 7 Los cables móviles de elevadores para circuitos de control y señalización, deben incluir rellenos no metálicos para mantener su forma concéntrica. Los cables deben tener elementos de soporte de acero como exige 620-41 para la suspensión. En lugares sometidos a humedad excesiva, vapores o gases corrosivos, se permitirá utilizar elementos de soporte de otros materiales. Cuando se utilicen elementos de soporte de acero, deben ir rectos a través del centro del ensamble del cable y no deben cablearse con los hilos de cobre de los conductores. Además de los conductores utilizados para circuitos de control y señalización, se permitirá que los cables para elevadores tipos E, EO, ETP y ETT lleven incorporados uno o más pares telefónicos con tamaño o designación de 0.519 mm2 (20 AWG), uno o más cables coaxiales o una o más fibras ópticas. Se permitirá que los pares conductores con tamaño o designación de 0.519 mm2 (20 AWG) estén cubiertos con un blindaje adecuado para circuitos de comunicaciones telefónicas, de audio o de alta frecuencia; los cables coaxiales consisten en un conductor central, un aislamiento y un blindaje para usar en circuitos de comunicaciones para vídeo o radiofrecuencia. La fibra óptica debe ir recubierta adecuadamente con un termoplástico retardante de la flama. El aislamiento de los conductores debe ser hule o termoplástico, de un espesor no menor al especificado para los demás conductores de ese tipo particular de cable. La armadura metálica debe tener su propio recubrimiento protector. Cuando se utilicen, se permitirá que estos componentes vayan incorporados en cualquier capa del ensamble del cable, pero no deben ir en línea recta a través del centro del ensamble. 8 El tercer conductor en el tipo HPN sólo se debe utilizar como un conductor de puesta a tierra de los equipos. El aislamiento del conductor de puesta a tierra de equipos para los tipos SPE-1, SPE-2, SPE-3, SPT-1, SPT-2, SPT-3, NISPT-1, NISPT-2, NISPE.10 y NISPE-2 se permitirá que sea un polímero termofijo. 9 Los conductores individuales de todos los cordones, excepto los de los cordones resistentes al calor, deben llevar aislamiento de termoplástico o termofijo excepto que el conductor de puesta a tierra de los equipos, cuando se utilice, debe cumplir lo establecido en 400-23 (b). 10 Cuando la tensión entre dos conductores cuales quiera sea mayor de 300 volts pero no exceda los 600 volts, los cordones flexibles con tamaño o designación de 5.26 mm2 (10 AWG) y de espesor como mínimo, a menos que se utilicen cordones tipo S, SE, SEO, SEOO, menores deben tener sus conductores individuales con aislamiento termoplástico o termofijo de 1.14 mm2 SO, SOO, ST, STO o STOO. 11 Se permitirá que los aislamientos y recubrimientos exteriores que cumplan los requisitos de retardante de la flama, baja emisión de humos y baja emisión de gas ácido halogenado y que estén así aprobados tengan la con el sufijo LS. 12 Los cables de elevadores en tamaño o designación de 0.519 mm2 (20 AWG) hasta 2.08 mm2 (14 AWG) son de 300 volts nominales y los de 5.26 mm2 (10 AWG) hasta 33.6 mm2 (2 AWG) son de 600 volts nominales. El cable de 3.31 mm2 (12 AWG) está especificado para 300 volts nominales con un aislamiento de 0.76 milímetros de espesor y para de 600 volts con un aislamiento de 1.14 milímetros de espesor. 13 El tamaño o designación del conductor para los cables tipo EV, EVJ, EVE, EVJE, EVT y EVJT se aplica solamente para circuitos de potencia no limitada. Los conductores para circuitos de potencia limitada (de datos, señalización o comunicaciones) se pueden ampliar más allá del intervalo del tamaño o designación AWG establecido. Todos los conductores deben estar aislados para el mismo valor de tensión nominal del cable. 14 Entre paréntesis se indica el espesor del aislamiento de los cables de nylon tipo EV, EVJ, EVE, EVJE, EVT y EVJT. 15 Se permitirá que los cordones que cumplen con los requisitos para cordones en exteriores y que están aprobados como tales, se designen como resistentes al agua y a la intemperie con el sufijo \"W\" después de la designación del tipo de código. Los cordones con el sufijo \"W\" son adecuados para uso en lugares mojados y son resistentes a la luz del sol. 1 Las ampacidades bajo la columna D se permitirán para cables de un solo conductor tipo SC, SCE, SCT, PPE y W sólo cuando los conductores individuales no estén instalados en canalizaciones ni estén en contacto físico entre sí, excepto en tramos no mayores a 60 centímetros cuando atraviesen la pared de un envolvente. 2 Las ampacidades bajo la columna E se aplican a cables de 2 conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo dos conductores conduzcan corriente. 3 Las ampacidades bajo la columna F se aplican a cables de tres conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo tres conductores conduzcan corriente.",
+       "text": "Bajo supervisión de ingeniería, se permitirá que las ampacidades del conductor sean calculadas de acuerdo con 310-15(c). 1 Las ampacidades bajo la columna D se permitirán para cables de un solo conductor tipo SC, SCE, SCT, PPE y W sólo cuando los conductores individuales no estén instalados en canalizaciones ni estén en contacto físico entre sí, excepto en tramos no mayores a 60 centímetros cuando atraviesen la pared de un envolvente. 2 Las ampacidades bajo la columna E se aplican a cables de 2 conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo dos conductores conduzcan corriente. 3 Las ampacidades bajo la columna F se aplican a cables de tres conductores y otros cables multiconductores conectados a equipos de utilización, de modo que sólo tres conductores conduzcan corriente.",
        "children": [],
        "notes": [],
        "exceptions": [],
@@ -45004,15 +45004,13 @@
     "310-15(c)",
     "368-56",
     "368-56(b)",
-    "400-23",
     "400-4",
     "400-5(a)(1)",
     "400-5(a)(2)",
     "400-5(a)(3)",
     "400-7",
     "400-7(a)",
-    "400-7(a)(3)",
-    "620-41"
+    "400-7(a)(3)"
    ]
   },
   {
@@ -45075,14 +45073,20 @@
      "title": "Ampacidad permisible de cables para artefactos",
      "part": null,
      "page": 249,
-     "text": "La ampacidad permisible de los cables para artefactos debe ser como se",
+     "text": "La ampacidad permisible de los cables para artefactos debe ser como se especifica en la Tabla 402-5. No se debe utilizar ningún conductor en condiciones tales que su temperatura de operación exceda la especificada en la Tabla 402-3 para el tipo de aislamiento involucrado.",
      "children": [],
-     "notes": [],
+     "notes": [
+      {
+       "label": "NOTA",
+       "text": "Para los límites de temperatura de los conductores, véase 310-15(a)(3).",
+       "seq": 3
+      }
+     ],
      "exceptions": [],
      "tables": [
       {
        "id": "402-5",
-       "seq": 3
+       "seq": 4
       }
      ]
     },
@@ -45203,8 +45207,10 @@
    ],
    "refs": [
     "240-5",
+    "310-15(a)(3)",
     "400-22(a)",
-    "402-3"
+    "402-3",
+    "402-5"
    ]
   },
   {
@@ -135796,8 +135802,49 @@
      "title": "Separación entre circuitos de diferente tensión colocados en la misma cruceta",
      "part": "B",
      "page": 712,
-     "text": "Los circuitos eléctricos con tensión",
-     "children": [],
+     "text": "Los circuitos eléctricos con tensión hasta de 50 kilovolts entre conductores, pueden colocarse en la misma cruceta, con circuitos de tensión inmediata superior o inferior, siempre que se cumpla con una o más de las condiciones siguientes:",
+     "children": [
+      {
+       "id": "922-16(a)",
+       "label": "a",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Que los circuitos ocupen lados opuestos de la estructura.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "922-16(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "En líneas construidas con crucetas voladas o soportadas en sus dos extremos, los circuitos deben estar separados por una distancia mínima requerida por el espacio para subir, estipulado en 922-19, para el circuito de tensión mayor.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "922-16(c)",
+       "label": "c",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Los conductores de tensión menor deben ocupar las posiciones más próximas a la estructura, y los de tensión mayor las posiciones más distantes.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "922-16(d)",
+       "label": "d",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Uno de los dos circuitos de comunicación para la operación de líneas eléctricas y el otro un circuito eléctrico de menos de 8.7 kilovolts, siempre que los dos se instalen de acuerdo con los incisos (a) o (b) anteriores y pertenezcan a la misma empresa.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      }
+     ],
      "notes": [],
      "exceptions": []
     },
@@ -135806,16 +135853,47 @@
      "title": "Espaciamiento entre conductores soportados en bastidores verticales",
      "part": "B",
      "page": 712,
-     "text": "Los conductores pueden instalarse a una",
-     "children": [],
-     "notes": [],
-     "exceptions": [
+     "text": "Los conductores pueden instalarse a una separación vertical menor que la indicada en 922-13, cuando estén colocados en bastidores verticales o en ménsulas separadas colocadas verticalmente, que estén firmemente sujetos a un lado de la estructura y se cumpla con las siguientes condiciones:",
+     "children": [
       {
-       "label": "Excepción",
-       "text": "Si los conductores tienen separadores intermedios adecuados, el espaciamiento vertical puede ser como mínimo de 10 centímetros en cualquier caso.",
-       "seq": 13
+       "id": "922-17(a)",
+       "label": "a",
+       "kind": "alpha",
+       "level": 1,
+       "text": "La tensión máxima entre conductores no debe ser mayor que 750 V, excepto cuando se trate de cables aislados de los tipos descritos en 922-4(b)(1) y (2), los cuales pueden ser de cualquier tensión.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "922-17(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Todos los conductores deben ser del mismo material.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "922-17(c)",
+       "label": "c",
+       "kind": "alpha",
+       "level": 1,
+       "text": "La separación vertical entre conductores no debe ser menor que la siguiente: Longitud del claro (m) Separación (cm) Hasta 45 10 Más de 45 a 60 15 Más de 60 a 75 20 Más de 75 a 90 30",
+       "children": [],
+       "notes": [],
+       "exceptions": [
+        {
+         "label": "Excepción",
+         "text": "Si los conductores tienen separadores intermedios adecuados, el espaciamiento vertical puede ser como mínimo de 10 centímetros en cualquier caso.",
+         "seq": 13
+        }
+       ]
       }
-     ]
+     ],
+     "notes": [],
+     "exceptions": []
     },
     {
      "id": "922-18",
