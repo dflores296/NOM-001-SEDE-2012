@@ -53972,7 +53972,7 @@
   ],
   "page": 694,
   "cols": 9,
-  "header_rows": 4,
+  "header_rows": 2,
   "intro": "",
   "rows": [
    [
@@ -54006,34 +54006,7 @@
      "t": "BLX"
     },
     {
-     "t": "BMU,"
-    }
-   ],
-   [
-    {
-     "t": "",
-     "cs": 2
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "BLU"
+     "t": "BMU, BLU"
     }
    ],
    [
@@ -54678,7 +54651,11 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "Una \"N\" en la tabla indica que el tipo de cable no se permite sea instalado en la aplicación. Una \"S *\" indica que el cable se permite sea instalado en la aplicación, sujeto a las limitaciones descritas en 830-113.",
+   "Parte E del Artículo 830 cubre los métodos de instalación dentro de los edificios. Esta tabla contiene las aplicaciones aprobadas de cables de comunicaciones de banda ancha para su uso en edificios. La definición del punto de entrada se encuentra en el Artículo 830-2. Cables de entrada de comunicaciones de banda ancha que no provengan de un conduit metálico pesado o conduit metálico semipesado no se consideran que están dentro del edificio.",
+   "Para más información sobre las restricciones de la instalación de cables de comunicaciones de banda ancha en ductos prefabricados ver 830-113(b)."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -54691,12 +54668,13 @@
    {
     "page": 695,
     "y0": 0.75,
-    "y1": 553.57,
+    "y1": 622.0,
     "id": "830-154(a)",
     "article": 830
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "921-25(b)",

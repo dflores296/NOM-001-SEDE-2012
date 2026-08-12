@@ -34916,5 +34916,708 @@
     "article": null
    }
   ]
+ },
+ "830-154(a)": {
+  "verificada": "2026-08-12",
+  "title": "Aplicaciones de cables de comunicaciones de banda ancha para su uso en edificios",
+  "cols": 9,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Aplicaciones",
+     "cs": 2,
+     "rs": 2
+    },
+    {
+     "t": "Tipos de cable",
+     "cs": 7
+    }
+   ],
+   [
+    {
+     "t": "BLP"
+    },
+    {
+     "t": "BLR"
+    },
+    {
+     "t": "BL"
+    },
+    {
+     "t": "BMR"
+    },
+    {
+     "t": "BM"
+    },
+    {
+     "t": "BLX"
+    },
+    {
+     "t": "BMU, BLU"
+    }
+   ],
+   [
+    {
+     "t": "En Ductos prefabricados como se describen en 300-22(b)",
+     "rs": 2
+    },
+    {
+     "t": "En ductos prefabricados como se describe en 300-22(b)"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas que cumplen con 300-22(b)"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En otros espacios usados para aire ambiental como se describe en 300- 22(c)",
+     "rs": 5
+    },
+    {
+     "t": "En otros espacios usados para aire ambiental (Plenums) como se describe en 300-22(c)"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas que cumplen con 300-22(c)"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas portacables metálicas abiertas"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas con la base de metal y cubiertas de metal"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En pozos verticales",
+     "rs": 7
+    },
+    {
+     "t": "En tendidos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones metálicas"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En espacios a prueba de fuego"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en pozos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En ensambles de cable para ruteadores en pozos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En unidades de vivienda de una y dos familias"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Espacios dentro de edificios que no sean para manejo de aire y pozos verticales",
+     "rs": 10
+    },
+    {
+     "t": "General"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En unidades de vivienda de una y dos familias"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "Soportados por charolas portacables"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En conduit metálico pesado y conduit metálico semipesado"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    }
+   ],
+   [
+    {
+     "t": "En alguna canalización reconocida en el Capítulo 3"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en plenums"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones en pozos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En canalizaciones para comunicaciones de propósito general"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En ensambles de cable para ruteadores en pozos verticales"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ],
+   [
+    {
+     "t": "En ensambles de cable para ruteadores de propósito general"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "S*"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    },
+    {
+     "t": "N"
+    }
+   ]
+  ],
+  "notes": [
+   "Una \"N\" en la tabla indica que el tipo de cable no se permite sea instalado en la aplicación. Una \"S *\" indica que el cable se permite sea instalado en la aplicación, sujeto a las limitaciones descritas en 830-113.",
+   "Parte E del Artículo 830 cubre los métodos de instalación dentro de los edificios. Esta tabla contiene las aplicaciones aprobadas de cables de comunicaciones de banda ancha para su uso en edificios. La definición del punto de entrada se encuentra en el Artículo 830-2. Cables de entrada de comunicaciones de banda ancha que no provengan de un conduit metálico pesado o conduit metálico semipesado no se consideran que están dentro del edificio.",
+   "Para más información sobre las restricciones de la instalación de cables de comunicaciones de banda ancha en ductos prefabricados ver 830-113(b)."
+  ],
+  "regions": [
+   {
+    "page": 694,
+    "y0": 718.8525390625,
+    "y1": 780.25,
+    "id": "830-154(a)",
+    "article": 830
+   },
+   {
+    "page": 695,
+    "y0": 0.75,
+    "y1": 622.0,
+    "id": "830-154(a)",
+    "article": 830
+   }
+  ]
  }
 }
