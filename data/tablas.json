@@ -37800,16 +37800,8 @@
   "rows": [
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
-     "t": "Motores de 27.50 centímetros de diámetro",
-     "cs": 4
-    },
-    {
-     "t": "o menos",
-     "cs": 4
+     "t": "Motores de 27.50 centímetros de diámetro o menos",
+     "cs": 10
     }
    ],
    [
@@ -37823,11 +37815,8 @@
      "rs": 2
     },
     {
-     "t": "Dimensión mínima de la abertura cubierta",
-     "cs": 3
-    },
-    {
-     "t": "de la"
+     "t": "Dimensión mínima de la abertura de la cubierta",
+     "cs": 4
     },
     {
      "t": "Volumen mínimo utilizable",
@@ -37836,18 +37825,12 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "cm",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 4
     },
     {
      "t": "cm3",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -37855,22 +37838,16 @@
      "t": "0.75 y menores"
     },
     {
-     "t": "menoresa 1 y",
+     "t": "1 y menoresa",
      "cs": 2
-    },
-    {
-     "t": ""
     },
     {
      "t": "4.1",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 4
     },
     {
      "t": "170",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -37878,22 +37855,16 @@
      "t": "1.12, 1.50 y 2.24"
     },
     {
-     "t": "3b 1½, 2, y",
+     "t": "1½, 2, y 3b",
      "cs": 2
-    },
-    {
-     "t": ""
     },
     {
      "t": "4.5",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 4
     },
     {
      "t": "275",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -37905,18 +37876,12 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "5.0",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 4
     },
     {
      "t": "365",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -37924,24 +37889,16 @@
      "t": "7.50 y 11.2"
     },
     {
-     "t": "10"
-    },
-    {
-     "t": "y 15"
-    },
-    {
-     "t": ""
+     "t": "10 y 15",
+     "cs": 2
     },
     {
      "t": "6.5",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 4
     },
     {
      "t": "595",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -37981,11 +37938,8 @@
      "rs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "230 volts",
-     "cs": 3
+     "cs": 4
     },
     {
      "t": "460 volts",
@@ -38192,12 +38146,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 3
-    },
-    {
      "t": "Motores de corriente continua",
-     "cs": 7
+     "cs": 10
     }
    ],
    [
@@ -38210,12 +38160,8 @@
      "cs": 3
     },
     {
-     "t": "Volumen",
-     "cs": 3
-    },
-    {
-     "t": "útil mínimo",
-     "cs": 2
+     "t": "Volumen útil mínimo",
+     "cs": 5
     }
    ],
    [
@@ -38224,11 +38170,8 @@
      "cs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "cm",
-     "cs": 2
+     "cs": 3
     },
     {
      "t": "cm3",
@@ -38238,77 +38181,109 @@
    [
     {
      "t": "68",
+     "cs": 2
+    },
+    {
+     "t": "6.5",
      "cs": 3
     },
     {
-     "t": "6.5 425",
-     "cs": 7
+     "t": "425",
+     "cs": 5
     }
    ],
    [
     {
      "t": "105",
+     "cs": 2
+    },
+    {
+     "t": "8.4",
      "cs": 3
     },
     {
-     "t": "8.4 900",
-     "cs": 7
+     "t": "900",
+     "cs": 5
     }
    ],
    [
     {
      "t": "165",
+     "cs": 2
+    },
+    {
+     "t": "10",
      "cs": 3
     },
     {
-     "t": "10 1640",
-     "cs": 7
+     "t": "1640",
+     "cs": 5
     }
    ],
    [
     {
      "t": "240",
+     "cs": 2
+    },
+    {
+     "t": "12.5",
      "cs": 3
     },
     {
-     "t": "12.5 2950",
-     "cs": 7
+     "t": "2950",
+     "cs": 5
     }
    ],
    [
     {
      "t": "375",
+     "cs": 2
+    },
+    {
+     "t": "15",
      "cs": 3
     },
     {
-     "t": "15 5410",
-     "cs": 7
+     "t": "5410",
+     "cs": 5
     }
    ],
    [
     {
      "t": "600",
+     "cs": 2
+    },
+    {
+     "t": "17.5",
      "cs": 3
     },
     {
-     "t": "17.5 9840",
-     "cs": 7
+     "t": "9840",
+     "cs": 5
     }
    ],
    [
     {
      "t": "900",
+     "cs": 2
+    },
+    {
+     "t": "20",
      "cs": 3
     },
     {
-     "t": "20 18040",
-     "cs": 7
+     "t": "18040",
+     "cs": 5
     }
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
-  "quality": 0.91,
+  "notes": [
+   "Se permitirá no tener en cuenta las puntas auxiliares para elementos tales como frenos, termostatos, calentadores de ambiente, campos de excitación, si su área portadora de corriente no excede el 25 por ciento del área portadora de corriente de las terminales de fuerza de la máquina.",
+   "a Para motores de 1 CP nominal y menores, con la caja de las terminales parcial o totalmente integrada con el chasis o extremo blindado escudo final del motor, el volumen de la caja de terminales no debe ser menor a 18.00 cm3 por cada conexión entre alambres. No se especifica la dimensión mínima de la abertura de la cubierta.",
+   "b Para los motores de 1 ½, 2 y 3 CP nominales, con la caja de las terminales parcial o totalmente integrada en el chasis o escudo final del motor, el volumen de la caja de terminales no debe ser menor a 23.00 cm3 por cada conexión entre alambres. No se especifica la dimensión mínima de la abertura de la cubierta."
+  ],
+  "quality": 1.0,
   "regions": [
    {
     "page": 302,
@@ -38320,12 +38295,13 @@
    {
     "page": 303,
     "y0": 16.52,
-    "y1": 31.52,
+    "y1": 120.0,
     "id": "430-12(b)",
     "article": 430
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "430-12(c)(1)",
