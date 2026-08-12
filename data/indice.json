@@ -90542,45 +90542,5 @@
   "article": 924,
   "chapter": 9,
   "page": 742
- },
- "924-24(9)(1)": {
-  "kind": "inciso",
-  "id": "924-24(9)(1)",
-  "title": "Estos valores de resistencia son válidos solamente para los parámetros indicados",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
- },
- "924-24(9)(2)": {
-  "kind": "inciso",
-  "id": "924-24(9)(2)",
-  "title": "Fórmula para el cambio de temperatura: R2 = R1 [1 + (T2 - 75)], donde cu = 0.003",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
- },
- "924-24(9)(3)": {
-  "kind": "inciso",
-  "id": "924-24(9)(3)",
-  "title": "Los conductores con cableado compacto o comprimido tienen aproximadamente un 9% ",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
- },
- "924-24(9)(4)": {
-  "kind": "inciso",
-  "id": "924-24(9)(4)",
-  "title": "Las conductividades usadas, según la IACS: cobre desnudo = 100%, aluminio = 61%.",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
- },
- "924-24(9)(5)": {
-  "kind": "inciso",
-  "id": "924-24(9)(5)",
-  "title": "El cableado de Clase B está aprobado también como sólido para algunos tamaños",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
  }
 }

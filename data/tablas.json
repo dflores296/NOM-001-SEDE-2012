@@ -67911,7 +67911,7 @@
   "encabezado_dudoso": false
  },
  {
-  "id": "5(A)",
+  "id": "5A",
   "title": "Tabla 5 A.- Dimensiones y áreas nominales de cables de aluminio tipo XHHW y de cobre compacto",
   "sin_numero": false,
   "informativa": false,
@@ -68942,7 +68942,7 @@
     "page": 750,
     "y0": 222.5,
     "y1": 529.44,
-    "id": "5(A)",
+    "id": "5A",
     "article": null
    }
   ],
@@ -68974,18 +68974,14 @@
      "rs": 3
     },
     {
-     "t": ""
-    },
-    {
      "t": "Conductores",
-     "cs": 3
+     "cs": 4,
+     "rs": 1
     },
     {
-     "t": "Resistencia en corriente 75 °C",
-     "cs": 2
-    },
-    {
-     "t": "continua a"
+     "t": "Resistencia en corriente continua a 75 °C",
+     "cs": 3,
+     "rs": 1
     }
    ],
    [
@@ -70209,7 +70205,13 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "(1) Estos valores de resistencia son válidos solamente para los parámetros indicados. Al usar conductores con hilos recubiertos, de distinto tipo de trenzado y especialmente a otras temperaturas, cambia la resistencia.",
+   "(2) Fórmula para el cambio de temperatura: R2 = R1 [1 + (T2 - 75)], donde cu = 0.00323, AL = 0.00330 a 75° C.",
+   "(3) Los conductores con cableado compacto o comprimido tienen aproximadamente un 9% y un 3%, respectivamente, menos de diámetro del conductor desnudo que los conductores mostrados. Para las dimensiones reales de los cables compactos, véase la Tabla 5A.",
+   "(4) Las conductividades usadas, según la IACS: cobre desnudo = 100%, aluminio = 61%.",
+   "(5) El cableado de Clase B está aprobado también como sólido para algunos tamaños. Su área y diámetro total son los de la circunferencia circunscrita."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -70222,12 +70224,13 @@
    {
     "page": 751,
     "y0": 24.0,
-    "y1": 353.93,
+    "y1": 445.0,
     "id": "8",
     "article": null
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "9",
