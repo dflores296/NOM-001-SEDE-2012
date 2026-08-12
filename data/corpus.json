@@ -136632,38 +136632,7 @@
      "part": "C",
      "page": 717,
      "text": "La separación vertical entre conductores que se crucen o adyacentes, soportados en diferentes estructuras, debe ser cuando menos la indicada en la Tabla 922-33. Para líneas en el nivel superior e inferior con tensiones de 22 kilovolts hasta 400 kilovolts, la separación total es igual al producto de la suma de 1.20 metros (distancia para 22 kilovolts de Tabla 922-33) más 1.0 cm/kV por la suma de las diferencias de la tensión de cada línea en exceso de 22 kilovolts.",
-     "children": [
-      {
-       "id": "922-33(1)",
-       "label": "1",
-       "kind": "paren",
-       "level": 1,
-       "text": "Las tensiones son entre fases para circuitos no conectados efectivamente a tierra y de fase a tierra para circuitos efectivamente conectados a tierra y para otros circuitos donde las fallas a tierra sean aisladas con interruptor automático.",
-       "children": [],
-       "notes": [],
-       "exceptions": []
-      },
-      {
-       "id": "922-33(2)",
-       "label": "2",
-       "kind": "paren",
-       "level": 1,
-       "text": "Los conductores neutros a que se refiere esta columna (o renglón) son los descritos en la sección 922-4(d)",
-       "children": [],
-       "notes": [],
-       "exceptions": []
-      },
-      {
-       "id": "922-33(3)",
-       "label": "3",
-       "kind": "paren",
-       "level": 1,
-       "text": "Los conductores suministradores de trolebuses y trenes de más de 750 volts, deben tener una separación mínima de 1.80 metros.",
-       "children": [],
-       "notes": [],
-       "exceptions": []
-      }
-     ],
+     "children": [],
      "notes": [],
      "exceptions": [],
      "tables": [
