@@ -394,14 +394,15 @@ figure.tabla:hover .anchor { opacity: 1; }
 
 /* La frase que en el PDF va fusionada a todo lo ancho, encima del encabezado.
    Se presenta pegada a la tabla para que se lea como parte de ella. */
-.tabla-intro {
-  margin: 0; padding: 0.5rem 0.7rem; max-width: 44rem;
+/* `p.tabla-intro` y no `.tabla-intro`: `.sec p` es más específico que una
+   clase sola y le ganaba los márgenes, así que el bloque no se centraba. */
+p.tabla-intro {
+  margin: 0 auto 0.6rem; padding: 0.5rem 0.7rem; max-width: 46rem;
   font-size: 0.82rem; color: var(--text-dim);
   background: var(--bg-soft);
-  border: 1px solid var(--rejilla); border-bottom: 0;
-  border-radius: var(--radius) var(--radius) 0 0;
+  border: 1px solid var(--rejilla);
+  border-radius: var(--radius);
 }
-.tabla-intro + .tabla-scroll { border-top-left-radius: 0; border-top-right-radius: 0; }
 .tabla-scroll tbody tr:hover { background: var(--accent-soft); }
 
 .tabla-aviso {
