@@ -16,7 +16,7 @@ con varios valores juntos) · **rejilla** de dónde salieron las columnas: `dibu
 son las líneas del PDF, `huecos` son los espacios entre palabras, que es mucho menos
 fiable y no recupera celdas combinadas.
 
-**28 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**29 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 

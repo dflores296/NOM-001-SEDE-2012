@@ -8386,11 +8386,8 @@
      "rs": 2
     },
     {
-     "t": ""
-    },
-    {
      "t": "Temperatura nominal del conductor [Véase la tabla 310-104(a)]",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -8429,7 +8426,7 @@
      "t": "TIPOS RHW, THHW, THHW-LS, THW, THW-LS, THWN, XHHW, USE, ZW"
     },
     {
-     "t": "TIPOS TBS, SA, SIS, FEP, FEPB, MI, RHH, RHW-2, THHN, THHW, THHW- LS, THW-2, THWN-2, USE-2, XHH, XHHW, XHHW- 2, ZW-2"
+     "t": "TIPOS TBS, SA, SIS, FEP, FEPB, MI, RHH, RHW-2, THHN, THHW, THHW-LS, THW-2, THWN-2, USE-2, XHH, XHHW, XHHW-2, ZW-2"
     },
     {
      "t": "TIPOS UF"
@@ -8443,11 +8440,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "COBRE",
-     "cs": 2
+     "cs": 3
     },
     {
      "t": "ALUMINIO O ALUMINIO RECUBIERTO DE COBRE",
@@ -9256,7 +9250,8 @@
     "id": "310-15(b)(16)",
     "article": 310
    }
-  ]
+  ],
+  "verificada": "2026-08-12"
  },
  {
   "id": "310-15(b)(17)",
