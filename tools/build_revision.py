@@ -16,8 +16,8 @@ SITIO = 'https://dflores296.github.io/NOM-001-SEDE-2012/revision/'
 CABECERA = """# Revisión de tablas — NOM-001-SEDE-2012
 
 Lista de trabajo para contrastar las tablas reconstruidas contra el PDF del DOF.
-Ordenada por **impacto por duda**: cuántas veces la cita la norma, por lo insegura
-que quedó su reconstrucción. Empezar por arriba es lo que más corrige por hora.
+Ordenada por **impacto por duda**: cuánto se apoya la norma en cada tabla, por lo
+insegura que quedó su reconstrucción. Empezar por arriba es lo que más corrige por hora.
 
 La versión navegable, con enlaces a cada tabla, está en
 [/revision]({sitio}).
@@ -26,10 +26,14 @@ La versión navegable, con enlaces a cada tabla, está en
 > REVISION-TABLAS.md`. No editar a mano: los cambios se pierden en la próxima
 > regeneración.
 
-Columnas: **cal.** calidad estimada de la separación en celdas (1.00 = ninguna celda
-con varios valores juntos) · **rejilla** de dónde salieron las columnas: `dibujada`
-son las líneas del PDF, `huecos` son los espacios entre palabras, que es mucho menos
-fiable y no recupera celdas combinadas.
+Columnas: **usos** cuántas veces se apoya la norma en esa tabla · **cal.** calidad
+estimada de la separación en celdas (1.00 = ninguna celda con varios valores juntos)
+· **rejilla** de dónde salieron las columnas: `dibujada` son las líneas del PDF,
+`huecos` son los espacios entre palabras, que es mucho menos fiable y no recupera
+celdas combinadas. Una tabla marcada **enc.** trae la firma de la columna fantasma:
+una celda vacía en el encabezado junto a un título de grupo, que es como se ve una
+columna inventada. La calidad no detecta eso —los valores están perfectos— así que
+esas tablas salían con 1.00 y sin una sola marca.
 """
 
 PIE = """
@@ -55,10 +59,12 @@ Dos cosas que conviene saber antes de empezar:
   y un rango («De 50 001 a 100 000», «127 – 507», «0 – 3.14») es un valor legítimo.
   Varias tablas señaladas resultaron estar perfectas; se marcan verificadas sin
   tocarles un dato.
-- **Y también se queda corta.** Hay tablas peores de lo que dice su nota: las que el
-  PDF no separa con líneas horizontales colapsan todas sus filas en una sola, y eso
-  la métrica no lo ve. Conviene mirar el número de filas contra el PDF, no solo la
-  calidad.
+- **Y también se queda corta.** Hay tablas peores de lo que dice su nota. Las que el
+  PDF no separa con líneas horizontales colapsan todas sus filas en una sola. Y sobre
+  todo: cuando el reparto se inventa una columna, los valores quedan perfectos y la
+  calidad da 1.00, pero el encabezado se corre y cada título de grupo cubre una
+  columna de menos. Eso es lo que marca la columna **enc.**, y es el fallo que tenía
+  la 310-15(b)(16), donde COBRE cubría dos de las tres columnas de cobre.
 
 ## Qué mirar en cada tabla
 
@@ -94,12 +100,13 @@ def truncar(titulo, n=70):
     return t if len(t) <= n else t[:n].rstrip() + '…'
 
 
-def fila(t, citas):
+def fila(t, usos):
     grid = '**huecos**' if t['grid'] == 'huecos' else 'dibujada'
     paginas = ', '.join(str(p) for p in t['pages'])
+    enc = '**sí**' if t.get('encabezado_dudoso') else '—'
     return (
-        f"| [ ] | `{t['id']}` | {truncar(t['title'])} | {paginas} | {citas} | "
-        f"{t['quality']:.2f} | {grid} | {len(t['rows'])}×{t['cols']} |"
+        f"| [ ] | `{t['id']}` | {truncar(t['title'])} | {paginas} | {usos} | "
+        f"{t['quality']:.2f} | {enc} | {grid} | {len(t['rows'])}×{t['cols']} |"
     )
 
 
@@ -108,8 +115,8 @@ def tabla_md(items):
     # encabezado suelto se lee como si faltaran datos.
     if not items:
         return 'Ninguna: ya están todas contrastadas contra el PDF.'
-    cab = '| | Tabla | Título | Pág. PDF | Citas | Cal. | Rejilla | Tamaño |\n'
-    cab += '|---|---|---|---|---|---|---|---|\n'
+    cab = '| | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |\n'
+    cab += '|---|---|---|---|---|---|---|---|---|\n'
     return cab + '\n'.join(fila(t, c) for t, c in items)
 
 
@@ -120,11 +127,10 @@ def main():
     tablas = json.loads((data_dir / 'tablas.json').read_text(encoding='utf-8'))
     grafo = json.loads((data_dir / 'grafo.json').read_text(encoding='utf-8'))
 
-    citas = {}
-    for e in grafo['edges']:
-        if e['to'].startswith('tabla:'):
-            tid = e['to'][6:]
-            citas[tid] = citas.get(tid, 0) + 1
+    # Cuánto se apoya la norma en cada tabla, medido sobre el texto por
+    # build_graph. Contar aristas del grafo se quedaba corto: una cita desnuda
+    # como "250-122" se resuelve antes a la sección del mismo número.
+    uso = grafo.get('uso_tablas', {})
 
     # Las contrastadas a ojo contra el PDF ya no son lista de trabajo.
     verificadas = [t for t in tablas if t.get('verificada')]
@@ -132,12 +138,13 @@ def main():
     for t in tablas:
         if t.get('verificada'):
             continue
-        c = citas.get(t['id'], 0)
+        c = uso.get(t['id'], {}).get('usos', 0)
         q = t['quality']
-        # Misma fórmula que revision.astro: citas * lo dudosa que es, más un
-        # empujón fijo si quedó en una sola columna (eso ya es un fallo grave
-        # aunque nadie la cite).
-        prio = c * (1 - q) + (1 - q) + (3 if t['cols'] < 2 else 0)
+        # Misma fórmula que revision.astro. El riesgo ya no es solo la calidad:
+        # un encabezado con la columna fantasma es un fallo confirmado y la
+        # calidad no lo ve, así que pesa aunque la tabla salga con 1.00.
+        riesgo = (1 - q) + (0.6 if t.get('encabezado_dudoso') else 0)
+        prio = c * riesgo + riesgo + (3 if t['cols'] < 2 else 0)
         info.append((t, c, prio))
 
     criticas = sorted(
@@ -148,15 +155,17 @@ def main():
         key=lambda x: (-x[1], x[0]['quality']),
     )
     confianza = sorted(
-        (x for x in info if x[0]['quality'] >= 0.95 and x[1] >= 4),
+        (x for x in info if x[0]['quality'] >= 0.95
+         and not x[0].get('encabezado_dudoso') and x[1] >= 5),
         key=lambda x: -x[1],
     )
 
     secciones = [
         (
             f'## 1 · Prioridad alta ({len(criticas)})',
-            'Muy citadas y con la reconstrucción insegura. Un error aquí se '
-            'propaga a muchos cálculos.',
+            'Muy usadas y con la reconstrucción insegura: o la calidad las '
+            'señala, o traen la firma de la columna fantasma en el '
+            'encabezado. Un error aquí se propaga a muchos cálculos.',
             criticas,
         ),
         (
@@ -167,7 +176,8 @@ def main():
         ),
         (
             f'## 3 · Verificación de control ({len(confianza)})',
-            'Salieron limpias y son muy citadas. Conviene mirarlas justamente '
+            'Salieron limpias, con el encabezado bien, y son muy usadas. '
+            'Conviene mirarlas justamente '
             'por eso: una tabla equivocada que *parece* correcta es más '
             'peligrosa que una marcada como dudosa. Basta comprobar dos o '
             'tres renglones de cada una.',

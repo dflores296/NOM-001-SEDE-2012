@@ -41100,5 +41100,1102 @@
    "articulo": 250
   }
  ],
- "rotas": []
+ "rotas": [],
+ "uso_tablas": {
+  "110-26(a)(1)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "110-28": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "110-31": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "110-34(a)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "110-34(e)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "210-2": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "210-21(b)(2)": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "210-21(b)(3)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "210-24": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "220-3": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "220-12": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "220-42": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "220-44": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "220-54": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "220-55": {
+   "explicitas": 8,
+   "usos": 8,
+   "ambiguo": true
+  },
+  "220-56": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "220-84": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "220-86": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "220-88": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "220-102": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "220-103": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "225-3": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "225-60": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "225-61": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "230-51(c)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": true
+  },
+  "240-3": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "240-4(g)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "250-3": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "250-66": {
+   "explicitas": 9,
+   "usos": 9,
+   "ambiguo": true
+  },
+  "250-122": {
+   "explicitas": 24,
+   "usos": 24,
+   "ambiguo": true
+  },
+  "300-16(c)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "300-5": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "300-19(a)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "300-50": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "310-15(b)(2)(a)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "310-15(b)(2)(b)": {
+   "explicitas": 1,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "310-15(b)(3)(a)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "310-15(b)(3)(c)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "310-15(b)(7)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "310-15(b)(16)": {
+   "explicitas": 6,
+   "usos": 6,
+   "ambiguo": false
+  },
+  "310-15(b)(17)": {
+   "explicitas": 6,
+   "usos": 7,
+   "ambiguo": false
+  },
+  "310-15(b)(18)": {
+   "explicitas": 0,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "310-15(b)(19)": {
+   "explicitas": 0,
+   "usos": 9,
+   "ambiguo": false
+  },
+  "310-15(b)(20)": {
+   "explicitas": 2,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "310-15(b)(21)": {
+   "explicitas": 0,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "310-60(c)(4)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "310-60(c)(67)": {
+   "explicitas": 5,
+   "usos": 5,
+   "ambiguo": false
+  },
+  "310-60(c)(68)": {
+   "explicitas": 1,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "310-60(c)(69)": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": false
+  },
+  "310-60(c)(70)": {
+   "explicitas": 0,
+   "usos": 5,
+   "ambiguo": false
+  },
+  "310-60(c)(71)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(72)": {
+   "explicitas": 0,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "310-60(c)(73)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(74)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(75)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "310-60(c)(76)": {
+   "explicitas": 0,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "310-60(c)(77)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(78)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(79)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(80)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(81)": {
+   "explicitas": 0,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "310-60(c)(82)": {
+   "explicitas": 0,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "310-60(c)(83)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(84)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(85)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "310-60(c)(86)": {
+   "explicitas": 0,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "310-104(a)": {
+   "explicitas": 18,
+   "usos": 18,
+   "ambiguo": false
+  },
+  "310-104(b)": {
+   "explicitas": 2,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "310-104(c)": {
+   "explicitas": 2,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "310-104(d)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "310-104(e)": {
+   "explicitas": 0,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "310-106(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "312-6(a)": {
+   "explicitas": 11,
+   "usos": 11,
+   "ambiguo": true
+  },
+  "312-6(b)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "314-16(a)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "314-16(b)": {
+   "explicitas": 5,
+   "usos": 5,
+   "ambiguo": true
+  },
+  "326-24": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "326-80": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "326-112": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "326-116": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "344-30(b)(2)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "348-22": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "352-30": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "352-44": {
+   "explicitas": 5,
+   "usos": 5,
+   "ambiguo": true
+  },
+  "354-24": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "355-30": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "355-44": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "360-24(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "360-24(b)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "384-22": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "392-10(a)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "392-22(a)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "392-22(a)(5)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "392-22(a)(6)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "392-22(b)(1)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "392-60(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "396-10(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "400-4": {
+   "explicitas": 22,
+   "usos": 22,
+   "ambiguo": true
+  },
+  "400-5(a)(1)": {
+   "explicitas": 3,
+   "usos": 4,
+   "ambiguo": false
+  },
+  "400-5(a)(2)": {
+   "explicitas": 3,
+   "usos": 4,
+   "ambiguo": false
+  },
+  "400-5(a)(3)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "402-3": {
+   "explicitas": 6,
+   "usos": 6,
+   "ambiguo": true
+  },
+  "402-5": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "408-5": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "409-3": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "430-5": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "430-7(b)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "430-10(b)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "430-12(b)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "430-12(c)(1)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "430-12(c)(2)": {
+   "explicitas": 0,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "430-22(e)": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "430-23(c)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "430-29": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "430-37": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "430-52": {
+   "explicitas": 15,
+   "usos": 15,
+   "ambiguo": true
+  },
+  "430-72(b)": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "430-97": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "430-247": {
+   "explicitas": 9,
+   "usos": 9,
+   "ambiguo": false
+  },
+  "430-248": {
+   "explicitas": 5,
+   "usos": 12,
+   "ambiguo": false
+  },
+  "430-249": {
+   "explicitas": 1,
+   "usos": 14,
+   "ambiguo": false
+  },
+  "430-250": {
+   "explicitas": 0,
+   "usos": 16,
+   "ambiguo": false
+  },
+  "430-251(a)": {
+   "explicitas": 4,
+   "usos": 5,
+   "ambiguo": false
+  },
+  "430-251(b)": {
+   "explicitas": 1,
+   "usos": 5,
+   "ambiguo": false
+  },
+  "440-3(d)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "450-3(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "450-3(b)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "490-24": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "500-8(c)": {
+   "explicitas": 5,
+   "usos": 5,
+   "ambiguo": true
+  },
+  "500-8(d)(2)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "504-10(b)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "505-7(d)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "505-9(c)(1)(2)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "505-9(c)(2)(4)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "505-9(d)(1)": {
+   "explicitas": 0,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "506-9(c)(2)(3)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "514-3(b)(1)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "514-3(b)(2)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "515-3": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "520-44": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "522-22": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "530-19(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "550-31": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "551-73(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "552-10(e)(1)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": true
+  },
+  "555-12": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "610-14(a)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "610-14(b)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": true
+  },
+  "610-14(d)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "610-14(e)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "620-14": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "625-29(d)(1)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": true
+  },
+  "625-29(d)(2)": {
+   "explicitas": 0,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "630-11(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "630-31(a)(2)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "645-5": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "680-3": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "680-8": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "680-10": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "690-7": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "690-31(c)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "705-3": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "725-154(g)": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": true
+  },
+  "725-179": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "760-154(d)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "760-179(i)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "770-154(a)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "770-154(b)": {
+   "explicitas": 0,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "770-179": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "800-154(a)": {
+   "explicitas": 2,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "800-154(b)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "800-179": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "810-16(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "810-52": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "820-154(b)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "820-179": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "820-154(a)": {
+   "explicitas": 2,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "830-47": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "830-154(b)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": false
+  },
+  "830-154(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "921-25(b)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": true
+  },
+  "922-10": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-12(a)(1)": {
+   "explicitas": 3,
+   "usos": 3,
+   "ambiguo": true
+  },
+  "922-12(a)(2)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-13(a)": {
+   "explicitas": 5,
+   "usos": 5,
+   "ambiguo": true
+  },
+  "922-15(a)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "922-17(c)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": true
+  },
+  "922-19(e)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-21": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-22(a)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": false
+  },
+  "922-31(e)(2)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-33": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "922-41": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "922-43": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-54": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-55": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-83": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "922-84": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "922-84(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-93(a)(1)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "922-93(b)(1)": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": true
+  },
+  "922-93": {
+   "explicitas": 6,
+   "usos": 6,
+   "ambiguo": true
+  },
+  "922-94": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "923-3(f)(1)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "923-5(a)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "923-11": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "923-12(b)": {
+   "explicitas": 2,
+   "usos": 2,
+   "ambiguo": true
+  },
+  "924-5": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": true
+  },
+  "1": {
+   "explicitas": 34,
+   "usos": 34,
+   "ambiguo": false
+  },
+  "2": {
+   "explicitas": 10,
+   "usos": 10,
+   "ambiguo": false
+  },
+  "4": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "5": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "8": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "9": {
+   "explicitas": 0,
+   "usos": 0,
+   "ambiguo": false
+  },
+  "10": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "11(A)": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": false
+  },
+  "11(B)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  },
+  "12(A)": {
+   "explicitas": 4,
+   "usos": 4,
+   "ambiguo": false
+  },
+  "12(B)": {
+   "explicitas": 1,
+   "usos": 1,
+   "ambiguo": false
+  }
+ }
 }
