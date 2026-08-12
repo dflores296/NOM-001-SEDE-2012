@@ -29403,5 +29403,831 @@
   "notes": [
    "*Los intervalos de tensión presentados son para corriente alterna sinusoidal en lugares interiores o en donde no es probable que haya humedad. Para condiciones no sinusoidales o de contacto con la humedad, véase la Nota 2."
   ]
+ },
+ "310-104(a)": {
+  "verificada": "2026-08-12",
+  "title": "Aplicaciones y aislamientos de conductores de 600 volts",
+  "cols": 6,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Nombre genérico"
+    },
+    {
+     "t": "Tipo"
+    },
+    {
+     "t": "Temperatura máxima del conductor"
+    },
+    {
+     "t": "Aplicaciones previstas"
+    },
+    {
+     "t": "Aislamiento"
+    },
+    {
+     "t": "Recubrimiento externo1"
+    }
+   ],
+   [
+    {
+     "t": "Etileno-propileno fluorado",
+     "rs": 3
+    },
+    {
+     "t": "FEP o FEPB",
+     "rs": 3
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos"
+    },
+    {
+     "t": "Etileno-propileno fluorado",
+     "rs": 3
+    },
+    {
+     "t": "Ninguno"
+    }
+   ],
+   [
+    {
+     "t": "200 °C",
+     "rs": 2
+    },
+    {
+     "t": "Lugares secos"
+    },
+    {
+     "t": "Trenza de fibra de vidrio"
+    }
+   ],
+   [
+    {
+     "t": "Para aplicaciones especiales2"
+    },
+    {
+     "t": "Trenza de fibra de vidrio u otro material trenzado."
+    }
+   ],
+   [
+    {
+     "t": "Aislamiento mineral (con cubierta metálica)",
+     "rs": 2
+    },
+    {
+     "t": "MI",
+     "rs": 2
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y mojados"
+    },
+    {
+     "t": "Oxido de magnesio3",
+     "rs": 2
+    },
+    {
+     "t": "Cobre o aleación de acero",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "250 °C"
+    },
+    {
+     "t": "Para aplicaciones especiales2"
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico resistente a la humedad, al calor y al aceite",
+     "rs": 2
+    },
+    {
+     "t": "MTW",
+     "rs": 2
+    },
+    {
+     "t": "60 °C"
+    },
+    {
+     "t": "Alambrado de máquinas herramienta en lugares mojados."
+    },
+    {
+     "t": "Termoplástico retardante a la flama y resistente a la humedad, al calor y al aceite",
+     "rs": 2
+    },
+    {
+     "t": "Ninguno, cubierta de naylon o equivalente",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Alambrado de máquinas herramienta en lugares secos."
+    }
+   ],
+   [
+    {
+     "t": "Papel"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "85 °C"
+    },
+    {
+     "t": "Para conductores subterráneos de acometida"
+    },
+    {
+     "t": "Papel"
+    },
+    {
+     "t": "Cubierta de plomo"
+    }
+   ],
+   [
+    {
+     "t": "Perfluoroalcoxi",
+     "rs": 2
+    },
+    {
+     "t": "PFA",
+     "rs": 2
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos"
+    },
+    {
+     "t": "Perfluoroalcoxi",
+     "rs": 2
+    },
+    {
+     "t": "Ninguno",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "200 °C"
+    },
+    {
+     "t": "Lugares secos y aplicaciones especiales2"
+    }
+   ],
+   [
+    {
+     "t": "Perfluoroalcoxi"
+    },
+    {
+     "t": "PFAH"
+    },
+    {
+     "t": "250 °C"
+    },
+    {
+     "t": "Sólo para lugares secos. Sólo para cables dentro de aparatos o dentro de canalizaciones conectadas a aparatos (sólo de níquel"
+    },
+    {
+     "t": "Perfluoroalcoxi"
+    },
+    {
+     "t": "Ninguno"
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "o de cobre recubiertos de níquel)"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Termofijo"
+    },
+    {
+     "t": "RHH"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": "Recubrimiento no metálico, resistente a la humedad y retardante a la flama1"
+    }
+   ],
+   [
+    {
+     "t": "Termofijo resistente a la humedad",
+     "rs": 2
+    },
+    {
+     "t": "RHW"
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "Lugares secos y mojados",
+     "rs": 2
+    },
+    {
+     "t": "Termofijo resistente a la humedad y retardante a la flama",
+     "rs": 2
+    },
+    {
+     "t": "Recubrimiento no metálico, resistente a la humedad y retardante a la flama4"
+    }
+   ],
+   [
+    {
+     "t": "RHW-2"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Hule silicón",
+     "rs": 2
+    },
+    {
+     "t": "SA",
+     "rs": 2
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos"
+    },
+    {
+     "t": "Hule silicón",
+     "rs": 2
+    },
+    {
+     "t": "Trenza de fibra de vidrio u otro material.",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "200 °C"
+    },
+    {
+     "t": "Para aplicaciones especiales2"
+    }
+   ],
+   [
+    {
+     "t": "Termofijo"
+    },
+    {
+     "t": "SIS"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Sólo para alambrado de tableros."
+    },
+    {
+     "t": "Termofijo retardante a la flama"
+    },
+    {
+     "t": "Ninguno"
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico y malla externa de material fibroso"
+    },
+    {
+     "t": "TBS"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Sólo para alambrado de tableros"
+    },
+    {
+     "t": "Termoplástico"
+    },
+    {
+     "t": "Recubrimiento no metálico retardante a la flama"
+    }
+   ],
+   [
+    {
+     "t": "Politetra-fluoroetileno"
+    },
+    {
+     "t": "TFE"
+    },
+    {
+     "t": "250 °C"
+    },
+    {
+     "t": "Sólo para lugares secos. Sólo para cables dentro de aparatos o dentro de canalizaciones conectadas a aparatos (sólo de níquel o de cobre recubierto de níquel)"
+    },
+    {
+     "t": "Politetra-fluoroetileno"
+    },
+    {
+     "t": "Ninguno"
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico con cubierta de nylon, resistente al calor y a la propagación de la flama."
+    },
+    {
+     "t": "THHN"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos"
+    },
+    {
+     "t": "Termoplástico retardante a la flama y resistente a la humedad y al calor"
+    },
+    {
+     "t": "Cubierta de nylon o equivalente."
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico resistente a la humedad, al calor y retardante a la flama.",
+     "rs": 2
+    },
+    {
+     "t": "THHW",
+     "rs": 2
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "Lugares mojados"
+    },
+    {
+     "t": "Termoplástico retardante a la flama y resistente al calor y a la humedad.",
+     "rs": 2
+    },
+    {
+     "t": "Ninguno",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos"
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico resistente a la humedad, al calor, retardante a la flama, de emisión reducida de humos y gas ácido",
+     "rs": 2
+    },
+    {
+     "t": "THHW-LS",
+     "rs": 2
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "Lugares mojados"
+    },
+    {
+     "t": "Termoplástico resistente a la humedad, al calor, retardante a la flama, de emisión reducida de humos y gas ácido",
+     "rs": 2
+    },
+    {
+     "t": "Ninguno",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos"
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico retardante a la flama y resistente a la humedad y al calor",
+     "rs": 2
+    },
+    {
+     "t": "THW"
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "Lugares mojados"
+    },
+    {
+     "t": "Termoplástico retardante a la flama y resistente a la humedad y al calor",
+     "rs": 2
+    },
+    {
+     "t": "Ninguno",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "THW-2"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos"
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico resistente a la humedad, al calor, retardante a la flama, de emisión reducida de humos y de gas ácido."
+    },
+    {
+     "t": "THW-LS"
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "Lugares secos y mojados"
+    },
+    {
+     "t": "Termoplástico resistente a la humedad, al calor, retardante a la flama, de emisión reducida de humos y de gas ácido."
+    },
+    {
+     "t": "Ninguno"
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico con cubierta de nylon, resistente al calor, a la humedad y retardante a la flama.",
+     "rs": 2
+    },
+    {
+     "t": "THWN"
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos",
+     "rs": 2
+    },
+    {
+     "t": "Termoplástico con cubierta de nylon, resistente al calor, a la humedad y retardante a la flama.",
+     "rs": 2
+    },
+    {
+     "t": "Cubierta de nylon o equivalente",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "THWN-2"
+    },
+    {
+     "t": "90 °C"
+    }
+   ],
+   [
+    {
+     "t": "Termoplástico resistente a la humedad y retardante a la flama."
+    },
+    {
+     "t": "TW"
+    },
+    {
+     "t": "60 °C"
+    },
+    {
+     "t": "Lugares secos y mojados"
+    },
+    {
+     "t": "Termoplástico resistente a la humedad y retardante a la flama."
+    },
+    {
+     "t": "Ninguno"
+    }
+   ],
+   [
+    {
+     "t": "Cable monoconductor subterráneo y circuitos derivados de un solo conductor (para cables de tipo UF con más de un conductor, ver el Artículo 340)",
+     "rs": 2
+    },
+    {
+     "t": "UF",
+     "rs": 2
+    },
+    {
+     "t": "60 °C"
+    },
+    {
+     "t": "Ver el Artículo 340",
+     "rs": 2
+    },
+    {
+     "t": "Resistente a la humedad4"
+    },
+    {
+     "t": "Integrado con el aislante",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "75 °C5"
+    },
+    {
+     "t": "Resistente a la humedad y al calor"
+    }
+   ],
+   [
+    {
+     "t": "Cable de acometida subterránea de un solo conductor"
+    },
+    {
+     "t": "USE"
+    },
+    {
+     "t": "75 °C5"
+    },
+    {
+     "t": "Ver el Artículo 3406"
+    },
+    {
+     "t": "Resistente al calor y a la humedad"
+    },
+    {
+     "t": "Recubrimiento no metálico resistente a la humedad"
+    }
+   ],
+   [
+    {
+     "t": ""
+    },
+    {
+     "t": "USE-2"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y mojados"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "Termofijo retardante a la flama"
+    },
+    {
+     "t": "XHH"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos"
+    },
+    {
+     "t": "Termoplástico retardante a la flama"
+    },
+    {
+     "t": "Ninguno"
+    }
+   ],
+   [
+    {
+     "t": "Termofijo retardante a la flama y resistente al calor y a la humedad",
+     "rs": 2
+    },
+    {
+     "t": "XHHW",
+     "rs": 2
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos"
+    },
+    {
+     "t": "Termofijo retardante a la flama y resistente al calor y a la humedad",
+     "rs": 2
+    },
+    {
+     "t": "Ninguno",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "Lugares mojados"
+    }
+   ],
+   [
+    {
+     "t": "Termofijo retardante a la flama y resistente al calor y a la humedad"
+    },
+    {
+     "t": "XHHW-2"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y mojados"
+    },
+    {
+     "t": "Termofijo retardante a la flama y resistente al calor y a la humedad"
+    },
+    {
+     "t": "Ninguno"
+    }
+   ],
+   [
+    {
+     "t": "Tetrafluoroetileno modificado con etileno.",
+     "rs": 2
+    },
+    {
+     "t": "Z",
+     "rs": 2
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y húmedos"
+    },
+    {
+     "t": "Tetrafluoroetileno modificado con etileno.",
+     "rs": 2
+    },
+    {
+     "t": "Ninguno",
+     "rs": 2
+    }
+   ],
+   [
+    {
+     "t": "150 °C"
+    },
+    {
+     "t": "Lugares secos y aplicaciones especiales2"
+    }
+   ],
+   [
+    {
+     "t": "Tetrafluoroetileno modificado con etileno.",
+     "rs": 4
+    },
+    {
+     "t": "ZW",
+     "rs": 3
+    },
+    {
+     "t": "75 °C"
+    },
+    {
+     "t": "Lugares húmedos"
+    },
+    {
+     "t": "Tetrafluoroetileno modificado con etileno.",
+     "rs": 4
+    },
+    {
+     "t": "Ninguno",
+     "rs": 4
+    }
+   ],
+   [
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y mojados"
+    }
+   ],
+   [
+    {
+     "t": "150 °C"
+    },
+    {
+     "t": "Lugares secos y aplicaciones especiales2"
+    }
+   ],
+   [
+    {
+     "t": "ZW-2"
+    },
+    {
+     "t": "90 °C"
+    },
+    {
+     "t": "Lugares secos y mojados"
+    }
+   ]
+  ],
+  "notes": [
+   "1. Algunos aislamientos no requieren recubrimiento exterior.",
+   "2 Cuando las condiciones de diseño requieren que la temperatura máxima de operación del conductor sea superior a 90 °C.",
+   "3 Para circuitos de señalización que permiten un aislamiento de 300 volts.",
+   "4 Incluye una cubierta integral.",
+   "5 Para limitación de ampacidad, véase 340-80.",
+   "6 Para cables con un recubrimiento no metálico sobre conductores individualmente aislados con hule con una cubierta de aluminio o una cubierta de plomo o en cables multiconductores con algún tipo de estas cubiertas metálicas, no se requiere que sean retardantes de la flama. Para los cables de tipo MC, véase 330-104.",
+   "Para los cables de recubrimiento no metálico, véase el Artículo 334, Parte C.",
+   "Para los cables tipo UF, véase el Artículo 340, Parte C.",
+   "Se permite que los tipos de cables para utilizarse en temperaturas de operación 90º C en lugares secos y mojados se marquen con el sufijo \"-2\" por ejemplo: THW-2, XHHW-2, RHW-2, etc.",
+   "Los cables con aislamiento termofijo, sin contenido de halógenos, pueden tener un grabado \"LS0H\".",
+   "Los cables que se graban como \"LS\" son no propagadores del incendio y de baja emisión de humos."
+  ],
+  "regions": [
+   {
+    "page": 155,
+    "y0": 446.6181640625,
+    "y1": 784.02,
+    "id": "310-104(a)",
+    "article": 310
+   },
+   {
+    "page": 156,
+    "y0": -3.0,
+    "y1": 794.0,
+    "id": "310-104(a)",
+    "article": 310
+   },
+   {
+    "page": 157,
+    "y0": -3.0,
+    "y1": 269.0,
+    "id": "310-104(a)",
+    "article": 310
+   }
+  ]
  }
 }

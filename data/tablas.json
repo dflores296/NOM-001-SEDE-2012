@@ -24026,7 +24026,7 @@
   ],
   "page": 155,
   "cols": 6,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -24046,7 +24046,7 @@
      "t": "Aislamiento"
     },
     {
-     "t": "externo1 Recubrimiento"
+     "t": "Recubrimiento externo1"
     }
    ],
    [
@@ -24108,7 +24108,7 @@
      "t": "Lugares secos y mojados"
     },
     {
-     "t": "magnesio3 Oxido de",
+     "t": "Oxido de magnesio3",
      "rs": 2
     },
     {
@@ -24205,7 +24205,7 @@
      "t": "200 °C"
     },
     {
-     "t": "Lugares secos y especiales2 aplicaciones"
+     "t": "Lugares secos y aplicaciones especiales2"
     }
    ],
    [
@@ -24265,7 +24265,7 @@
      "t": ""
     },
     {
-     "t": "Recubrimiento no metálico, resistente a la humedad y flama1 retardante a la"
+     "t": "Recubrimiento no metálico, resistente a la humedad y retardante a la flama1"
     }
    ],
    [
@@ -24288,7 +24288,7 @@
      "rs": 2
     },
     {
-     "t": "Recubrimiento no metálico, resistente a la humedad y flama4 retardante a la"
+     "t": "Recubrimiento no metálico, resistente a la humedad y retardante a la flama4"
     }
    ],
    [
@@ -24601,7 +24601,7 @@
      "rs": 2
     },
     {
-     "t": "humedad4 Resistente a la"
+     "t": "Resistente a la humedad4"
     },
     {
      "t": "Integrado con el aislante",
@@ -24610,7 +24610,7 @@
    ],
    [
     {
-     "t": "°C5 75"
+     "t": "75 °C5"
     },
     {
      "t": "Resistente a la humedad y al calor"
@@ -24624,10 +24624,10 @@
      "t": "USE"
     },
     {
-     "t": "°C5 75"
+     "t": "75 °C5"
     },
     {
-     "t": "3406 Ver el Artículo"
+     "t": "Ver el Artículo 3406"
     },
     {
      "t": "Resistente al calor y a la humedad"
@@ -24757,7 +24757,7 @@
      "t": "150 °C"
     },
     {
-     "t": "Lugares secos y especiales2 aplicaciones"
+     "t": "Lugares secos y aplicaciones especiales2"
     }
    ],
    [
@@ -24797,7 +24797,7 @@
      "t": "150 °C"
     },
     {
-     "t": "Lugares secos y especiales2 aplicaciones"
+     "t": "Lugares secos y aplicaciones especiales2"
     }
    ],
    [
@@ -24813,7 +24813,19 @@
    ]
   ],
   "grid": "rejilla",
-  "notes": [],
+  "notes": [
+   "1. Algunos aislamientos no requieren recubrimiento exterior.",
+   "2 Cuando las condiciones de diseño requieren que la temperatura máxima de operación del conductor sea superior a 90 °C.",
+   "3 Para circuitos de señalización que permiten un aislamiento de 300 volts.",
+   "4 Incluye una cubierta integral.",
+   "5 Para limitación de ampacidad, véase 340-80.",
+   "6 Para cables con un recubrimiento no metálico sobre conductores individualmente aislados con hule con una cubierta de aluminio o una cubierta de plomo o en cables multiconductores con algún tipo de estas cubiertas metálicas, no se requiere que sean retardantes de la flama. Para los cables de tipo MC, véase 330-104.",
+   "Para los cables de recubrimiento no metálico, véase el Artículo 334, Parte C.",
+   "Para los cables tipo UF, véase el Artículo 340, Parte C.",
+   "Se permite que los tipos de cables para utilizarse en temperaturas de operación 90º C en lugares secos y mojados se marquen con el sufijo \"-2\" por ejemplo: THW-2, XHHW-2, RHW-2, etc.",
+   "Los cables con aislamiento termofijo, sin contenido de halógenos, pueden tener un grabado \"LS0H\".",
+   "Los cables que se graban como \"LS\" son no propagadores del incendio y de baja emisión de humos."
+  ],
   "quality": 1.0,
   "regions": [
    {
@@ -24833,11 +24845,12 @@
    {
     "page": 157,
     "y0": -3.0,
-    "y1": 116.11,
+    "y1": 269.0,
     "id": "310-104(a)",
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {

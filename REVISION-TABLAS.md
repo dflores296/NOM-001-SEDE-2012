@@ -20,7 +20,7 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**71 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**72 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (13)
 
@@ -48,14 +48,13 @@ Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 3 · Verificación de control (10)
+## 3 · Verificación de control (9)
 
 Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas justamente por eso: una tabla equivocada que *parece* correcta es más peligrosa que una marcada como dudosa. Basta comprobar dos o tres renglones de cada una.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
 | [ ] | `1` | Porcentaje de la sección transversal en tubo conduit y en tubería para… | 742 | 34 | 1.00 | — | dibujada | 4×2 |
-| [ ] | `310-104(a)` | Aplicaciones y aislamientos de conductores de 600 volts | 155, 156, 157 | 18 | 1.00 | — | dibujada | 46×6 |
 | [ ] | `430-52` | Ajuste máximo de los dispositivos de protección contra cortocircuito y… | 310, 311 | 15 | 1.00 | — | dibujada | 9×5 |
 | [ ] | `2` | Radio de las curvas del tubo conduit y tuberías | 743 | 10 | 1.00 | — | dibujada | 14×4 |
 | [ ] | `310-15(b)(19)` | Ampacidades permisibles de conductores aislados individuales para Tens… | 139 | 9 | 1.00 | — | dibujada | 17×6 |

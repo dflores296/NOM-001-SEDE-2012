@@ -64711,10 +64711,42 @@
   "chapter": 6,
   "page": 541
  },
- "625-29(d)(1)(2)": {
+ "625-29(d)(2)": {
   "kind": "inciso",
-  "id": "625-29(d)(1)(2)",
+  "id": "625-29(d)(2)",
+  "title": "Otros valores",
+  "article": 625,
+  "chapter": 6,
+  "page": 541
+ },
+ "625-29(d)(2)(1)": {
+  "kind": "inciso",
+  "id": "625-29(d)(2)(1)",
+  "title": "Instalaciones monofásicas:",
+  "article": 625,
+  "chapter": 6,
+  "page": 541
+ },
+ "625-29(d)(2)(2)": {
+  "kind": "inciso",
+  "id": "625-29(d)(2)(2)",
   "title": "Instalaciones trifásicas:",
+  "article": 625,
+  "chapter": 6,
+  "page": 541
+ },
+ "625-29(d)(3)": {
+  "kind": "inciso",
+  "id": "625-29(d)(3)",
+  "title": "Sistemas de ingeniería",
+  "article": 625,
+  "chapter": 6,
+  "page": 541
+ },
+ "625-29(d)(4)": {
+  "kind": "inciso",
+  "id": "625-29(d)(4)",
+  "title": "Circuitos alimentadores",
   "article": 625,
   "chapter": 6,
   "page": 541
