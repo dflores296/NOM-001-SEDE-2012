@@ -14951,7 +14951,7 @@
  },
  {
   "id": "310-60(c)(74)",
-  "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de aluminio, en tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
+  "title": "Ampacidad de cables de tres conductores o ternas de cables individuales aislados, de aluminio, en tubo conduit físicamente aislado en el aire, con base en temperaturas del conductor de 90 °C y 105 °C y temperatura ambiente del aire de 40 °C*",
   "informativa": false,
   "article": 310,
   "pages": [
@@ -14960,7 +14960,7 @@
   ],
   "page": 146,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
@@ -15276,7 +15276,7 @@
   "notes": [
    "* Consulte 310-60(c)(4) para los factores de corrección de la ampacidad cuando la temperatura ambiente del aire es diferente a 40 °C"
   ],
-  "quality": 0.978,
+  "quality": 1.0,
   "regions": [
    {
     "page": 146,
@@ -15293,6 +15293,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -15665,76 +15666,44 @@
   ],
   "page": 147,
   "cols": 6,
-  "header_rows": 3,
+  "header_rows": 4,
   "intro": "",
   "rows": [
    [
     {
-     "t": "Tamaño"
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "o designación"
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura [Véase la"
-    },
-    {
-     "t": "nominal del conductor Tabla 310-104(c)]"
-    },
-    {
-     "t": ""
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
     }
    ],
    [
     {
-     "t": ""
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": ""
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": "para 2 001-5"
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "Ampacidad 000 volts"
-    },
-    {
-     "t": "para 5 001-35"
-    },
-    {
-     "t": "Ampacidad 000 volts"
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura"
-    },
-    {
-     "t": "de los conductores"
-    },
-    {
-     "t": "de media"
-    },
-    {
-     "t": "tensión en °C"
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
     }
    ],
    [
-    {
-     "t": "mm2"
-    },
-    {
-     "t": "AWG o kcmil"
-    },
     {
      "t": "90"
     },
@@ -16030,6 +15999,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -18848,91 +18818,39 @@
   "rows": [
    [
     {
-     "t": "Tabla 310-60(c)(80).- Ampacidad tres conductores) en ductos la tierra de 20 °C, el montaje"
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "de tres conductores eléctricos subterráneos de los ductos eléctricos resistencia térmica (RHO) de"
-    },
-    {
-     "t": "de aluminio (un cable por según se 90, temperaturas"
-    },
-    {
-     "t": "aislados, alambrados ducto eléctrico), indica en la Figura del conductor"
-    },
-    {
-     "t": "dentro de con base en 310-60, factor de 90 °C y 105"
-    },
-    {
-     "t": "una cubierta general (cable de una temperatura ambiente de de carga del 100 por ciento, °C"
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
     }
    ],
    [
     {
-     "t": "Tamaño"
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": "o designación"
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": ""
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "Temperatura nominal [Véase la Tabla"
-    },
-    {
-     "t": "del conductor 310-104(c)]"
-    },
-    {
-     "t": ""
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "para 2 001-5"
-    },
-    {
-     "t": "Ampacidad 000 volts"
-    },
-    {
-     "t": "para 5 001-35"
-    },
-    {
-     "t": "Ampacidad 000 volts"
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura"
-    },
-    {
-     "t": "de los conductores"
-    },
-    {
-     "t": "de media"
-    },
-    {
-     "t": "tensión en °C"
-    }
-   ],
-   [
-    {
-     "t": "mm2"
-    },
-    {
-     "t": "AWG o kcmil"
-    },
     {
      "t": "90"
     },
@@ -18948,22 +18866,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Un circuito (Véase"
-    },
-    {
-     "t": "la Figura 310-60,"
-    },
-    {
-     "t": "Detalle 1)"
-    },
-    {
-     "t": ""
+     "t": "Un circuito (Véase la Figura 310-60, Detalle 1)",
+     "cs": 6
     }
    ],
    [
@@ -19248,17 +19152,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Tres circuitos (Véase la Figura 310-60, Detalle 2)",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 6
     }
    ],
    [
@@ -19543,17 +19438,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
      "t": "Seis circuitos (Véase la Figura 310-60, Detalle 3)",
-     "cs": 3
-    },
-    {
-     "t": ""
+     "cs": 6
     }
    ],
    [
@@ -19839,7 +19725,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.996,
+  "quality": 1.0,
   "regions": [
    {
     "page": 150,
@@ -19856,6 +19742,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -19874,91 +19761,39 @@
   "rows": [
    [
     {
-     "t": "Tabla 310-60(c)(81).- temperatura ambiente de carga del 100 por"
+     "t": "Tamaño o designación",
+     "cs": 2
     },
     {
-     "t": "Ampacidad de conductores la tierra de 20 °C, el montaje ciento, resistencia"
-    },
-    {
-     "t": "individuales de de los ductos térmica (RHO) de"
-    },
-    {
-     "t": "cobre, aislados, eléctricos según 90, temperaturas"
-    },
-    {
-     "t": "directamente se indica en del conductor"
-    },
-    {
-     "t": "enterrados, con base en una la Figura 310-60, factor de de 90 °C y 105 °C"
+     "t": "Temperatura nominal del conductor [Véase la Tabla 310-104(c)]",
+     "cs": 4
     }
    ],
    [
     {
-     "t": "Tamaño"
+     "t": "mm2",
+     "rs": 3
     },
     {
-     "t": "o designación"
+     "t": "AWG o kcmil",
+     "rs": 3
     },
     {
-     "t": ""
+     "t": "Ampacidad para 2 001-5 000 volts",
+     "cs": 2
     },
     {
-     "t": "Temperatura nominal [Véase la Tabla"
-    },
-    {
-     "t": "del conductor 310-104(c)]"
-    },
-    {
-     "t": ""
+     "t": "Ampacidad para 5 001-35 000 volts",
+     "cs": 2
     }
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "para 2 001-5"
-    },
-    {
-     "t": "Ampacidad 000 volts"
-    },
-    {
-     "t": "para 5 001-35"
-    },
-    {
-     "t": "Ampacidad 000 volts"
+     "t": "Temperatura de los conductores de media tensión en °C",
+     "cs": 4
     }
    ],
    [
-    {
-     "t": ""
-    },
-    {
-     "t": ""
-    },
-    {
-     "t": "Temperatura"
-    },
-    {
-     "t": "de los conductores"
-    },
-    {
-     "t": "de media tensión"
-    },
-    {
-     "t": "en °C ||"
-    }
-   ],
-   [
-    {
-     "t": "mm2"
-    },
-    {
-     "t": "AWG o kcmil"
-    },
     {
      "t": "90"
     },
@@ -19974,22 +19809,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": "Un circuito, tres"
-    },
-    {
-     "t": "conductores (Véase"
-    },
-    {
-     "t": "la Figura 310-60,"
-    },
-    {
-     "t": "Detalle 9)"
-    },
-    {
-     "t": ""
+     "t": "Un circuito, tres conductores (Véase la Figura 310-60, Detalle 9)",
+     "cs": 6
     }
    ],
    [
@@ -20274,11 +20095,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Dos circuitos, seis conductores (Véase la Figura 310-60, Detalle 10)",
-     "cs": 5
+     "cs": 6
     }
    ],
    [
@@ -20564,7 +20382,7 @@
   ],
   "grid": "huecos",
   "notes": [],
-  "quality": 0.995,
+  "quality": 1.0,
   "regions": [
    {
     "page": 151,
@@ -20581,6 +20399,7 @@
     "article": 310
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -28133,6 +27952,7 @@
     "article": 326
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -28361,6 +28181,7 @@
     "article": 326
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -28455,8 +28276,11 @@
      "t": "Designación métrica"
     },
     {
-     "t": "Tamaño comercial centímetros",
-     "cs": 3
+     "t": "Tamaño comercial"
+    },
+    {
+     "t": "centímetros",
+     "cs": 2
     }
    ],
    [
@@ -28514,6 +28338,7 @@
     "article": 326
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -28531,10 +28356,8 @@
   "rows": [
    [
     {
-     "t": "Tamaño"
-    },
-    {
-     "t": "del conduit"
+     "t": "Tamaño del conduit",
+     "cs": 2
     },
     {
      "t": "Distancia máxima entre los soportes del tubo conduit metálico pesado"
@@ -28619,6 +28442,7 @@
     "article": 344
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -28937,7 +28761,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.8,
+  "quality": 1.0,
   "regions": [
    {
     "page": 196,
@@ -28947,6 +28771,7 @@
     "article": 352
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
@@ -29307,6 +29132,7 @@
     "article": 354
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {
