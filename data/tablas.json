@@ -39930,7 +39930,7 @@
  },
  {
   "id": "430-247",
-  "title": "Corriente a plena carga para motores de corriente continua Los siguientes valores de corriente a plena carga* son para motores que funcionan a su velocidad básica.",
+  "title": "Corriente a plena carga para motores de corriente continua",
   "informativa": false,
   "article": 430,
   "pages": [
@@ -39939,7 +39939,7 @@
   "page": 324,
   "cols": 5,
   "header_rows": 3,
-  "intro": "",
+  "intro": "Los siguientes valores de corriente a plena carga* son para motores que funcionan a su velocidad básica.",
   "rows": [
    [
     {
@@ -39972,11 +39972,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Amperes",
-     "cs": 2
+     "cs": 3
     }
    ],
    [
@@ -40385,7 +40382,8 @@
     "article": 430
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "430-248",
@@ -40398,7 +40396,7 @@
   "page": 324,
   "cols": 6,
   "header_rows": 2,
-  "intro": "",
+  "intro": "Los siguientes valores de corriente a plena carga corresponden a motores que funcionan a la velocidad usual y motores con características normales de par. Las tensiones listadas son las nominales de los motores. Las corrientes listadas deben utilizarse para sistemas de tensiones nominales. de 110 a 120 volts y de 220 a 240 volts.",
   "rows": [
    [
     {
@@ -40424,11 +40422,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Amperes",
-     "cs": 3
+     "cs": 4
     }
    ],
    [
@@ -40684,7 +40679,8 @@
     "article": 430
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "430-249",
@@ -40697,7 +40693,7 @@
   "page": 324,
   "cols": 7,
   "header_rows": 3,
-  "intro": "",
+  "intro": "Los siguientes valores de corriente a plena carga corresponden a motores que funcionan a las velocidades usuales de motores con correas bandas y a motores con características normales de par. La corriente en el conductor común de un sistema de dos fases de 3 hilos será de 1.41 veces el valor dado. Las tensiones relacionadas son las nominales de los motores. Las corrientes enumeradas se permitirán para sistemas con intervalos de tensión de 110 a 120 volts, 220 a 240 volts, 440 a 480 volts y 550 a 600 volts.",
   "rows": [
    [
     {
@@ -40732,12 +40728,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "Amperes",
-     "cs": 3
+     "cs": 5
     }
    ],
    [
@@ -41243,7 +41235,8 @@
     "article": 430
    }
   ],
-  "encabezado_dudoso": true
+  "verificada": "2026-08-12",
+  "encabezado_dudoso": false
  },
  {
   "id": "430-250",
@@ -41256,7 +41249,7 @@
   "page": 325,
   "cols": 13,
   "header_rows": 2,
-  "intro": "Tabla 430-250.- Corriente a plena carga de motores trifásicos de corriente alterna Los siguientes valores de corrientes de plena carga son típicos para motores que funcionan a las velocidades usuales de motores con bandas y motores con características normales de par. Las tensiones enumeradas son las nominales de los motores. Las corrientes enumeradas se permitirán para sistemas con intervalos de tensión de 110 a 120 volts, 220 a 240 volts, 440 a 480 volts y 550 a 600 volts.",
+  "intro": "Los siguientes valores de corrientes de plena carga son típicos para motores que funcionan a las velocidades usuales de motores con bandas y motores con características normales de par. Las tensiones enumeradas son las nominales de los motores. Las corrientes enumeradas se permitirán para sistemas con intervalos de tensión de 110 a 120 volts, 220 a 240 volts, 440 a 480 volts y 550 a 600 volts.",
   "rows": [
    [
     {
@@ -42180,8 +42173,16 @@
      "t": "250"
     },
     {
-     "t": "-",
-     "cs": 4
+     "t": "-"
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
+    },
+    {
+     "t": ""
     },
     {
      "t": "302"
@@ -42413,8 +42414,7 @@
   ],
   "grid": "rejilla",
   "notes": [
-   "*Para factores de potencia de 90 por ciento y 80 por ciento, las cifras anteriores se deben multiplicar respectivamente por",
-   "1.10 y 1.25"
+   "*Para factores de potencia de 90 por ciento y 80 por ciento, las cifras anteriores se deben multiplicar respectivamente por 1.10 y 1.25"
   ],
   "quality": 1.0,
   "regions": [
@@ -42426,6 +42426,7 @@
     "article": 430
    }
   ],
+  "verificada": "2026-08-12",
   "encabezado_dudoso": false
  },
  {

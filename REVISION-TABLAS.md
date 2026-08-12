@@ -20,18 +20,15 @@ una celda vacía en el encabezado junto a un título de grupo, que es como se ve
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
 esas tablas salían con 1.00 y sin una sola marca.
 
-**30 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**34 de 219 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
-## 1 · Prioridad alta (46)
+## 1 · Prioridad alta (43)
 
 Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|---|
-| [ ] | `430-249` | Corriente a plena carga para motores de dos fases de corriente alterna… | 325 | 14 | 1.00 | **sí** | dibujada | 24×7 |
-| [ ] | `430-248` | Corriente a plena carga de motores monofásicos de corriente alterna | 324 | 12 | 1.00 | **sí** | dibujada | 14×6 |
 | [ ] | `312-6(a)` | Espacio mínimo para el doblado de los cables en las terminales, y anch… | 161 | 11 | 1.00 | **sí** | dibujada | 17×7 |
-| [ ] | `430-247` | Corriente a plena carga para motores de corriente continua Los siguien… | 324 | 9 | 1.00 | **sí** | dibujada | 26×5 |
 | [ ] | `220-55` | Factores de demanda y cargas para estufas eléctricas domésticas, horno… | 49 | 8 | 0.98 | **sí** | **huecos** | 32×4 |
 | [ ] | `310-15(b)(17)` | Ampacidades permisibles de conductores individuales aislados para tens… | 138, 139 | 7 | 1.00 | **sí** | dibujada | 34×8 |
 | [ ] | `310-60(c)(70)` | Ampacidad de conductores individuales de aluminio, aislados, separados… | 144, 145 | 5 | 0.99 | **sí** | **huecos** | 21×8 |
@@ -81,7 +78,7 @@ Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 3 · Verificación de control (11)
+## 3 · Verificación de control (10)
 
 Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas justamente por eso: una tabla equivocada que *parece* correcta es más peligrosa que una marcada como dudosa. Basta comprobar dos o tres renglones de cada una.
 
@@ -89,7 +86,6 @@ Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas ju
 |---|---|---|---|---|---|---|---|---|
 | [ ] | `1` | Porcentaje de la sección transversal en tubo conduit y en tubería para… | 742 | 34 | 1.00 | — | dibujada | 4×2 |
 | [ ] | `310-104(a)` | Aplicaciones y aislamientos de conductores de 600 volts | 155, 156, 157 | 18 | 1.00 | — | dibujada | 46×6 |
-| [ ] | `430-250` | Corriente a plena carga de motores trifásicos de corriente alterna | 325 | 16 | 1.00 | — | dibujada | 29×13 |
 | [ ] | `430-52` | Ajuste máximo de los dispositivos de protección contra cortocircuito y… | 310, 311 | 15 | 1.00 | — | dibujada | 9×5 |
 | [ ] | `2` | Radio de las curvas del tubo conduit y tuberías | 743 | 10 | 1.00 | — | dibujada | 14×4 |
 | [ ] | `310-15(b)(19)` | Ampacidades permisibles de conductores aislados individuales para Tens… | 139 | 9 | 1.00 | — | dibujada | 17×6 |

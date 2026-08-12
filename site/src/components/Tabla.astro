@@ -52,15 +52,18 @@ const larga = (c) => ((c.t || '').length > 28 ? 'larga' : undefined);
     </p>
   )}
 
+  {/* La frase con la que la norma entra a la tabla. En unas va fusionada a
+      todo lo ancho encima del encabezado y en otras es el párrafo impreso
+      justo antes; repartida en celdas quedaba como títulos de columna sin
+      sentido. Va por delante y por su cuenta: es prosa, y atarla al ancho de
+      la tabla dejaba un párrafo en columna estrecha o un marco enorme
+      alrededor de una tabla de cinco columnas. */}
+  {t.intro && <p class="tabla-intro" set:html={linkify(t.intro)} />}
+
   {/* La caja se ciñe a la tabla en lugar de ocupar la columna entera: un
       marco a todo lo ancho alrededor de una tabla de dos columnas se lee como
       si faltara contenido a los lados. */}
   <div class="tabla-caja">
-  {/* En el PDF esta frase es una celda fusionada a todo lo ancho, encima del
-      encabezado. Repartida en celdas quedaba como títulos de columna sin
-      sentido, así que se presenta como lo que es: la entrada a la tabla. */}
-  {t.intro && <p class="tabla-intro" set:html={linkify(t.intro)} />}
-
   <div class="tabla-scroll">
     <table>
       {head.length > 0 && (
