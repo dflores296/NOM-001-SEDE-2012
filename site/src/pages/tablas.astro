@@ -28,35 +28,41 @@ const sinVerificar = tablas.length - verificadas;
         columnas. En el documento original se parten entre páginas y pierden su estructura
         al copiarse; aquí se pueden leer y enlazar directamente.
       </p>
-      <div class="stats">
-        <div class="stat"><b>{tablas.length}</b><span>Tablas</span></div>
-        <div class="stat"><b>{tablas.reduce((n, t) => n + t.rows.length, 0).toLocaleString('es-MX')}</b><span>Filas</span></div>
-        <div class="stat"><b>{verificadas}</b><span>Verificadas contra el PDF</span></div>
-        <div class="stat"><b>{sinVerificar}</b><span>Por revisar</span></div>
+      <div class="cifras">
+        <div class="cifra"><b class="tabular">{tablas.length}</b><span>Tablas</span></div>
+        <div class="cifra"><b class="tabular">{tablas.reduce((n, t) => n + t.rows.length, 0).toLocaleString('es-MX')}</b><span>Filas</span></div>
+        <div class="cifra"><b class="tabular">{verificadas}</b><span>Verificadas contra el PDF</span></div>
+        <div class="cifra"><b class="tabular">{sinVerificar}</b><span>Por revisar</span></div>
       </div>
     </div>
 
     {sinVerificar === 0 ? (
-      <div class="aviso aviso-fuerte">
-        <b>Las {tablas.length} tablas se contrastaron celda por celda contra el PDF.</b>
-        La reconstrucción automática dejó fallos de todo tipo —columnas inventadas, encabezados
-        corridos, filas partidas en la costura entre páginas, pies de tabla que se tragaban el
-        artículo siguiente— y se corrigieron a mano sobre el documento original. Cada tabla
-        lleva en su pie la marca de esa revisión y la página del PDF de la que sale.
-        <br /><br />
-        Eso no la convierte en fuente oficial: ante cualquier discrepancia prevalece el texto
-        del DOF. Si encuentras una diferencia, cada tabla tiene un enlace para reportarla.
+      <div class="chap">
+        <h2>Qué se corrigió</h2>
+        <p>
+          La reconstrucción automática dejó fallos de todo tipo —columnas inventadas, encabezados
+          corridos, filas partidas en la costura entre páginas, pies de tabla que se tragaban el
+          artículo siguiente— y se corrigieron a mano sobre el documento original. Cada tabla
+          lleva en su pie la marca de esa revisión y la página del PDF de la que sale.
+        </p>
+        <p style="margin-top:.6rem">
+          Eso no la convierte en fuente oficial: ante cualquier discrepancia prevalece el texto
+          del DOF. Si encuentras una diferencia, cada tabla tiene un enlace para reportarla.
+        </p>
       </div>
     ) : (
-      <div class="aviso aviso-fuerte">
-        <b>Hay tablas sin contrastar.</b> Se reconstruyeron automáticamente desde el PDF y ese
-        proceso no es exacto: <b>{sinVerificar} de las {tablas.length}</b> todavía no se han
-        revisado contra el original y aparecen marcadas una por una en
-        <a href={`${base}/revision/`}>qué revisar</a>.
-        <br /><br />
-        Verifica siempre contra el PDF del DOF antes de usar un valor en un proyecto. Si
-        encuentras una diferencia, cada tabla tiene un enlace para reportarla: es la forma más
-        rápida de que se corrija para todos.
+      <div class="chap">
+        <h2>Hay tablas sin contrastar</h2>
+        <p>
+          Se reconstruyeron automáticamente desde el PDF y ese proceso no es exacto:
+          <b> {sinVerificar} de las {tablas.length}</b> todavía no se han revisado contra el
+          original y aparecen marcadas una por una en <a href={`${base}/revision/`}>qué revisar</a>.
+        </p>
+        <p style="margin-top:.6rem">
+          Verifica siempre contra el PDF del DOF antes de usar un valor en un proyecto. Si
+          encuentras una diferencia, cada tabla tiene un enlace para reportarla: es la forma más
+          rápida de que se corrija para todos.
+        </p>
       </div>
     )}
 

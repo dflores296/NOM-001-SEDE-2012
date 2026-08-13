@@ -429,6 +429,37 @@ p.tabla-intro {
 .stat b { display: block; font-size: 1.35rem; font-family: var(--mono); color: var(--accent); }
 .stat span { font-size: 0.76rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
 
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Franja de cifras: una sola fila con reglas verticales, como el renglón de
+   cabecera de una hoja de datos, en vez de bloques sueltos con aire entre
+   ellos. auto-fit + minmax reparte el ancho entre los que quepa: 5 en la
+   portada, 3 en /revision, sin tocar la regla. */
+.cifras {
+  margin-top: 1.4rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.cifra { padding: 0.8rem 1rem; border-left: 1px solid var(--border-soft); }
+.cifra:first-child { border-left: none; }
+.cifra b {
+  display: block; font-family: var(--mono); font-size: 1.4rem; font-weight: 600;
+  color: var(--text); line-height: 1.1;
+}
+.cifra span {
+  display: block; margin-top: 0.25rem; font-size: 0.68rem; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+@media (max-width: 720px) {
+  .cifras { grid-template-columns: repeat(2, 1fr); }
+  /* nth-child(odd), no nth-child(3): con cualquier cantidad de fichas, son
+     las impares las que arrancan fila en un grid de 2 columnas. Fijo en la
+     3 se quedaba corto en la portada -la 5ª ficha conservaba el borde. */
+  .cifra:nth-child(odd) { border-left: none; }
+}
+
 .chap { margin: 1.8rem 0; }
 .chap h2 { font-size: 1rem; margin: 0 0 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border-soft); }
 .chap h2 span { font-family: var(--mono); color: var(--accent); margin-right: 0.5rem; }
@@ -438,17 +469,6 @@ p.tabla-intro {
 .card b { font-family: var(--mono); color: var(--accent); font-size: 0.84rem; }
 .card span { display: block; font-size: 0.86rem; line-height: 1.35; }
 .card em { font-style: normal; font-size: 0.72rem; color: var(--text-faint); }
-
-.aviso-fuerte {
-  border-left: 3px solid var(--accent);
-  background: var(--accent-soft);
-}
-
-.aviso {
-  background: var(--warn-bg); border: 1px solid var(--warn-br);
-  border-radius: var(--radius); padding: 0.7rem 0.9rem;
-  font-size: 0.84rem; color: var(--text-dim); margin: 1.4rem 0;
-}
 
 /* ---------------------------------------------------------------- glosario */
 .defs { display: grid; gap: 0.8rem; }

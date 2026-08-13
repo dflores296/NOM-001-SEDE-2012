@@ -113,25 +113,29 @@ const href = (t) =>
           </p>
         </>
       )}
-      <div class="stats">
-        <div class="stat"><b>{verificadas.length}</b><span>Verificadas contra el PDF</span></div>
-        <div class="stat"><b>{info.length}</b><span>Por revisar</span></div>
-        <div class="stat"><b>{tablas.length}</b><span>Tablas en total</span></div>
+      <div class="cifras">
+        <div class="cifra"><b class="tabular">{verificadas.length}</b><span>Verificadas contra el PDF</span></div>
+        <div class="cifra"><b class="tabular">{info.length}</b><span>Por revisar</span></div>
+        <div class="cifra"><b class="tabular">{tablas.length}</b><span>Tablas en total</span></div>
       </div>
     </div>
 
     {terminado && (
-      <div class="aviso aviso-fuerte">
-        <b>Revisión terminada: {verificadas.length} de {tablas.length}.</b> Cada tabla se
-        renderizó desde el PDF en sus coordenadas y se comparó contra lo publicado. Lo que
-        apareció, y quedó corregido: columnas inventadas por el reparto automático, encabezados
-        corridos que dejaban cada dato bajo el título equivocado, filas de datos pintadas como
-        encabezado, filas partidas en la costura entre páginas, notas al pie que se tragaban el
-        artículo siguiente y glitches de fuente del PDF (<code>ºC</code> por <code>°C</code>).
-        <br /><br />
-        Dos tablas traen valores truncados <em>en el PDF de origen</em> —la 505-9(d)(1) y la
-        922-12(a)(2)—: se dejaron tal como los imprime el DOF, no se corrigió lo que la norma
-        publicó así.
+      <div class="chap">
+        <h2>Qué se corrigió</h2>
+        <p>
+          Cada tabla se renderizó desde el PDF en sus coordenadas y se comparó contra lo
+          publicado. Lo que apareció, y quedó corregido: columnas inventadas por el reparto
+          automático, encabezados corridos que dejaban cada dato bajo el título equivocado,
+          filas de datos pintadas como encabezado, filas partidas en la costura entre páginas,
+          notas al pie que se tragaban el artículo siguiente y glitches de fuente del PDF
+          (<code>ºC</code> por <code>°C</code>).
+        </p>
+        <p style="margin-top:.6rem">
+          Dos tablas traen valores truncados <em>en el PDF de origen</em> —la 505-9(d)(1) y la
+          922-12(a)(2)—: se dejaron tal como los imprime el DOF, no se corrigió lo que la norma
+          publicó así.
+        </p>
       </div>
     )}
 
