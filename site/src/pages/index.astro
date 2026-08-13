@@ -5,74 +5,87 @@ import { articles, chapters, corpus, grafo, definiciones, tablas, validacion } f
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const nSec = articles.reduce((n, a) => n + a.sections.length, 0);
 const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8);
+const maxCitas = top.length ? top[0].citas : 1;
 // Las tablas del Capítulo 10 no cuelgan de ningún artículo y se publican
 // juntas en /tablas.
 const cap10 = tablas.filter((t) => t.article == null);
 const verificadas = tablas.filter((t) => t.verificada).length;
+const todoVerificado = verificadas === tablas.length;
 ---
 
 <Base title="NOM-001-SEDE-2012 — Guía interactiva">
+  <div class="ruler"></div>
   <div class="wrap">
     <div class="hero">
       <h1>NOM-001-SEDE-2012</h1>
-      <p>
+      <p class="lede">
         Instalaciones Eléctricas (utilización). Las 780 páginas de la norma, con sus referencias
         cruzadas convertidas en enlaces navegables y búsqueda instantánea. Pulsa <b>/</b> para
         buscar desde cualquier página.
       </p>
-      <div class="stats">
-        <div class="stat"><b>{articles.length}</b><span>Artículos</span></div>
-        <div class="stat"><b>{nSec.toLocaleString('es-MX')}</b><span>Secciones</span></div>
-        <div class="stat"><b>{grafo.meta.aristas.toLocaleString('es-MX')}</b><span>Referencias enlazadas</span></div>
-        <div class="stat"><b>{definiciones.length}</b><span>Definiciones</span></div>
+
+      <div class="cifras">
+        <div class="cifra"><b class="tabular">{articles.length}</b><span>Artículos</span></div>
+        <div class="cifra"><b class="tabular">{nSec.toLocaleString('es-MX')}</b><span>Secciones</span></div>
+        <div class="cifra"><b class="tabular">{grafo.meta.aristas.toLocaleString('es-MX')}</b><span>Referencias enlazadas</span></div>
+        <div class="cifra"><b class="tabular">{definiciones.length}</b><span>Definiciones</span></div>
+        <div class="cifra"><b class="tabular">{tablas.length}</b><span>Tablas reconstruidas</span></div>
+      </div>
+
+      {/* Mientras las tablas se reconstruían a ciegas, este aviso pedía
+          desconfiar de todas. Ya no: las {tablas.length} se contrastaron celda
+          por celda contra el PDF. La franja de estado se queda para decir qué
+          se revisó y qué sigue siendo responsabilidad del lector. Si alguna
+          tabla volviera a quedar sin contrastar, el punto de la ficha se pone
+          en ámbar en vez de callarlo. */}
+      <div class="estado">
+        <span class:list={['chip', { warn: !todoVerificado }]}>
+          <span class="dot"></span>Tablas verificadas <b class="tabular">{verificadas}/{tablas.length}</b>
+        </span>
+        <span class="chip"><span class="dot"></span>Cobertura de texto <b class="tabular">{validacion.cobertura_pct}%</b></span>
+        <span class="chip"><span class="dot"></span>Referencias rotas <b class="tabular">{grafo.meta.referencias_rotas}</b></span>
+        {todoVerificado ? (
+          <span class="aparte">
+            Reproducción con fines de consulta, no es una edición oficial: ante cualquier duda
+            prevalece el DOF. Si ves una diferencia, <a href={`${base}/tablas/`}>repórtala</a> — el
+            proyecto mejora con quien lo usa en obra.
+          </span>
+        ) : (
+          <span class="aparte">
+            El resto sale de la reconstrucción automática, que no es exacta. Contrasta con el
+            original antes de usar un valor y consulta <a href={`${base}/revision/`}>qué falta
+            revisar</a>.
+          </span>
+        )}
       </div>
     </div>
 
-    {/* Mientras las tablas se reconstruían a ciegas, este aviso pedía
-        desconfiar de todas. Ya no: las {tablas.length} se contrastaron celda
-        por celda contra el PDF. El aviso se queda, pero para decir qué se
-        revisó y qué sigue siendo responsabilidad del lector. Si alguna tabla
-        volviera a quedar sin contrastar, el texto lo dice en vez de callarlo. */}
-    {verificadas === tablas.length ? (
-      <div class="aviso aviso-fuerte">
-        <b>Las {tablas.length} tablas ya se contrastaron celda por celda contra el PDF.</b>
-        El texto de los artículos se extrajo con una cobertura verificada del {validacion.cobertura_pct} %, y las
-        tablas —que se reconstruyen automáticamente y por eso eran la parte más frágil— se
-        revisaron una por una sobre el documento original. Aun así, esta no es una edición
-        oficial: ante cualquier duda prevalece el DOF, y si ves una diferencia
-        <a href={`${base}/tablas/`}>repórtala</a> — el proyecto mejora con quien lo usa en obra.
+    <div class="sec">
+      <div class="sec-head">
+        <h2>Los requisitos que más se citan</h2>
+        <span class="desc">Calculado sobre el grafo de referencias</span>
       </div>
-    ) : (
-      <div class="aviso aviso-fuerte">
-        <b>Hay tablas sin contrastar.</b> {verificadas} de las {tablas.length} se revisaron
-        celda por celda contra el PDF; el resto sale de la reconstrucción automática, que no es
-        exacta. Contrasta con el original antes de usar un valor y consulta
-        <a href={`${base}/revision/`}>qué falta revisar</a>.
-      </div>
-    )}
-
-    <div class="chap">
-      <h2>Los requisitos que más se citan</h2>
-      <p class="meta" style="color:var(--text-faint);font-size:.84rem;margin:-.3rem 0 .7rem">
-        Calculado sobre el grafo de referencias: qué exigencias sostienen al resto de la norma.
-      </p>
-      <div class="grid">
-        {top.map((r) => (
-          <a class="card" href={`${base}/art/${r.articulo}#${r.id.replace('art:', '')}`}>
-            <b>{r.id.startsWith('art:') ? `Artículo ${r.id.slice(4)}` : r.id}</b>
-            <span>{r.titulo}</span>
-            <em>{r.citas} referencias</em>
-          </a>
+      <ol class="rank">
+        {top.map((r, i) => (
+          <li>
+            <a href={`${base}/art/${r.articulo}#${r.id.replace('art:', '')}`}>
+              <span class="rank-i tabular">{i + 1}</span>
+              <span class="rank-id">{r.id.startsWith('art:') ? `Artículo ${r.id.slice(4)}` : r.id}</span>
+              <span class="rank-t">{r.titulo}</span>
+              <span class="rank-bar"><i style={`width:${Math.round((r.citas / maxCitas) * 100)}%`}></i></span>
+              <span class="rank-n tabular">{r.citas}</span>
+            </a>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
 
     {chapters.map((c) => {
       const arts = articles.filter((a) => a.chapter === c.num);
       if (!arts.length) return null;
       return (
-        <div class="chap" id={`cap${c.num}`}>
-          <h2><span>Capítulo {c.num}</span>{c.title}</h2>
+        <div class="sec" id={`cap${c.num}`}>
+          <div class="sec-head"><h2><span class="n">Capítulo {c.num}</span>{c.title}</h2></div>
           <div class="grid">
             {arts.map((a) => (
               /* El Artículo 100 no tiene secciones numeradas: es el glosario,
@@ -80,7 +93,7 @@ const verificadas = tablas.filter((t) => t.verificada).length;
               <a class="card" href={a.num === 100 ? `${base}/glosario/` : `${base}/art/${a.num}`}>
                 <b>{a.num}</b>
                 <span>{a.title}</span>
-                <em>
+                <em class="tabular">
                   {a.num === 100
                     ? `${definiciones.length} definiciones`
                     : `${a.sections.length} secciones`}
@@ -92,15 +105,123 @@ const verificadas = tablas.filter((t) => t.verificada).length;
       );
     })}
 
-    <div class="chap" id="cap10">
-      <h2><span>Capítulo 10</span>Tablas generales</h2>
+    <div class="sec" id="cap10">
+      <div class="sec-head"><h2><span class="n">Capítulo 10</span>Tablas generales</h2></div>
       <div class="grid">
         <a class="card" href={`${base}/tablas/`}>
           <b>10</b>
           <span>Tablas generales</span>
-          <em>{cap10.length} tablas</em>
+          <em class="tabular">{cap10.length} tablas</em>
         </a>
       </div>
     </div>
   </div>
 </Base>
+
+<style>
+  /* ---------------------------------------------------------------- regla
+     Franja de marcas cada 24px bajo el header, como la escala de un
+     instrumento. Usa --rejilla, el mismo tono apagado que ya marca las
+     líneas de las tablas, así que no introduce un color nuevo al tema. */
+  .ruler {
+    height: 7px;
+    background-image: repeating-linear-gradient(
+      to right, var(--rejilla) 0, var(--rejilla) 1px, transparent 1px, transparent 24px
+    );
+    opacity: 0.55;
+  }
+
+  .hero { padding: 2rem 0 0; border-bottom: none; margin-bottom: 0; }
+  .hero p.lede { margin: 0; color: var(--text-dim); max-width: 62ch; }
+  .hero p.lede b { font-family: var(--mono); font-weight: 600; color: var(--text); }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* -------------------------------------------------------- franja de cifras
+     Reemplaza los cuatro bloques sueltos de .stats: una sola fila con
+     reglas verticales, como el renglón de cabecera de una hoja de datos. */
+  .cifras {
+    margin-top: 1.4rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .cifra { padding: 0.8rem 1rem; border-left: 1px solid var(--border-soft); }
+  .cifra:first-child { border-left: none; }
+  .cifra b {
+    display: block; font-family: var(--mono); font-size: 1.4rem; font-weight: 600;
+    color: var(--text); line-height: 1.1;
+  }
+  .cifra span {
+    display: block; margin-top: 0.25rem; font-size: 0.68rem; color: var(--text-faint);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* --------------------------------------------------------------- estado
+     Sustituye el cuadro amarillo grande por una tira de estado compacta:
+     tres fichas de verificación más una línea legal secundaria, que ya no
+     compite en tamaño con el resto de la cabecera. */
+  .estado {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 1.5rem;
+    padding: 0.7rem 0 0.2rem; font-size: 0.82rem; color: var(--text-dim);
+  }
+  .chip { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
+  .chip.warn .dot { background: var(--warn-br); }
+  .chip b { font-family: var(--mono); color: var(--text); font-weight: 600; }
+  .estado .aparte { flex-basis: 100%; margin-top: 0.1rem; font-size: 0.78rem; color: var(--text-faint); }
+  .estado .aparte a { color: var(--accent); }
+
+  /* --------------------------------------------------------------- secciones
+     Encabezado compartido por "más citados" y cada capítulo; sustituye
+     .chap para la portada (las demás páginas siguen usando .chap tal cual). */
+  .sec { margin: 2rem 0; }
+  .sec-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+    padding-bottom: 0.35rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--border-soft);
+  }
+  .sec-head h2 { font-size: 1rem; margin: 0; }
+  .sec-head h2 span.n { font-family: var(--mono); color: var(--accent); margin-right: 0.5rem; }
+  .sec-head .desc { font-size: 0.78rem; color: var(--text-faint); white-space: nowrap; }
+
+  /* --------------------------------------------------------------- ranking
+     Los "más citados" sí tienen un orden real -numérico, por peso de citas-
+     así que van en una lista ordenada con su magnitud, no en tarjetas. */
+  ol.rank { list-style: none; margin: 0; padding: 0; }
+  ol.rank li { border-bottom: 1px solid var(--border-soft); }
+  ol.rank li:last-child { border-bottom: none; }
+  ol.rank a {
+    display: grid;
+    grid-template-columns: 1.6rem 6.5rem 1fr 7rem 2.6rem;
+    align-items: center; gap: 0.9rem;
+    padding: 0.5rem 0.4rem; border-radius: var(--radius); color: var(--text);
+  }
+  ol.rank a:hover { background: var(--bg-soft); text-decoration: none; }
+  .rank-i { font-family: var(--mono); color: var(--text-faint); font-size: 0.8rem; }
+  .rank-id { font-family: var(--mono); color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+  .rank-t { font-size: 0.87rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rank-bar { height: 5px; background: var(--border-soft); border-radius: 3px; overflow: hidden; }
+  .rank-bar i { display: block; height: 100%; background: var(--accent); opacity: 0.75; }
+  .rank-n { font-family: var(--mono); font-size: 0.82rem; color: var(--text-dim); text-align: right; }
+
+  @media (max-width: 720px) {
+    .cifras { grid-template-columns: repeat(2, 1fr); }
+    .cifra:nth-child(3) { border-left: none; }
+    .sec-head .desc { display: none; }
+
+    /* El título es lo que se busca leer aquí; en desktop se trunca porque
+       la barra y el número lo compensan, pero en una columna angosta
+       truncarlo también lo deja ilegible. Baja a una segunda línea en vez
+       de cortarse. */
+    ol.rank a {
+      grid-template-columns: 1.3rem 1fr auto;
+      grid-template-areas: "i id n" "i t t";
+      row-gap: 0.2rem;
+    }
+    .rank-i { grid-area: i; }
+    .rank-id { grid-area: id; }
+    .rank-n { grid-area: n; }
+    .rank-t { grid-area: t; white-space: normal; }
+    .rank-bar { display: none; }
+  }
+</style>
