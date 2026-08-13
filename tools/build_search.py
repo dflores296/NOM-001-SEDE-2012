@@ -27,6 +27,21 @@ def walk(n):
         yield from walk(c)
 
 
+def inciso_ids(sec):
+    # Todos los ids de los incisos descendientes -sin el de la sección
+    # misma-, p.ej. ["310-15(a)", "310-15(a)(1)", ..., "310-15(b)"]. Sirve
+    # para que la búsqueda del navegador salte directo al inciso exacto
+    # cuando el código se escribe completo (p.ej. "310-15b16" o "310-15a"),
+    # en vez de solo llegar al principio de la sección: la sección se indexa
+    # completa por diseño (ver docstring del módulo), pero cada inciso ya
+    # tiene su propio ancla en el HTML (ver Sub.astro) que hoy nadie apunta.
+    out = []
+    for c in sec.get('children', []):
+        for n in walk(c):
+            out.append(n['id'])
+    return out
+
+
 def flat_text(sec):
     out = []
     for n in walk(sec):
@@ -65,6 +80,7 @@ def main():
                 'art': a['num'],
                 'artTitle': a['title'],
                 'text': flat_text(s),
+                'incisos': inciso_ids(s),
             })
     for d in defs:
         docs.append({
