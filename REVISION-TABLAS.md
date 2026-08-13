@@ -39,8 +39,9 @@ Dos cosas que conviene saber antes de empezar:
   PDF no separa con líneas horizontales colapsan todas sus filas en una sola. Y sobre
   todo: cuando el reparto se inventa una columna, los valores quedan perfectos y la
   calidad da 1.00, pero el encabezado se corre y cada título de grupo cubre una
-  columna de menos. Eso es lo que marca la columna **enc.**, y es el fallo que tenía
-  la 310-15(b)(16), donde COBRE cubría dos de las tres columnas de cobre.
+  columna de menos. Es el fallo que tenía la 310-15(b)(16), donde COBRE cubría dos de
+  las tres columnas de cobre, y la firma que delata la columna fantasma es una celda
+  vacía en el encabezado junto a un título de grupo.
 
 ## Qué mirar en cada tabla
 
