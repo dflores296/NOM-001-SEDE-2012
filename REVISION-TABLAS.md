@@ -1,8 +1,8 @@
 # Revisión de tablas — NOM-001-SEDE-2012
 
-Lista de trabajo para contrastar las tablas reconstruidas contra el PDF del DOF.
-Ordenada por **impacto por duda**: cuánto se apoya la norma en cada tabla, por lo
-insegura que quedó su reconstrucción. Empezar por arriba es lo que más corrige por hora.
+Registro de la revisión de las tablas contra el PDF del DOF. **No queda ninguna
+pendiente**: las tablas se reconstruyen automáticamente desde el PDF y ese proceso no
+es exacto, así que se contrastaron todas celda por celda contra el documento original.
 
 La versión navegable, con enlaces a cada tabla, está en
 [/revision](https://dflores296.github.io/NOM-001-SEDE-2012/revision/).
@@ -11,40 +11,7 @@ La versión navegable, con enlaces a cada tabla, está en
 > REVISION-TABLAS.md`. No editar a mano: los cambios se pierden en la próxima
 > regeneración.
 
-Columnas: **usos** cuántas veces se apoya la norma en esa tabla · **cal.** calidad
-estimada de la separación en celdas (1.00 = ninguna celda con varios valores juntos)
-· **rejilla** de dónde salieron las columnas: `dibujada` son las líneas del PDF,
-`huecos` son los espacios entre palabras, que es mucho menos fiable y no recupera
-celdas combinadas. Una tabla marcada **enc.** trae la firma de la columna fantasma:
-una celda vacía en el encabezado junto a un título de grupo, que es como se ve una
-columna inventada. La calidad no detecta eso —los valores están perfectos— así que
-esas tablas salían con 1.00 y sin una sola marca.
-
-**220 de 220 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
-
-## 1 · Prioridad alta (0)
-
-Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos cálculos.
-
-Ninguna: ya están todas contrastadas contra el PDF.
-
-## 2 · Dudosas (0)
-
-Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
-
-Ninguna: ya están todas contrastadas contra el PDF.
-
-## 3 · Verificación de control (0)
-
-Salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas justamente por eso: una tabla equivocada que *parece* correcta es más peligrosa que una marcada como dudosa. Basta comprobar dos o tres renglones de cada una.
-
-Ninguna: ya están todas contrastadas contra el PDF.
-
-## 4 · Sin señales (0)
-
-Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
-
-Ninguna: ya están todas contrastadas contra el PDF.
+**220 de 220 tablas ya se contrastaron celda por celda contra el PDF**; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## Cómo se corrige una tabla
 
@@ -89,12 +56,28 @@ Dos cosas que conviene saber antes de empezar:
   nota al pie convertida en fila.
 - **Tablas que cruzan páginas.** Que no falten filas en la costura ni se repita el
   encabezado a media tabla.
-- **Notas al pie.** Las que van *debajo* de la rejilla todavía no se recogen como
-  notas de la tabla; pueden aparecer como texto del artículo.
+- **Dónde acaba el encabezado.** El fallo más repetido de toda la revisión: las
+  primeras filas de datos contadas como parte del título, con su mismo estilo.
+- **Notas al pie.** Que estén y que terminen donde termina la tabla. Se recogen de
+  debajo de la rejilla, y ahí el recorte se pasaba de largo con frecuencia: la nota
+  arrastraba el artículo siguiente completo, o hasta el pie de página del PDF.
 
 Cada tabla del sitio trae un enlace «¿Ves un error? Repórtalo» que abre un issue con
 el número y la página ya rellenados.
 
-## Lo que falta
+## Lo que la revisión dejó anotado
 
-- Las tablas que siguen listadas arriba, secciones 1 a 4.
+Dos tablas traen valores truncados **en el PDF de origen**, no en la reconstrucción.
+Se comprobó con las coordenadas del texto y con el render de la página, y se dejaron
+tal como los imprime el DOF: corregirlos sería editar la norma, no transcribirla.
+
+- **505-9(d)(1)** — la columna de temperatura superficial máxima dice `≤4`, `≤3`,
+  `≤2`, `≤1`, `≤1`, `≤85`. Por las clases T1–T6 deberían ser 450, 300, 200, 135,
+  100 y 85 °C.
+- **922-12(a)(2)** — en la columna de flecha 2.5 m, las filas de 6 600 y 23 000 volts
+  dicen `96` y `105` donde el patrón pide `960` y `1 050` milímetros.
+
+El PDF tampoco es un documento nativo: es una impresión de Chrome de
+`dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha el 19/11/2019. De ese HTML
+las tablas saldrían como `<table><tr><td>` sin inferir nada, y sería la forma de
+verificar de raíz lo que aquí se contrastó a ojo.

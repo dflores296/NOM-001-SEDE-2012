@@ -5,9 +5,10 @@ import { articles, chapters, corpus, grafo, definiciones, tablas } from '../lib/
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const nSec = articles.reduce((n, a) => n + a.sections.length, 0);
 const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8);
-// Las 11 tablas del Capítulo 10 no cuelgan de ningún artículo y se publican
+// Las tablas del Capítulo 10 no cuelgan de ningún artículo y se publican
 // juntas en /tablas.
 const cap10 = tablas.filter((t) => t.article == null);
+const verificadas = tablas.filter((t) => t.verificada).length;
 ---
 
 <Base title="NOM-001-SEDE-2012 — Guía interactiva">
@@ -27,13 +28,28 @@ const cap10 = tablas.filter((t) => t.article == null);
       </div>
     </div>
 
-    <div class="aviso aviso-fuerte">
-      <b>Las tablas están en revisión.</b> El texto de los artículos se extrajo con una
-      cobertura verificada del 99.99 %, pero las {tablas.length} tablas se reconstruyeron
-      automáticamente desde el PDF y eso no es exacto. Contrástalas con el original antes de
-      usar un valor, y <a href={`${base}/tablas/`}>repórtanos cualquier diferencia</a>: el
-      proyecto mejora con quien lo usa en obra.
-    </div>
+    {/* Mientras las tablas se reconstruían a ciegas, este aviso pedía
+        desconfiar de todas. Ya no: las {tablas.length} se contrastaron celda
+        por celda contra el PDF. El aviso se queda, pero para decir qué se
+        revisó y qué sigue siendo responsabilidad del lector. Si alguna tabla
+        volviera a quedar sin contrastar, el texto lo dice en vez de callarlo. */}
+    {verificadas === tablas.length ? (
+      <div class="aviso aviso-fuerte">
+        <b>Las {tablas.length} tablas ya se contrastaron celda por celda contra el PDF.</b>
+        El texto de los artículos se extrajo con una cobertura verificada del 99.96 %, y las
+        tablas —que se reconstruyen automáticamente y por eso eran la parte más frágil— se
+        revisaron una por una sobre el documento original. Aun así, esta no es una edición
+        oficial: ante cualquier duda prevalece el DOF, y si ves una diferencia
+        <a href={`${base}/tablas/`}>repórtala</a> — el proyecto mejora con quien lo usa en obra.
+      </div>
+    ) : (
+      <div class="aviso aviso-fuerte">
+        <b>Hay tablas sin contrastar.</b> {verificadas} de las {tablas.length} se revisaron
+        celda por celda contra el PDF; el resto sale de la reconstrucción automática, que no es
+        exacta. Contrasta con el original antes de usar un valor y consulta
+        <a href={`${base}/revision/`}>qué falta revisar</a>.
+      </div>
+    )}
 
     <div class="chap">
       <h2>Los requisitos que más se citan</h2>
