@@ -67,36 +67,80 @@ const sinSeñales = info
   .filter((x) => !marcadas.has(x.t.id))
   .sort((a, b) => a.t.pages[0] - b.t.pages[0] || a.t.id.localeCompare(b.t.id));
 
+// Con las 220 contrastadas esta página dejó de ser lista de trabajo y pasó a
+// ser el registro de lo que se revisó. La priorización se conserva entera —no
+// se borra— porque vuelve a encenderse sola si una tabla nueva o reprocesada
+// se queda sin contrastar.
+const terminado = info.length === 0;
+
 const href = (t) =>
   t.article ? `${base}/art/${t.article}#${tablaSlug(t.id)}` : `${base}/tablas/#${tablaSlug(t.id)}`;
 ---
 
 <Base
-  title="Qué revisar — NOM-001-SEDE-2012"
-  desc="Lista priorizada de tablas por contrastar contra el PDF del DOF."
+  title="Revisión de tablas — NOM-001-SEDE-2012"
+  desc="Estado de la revisión de las tablas contra el PDF del DOF, tabla por tabla."
 >
   <div class="wrap">
     <div class="hero">
-      <h1>Qué revisar</h1>
-      <p>
-        Las tablas se reconstruyeron automáticamente desde el PDF y ese proceso no es exacto.
-        Esta lista está ordenada por <b>impacto por duda</b>: cuánto se apoya la norma en cada
-        tabla, multiplicado por lo insegura que quedó su reconstrucción. Empezar por arriba es
-        lo que más corrige por minuto invertido.
-      </p>
-      <p style="margin-top:.7rem">
-        Cada renglón dice qué buscar y en qué página del PDF. Al abrir la tabla encontrarás un
-        enlace para reportar la diferencia con el número y la página ya rellenados.
-      </p>
+      <h1>Revisión de tablas</h1>
+      {terminado ? (
+        <>
+          <p>
+            Las tablas se reconstruyen automáticamente desde el PDF y ese proceso no es exacto,
+            así que se contrastaron <b>todas</b> celda por celda contra el documento original.
+            Esta página era la lista de trabajo; ahora es el registro de que no queda nada
+            pendiente.
+          </p>
+          <p style="margin-top:.7rem">
+            La versión corregida de cada tabla vive en <code>data/tablas_revisadas.json</code> y
+            se aplica encima de la reconstrucción, así que sobrevive a que el corpus se regenere
+            desde el PDF. Si ves una diferencia, cada tabla trae un enlace para reportarla con
+            el número y la página ya rellenados.
+          </p>
+        </>
+      ) : (
+        <>
+          <p>
+            Las tablas se reconstruyeron automáticamente desde el PDF y ese proceso no es exacto.
+            Esta lista está ordenada por <b>impacto por duda</b>: cuánto se apoya la norma en cada
+            tabla, multiplicado por lo insegura que quedó su reconstrucción. Empezar por arriba es
+            lo que más corrige por minuto invertido.
+          </p>
+          <p style="margin-top:.7rem">
+            Cada renglón dice qué buscar y en qué página del PDF. Al abrir la tabla encontrarás un
+            enlace para reportar la diferencia con el número y la página ya rellenados.
+          </p>
+        </>
+      )}
       <div class="stats">
-        <div class="stat"><b>{criticas.length}</b><span>Prioridad alta</span></div>
-        <div class="stat"><b>{dudosas.length}</b><span>Dudosas</span></div>
-        <div class="stat"><b>{sinSeñales.length}</b><span>Sin señales</span></div>
         <div class="stat"><b>{verificadas.length}</b><span>Verificadas contra el PDF</span></div>
+        <div class="stat"><b>{info.length}</b><span>Por revisar</span></div>
         <div class="stat"><b>{tablas.length}</b><span>Tablas en total</span></div>
       </div>
     </div>
 
+    {terminado && (
+      <div class="aviso aviso-fuerte">
+        <b>Revisión terminada: {verificadas.length} de {tablas.length}.</b> Cada tabla se
+        renderizó desde el PDF en sus coordenadas y se comparó contra lo publicado. Lo que
+        apareció, y quedó corregido: columnas inventadas por el reparto automático, encabezados
+        corridos que dejaban cada dato bajo el título equivocado, filas de datos pintadas como
+        encabezado, filas partidas en la costura entre páginas, notas al pie que se tragaban el
+        artículo siguiente y glitches de fuente del PDF (<code>ºC</code> por <code>°C</code>).
+        <br /><br />
+        Dos tablas traen valores truncados <em>en el PDF de origen</em> —la 505-9(d)(1) y la
+        922-12(a)(2)—: se dejaron tal como los imprime el DOF, no se corrigió lo que la norma
+        publicó así.
+      </div>
+    )}
+
+    {/* Las cuatro secciones de trabajo solo se pintan si queda algo por
+        revisar. Con todo contrastado eran cuatro encabezados seguidos con un
+        «Ninguna» debajo: cuatro veces la misma buena noticia, y el registro de
+        lo que sí se hizo enterrado al final de la página. */}
+    {!terminado && (
+    <>
     <div class="chap">
       <h2>1 · Prioridad alta</h2>
       <p class="rev-nota">
@@ -194,22 +238,32 @@ const href = (t) =>
         ))}
       </ol>
     </div>
+    </>
+    )}
 
     <div class="chap">
-      <h2>Qué mirar en cada tabla</h2>
+      <h2>Qué mirar si quieres comprobarla</h2>
+      <p class="rev-nota">
+        Esto es lo que falló al reconstruir las tablas y lo que se corrigió una por una. Sirve
+        de guía si quieres contrastar alguna contra el PDF por tu cuenta: son los seis sitios
+        donde se escondían los errores.
+      </p>
       <ul class="rev-check">
-        <li><b>Número de columnas.</b> Si el PDF tiene 8 y aquí ves 5, se fusionaron.</li>
+        <li><b>Número de columnas.</b> Si el PDF tiene 8 y aquí ves 5, se fusionaron; si tiene
+          3 y aquí ves 4, el reparto se inventó una.</li>
         <li><b>Celdas con varios valores.</b> Un <code>55 65 75</code> junto en una celda
           significa que la separación falló en esa fila.</li>
-        <li><b>Encabezados de dos niveles.</b> Las tablas con COBRE / ALUMINIO arriba y
+        <li><b>Encabezados de dos y tres niveles.</b> Las tablas con COBRE / ALUMINIO arriba y
           60/75/90 °C abajo son las más frágiles: revisa que cada número quede bajo su
           material y su temperatura.</li>
+        <li><b>Dónde acaba el encabezado.</b> Era el fallo más repetido: las primeras filas de
+          datos pintadas como título, con el mismo estilo y sin ser encabezado.</li>
         <li><b>Primera y última fila.</b> Es donde se cuela el título de la tabla siguiente o
           una nota al pie convertida en fila.</li>
         <li><b>Tablas que cruzan páginas.</b> Comprueba que no falten filas en la costura ni
-          se repita el encabezado a media tabla.</li>
-        <li><b>Notas al pie y asteriscos.</b> Hoy pueden aparecer como una fila más en vez de
-          como nota.</li>
+          que una fila quede partida en dos con la mitad de las celdas vacías.</li>
+        <li><b>Notas al pie.</b> Que estén, y que terminen donde termina la tabla: varias se
+          pasaban de largo y arrastraban el artículo siguiente completo.</li>
       </ul>
     </div>
   </div>

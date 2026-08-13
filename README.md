@@ -22,10 +22,11 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | `data/definiciones.json` | Las 185 definiciones del Artículo 100 |
 | `data/grafo.json` | Grafo de referencias cruzadas con backlinks |
 | `data/tablas.json` | Las tablas reconstruidas como datos, con calidad estimada |
-| `data/tablas_por_revisar.json` | Tablas cuya reconstrucción conviene contrastar |
+| `data/tablas_revisadas.json` | La versión corregida a mano de cada tabla, que se aplica encima de la reconstrucción |
+| `data/tablas_por_revisar.json` | Tablas cuya reconstrucción conviene contrastar (vacío: ya se revisaron todas) |
 | `data/indice.json` | Índice plano `id → {título, artículo, página}` |
 | `data/validacion.json` | Métricas de cobertura del parseo |
-| `REVISION-TABLAS.md` | Lista de trabajo de tablas por revisar, generada desde `data/tablas.json` y `data/grafo.json` |
+| `REVISION-TABLAS.md` | Registro de la revisión de tablas, generado desde `data/tablas.json` y `data/grafo.json` |
 | `tools/` | Los scripts que generan todo lo anterior desde el PDF |
 | `site/` | Sitio estático (Astro) |
 
@@ -35,14 +36,14 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 |---|---|
 | Artículos | 151 |
 | Secciones | 2 897 |
-| Incisos | 8 286 |
-| Notas / Excepciones | 780 / 981 |
+| Incisos | 8 261 |
+| Notas / Excepciones | 777 / 985 |
 | Definiciones | 185 |
-| Referencias enlazadas | 4 650 |
+| Referencias enlazadas | 4 637 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 99.96 % |
-| Tablas reconstruidas | 218 |
-| Tablas de alta confianza | 177 |
+| Tablas reconstruidas | 220 |
+| Tablas contrastadas contra el PDF | 220 |
 
 ## El identificador canónico
 
@@ -119,6 +120,7 @@ encontrar:
 - [x] **Fase 2** — Grafo de referencias cruzadas y backlinks
 - [x] **Fase 3** — Sitio navegable con búsqueda y uso sin conexión
 - [x] **Fase 4** — Tablas como datos
+- [x] **Fase 4.5** — Las 220 tablas contrastadas celda por celda contra el PDF
 - [ ] **Fase 5** — Búsqueda semántica y servidor MCP
 - [ ] **Fase 6** — Calculadoras (ampacidad, caída de tensión, llenado de tubería)
 
@@ -138,7 +140,7 @@ rectángulos vectoriales:
   eje x y busca franjas sin tinta. Ninguno gana siempre: hay tablas con rejilla
   completa y otras que solo trazan el borde exterior. Se puntúa cada resultado
   —una celda con varios números sueltos delata que la separación falló— y gana
-  el que separa mejor. De 218 tablas, 156 traen rejilla dibujada.
+  el que separa mejor. De 220 tablas, 156 traen rejilla dibujada.
 - **Celdas combinadas**: el PDF fusiona celdas en el encabezado para que se
   entienda —«Rango de temperatura del conductor» cubre las tres columnas de
   60/75/90 °C, y «Temperatura ambiente (°C)» ocupa dos filas—. Esa jerarquía
@@ -163,26 +165,48 @@ rectángulos vectoriales:
   posición del flujo de texto, y el parser la cuelga del inciso por el que iba
   pasando. Así cada tabla se publica donde la norma la imprime —la
   310-15(b)(2)(a) dentro del inciso 310-15(b)(2)— en vez de amontonarse al
-  final. Las 207 tablas de artículo quedan ancladas; las 11 del Capítulo 10 no
+  final. Las 208 tablas de artículo quedan ancladas; las 12 del Capítulo 10 no
   pertenecen a ningún artículo y se publican en su propia página.
 
-**Esto es aproximado y se publica como tal.** Cada tabla lleva una calidad
-estimada; las que no llegan a 0.80 salen marcadas en el sitio con un aviso para
-contrastar contra el PDF, y se listan en `data/tablas_por_revisar.json`. Es
-preferible señalar la duda que presentar 218 tablas con la misma confianza.
+### La revisión a mano: 220 de 220
 
-Veinticinco ya se contrastaron celda por celda contra el PDF y su versión
-corregida vive en `data/tablas_revisadas.json`, que se aplica encima de lo
-reconstruido —ver `REVISION-TABLAS.md`—. Esa corrección a mano incluye dónde
-empieza y termina la tabla: la 922-15(a) se llevaba dentro dos secciones
-enteras del artículo 922, y la 400-4 dejaba fuera sus quince notas, que
-acababan pegadas al texto de 400-5(c).
+**El reparto automático llegó hasta donde llega, así que las 220 tablas se
+contrastaron celda por celda contra el PDF.** Se renderiza la zona de cada tabla
+desde sus coordenadas, se compara con lo publicado y la versión corregida se
+escribe en `data/tablas_revisadas.json`, que se aplica ENCIMA de lo reconstruido
+—editar `data/tablas.json` no sirve: `build_tables.py` lo sobrescribe en cada
+publicación—. Cada tabla del sitio lleva en su pie la marca de esa revisión.
 
-Sigue en pie el atajo para mejorarlas: el PDF no es un documento nativo, es una
-impresión de Chrome de `dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha
-el 19/11/2019 (lo delatan los metadatos, productor `Skia/PDF`, y el pie en las
-780 páginas). Con ese HTML las tablas vendrían como `<table><tr><td>` y no
-habría que inferir nada.
+La calidad estimada resultó ser un mal juez en las dos direcciones: daba falsas
+alarmas con los rangos legítimos («De 50 001 a 100 000» tiene dos números y no
+está mal separado) y en cambio puntuaba 1.00 tablas con la columna inventada,
+donde los valores están perfectos pero el encabezado se corre y cada título
+cubre una columna de menos. Lo que la revisión encontró, por frecuencia:
+
+- **Dónde acaba el encabezado.** El fallo más repetido: las primeras filas de
+  datos contadas como parte del título.
+- **Notas al pie que se pasan de largo.** El recorte de la nota arrastraba el
+  artículo siguiente completo —la NOTA 3 de la 430-72(b) se llevaba el inciso c)
+  y su excepción— o hasta el pie de página del PDF.
+- **Columnas inventadas o fusionadas**, con el encabezado corrido detrás.
+- **Filas partidas en la costura entre páginas**, con la segunda mitad como fila
+  aparte y las demás celdas vacías.
+- **Dónde empieza y termina la tabla.** La 922-15(a) se llevaba dentro dos
+  secciones enteras del artículo 922; la 400-4 dejaba fuera sus quince notas,
+  que acababan pegadas al texto de 400-5(c).
+- **Glitches de fuente del propio PDF**, con `ºC` y `₀C` donde debía ir `°C`.
+
+Dos tablas traen valores truncados **en el PDF de origen** y se dejaron tal como
+los imprime el DOF: la 505-9(d)(1) (`≤4`, `≤3`, `≤2`… donde las clases T1–T6
+piden 450, 300, 200 °C) y la 922-12(a)(2) (`96` y `105` donde el patrón pide 960
+y 1 050 mm). Quedan anotadas en `REVISION-TABLAS.md`; corregirlas sería editar la
+norma, no transcribirla.
+
+Sigue en pie el atajo para verificar todo esto de raíz: el PDF no es un documento
+nativo, es una impresión de Chrome de
+`dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha el 19/11/2019 (lo
+delatan los metadatos, productor `Skia/PDF`, y el pie en las 780 páginas). Con
+ese HTML las tablas vendrían como `<table><tr><td>` y no habría que inferir nada.
 
 ## Licencia
 

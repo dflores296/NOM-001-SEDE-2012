@@ -8,8 +8,12 @@ const cap10 = tablas.filter((t) => t.article == null)
                     .sort((a, b) => a.page - b.page);
 const enArticulos = tablas.filter((t) => t.article != null)
                           .sort((a, b) => a.article - b.article || a.page - b.page);
-const fiables = tablas.filter((t) => t.quality >= 0.95).length;
-const revisar = tablas.filter((t) => t.quality < 0.8).length;
+// La calidad estimada era el termómetro mientras las tablas salían solo del
+// algoritmo. Ahora que todas se contrastaron a mano, lo que informa al lector
+// es cuántas llevan esa revisión detrás, no cuánto se confiaba en el reparto
+// automático.
+const verificadas = tablas.filter((t) => t.verificada).length;
+const sinVerificar = tablas.length - verificadas;
 ---
 
 <Base
@@ -27,21 +31,34 @@ const revisar = tablas.filter((t) => t.quality < 0.8).length;
       <div class="stats">
         <div class="stat"><b>{tablas.length}</b><span>Tablas</span></div>
         <div class="stat"><b>{tablas.reduce((n, t) => n + t.rows.length, 0).toLocaleString('es-MX')}</b><span>Filas</span></div>
-        <div class="stat"><b>{fiables}</b><span>Alta confianza</span></div>
-        <div class="stat"><b>{revisar}</b><span>Por revisar</span></div>
+        <div class="stat"><b>{verificadas}</b><span>Verificadas contra el PDF</span></div>
+        <div class="stat"><b>{sinVerificar}</b><span>Por revisar</span></div>
       </div>
     </div>
 
-    <div class="aviso aviso-fuerte">
-      <b>Las tablas están en revisión.</b> Se reconstruyeron automáticamente desde el PDF y
-      ese proceso no es exacto: <b>{revisar} de las {tablas.length}</b> no alcanzaron el
-      umbral de confianza y aparecen marcadas una por una. Aun las que sí lo alcanzaron
-      pueden tener celdas mal separadas.
-      <br /><br />
-      Verifica siempre contra el PDF del DOF antes de usar un valor en un proyecto. Si
-      encuentras una diferencia, cada tabla tiene un enlace para reportarla: es la forma más
-      rápida de que se corrija para todos.
-    </div>
+    {sinVerificar === 0 ? (
+      <div class="aviso aviso-fuerte">
+        <b>Las {tablas.length} tablas se contrastaron celda por celda contra el PDF.</b>
+        La reconstrucción automática dejó fallos de todo tipo —columnas inventadas, encabezados
+        corridos, filas partidas en la costura entre páginas, pies de tabla que se tragaban el
+        artículo siguiente— y se corrigieron a mano sobre el documento original. Cada tabla
+        lleva en su pie la marca de esa revisión y la página del PDF de la que sale.
+        <br /><br />
+        Eso no la convierte en fuente oficial: ante cualquier discrepancia prevalece el texto
+        del DOF. Si encuentras una diferencia, cada tabla tiene un enlace para reportarla.
+      </div>
+    ) : (
+      <div class="aviso aviso-fuerte">
+        <b>Hay tablas sin contrastar.</b> Se reconstruyeron automáticamente desde el PDF y ese
+        proceso no es exacto: <b>{sinVerificar} de las {tablas.length}</b> todavía no se han
+        revisado contra el original y aparecen marcadas una por una en
+        <a href={`${base}/revision/`}>qué revisar</a>.
+        <br /><br />
+        Verifica siempre contra el PDF del DOF antes de usar un valor en un proyecto. Si
+        encuentras una diferencia, cada tabla tiene un enlace para reportarla: es la forma más
+        rápida de que se corrija para todos.
+      </div>
+    )}
 
     <div class="chap">
       <h2><span>Capítulo 10</span>Tablas generales</h2>
@@ -55,10 +72,13 @@ const revisar = tablas.filter((t) => t.quality < 0.8).length;
           <a class="card" href={`${base}/art/${t.article}#${tablaSlug(t.id)}`}>
             <b>{rotuloTabla(t)}</b>
             <span>{subtituloTabla(t)}</span>
+            {/* La marca es «no contrastada», no «calidad baja»: la calidad
+                estimada solo dice cuánto confiaba el algoritmo en su propio
+                reparto, y una tabla ya revisada a mano no necesita ese aviso. */}
             <em>
               {t.rows.length} filas · {t.cols} col.
               {t.informativa ? ' · informativa' : ''}
-              {t.quality < 0.8 ? ' · por revisar' : ''}
+              {!t.verificada ? ' · por revisar' : ''}
             </em>
           </a>
         ))}

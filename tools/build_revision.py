@@ -15,9 +15,7 @@ SITIO = 'https://dflores296.github.io/NOM-001-SEDE-2012/revision/'
 
 CABECERA = """# Revisión de tablas — NOM-001-SEDE-2012
 
-Lista de trabajo para contrastar las tablas reconstruidas contra el PDF del DOF.
-Ordenada por **impacto por duda**: cuánto se apoya la norma en cada tabla, por lo
-insegura que quedó su reconstrucción. Empezar por arriba es lo que más corrige por hora.
+{intro}
 
 La versión navegable, con enlaces a cada tabla, está en
 [/revision]({sitio}).
@@ -25,16 +23,29 @@ La versión navegable, con enlaces a cada tabla, está en
 > Este archivo se genera con `python3 tools/build_revision.py data/
 > REVISION-TABLAS.md`. No editar a mano: los cambios se pierden en la próxima
 > regeneración.
+"""
 
-Columnas: **usos** cuántas veces se apoya la norma en esa tabla · **cal.** calidad
+# Mientras quedaban tablas por contrastar, este archivo era la lista de trabajo.
+# Terminada la revisión sigue siendo útil, pero como registro: qué se revisó y
+# contra qué. La priorización se conserva y vuelve a encenderse sola si una
+# tabla nueva o reprocesada se queda sin marca de `verificada`.
+INTRO_PENDIENTE = """Lista de trabajo para contrastar las tablas reconstruidas contra el PDF del DOF.
+Ordenada por **impacto por duda**: cuánto se apoya la norma en cada tabla, por lo
+insegura que quedó su reconstrucción. Empezar por arriba es lo que más corrige por hora."""
+
+INTRO_TERMINADO = """Registro de la revisión de las tablas contra el PDF del DOF. **No queda ninguna
+pendiente**: las tablas se reconstruyen automáticamente desde el PDF y ese proceso no
+es exacto, así que se contrastaron todas celda por celda contra el documento original."""
+
+# La leyenda de columnas solo hace falta cuando hay filas que leer.
+LEYENDA = """Columnas: **usos** cuántas veces se apoya la norma en esa tabla · **cal.** calidad
 estimada de la separación en celdas (1.00 = ninguna celda con varios valores juntos)
 · **rejilla** de dónde salieron las columnas: `dibujada` son las líneas del PDF,
 `huecos` son los espacios entre palabras, que es mucho menos fiable y no recupera
 celdas combinadas. Una tabla marcada **enc.** trae la firma de la columna fantasma:
 una celda vacía en el encabezado junto a un título de grupo, que es como se ve una
 columna inventada. La calidad no detecta eso —los valores están perfectos— así que
-esas tablas salían con 1.00 y sin una sola marca.
-"""
+esas tablas salían con 1.00 y sin una sola marca."""
 
 PIE = """
 ## Cómo se corrige una tabla
@@ -63,8 +74,9 @@ Dos cosas que conviene saber antes de empezar:
   PDF no separa con líneas horizontales colapsan todas sus filas en una sola. Y sobre
   todo: cuando el reparto se inventa una columna, los valores quedan perfectos y la
   calidad da 1.00, pero el encabezado se corre y cada título de grupo cubre una
-  columna de menos. Eso es lo que marca la columna **enc.**, y es el fallo que tenía
-  la 310-15(b)(16), donde COBRE cubría dos de las tres columnas de cobre.
+  columna de menos. Es el fallo que tenía la 310-15(b)(16), donde COBRE cubría dos de
+  las tres columnas de cobre, y la firma que delata la columna fantasma es una celda
+  vacía en el encabezado junto a un título de grupo.
 
 ## Qué mirar en cada tabla
 
@@ -80,15 +92,37 @@ Dos cosas que conviene saber antes de empezar:
   nota al pie convertida en fila.
 - **Tablas que cruzan páginas.** Que no falten filas en la costura ni se repita el
   encabezado a media tabla.
-- **Notas al pie.** Las que van *debajo* de la rejilla todavía no se recogen como
-  notas de la tabla; pueden aparecer como texto del artículo.
+- **Dónde acaba el encabezado.** El fallo más repetido de toda la revisión: las
+  primeras filas de datos contadas como parte del título, con su mismo estilo.
+- **Notas al pie.** Que estén y que terminen donde termina la tabla. Se recogen de
+  debajo de la rejilla, y ahí el recorte se pasaba de largo con frecuencia: la nota
+  arrastraba el artículo siguiente completo, o hasta el pie de página del PDF.
 
 Cada tabla del sitio trae un enlace «¿Ves un error? Repórtalo» que abre un issue con
 el número y la página ya rellenados.
+"""
 
-## Lo que falta
+CIERRE_PENDIENTE = """## Lo que falta
 
 - Las tablas que siguen listadas arriba, secciones 1 a 4.
+"""
+
+CIERRE_TERMINADO = """## Lo que la revisión dejó anotado
+
+Dos tablas traen valores truncados **en el PDF de origen**, no en la reconstrucción.
+Se comprobó con las coordenadas del texto y con el render de la página, y se dejaron
+tal como los imprime el DOF: corregirlos sería editar la norma, no transcribirla.
+
+- **505-9(d)(1)** — la columna de temperatura superficial máxima dice `≤4`, `≤3`,
+  `≤2`, `≤1`, `≤1`, `≤85`. Por las clases T1–T6 deberían ser 450, 300, 200, 135,
+  100 y 85 °C.
+- **922-12(a)(2)** — en la columna de flecha 2.5 m, las filas de 6 600 y 23 000 volts
+  dicen `96` y `105` donde el patrón pide `960` y `1 050` milímetros.
+
+El PDF tampoco es un documento nativo: es una impresión de Chrome de
+`dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha el 19/11/2019. De ese HTML
+las tablas saldrían como `<table><tr><td>` sin inferir nada, y sería la forma de
+verificar de raíz lo que aquí se contrastó a ojo.
 """
 
 
@@ -199,18 +233,28 @@ def main():
         ),
     ]
 
-    out = [CABECERA.format(sitio=SITIO).rstrip()]
+    terminado = not info
+    intro = INTRO_TERMINADO if terminado else INTRO_PENDIENTE
+    out = [CABECERA.format(intro=intro, sitio=SITIO).rstrip()]
+    if not terminado:
+        out.append(LEYENDA)
     out.append(
         f'**{len(verificadas)} de {len(tablas)} tablas ya se contrastaron celda '
-        f'por celda contra el PDF** y salen de esta lista; quedan registradas en '
-        f'`data/tablas_revisadas.json`, que se aplica encima de la '
-        f'reconstrucción automática.'
+        f'por celda contra el PDF**'
+        + ('' if terminado else ' y salen de esta lista')
+        + '; quedan registradas en `data/tablas_revisadas.json`, que se aplica '
+        'encima de la reconstrucción automática.'
     )
-    for titulo, nota, items in secciones:
-        out.append(titulo + '\n\n' + nota)
-        out.append(tabla_md([(t, c) for t, c, _ in items]))
+    # Con la revisión cerrada, las cuatro secciones son cuatro encabezados
+    # seguidos de «Ninguna»: cuatro veces la misma buena noticia. Se omiten y el
+    # documento pasa a ser lo que quedó anotado.
+    if not terminado:
+        for titulo, nota, items in secciones:
+            out.append(titulo + '\n\n' + nota)
+            out.append(tabla_md([(t, c) for t, c, _ in items]))
 
     out.append(PIE.strip())
+    out.append((CIERRE_PENDIENTE if not terminado else CIERRE_TERMINADO).strip())
 
     out_path.write_text('\n\n'.join(out).rstrip() + '\n', encoding='utf-8')
     print(
