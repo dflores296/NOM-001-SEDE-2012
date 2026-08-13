@@ -52,6 +52,16 @@ def main():
         fails.append('%d referencias rotas en el grafo'
                      % grafo['meta']['referencias_rotas'])
 
+    # Una sección sin texto, hijos ni definiciones casi siempre es un título
+    # que se tragó su propio cuerpo (le pasó a 340-6: faltaba el punto que
+    # separa título de texto en el PDF y el regex normal consumió la frase
+    # entera como título). Sin este check la próxima regresión así pasa
+    # inadvertida: no baja ninguna cifra de cobertura, porque las palabras
+    # siguen estando, solo que mal repartidas.
+    if val.get('secciones_vacias'):
+        fails.append('%d secciones vacías: %s'
+                     % (len(val['secciones_vacias']), val['secciones_vacias'][:10]))
+
     # ids duplicados: romperían la búsqueda y los enlaces profundos
     ids = Counter()
     for a in corpus['articles']:

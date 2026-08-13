@@ -101,7 +101,8 @@
     }
    ],
    "sections": [],
-   "refs": []
+   "refs": [],
+   "alcance": "Alcance. Este Artículo contiene las definiciones esenciales para la aplicación de esta NOM. No pretende incluir los términos generales comúnmente definidos o los términos técnicos definidos en otras normas. En general, sólo se definen términos utilizados en dos o más Artículos de esta NOM. En algunos Artículos se incluyen otras definiciones de aplicación particular en el propio Artículo, pero puede hacerse referencia a ellas en este Artículo. La Parte A de este Artículo contiene las definiciones que se aplican dondequiera que los términos sean utilizados en esta NOM. La Parte B contiene las definiciones aplicables únicamente en los Artículos que cubren instalaciones y equipos que operan a más de 600 volts."
   },
   {
    "num": 110,
@@ -31183,10 +31184,10 @@
     },
     {
      "id": "340-6",
-     "title": "Requisitos de aprobación Los cables tipo UF deben ser aprobados",
+     "title": "Requisitos de aprobación",
      "part": "A",
      "page": 187,
-     "text": "",
+     "text": "Los cables tipo UF deben ser aprobados.",
      "children": [],
      "notes": [],
      "exceptions": []

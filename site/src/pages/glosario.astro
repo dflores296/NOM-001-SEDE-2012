@@ -1,12 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
-import { definiciones, linkify } from '../lib/nom.js';
+import { definiciones, linkify, byNum } from '../lib/nom.js';
 import { defSlug } from '../lib/slug.js';
 
 const partes = [
   { letter: 'A', title: 'Definiciones generales' },
   { letter: 'B', title: 'Definiciones aplicables a más de 600 volts' },
 ];
+
+const alcance = byNum.get(100)?.alcance;
 ---
 
 <Base
@@ -21,6 +23,7 @@ const partes = [
         significado de los términos en toda la norma, así que conviene leerlas antes de
         interpretar cualquier requisito.
       </p>
+      {alcance && <p class="alcance" set:html={linkify(alcance)} />}
     </div>
 
     {partes.map((p) => {
@@ -45,3 +48,7 @@ const partes = [
     })}
   </div>
 </Base>
+
+<style>
+  .alcance { margin-top: 0.9rem !important; font-size: 0.92rem; }
+</style>
