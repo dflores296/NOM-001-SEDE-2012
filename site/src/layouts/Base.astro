@@ -86,6 +86,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       const box = document.getElementById('res');
       let mini = null;
       let allDocs = null;
+      // normCodigo(idDeInciso) -> { doc: seccionQueLoContiene, id: idDeInciso }.
+      // Cada inciso ("310-15(a)", "310-15(b)(16)"...) no tiene documento
+      // propio en el índice de MiniSearch -se indexa a nivel de sección
+      // completa, ver build_search.py-, pero SÍ tiene su propio ancla en el
+      // HTML (id={node.id} en Sub.astro). Este mapa es lo que permite
+      // saltar directo a esa ancla exacta en vez de solo al principio de
+      // la sección.
+      let incisoPorCn = null;
       let sel = -1;
 
       // MiniSearch no toca acentos por defecto: "electrica" no encontraba
@@ -121,23 +129,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
 
       // Busca por id normalizado en vez de por tokens: coincidencia EXACTA
-      // ("310-15b16" === "310-15(b)(16)") o el id de una SECCIÓN como
-      // prefijo de lo escrito ("310-15" es prefijo de "310-15a", porque el
-      // inciso (a) no tiene documento propio en el índice -se indexa a
-      // nivel de sección completa-). Se acota el sobrante para no
-      // confundir "310-15" con "310-150" o con un artículo distinto que
-      // por casualidad comparta el mismo prefijo largo.
+      // ("310-15b16" === "310-15(b)(16)"), primero contra un INCISO exacto
+      // (para saltar directo a "310-15(a)" en vez de solo al principio de
+      // la sección "310-15"), y si no hay inciso, contra el id de una
+      // SECCIÓN/TABLA completa o como prefijo de lo escrito ("310-15" es
+      // prefijo de "310-15a" cuando el inciso exacto no existe o no se pudo
+      // resolver). Se acota el sobrante para no confundir "310-15" con
+      // "310-150" o con un artículo distinto que comparta el mismo prefijo.
       function coincidenciasCodigo(q) {
         if (!allDocs) return [];
         const qn = normCodigo(q);
         if (!pareceCodigo(qn)) return [];
         const out = [];
+        // Muy por encima de cualquier score real de MiniSearch (que en la
+        // práctica no pasa de los miles): una coincidencia de código exacta
+        // debe ganarle siempre al difuso, sin excepción, incluso cuando el
+        // difuso tiene un pico raro con una consulta muy específica.
+        const BASE = 1e6;
+
+        const inciso = incisoPorCn.get(qn);
+        if (inciso) out.push({ ...inciso.doc, id: inciso.id, score: BASE });
+
         for (const d of allDocs) {
           const dn = d._cn;
           if (!dn) continue;
-          if (dn === qn) out.push({ ...d, score: 1000 });
-          else if (dn.length >= 4 && dn.length < qn.length && qn.startsWith(dn) && qn.length - dn.length <= 3) {
-            out.push({ ...d, score: 800 - (qn.length - dn.length) });
+          if (dn === qn) out.push({ ...d, score: BASE });
+          else if (!inciso && dn.length >= 4 && dn.length < qn.length && qn.startsWith(dn) && qn.length - dn.length <= 3) {
+            out.push({ ...d, score: BASE - 200 - (qn.length - dn.length) });
           }
         }
         out.sort((a, b) => b.score - a.score);
@@ -158,9 +176,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             // (sin '-', '(', ')', '.') que usa coincidenciasCodigo() más
             // abajo para encontrar "310-15(b)(16)" aunque se escriba
             // "310-15b16" pegado.
+            incisoPorCn = new Map();
             for (const d of docs) {
               if (d.kind === 'sec' || d.kind === 'tabla') {
                 d._cn = normCodigo(d.kind === 'tabla' ? d.tid : d.id);
+              }
+              if (d.kind === 'sec') {
+                for (const iid of d.incisos || []) {
+                  const cn = normCodigo(iid);
+                  // El primero gana: si dos incisos de distinta sección
+                  // normalizaran igual (no debería pasar, pero por si
+                  // acaso), mejor quedarse con uno determinista que pisarlo
+                  // en cada vuelta.
+                  if (!incisoPorCn.has(cn)) incisoPorCn.set(cn, { doc: d, id: iid });
+                }
               }
             }
             allDocs = docs;
@@ -194,13 +223,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       // pidiendo ir al glosario. Las tablas del Capítulo 10 tampoco cuelgan
       // de ningún artículo (r.art viene null) y se publican aparte, en
       // /tablas; las demás se anclan dentro de su artículo.
+      //
+      // r.id de una sección normal nunca trae paréntesis (los ids de
+      // sección son planos, tipo "310-15"); solo los trae cuando
+      // coincidenciasCodigo() lo sobreescribió con el id de un INCISO
+      // concreto ("310-15(a)"), que también tiene su propia ancla en el
+      // HTML (ver id={node.id} en Sub.astro). Por eso ya no se recorta en
+      // el primer '(': antes ese recorte no cambiaba nada porque nunca
+      // había paréntesis que cortar, pero ahora sí los hay y hay que
+      // conservarlos para aterrizar en el inciso exacto.
       function href(r) {
         if (r.kind === 'def') return `${base}/glosario/#${defSlug(r.id)}`;
         if (r.kind === 'tabla') {
           const slug = tablaSlug(r.tid);
           return r.art ? `${base}/art/${r.art}#${slug}` : `${base}/tablas#${slug}`;
         }
-        return `${base}/art/${r.art}#${String(r.id).split('(')[0]}`;
+        return `${base}/art/${r.art}#${r.id}`;
       }
 
       function escapeHtml(s) {
