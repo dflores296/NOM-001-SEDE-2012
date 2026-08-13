@@ -85,6 +85,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       const input = document.getElementById('q');
       const box = document.getElementById('res');
       let mini = null;
+      let allDocs = null;
       let sel = -1;
 
       // MiniSearch no toca acentos por defecto: "electrica" no encontraba
@@ -100,6 +101,49 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         .filter((c) => { const cp = c.codePointAt(0); return cp < 0x0300 || cp > 0x036f; })
         .join('');
 
+      // MiniSearch corta cada id en tokens por cada '-', '(', ')' y '.', así
+      // que "310-15(b)(16)" queda como CUATRO piezas sueltas: "310" "15" "b"
+      // "16". Eso funciona si buscas con esos mismos separadores, pero
+      // buscar "310-15b16" pegado (como se escribe en campo, sin teclear
+      // paréntesis) produce el token "15b16", que no coincide con ninguna
+      // de esas cuatro piezas: el buscador solo engancha "310" y el resto
+      // del orden queda a la deriva del difuso, mezclando tablas de
+      // cualquier otra sección del artículo 310. normCodigo() quita TODOS
+      // los separadores para poder comparar códigos completos entre sí sin
+      // que importe cómo se hayan escrito.
+      const normCodigo = (s) => sinAcentos(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+
+      // Solo se activa para algo con pinta de código de artículo-sección
+      // (varios dígitos seguidos), para no interferir con búsquedas de
+      // texto normal que por casualidad empiecen con un número.
+      function pareceCodigo(qn) {
+        return qn.length >= 4 && (qn.match(/\d/g) || []).length >= 4;
+      }
+
+      // Busca por id normalizado en vez de por tokens: coincidencia EXACTA
+      // ("310-15b16" === "310-15(b)(16)") o el id de una SECCIÓN como
+      // prefijo de lo escrito ("310-15" es prefijo de "310-15a", porque el
+      // inciso (a) no tiene documento propio en el índice -se indexa a
+      // nivel de sección completa-). Se acota el sobrante para no
+      // confundir "310-15" con "310-150" o con un artículo distinto que
+      // por casualidad comparta el mismo prefijo largo.
+      function coincidenciasCodigo(q) {
+        if (!allDocs) return [];
+        const qn = normCodigo(q);
+        if (!pareceCodigo(qn)) return [];
+        const out = [];
+        for (const d of allDocs) {
+          const dn = d._cn;
+          if (!dn) continue;
+          if (dn === qn) out.push({ ...d, score: 1000 });
+          else if (dn.length >= 4 && dn.length < qn.length && qn.startsWith(dn) && qn.length - dn.length <= 3) {
+            out.push({ ...d, score: 800 - (qn.length - dn.length) });
+          }
+        }
+        out.sort((a, b) => b.score - a.score);
+        return out.slice(0, 10);
+      }
+
       // Se cachea la PROMESA, no un booleano. Con una bandera, el `focus` que
       // arranca la descarga y el `input` que llega justo después se pisan: el
       // segundo ve "ya está cargando", retorna de inmediato y busca contra un
@@ -110,6 +154,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           loading = (async () => {
             const r = await fetch(`${base}/data/search.json`);
             const docs = await r.json();
+            // Se precalcula UNA vez, no en cada tecleo: el id normalizado
+            // (sin '-', '(', ')', '.') que usa coincidenciasCodigo() más
+            // abajo para encontrar "310-15(b)(16)" aunque se escriba
+            // "310-15b16" pegado.
+            for (const d of docs) {
+              if (d.kind === 'sec' || d.kind === 'tabla') {
+                d._cn = normCodigo(d.kind === 'tabla' ? d.tid : d.id);
+              }
+            }
+            allDocs = docs;
             const ms = new MiniSearch({
               fields: ['id', 'title', 'text'],
               // 'text' se guarda para poder recortar un fragmento con la
@@ -262,7 +316,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             return;
           }
           await load();
-          render(mini.search(q).slice(0, 25), q);
+          // Las coincidencias de código van primero: para "310-15b16" o
+          // "310-15a" son la respuesta exacta que MiniSearch por sí solo no
+          // encuentra (ver coincidenciasCodigo). Se deduplica por id porque
+          // una coincidencia exacta también puede salir por la vía normal.
+          const vistos = new Set();
+          const combinados = [];
+          for (const r of [...coincidenciasCodigo(q), ...mini.search(q)]) {
+            if (vistos.has(r.id)) continue;
+            vistos.add(r.id);
+            combinados.push(r);
+          }
+          render(combinados.slice(0, 25), q);
         }, 110);
       });
 
