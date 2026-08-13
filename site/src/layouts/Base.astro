@@ -97,9 +97,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           loading = (async () => {
             const r = await fetch(`${base}/data/search.json`);
             const docs = await r.json();
+            // MiniSearch no toca acentos por defecto: "electrica" no
+            // encontraba "eléctricas" -acento Y plural a la vez agotan de
+            // sobra el margen de fuzzy:0.15-, y en una norma llena de
+            // "eléctrico/a", "protección", "sección", "tensión" eso pierde
+            // resultados reales con la forma en que la gente escribe desde
+            // el celular. processTerm normaliza acentos en el índice Y en
+            // la búsqueda con la misma regla que unaccent() en
+            // tools/build_corpus.py (NFD + quitar las marcas combinantes),
+            // así que "ñ" cae en "n" igual que ahí.
+            const sinAcentos = (s) => Array.from(s.normalize('NFD'))
+              .filter((c) => { const cp = c.codePointAt(0); return cp < 0x0300 || cp > 0x036f; })
+              .join('');
             const ms = new MiniSearch({
               fields: ['id', 'title', 'text'],
               storeFields: ['id', 'title', 'art', 'artTitle', 'kind', 'tid', 'sinNumero'],
+              processTerm: (term) => sinAcentos(term.toLowerCase()),
               searchOptions: { boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15 },
             });
             ms.addAll(docs);
