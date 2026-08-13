@@ -134,28 +134,6 @@ const todoVerificado = verificadas === tablas.length;
   .hero { padding: 2rem 0 0; border-bottom: none; margin-bottom: 0; }
   .hero p.lede { margin: 0; color: var(--text-dim); max-width: 62ch; }
   .hero p.lede b { font-family: var(--mono); font-weight: 600; color: var(--text); }
-  .tabular { font-variant-numeric: tabular-nums; }
-
-  /* -------------------------------------------------------- franja de cifras
-     Reemplaza los cuatro bloques sueltos de .stats: una sola fila con
-     reglas verticales, como el renglón de cabecera de una hoja de datos. */
-  .cifras {
-    margin-top: 1.4rem;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-  }
-  .cifra { padding: 0.8rem 1rem; border-left: 1px solid var(--border-soft); }
-  .cifra:first-child { border-left: none; }
-  .cifra b {
-    display: block; font-family: var(--mono); font-size: 1.4rem; font-weight: 600;
-    color: var(--text); line-height: 1.1;
-  }
-  .cifra span {
-    display: block; margin-top: 0.25rem; font-size: 0.68rem; color: var(--text-faint);
-    text-transform: uppercase; letter-spacing: 0.06em;
-  }
 
   /* --------------------------------------------------------------- estado
      Sustituye el cuadro amarillo grande por una tira de estado compacta:
@@ -205,8 +183,6 @@ const todoVerificado = verificadas === tablas.length;
   .rank-n { font-family: var(--mono); font-size: 0.82rem; color: var(--text-dim); text-align: right; }
 
   @media (max-width: 720px) {
-    .cifras { grid-template-columns: repeat(2, 1fr); }
-    .cifra:nth-child(3) { border-left: none; }
     .sec-head .desc { display: none; }
 
     /* El título es lo que se busca leer aquí; en desktop se trunca porque

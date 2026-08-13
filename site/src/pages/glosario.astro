@@ -9,6 +9,8 @@ const partes = [
 ];
 
 const alcance = byNum.get(100)?.alcance;
+const countA = definiciones.filter((d) => d.part === 'A').length;
+const countB = definiciones.filter((d) => d.part === 'B').length;
 ---
 
 <Base
@@ -24,6 +26,12 @@ const alcance = byNum.get(100)?.alcance;
         interpretar cualquier requisito.
       </p>
       {alcance && <p class="alcance" set:html={linkify(alcance)} />}
+
+      <div class="cifras">
+        <div class="cifra"><b class="tabular">{definiciones.length}</b><span>Definiciones</span></div>
+        <div class="cifra"><b class="tabular">{countA}</b><span>Parte A · generales</span></div>
+        <div class="cifra"><b class="tabular">{countB}</b><span>Parte B · más de 600 volts</span></div>
+      </div>
     </div>
 
     {partes.map((p) => {
