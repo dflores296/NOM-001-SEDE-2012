@@ -9,64 +9,14 @@
  "figuras": 59,
  "referencias_distintas": 1855,
  "lineas_contenido": 31880,
- "lineas_no_capturadas": 13,
- "cobertura_pct": 99.96,
+ "lineas_no_capturadas": 1,
+ "cobertura_pct": 100.0,
  "lineas_no_capturadas_ejemplos": [
-  {
-   "articulo": 100,
-   "linea": "puede hacerse referencia a ellas en este Artículo."
-  },
-  {
-   "articulo": 310,
-   "linea": "formación de caminos conductores."
-  },
-  {
-   "articulo": 312,
-   "linea": "siendo accesibles después de la instalación."
-  },
-  {
-   "articulo": 314,
-   "linea": "(4)        Tubo conduit de resina termofija reforzada, Tipo RTRC"
-  },
   {
    "articulo": 366,
    "linea": "366-58. Conductores aislados."
-  },
-  {
-   "articulo": 500,
-   "linea": "ligeramente tapados o que se puedan romper."
-  },
-  {
-   "articulo": 504,
-   "linea": "mezcla de material combustible o inflamable en aire bajo condiciones de prueba determinadas."
-  },
-  {
-   "articulo": 518,
-   "linea": "a.        Equipo para procesamiento, amplificación y reproducción de señales de audio, Artículo 640."
-  },
-  {
-   "articulo": 518,
-   "linea": "b.        Circuitos de comunicaciones, Artículo 800."
-  },
-  {
-   "articulo": 518,
-   "linea": "d.        Circuitos de alarma contra incendio, Artículo 760."
-  },
-  {
-   "articulo": 725,
-   "linea": "de intercambiar información (datos)."
-  },
-  {
-   "articulo": 725,
-   "linea": "(5)        Una pila seca (zinc-carbón, alcalina, de mercurio, óxido de plata, níquel-cadmio o litio son algunas de las p"
-  },
-  {
-   "articulo": 922,
-   "linea": "bastidores, espigas, abrazaderas u otros aditamentos similares."
   }
  ],
- "secciones_vacias": [
-  "340-6"
- ],
+ "secciones_vacias": [],
  "articulos_sin_secciones": []
 }

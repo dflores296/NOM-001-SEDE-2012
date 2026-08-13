@@ -3,8 +3,9 @@ import grafo from '../../../data/grafo.json';
 import indice from '../../../data/indice.json';
 import definiciones from '../../../data/definiciones.json';
 import tablas from '../../../data/tablas.json';
+import validacion from '../../../data/validacion.json';
 
-export { corpus, grafo, indice, definiciones, tablas };
+export { corpus, grafo, indice, definiciones, tablas, validacion };
 
 /** Ancla segura para una tabla: "310-15(b)(16)" -> "tabla-310-15-b-16". */
 export function tablaSlug(id) {

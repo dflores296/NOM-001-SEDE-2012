@@ -73,6 +73,17 @@ RE_DEF_TITLE = re.compile(r'^Definicion')
 RE_REF     = re.compile(r'\b(\d{3}-\d{1,3}(?:\([a-z0-9]{1,3}\))*)')
 RE_TBLREF  = re.compile(r'Tabla\s+(\d{3}-[\w().\-]+|\d{1,2}[A-Z]?(?:\([A-Z]\))?)')
 
+# El punto que separa el título corto de una sección de la frase que le sigue
+# falta en el PDF en un solo lugar del documento: 340-6 imprime "Requisitos de
+# aprobación Los cables tipo UF deben ser aprobados." sin el punto que en las
+# otras 2 896 secciones marca dónde termina el título. Sin él, el regex normal
+# traga la línea entera como título y la sección queda sin texto -- era la
+# única entrada de "secciones_vacias" en validacion.json.
+TITULOS_SIN_PUNTO = {
+    '340-6': ('Requisitos de aprobación', 'Los cables tipo UF deben ser aprobados.'),
+}
+
+
 def sec_re(num):
     """Encabezado de sección del artículo `num`: '210-8. Título.'
 
@@ -404,9 +415,12 @@ def parse_article(num, lines, pageno, lo, hi):
             annot[0] = annot[1] = None
             sid = m.group(1)
             rest = ln[len(m.group(1)) + 1:].lstrip()
-            mt = re.match(r'^([^.]{2,120})\.\s*(.*)$', rest)
-            title, body = (mt.group(1).strip(), mt.group(2).strip()) if mt \
-                else (rest.strip(), '')
+            if sid in TITULOS_SIN_PUNTO:
+                title, body = TITULOS_SIN_PUNTO[sid]
+            else:
+                mt = re.match(r'^([^.]{2,120})\.\s*(.*)$', rest)
+                title, body = (mt.group(1).strip(), mt.group(2).strip()) if mt \
+                    else (rest.strip(), '')
             sec = {'id': sid, 'title': title, 'part': cur_part,
                    'page': pageno[i], 'text': body,
                    'children': [], 'notes': [], 'exceptions': []}
@@ -513,12 +527,31 @@ def parse_article(num, lines, pageno, lo, hi):
 # ------------------------------------------------------------------ definiciones
 
 def parse_definitions(lines, pageno, lo, hi):
+    """Devuelve (definiciones, alcance).
+
+    Antes de "A. Definiciones generales" el Artículo 100 trae un párrafo de
+    alcance sin numerar ("Alcance. Este Artículo contiene las definiciones
+    esenciales..."). No es un término del glosario -- no tiene el patrón
+    "Término: definición" -- así que se perdía entero: no había `cur_part`
+    todavía, `cur` seguía en None y la rama `elif cur is not None` lo
+    descartaba línea por línea sin dejar rastro.
+    """
     defs, cur_part, cur = [], None, None
+    intro = []
+    saw_title = False
     for i in range(lo, hi):
         ln = lines[i].strip()
         if not ln:
             continue
         u = unaccent(ln)
+        # Las dos primeras líneas no vacías son "ARTICULO 100" y el título en
+        # mayúsculas ("DEFINICIONES"); no son parte del alcance y ya viven en
+        # el título del artículo, así que no se agregan a `intro`.
+        if re.match(r'^ARTICULO\s+\d{3}\s*$', u):
+            continue
+        if not saw_title:
+            saw_title = True
+            continue
         m = RE_PART.match(u)
         if m and len(ln) < 120:
             cur_part = m.group(1)
@@ -531,9 +564,11 @@ def parse_definitions(lines, pageno, lo, hi):
             defs.append(cur)
         elif cur is not None:
             cur['definition'] = (cur['definition'] + ' ' + ln).strip()
+        elif cur_part is None:
+            intro.append(ln)
     for d in defs:
         d['definition'] = re.sub(r'\s+', ' ', d['definition'])
-    return defs
+    return defs, re.sub(r'\s+', ' ', ' '.join(intro)).strip()
 
 
 # ------------------------------------------------------------------ referencias
@@ -597,12 +632,12 @@ def main():
         hi = starts[order[idx + 1]] if idx + 1 < len(order) else len(lines)
         bounds[n] = (lo, hi)
 
-    articles, definitions = [], []
+    articles, definitions, alcance_100 = [], [], ''
     for n in order:
         lo, hi = bounds[n]
         meta = toc[n]
         if n == 100:
-            definitions = parse_definitions(lines, pageno, lo, hi)
+            definitions, alcance_100 = parse_definitions(lines, pageno, lo, hi)
             body = {'parts': [{'letter': 'A', 'title': 'Definiciones generales'},
                               {'letter': 'B', 'title': 'Definiciones de más de 600 volts'}],
                     'sections': []}
@@ -612,7 +647,7 @@ def main():
         refs = set()
         for s in body['sections']:
             collect_refs(s, refs)
-        articles.append({
+        art = {
             'num': n,
             'chapter': meta['chapter'],
             'title': meta['title'],
@@ -620,7 +655,10 @@ def main():
             'parts': body['parts'],
             'sections': body['sections'],
             'refs': sorted(refs),
-        })
+        }
+        if n == 100:
+            art['alcance'] = alcance_100
+        articles.append(art)
 
     corpus = {
         'meta': {
@@ -669,6 +707,7 @@ def main():
         for p in a['parts']:
             got.update(re.findall(r'\w+', unaccent(p.get('title', '')).lower()))
         if n == 100:
+            got.update(re.findall(r'\w+', unaccent(a.get('alcance', '')).lower()))
             for d in definitions:
                 got.update(re.findall(
                     r'\w+', unaccent(d['term'] + ' ' + d['definition']).lower()))
@@ -678,6 +717,15 @@ def main():
                     (x.get('title') or '') + ' ' + (x.get('text') or '')).lower()))
                 for z in x.get('notes', []) + x.get('exceptions', []):
                     got.update(re.findall(r'\w+', unaccent(z['text']).lower()))
+                    # Una NOTA o Excepción que anuncia una enumeración cuelga
+                    # sus renglones en `items`, no en `text`: sin esto, cada
+                    # elemento de la lista contaba como línea "no capturada"
+                    # aunque estuviera íntegro en el corpus, solo que en otro
+                    # campo. Así se leían como pérdidas reales las 518-4(a),
+                    # 310-10(e), 725-121(a)(4)(3) y otras siete secciones.
+                    for it in z.get('items', []):
+                        got.update(re.findall(
+                            r'\w+', unaccent(it.get('text', '')).lower()))
                 for z in x.get('definitions', []):
                     got.update(re.findall(
                         r'\w+', unaccent(z['term'] + ' ' + z['text']).lower()))
