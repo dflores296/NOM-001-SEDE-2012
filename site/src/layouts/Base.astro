@@ -177,16 +177,29 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       // saber si de verdad decía lo que buscabas sin abrir la sección.
       function fragmento(texto, q) {
         if (!texto) return '';
-        const palabras = q.split(/\s+/).filter((w) => w.length > 1);
+        const todas = q.split(/\s+/).filter(Boolean);
+        if (!todas.length) return '';
+        const palabras = todas.filter((w) => w.length > 1);
         if (!palabras.length) return '';
-        const alt = palabras.map(patronConAcentos).join('|');
-        const m = new RegExp(alt, 'i').exec(texto);
+
+        // Para "puesta a tierra" queremos la FRASE completa resaltada de
+        // corrido -incluida la "a" de en medio-, no "puesta" y "tierra"
+        // sueltas con un hueco sin marcar entre ellas. Se intenta primero
+        // como frase (todas las palabras, unidas por \s+ tal como se
+        // escribieron) y solo si no aparece así, literalmente, en el texto
+        // se cae al resaltado palabra por palabra de antes.
+        const fraseSrc = todas.map(patronConAcentos).join('\\s+');
+        const mFrase = todas.length > 1 ? new RegExp(fraseSrc, 'i').exec(texto) : null;
+
+        const altPalabras = palabras.map(patronConAcentos).join('|');
+        const m = mFrase || new RegExp(altPalabras, 'i').exec(texto);
         if (!m) return '';
         const ANTES = 40, DESPUES = 90;
         const ini = Math.max(0, m.index - ANTES);
         const fin = Math.min(texto.length, m.index + m[0].length + DESPUES);
         const recorte = escapeHtml(texto.slice(ini, fin));
-        const resaltado = recorte.replace(new RegExp(alt, 'gi'), '<mark>$&</mark>');
+        const patron = mFrase ? fraseSrc : altPalabras;
+        const resaltado = recorte.replace(new RegExp(patron, 'gi'), '<mark>$&</mark>');
         return (ini > 0 ? '…' : '') + resaltado + (fin < texto.length ? '…' : '');
       }
 
