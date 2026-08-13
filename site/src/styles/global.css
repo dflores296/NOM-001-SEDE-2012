@@ -77,6 +77,26 @@
   --warn-br: #ded0ab;
 }
 
+/* Guinda del IPN sobre papel claro: mismo patrón que `sepia`/`alba` -tinte
+   propio en vez de solo cambiar el acento-, pero con la calidez recortada
+   hacia el guinda en vez del café. */
+:root[data-theme="guinda"] {
+  color-scheme: light;
+  --bg: #faf6f7;
+  --bg-soft: #f3e6e9;
+  --panel: #ffffff;
+  --border: #ddc2ca;
+  --rejilla: #b98a96;
+  --border-soft: #eedde1;
+  --text: #241318;
+  --text-dim: #6b4750;
+  --text-faint: #93707a;
+  --accent: #7a1638;
+  --accent-soft: #f4dde3;
+  --warn-bg: #fdf2e7;
+  --warn-br: #e6bc95;
+}
+
 /* Gris neutro con acento desaturado: el oscuro de uso diario. */
 :root[data-theme="oscuro"] {
   color-scheme: dark;
