@@ -263,7 +263,16 @@ nav.links a:hover, nav.links a[aria-current] { color: var(--accent); }
 .results .rid { font-family: var(--mono); font-size: 0.76rem; color: var(--accent); }
 .results .rti { font-size: 0.86rem; }
 .results .rsn { font-size: 0.76rem; color: var(--text-faint); }
+.results .rsnip { display: block; margin-top: 0.2rem; font-size: 0.78rem; color: var(--text-dim); line-height: 1.35; }
+.results mark { background: var(--accent-soft); color: var(--text); border-radius: 2px; padding: 0 0.1em; font-weight: 650; }
 .results .empty { padding: 0.8rem; color: var(--text-faint); font-size: 0.86rem; }
+
+.results .rgroup + .rgroup { border-top: 1px solid var(--border); }
+.results .rghead {
+  padding: 0.35rem 0.7rem; font-size: 0.66rem; font-weight: 650;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint);
+  background: var(--bg-soft);
+}
 
 /* En móvil el buscador no cabe junto a la marca y el menú; pasa a un segundo
    renglón a lo ancho en vez de quedar aplastado. Va después de las reglas de

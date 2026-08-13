@@ -87,6 +87,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       let mini = null;
       let sel = -1;
 
+      // MiniSearch no toca acentos por defecto: "electrica" no encontraba
+      // "eléctricas" -acento Y plural a la vez agotan de sobra el margen de
+      // fuzzy:0.15-, y en una norma llena de "eléctrico/a", "protección",
+      // "sección", "tensión" eso pierde resultados reales con la forma en
+      // que la gente escribe desde el celular. Normaliza con la MISMA regla
+      // que unaccent() en tools/build_corpus.py (NFD + quitar las marcas
+      // combinantes, así que "ñ" cae en "n" igual que ahí). Vive a nivel de
+      // módulo porque la usan tanto el índice (processTerm) como el
+      // resaltado de fragmentos más abajo.
+      const sinAcentos = (s) => Array.from(s.normalize('NFD'))
+        .filter((c) => { const cp = c.codePointAt(0); return cp < 0x0300 || cp > 0x036f; })
+        .join('');
+
       // Se cachea la PROMESA, no un booleano. Con una bandera, el `focus` que
       // arranca la descarga y el `input` que llega justo después se pisan: el
       // segundo ve "ya está cargando", retorna de inmediato y busca contra un
@@ -97,21 +110,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           loading = (async () => {
             const r = await fetch(`${base}/data/search.json`);
             const docs = await r.json();
-            // MiniSearch no toca acentos por defecto: "electrica" no
-            // encontraba "eléctricas" -acento Y plural a la vez agotan de
-            // sobra el margen de fuzzy:0.15-, y en una norma llena de
-            // "eléctrico/a", "protección", "sección", "tensión" eso pierde
-            // resultados reales con la forma en que la gente escribe desde
-            // el celular. processTerm normaliza acentos en el índice Y en
-            // la búsqueda con la misma regla que unaccent() en
-            // tools/build_corpus.py (NFD + quitar las marcas combinantes),
-            // así que "ñ" cae en "n" igual que ahí.
-            const sinAcentos = (s) => Array.from(s.normalize('NFD'))
-              .filter((c) => { const cp = c.codePointAt(0); return cp < 0x0300 || cp > 0x036f; })
-              .join('');
             const ms = new MiniSearch({
               fields: ['id', 'title', 'text'],
-              storeFields: ['id', 'title', 'art', 'artTitle', 'kind', 'tid', 'sinNumero'],
+              // 'text' se guarda para poder recortar un fragmento con la
+              // coincidencia resaltada: antes solo se usaba para indexar y
+              // se descartaba, así que un resultado no decía DÓNDE dentro
+              // de la sección apareció lo que buscaste.
+              storeFields: ['id', 'title', 'art', 'artTitle', 'kind', 'tid', 'sinNumero', 'text'],
               processTerm: (term) => sinAcentos(term.toLowerCase()),
               searchOptions: { boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15 },
             });
@@ -144,25 +149,91 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         return `${base}/art/${r.art}#${String(r.id).split('(')[0]}`;
       }
 
+      function escapeHtml(s) {
+        return s.replace(/[&<>"]/g, (c) => (
+          { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
+        ));
+      }
+
+      // Construye, por cada palabra de la consulta, un patrón que la
+      // encuentra en el texto ORIGINAL (con acentos) aunque se haya escrito
+      // sin ellos -es la contraparte de sinAcentos(), pero en vez de
+      // normalizar el texto para comparar, ensancha el patrón para que
+      // encuentre ambas formas directamente en el original. Así no hace
+      // falta mapear posiciones entre una copia normalizada y el texto real:
+      // el recorte del fragmento sale ya de las coordenadas correctas.
+      const ACENTOS = { a: 'aàáâã', e: 'eèéêë', i: 'iìíîï', o: 'oòóôõ', u: 'uùúûü', n: 'nñ' };
+      function patronConAcentos(palabra) {
+        return [...palabra].map((c) => {
+          const alt = ACENTOS[c.toLowerCase()];
+          if (alt) return `[${alt}${alt.toUpperCase()}]`;
+          return c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }).join('');
+      }
+
+      // Fragmento de contexto alrededor de la primera coincidencia, con la
+      // palabra resaltada. Antes un resultado solo mostraba id + título: si
+      // el término aparecía en medio de un párrafo largo, no había forma de
+      // saber si de verdad decía lo que buscabas sin abrir la sección.
+      function fragmento(texto, q) {
+        if (!texto) return '';
+        const palabras = q.split(/\s+/).filter((w) => w.length > 1);
+        if (!palabras.length) return '';
+        const alt = palabras.map(patronConAcentos).join('|');
+        const m = new RegExp(alt, 'i').exec(texto);
+        if (!m) return '';
+        const ANTES = 40, DESPUES = 90;
+        const ini = Math.max(0, m.index - ANTES);
+        const fin = Math.min(texto.length, m.index + m[0].length + DESPUES);
+        const recorte = escapeHtml(texto.slice(ini, fin));
+        const resaltado = recorte.replace(new RegExp(alt, 'gi'), '<mark>$&</mark>');
+        return (ini > 0 ? '…' : '') + resaltado + (fin < texto.length ? '…' : '');
+      }
+
+      const ETIQUETA = { sec: 'Secciones', tabla: 'Tablas', def: 'Definiciones' };
+
+      function itemHtml(r, q) {
+        const esTabla = r.kind === 'tabla';
+        // Un término del glosario tiene id === título ("Acometida"): mostrar
+        // los dos era repetir la misma palabra dos veces seguidas.
+        const rid = esTabla
+          ? (r.sinNumero ? `Tabla del ${r.tid}` : `Tabla ${r.tid}`)
+          : (r.kind === 'def' ? '' : r.id);
+        const rsn = r.art ? `Art. ${r.art} · ${r.artTitle || ''}` : (r.artTitle || '');
+        const frag = fragmento(r.text, q);
+        return `<a role="option" href="${href(r)}">
+             ${rid ? `<span class="rid">${rid}</span>` : ''}
+             <span class="rti">${r.title || ''}</span>
+             <span class="rsn">${rsn}</span>
+             ${frag ? `<span class="rsnip">${frag}</span>` : ''}
+           </a>`;
+      }
+
       function render(list, q) {
         if (!list.length) {
           box.innerHTML = `<div class="empty">Sin resultados para “${q}”.</div>`;
           box.classList.add('open');
           return;
         }
-        box.innerHTML = list
-          .map((r) => {
-            const esTabla = r.kind === 'tabla';
-            const rid = esTabla
-              ? (r.sinNumero ? `Tabla del ${r.tid}` : `Tabla ${r.tid}`)
-              : r.id;
-            const rsn = r.art ? `Art. ${r.art} · ${r.artTitle || ''}` : (r.artTitle || '');
-            return `<a role="option" href="${href(r)}">
-                 <span class="rid">${rid}</span>
-                 <span class="rti">${r.title || ''}</span>
-                 <span class="rsn">${rsn}</span>
-               </a>`;
-          })
+        // Agrupado por tipo: mezclados, una tabla y una sección con el mismo
+        // término se confundían en una sola lista plana. Cada grupo conserva
+        // el orden por relevancia que ya trae de MiniSearch, y los GRUPOS
+        // también se ordenan por su mejor resultado -no por una categoría
+        // fija-: para "acometida" la definición del glosario le gana por
+        // mucho a cualquier sección (88 de score contra 29), y un orden fijo
+        // "Secciones primero" la mandaría al fondo aunque sea la más
+        // relevante con diferencia.
+        const porTipo = { sec: [], tabla: [], def: [] };
+        for (const r of list) porTipo[r.kind]?.push(r);
+        box.innerHTML = Object.keys(porTipo)
+          .filter((k) => porTipo[k].length)
+          .sort((a, b) => porTipo[b][0].score - porTipo[a][0].score)
+          .map((k) => `
+            <div class="rgroup">
+              <div class="rghead">${ETIQUETA[k]}</div>
+              ${porTipo[k].map((r) => itemHtml(r, q)).join('')}
+            </div>
+          `)
           .join('');
         box.classList.add('open');
         sel = -1;
