@@ -196,11 +196,17 @@ cubre una columna de menos. Lo que la revisión encontró, por frecuencia:
   que acababan pegadas al texto de 400-5(c).
 - **Glitches de fuente del propio PDF**, con `ºC` y `₀C` donde debía ir `°C`.
 
-Dos tablas traen valores truncados **en el PDF de origen** y se dejaron tal como
-los imprime el DOF: la 505-9(d)(1) (`≤4`, `≤3`, `≤2`… donde las clases T1–T6
-piden 450, 300, 200 °C) y la 922-12(a)(2) (`96` y `105` donde el patrón pide 960
-y 1 050 mm). Quedan anotadas en `REVISION-TABLAS.md`; corregirlas sería editar la
-norma, no transcribirla.
+Tres tablas traen valores equivocados **en el PDF de origen** y se dejaron tal
+como los imprime el DOF: la 505-9(d)(1) (`≤4`, `≤3`, `≤2`… donde las clases T1–T6
+piden 450, 300, 200 °C), la 922-12(a)(2) (`96` y `105` donde el patrón pide 960 y
+1 050 mm) y la **430-250**, cuya fila de 10 hp dice `44` A en la columna de 575 V
+donde debería decir `11` — rompe la monotonía de su propia columna (7½ hp da 9 y
+15 hp da 17) y el cociente con la de 460 V lo confirma. Quedan anotadas en
+`REVISION-TABLAS.md`; corregirlas sería editar la norma, no transcribirla.
+
+> ⚠ **La 430-250 es la que más importa de las tres**, porque es una tabla de
+> diseño: quien calcule un motor de 10 hp en 575 V con ese valor saldrá con un
+> conductor y una protección cuatro veces más grandes de lo que toca.
 
 Sigue en pie el atajo para verificar todo esto de raíz: el PDF no es un documento
 nativo, es una impresión de Chrome de

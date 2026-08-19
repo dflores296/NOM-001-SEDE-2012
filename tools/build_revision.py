@@ -109,7 +109,7 @@ CIERRE_PENDIENTE = """## Lo que falta
 
 CIERRE_TERMINADO = """## Lo que la revisión dejó anotado
 
-Dos tablas traen valores truncados **en el PDF de origen**, no en la reconstrucción.
+Tres tablas traen valores equivocados **en el PDF de origen**, no en la reconstrucción.
 Se comprobó con las coordenadas del texto y con el render de la página, y se dejaron
 tal como los imprime el DOF: corregirlos sería editar la norma, no transcribirla.
 
@@ -118,6 +118,13 @@ tal como los imprime el DOF: corregirlos sería editar la norma, no transcribirl
   100 y 85 °C.
 - **922-12(a)(2)** — en la columna de flecha 2.5 m, las filas de 6 600 y 23 000 volts
   dicen `96` y `105` donde el patrón pide `960` y `1 050` milímetros.
+- **430-250** — la fila de 10 hp dice `44` en la columna de 575 volts, donde debería
+  decir `11`. Este no es un truncamiento sino un dígito cambiado, y **rompe la
+  monotonía de la columna**: 7½ hp da 9 A y 15 hp da 17 A, así que 10 hp no puede dar
+  44. El cociente con la columna de 460 V lo confirma (14 × 460/575 = 11.2), igual que
+  la NEC Table 430.250, que publica 11. Está en el PDF, no en la transcripción: las
+  coordenadas del texto ponen el `44` en x≈290, exactamente donde caen el `9` de 7½ hp
+  y el `17` de 15 hp.
 
 El PDF tampoco es un documento nativo: es una impresión de Chrome de
 `dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha el 19/11/2019. De ese HTML
