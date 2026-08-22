@@ -109,15 +109,24 @@ CIERRE_PENDIENTE = """## Lo que falta
 
 CIERRE_TERMINADO = """## Lo que la revisión dejó anotado
 
-Dos tablas traen valores truncados **en el PDF de origen**, no en la reconstrucción.
-Se comprobó con las coordenadas del texto y con el render de la página, y se dejaron
-tal como los imprime el DOF: corregirlos sería editar la norma, no transcribirla.
+Tres tablas traen valores mal impresos **en el PDF de origen**, no en la
+reconstrucción. Se comprobó con las coordenadas del texto y con el render de la
+página, y se dejaron tal como los imprime el DOF: corregirlos sería editar la norma,
+no transcribirla.
 
 - **505-9(d)(1)** — la columna de temperatura superficial máxima dice `≤4`, `≤3`,
   `≤2`, `≤1`, `≤1`, `≤85`. Por las clases T1–T6 deberían ser 450, 300, 200, 135,
   100 y 85 °C.
 - **922-12(a)(2)** — en la columna de flecha 2.5 m, las filas de 6 600 y 23 000 volts
   dicen `96` y `105` donde el patrón pide `960` y `1 050` milímetros.
+- **220-42** — el último tramo de «Hoteles y moteles» dice `A partir de 1 00000`
+  donde debería decir `A partir de 100 000`. Aquí **los dígitos son los correctos**
+  (son seis: 1-0-0-0-0-0) y lo que está fuera de lugar es el separador de miles. Se
+  confirma por el renglón inmediato anterior, `De 20 001 a 100 000`: el tramo
+  siguiente arranca justo donde termina ése. En la capa de texto de la página 47 son
+  dos palabras, `1` en x≈335.1 y `00000` en x≈342.6, mientras el renglón de arriba
+  trae `100` en x≈338.9 y `000` en x≈356.4 — o sea que el espacio existe en el PDF y
+  no lo introdujo la extracción.
 
 El PDF tampoco es un documento nativo: es una impresión de Chrome de
 `dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha el 19/11/2019. De ese HTML
