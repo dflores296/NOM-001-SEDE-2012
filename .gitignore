@@ -6,3 +6,8 @@ dist/
 
 # Derivado de data/ por tools/build_search.py; lo regenera el workflow.
 site/public/data/
+
+# Destilado de data/ por tools/export_para_claude.py, para subir a un Proyecto.
+# Se regenera cuando haga falta; no hay razón para versionar la salida.
+export-claude*/
+export-claude*.zip
