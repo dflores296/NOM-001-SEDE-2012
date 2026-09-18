@@ -51,7 +51,6 @@ a.sections.forEach(marca);
 // publica al final del artículo en vez de desaparecer.
 const sueltas = tabs.filter((t) => !ancladas.has(t.id));
 
-const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter(Boolean);
 ---
 
 <Base
@@ -119,13 +118,19 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
                 </dl>
               )}
 
-              {/* `parrafos`: prosa que en el documento va DESPUÉS de una nota
-                  o excepción, así que no cabe en `text`, que se pinta antes. */}
+              {/* Todo lo intercalado se ordena por su posición original:
+                  notas, excepciones, los párrafos que van DESPUÉS de una de
+                  ellas o de una tabla, y las tablas mismas. */}
               {[
                 ...(s.notes || []).map((n) => ({ ...n, k: 'nota' })),
                 ...(s.exceptions || []).map((n) => ({ ...n, k: 'exc' })),
                 ...(s.parrafos || []).map((n) => ({ ...n, k: 'parr' })),
-              ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0)).map((n) => (n.k === 'parr' ? (
+                ...(s.tables || [])
+                  .map((x) => ({ ...x, k: 'tabla', tabla: tablaPorId.get(x.id) }))
+                  .filter((x) => x.tabla),
+              ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0)).map((n) => (n.k === 'tabla' ? (
+                <Tabla t={n.tabla} />
+              ) : n.k === 'parr' ? (
                 <p class="parr" set:html={linkify(n.text)} />
               ) : (
                 <div class={n.k}>
@@ -140,7 +145,6 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
                 </div>
               )))}
 
-              {tablasDe(s).map((t) => <Tabla t={t} />)}
 
               {s.children?.length > 0 && (
                 <ul class="subs">
