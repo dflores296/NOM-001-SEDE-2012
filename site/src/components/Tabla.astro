@@ -3,9 +3,18 @@ import { linkify, tablaSlug, rotuloTabla, subtituloTabla } from '../lib/nom.js';
 const { t } = Astro.props;
 const head = t.rows.slice(0, t.header_rows || 0);
 const body = t.rows.slice(t.header_rows || 0);
-// Una tabla contrastada a ojo contra el PDF ya no es una estimación: no
-// tiene sentido pedirle al lector que haga la comprobación que ya se hizo.
-const dudosa = t.quality < 0.8 && !t.verificada;
+// El aviso se dispara por la FALTA de revisión manual, no por la calidad
+// estimada del reparto en columnas. Pedía las dos cosas —`quality < 0.8 &&
+// !verificada`— y era inalcanzable: `apply_revisiones` le pone calidad 1.0 a
+// toda tabla contrastada, así que una tabla sin verificar nunca traía calidad
+// baja y el aviso no podía salir nunca.
+//
+// Hoy las 224 publicadas están contrastadas contra el PDF, así que una tabla
+// sin verificar es una recién detectada por el reconstructor y todavía sin
+// revisar: le pasó a la 830-15 en cuanto el detector de títulos aprendió a leer
+// «TABLA» en versalitas. Eso es justo lo que el lector necesita saber, porque
+// lo que ve puede no coincidir con el DOF.
+const sinVerificar = !t.verificada;
 
 // Una celda que abarca varias columnas encabeza un GRUPO de columnas, no una
 // sola: `scope` se lo dice a los lectores de pantalla, que si no leen el
@@ -44,11 +53,16 @@ const larga = (c) => ((c.t || '').length > 28 ? 'larga' : undefined);
     </p>
   )}
 
-  {dudosa && (
+  {sinVerificar && (
     <p class="tabla-aviso">
-      La separación en columnas de esta tabla no pudo reconstruirse con
-      confianza desde el PDF. Contrástala con la página {t.pages[0]} del
-      documento original antes de usarla.
+      <b>Sin contrastar contra el PDF.</b> Esta tabla se reconstruyó
+      automáticamente y todavía no se ha revisado celda por celda, a diferencia
+      de las demás del sitio.{' '}
+      {t.quality < 0.8 && (
+        <>Su separación en columnas, además, no pudo resolverse con confianza.{' '}</>
+      )}
+      Compárala con la página {t.pages[0]} del documento original antes de
+      usarla.
     </p>
   )}
 
