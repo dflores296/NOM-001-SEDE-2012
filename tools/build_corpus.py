@@ -551,7 +551,18 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
                 annot[2] = True
             else:
                 annot[0], annot[1], annot[2] = None, None, False
-                target = stack[-1]['node'] if stack else sec
+                # El párrafo va DESPUÉS de la anotación en el documento, así
+                # que no puede volver al `text` del inciso: ese se pinta antes
+                # y el texto acabaría por encima de la Excepción que lo
+                # precede. Se guarda como bloque propio con su `seq`, el mismo
+                # mecanismo con el que ya se intercalan notas y excepciones.
+                owner = stack[-1]['node'] if stack else sec
+                if owner is not None:
+                    node = {'text': '', 'seq': next(seq)}
+                    owner.setdefault('parrafos', []).append(node)
+                    target = node
+                else:
+                    target = None
 
         buf.append(ln)
 
@@ -612,7 +623,8 @@ def collect_refs(node, out):
     for key in ('text', 'title'):
         for m in RE_REF.finditer(node.get(key, '') or ''):
             out.add(m.group(1))
-    for n in node.get('notes', []) + node.get('exceptions', []):
+    for n in (node.get('notes', []) + node.get('exceptions', [])
+              + node.get('parrafos', [])):
         for m in RE_REF.finditer(n.get('text', '')):
             out.add(m.group(1))
     for d in node.get('definitions', []):
@@ -761,6 +773,11 @@ def main():
                     for it in z.get('items', []):
                         got.update(re.findall(
                             r'\w+', unaccent(it.get('text', '')).lower()))
+                # Los párrafos posteriores a una anotación viven en `parrafos`
+                # y no en `text`; sin contarlos, cada uno se leía como línea
+                # perdida aunque esté íntegro en el corpus.
+                for z in x.get('parrafos', []):
+                    got.update(re.findall(r'\w+', unaccent(z['text']).lower()))
                 for z in x.get('definitions', []):
                     got.update(re.findall(
                         r'\w+', unaccent(z['term'] + ' ' + z['text']).lower()))

@@ -49,6 +49,7 @@ def flat_text(sec):
         out.append(n.get('text') or '')
         out += [z['text'] for z in n.get('notes', [])]
         out += [z['text'] for z in n.get('exceptions', [])]
+        out += [z['text'] for z in n.get('parrafos', [])]
     return re.sub(r'\s+', ' ', ' '.join(x for x in out if x)).strip()
 
 
