@@ -54239,6 +54239,14 @@
   "chapter": 5,
   "page": 461
  },
+ "525-3(d)": {
+  "kind": "inciso",
+  "id": "525-3(d)",
+  "title": "Atracciones que utilizan piscinas, fuentes e instalaciones similares con volúmen",
+  "article": 525,
+  "chapter": 5,
+  "page": 461
+ },
  "525-5": {
   "kind": "seccion",
   "id": "525-5",
@@ -80679,6 +80687,62 @@
   "chapter": 8,
   "page": 659
  },
+ "800-3(a)": {
+  "kind": "inciso",
+  "id": "800-3(a)",
+  "title": "En áreas peligrosas (clasificadas)",
+  "article": 800,
+  "chapter": 8,
+  "page": 659
+ },
+ "800-3(b)": {
+  "kind": "inciso",
+  "id": "800-3(b)",
+  "title": "Alambrado en ductos para polvo, pelusas o remoción de vapor.- Aplican los requis",
+  "article": 800,
+  "chapter": 8,
+  "page": 659
+ },
+ "800-3(c)": {
+  "kind": "inciso",
+  "id": "800-3(c)",
+  "title": "Equipos en otros espacios usados para manejar aire ambiental.- Aplican los requi",
+  "article": 800,
+  "chapter": 8,
+  "page": 659
+ },
+ "800-3(d)": {
+  "kind": "inciso",
+  "id": "800-3(d)",
+  "title": "Sistemas de comunicación de banda ancha alimentados por la red.- Para sistemas d",
+  "article": 800,
+  "chapter": 8,
+  "page": 659
+ },
+ "800-3(e)": {
+  "kind": "inciso",
+  "id": "800-3(e)",
+  "title": "Sistemas de comunicación de banda ancha alimentados de la instalación del edific",
+  "article": 800,
+  "chapter": 8,
+  "page": 659
+ },
+ "800-3(f)": {
+  "kind": "inciso",
+  "id": "800-3(f)",
+  "title": "Cable de fibra óptica.- Cuando se usa cable de fibra óptica, total o parcialment",
+  "article": 800,
+  "chapter": 8,
+  "page": 659
+ },
+ "800-3(g)": {
+  "kind": "inciso",
+  "id": "800-3(g)",
+  "title": "Ensambles de enrutamiento de cables.- La definición en 770-2, las aplicaciones e",
+  "article": 800,
+  "chapter": 8,
+  "page": 659
+ },
  "800-18": {
   "kind": "seccion",
   "id": "800-18",
@@ -80727,34 +80791,50 @@
   "chapter": 8,
   "page": 660
  },
- "800-44(1)": {
+ "800-44(a)": {
   "kind": "inciso",
-  "id": "800-44(1)",
+  "id": "800-44(a)",
+  "title": "Sobre postes y claros",
+  "article": 800,
+  "chapter": 8,
+  "page": 660
+ },
+ "800-44(a)(1)": {
+  "kind": "inciso",
+  "id": "800-44(a)(1)",
   "title": "Ubicación relativa",
   "article": 800,
   "chapter": 8,
   "page": 660
  },
- "800-44(2)": {
+ "800-44(a)(2)": {
   "kind": "inciso",
-  "id": "800-44(2)",
+  "id": "800-44(a)(2)",
   "title": "Fijación a las crucetas",
   "article": 800,
   "chapter": 8,
   "page": 660
  },
- "800-44(3)": {
+ "800-44(a)(3)": {
   "kind": "inciso",
-  "id": "800-44(3)",
+  "id": "800-44(a)(3)",
   "title": "Espacio para subir",
   "article": 800,
   "chapter": 8,
   "page": 660
  },
- "800-44(4)": {
+ "800-44(a)(4)": {
   "kind": "inciso",
-  "id": "800-44(4)",
+  "id": "800-44(a)(4)",
   "title": "Libramiento",
+  "article": 800,
+  "chapter": 8,
+  "page": 660
+ },
+ "800-44(b)": {
+  "kind": "inciso",
+  "id": "800-44(b)",
+  "title": "Sobre azoteas",
   "article": 800,
   "chapter": 8,
   "page": 660
@@ -80763,6 +80843,22 @@
   "kind": "seccion",
   "id": "800-47",
   "title": "Alambres y cables subterráneos de comunicaciones que entran a edificios",
+  "article": 800,
+  "chapter": 8,
+  "page": 660
+ },
+ "800-47(a)": {
+  "kind": "inciso",
+  "id": "800-47(a)",
+  "title": "Con conductores de alumbrado o fuerza",
+  "article": 800,
+  "chapter": 8,
+  "page": 660
+ },
+ "800-47(b)": {
+  "kind": "inciso",
+  "id": "800-47(b)",
+  "title": "Distribución subterránea en la cuadra",
   "article": 800,
   "chapter": 8,
   "page": 660
@@ -80783,9 +80879,33 @@
   "chapter": 8,
   "page": 661
  },
- "800-50(2)": {
+ "800-50(a)": {
   "kind": "inciso",
-  "id": "800-50(2)",
+  "id": "800-50(a)",
+  "title": "Aislamiento, alambres y cables",
+  "article": 800,
+  "chapter": 8,
+  "page": 661
+ },
+ "800-50(b)": {
+  "kind": "inciso",
+  "id": "800-50(b)",
+  "title": "Sobre edificios",
+  "article": 800,
+  "chapter": 8,
+  "page": 661
+ },
+ "800-50(c)": {
+  "kind": "inciso",
+  "id": "800-50(c)",
+  "title": "Entrando a edificios",
+  "article": 800,
+  "chapter": 8,
+  "page": 661
+ },
+ "800-50(c)(2)": {
+  "kind": "inciso",
+  "id": "800-50(c)(2)",
   "title": "pasan a través de mampostería; (3) satisfacen los requisitos indicados en 800-50",
   "article": 800,
   "chapter": 8,
@@ -80807,74 +80927,90 @@
   "chapter": 8,
   "page": 661
  },
- "800-90(1)": {
+ "800-90(a)": {
   "kind": "inciso",
-  "id": "800-90(1)",
+  "id": "800-90(a)",
+  "title": "Aplicación",
+  "article": 800,
+  "chapter": 8,
+  "page": 661
+ },
+ "800-90(a)(1)": {
+  "kind": "inciso",
+  "id": "800-90(a)(1)",
   "title": "Protectores primarios sin fusibles",
   "article": 800,
   "chapter": 8,
   "page": 661
  },
- "800-90(1)a.": {
+ "800-90(a)(1)a.": {
   "kind": "inciso",
-  "id": "800-90(1)a.",
+  "id": "800-90(a)(1)a.",
   "title": "Donde los conductores que entran a un edificio por medio de un cable con pantall",
   "article": 800,
   "chapter": 8,
   "page": 661
  },
- "800-90(1)b.": {
+ "800-90(a)(1)b.": {
   "kind": "inciso",
-  "id": "800-90(1)b.",
+  "id": "800-90(a)(1)b.",
   "title": "Cuando se utilizan conductores aislados de acuerdo con 800-50(a) para extender l",
   "article": 800,
   "chapter": 8,
   "page": 661
  },
- "800-90(1)c.": {
+ "800-90(a)(1)c.": {
   "kind": "inciso",
-  "id": "800-90(1)c.",
+  "id": "800-90(a)(1)c.",
   "title": "Donde se utilicen conductores aislados de acuerdo con lo indicado en 800-50(a) o",
   "article": 800,
   "chapter": 8,
   "page": 661
  },
- "800-90(1)d.": {
+ "800-90(a)(1)d.": {
   "kind": "inciso",
-  "id": "800-90(1)d.",
+  "id": "800-90(a)(1)d.",
   "title": "Donde se utilicen conductores aislados, de acuerdo con lo indicado en 800-50(a) ",
   "article": 800,
   "chapter": 8,
   "page": 661
  },
- "800-90(1)e.": {
+ "800-90(a)(1)e.": {
   "kind": "inciso",
-  "id": "800-90(1)e.",
+  "id": "800-90(a)(1)e.",
   "title": "Donde se utilicen conductores aislados, de acuerdo con lo indicado en 800-50(a) ",
   "article": 800,
   "chapter": 8,
   "page": 661
  },
- "800-90(2)": {
+ "800-90(a)(2)": {
   "kind": "inciso",
-  "id": "800-90(2)",
+  "id": "800-90(a)(2)",
   "title": "Protectores primarios con fusibles",
   "article": 800,
   "chapter": 8,
   "page": 661
  },
- "800-90(2)(b)": {
+ "800-90(b)": {
   "kind": "inciso",
-  "id": "800-90(2)(b)",
+  "id": "800-90(b)",
   "title": "Ubicación",
   "article": 800,
   "chapter": 8,
   "page": 661
  },
- "800-90(2)(c)": {
+ "800-90(c)": {
   "kind": "inciso",
-  "id": "800-90(2)(c)",
+  "id": "800-90(c)",
   "title": "Areas peligrosas (clasificadas)",
+  "article": 800,
+  "chapter": 8,
+  "page": 661
+ },
+ "800-90(d)": {
+  "kind": "inciso",
+  "id": "800-90(d)",
+  "title": "Protectores secundarios",
   "article": 800,
   "chapter": 8,
   "page": 661
@@ -81151,25 +81287,33 @@
   "chapter": 8,
   "page": 664
  },
- "800-110(1)": {
+ "800-110(a)": {
   "kind": "inciso",
-  "id": "800-110(1)",
+  "id": "800-110(a)",
+  "title": "Tipos de canalizaciones",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-110(a)(1)": {
+  "kind": "inciso",
+  "id": "800-110(a)(1)",
   "title": "Canalizaciones reconocidas en el Capítulo 3",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-110(2)": {
+ "800-110(a)(2)": {
   "kind": "inciso",
-  "id": "800-110(2)",
+  "id": "800-110(a)(2)",
   "title": "Otras canalizaciones permitidas",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-110(2)(b)": {
+ "800-110(b)": {
   "kind": "inciso",
-  "id": "800-110(2)(b)",
+  "id": "800-110(b)",
   "title": "Tablas de ocupación para alambres y cables de comunicaciones",
   "article": 800,
   "chapter": 8,
@@ -81327,49 +81471,57 @@
   "chapter": 8,
   "page": 664
  },
- "800-113(d)(3)c.(1)": {
+ "800-113(e)": {
   "kind": "inciso",
-  "id": "800-113(d)(3)c.(1)",
+  "id": "800-113(e)",
+  "title": "Pozos verticales - Cables y canalizaciones en canalizaciones de metal",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(e)(1)": {
+  "kind": "inciso",
+  "id": "800-113(e)(1)",
   "title": "Cables tipo CMP, CMR, CMG, CM y CMX.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(d)(3)c.(2)": {
+ "800-113(e)(2)": {
   "kind": "inciso",
-  "id": "800-113(d)(3)c.(2)",
+  "id": "800-113(e)(2)",
   "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y canali",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(d)(3)c.(3)": {
+ "800-113(e)(3)": {
   "kind": "inciso",
-  "id": "800-113(d)(3)c.(3)",
+  "id": "800-113(e)(3)",
   "title": "Cables tipo CMP, CMR, CMG, CM y CMX instalados en:",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(d)(3)c.(3)a.": {
+ "800-113(e)(3)a.": {
   "kind": "inciso",
-  "id": "800-113(d)(3)c.(3)a.",
+  "id": "800-113(e)(3)a.",
   "title": "Canalizaciones de comunicaciones en plenums.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(d)(3)c.(3)b.": {
+ "800-113(e)(3)b.": {
   "kind": "inciso",
-  "id": "800-113(d)(3)c.(3)b.",
+  "id": "800-113(e)(3)b.",
   "title": "Canalizaciones en trayectorias verticales.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(d)(3)c.(3)c.": {
+ "800-113(e)(3)c.": {
   "kind": "inciso",
-  "id": "800-113(d)(3)c.(3)c.",
+  "id": "800-113(e)(3)c.",
   "title": "Canalizaciones de comunicaciones de uso general.",
   "article": 800,
   "chapter": 8,
@@ -81447,481 +81599,529 @@
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(1)": {
+ "800-113(g)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(1)",
+  "id": "800-113(g)",
+  "title": "Pozos verticales -Unidades de vivienda de una familia y bifamiliar",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(g)(1)": {
+  "kind": "inciso",
+  "id": "800-113(g)(1)",
   "title": "Cables tipo CMP, CMR, CMG y CM.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(2)": {
+ "800-113(g)(2)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(2)",
+  "id": "800-113(g)(2)",
   "title": "Cable tipo CMX de menos de 6 milímetros de diámetro.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(3)": {
+ "800-113(g)(3)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(3)",
+  "id": "800-113(g)(3)",
   "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)": {
+ "800-113(g)(4)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)",
+  "id": "800-113(g)(4)",
   "title": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)a.": {
+ "800-113(g)(4)a.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)a.",
+  "id": "800-113(g)(4)a.",
   "title": "Canalizaciones de comunicaciones en plenums.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)b.": {
+ "800-113(g)(4)b.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)b.",
+  "id": "800-113(g)(4)b.",
   "title": "Canalizaciones en trayectorias verticales.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)c.": {
+ "800-113(g)(4)c.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)c.",
+  "id": "800-113(g)(4)c.",
   "title": "Canalizaciones de comunicaciones de uso general.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)d.": {
+ "800-113(g)(4)d.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)d.",
+  "id": "800-113(g)(4)d.",
   "title": "Ensamble de cable ruteador en pozos verticales.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.": {
+ "800-113(g)(4)e.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.",
-  "title": "Ensamble de cable ruteador de propósito general. h). Charolas porta cables. Se p",
+  "id": "800-113(g)(4)e.",
+  "title": "Ensamble de cable ruteador de propósito general.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(1)": {
+ "800-113(h)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(1)",
+  "id": "800-113(h)",
+  "title": "Charolas porta cables",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(h)(1)": {
+  "kind": "inciso",
+  "id": "800-113(h)(1)",
   "title": "Cables tipo CMP, CMR, CMG y CM.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(2)": {
+ "800-113(h)(2)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(2)",
+  "id": "800-113(h)(2)",
   "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)": {
+ "800-113(h)(3)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)",
+  "id": "800-113(h)(3)",
   "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)a.": {
+ "800-113(h)(3)a.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)a.",
+  "id": "800-113(h)(3)a.",
   "title": "Canalizaciones de comunicaciones en plenums.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)b.": {
+ "800-113(h)(3)b.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)b.",
+  "id": "800-113(h)(3)b.",
   "title": "Canalizaciones en trayectorias verticales.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.": {
+ "800-113(h)(3)c.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.",
-  "title": "Canalizaciones de comunicaciones de uso general. i). Bastidores de distribución ",
+  "id": "800-113(h)(3)c.",
+  "title": "Canalizaciones de comunicaciones de uso general.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(1)": {
+ "800-113(i)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(1)",
+  "id": "800-113(i)",
+  "title": "Bastidores de distribución y marcos de conexiones",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(i)(1)": {
+  "kind": "inciso",
+  "id": "800-113(i)(1)",
   "title": "Cables tipo CMP, CMR, CMG y CM, y alambres de comunicaciones.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(2)": {
+ "800-113(i)(2)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(2)",
+  "id": "800-113(i)(2)",
   "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)": {
+ "800-113(i)(3)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)",
+  "id": "800-113(i)(3)",
   "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)a.": {
+ "800-113(i)(3)a.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)a.",
+  "id": "800-113(i)(3)a.",
   "title": "Canalizaciones de comunicaciones en plenums.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)b.": {
+ "800-113(i)(3)b.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)b.",
+  "id": "800-113(i)(3)b.",
   "title": "Canalizaciones en trayectorias verticales.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)c.": {
+ "800-113(i)(3)c.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)c.",
+  "id": "800-113(i)(3)c.",
   "title": "Canalizaciones de comunicaciones de uso general.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)d.": {
+ "800-113(i)(3)d.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)d.",
+  "id": "800-113(i)(3)d.",
   "title": "Ensamble de cable ruteador en pozos verticales.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.": {
+ "800-113(i)(3)e.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.",
-  "title": "Ensamble de cable ruteador de propósito general. j). Otros lugares del edificio.",
+  "id": "800-113(i)(3)e.",
+  "title": "Ensamble de cable ruteador de propósito general.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(1)": {
+ "800-113(j)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(1)",
+  "id": "800-113(j)",
+  "title": "Otros lugares del edificio",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(j)(1)": {
+  "kind": "inciso",
+  "id": "800-113(j)(1)",
   "title": "Cables tipo CMP, CMR, CMG y CM.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(2)": {
+ "800-113(j)(2)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(2)",
+  "id": "800-113(j)(2)",
   "title": "Un máximo de 3.00 metros de cable tipo CMX expuesto en espacios no ocultos.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(3)": {
+ "800-113(j)(3)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(3)",
+  "id": "800-113(j)(3)",
   "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)": {
+ "800-113(j)(4)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)",
+  "id": "800-113(j)(4)",
   "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)a.": {
+ "800-113(j)(4)a.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)a.",
+  "id": "800-113(j)(4)a.",
   "title": "Canalizaciones de comunicaciones en plenums.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)b.": {
+ "800-113(j)(4)b.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)b.",
+  "id": "800-113(j)(4)b.",
   "title": "Canalizaciones en trayectorias verticales.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)c.": {
+ "800-113(j)(4)c.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)c.",
+  "id": "800-113(j)(4)c.",
   "title": "Canalizaciones de comunicaciones de uso general.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)": {
+ "800-113(j)(5)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)",
+  "id": "800-113(j)(5)",
   "title": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)a.": {
+ "800-113(j)(5)a.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)a.",
+  "id": "800-113(j)(5)a.",
   "title": "Ensamble de cable ruteador en pozos verticales.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)b.": {
+ "800-113(j)(5)b.": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)b.",
+  "id": "800-113(j)(5)b.",
   "title": "Ensamble de cable ruteador de propósito general.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(6)": {
+ "800-113(j)(6)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(6)",
+  "id": "800-113(j)(6)",
   "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en u",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)": {
+ "800-113(j)(7)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)",
-  "title": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra. k). Unida",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(1)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(1)",
-  "title": "Cables tipo CMP, CMR, CMG y CM.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(2)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(2)",
-  "title": "Cable tipo CMX de menos de 6 milímetros de diámetro en espacios no ocultos.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(3)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(3)",
-  "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)",
-  "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)a.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)a.",
-  "title": "Canalizaciones de comunicaciones en plenums.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)b.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)b.",
-  "title": "Canalizaciones en trayectorias verticales.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)c.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)c.",
-  "title": "Canalizaciones de comunicaciones de uso general.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)",
-  "title": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)a.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)a.",
-  "title": "Ensamble de cable ruteador en pozos verticales.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)b.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)b.",
-  "title": "Ensamble de cable ruteador de propósito general.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(6)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(6)",
-  "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en u",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)",
-  "title": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra. l). Unida",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(1)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(1)",
-  "title": "Cables tipo CMP, CMR, CMG y CM.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(2)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(2)",
-  "title": "Cable tipo CMX de menos de 6 milímetros de diámetro.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(3)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(3)",
-  "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)",
-  "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)a.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)a.",
-  "title": "Canalizaciones de comunicaciones en plenums.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)b.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)b.",
-  "title": "Canalizaciones en trayectorias verticales.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)c.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)c.",
-  "title": "Canalizaciones de comunicaciones de uso general.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)",
-  "title": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)a.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)a.",
-  "title": "Ensamble de cable ruteador en pozos verticales.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)b.": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)b.",
-  "title": "Ensamble de cable ruteador de propósito general.",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(6)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(6)",
-  "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en u",
-  "article": 800,
-  "chapter": 8,
-  "page": 664
- },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(7)": {
-  "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(7)",
+  "id": "800-113(j)(7)",
   "title": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra.",
   "article": 800,
   "chapter": 8,
   "page": 664
  },
- "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(8)": {
+ "800-113(k)": {
   "kind": "inciso",
-  "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(8)",
+  "id": "800-113(k)",
+  "title": "Unidades de vivienda multifamiliares",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(1)": {
+  "kind": "inciso",
+  "id": "800-113(k)(1)",
+  "title": "Cables tipo CMP, CMR, CMG y CM.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(2)": {
+  "kind": "inciso",
+  "id": "800-113(k)(2)",
+  "title": "Cable tipo CMX de menos de 6 milímetros de diámetro en espacios no ocultos.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(3)": {
+  "kind": "inciso",
+  "id": "800-113(k)(3)",
+  "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(4)": {
+  "kind": "inciso",
+  "id": "800-113(k)(4)",
+  "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(4)a.": {
+  "kind": "inciso",
+  "id": "800-113(k)(4)a.",
+  "title": "Canalizaciones de comunicaciones en plenums.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(4)b.": {
+  "kind": "inciso",
+  "id": "800-113(k)(4)b.",
+  "title": "Canalizaciones en trayectorias verticales.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(4)c.": {
+  "kind": "inciso",
+  "id": "800-113(k)(4)c.",
+  "title": "Canalizaciones de comunicaciones de uso general.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(5)": {
+  "kind": "inciso",
+  "id": "800-113(k)(5)",
+  "title": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(5)a.": {
+  "kind": "inciso",
+  "id": "800-113(k)(5)a.",
+  "title": "Ensamble de cable ruteador en pozos verticales.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(5)b.": {
+  "kind": "inciso",
+  "id": "800-113(k)(5)b.",
+  "title": "Ensamble de cable ruteador de propósito general.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(6)": {
+  "kind": "inciso",
+  "id": "800-113(k)(6)",
+  "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en u",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(k)(7)": {
+  "kind": "inciso",
+  "id": "800-113(k)(7)",
+  "title": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)": {
+  "kind": "inciso",
+  "id": "800-113(l)",
+  "title": "Unidades de vivienda de una familia y bifamiliar",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(1)": {
+  "kind": "inciso",
+  "id": "800-113(l)(1)",
+  "title": "Cables tipo CMP, CMR, CMG y CM.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(2)": {
+  "kind": "inciso",
+  "id": "800-113(l)(2)",
+  "title": "Cable tipo CMX de menos de 6 milímetros de diámetro.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(3)": {
+  "kind": "inciso",
+  "id": "800-113(l)(3)",
+  "title": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(4)": {
+  "kind": "inciso",
+  "id": "800-113(l)(4)",
+  "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(4)a.": {
+  "kind": "inciso",
+  "id": "800-113(l)(4)a.",
+  "title": "Canalizaciones de comunicaciones en plenums.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(4)b.": {
+  "kind": "inciso",
+  "id": "800-113(l)(4)b.",
+  "title": "Canalizaciones en trayectorias verticales.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(4)c.": {
+  "kind": "inciso",
+  "id": "800-113(l)(4)c.",
+  "title": "Canalizaciones de comunicaciones de uso general.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(5)": {
+  "kind": "inciso",
+  "id": "800-113(l)(5)",
+  "title": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(5)a.": {
+  "kind": "inciso",
+  "id": "800-113(l)(5)a.",
+  "title": "Ensamble de cable ruteador en pozos verticales.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(5)b.": {
+  "kind": "inciso",
+  "id": "800-113(l)(5)b.",
+  "title": "Ensamble de cable ruteador de propósito general.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(6)": {
+  "kind": "inciso",
+  "id": "800-113(l)(6)",
+  "title": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en u",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(7)": {
+  "kind": "inciso",
+  "id": "800-113(l)(7)",
+  "title": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra.",
+  "article": 800,
+  "chapter": 8,
+  "page": 664
+ },
+ "800-113(l)(8)": {
+  "kind": "inciso",
+  "id": "800-113(l)(8)",
   "title": "Cables híbridos de fuerza y de comunicaciones aprobados de acuerdo con 800-179(i",
   "article": 800,
   "chapter": 8,
@@ -81935,90 +82135,106 @@
   "chapter": 8,
   "page": 667
  },
- "800-133(1)": {
+ "800-133(a)": {
   "kind": "inciso",
-  "id": "800-133(1)",
+  "id": "800-133(a)",
+  "title": "Separación con otros conductores.",
+  "article": 800,
+  "chapter": 8,
+  "page": 667
+ },
+ "800-133(a)(1)": {
+  "kind": "inciso",
+  "id": "800-133(a)(1)",
   "title": "En canalizaciones, charola portacables, cajas, cables o envolventes.",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)a.": {
+ "800-133(a)(1)a.": {
   "kind": "inciso",
-  "id": "800-133(1)a.",
+  "id": "800-133(a)(1)a.",
   "title": "Fibra óptica y cables de comunicaciones",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)a.(1)": {
+ "800-133(a)(1)a.(1)": {
   "kind": "inciso",
-  "id": "800-133(1)a.(1)",
+  "id": "800-133(a)(1)a.(1)",
   "title": "Cables de fibra óptica conductores y no conductores, de acuerdo con las partes A",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)a.(2)": {
+ "800-133(a)(1)a.(2)": {
   "kind": "inciso",
-  "id": "800-133(1)a.(2)",
+  "id": "800-133(a)(1)a.(2)",
   "title": "Antenas de televisión comunales y sistemas de distribución de radio de acuerdo c",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)a.(3)": {
+ "800-133(a)(1)a.(3)": {
   "kind": "inciso",
-  "id": "800-133(1)a.(3)",
+  "id": "800-133(a)(1)a.(3)",
   "title": "Circuitos de comunicaciones de banda ancha de baja potencia alimentados por la r",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)b.": {
+ "800-133(a)(1)b.": {
   "kind": "inciso",
-  "id": "800-133(1)b.",
+  "id": "800-133(a)(1)b.",
   "title": "Otros circuitos",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)b.(1)": {
+ "800-133(a)(1)b.(1)": {
   "kind": "inciso",
-  "id": "800-133(1)b.(1)",
+  "id": "800-133(a)(1)b.(1)",
   "title": "De control remoto Clase 2 y Clase 3, de señalización y de circuitos de potencia ",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)b.(2)": {
+ "800-133(a)(1)b.(2)": {
   "kind": "inciso",
-  "id": "800-133(1)b.(2)",
+  "id": "800-133(a)(1)b.(2)",
   "title": "Circuitos de potencia limitada de sistemas de alarma contra incendios, de acuerd",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)c.": {
+ "800-133(a)(1)c.": {
   "kind": "inciso",
-  "id": "800-133(1)c.",
+  "id": "800-133(a)(1)c.",
   "title": "Circuitos de Clase 2 y Clase 3",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(1)d.": {
+ "800-133(a)(1)d.": {
   "kind": "inciso",
-  "id": "800-133(1)d.",
+  "id": "800-133(a)(1)d.",
   "title": "Circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de po",
   "article": 800,
   "chapter": 8,
   "page": 667
  },
- "800-133(2)": {
+ "800-133(a)(2)": {
   "kind": "inciso",
-  "id": "800-133(2)",
+  "id": "800-133(a)(2)",
   "title": "Otras aplicaciones",
+  "article": 800,
+  "chapter": 8,
+  "page": 667
+ },
+ "800-133(b)": {
+  "kind": "inciso",
+  "id": "800-133(b)",
+  "title": "Soportes de los conductores",
   "article": 800,
   "chapter": 8,
   "page": 667
@@ -82875,6 +83091,14 @@
   "kind": "inciso",
   "id": "820-44(a)(4)",
   "title": "Libramiento",
+  "article": 820,
+  "chapter": 8,
+  "page": 676
+ },
+ "820-44(b)": {
+  "kind": "inciso",
+  "id": "820-44(b)",
+  "title": "Sobre azoteas",
   "article": 820,
   "chapter": 8,
   "page": 676
