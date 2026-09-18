@@ -136963,11 +136963,17 @@
        "exceptions": [
         {
          "label": "Excepción",
-         "text": "Las separaciones no requieren incrementarse cuando los claros sean iguales o menores a 100 metros (75 metros en la zona de carga I) y la temperatura del conductor no excedan de 50 °C. Para claros a nivel, cuando la separación no se localice a la mitad del claro, el incremento anterior puede reducirse multiplicando por los siguientes factores: Distancia del punto de cruce a la estructura más cercana, Factor en por ciento de la longitud del claro 5 0.19 10 0.36 15 0.51 20 0.64 25 0.75 30 0.84 35 0.91 40 0.96 45 0.99 50 1.00 Interpólese para valores intermedios.",
+         "text": "Las separaciones no requieren incrementarse cuando los claros sean iguales o menores a 100 metros (75 metros en la zona de carga I) y la temperatura del conductor no excedan de 50 °C. Para claros a nivel, cuando la separación no se localice a la mitad del claro, el incremento anterior puede reducirse multiplicando por los siguientes factores:",
          "seq": 33
         }
        ],
-       "title": "Claros mayores al claro básico"
+       "title": "Claros mayores al claro básico",
+       "tables": [
+        {
+         "id": "922-56(b)",
+         "seq": 34
+        }
+       ]
       }
      ],
      "notes": [],
@@ -137111,7 +137117,7 @@
        "w": 440,
        "h": 324,
        "page": 723,
-       "seq": 34
+       "seq": 35
       }
      ]
     },
@@ -137127,7 +137133,7 @@
      "tables": [
       {
        "id": "922-83",
-       "seq": 35
+       "seq": 36
       }
      ]
     },
@@ -137162,7 +137168,7 @@
        "tables": [
         {
          "id": "922-84",
-         "seq": 36
+         "seq": 37
         }
        ]
       }
@@ -137182,7 +137188,7 @@
      "tables": [
       {
        "id": "922-84(a)",
-       "seq": 37
+       "seq": 38
       }
      ]
     },
@@ -137286,7 +137292,7 @@
           {
            "label": "Excepción",
            "text": "En el caso de ruptura de cables en estructuras tipo H semiflexibles, donde deben considerarse solamente las cargas vertical y longitudinal actuando simultáneamente.",
-           "seq": 38
+           "seq": 39
           }
          ]
         }
@@ -137336,7 +137342,7 @@
          "tables": [
           {
            "id": "922-93(a)(1)",
-           "seq": 39
+           "seq": 40
           }
          ]
         },
@@ -137416,7 +137422,7 @@
          "tables": [
           {
            "id": "922-93(b)(1)",
-           "seq": 40
+           "seq": 41
           }
          ]
         },
@@ -137582,7 +137588,7 @@
        "tables": [
         {
          "id": "922-93",
-         "seq": 41
+         "seq": 42
         }
        ]
       }
@@ -137602,7 +137608,7 @@
      "tables": [
       {
        "id": "922-94",
-       "seq": 42
+       "seq": 43
       }
      ]
     },
