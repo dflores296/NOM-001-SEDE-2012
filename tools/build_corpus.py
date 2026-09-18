@@ -531,7 +531,17 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
             # último artículo del documento, pero no le pertenecen: se dejan
             # sin anclar y se publican en su propia página.
             if owner is not None and int(art_tab) == num:
+                # Lo acumulado hasta aquí precede a la tabla y es del nodo; lo
+                # que venga después va a `parrafos`, o se pintaría por encima
+                # de la tabla que introduce: en 220-83(a) la frase «En los
+                # cálculos de la carga se debe incluir lo siguiente:» va
+                # debajo. Un bloque que quede vacío se poda al cerrar.
+                commit()
                 owner.setdefault('tables', []).append({'id': tid, 'seq': next(seq)})
+                annot[0], annot[1], annot[2] = None, None, False
+                node = {'text': '', 'seq': next(seq)}
+                owner.setdefault('parrafos', []).append(node)
+                target = node
             continue
 
         # --- imagen (fórmula o figura): se cuelga del nodo vigente
@@ -725,6 +735,13 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
     commit()
     for s_ in art['sections']:
         partir_marcadores_embebidos(s_)
+        # Los bloques de `parrafos` se crean por adelantado al pasar por una
+        # tabla; los que no recibieron texto se podan para no publicar huecos.
+        for n in walk(s_):
+            if 'parrafos' in n:
+                n['parrafos'] = [x for x in n['parrafos'] if x['text'].strip()]
+                if not n['parrafos']:
+                    del n['parrafos']
     return art
 
 
