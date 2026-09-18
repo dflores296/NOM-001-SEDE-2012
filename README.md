@@ -177,6 +177,38 @@ escribe en `data/tablas_revisadas.json`, que se aplica ENCIMA de lo reconstruido
 —editar `data/tablas.json` no sirve: `build_tables.py` lo sobrescribe en cada
 publicación—. Cada tabla del sitio lleva en su pie la marca de esa revisión.
 
+#### Cómo se protege esa captura
+
+Contrastar 222 tablas celda por celda contra el PDF no fue barato, y
+`data/tablas.json` se regenera en cada publicación. Sin nada que lo impida, un
+cambio en `build_tables.py` —o en la versión de `pymupdf`, o un merge mal
+resuelto— movería celdas de una tabla ya verificada y el sitio la publicaría
+igual, con su insignia de «Verificada contra el PDF» intacta. Tres reglas lo
+evitan, y las tres fallan el build:
+
+1. **Las 222 están congeladas.** Cada entrada de `data/tablas_revisadas.json`
+   trae sus propias `rows`, `cols` y `header_rows`, así que el reconstructor ya
+   no decide el contenido de una tabla verificada: lo decide la captura.
+   `build_tables.py` queda como herramienta de arranque para tablas nuevas.
+2. **Cada entrada guarda la huella de su contenido** (`sha`, en
+   `tools/huella.py`: sha256 sobre título, prosa de entrada, rejilla, celdas con
+   sus fusiones y notas). `build_tables.py` la recalcula y **aborta antes de
+   escribir** `tablas.json` si no coincide; `check_corpus.py` la vuelve a
+   comprobar por su cuenta, y además compara los dos archivos campo por campo
+   para cazar una edición de la captura sin regenerar.
+3. **`verificada` exige congelado.** Una tabla marcada como verificada que no
+   traiga sus celdas rompe `check_corpus.py`, para que la insignia del sitio no
+   pueda mentir.
+
+Cambiar una tabla a propósito es un paso explícito:
+
+```
+python3 tools/build_tables.py NOM-001-SEDE-2012.pdf data/ --sellar
+```
+
+La huella nueva aparece en el diff de `tablas_revisadas.json`, que es justamente
+la señal de revisión que se quiere. Lo que no puede pasar es que cambie sola.
+
 La calidad estimada resultó ser un mal juez en las dos direcciones: daba falsas
 alarmas con los rangos legítimos («De 50 001 a 100 000» tiene dos números y no
 está mal separado) y en cambio puntuaba 1.00 tablas con la columna inventada,
