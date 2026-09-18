@@ -119,10 +119,15 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
                 </dl>
               )}
 
+              {/* `parrafos`: prosa que en el documento va DESPUÉS de una nota
+                  o excepción, así que no cabe en `text`, que se pinta antes. */}
               {[
                 ...(s.notes || []).map((n) => ({ ...n, k: 'nota' })),
                 ...(s.exceptions || []).map((n) => ({ ...n, k: 'exc' })),
-              ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0)).map((n) => (
+                ...(s.parrafos || []).map((n) => ({ ...n, k: 'parr' })),
+              ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0)).map((n) => (n.k === 'parr' ? (
+                <p class="parr" set:html={linkify(n.text)} />
+              ) : (
                 <div class={n.k}>
                   <span class="lb">{n.label}</span><span set:html={linkify(n.text)} />
                   {n.items?.length > 0 && (
@@ -133,7 +138,7 @@ const tablasDe = (n) => (n.tables || []).map((t) => tablaPorId.get(t.id)).filter
                     </ul>
                   )}
                 </div>
-              ))}
+              )))}
 
               {tablasDe(s).map((t) => <Tabla t={t} />)}
 
