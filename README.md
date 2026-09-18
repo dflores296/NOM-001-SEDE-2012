@@ -36,10 +36,10 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 |---|---|
 | Artículos | 151 |
 | Secciones | 2 897 |
-| Incisos | 8 261 |
-| Notas / Excepciones | 777 / 985 |
+| Incisos | 8 326 |
+| Notas / Excepciones | 777 / 986 |
 | Definiciones | 185 |
-| Referencias enlazadas | 4 637 |
+| Referencias enlazadas | 4 627 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 100 % |
 | Tablas reconstruidas | 223 |
