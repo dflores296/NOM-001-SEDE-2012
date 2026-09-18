@@ -223,15 +223,6 @@ def tabla_plana(t):
         out['informativa'] = True
     if t.get('verificada'):
         out['verificada_contra_pdf'] = t['verificada']
-    if t.get('encabezado_dudoso'):
-        # El repo marca así las tablas donde no está claro dónde acaba el
-        # encabezado y empiezan los datos. Se propaga en vez de adivinar: si
-        # el corte quedó mal, las primeras filas son encabezado disfrazado de
-        # dato y los nombres de columna no significan lo que parecen.
-        out['encabezado_dudoso'] = True
-        out['aviso'] = ('El corte entre encabezado y datos no es seguro en '
-                        'esta tabla: verificar contra el PDF (pág. %s) antes '
-                        'de usar sus valores.' % t.get('page'))
     return out
 
 
@@ -457,7 +448,6 @@ def main():
 
     # --- tablas planas por grupo
     ids_tabla = set()
-    dudosas = set()
     for nombre, desc, filtro in GRUPOS_TABLAS:
         sel = [t for t in tablas if filtro(t['id'], t.get('article'))]
         if quiero is not None:
@@ -467,8 +457,6 @@ def main():
             continue
         planas = [tabla_plana(t) for t in sel]
         ids_tabla.update(p['tabla'] for p in planas)
-        dudosas.update((p['tabla'], p['pagina_pdf'])
-                       for p in planas if p.get('encabezado_dudoso'))
         ruta = os.path.join(args.out, nombre)
         with open(ruta, 'w', encoding='utf-8') as fh:
             json.dump(planas, fh, ensure_ascii=False, indent=1)
@@ -492,8 +480,6 @@ def main():
     if resto:
         planas = [tabla_plana(t) for t in resto]
         ids_tabla.update(p['tabla'] for p in planas)
-        dudosas.update((p['tabla'], p['pagina_pdf'])
-                       for p in planas if p.get('encabezado_dudoso'))
         ruta = os.path.join(args.out, RESTO_TABLAS)
         with open(ruta, 'w', encoding='utf-8') as fh:
             json.dump(planas, fh, ensure_ascii=False, indent=1)
@@ -520,7 +506,7 @@ def main():
         manifiesto.append((nombre, 'Definiciones del Artículo 100',
                            '%d términos' % len(defs), os.path.getsize(ruta)))
 
-    escribir_manifiesto(args, manifiesto, incluidos, sorted(dudosas), ids_tabla)
+    escribir_manifiesto(args, manifiesto, incluidos, ids_tabla)
 
     total = sum(m[3] for m in manifiesto)
     print('%s: %d archivos, %.1f KB en total'
@@ -529,7 +515,7 @@ def main():
         print('  %-42s %7.1f KB' % (nombre, tam / 1024.0))
 
 
-def escribir_manifiesto(args, manifiesto, incluidos, dudosas, ids_tabla):
+def escribir_manifiesto(args, manifiesto, incluidos, ids_tabla):
     """El archivo que más rinde: sin él hay que abrir los demás a ciegas."""
     sal = ['# Manifiesto del export — NOM-001-SEDE-2012', '']
     sal.append('Destilado de la NOM-001-SEDE-2012 (Instalaciones Eléctricas '
@@ -599,20 +585,6 @@ def escribir_manifiesto(args, manifiesto, incluidos, dudosas, ids_tabla):
                'mexicana (`1 050`) y con notas pegadas. Convertir a número aquí '
                'sería inventar criterio.')
     sal.append('')
-    if dudosas:
-        sal.append('## Tablas con el encabezado sin confirmar')
-        sal.append('')
-        sal.append('En éstas no está claro dónde acaba el encabezado y '
-                   'empiezan los datos, así que las primeras filas pueden ser '
-                   'encabezado disfrazado de dato y los nombres de columna no '
-                   'significar lo que parecen. Vienen marcadas con '
-                   '`"encabezado_dudoso": true`. Antes de usar un valor de '
-                   'éstas, contrastarlo contra el PDF:')
-        sal.append('')
-        for tid, pag in dudosas:
-            sal.append('- **%s** — pág. %s' % (tid, pag))
-        sal.append('')
-
     sal.append('## Erratas del PDF de origen')
     sal.append('')
     sal.append('Cuatro tablas de la norma traen valores mal impresos **en el '

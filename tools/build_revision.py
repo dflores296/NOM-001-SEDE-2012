@@ -42,10 +42,7 @@ LEYENDA = """Columnas: **usos** cuántas veces se apoya la norma en esa tabla ·
 estimada de la separación en celdas (1.00 = ninguna celda con varios valores juntos)
 · **rejilla** de dónde salieron las columnas: `dibujada` son las líneas del PDF,
 `huecos` son los espacios entre palabras, que es mucho menos fiable y no recupera
-celdas combinadas. Una tabla marcada **enc.** trae la firma de la columna fantasma:
-una celda vacía en el encabezado junto a un título de grupo, que es como se ve una
-columna inventada. La calidad no detecta eso —los valores están perfectos— así que
-esas tablas salían con 1.00 y sin una sola marca."""
+celdas combinadas."""
 
 PIE = """
 ## Cómo se corrige una tabla
@@ -75,8 +72,11 @@ Dos cosas que conviene saber antes de empezar:
   todo: cuando el reparto se inventa una columna, los valores quedan perfectos y la
   calidad da 1.00, pero el encabezado se corre y cada título de grupo cubre una
   columna de menos. Es el fallo que tenía la 310-15(b)(16), donde COBRE cubría dos de
-  las tres columnas de cobre, y la firma que delata la columna fantasma es una celda
-  vacía en el encabezado junto a un título de grupo.
+  las tres columnas de cobre. Se intentó detectarlo por la celda vacía que queda en
+  el encabezado junto al título de grupo, pero esa forma es la de cualquier
+  encabezado de varios niveles —la columna del calibre no lleva título encima— y
+  marcaba cinco tablas sanas sin marcar la enferma. Contra esto no hay heurística:
+  hay que mirar la tabla.
 
 ## Qué mirar en cada tabla
 
@@ -150,10 +150,9 @@ def truncar(titulo, n=70):
 def fila(t, usos):
     grid = '**huecos**' if t['grid'] == 'huecos' else 'dibujada'
     paginas = ', '.join(str(p) for p in t['pages'])
-    enc = '**sí**' if t.get('encabezado_dudoso') else '—'
     return (
         f"| [ ] | `{t['id']}` | {truncar(t['title'])} | {paginas} | {usos} | "
-        f"{t['quality']:.2f} | {enc} | {grid} | {len(t['rows'])}×{t['cols']} |"
+        f"{t['quality']:.2f} | {grid} | {len(t['rows'])}×{t['cols']} |"
     )
 
 
@@ -162,8 +161,8 @@ def tabla_md(items):
     # encabezado suelto se lee como si faltaran datos.
     if not items:
         return 'Ninguna: ya están todas contrastadas contra el PDF.'
-    cab = '| | Tabla | Título | Pág. PDF | Usos | Cal. | Enc. | Rejilla | Tamaño |\n'
-    cab += '|---|---|---|---|---|---|---|---|---|\n'
+    cab = '| | Tabla | Título | Pág. PDF | Usos | Cal. | Rejilla | Tamaño |\n'
+    cab += '|---|---|---|---|---|---|---|---|\n'
     return cab + '\n'.join(fila(t, c) for t, c in items)
 
 
@@ -187,10 +186,8 @@ def main():
             continue
         c = uso.get(t['id'], {}).get('usos', 0)
         q = t['quality']
-        # Misma fórmula que revision.astro. El riesgo ya no es solo la calidad:
-        # un encabezado con la columna fantasma es un fallo confirmado y la
-        # calidad no lo ve, así que pesa aunque la tabla salga con 1.00.
-        riesgo = (1 - q) + (0.6 if t.get('encabezado_dudoso') else 0)
+        # Misma fórmula que revision.astro.
+        riesgo = 1 - q
         prio = c * riesgo + riesgo + (3 if t['cols'] < 2 else 0)
         info.append((t, c, prio))
 
@@ -202,14 +199,13 @@ def main():
         key=lambda x: (-x[1], x[0]['quality']),
     )
     confianza = sorted(
-        (x for x in info if x[0]['quality'] >= 0.95
-         and not x[0].get('encabezado_dudoso') and x[1] >= 5),
+        (x for x in info if x[0]['quality'] >= 0.95 and x[1] >= 5),
         key=lambda x: -x[1],
     )
-    # Lo que ninguna heurística marcó: ni calidad baja, ni columna fantasma,
-    # ni suficientes usos para "verificación de control". Que salgan limpias
-    # no es lo mismo que fieles, y nunca se han contrastado contra el PDF.
-    # Se ordenan por página para revisarlas de corrido junto con el PDF.
+    # Lo que ninguna heurística marcó: ni calidad baja, ni suficientes usos para
+    # "verificación de control". Que salgan limpias no es lo mismo que fieles, y
+    # nunca se han contrastado contra el PDF. Se ordenan por página para
+    # revisarlas de corrido junto con el PDF.
     marcadas = {t['id'] for t, c, p in criticas + dudosas + confianza}
     sin_senales = sorted(
         (x for x in info if x[0]['id'] not in marcadas),
@@ -219,9 +215,8 @@ def main():
     secciones = [
         (
             f'## 1 · Prioridad alta ({len(criticas)})',
-            'Muy usadas y con la reconstrucción insegura: o la calidad las '
-            'señala, o traen la firma de la columna fantasma en el '
-            'encabezado. Un error aquí se propaga a muchos cálculos.',
+            'Muy usadas y con la reconstrucción insegura: la calidad las '
+            'señala. Un error aquí se propaga a muchos cálculos.',
             criticas,
         ),
         (
@@ -232,8 +227,7 @@ def main():
         ),
         (
             f'## 3 · Verificación de control ({len(confianza)})',
-            'Salieron limpias, con el encabezado bien, y son muy usadas. '
-            'Conviene mirarlas justamente '
+            'Salieron limpias y son muy usadas. Conviene mirarlas justamente '
             'por eso: una tabla equivocada que *parece* correcta es más '
             'peligrosa que una marcada como dudosa. Basta comprobar dos o '
             'tres renglones de cada una.',
@@ -241,10 +235,10 @@ def main():
         ),
         (
             f'## 4 · Sin señales ({len(sin_senales)})',
-            'Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, '
-            'ni uso suficiente para "verificación de control"— pero eso no es lo '
-            'mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas '
-            'por página para revisarlas de corrido.',
+            'Ninguna heurística las marcó —ni calidad baja, ni uso suficiente '
+            'para "verificación de control"— pero eso no es lo mismo que fieles: '
+            'nunca se han contrastado contra el PDF. Ordenadas por página para '
+            'revisarlas de corrido.',
             sin_senales,
         ),
     ]
