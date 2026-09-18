@@ -954,25 +954,25 @@ def tabla_nueva(tid, rev):
     }
 
 
-def encabezado_dudoso(t):
-    """Firma del reparto de columnas que se inventa una.
-
-    Cuando el algoritmo mete una columna de más, el encabezado lo delata: en
-    la misma fila queda una celda VACÍA junto a un título que abarca varias
-    columnas, y el título acaba cubriendo una columna menos de las que le
-    tocan. Es lo que pasaba en la 310-15(b)(16), donde COBRE cubría dos de las
-    tres columnas de cobre y la de 60 °C colgaba de la celda vacía: cada
-    material quedaba con las ampacidades del otro.
-
-    La calidad estimada no ve nada de esto —mide celdas con varios valores
-    juntos, y aquí los valores están perfectos—, así que estas tablas salían
-    con 1.00 y sin una sola marca.
-    """
-    for row in t['rows'][:t.get('header_rows', 0)]:
-        if (any(not c['t'].strip() for c in row)
-                and any(c.get('cs', 1) > 1 for c in row)):
-            return True
-    return False
+# NO VUELVAS A MARCAR "ENCABEZADO DUDOSO" POR LA CELDA VACÍA.
+#
+# Hubo aquí una heurística —`encabezado_dudoso`— que buscaba la firma del
+# reparto que se inventa una columna: en una fila del encabezado, una celda
+# VACÍA junto a un título que abarca varias columnas. Salió de la 310-15(b)(16),
+# donde COBRE cubría dos de las tres columnas de cobre y la de 60 °C colgaba del
+# hueco, y cada material quedaba con las ampacidades del otro.
+#
+# El problema es que esa firma no distingue nada: una celda vacía junto a una
+# fusionada es la forma NORMAL de un encabezado de varios niveles, porque las
+# columnas de rótulo —el calibre, la tensión, el lugar— no llevan título de
+# grupo encima. Marcaba la 310-15(b)(20), la 400-5(a)(1), la 450-3(a), la
+# 922-12(a)(2) y la 922-33, y las cinco están bien. Y dejó de marcar la
+# 310-15(b)(16) en cuanto se corrigió a mano, porque el `rowspan` tapó el hueco:
+# señalaba a las sanas y no a la enferma.
+#
+# Lo que de verdad protege contra una columna inventada es lo que ya está: las
+# 224 tablas contrastadas celda por celda, con sus celdas congeladas y su huella
+# de contenido, y el aviso del sitio para cualquier tabla nueva sin verificar.
 
 
 def apply_revisiones(tables, path):
@@ -1301,8 +1301,6 @@ def main():
     # Las dadas de alta a mano se añaden al final; el orden del archivo es el
     # del documento y de él salen los listados del sitio.
     tables.sort(key=lambda t: (t['regions'][0]['page'], t['regions'][0]['y0']))
-    for t in tables:
-        t['encabezado_dudoso'] = encabezado_dudoso(t)
 
     # La captura manual manda sobre la reconstrucción, y aquí se comprueba que
     # siga mandando: si una tabla ya verificada sale distinta de como se selló,

@@ -40,8 +40,11 @@ Dos cosas que conviene saber antes de empezar:
   todo: cuando el reparto se inventa una columna, los valores quedan perfectos y la
   calidad da 1.00, pero el encabezado se corre y cada título de grupo cubre una
   columna de menos. Es el fallo que tenía la 310-15(b)(16), donde COBRE cubría dos de
-  las tres columnas de cobre, y la firma que delata la columna fantasma es una celda
-  vacía en el encabezado junto a un título de grupo.
+  las tres columnas de cobre. Se intentó detectarlo por la celda vacía que queda en
+  el encabezado junto al título de grupo, pero esa forma es la de cualquier
+  encabezado de varios niveles —la columna del calibre no lleva título encima— y
+  marcaba cinco tablas sanas sin marcar la enferma. Contra esto no hay heurística:
+  hay que mirar la tabla.
 
 ## Qué mirar en cada tabla
 

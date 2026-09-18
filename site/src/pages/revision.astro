@@ -24,10 +24,6 @@ function señales(t) {
   // columnas salen de los huecos entre palabras, que es lo menos fiable.
   if (t.grid === 'huecos') s.push('sin rejilla dibujada en el PDF');
   if (t.header_rows === 0) s.push('sin encabezado detectado');
-  // Una celda vacía en el encabezado junto a un título de grupo es como se ve
-  // una columna inventada: el título cubre una columna de menos y la que
-  // sobra queda colgando de la nada. La calidad no lo detecta.
-  if (t.encabezado_dudoso) s.push('encabezado con una columna de más');
   if (t.pages.length > 1) s.push(`cruza ${t.pages.length} páginas`);
   return s;
 }
@@ -37,9 +33,7 @@ function señales(t) {
 const info = tablas
   .filter((t) => !t.verificada)
   .map((t) => {
-    // El riesgo ya no es solo la calidad: un encabezado con la columna
-    // fantasma es un fallo confirmado y la calidad lo da por perfecto.
-    const riesgo = 1 - t.quality + (t.encabezado_dudoso ? 0.6 : 0);
+    const riesgo = 1 - t.quality;
     return {
       t,
       c: usos(t),
@@ -54,12 +48,11 @@ const dudosas = info
   .filter((x) => x.prio < 1.0 && x.t.quality < 0.8)
   .sort((a, b) => b.c - a.c || a.t.quality - b.t.quality);
 const confianza = info
-  .filter((x) => x.t.quality >= 0.95 && !x.t.encabezado_dudoso && x.c >= 5)
+  .filter((x) => x.t.quality >= 0.95 && x.c >= 5)
   .sort((a, b) => b.c - a.c);
-// Lo que ninguna heurística marcó: ni calidad baja, ni columna fantasma, ni
-// uso suficiente para "verificación de control". Que salga limpia no es lo
-// mismo que fiel, y nunca se contrastó contra el PDF. Se ordenan por página
-// para revisarlas de corrido.
+// Lo que ninguna heurística marcó: ni calidad baja, ni uso suficiente para
+// "verificación de control". Que salga limpia no es lo mismo que fiel, y nunca
+// se contrastó contra el PDF. Se ordenan por página para revisarlas de corrido.
 const marcadas = new Set(
   [...criticas, ...dudosas, ...confianza].map((x) => x.t.id)
 );
@@ -150,9 +143,8 @@ const href = (t) =>
     <div class="chap">
       <h2>1 · Prioridad alta</h2>
       <p class="rev-nota">
-        Muy usadas y con la reconstrucción insegura: o la calidad las señala, o traen la
-        firma de la columna fantasma en el encabezado. Un error aquí se propaga a muchos
-        cálculos.
+        Muy usadas y con la reconstrucción insegura: la calidad las señala. Un error
+        aquí se propaga a muchos cálculos.
       </p>
       {/* Una lista vacía aquí es una buena noticia. Sin decirlo, el hueco se
           lee como si la página hubiera fallado al cargar. */}
@@ -200,10 +192,9 @@ const href = (t) =>
     <div class="chap">
       <h2>3 · Verificación de control</h2>
       <p class="rev-nota">
-        Estas salieron limpias, con el encabezado bien, y son muy usadas. Conviene mirarlas
-        justamente por eso: una tabla
-        equivocada que <em>parece</em> correcta es más peligrosa que una marcada como dudosa.
-        Basta comprobar dos o tres renglones de cada una.
+        Estas salieron limpias y son muy usadas. Conviene mirarlas justamente por eso:
+        una tabla equivocada que <em>parece</em> correcta es más peligrosa que una
+        marcada como dudosa. Basta comprobar dos o tres renglones de cada una.
       </p>
       <ol class="rev">
         {confianza.map(({ t, c }) => (
@@ -222,10 +213,9 @@ const href = (t) =>
     <div class="chap">
       <h2>4 · Sin señales</h2>
       <p class="rev-nota">
-        Ninguna heurística las marcó —ni calidad baja, ni columna fantasma, ni uso
-        suficiente para "verificación de control"— pero eso no es lo mismo que
-        fieles: nunca se han contrastado contra el PDF. Ordenadas por página para
-        revisarlas de corrido.
+        Ninguna heurística las marcó —ni calidad baja, ni uso suficiente para
+        "verificación de control"— pero eso no es lo mismo que fieles: nunca se han
+        contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
       </p>
       {sinSeñales.length === 0 && (
         <p class="rev-vacia">Ninguna: ya están todas contrastadas contra el PDF.</p>
