@@ -85231,11 +85231,21 @@
        "label": "c",
        "kind": "alpha",
        "level": 1,
-       "text": "El Artículo 640 debe aplicarse al alambrado e instalación de equipo de procesamiento, amplificación y reproducción de señales de audio. d). Atracciones que utilizan piscinas, fuentes e instalaciones similares con volúmenes contenidos de agua. Estos equipos se deben instalar cumpliendo los requisitos aplicables del Artículo 680.",
+       "text": "El Artículo 640 debe aplicarse al alambrado e instalación de equipo de procesamiento, amplificación y reproducción de señales de audio.",
        "children": [],
        "notes": [],
        "exceptions": [],
        "title": "Equipos de procesamiento, amplificación y reproducción de señales de audio"
+      },
+      {
+       "id": "525-3(d)",
+       "label": "d",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Atracciones que utilizan piscinas, fuentes e instalaciones similares con volúmenes contenidos de agua. Estos equipos se deben instalar cumpliendo los requisitos aplicables del Artículo 680.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
       }
      ],
      "notes": [],
@@ -126034,8 +126044,80 @@
      "title": "Otros artículos",
      "part": "A",
      "page": 659,
-     "text": "a). En áreas peligrosas (clasificadas). Los circuitos y equipos de comunicaciones instalados en un área peligrosa (clasificada) de acuerdo con 500-5 y 505-5 deben cumplir los requisitos aplicables del Capítulo 5. b). Alambrado en ductos para polvo, pelusas o remoción de vapor.- Aplican los requisitos de 300-22(a). c). Equipos en otros espacios usados para manejar aire ambiental.- Aplican los requisitos de 300-22(c). d). Sistemas de comunicación de banda ancha alimentados por la red.- Para sistemas de comunicaciones de banda ancha alimentados por la red aplican los requisitos del Artículo 830. e). Sistemas de comunicación de banda ancha alimentados de la instalación del edificio.- Para sistemas de comunicaciones de banda ancha alimentados de la instalación del edificio aplican los requisitos del Artículo 840. f). Cable de fibra óptica.- Cuando se usa cable de fibra óptica, total o parcialmente, para proveer un circuito de comunicaciones dentro de un edificio, aplican los requisitos del Artículo 770 a la parte del circuito de comunicaciones instalada con fibra óptica. g). Ensambles de enrutamiento de cables.- La definición en 770-2, las aplicaciones en 770-154 y las reglas de aplicación de 770- 113 aplican en el Artículo 800.",
-     "children": [],
+     "text": "",
+     "children": [
+      {
+       "id": "800-3(a)",
+       "label": "a",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Los circuitos y equipos de comunicaciones instalados en un área peligrosa (clasificada) de acuerdo con 500-5 y 505-5 deben cumplir los requisitos aplicables del Capítulo 5.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "En áreas peligrosas (clasificadas)"
+      },
+      {
+       "id": "800-3(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Alambrado en ductos para polvo, pelusas o remoción de vapor.- Aplican los requisitos de  300-22(a).",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "800-3(c)",
+       "label": "c",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Equipos en otros espacios usados para manejar aire ambiental.- Aplican los requisitos  de 300-22(c).",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "800-3(d)",
+       "label": "d",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Sistemas de comunicación de banda ancha alimentados por la red.- Para sistemas de comunicaciones de banda ancha alimentados por la red aplican los requisitos del Artículo 830.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "800-3(e)",
+       "label": "e",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Sistemas de comunicación de banda ancha alimentados de la instalación del edificio.- Para sistemas de comunicaciones de banda ancha alimentados de la instalación del edificio aplican los requisitos del Artículo 840.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "800-3(f)",
+       "label": "f",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Cable de fibra óptica.- Cuando se usa cable de fibra óptica, total o parcialmente, para proveer un circuito de comunicaciones dentro de un edificio, aplican los requisitos del Artículo 770 a la parte del circuito de comunicaciones instalada con fibra óptica.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "800-3(g)",
+       "label": "g",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Ensambles de enrutamiento de cables.- La definición en 770-2, las aplicaciones en 770-154 y las reglas de aplicación de 770- 113 aplican en el Artículo 800.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      }
+     ],
      "notes": [],
      "exceptions": []
     },
@@ -126100,47 +126182,70 @@
      "title": "Cables y alambres aéreos de comunicaciones",
      "part": "B",
      "page": 660,
-     "text": "Los conductores aéreos que entren en edificios deben cumplir con (a) y (b) siguientes: a). Sobre postes y claros. Cuando alambres y cables de comunicaciones, y conductores eléctricos de alumbrado o de fuerza estén soportados en el mismo poste o corran paralelos en el tramo interpostal, deben cumplir con las siguientes condiciones.",
+     "text": "Los conductores aéreos que entren en edificios deben cumplir con (a) y (b) siguientes:",
      "children": [
       {
-       "id": "800-44(1)",
-       "label": "1",
-       "kind": "num",
+       "id": "800-44(a)",
+       "label": "a",
+       "kind": "alpha",
        "level": 1,
-       "text": "Cuando sea posible, los alambres y cables de comunicaciones deben ubicarse abajo de los conductores eléctricos de alumbrado o fuerza.",
-       "children": [],
+       "text": "Cuando alambres y cables de comunicaciones, y conductores eléctricos de alumbrado o de fuerza estén soportados en el mismo poste o corran paralelos en el tramo interpostal, deben cumplir con las siguientes condiciones.",
+       "children": [
+        {
+         "id": "800-44(a)(1)",
+         "label": "1",
+         "kind": "num",
+         "level": 2,
+         "text": "Cuando sea posible, los alambres y cables de comunicaciones deben ubicarse abajo de los conductores eléctricos de alumbrado o fuerza.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Ubicación relativa"
+        },
+        {
+         "id": "800-44(a)(2)",
+         "label": "2",
+         "kind": "num",
+         "level": 2,
+         "text": "Los alambres y cables de comunicaciones no se deben fijar a crucetas que soporten conductores eléctricos de alumbrado o de fuerza.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Fijación a las crucetas"
+        },
+        {
+         "id": "800-44(a)(3)",
+         "label": "3",
+         "kind": "num",
+         "level": 2,
+         "text": "El espacio para subir entre los alambres y cables de comunicación debe cumplir con los requisitos indicados en 225-14 (d).",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Espacio para subir"
+        },
+        {
+         "id": "800-44(a)(4)",
+         "label": "4",
+         "kind": "num",
+         "level": 2,
+         "text": "Las acometidas aéreas de 0 a 750 volts, encima y paralelas a las acometidas aéreas de comunicación, deben tener una separación mínima de 30 centímetros en cualquier punto del claro, incluyendo el punto de fijación al edificio, siempre que los conductores de fase estén aislados y que se mantenga un libramiento de cuando menos 1.00 metro entre las dos acometidas en el poste.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Libramiento"
+        }
+       ],
        "notes": [],
        "exceptions": [],
-       "title": "Ubicación relativa"
+       "title": "Sobre postes y claros"
       },
       {
-       "id": "800-44(2)",
-       "label": "2",
-       "kind": "num",
+       "id": "800-44(b)",
+       "label": "b",
+       "kind": "alpha",
        "level": 1,
-       "text": "Los alambres y cables de comunicaciones no se deben fijar a crucetas que soporten conductores eléctricos de alumbrado o de fuerza.",
-       "children": [],
-       "notes": [],
-       "exceptions": [],
-       "title": "Fijación a las crucetas"
-      },
-      {
-       "id": "800-44(3)",
-       "label": "3",
-       "kind": "num",
-       "level": 1,
-       "text": "El espacio para subir entre los alambres y cables de comunicación debe cumplir con los requisitos indicados en 225-14 (d).",
-       "children": [],
-       "notes": [],
-       "exceptions": [],
-       "title": "Espacio para subir"
-      },
-      {
-       "id": "800-44(4)",
-       "label": "4",
-       "kind": "num",
-       "level": 1,
-       "text": "Las acometidas aéreas de 0 a 750 volts, encima y paralelas a las acometidas aéreas de comunicación, deben tener una separación mínima de 30 centímetros en cualquier punto del claro, incluyendo el punto de fijación al edificio, siempre que los conductores de fase estén aislados y que se mantenga un libramiento de cuando menos 1.00 metro entre las dos acometidas en el poste. b). Sobre azoteas. Los cables y alambres de comunicaciones deben tener una distancia vertical mínima de 2.50 metros desde todos los puntos de los techos sobre los cuales pasen.",
+       "text": "Los cables y alambres de comunicaciones deben tener una distancia vertical mínima de 2.50 metros desde todos los puntos de los techos sobre los cuales pasen.",
        "children": [],
        "notes": [],
        "exceptions": [
@@ -126160,7 +126265,7 @@
          "seq": 7
         }
        ],
-       "title": "Libramiento"
+       "title": "Sobre azoteas"
       }
      ],
      "notes": [],
@@ -126171,8 +126276,31 @@
      "title": "Alambres y cables subterráneos de comunicaciones que entran a edificios",
      "part": "B",
      "page": 660,
-     "text": "Los alambres y cables subterráneos de comunicaciones que entren en los edificios, deben cumplir con (a) y (b) siguientes. Los requisitos de 310-10(c) no aplican para alambres y cables de comunicaciones. a). Con conductores de alumbrado o fuerza. Los alambres y cables de comunicaciones subterráneos instalados en canalizaciones, registros o pozos de visita en los que haya conductores de alumbrado o fuerza, conductores de circuitos Clase 1 o de alarma contra incendios que no sean de potencia limitada, deben estar separados de estos conductores por medio de un muro divisorio de ladrillo, concreto o loseta o por medio de una barrera adecuada. b). Distribución subterránea en la cuadra. Cuando todo el circuito de la calle sea subterráneo y el circuito dentro de la cuadra esté colocado de tal manera que no haya riesgo de contacto accidental con circuitos de alumbrado o fuerza de más de 300 volts a tierra, no deben aplicarse los requisitos de aislamiento indicados en 800-50(a) y (c), ni se exige colocar soportes aislantes para los conductores, ni se necesitan boquillas para la entrada de los conductores al edificio.",
-     "children": [],
+     "text": "Los alambres y cables subterráneos de comunicaciones que entren en los edificios, deben cumplir con (a) y (b) siguientes. Los requisitos de 310-10(c) no aplican para alambres y cables de comunicaciones.",
+     "children": [
+      {
+       "id": "800-47(a)",
+       "label": "a",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Los alambres y cables de comunicaciones subterráneos instalados en canalizaciones, registros o pozos de visita en los que haya conductores de alumbrado o fuerza, conductores de circuitos Clase 1 o de alarma contra incendios que no sean de potencia limitada, deben estar separados de estos conductores por medio de un muro divisorio de ladrillo, concreto o loseta o por medio de una barrera adecuada.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Con conductores de alumbrado o fuerza"
+      },
+      {
+       "id": "800-47(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Cuando todo el circuito de la calle sea subterráneo y  el circuito dentro de la cuadra esté colocado de tal manera que no haya riesgo de contacto accidental con circuitos de alumbrado o fuerza de más de 300 volts a tierra, no deben aplicarse los requisitos de aislamiento indicados en 800-50(a) y (c), ni se exige colocar soportes aislantes para los conductores, ni se necesitan boquillas para la entrada de los conductores al edificio.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Distribución subterránea en la cuadra"
+      }
+     ],
      "notes": [],
      "exceptions": []
     },
@@ -126207,17 +126335,51 @@
      "title": "Circuitos que necesitan protectores primarios",
      "part": "B",
      "page": 661,
-     "text": "Los circuitos que requieren protectores primarios como los descritos en 800-90, deben cumplir los siguientes requisitos: a). Aislamiento, alambres y cables. Los alambres y cables de comunicaciones sin pantalla metálica, tendidos desde el último soporte exterior del edificio hasta el protector primario, deben estar aprobados para este propósito de acuerdo con 800-173. b). Sobre edificios. Los alambres y cables de comunicaciones, que cumplan lo establecido en 800-50(a), deben estar separados por lo menos 10 centímetros de los conductores de fuerza y alumbrado que no estén en una canalización o cable, o deben estar permanentemente separados de los conductores de los demás sistemas, además del aislamiento de los alambres, mediante una barrera no conductora, continua y fija firmemente, tal como un tubo de porcelana o tubería flexible. Los alambres y cables de comunicaciones que cumplan con lo indicado en 800-50(a), que se encuentren expuestos a contactos accidentales con conductores de alumbrado y fuerza operando a tensiones mayores de 300 volts a tierra y fijados a los edificios, deben separarse de la estructura del edificio mediante aisladores de vidrio, porcelana u otro material aislante. c). Entrando a edificios. Cuando se instale un protector primario dentro del edificio, los alambres y cables de comunicaciones deben entrar al edificio ya sea por medio de una boquilla aislante, no absorbente y no combustible, o por medio de una canalización metálica. Puede omitirse la boquilla aislante en los alambre y cables de comunicaciones que entran, cuando: (1) son cables con pantalla metálica;",
+     "text": "Los circuitos que requieren protectores primarios como los descritos en 800-90, deben cumplir los siguientes requisitos:",
      "children": [
       {
-       "id": "800-50(2)",
-       "label": "2",
-       "kind": "paren",
+       "id": "800-50(a)",
+       "label": "a",
+       "kind": "alpha",
        "level": 1,
-       "text": "pasan a través de mampostería; (3) satisfacen los requisitos indicados en 800-50(a) y se omitan los fusibles según se dispone en 800-90(a)(1); o (4) cumplan con los requisitos especificados en 800-50(a) y se utilizan para extender circuitos desde un cable con pantalla metálica puesta a tierra hasta el edificio. Las canalizaciones o boquillas deben entrar desde el exterior al edificio con una pendiente hacia arriba desde el exterior o, cuando esto no es posible, deben hacerse curvas de goteo en los conductores inmediatamente antes de que entren al edificio. Las canalizaciones deben estar equipadas con una mufa de acometida aprobada. Se permite que entren a través de una canalización o boquilla más de un alambre o cable de comunicaciones. Los tubos conduit u otras canalizaciones metálicas colocadas adelante del protector deben estar puestos a tierra.",
+       "text": "Los alambres y cables de comunicaciones sin pantalla metálica, tendidos desde el último soporte exterior del edificio hasta el protector primario, deben estar aprobados para este propósito de acuerdo con 800-173.",
        "children": [],
        "notes": [],
-       "exceptions": []
+       "exceptions": [],
+       "title": "Aislamiento, alambres y cables"
+      },
+      {
+       "id": "800-50(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Los alambres y cables de comunicaciones, que cumplan lo establecido en 800-50(a), deben estar separados por lo menos 10 centímetros de los conductores de fuerza y alumbrado que no estén en una canalización o cable, o deben estar permanentemente separados de los conductores de los demás sistemas, además del aislamiento de los alambres, mediante una barrera no conductora, continua y fija firmemente, tal como un tubo de porcelana o tubería flexible. Los alambres y cables de comunicaciones que cumplan con lo indicado en 800-50(a), que se encuentren expuestos a contactos accidentales con conductores de alumbrado y fuerza operando a tensiones mayores de 300 volts a tierra y fijados a los edificios, deben separarse de la estructura del edificio mediante aisladores de vidrio, porcelana u otro material aislante.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Sobre edificios"
+      },
+      {
+       "id": "800-50(c)",
+       "label": "c",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Cuando se instale un protector primario dentro del edificio, los alambres y cables de comunicaciones deben entrar al edificio ya sea por medio de una boquilla aislante, no absorbente y no combustible, o por medio de una canalización metálica. Puede omitirse la boquilla aislante en los alambre y cables de comunicaciones que entran, cuando: (1) son cables con pantalla metálica;",
+       "children": [
+        {
+         "id": "800-50(c)(2)",
+         "label": "2",
+         "kind": "paren",
+         "level": 2,
+         "text": "pasan a través de mampostería; (3) satisfacen los requisitos indicados en 800-50(a) y se omitan los fusibles según se dispone en 800-90(a)(1); o (4) cumplan con los requisitos especificados en 800-50(a) y se utilizan para extender circuitos desde un cable con pantalla metálica puesta a tierra hasta el edificio. Las canalizaciones o boquillas deben entrar desde el exterior al edificio con una pendiente hacia arriba desde el exterior o, cuando esto no es posible, deben hacerse curvas de goteo en los conductores inmediatamente antes de que entren al edificio. Las canalizaciones deben estar equipadas con una mufa de acometida aprobada. Se permite que entren a través de una canalización o boquilla más de un alambre o cable de comunicaciones. Los tubos conduit u otras canalizaciones metálicas colocadas adelante del protector deben estar puestos a tierra.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        }
+       ],
+       "notes": [],
+       "exceptions": [],
+       "title": "Entrando a edificios"
       }
      ],
      "notes": [],
@@ -126238,166 +126400,182 @@
      "title": "Dispositivos de protección",
      "part": "C",
      "page": 661,
-     "text": "a). Aplicación. Se debe instalar un protector primario aprobado en cada circuito que sea parcial o totalmente aéreo no confinado dentro de la cuadra. También se debe colocar un protector primario aprobado en cada circuito, aéreo o subterráneo, que esté situado en la cuadra en la que se ubique el edificio, que pueda estar expuesto a contacto accidental con conductores de alumbrado o fuerza con tensiones mayores a 300 volts a tierra. Además, donde exista exposición a descargas atmosféricas, cada circuito que conecta las edificaciones en un predio, debe protegerse con un protector primario aprobado en cada extremo del circuito de conexión. La instalación de protectores primarios también debe cumplir lo establecido en 110-3(b).",
+     "text": "",
      "children": [
       {
-       "id": "800-90(1)",
-       "label": "1",
-       "kind": "num",
+       "id": "800-90(a)",
+       "label": "a",
+       "kind": "alpha",
        "level": 1,
-       "text": "Puede utilizarse un protector primario del tipo sin fusibles, bajo cualquiera de las condiciones siguientes:",
+       "text": "Se debe instalar un protector primario aprobado en cada circuito que sea parcial o totalmente aéreo no confinado dentro de la cuadra. También se debe colocar un protector primario aprobado en cada circuito, aéreo o subterráneo, que esté situado en la cuadra en la que se ubique el edificio, que pueda estar expuesto a contacto accidental con conductores de alumbrado o fuerza con tensiones mayores a 300 volts a tierra. Además, donde exista exposición a descargas atmosféricas, cada circuito que conecta las edificaciones en un predio, debe protegerse con un protector primario aprobado en cada extremo del circuito de conexión. La instalación de protectores primarios también debe cumplir lo establecido en 110-3(b).",
        "children": [
         {
-         "id": "800-90(1)a.",
-         "label": "a",
-         "kind": "letter",
+         "id": "800-90(a)(1)",
+         "label": "1",
+         "kind": "num",
          "level": 2,
-         "text": "Donde los conductores que entran a un edificio por medio de un cable con pantalla metálica puesta a tierra y si los conductores en el cable se funden sin peligro, para todas las corrientes mayores a la capacidad de corriente del protector primario y del conductor de puesta a tierra del protector o del conductor puesto a tierra del protector.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "800-90(1)b.",
-         "label": "b",
-         "kind": "letter",
-         "level": 2,
-         "text": "Cuando se utilizan conductores aislados de acuerdo con 800-50(a) para extender los circuitos hasta un edificio desde un cable con un(os) elemento(s) del recubrimiento metálico puesto(s) a tierra efectivamente, y si los conductores del cable o sus extremos, o las conexiones entre los conductores aislados, expuestos al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra y los equipos de comunicaciones, se funden con seguridad cuando pasa cualquier corriente superior a la capacidad de conducción de corriente del protector primario, o de los conductores aislados asociados, y del conductor de puesta a tierra o del conductor puesto a tierra del protector primario.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "800-90(1)c.",
-         "label": "c",
-         "kind": "letter",
-         "level": 2,
-         "text": "Donde se utilicen conductores aislados de acuerdo con lo indicado en 800-50(a) o (b), para extender circuitos desde un cable que no tenga una(s) parte(s) de la pantalla metálica puesta a tierra hasta un edificio, si: (1) el protector primario está aprobado como adecuado para este propósito y para su aplicación con circuitos que se extienden desde un cable que no tenga un(os) elemento(s) metálico(s) en el recubrimiento, y (2) las conexiones de los conductores aislados, hacia las plantas expuestas al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra, o los conductores de las plantas expuestos al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra, se funden con seguridad cuando pasa cualquier corriente superior a la capacidad de conducción de corriente del protector primario, o de los conductores aislados asociados, y del conductor de puesta a tierra o del conductor puesto a tierra del protector primario.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "800-90(1)d.",
-         "label": "d",
-         "kind": "letter",
-         "level": 2,
-         "text": "Donde se utilicen conductores aislados, de acuerdo con lo indicado en 800-50(a) para extender en forma aérea los circuitos hasta un edificio, desde un circuito enterrado o subterráneo no expuesto, al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "800-90(1)e.",
-         "label": "e",
-         "kind": "letter",
-         "level": 2,
-         "text": "Donde se utilicen conductores aislados, de acuerdo con lo indicado en 800-50(a) para extender  los circuitos desde un cable con pantalla metálica puesta a tierra eficazmente hasta un edificio, y si: (1) la combinación de protector primario y los conductores aislados está listada como adecuada para ese propósito de aplicación con circuitos que se extienden desde un cable con el elemento del recubrimiento metálico puesto a tierra efectivamente, y (2) los conductores aislados se funden con seguridad cuando pasa cualquier corriente superior a la capacidad de conducción de corriente del protector primario y del conductor de puesta a tierra o del conductor puesto a tierra del protector primario.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
-        }
-       ],
-       "notes": [],
-       "exceptions": [],
-       "title": "Protectores primarios sin fusibles"
-      },
-      {
-       "id": "800-90(2)",
-       "label": "2",
-       "kind": "num",
-       "level": 1,
-       "text": "Cuando no se cumplan los requisitos indicados en 800-90(a)(1) de (a) hasta (e) se deben usar protectores primarios con fusibles. Un protector primario con fusibles debe consistir en un apartarrayos conectado entre cada conductor de fase y tierra, un fusible en serie con cada conductor de fase y una instalación de montaje adecuado. Las terminales del protector primario deben estar claramente marcadas para identificar las conexiones de fase, instrumento y tierra, según sea aplicable.",
-       "children": [
-        {
-         "id": "800-90(2)(b)",
-         "label": "b",
-         "kind": "alpha",
-         "level": 2,
-         "text": "El protector primario debe instalarse dentro del edificio o estructura a la que sirve, o inmediatamente adyacente a ésta y tan cerca como sea posible del punto de entrada.",
-         "children": [],
-         "notes": [
+         "text": "Puede utilizarse un protector primario del tipo sin fusibles, bajo cualquiera de las condiciones siguientes:",
+         "children": [
           {
-           "label": "NOTA",
-           "text": "Ver en 800-2 la definición de punto de entrada.",
-           "seq": 13
+           "id": "800-90(a)(1)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Donde los conductores que entran a un edificio por medio de un cable con pantalla metálica puesta a tierra y si los conductores en el cable se funden sin peligro, para todas las corrientes mayores a la capacidad de corriente del protector primario y del conductor de puesta a tierra del protector o del conductor puesto a tierra del protector.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
           },
           {
-           "label": "NOTA",
-           "text": "Seleccionando la ubicación del protector primario para lograr que el conductor de puesta a tierra del protector sea lo más corto posible, ayuda a eliminar las diferencias de potencial entre los circuitos de comunicación y otros sistemas metálicos.",
-           "seq": 15
+           "id": "800-90(a)(1)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Cuando se utilizan conductores aislados de acuerdo con 800-50(a) para extender los circuitos hasta un edificio desde un cable con un(os) elemento(s) del recubrimiento metálico puesto(s) a tierra efectivamente, y si los conductores del cable o sus extremos, o las conexiones entre los conductores aislados, expuestos al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra y los equipos de comunicaciones, se funden con seguridad cuando pasa cualquier corriente superior a la capacidad de conducción de corriente del protector primario, o de los conductores aislados asociados, y del conductor de puesta a tierra o del conductor puesto a tierra del protector primario.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-90(a)(1)c.",
+           "label": "c",
+           "kind": "letter",
+           "level": 3,
+           "text": "Donde se utilicen conductores aislados de acuerdo con lo indicado en 800-50(a) o (b), para extender circuitos desde un cable que no tenga una(s) parte(s) de la pantalla metálica puesta a tierra hasta un edificio, si: (1) el protector primario está aprobado como adecuado para este propósito y para su aplicación con circuitos que se extienden desde un cable que no tenga un(os) elemento(s) metálico(s) en el recubrimiento, y (2) las conexiones de los conductores aislados, hacia las plantas expuestas al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra, o los conductores de las plantas expuestos al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra, se funden con seguridad cuando pasa cualquier corriente superior a la capacidad de conducción de corriente del protector primario, o de los conductores aislados asociados, y del conductor de puesta a tierra o del conductor puesto a tierra del protector primario.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-90(a)(1)d.",
+           "label": "d",
+           "kind": "letter",
+           "level": 3,
+           "text": "Donde se utilicen conductores aislados, de acuerdo con lo indicado en 800-50(a) para extender en forma aérea los circuitos hasta un edificio, desde un circuito enterrado o subterráneo no expuesto, al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-90(a)(1)e.",
+           "label": "e",
+           "kind": "letter",
+           "level": 3,
+           "text": "Donde se utilicen conductores aislados, de acuerdo con lo indicado en 800-50(a) para extender  los circuitos desde un cable con pantalla metálica puesta a tierra eficazmente hasta un edificio, y si: (1) la combinación de protector primario y los conductores aislados está listada como adecuada para ese propósito de aplicación con circuitos que se extienden desde un cable con el elemento del recubrimiento metálico puesto a tierra efectivamente, y (2) los conductores aislados se funden con seguridad cuando pasa cualquier corriente superior a la capacidad de conducción de corriente del protector primario y del conductor de puesta a tierra o del conductor puesto a tierra del protector primario.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
           }
          ],
+         "notes": [],
          "exceptions": [],
-         "title": "Ubicación",
-         "parrafos": [
-          {
-           "text": "Para los propósitos de esta sección, se debe considerar que los protectores primarios instalados en el equipo de acometida de casas móviles a un máximo de 9.00 metros de la pared exterior de la casa móvil que alimenta, o en el medio de desconexión de la casa móvil, conectado a un electrodo por un conductor de puesta a tierra de acuerdo con 250-32 y situado a máximo 9.00 metros de la pared exterior de la casa móvil que alimenta, cumplen los requisitos de esta sección.",
-           "seq": 14
-          }
-         ]
+         "title": "Protectores primarios sin fusibles"
         },
         {
-         "id": "800-90(2)(c)",
-         "label": "c",
-         "kind": "alpha",
+         "id": "800-90(a)(2)",
+         "label": "2",
+         "kind": "num",
          "level": 2,
-         "text": "El protector primario no debe instalarse en áreas peligrosas (clasificadas), de acuerdo con lo definido en las secciones 500-5 y 505-5, ni en la proximidad de materiales fácilmente inflamables.",
+         "text": "Cuando no se cumplan los requisitos indicados en 800-90(a)(1) de (a) hasta (e) se deben usar protectores primarios con fusibles. Un protector primario con fusibles debe consistir en un apartarrayos conectado entre cada conductor de fase y tierra, un fusible en serie con cada conductor de fase y una instalación de montaje adecuado. Las terminales del protector primario deben estar claramente marcadas para identificar las conexiones de fase, instrumento y tierra, según sea aplicable.",
          "children": [],
-         "notes": [
+         "notes": [],
+         "exceptions": [],
+         "title": "Protectores primarios con fusibles"
+        }
+       ],
+       "notes": [
+        {
+         "label": "NOTA 1",
+         "text": "En un circuito no expuesto a contacto accidental con conductores de fuerza, la instalación de un protector primario de acuerdo con este Artículo, ayuda a proteger contra otros riesgos, tales como descargas atmosféricas y elevaciones anormales de tensión inducida por corrientes de falla en circuitos de fuerza próximos a los circuitos de comunicaciones.",
+         "seq": 11
+        },
+        {
+         "label": "NOTA 2",
+         "text": "Se considera que los circuitos de conexión entre edificaciones están expuestos a las descargas atmosféricas, a menos que exista alguna de las siguientes condiciones:",
+         "seq": 12,
+         "items": [
           {
-           "label": "NOTA",
-           "text": "Los protectores secundarios en circuitos expuestos al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra, no están diseñados para usarse sin protectores primarios.",
-           "seq": 18
-          }
-         ],
-         "exceptions": [
+           "label": "1",
+           "text": "Circuitos en grandes áreas metropolitanas donde los edificios están juntos y son suficientemente altos para interceptar las descargas atmosféricas."
+          },
           {
-           "label": "Excepción",
-           "text": "Como se permite en 501-150, 502-150 y 503-150.",
-           "seq": 16
-          }
-         ],
-         "title": "Areas peligrosas (clasificadas)",
-         "parrafos": [
+           "label": "2",
+           "text": "Los tramos de cables de conexión entre edificios de 40.00 metros o menos, enterrados directamente o en tubo conduit subterráneo, donde una pantalla metálica continua del conductor o un tubo conduit metálico continuo que contenga al cable, esté conectado al sistema de electrodo de puesta a tierra de cada edificio."
+          },
           {
-           "text": "d). Protectores secundarios. Cuando se instale un protector secundario en serie con el alambre o cable interior de comunicaciones, entre el protector primario y el equipo, el protector debe estar aprobado para ese propósito de acuerdo con 800-170(b).",
-           "seq": 17
+           "label": "3",
+           "text": "Las áreas que tengan un promedio de cinco días de tormenta por año o menos y la resistividad del terreno menor que 100 ohm-metro."
           }
          ]
         }
        ],
-       "notes": [],
        "exceptions": [],
-       "title": "Protectores primarios con fusibles"
-      }
-     ],
-     "notes": [
-      {
-       "label": "NOTA 1",
-       "text": "En un circuito no expuesto a contacto accidental con conductores de fuerza, la instalación de un protector primario de acuerdo con este Artículo, ayuda a proteger contra otros riesgos, tales como descargas atmosféricas y elevaciones anormales de tensión inducida por corrientes de falla en circuitos de fuerza próximos a los circuitos de comunicaciones.",
-       "seq": 11
+       "title": "Aplicación"
       },
       {
-       "label": "NOTA 2",
-       "text": "Se considera que los circuitos de conexión entre edificaciones están expuestos a las descargas atmosféricas, a menos que exista alguna de las siguientes condiciones:",
-       "seq": 12,
-       "items": [
+       "id": "800-90(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "El protector primario debe instalarse dentro del edificio o estructura a la que sirve, o inmediatamente adyacente a ésta y tan cerca como sea posible del punto de entrada.",
+       "children": [],
+       "notes": [
         {
-         "label": "1",
-         "text": "Circuitos en grandes áreas metropolitanas donde los edificios están juntos y son suficientemente altos para interceptar las descargas atmosféricas."
+         "label": "NOTA",
+         "text": "Ver en 800-2 la definición de punto de entrada.",
+         "seq": 13
         },
         {
-         "label": "2",
-         "text": "Los tramos de cables de conexión entre edificios de 40.00 metros o menos, enterrados directamente o en tubo conduit subterráneo, donde una pantalla metálica continua del conductor o un tubo conduit metálico continuo que contenga al cable, esté conectado al sistema de electrodo de puesta a tierra de cada edificio."
-        },
+         "label": "NOTA",
+         "text": "Seleccionando la ubicación del protector primario para lograr que el conductor de puesta a tierra del protector sea lo más corto posible, ayuda a eliminar las diferencias de potencial entre los circuitos de comunicación y otros sistemas metálicos.",
+         "seq": 15
+        }
+       ],
+       "exceptions": [],
+       "title": "Ubicación",
+       "parrafos": [
         {
-         "label": "3",
-         "text": "Las áreas que tengan un promedio de cinco días de tormenta por año o menos y la resistividad del terreno menor que 100 ohm-metro."
+         "text": "Para los propósitos de esta sección, se debe considerar que los protectores primarios instalados en el equipo de acometida de casas móviles a un máximo de 9.00 metros de la pared exterior de la casa móvil que alimenta, o en el medio de desconexión de la casa móvil, conectado a un electrodo por un conductor de puesta a tierra de acuerdo con 250-32 y situado a máximo 9.00 metros de la pared exterior de la casa móvil que alimenta, cumplen los requisitos de esta sección.",
+         "seq": 14
         }
        ]
+      },
+      {
+       "id": "800-90(c)",
+       "label": "c",
+       "kind": "alpha",
+       "level": 1,
+       "text": "El protector primario no debe instalarse en áreas peligrosas (clasificadas), de acuerdo con lo definido en las secciones 500-5 y 505-5, ni en la proximidad de materiales fácilmente inflamables.",
+       "children": [],
+       "notes": [],
+       "exceptions": [
+        {
+         "label": "Excepción",
+         "text": "Como se permite en 501-150, 502-150 y 503-150.",
+         "seq": 16
+        }
+       ],
+       "title": "Areas peligrosas (clasificadas)"
+      },
+      {
+       "id": "800-90(d)",
+       "label": "d",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Cuando se instale un protector secundario en serie con el alambre o cable interior de comunicaciones, entre el protector primario y el equipo, el protector debe estar aprobado para ese propósito de acuerdo con 800-170(b).",
+       "children": [],
+       "notes": [
+        {
+         "label": "NOTA",
+         "text": "Los protectores secundarios en circuitos expuestos al contacto accidental con conductores de fuerza o de alumbrado que funcionan a más de 300 volts a tierra, no están diseñados para usarse sin protectores primarios.",
+         "seq": 17
+        }
+       ],
+       "exceptions": [],
+       "title": "Protectores secundarios"
       }
      ],
+     "notes": [],
      "exceptions": []
     },
     {
@@ -126491,14 +126669,14 @@
           {
            "label": "NOTA",
            "text": "Limitaciones similares a la longitud del conductor de unión o de electrodo de puesta a tierra aplicadas a edificios de apartamentos y edificios comerciales ayudan a reducir las diferencias de potencial que se pueden desarrollar entre los sistemas de fuerza y de comunicaciones del edificio durante eventos de descargas atmosféricas.",
-           "seq": 19
+           "seq": 18
           }
          ],
          "exceptions": [
           {
            "label": "Excepción",
            "text": "En viviendas unifamiliares y bifamiliares donde no es factible lograr una longitud máxima total del conductor de unión o de electrodo de puesta a tierra del protector primario de 6.00 metros, se debe instalar por separado una varilla de tierra de comunicaciones que cumpla los criterios de dimensiones mínimas indicadas en 800-100(b)(3)(2); el protector primario debe estar conectado a la varilla de tierra de comunicaciones según 800-100(c) y la varilla de tierra de comunicaciones debe estar conectada al sistema del electrodo de puesta a tierra de la instalación de fuerza, de acuerdo con 800-100(d).",
-           "seq": 20
+           "seq": 19
           }
          ],
          "title": "Recorrido"
@@ -126687,19 +126865,19 @@
         {
          "label": "NOTA 1",
          "text": "Sobre el uso de varillas de apartarrayos, véase 250-60.",
-         "seq": 22
+         "seq": 21
         },
         {
          "label": "NOTA 2",
          "text": "Si se unen todos los electrodos independientes de puesta a tierra, se limitan las diferencias de potencial entre los electrodos y entre sus sistemas alambrado asociados.",
-         "seq": 23
+         "seq": 22
         }
        ],
        "exceptions": [
         {
          "label": "Excepción",
          "text": "En casas móviles conforme se indica en 800-106.",
-         "seq": 21
+         "seq": 20
         }
        ],
        "title": "Unión de electrodos"
@@ -126788,41 +126966,52 @@
      "title": "Canalizaciones para alambres y cables de comunicaciones",
      "part": "E",
      "page": 664,
-     "text": "a). Tipos de canalizaciones. Se permitirá que se instalen alambres y cables de comunicaciones en cualquier canalización que cumpla con (1) o (2) siguientes.",
+     "text": "",
      "children": [
       {
-       "id": "800-110(1)",
-       "label": "1",
-       "kind": "num",
+       "id": "800-110(a)",
+       "label": "a",
+       "kind": "alpha",
        "level": 1,
-       "text": "Se permitirá que se instalen alambres y cables de comunicaciones en cualquier canalización incluida en el Capítulo 3.",
-       "children": [],
-       "notes": [],
-       "exceptions": [],
-       "title": "Canalizaciones reconocidas en el Capítulo 3"
-      },
-      {
-       "id": "800-110(2)",
-       "label": "2",
-       "kind": "num",
-       "level": 1,
-       "text": "Se permitirá que se instalen alambres y cables de comunicaciones en canalizaciones para comunicaciones en plenums, canalizaciones para comunicaciones aprobadas en pozos verticales o canalizaciones para comunicaciones de uso general seleccionadas de acuerdo con los requerimientos de 800-113, e instaladas de acuerdo con 362-24 hasta 362-56, cuando apliquen los requerimientos para entubado eléctrico no-metálico.",
+       "text": "Se permitirá que se instalen alambres y cables de comunicaciones en cualquier canalización que cumpla con (1) o (2) siguientes.",
        "children": [
         {
-         "id": "800-110(2)(b)",
-         "label": "b",
-         "kind": "alpha",
+         "id": "800-110(a)(1)",
+         "label": "1",
+         "kind": "num",
          "level": 2,
-         "text": "Las tablas de ocupación de canalizaciones de los Capítulos 3 y 9 no aplican para alambres y cables de comunicaciones.",
+         "text": "Se permitirá que se instalen alambres y cables de comunicaciones en cualquier canalización incluida en el Capítulo 3.",
          "children": [],
          "notes": [],
          "exceptions": [],
-         "title": "Tablas de ocupación para alambres y cables de comunicaciones"
+         "title": "Canalizaciones reconocidas en el Capítulo 3"
+        },
+        {
+         "id": "800-110(a)(2)",
+         "label": "2",
+         "kind": "num",
+         "level": 2,
+         "text": "Se permitirá que se instalen alambres y cables de comunicaciones en canalizaciones para comunicaciones en plenums, canalizaciones para comunicaciones aprobadas en pozos verticales o canalizaciones para comunicaciones de uso general seleccionadas de acuerdo con los requerimientos de 800-113, e instaladas de acuerdo con 362-24 hasta 362-56, cuando apliquen los requerimientos para entubado eléctrico no-metálico.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Otras canalizaciones permitidas"
         }
        ],
        "notes": [],
        "exceptions": [],
-       "title": "Otras canalizaciones permitidas"
+       "title": "Tipos de canalizaciones"
+      },
+      {
+       "id": "800-110(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Las tablas de ocupación de canalizaciones de los Capítulos 3 y 9 no aplican para alambres y cables de comunicaciones.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Tablas de ocupación para alambres y cables de comunicaciones"
       }
      ],
      "notes": [],
@@ -126847,7 +127036,7 @@
         {
          "label": "Excepción",
          "text": "No se requiere que sean aprobados los cables de comunicaciones que cumplan con 800-48.",
-         "seq": 24
+         "seq": 23
         }
        ],
        "title": "Aprobación"
@@ -127016,89 +127205,15 @@
            "kind": "letter",
            "level": 3,
            "text": "Ensamble de cable ruteador en pozos verticales.",
-           "children": [
-            {
-             "id": "800-113(d)(3)c.(1)",
-             "label": "1",
-             "kind": "paren",
-             "level": 4,
-             "text": "Cables tipo CMP, CMR, CMG, CM y CMX.",
-             "children": [],
-             "notes": [],
-             "exceptions": []
-            },
-            {
-             "id": "800-113(d)(3)c.(2)",
-             "label": "2",
-             "kind": "paren",
-             "level": 4,
-             "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y canalizaciones de comunicaciones de uso general.",
-             "children": [],
-             "notes": [],
-             "exceptions": []
-            },
-            {
-             "id": "800-113(d)(3)c.(3)",
-             "label": "3",
-             "kind": "paren",
-             "level": 4,
-             "text": "Cables tipo CMP, CMR, CMG, CM y CMX instalados en:",
-             "children": [
-              {
-               "id": "800-113(d)(3)c.(3)a.",
-               "label": "a",
-               "kind": "letter",
-               "level": 5,
-               "text": "Canalizaciones de comunicaciones en plenums.",
-               "children": [],
-               "notes": [],
-               "exceptions": []
-              },
-              {
-               "id": "800-113(d)(3)c.(3)b.",
-               "label": "b",
-               "kind": "letter",
-               "level": 5,
-               "text": "Canalizaciones en trayectorias verticales.",
-               "children": [],
-               "notes": [],
-               "exceptions": []
-              },
-              {
-               "id": "800-113(d)(3)c.(3)c.",
-               "label": "c",
-               "kind": "letter",
-               "level": 5,
-               "text": "Canalizaciones de comunicaciones de uso general.",
-               "children": [],
-               "notes": [
-                {
-                 "label": "NOTA",
-                 "text": "Para los requisitos de cortafuegos, para evitar penetraciones a los pisos ver 800-26.",
-                 "seq": 27
-                }
-               ],
-               "exceptions": []
-              }
-             ],
-             "notes": [],
-             "exceptions": []
-            }
-           ],
+           "children": [],
            "notes": [
             {
              "label": "NOTA",
              "text": "Para los requisitos de cortafuegos, para evitar penetraciones a los pisos ver 800-26.",
-             "seq": 25
+             "seq": 24
             }
            ],
-           "exceptions": [],
-           "parrafos": [
-            {
-             "text": "e). Pozos verticales - Cables y canalizaciones en canalizaciones de metal. En canalizaciones metálicas en un pozo vertical que tenga cortafuegos en cada piso, se permitirán los siguientes cables y canalizaciones:",
-             "seq": 26
-            }
-           ]
+           "exceptions": []
           }
          ],
          "notes": [],
@@ -127108,6 +127223,85 @@
        "notes": [],
        "exceptions": [],
        "title": "Pozos verticales - Cables y canalizaciones en trayectorias verticales"
+      },
+      {
+       "id": "800-113(e)",
+       "label": "e",
+       "kind": "alpha",
+       "level": 1,
+       "text": "En canalizaciones metálicas en un pozo vertical que tenga cortafuegos en cada piso, se permitirán los siguientes cables y canalizaciones:",
+       "children": [
+        {
+         "id": "800-113(e)(1)",
+         "label": "1",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG, CM y CMX.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(e)(2)",
+         "label": "2",
+         "kind": "paren",
+         "level": 2,
+         "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y canalizaciones de comunicaciones de uso general.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(e)(3)",
+         "label": "3",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG, CM y CMX instalados en:",
+         "children": [
+          {
+           "id": "800-113(e)(3)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones en plenums.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(e)(3)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones en trayectorias verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(e)(3)c.",
+           "label": "c",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones de uso general.",
+           "children": [],
+           "notes": [
+            {
+             "label": "NOTA",
+             "text": "Para los requisitos de cortafuegos, para evitar penetraciones a los pisos ver 800-26.",
+             "seq": 25
+            }
+           ],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        }
+       ],
+       "notes": [],
+       "exceptions": [],
+       "title": "Pozos verticales - Cables y canalizaciones en canalizaciones de metal"
       },
       {
        "id": "800-113(f)",
@@ -127189,636 +127383,15 @@
            "kind": "letter",
            "level": 3,
            "text": "Ensamble de cable ruteador de propósito general.",
-           "children": [
-            {
-             "id": "800-113(f)(3)e.(1)",
-             "label": "1",
-             "kind": "paren",
-             "level": 4,
-             "text": "Cables tipo CMP, CMR, CMG y CM.",
-             "children": [],
-             "notes": [],
-             "exceptions": []
-            },
-            {
-             "id": "800-113(f)(3)e.(2)",
-             "label": "2",
-             "kind": "paren",
-             "level": 4,
-             "text": "Cable tipo CMX de menos de 6 milímetros de diámetro.",
-             "children": [],
-             "notes": [],
-             "exceptions": []
-            },
-            {
-             "id": "800-113(f)(3)e.(3)",
-             "label": "3",
-             "kind": "paren",
-             "level": 4,
-             "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
-             "children": [],
-             "notes": [],
-             "exceptions": []
-            },
-            {
-             "id": "800-113(f)(3)e.(4)",
-             "label": "4",
-             "kind": "paren",
-             "level": 4,
-             "text": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
-             "children": [
-              {
-               "id": "800-113(f)(3)e.(4)a.",
-               "label": "a",
-               "kind": "letter",
-               "level": 5,
-               "text": "Canalizaciones de comunicaciones en plenums.",
-               "children": [],
-               "notes": [],
-               "exceptions": []
-              },
-              {
-               "id": "800-113(f)(3)e.(4)b.",
-               "label": "b",
-               "kind": "letter",
-               "level": 5,
-               "text": "Canalizaciones en trayectorias verticales.",
-               "children": [],
-               "notes": [],
-               "exceptions": []
-              },
-              {
-               "id": "800-113(f)(3)e.(4)c.",
-               "label": "c",
-               "kind": "letter",
-               "level": 5,
-               "text": "Canalizaciones de comunicaciones de uso general.",
-               "children": [],
-               "notes": [],
-               "exceptions": []
-              },
-              {
-               "id": "800-113(f)(3)e.(4)d.",
-               "label": "d",
-               "kind": "letter",
-               "level": 5,
-               "text": "Ensamble de cable ruteador en pozos verticales.",
-               "children": [],
-               "notes": [],
-               "exceptions": []
-              },
-              {
-               "id": "800-113(f)(3)e.(4)e.",
-               "label": "e",
-               "kind": "letter",
-               "level": 5,
-               "text": "Ensamble de cable ruteador de propósito general. h). Charolas porta cables. Se permitirá que charolas para cables soporten los siguientes alambres, cables y canalizaciones:",
-               "children": [
-                {
-                 "id": "800-113(f)(3)e.(4)e.(1)",
-                 "label": "1",
-                 "kind": "paren",
-                 "level": 6,
-                 "text": "Cables tipo CMP, CMR, CMG y CM.",
-                 "children": [],
-                 "notes": [],
-                 "exceptions": []
-                },
-                {
-                 "id": "800-113(f)(3)e.(4)e.(2)",
-                 "label": "2",
-                 "kind": "paren",
-                 "level": 6,
-                 "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
-                 "children": [],
-                 "notes": [],
-                 "exceptions": []
-                },
-                {
-                 "id": "800-113(f)(3)e.(4)e.(3)",
-                 "label": "3",
-                 "kind": "paren",
-                 "level": 6,
-                 "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
-                 "children": [
-                  {
-                   "id": "800-113(f)(3)e.(4)e.(3)a.",
-                   "label": "a",
-                   "kind": "letter",
-                   "level": 7,
-                   "text": "Canalizaciones de comunicaciones en plenums.",
-                   "children": [],
-                   "notes": [],
-                   "exceptions": []
-                  },
-                  {
-                   "id": "800-113(f)(3)e.(4)e.(3)b.",
-                   "label": "b",
-                   "kind": "letter",
-                   "level": 7,
-                   "text": "Canalizaciones en trayectorias verticales.",
-                   "children": [],
-                   "notes": [],
-                   "exceptions": []
-                  },
-                  {
-                   "id": "800-113(f)(3)e.(4)e.(3)c.",
-                   "label": "c",
-                   "kind": "letter",
-                   "level": 7,
-                   "text": "Canalizaciones de comunicaciones de uso general. i). Bastidores de distribución y marcos de conexiones. Se permitirán los siguientes alambres, cables y canalizaciones en bastidores de distribución y marcos de conexiones:",
-                   "children": [
-                    {
-                     "id": "800-113(f)(3)e.(4)e.(3)c.(1)",
-                     "label": "1",
-                     "kind": "paren",
-                     "level": 8,
-                     "text": "Cables tipo CMP, CMR, CMG y CM, y alambres de comunicaciones.",
-                     "children": [],
-                     "notes": [],
-                     "exceptions": []
-                    },
-                    {
-                     "id": "800-113(f)(3)e.(4)e.(3)c.(2)",
-                     "label": "2",
-                     "kind": "paren",
-                     "level": 8,
-                     "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
-                     "children": [],
-                     "notes": [],
-                     "exceptions": []
-                    },
-                    {
-                     "id": "800-113(f)(3)e.(4)e.(3)c.(3)",
-                     "label": "3",
-                     "kind": "paren",
-                     "level": 8,
-                     "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
-                     "children": [
-                      {
-                       "id": "800-113(f)(3)e.(4)e.(3)c.(3)a.",
-                       "label": "a",
-                       "kind": "letter",
-                       "level": 9,
-                       "text": "Canalizaciones de comunicaciones en plenums.",
-                       "children": [],
-                       "notes": [],
-                       "exceptions": []
-                      },
-                      {
-                       "id": "800-113(f)(3)e.(4)e.(3)c.(3)b.",
-                       "label": "b",
-                       "kind": "letter",
-                       "level": 9,
-                       "text": "Canalizaciones en trayectorias verticales.",
-                       "children": [],
-                       "notes": [],
-                       "exceptions": []
-                      },
-                      {
-                       "id": "800-113(f)(3)e.(4)e.(3)c.(3)c.",
-                       "label": "c",
-                       "kind": "letter",
-                       "level": 9,
-                       "text": "Canalizaciones de comunicaciones de uso general.",
-                       "children": [],
-                       "notes": [],
-                       "exceptions": []
-                      },
-                      {
-                       "id": "800-113(f)(3)e.(4)e.(3)c.(3)d.",
-                       "label": "d",
-                       "kind": "letter",
-                       "level": 9,
-                       "text": "Ensamble de cable ruteador en pozos verticales.",
-                       "children": [],
-                       "notes": [],
-                       "exceptions": []
-                      },
-                      {
-                       "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.",
-                       "label": "e",
-                       "kind": "letter",
-                       "level": 9,
-                       "text": "Ensamble de cable ruteador de propósito general. j). Otros lugares del edificio. Se permitirá que se instalen en otros lugares del edificio, diferentes a los cubiertos en los incisos (b) hasta (i) anteriores, los siguientes alambres, cables y canalizaciones:",
-                       "children": [
-                        {
-                         "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(1)",
-                         "label": "1",
-                         "kind": "paren",
-                         "level": 10,
-                         "text": "Cables tipo CMP, CMR, CMG y CM.",
-                         "children": [],
-                         "notes": [],
-                         "exceptions": []
-                        },
-                        {
-                         "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(2)",
-                         "label": "2",
-                         "kind": "paren",
-                         "level": 10,
-                         "text": "Un máximo de 3.00 metros de cable tipo CMX expuesto en espacios no ocultos.",
-                         "children": [],
-                         "notes": [],
-                         "exceptions": []
-                        },
-                        {
-                         "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(3)",
-                         "label": "3",
-                         "kind": "paren",
-                         "level": 10,
-                         "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
-                         "children": [],
-                         "notes": [],
-                         "exceptions": []
-                        },
-                        {
-                         "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)",
-                         "label": "4",
-                         "kind": "paren",
-                         "level": 10,
-                         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
-                         "children": [
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)a.",
-                           "label": "a",
-                           "kind": "letter",
-                           "level": 11,
-                           "text": "Canalizaciones de comunicaciones en plenums.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)b.",
-                           "label": "b",
-                           "kind": "letter",
-                           "level": 11,
-                           "text": "Canalizaciones en trayectorias verticales.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(4)c.",
-                           "label": "c",
-                           "kind": "letter",
-                           "level": 11,
-                           "text": "Canalizaciones de comunicaciones de uso general.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          }
-                         ],
-                         "notes": [],
-                         "exceptions": []
-                        },
-                        {
-                         "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)",
-                         "label": "5",
-                         "kind": "paren",
-                         "level": 10,
-                         "text": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
-                         "children": [
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)a.",
-                           "label": "a",
-                           "kind": "letter",
-                           "level": 11,
-                           "text": "Ensamble de cable ruteador en pozos verticales.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(5)b.",
-                           "label": "b",
-                           "kind": "letter",
-                           "level": 11,
-                           "text": "Ensamble de cable ruteador de propósito general.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          }
-                         ],
-                         "notes": [],
-                         "exceptions": []
-                        },
-                        {
-                         "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(6)",
-                         "label": "6",
-                         "kind": "paren",
-                         "level": 10,
-                         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en una canalización del tipo reconocido en el Capítulo 3.",
-                         "children": [],
-                         "notes": [],
-                         "exceptions": []
-                        },
-                        {
-                         "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)",
-                         "label": "7",
-                         "kind": "paren",
-                         "level": 10,
-                         "text": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra. k). Unidades de vivienda multifamiliares. Se permitirá que se instalen en unidades de vivienda multifamiliares en ubicaciones diferentes a las cubiertas en los incisos (b) hasta (g) anteriores, los siguientes alambres, cables y canalizaciones:",
-                         "children": [
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(1)",
-                           "label": "1",
-                           "kind": "paren",
-                           "level": 11,
-                           "text": "Cables tipo CMP, CMR, CMG y CM.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(2)",
-                           "label": "2",
-                           "kind": "paren",
-                           "level": 11,
-                           "text": "Cable tipo CMX de menos de 6 milímetros de diámetro en espacios no ocultos.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(3)",
-                           "label": "3",
-                           "kind": "paren",
-                           "level": 11,
-                           "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)",
-                           "label": "4",
-                           "kind": "paren",
-                           "level": 11,
-                           "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
-                           "children": [
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)a.",
-                             "label": "a",
-                             "kind": "letter",
-                             "level": 12,
-                             "text": "Canalizaciones de comunicaciones en plenums.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)b.",
-                             "label": "b",
-                             "kind": "letter",
-                             "level": 12,
-                             "text": "Canalizaciones en trayectorias verticales.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(4)c.",
-                             "label": "c",
-                             "kind": "letter",
-                             "level": 12,
-                             "text": "Canalizaciones de comunicaciones de uso general.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            }
-                           ],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)",
-                           "label": "5",
-                           "kind": "paren",
-                           "level": 11,
-                           "text": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
-                           "children": [
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)a.",
-                             "label": "a",
-                             "kind": "letter",
-                             "level": 12,
-                             "text": "Ensamble de cable ruteador en pozos verticales.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(5)b.",
-                             "label": "b",
-                             "kind": "letter",
-                             "level": 12,
-                             "text": "Ensamble de cable ruteador de propósito general.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            }
-                           ],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(6)",
-                           "label": "6",
-                           "kind": "paren",
-                           "level": 11,
-                           "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en una canalización del tipo reconocido en el Capítulo 3.",
-                           "children": [],
-                           "notes": [],
-                           "exceptions": []
-                          },
-                          {
-                           "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)",
-                           "label": "7",
-                           "kind": "paren",
-                           "level": 11,
-                           "text": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra. l). Unidades de vivienda de una familia y bifamiliar. Se permitirá que se instalen en unidades de vivienda de una familia y bifamiliares en ubicaciones diferentes a las cubiertas en los incisos (b) hasta (f) anteriores, los siguientes alambres, cables y canalizaciones:",
-                           "children": [
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(1)",
-                             "label": "1",
-                             "kind": "paren",
-                             "level": 12,
-                             "text": "Cables tipo CMP, CMR, CMG y CM.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(2)",
-                             "label": "2",
-                             "kind": "paren",
-                             "level": 12,
-                             "text": "Cable tipo CMX de menos de 6 milímetros de diámetro.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(3)",
-                             "label": "3",
-                             "kind": "paren",
-                             "level": 12,
-                             "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)",
-                             "label": "4",
-                             "kind": "paren",
-                             "level": 12,
-                             "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
-                             "children": [
-                              {
-                               "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)a.",
-                               "label": "a",
-                               "kind": "letter",
-                               "level": 13,
-                               "text": "Canalizaciones de comunicaciones en plenums.",
-                               "children": [],
-                               "notes": [],
-                               "exceptions": []
-                              },
-                              {
-                               "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)b.",
-                               "label": "b",
-                               "kind": "letter",
-                               "level": 13,
-                               "text": "Canalizaciones en trayectorias verticales.",
-                               "children": [],
-                               "notes": [],
-                               "exceptions": []
-                              },
-                              {
-                               "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(4)c.",
-                               "label": "c",
-                               "kind": "letter",
-                               "level": 13,
-                               "text": "Canalizaciones de comunicaciones de uso general.",
-                               "children": [],
-                               "notes": [],
-                               "exceptions": []
-                              }
-                             ],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)",
-                             "label": "5",
-                             "kind": "paren",
-                             "level": 12,
-                             "text": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
-                             "children": [
-                              {
-                               "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)a.",
-                               "label": "a",
-                               "kind": "letter",
-                               "level": 13,
-                               "text": "Ensamble de cable ruteador en pozos verticales.",
-                               "children": [],
-                               "notes": [],
-                               "exceptions": []
-                              },
-                              {
-                               "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(5)b.",
-                               "label": "b",
-                               "kind": "letter",
-                               "level": 13,
-                               "text": "Ensamble de cable ruteador de propósito general.",
-                               "children": [],
-                               "notes": [],
-                               "exceptions": []
-                              }
-                             ],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(6)",
-                             "label": "6",
-                             "kind": "paren",
-                             "level": 12,
-                             "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en una canalización del tipo reconocido en el Capítulo 3.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(7)",
-                             "label": "7",
-                             "kind": "paren",
-                             "level": 12,
-                             "text": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra.",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            },
-                            {
-                             "id": "800-113(f)(3)e.(4)e.(3)c.(3)e.(7)(7)(8)",
-                             "label": "8",
-                             "kind": "paren",
-                             "level": 12,
-                             "text": "Cables híbridos de fuerza y de comunicaciones aprobados de acuerdo con 800-179(i)",
-                             "children": [],
-                             "notes": [],
-                             "exceptions": []
-                            }
-                           ],
-                           "notes": [],
-                           "exceptions": []
-                          }
-                         ],
-                         "notes": [],
-                         "exceptions": []
-                        }
-                       ],
-                       "notes": [],
-                       "exceptions": []
-                      }
-                     ],
-                     "notes": [],
-                     "exceptions": []
-                    }
-                   ],
-                   "notes": [],
-                   "exceptions": []
-                  }
-                 ],
-                 "notes": [],
-                 "exceptions": []
-                }
-               ],
-               "notes": [],
-               "exceptions": []
-              }
-             ],
-             "notes": [],
-             "exceptions": []
-            }
-           ],
+           "children": [],
            "notes": [
             {
              "label": "NOTA",
              "text": "Para los requisitos de cortafuegos, para evitar penetraciones a los pisos ver 800-26.",
-             "seq": 28
+             "seq": 26
             }
            ],
-           "exceptions": [],
-           "parrafos": [
-            {
-             "text": "g). Pozos verticales -Unidades de vivienda de una familia y bifamiliar. Se permitirán los siguientes cables y canalizaciones en unidades de vivienda de una familia y bifamiliar:",
-             "seq": 29
-            }
-           ]
+           "exceptions": []
           }
          ],
          "notes": [],
@@ -127828,6 +127401,687 @@
        "notes": [],
        "exceptions": [],
        "title": "Pozos verticales - Cables y canalizaciones en pozos verticales a prueba de fuego"
+      },
+      {
+       "id": "800-113(g)",
+       "label": "g",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Se permitirán los siguientes cables y canalizaciones en unidades de vivienda de una familia y bifamiliar:",
+       "children": [
+        {
+         "id": "800-113(g)(1)",
+         "label": "1",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG y CM.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(g)(2)",
+         "label": "2",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cable tipo CMX de menos de 6 milímetros de diámetro.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(g)(3)",
+         "label": "3",
+         "kind": "paren",
+         "level": 2,
+         "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(g)(4)",
+         "label": "4",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(g)(4)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones en plenums.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(g)(4)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones en trayectorias verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(g)(4)c.",
+           "label": "c",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones de uso general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(g)(4)d.",
+           "label": "d",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador en pozos verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(g)(4)e.",
+           "label": "e",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador de propósito general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        }
+       ],
+       "notes": [],
+       "exceptions": [],
+       "title": "Pozos verticales -Unidades de vivienda de una familia y bifamiliar"
+      },
+      {
+       "id": "800-113(h)",
+       "label": "h",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Se permitirá que charolas para cables soporten los siguientes alambres, cables y canalizaciones:",
+       "children": [
+        {
+         "id": "800-113(h)(1)",
+         "label": "1",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG y CM.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(h)(2)",
+         "label": "2",
+         "kind": "paren",
+         "level": 2,
+         "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(h)(3)",
+         "label": "3",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(h)(3)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones en plenums.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(h)(3)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones en trayectorias verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(h)(3)c.",
+           "label": "c",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones de uso general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        }
+       ],
+       "notes": [],
+       "exceptions": [],
+       "title": "Charolas porta cables"
+      },
+      {
+       "id": "800-113(i)",
+       "label": "i",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Se permitirán los siguientes alambres, cables y canalizaciones en bastidores de distribución y marcos de conexiones:",
+       "children": [
+        {
+         "id": "800-113(i)(1)",
+         "label": "1",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG y CM, y alambres de comunicaciones.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(i)(2)",
+         "label": "2",
+         "kind": "paren",
+         "level": 2,
+         "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(i)(3)",
+         "label": "3",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(i)(3)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones en plenums.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(i)(3)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones en trayectorias verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(i)(3)c.",
+           "label": "c",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones de uso general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(i)(3)d.",
+           "label": "d",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador en pozos verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(i)(3)e.",
+           "label": "e",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador de propósito general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        }
+       ],
+       "notes": [],
+       "exceptions": [],
+       "title": "Bastidores de distribución y marcos de conexiones"
+      },
+      {
+       "id": "800-113(j)",
+       "label": "j",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Se permitirá que se instalen en otros lugares del edificio, diferentes a los cubiertos en los incisos (b) hasta (i) anteriores, los siguientes alambres, cables y canalizaciones:",
+       "children": [
+        {
+         "id": "800-113(j)(1)",
+         "label": "1",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG y CM.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(j)(2)",
+         "label": "2",
+         "kind": "paren",
+         "level": 2,
+         "text": "Un máximo de 3.00 metros de cable tipo CMX expuesto en espacios no ocultos.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(j)(3)",
+         "label": "3",
+         "kind": "paren",
+         "level": 2,
+         "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(j)(4)",
+         "label": "4",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(j)(4)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones en plenums.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(j)(4)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones en trayectorias verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(j)(4)c.",
+           "label": "c",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones de uso general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(j)(5)",
+         "label": "5",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(j)(5)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador en pozos verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(j)(5)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador de propósito general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(j)(6)",
+         "label": "6",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en una canalización del tipo reconocido en el Capítulo 3.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(j)(7)",
+         "label": "7",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        }
+       ],
+       "notes": [],
+       "exceptions": [],
+       "title": "Otros lugares del edificio"
+      },
+      {
+       "id": "800-113(k)",
+       "label": "k",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Se permitirá que se instalen en unidades de vivienda multifamiliares en ubicaciones diferentes a las cubiertas en los incisos (b) hasta (g) anteriores, los siguientes alambres, cables y canalizaciones:",
+       "children": [
+        {
+         "id": "800-113(k)(1)",
+         "label": "1",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG y CM.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(k)(2)",
+         "label": "2",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cable tipo CMX de menos de 6 milímetros de diámetro en espacios no ocultos.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(k)(3)",
+         "label": "3",
+         "kind": "paren",
+         "level": 2,
+         "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(k)(4)",
+         "label": "4",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(k)(4)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones en plenums.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(k)(4)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones en trayectorias verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(k)(4)c.",
+           "label": "c",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones de uso general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(k)(5)",
+         "label": "5",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(k)(5)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador en pozos verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(k)(5)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador de propósito general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(k)(6)",
+         "label": "6",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en una canalización del tipo reconocido en el Capítulo 3.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(k)(7)",
+         "label": "7",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        }
+       ],
+       "notes": [],
+       "exceptions": [],
+       "title": "Unidades de vivienda multifamiliares"
+      },
+      {
+       "id": "800-113(l)",
+       "label": "l",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Se permitirá que se instalen en unidades de vivienda de una familia y bifamiliares en ubicaciones diferentes a las cubiertas en los incisos (b) hasta (f) anteriores, los siguientes alambres, cables y canalizaciones:",
+       "children": [
+        {
+         "id": "800-113(l)(1)",
+         "label": "1",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG y CM.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(l)(2)",
+         "label": "2",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cable tipo CMX de menos de 6 milímetros de diámetro.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(l)(3)",
+         "label": "3",
+         "kind": "paren",
+         "level": 2,
+         "text": "Canalizaciones de comunicaciones en plenums, en trayectorias verticales y de uso general.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(l)(4)",
+         "label": "4",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(l)(4)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones en plenums.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(l)(4)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones en trayectorias verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(l)(4)c.",
+           "label": "c",
+           "kind": "letter",
+           "level": 3,
+           "text": "Canalizaciones de comunicaciones de uso general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(l)(5)",
+         "label": "5",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables tipo CMP, CMR, CMG, y CM instalados en:",
+         "children": [
+          {
+           "id": "800-113(l)(5)a.",
+           "label": "a",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador en pozos verticales.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "800-113(l)(5)b.",
+           "label": "b",
+           "kind": "letter",
+           "level": 3,
+           "text": "Ensamble de cable ruteador de propósito general.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(l)(6)",
+         "label": "6",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres de comunicaciones y cables tipo CMP, CMR, CMG, CM y CMX instalados en una canalización del tipo reconocido en el Capítulo 3.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(l)(7)",
+         "label": "7",
+         "kind": "paren",
+         "level": 2,
+         "text": "Alambres tipo CMUC bajo la alfombra y cables instalados bajo alfombra.",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        },
+        {
+         "id": "800-113(l)(8)",
+         "label": "8",
+         "kind": "paren",
+         "level": 2,
+         "text": "Cables híbridos de fuerza y de comunicaciones aprobados de acuerdo con 800-179(i)",
+         "children": [],
+         "notes": [],
+         "exceptions": []
+        }
+       ],
+       "notes": [],
+       "exceptions": [],
+       "title": "Unidades de vivienda de una familia y bifamiliar"
       }
      ],
      "notes": [],
@@ -127838,168 +128092,185 @@
      "title": "Instalación de los alambres, cables y equipos de comunicaciones",
      "part": "E",
      "page": 667,
-     "text": "Los cables y alambres de comunicaciones que van desde el protector a los equipos o, cuando no se exija el protector, los alambres y cables de comunicaciones que están asegurados al interior o al exterior del edificio, deben cumplir cuando sean aplicables, las secciones (a) hasta (c) siguientes. a). Separación con otros conductores.",
+     "text": "Los cables y alambres de comunicaciones que van desde el protector a los equipos o, cuando no se exija el protector, los alambres y cables de comunicaciones que están asegurados al interior o al exterior del edificio, deben cumplir cuando sean aplicables, las secciones (a) hasta (c) siguientes.",
      "children": [
       {
-       "id": "800-133(1)",
-       "label": "1",
-       "kind": "num",
+       "id": "800-133(a)",
+       "label": "a",
+       "kind": "alpha",
        "level": 1,
-       "text": "En canalizaciones, charola portacables, cajas, cables o envolventes.",
+       "text": "Separación con otros conductores.",
        "children": [
         {
-         "id": "800-133(1)a.",
-         "label": "a",
-         "kind": "letter",
+         "id": "800-133(a)(1)",
+         "label": "1",
+         "kind": "num",
          "level": 2,
-         "text": "Se permitirán cables de comunicaciones en la misma canalización, charola portacables, envolvente o ensamble de cables ruteadores donde vayan cualquiera de los siguientes cables:",
+         "text": "En canalizaciones, charola portacables, cajas, cables o envolventes.",
          "children": [
           {
-           "id": "800-133(1)a.(1)",
-           "label": "1",
-           "kind": "paren",
+           "id": "800-133(a)(1)a.",
+           "label": "a",
+           "kind": "letter",
            "level": 3,
-           "text": "Cables de fibra óptica conductores y no conductores, de acuerdo con las partes A y D del Artículo 770.",
-           "children": [],
+           "text": "Se permitirán cables de comunicaciones en la misma canalización, charola portacables, envolvente o ensamble de cables ruteadores donde vayan cualquiera de los siguientes cables:",
+           "children": [
+            {
+             "id": "800-133(a)(1)a.(1)",
+             "label": "1",
+             "kind": "paren",
+             "level": 4,
+             "text": "Cables de fibra óptica conductores y no conductores, de acuerdo con las partes A y D del Artículo 770.",
+             "children": [],
+             "notes": [],
+             "exceptions": []
+            },
+            {
+             "id": "800-133(a)(1)a.(2)",
+             "label": "2",
+             "kind": "paren",
+             "level": 4,
+             "text": "Antenas de televisión comunales y sistemas de distribución de radio de acuerdo con las partes A y D del Artículo 820.",
+             "children": [],
+             "notes": [],
+             "exceptions": []
+            },
+            {
+             "id": "800-133(a)(1)a.(3)",
+             "label": "3",
+             "kind": "paren",
+             "level": 4,
+             "text": "Circuitos de comunicaciones de banda ancha de baja potencia alimentados por la red de acuerdo con las partes A y D del Artículo 820.",
+             "children": [],
+             "notes": [],
+             "exceptions": []
+            }
+           ],
            "notes": [],
-           "exceptions": []
+           "exceptions": [],
+           "title": "Fibra óptica y cables de comunicaciones"
           },
           {
-           "id": "800-133(1)a.(2)",
-           "label": "2",
-           "kind": "paren",
+           "id": "800-133(a)(1)b.",
+           "label": "b",
+           "kind": "letter",
            "level": 3,
-           "text": "Antenas de televisión comunales y sistemas de distribución de radio de acuerdo con las partes A y D del Artículo 820.",
-           "children": [],
+           "text": "Se permitirán cables de comunicaciones en la misma canalización, charola portacables o envolvente donde vayan cualquiera de los siguientes cables:",
+           "children": [
+            {
+             "id": "800-133(a)(1)b.(1)",
+             "label": "1",
+             "kind": "paren",
+             "level": 4,
+             "text": "De control remoto Clase 2 y Clase 3, de señalización y de circuitos de potencia limitada de acuerdo con las partes A y D del Artículo 725.",
+             "children": [],
+             "notes": [],
+             "exceptions": []
+            },
+            {
+             "id": "800-133(a)(1)b.(2)",
+             "label": "2",
+             "kind": "paren",
+             "level": 4,
+             "text": "Circuitos de potencia limitada de sistemas de alarma contra incendios, de acuerdo con las partes A y C del Artículo 760.",
+             "children": [],
+             "notes": [],
+             "exceptions": []
+            }
+           ],
            "notes": [],
-           "exceptions": []
+           "exceptions": [],
+           "title": "Otros circuitos"
           },
           {
-           "id": "800-133(1)a.(3)",
-           "label": "3",
-           "kind": "paren",
+           "id": "800-133(a)(1)c.",
+           "label": "c",
+           "kind": "letter",
            "level": 3,
-           "text": "Circuitos de comunicaciones de banda ancha de baja potencia alimentados por la red de acuerdo con las partes A y D del Artículo 820.",
+           "text": "Los circuitos de Clase 1 no deben estar en el mismo cable de los circuitos de comunicaciones. Se permitirán conductores de circuitos de Clase 2 y Clase 3 en el mismo cable con conductores de circuitos de comunicaciones, en cuyo caso los circuitos de Clase 2 y Clase 3 se deben clasificar como circuitos de comunicaciones y cumplir los requisitos de este Artículo. Los cables deben estar aprobados como cables de comunicaciones.",
            "children": [],
            "notes": [],
-           "exceptions": []
+           "exceptions": [
+            {
+             "label": "Excepción",
+             "text": "No se exigirá que los cables construidos de cables individualmente aprobados de Clase 2, Clase 3 y de comunicaciones, recubiertos por la misma cubierta, estén aprobados como cables de comunicaciones. La clasificación de resistencia al fuego de este cable compuesto estará determinada por el desempeño del cable compuesto.",
+             "seq": 27
+            }
+           ],
+           "title": "Circuitos de Clase 2 y Clase 3"
+          },
+          {
+           "id": "800-133(a)(1)d.",
+           "label": "d",
+           "kind": "letter",
+           "level": 3,
+           "text": "Circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de potencia no limitada, y de comunicaciones de banda ancha energizados por una red de potencia media en canalizaciones, compartimientos y cajas. Los conductores de comunicaciones no se deben instalar en ninguna canalización, compartimiento, caja de salida o de empalme o accesorios similares, con conductores de circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de potencia no limitada, o de comunicaciones de banda ancha energizados por una red de potencia media.",
+           "children": [],
+           "notes": [],
+           "exceptions": [
+            {
+             "label": "Excepción 1",
+             "text": "Cuando todos los conductores de los circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de potencia no limitada, y de comunicaciones de banda ancha energizados por una red de potencia media están separados de todos los conductores de los circuitos de comunicaciones por una barrera permanente o un divisor aprobado.",
+             "seq": 28
+            },
+            {
+             "label": "Excepción 2",
+             "text": "Los conductores de fuerza en cajas de salida, cajas de empalme, accesorios similares o compartimientos cuando estos conductores son introducidos únicamente para alimentar los equipos de comunicaciones. Los conductores de los circuitos de fuerza se deben instalar dentro del envolvente manteniendo una separación mínima de 6 milímetros con los conductores de los circuitos de comunicaciones.",
+             "seq": 29
+            },
+            {
+             "label": "Excepción 3",
+             "text": "Lo permitido en 620-36.",
+             "seq": 30
+            }
+           ]
           }
          ],
          "notes": [],
-         "exceptions": [],
-         "title": "Fibra óptica y cables de comunicaciones"
+         "exceptions": []
         },
         {
-         "id": "800-133(1)b.",
-         "label": "b",
-         "kind": "letter",
+         "id": "800-133(a)(2)",
+         "label": "2",
+         "kind": "num",
          "level": 2,
-         "text": "Se permitirán cables de comunicaciones en la misma canalización, charola portacables o envolvente donde vayan cualquiera de los siguientes cables:",
-         "children": [
-          {
-           "id": "800-133(1)b.(1)",
-           "label": "1",
-           "kind": "paren",
-           "level": 3,
-           "text": "De control remoto Clase 2 y Clase 3, de señalización y de circuitos de potencia limitada de acuerdo con las partes A y D del Artículo 725.",
-           "children": [],
-           "notes": [],
-           "exceptions": []
-          },
-          {
-           "id": "800-133(1)b.(2)",
-           "label": "2",
-           "kind": "paren",
-           "level": 3,
-           "text": "Circuitos de potencia limitada de sistemas de alarma contra incendios, de acuerdo con las partes A y C del Artículo 760.",
-           "children": [],
-           "notes": [],
-           "exceptions": []
-          }
-         ],
-         "notes": [],
-         "exceptions": [],
-         "title": "Otros circuitos"
-        },
-        {
-         "id": "800-133(1)c.",
-         "label": "c",
-         "kind": "letter",
-         "level": 2,
-         "text": "Los circuitos de Clase 1 no deben estar en el mismo cable de los circuitos de comunicaciones. Se permitirán conductores de circuitos de Clase 2 y Clase 3 en el mismo cable con conductores de circuitos de comunicaciones, en cuyo caso los circuitos de Clase 2 y Clase 3 se deben clasificar como circuitos de comunicaciones y cumplir los requisitos de este Artículo. Los cables deben estar aprobados como cables de comunicaciones.",
-         "children": [],
-         "notes": [],
-         "exceptions": [
-          {
-           "label": "Excepción",
-           "text": "No se exigirá que los cables construidos de cables individualmente aprobados de Clase 2, Clase 3 y de comunicaciones, recubiertos por la misma cubierta, estén aprobados como cables de comunicaciones. La clasificación de resistencia al fuego de este cable compuesto estará determinada por el desempeño del cable compuesto.",
-           "seq": 30
-          }
-         ],
-         "title": "Circuitos de Clase 2 y Clase 3"
-        },
-        {
-         "id": "800-133(1)d.",
-         "label": "d",
-         "kind": "letter",
-         "level": 2,
-         "text": "Circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de potencia no limitada, y de comunicaciones de banda ancha energizados por una red de potencia media en canalizaciones, compartimientos y cajas. Los conductores de comunicaciones no se deben instalar en ninguna canalización, compartimiento, caja de salida o de empalme o accesorios similares, con conductores de circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de potencia no limitada, o de comunicaciones de banda ancha energizados por una red de potencia media.",
+         "text": "Los cables y alambres de comunicaciones deben estar separados 5 centímetros como mínimo de los conductores de cualquier circuito de alumbrado, de fuerza, de Clase 1, de alarma contra incendios de potencia no limitada, y de comunicaciones de banda ancha energizados por una red de potencia media.",
          "children": [],
          "notes": [],
          "exceptions": [
           {
            "label": "Excepción 1",
-           "text": "Cuando todos los conductores de los circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de potencia no limitada, y de comunicaciones de banda ancha energizados por una red de potencia media están separados de todos los conductores de los circuitos de comunicaciones por una barrera permanente o un divisor aprobado.",
+           "text": "Cuando (1) todos los conductores de los circuitos de alumbrado, de fuerza, de Clase 1, de alarma contra incendios de potencia no limitada y de comunicaciones de banda ancha energizados por una red de potencia media están en una canalización o en cables con recubrimiento metálico, con cubierta metálica, con recubrimiento no metálico, cables tipo AC o UF, o (2) todos los conductores de los circuitos de comunicaciones están alojados en una canalización.",
            "seq": 31
           },
           {
            "label": "Excepción 2",
-           "text": "Los conductores de fuerza en cajas de salida, cajas de empalme, accesorios similares o compartimientos cuando estos conductores son introducidos únicamente para alimentar los equipos de comunicaciones. Los conductores de los circuitos de fuerza se deben instalar dentro del envolvente manteniendo una separación mínima de 6 milímetros con los conductores de los circuitos de comunicaciones.",
+           "text": "Cuando los cables y alambres de comunicaciones estén separados permanentemente de los conductores de los circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de potencia no limitada y de comunicaciones de banda ancha energizados por una red de potencia media, por una barrera no conductora continua y fijada firmemente, tal como tubos de porcelana o tuberías flexibles, además del aislamiento del alambre.",
            "seq": 32
-          },
-          {
-           "label": "Excepción 3",
-           "text": "Lo permitido en 620-36.",
-           "seq": 33
           }
-         ]
+         ],
+         "title": "Otras aplicaciones"
         }
        ],
        "notes": [],
        "exceptions": []
       },
       {
-       "id": "800-133(2)",
-       "label": "2",
-       "kind": "num",
+       "id": "800-133(b)",
+       "label": "b",
+       "kind": "alpha",
        "level": 1,
-       "text": "Los cables y alambres de comunicaciones deben estar separados 5 centímetros como mínimo de los conductores de cualquier circuito de alumbrado, de fuerza, de Clase 1, de alarma contra incendios de potencia no limitada, y de comunicaciones de banda ancha energizados por una red de potencia media.",
+       "text": "Las canalizaciones sólo se deben utilizar para el propósito previsto. Los cables o alambres de comunicaciones no se deben sujetar con flejes, con cinta o cualquier otro medio al exterior de cualquier conduit o canalización, para utilizarla como un medio de soporte.",
        "children": [],
        "notes": [],
        "exceptions": [
         {
-         "label": "Excepción 1",
-         "text": "Cuando (1) todos los conductores de los circuitos de alumbrado, de fuerza, de Clase 1, de alarma contra incendios de potencia no limitada y de comunicaciones de banda ancha energizados por una red de potencia media están en una canalización o en cables con recubrimiento metálico, con cubierta metálica, con recubrimiento no metálico, cables tipo AC o UF, o (2) todos los conductores de los circuitos de comunicaciones están alojados en una canalización.",
-         "seq": 34
-        },
-        {
-         "label": "Excepción 2",
-         "text": "Cuando los cables y alambres de comunicaciones estén separados permanentemente de los conductores de los circuitos de alumbrado, de fuerza, de Clase 1, de alarmas contra incendios de potencia no limitada y de comunicaciones de banda ancha energizados por una red de potencia media, por una barrera no conductora continua y fijada firmemente, tal como tubos de porcelana o tuberías flexibles, además del aislamiento del alambre.",
-         "seq": 35
-        },
-        {
          "label": "Excepción",
          "text": "Se permitirá que los claros aéreos de cables o alambres de comunicaciones estén sujetos al exterior de un mástil, tipo canalización, previsto para la sujeción y soporte de estos alambres y cables.",
-         "seq": 37
+         "seq": 33
         }
        ],
-       "title": "Otras aplicaciones",
-       "parrafos": [
-        {
-         "text": "b). Soportes de los conductores. Las canalizaciones sólo se deben utilizar para el propósito previsto. Los cables o alambres de comunicaciones no se deben sujetar con flejes, con cinta o cualquier otro medio al exterior de cualquier conduit o canalización, para utilizarla como un medio de soporte.",
-         "seq": 36
-        }
-       ]
+       "title": "Soportes de los conductores"
       }
      ],
      "notes": [],
@@ -128017,11 +128288,11 @@
      "tables": [
       {
        "id": "800-154(a)",
-       "seq": 38
+       "seq": 34
       },
       {
        "id": "800-154(b)",
-       "seq": 39
+       "seq": 35
       }
      ],
      "figures": [
@@ -128030,7 +128301,7 @@
        "w": 266,
        "h": 328,
        "page": 669,
-       "seq": 40
+       "seq": 36
       }
      ]
     },
@@ -128105,7 +128376,7 @@
         {
          "label": "NOTA",
          "text": "Un método para determinar si el cable tiene baja producción de humo y su resistencia a la propagación del fuego, consiste en que el cable muestre una densidad óptica pico de máximo de 0.5 o menos, una densidad óptica promedio de 0.15 o menos y una distancia máxima de propagación de la llama de 1.50 metros o menos cuando se somete a prueba.",
-         "seq": 45
+         "seq": 41
         }
        ],
        "exceptions": [],
@@ -128204,25 +128475,25 @@
       {
        "label": "NOTA 1",
        "text": "Si se marcara la tensión en los cables, ésta podría malinterpretarse, sugiriendo que pueden ser adecuados para uso en aplicaciones de alumbrado, de fuerza y de Clase 1.",
-       "seq": 42
+       "seq": 38
       },
       {
        "label": "NOTA 2",
        "text": "Véase 800-170 con respecto a los requisitos para aprobación de los equipos.",
-       "seq": 43
+       "seq": 39
       }
      ],
      "exceptions": [
       {
        "label": "Excepción",
        "text": "Se permitirá que la tensión esté marcada en el cable cuando el cable tenga múltiples aprobaciones y el marcado de la tensión se exija en una o más.",
-       "seq": 41
+       "seq": 37
       }
      ],
      "tables": [
       {
        "id": "800-179",
-       "seq": 44
+       "seq": 40
       }
      ]
     },
@@ -129417,32 +129688,43 @@
          "label": "4",
          "kind": "num",
          "level": 2,
-         "text": "Las acometidas aéreas o cables de entrada coaxiales desde un poste u otro soporte, incluyendo el punto inicial de fijación al edificio o estructura, se deben mantener alejados de los conductores de alumbrado, fuerza, Clase 1 o de circuitos de alarma de incendio de potencia limitada de manera que se evite la posibilidad de un contacto accidental. Excepción. Cuando no se pueda evitar la proximidad a los conductores de alumbrado, fuerza, Clase 1 o de circuitos de alarma de incendio de potencia limitada, la instalación debe tener un libramiento mínimo de 30 centímetros de cualquier conductor de alumbrado, fuerza, Clase 1 o de circuitos de alarma de incendio de potencia limitada. Los requisitos de libramiento aplican en todos los puntos a lo largo de la bajada de servicio y se debe aumentar a 1.00 metro en el poste. b). Sobre azoteas. Los cables coaxiales deben tener un libramiento vertical mínimo de 2.50 metros desde todos los puntos de los techos sobre los cuales pasen.",
+         "text": "Las acometidas aéreas o cables de entrada coaxiales desde un poste u otro soporte, incluyendo el punto inicial de fijación al edificio o estructura, se deben mantener alejados de los conductores de alumbrado, fuerza, Clase 1 o de circuitos de alarma de incendio de potencia limitada de manera que se evite la posibilidad de un contacto accidental. Excepción. Cuando no se pueda evitar la proximidad a los conductores de alumbrado, fuerza, Clase 1 o de circuitos de alarma de incendio de potencia limitada, la instalación debe tener un libramiento mínimo de 30 centímetros de cualquier conductor de alumbrado, fuerza, Clase 1 o de circuitos de alarma de incendio de potencia limitada. Los requisitos de libramiento aplican en todos los puntos a lo largo de la bajada de servicio y se debe aumentar a 1.00 metro en el poste.",
          "children": [],
          "notes": [],
-         "exceptions": [
-          {
-           "label": "Excepción 1",
-           "text": "Edificios auxiliares, tales como cocheras (garajes, estacionamientos) y similares.",
-           "seq": 4
-          },
-          {
-           "label": "Excepción 2",
-           "text": "Se permite una reducción en el libramiento sólo en la parte del alerón de la azotea, de cuando menos de 46 centímetros si: 1) los conductores de acometida de los sistemas de comunicaciones pasan sobre el alerón de la azotea a no más de 1.20 metros, y 2) terminan en un mástil tipo canalización u otro soporte aprobado.",
-           "seq": 5
-          },
-          {
-           "label": "Excepción 3",
-           "text": "Si el techo tiene una pendiente no menor que 10 centímetros por cada 30 centímetros, se permite una reducción del libramiento a un mínimo de 90 centímetros.",
-           "seq": 6
-          }
-         ],
+         "exceptions": [],
          "title": "Libramiento"
         }
        ],
        "notes": [],
        "exceptions": [],
        "title": "Sobre postes y claros"
+      },
+      {
+       "id": "820-44(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Los cables coaxiales deben tener un libramiento vertical mínimo de 2.50 metros desde todos los puntos de los techos sobre los cuales pasen.",
+       "children": [],
+       "notes": [],
+       "exceptions": [
+        {
+         "label": "Excepción 1",
+         "text": "Edificios auxiliares, tales como cocheras (garajes, estacionamientos) y similares.",
+         "seq": 4
+        },
+        {
+         "label": "Excepción 2",
+         "text": "Se permite una reducción en el libramiento sólo en la parte del alerón de la azotea, de cuando menos de 46 centímetros si: 1) los conductores de acometida de los sistemas de comunicaciones pasan sobre el alerón de la azotea a no más de 1.20 metros, y 2) terminan en un mástil tipo canalización u otro soporte aprobado.",
+         "seq": 5
+        },
+        {
+         "label": "Excepción 3",
+         "text": "Si el techo tiene una pendiente no menor que 10 centímetros por cada 30 centímetros, se permite una reducción del libramiento a un mínimo de 90 centímetros.",
+         "seq": 6
+        }
+       ],
+       "title": "Sobre azoteas"
       },
       {
        "id": "820-44(c)",

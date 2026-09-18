@@ -60,7 +60,13 @@ RE_ARTICLE = re.compile(r'^ARTICULO\s+(\d{3})\s*$', re.M)
 RE_PART    = re.compile(r'^([A-M])\.\s+([0-9A-ZÁÉÍÓÚÑ].{0,110})$')
 RE_NOTE    = re.compile(r'^(NOTA[^:]{0,40}):\s*(.*)$')
 RE_EXC     = re.compile(r'^(Excepci[oó]n[^:]{0,60}):\s*(.*)$')
-RE_SUB_A   = re.compile(r'^([a-z])\)\s+(.*)$')          # a)
+# El punto sobrante tras el paréntesis es una errata del DOF, no otra forma de
+# marcador: la norma imprime «e). Pozos verticales» donde sus hermanos c), d) y
+# f) van sin punto. Sin tolerarlo, ese inciso no se reconocía y quedaba colgando
+# como prosa dentro del inciso anterior, un nivel más abajo del que le toca.
+# Son 28 en todo el documento y 26 caen en el Artículo 800. Las formas
+# numeradas —«(1).» y «1).»— no traen la errata en ninguna página.
+RE_SUB_A   = re.compile(r'^([a-z])\)\.?\s+(.*)$')        # a)   y la errata «a).»
 RE_SUB_N   = re.compile(r'^\((\d{1,2})\)\s+(.*)$')      # (1)
 RE_SUB_P   = re.compile(r'^(\d{1,2})\)\s+(.*)$')        # 1)  sin paréntesis inicial
 RE_SUB_L   = re.compile(r'^([a-z])\.\s+(.*)$')          # a.
@@ -503,6 +509,10 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
         #     escribe 1 509 incisos de la primera forma y 2 765 de la segunda.
         #     Reconocer solo una dejaba la otra como texto corrido dentro del
         #     inciso anterior, que es lo que rompía la estructura de 310-15.
+        # El contenido se toma con m.start(2) y no contando caracteres desde
+        # el marcador: la errata «a).» mete un punto de más y con un offset
+        # fijo acababa dentro del título («. Pozos verticales»). Se indexa `ln`
+        # y no `u` porque unaccent() conserva la longitud pero pierde acentos.
         for rx, kind in ((RE_SUB_A, 'alpha'), (RE_SUB_N, 'paren'),
                          (RE_SUB_P, 'num'), (RE_SUB_L, 'letter')):
             m = rx.match(u)
@@ -528,11 +538,11 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
                     and (annot[1] is None or annot[1] == kind)):
                 annot[1] = kind
                 annot[0].setdefault('items', []).append(
-                    {'label': m.group(1), 'text': ln[m.end(1) + 1:].strip()})
+                    {'label': m.group(1), 'text': ln[m.start(2):].strip()})
                 target = annot[0]['items'][-1]
                 continue
             annot[0], annot[1], annot[2] = None, None, False
-            if new_sub(m.group(1), kind, ln[m.end(1) + 1:].strip()):
+            if new_sub(m.group(1), kind, ln[m.start(2):].strip()):
                 continue
 
         # --- texto corrido
