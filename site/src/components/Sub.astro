@@ -8,9 +8,13 @@ const { node } = Astro.props;
 const label = node.kind === 'letter' ? `${node.label}.` : `(${node.label})`;
 // Notas y excepciones se intercalan en la norma y su orden importa: se
 // reordenan por su posición original en el documento, no por tipo.
+// `parrafos` son los párrafos que en el documento van DESPUÉS de una nota o
+// excepción. No caben en `text`, que se pinta antes: la Excepción de 922-56(b)
+// precede al párrafo que introduce su tabla de factores, y al revés se lee mal.
 const anot = [
   ...(node.notes || []).map((n) => ({ ...n, k: 'nota' })),
   ...(node.exceptions || []).map((n) => ({ ...n, k: 'exc' })),
+  ...(node.parrafos || []).map((n) => ({ ...n, k: 'parr' })),
 ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0));
 
 // Las tablas de este inciso, en el orden en que aparecen en la norma. Van
@@ -41,7 +45,9 @@ const tabs = (node.tables || [])
     </dl>
   )}
 
-  {anot.map((n) => (
+  {anot.map((n) => (n.k === 'parr' ? (
+    <p class="parr" set:html={linkify(n.text)} />
+  ) : (
     <div class={n.k}>
       <span class="lb">{n.label}</span><span set:html={linkify(n.text)} />
       {n.items?.length > 0 && (
@@ -52,7 +58,7 @@ const tabs = (node.tables || [])
         </ul>
       )}
     </div>
-  ))}
+  )))}
 
   {tabs.map((t) => <Tabla t={t} />)}
 
