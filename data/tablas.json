@@ -3451,7 +3451,7 @@
     }
    ]
   ],
-  "grid": "dibujada",
+  "grid": "manual",
   "notes": [],
   "quality": 1.0,
   "regions": [
@@ -3528,7 +3528,7 @@
     }
    ]
   ],
-  "grid": "dibujada",
+  "grid": "manual",
   "notes": [],
   "quality": 1.0,
   "regions": [
@@ -36783,7 +36783,7 @@
     }
    ]
   ],
-  "grid": "dibujada",
+  "grid": "manual",
   "notes": [
    "* Para la separación entre las partes vivas y las puertas de los gabinetes, ver 312-11(a) (1), (2) y (3)."
   ],
@@ -50263,7 +50263,7 @@
     }
    ]
   ],
-  "grid": "dibujada",
+  "grid": "manual",
   "notes": [],
   "quality": 1.0,
   "regions": [
@@ -56275,7 +56275,7 @@
     }
    ]
   ],
-  "grid": "dibujada",
+  "grid": "manual",
   "notes": [],
   "quality": 1.0,
   "regions": [
@@ -58333,7 +58333,7 @@
     }
    ]
   ],
-  "grid": "dibujada",
+  "grid": "manual",
   "notes": [
    "Interpólese para valores intermedios."
   ],
@@ -69237,7 +69237,7 @@
     }
    ]
   ],
-  "grid": "dibujada",
+  "grid": "manual",
   "notes": [],
   "quality": 1.0,
   "regions": [

@@ -947,7 +947,12 @@ def tabla_nueva(tid, rev):
         'header_rows': rev['header_rows'],
         'intro': rev.get('intro', ''),
         'rows': rev['rows'],
-        'grid': 'dibujada',
+        # Ni 'rejilla' ni 'huecos': esas dos dicen de cuál de los dos
+        # detectores salieron las columnas, y en una tabla dada de alta a mano
+        # no salieron de ninguno. Ponerle 'dibujada' afirmaba que el PDF traza
+        # su rejilla, sin haberlo comprobado —la del 922-56(b) sí la traza, la
+        # del 220-83(a) solo tiene una horizontal y ninguna vertical—.
+        'grid': 'manual',
         'notes': rev.get('notes', []),
         'quality': 1.0,
         'regions': rev['regions'],

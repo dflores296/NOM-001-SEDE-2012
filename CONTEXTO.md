@@ -15,7 +15,7 @@ sobre el PDF deja el árbol idéntico a lo commiteado, byte a byte.
 |---|---|
 | Artículos | 151 |
 | Secciones | 2 897 |
-| Incisos | 8 326 |
+| Incisos | 8 314 |
 | Notas / Excepciones | 777 / 987 |
 | Definiciones | 185 |
 | Referencias distintas | 1 850 |
@@ -90,8 +90,10 @@ Vive en `parrafos`, cada bloque con su `seq`, y **notas, excepciones, tablas y
 párrafos se ordenan todos por ese `seq`**, que es su posición real en el PDF. Hoy
 son 83 nodos con `parrafos`.
 
-Si agregas otra cosa que se intercale, dale `seq` y métela en esa misma lista en
-los dos renderizadores. Las figuras todavía no participan.
+Las figuras entran en la misma lista: la fórmula de 504-10(b)(2) se pintaba
+después de todo el texto, así que el «Donde, T = es la temperatura superficial»
+salía antes que la fórmula que explica. Si agregas otra cosa que se intercale,
+dale `seq` y métela en esa lista en los dos renderizadores.
 
 Si mudas texto de campo, **enséñale el campo nuevo a todo lo que lo lee**:
 `collect_refs` y el contador de cobertura en `build_corpus.py`, `node_text` en
@@ -109,14 +111,28 @@ contenido no reaparezca como párrafo. Dos formas de equivocarse, las dos vistas
   (pasó en 690-31(d), donde el inciso dejó de existir). Hoy una tabla solo puede
   tragarse el texto que de veras capturó.
 
-### 5. Las listas blancas se justifican una por una
+### 5. Dos señales más que el parser ya usa
+
+- **Un marcador en sangría de continuación (`x0=32.8`) que sigue en minúscula no
+  abre inciso.** Es una frase que se partió de renglón justo antes del marcador:
+  725-121(a) dice «una de las fuentes (1), (2), (3), (4) ó (5) siguientes» y la
+  segunda línea abre con «(4) ó (5) siguientes.». Tomarla por inciso creaba un
+  nodo fantasma del que colgaban los incisos de verdad, un nivel más abajo. Son
+  16 renglones en las 780 páginas; los cuatro incisos legítimos impresos en esa
+  sangría (pág. 158) abren en mayúscula y se conservan.
+- **Los items de una anotación tienen que CONTINUAR su numeración.** Si el
+  marcador repite el anterior o vuelve a empezar, la lista terminó: el «(4)» que
+  sigue a la NOTA de 725-121(a)(3) es el cuarto inciso de la sección, no un
+  quinto ejemplo.
+
+### 6. Las listas blancas se justifican una por una
 
 `HUECOS_DEL_DOF` en `check_corpus.py`, `TABLAS_AUSENTES` y `ERRATAS_TABLAS` en
 `build_graph.py`. Cada entrada lleva su cita y su página. **No agregues una para
 que el check pase**: la diferencia entre una errata del DOF y un defecto del
 parser no se deduce del corpus, hay que abrir el PDF.
 
-### 6. El DOF tiene erratas de puntuación que rompen detectores
+### 7. El DOF tiene erratas de puntuación que rompen detectores
 
 Ya van cuatro, y cada una escondió contenido normativo. Súmales las tablas que
 la norma imprime SIN número ni título —`220-83(a)`, `220-83(b)`, `922-17(c)` y la
@@ -171,23 +187,9 @@ Las cuatro están probadas: al romper algo a propósito, el build falla.
 
 Ninguno bloquea nada. En orden de valor:
 
-1. **`240-4(d)`: los huecos 4 y 6 parecen contenido ausente, no renumeración.**
-   Los cinco incisos impresos son todos de cobre (18, 16, 14, 12, 10 AWG) y los
-   huecos caen justo donde irían las entradas de aluminio. Está anotado en
-   `HUECOS_DEL_DOF` como salto de numeración; vale la pena precisar en el
-   comentario que lo que falta es contenido, porque cambia cómo se lee.
-
-2. **`grid` tiene dos valores para lo mismo.** La reconstrucción escribe
-   `"rejilla"` y las altas manuales `"dibujada"` (6 entradas). Hoy no afecta nada
-   —solo lo lee una señal que no se muestra en tablas verificadas— pero es una
-   trampa para el siguiente que escriba una condición sobre ese campo.
-
-3. **Cobertura: 31 858 de 31 859.** El renglón que falta es
-   `366-58. Conductores aislados.` El README redondea a «100 %».
-
-4. **104 identificadores dejaron de existir y hay 169 nuevos.** Al destapar
+1. **143 identificadores dejaron de existir y hay 196 nuevos.** Al destapar
    estructura mal anidada, ids como `800-113(d)(3)c.a.` pasaron a
-   `800-113(d)(3)c.(3)a.`. El grueso es del artículo 800 (87 de los 104), y el
+   `800-113(d)(3)c.(3)a.`. El grueso es del artículo 800, y el
    resto se reparte sobre todo entre el 522, el 430 y el 220. Cualquier enlace
    profundo anterior a esta ronda puede no servir. No es un defecto —la
    estructura nueva es la correcta— pero nadie ha revisado la lista completa.
