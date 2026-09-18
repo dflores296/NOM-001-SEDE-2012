@@ -4607,33 +4607,25 @@
   "chapter": 2,
   "page": 56
  },
- "225-19(d)(3)": {
+ "225-19(d)(1)": {
   "kind": "inciso",
-  "id": "225-19(d)(3)",
-  "title": "siguientes.",
-  "article": 225,
-  "chapter": 2,
-  "page": 56
- },
- "225-19(d)(3)(1)": {
-  "kind": "inciso",
-  "id": "225-19(d)(3)(1)",
+  "id": "225-19(d)(1)",
   "title": "Libramiento desde las ventanas",
   "article": 225,
   "chapter": 2,
   "page": 56
  },
- "225-19(d)(3)(2)": {
+ "225-19(d)(2)": {
   "kind": "inciso",
-  "id": "225-19(d)(3)(2)",
+  "id": "225-19(d)(2)",
   "title": "Libramiento vertical",
   "article": 225,
   "chapter": 2,
   "page": 56
  },
- "225-19(d)(3)(3)": {
+ "225-19(d)(3)": {
   "kind": "inciso",
-  "id": "225-19(d)(3)(3)",
+  "id": "225-19(d)(3)",
   "title": "Aberturas en edificios",
   "article": 225,
   "chapter": 2,
@@ -9991,6 +9983,22 @@
   "chapter": 2,
   "page": 92
  },
+ "250-32(b)(1)(1)": {
+  "kind": "inciso",
+  "id": "250-32(b)(1)(1)",
+  "title": "El tamaño requerido por 220-61.",
+  "article": 250,
+  "chapter": 2,
+  "page": 92
+ },
+ "250-32(b)(1)(2)": {
+  "kind": "inciso",
+  "id": "250-32(b)(1)(2)",
+  "title": "El tamaño requerido por 250-122.",
+  "article": 250,
+  "chapter": 2,
+  "page": 92
+ },
  "250-32(b)(2)": {
   "kind": "inciso",
   "id": "250-32(b)(2)",
@@ -10279,25 +10287,17 @@
   "chapter": 2,
   "page": 94
  },
- "250-36(3)(g)(2)": {
+ "250-36(3)(g)(1)": {
   "kind": "inciso",
-  "id": "250-36(3)(g)(2)",
-  "title": "siguientes:",
-  "article": 250,
-  "chapter": 2,
-  "page": 94
- },
- "250-36(3)(g)(2)(1)": {
-  "kind": "inciso",
-  "id": "250-36(3)(g)(2)(1)",
+  "id": "250-36(3)(g)(1)",
   "title": "Si la conexión del conductor del electrodo de puesta a tierra se hace en la impe",
   "article": 250,
   "chapter": 2,
   "page": 94
  },
- "250-36(3)(g)(2)(2)": {
+ "250-36(3)(g)(2)": {
   "kind": "inciso",
-  "id": "250-36(3)(g)(2)(2)",
+  "id": "250-36(3)(g)(2)",
   "title": "Si el conductor del electrodo de puesta a tierra está conectado en el primer med",
   "article": 250,
   "chapter": 2,
@@ -10378,22 +10378,14 @@
  "250-52(a)(3)(1)": {
   "kind": "inciso",
   "id": "250-52(a)(3)(1)",
-  "title": "o (2):",
-  "article": 250,
-  "chapter": 2,
-  "page": 94
- },
- "250-52(a)(3)(1)(1)": {
-  "kind": "inciso",
-  "id": "250-52(a)(3)(1)(1)",
   "title": "Una o más barras o varillas de refuerzo de acero desnudas o galvanizadas con zin",
   "article": 250,
   "chapter": 2,
   "page": 94
  },
- "250-52(a)(3)(1)(2)": {
+ "250-52(a)(3)(2)": {
   "kind": "inciso",
-  "id": "250-52(a)(3)(1)(2)",
+  "id": "250-52(a)(3)(2)",
   "title": "Conductor desnudo de cobre tamaño no menor que 21.2 mm2 (4 AWG). Los componentes",
   "article": 250,
   "chapter": 2,
@@ -10831,14 +10823,6 @@
   "chapter": 2,
   "page": 97
  },
- "250-64(e)(4)": {
-  "kind": "inciso",
-  "id": "250-64(e)(4)",
-  "title": "se deben aplicar en cada terminación y todas las canalizaciones ferrosas, cajas ",
-  "article": 250,
-  "chapter": 2,
-  "page": 97
- },
  "250-64(f)": {
   "kind": "inciso",
   "id": "250-64(f)",
@@ -11082,22 +11066,14 @@
  "250-92(a)(1)": {
   "kind": "inciso",
   "id": "250-92(a)(1)",
-  "title": "y (2) siguientes, se deben unir entre sí.",
-  "article": 250,
-  "chapter": 2,
-  "page": 100
- },
- "250-92(a)(1)(1)": {
-  "kind": "inciso",
-  "id": "250-92(a)(1)(1)",
   "title": "Todas las canalizaciones de acometidas, charolas para cables, chasís para cableb",
   "article": 250,
   "chapter": 2,
   "page": 100
  },
- "250-92(a)(1)(2)": {
+ "250-92(a)(2)": {
   "kind": "inciso",
-  "id": "250-92(a)(1)(2)",
+  "id": "250-92(a)(2)",
   "title": "Toda las envolventes que contienen conductores de acometida, incluidos accesorio",
   "article": 250,
   "chapter": 2,
@@ -12266,7 +12242,7 @@
  "250-126(2)": {
   "kind": "inciso",
   "id": "250-126(2)",
-  "title": "Un terminal de tuerca de color verde, no fácilmente removible. NOTA Figura 250-1",
+  "title": "Un terminal de tuerca de color verde, no fácilmente removible.",
   "article": 250,
   "chapter": 2,
   "page": 108
@@ -13962,38 +13938,30 @@
  "300-5(d)(1)": {
   "kind": "inciso",
   "id": "300-5(d)(1)",
-  "title": "hasta (4) siguientes.",
-  "article": 300,
-  "chapter": 3,
-  "page": 121
- },
- "300-5(d)(1)(1)": {
-  "kind": "inciso",
-  "id": "300-5(d)(1)(1)",
   "title": "Que salen desde el nivel del terreno",
   "article": 300,
   "chapter": 3,
   "page": 121
  },
- "300-5(d)(1)(2)": {
+ "300-5(d)(2)": {
   "kind": "inciso",
-  "id": "300-5(d)(1)(2)",
+  "id": "300-5(d)(2)",
   "title": "Conductores que entran en edificios",
   "article": 300,
   "chapter": 3,
   "page": 121
  },
- "300-5(d)(1)(3)": {
+ "300-5(d)(3)": {
   "kind": "inciso",
-  "id": "300-5(d)(1)(3)",
+  "id": "300-5(d)(3)",
   "title": "Conductores de acometida",
   "article": 300,
   "chapter": 3,
   "page": 121
  },
- "300-5(d)(1)(4)": {
+ "300-5(d)(4)": {
   "kind": "inciso",
-  "id": "300-5(d)(1)(4)",
+  "id": "300-5(d)(4)",
   "title": "Daño del envolvente o la canalización",
   "article": 300,
   "chapter": 3,
@@ -16335,49 +16303,41 @@
   "chapter": 3,
   "page": 168
  },
- "314-24(b)(5)": {
+ "314-24(b)(1)": {
   "kind": "inciso",
-  "id": "314-24(b)(5)",
-  "title": "siguientes.",
-  "article": 314,
-  "chapter": 3,
-  "page": 168
- },
- "314-24(b)(5)(1)": {
-  "kind": "inciso",
-  "id": "314-24(b)(5)(1)",
+  "id": "314-24(b)(1)",
   "title": "Equipos grandes",
   "article": 314,
   "chapter": 3,
   "page": 168
  },
- "314-24(b)(5)(2)": {
+ "314-24(b)(2)": {
   "kind": "inciso",
-  "id": "314-24(b)(5)(2)",
+  "id": "314-24(b)(2)",
   "title": "Conductores más grandes que el tamaño 21.2 mm2 (4 AWG). Las cajas que alojan dis",
   "article": 314,
   "chapter": 3,
   "page": 168
  },
- "314-24(b)(5)(3)": {
+ "314-24(b)(3)": {
   "kind": "inciso",
-  "id": "314-24(b)(5)(3)",
+  "id": "314-24(b)(3)",
   "title": "Conductores tamaño 8.37 mm2 (8 AWG), 13.3 mm2 (6 AWG) o 21.2 mm2 (4 AWG). Las ca",
   "article": 314,
   "chapter": 3,
   "page": 168
  },
- "314-24(b)(5)(4)": {
+ "314-24(b)(4)": {
   "kind": "inciso",
-  "id": "314-24(b)(5)(4)",
+  "id": "314-24(b)(4)",
   "title": "Conductores tamaño 3.31 mm2 (12 AWG) o 5.26 mm2 (10 AWG). Las cajas que alojan d",
   "article": 314,
   "chapter": 3,
   "page": 168
  },
- "314-24(b)(5)(5)": {
+ "314-24(b)(5)": {
   "kind": "inciso",
-  "id": "314-24(b)(5)(5)",
+  "id": "314-24(b)(5)",
   "title": "Conductores tamaño 2.08 mm2 (14 AWG) y más pequeños. Las cajas que alojan dispos",
   "article": 314,
   "chapter": 3,
@@ -32775,33 +32735,25 @@
   "chapter": 4,
   "page": 276
  },
- "411-5(d)(3)": {
+ "411-5(d)(1)": {
   "kind": "inciso",
-  "id": "411-5(d)(3)",
-  "title": "y se deben instalar tal como se describe en estos numerales:",
-  "article": 411,
-  "chapter": 4,
-  "page": 276
- },
- "411-5(d)(3)(1)": {
-  "kind": "inciso",
-  "id": "411-5(d)(3)(1)",
+  "id": "411-5(d)(1)",
   "title": "Cable de Clase 2 alimentado por una fuente de alimentación de Clase 2 instalado ",
   "article": 411,
   "chapter": 4,
   "page": 276
  },
- "411-5(d)(3)(2)": {
+ "411-5(d)(2)": {
   "kind": "inciso",
-  "id": "411-5(d)(3)(2)",
+  "id": "411-5(d)(2)",
   "title": "Conductores, cordón o cable del sistema aprobado e instalados a no menos de 2.10",
   "article": 411,
   "chapter": 4,
   "page": 276
  },
- "411-5(d)(3)(3)": {
+ "411-5(d)(3)": {
   "kind": "inciso",
-  "id": "411-5(d)(3)(3)",
+  "id": "411-5(d)(3)",
   "title": "Métodos de alambrado descritos en el Capítulo 3.",
   "article": 411,
   "chapter": 4,
@@ -39175,14 +39127,6 @@
   "chapter": 4,
   "page": 327
  },
- "440-4(c)(2)": {
-  "kind": "inciso",
-  "id": "440-4(c)(2)",
-  "title": "o (b)(4). Este marcado lo debe proporcionar el fabricante del equipo en la(s) pl",
-  "article": 440,
-  "chapter": 4,
-  "page": 327
- },
  "440-5": {
   "kind": "seccion",
   "id": "440-5",
@@ -40842,7 +40786,7 @@
  "455-8(c)(1)": {
   "kind": "inciso",
   "id": "455-8(c)(1)",
-  "title": "o (c)(2) siguientes.",
+  "title": "Corriente nominal del desconectador",
   "article": 455,
   "chapter": 4,
   "page": 343
@@ -40850,23 +40794,7 @@
  "455-8(c)(1)(1)": {
   "kind": "inciso",
   "id": "455-8(c)(1)(1)",
-  "title": "Corriente nominal del desconectador",
-  "article": 455,
-  "chapter": 4,
-  "page": 343
- },
- "455-8(c)(1)(1)(1)": {
-  "kind": "inciso",
-  "id": "455-8(c)(1)(1)(1)",
   "title": "Valores nominales de corriente trifásica de plena carga, de los motores.",
-  "article": 455,
-  "chapter": 4,
-  "page": 343
- },
- "455-8(c)(1)(1)(2)": {
-  "kind": "inciso",
-  "id": "455-8(c)(1)(1)(2)",
-  "title": "Otras cargas alimentadas.",
   "article": 455,
   "chapter": 4,
   "page": 343
@@ -40874,30 +40802,38 @@
  "455-8(c)(1)(2)": {
   "kind": "inciso",
   "id": "455-8(c)(1)(2)",
+  "title": "Otras cargas alimentadas.",
+  "article": 455,
+  "chapter": 4,
+  "page": 343
+ },
+ "455-8(c)(2)": {
+  "kind": "inciso",
+  "id": "455-8(c)(2)",
   "title": "Desconectador con valor nominal en caballos de fuerza",
   "article": 455,
   "chapter": 4,
   "page": 343
  },
- "455-8(c)(1)(2)(1)": {
+ "455-8(c)(2)(1)": {
   "kind": "inciso",
-  "id": "455-8(c)(1)(2)(1)",
+  "id": "455-8(c)(2)(1)",
   "title": "Cargas diferentes de las de motores.",
   "article": 455,
   "chapter": 4,
   "page": 343
  },
- "455-8(c)(1)(2)(2)": {
+ "455-8(c)(2)(2)": {
   "kind": "inciso",
-  "id": "455-8(c)(1)(2)(2)",
+  "id": "455-8(c)(2)(2)",
   "title": "La corriente trifásica con rotor bloqueado, del motor más grande, como se determ",
   "article": 455,
   "chapter": 4,
   "page": 343
  },
- "455-8(c)(1)(2)(3)": {
+ "455-8(c)(2)(3)": {
   "kind": "inciso",
-  "id": "455-8(c)(1)(2)(3)",
+  "id": "455-8(c)(2)(3)",
   "title": "La corriente de plena carga de todos los otros motores trifásicos que operan al ",
   "article": 455,
   "chapter": 4,
@@ -44079,14 +44015,6 @@
   "chapter": 5,
   "page": 368
  },
- "501-115(b)(3)(4)": {
-  "kind": "inciso",
-  "id": "501-115(b)(3)(4)",
-  "title": "siguiente, pueden utilizarse si se colocan en envolventes aprobadas para el área",
-  "article": 501,
-  "chapter": 5,
-  "page": 368
- },
  "501-115(b)(4)": {
   "kind": "inciso",
   "id": "501-115(b)(4)",
@@ -46010,7 +45938,7 @@
  "504-10(b)(2)": {
   "kind": "inciso",
   "id": "504-10(b)(2)",
-  "title": "Cálculo usando la fórmula siguiente: Donde, T = es la temperatura superficial Po",
+  "title": "Cálculo usando la fórmula siguiente:",
   "article": 504,
   "chapter": 5,
   "page": 381
@@ -65479,25 +65407,17 @@
   "chapter": 6,
   "page": 546
  },
- "626-32(a)(2)": {
+ "626-32(a)(1)": {
   "kind": "inciso",
-  "id": "626-32(a)(2)",
-  "title": "siguientes:",
-  "article": 626,
-  "chapter": 6,
-  "page": 546
- },
- "626-32(a)(2)(1)": {
-  "kind": "inciso",
-  "id": "626-32(a)(2)(1)",
+  "id": "626-32(a)(1)",
   "title": "30 amperes, 480 volts, trifásico.",
   "article": 626,
   "chapter": 6,
   "page": 546
  },
- "626-32(a)(2)(2)": {
+ "626-32(a)(2)": {
   "kind": "inciso",
-  "id": "626-32(a)(2)(2)",
+  "id": "626-32(a)(2)",
   "title": "60 amperes, 208 volts, trifásico.",
   "article": 626,
   "chapter": 6,
@@ -75423,14 +75343,6 @@
   "chapter": 7,
   "page": 617
  },
- "700-4(b)(3)": {
-  "kind": "inciso",
-  "id": "700-4(b)(3)",
-  "title": "los circuitos de reserva opcionales, en este orden de prioridad. Siempre que se ",
-  "article": 700,
-  "chapter": 7,
-  "page": 617
- },
  "700-5": {
   "kind": "seccion",
   "id": "700-5",
@@ -77583,34 +77495,42 @@
   "chapter": 7,
   "page": 634
  },
- "725-121(a)(4)": {
+ "725-121(a)(1)": {
   "kind": "inciso",
-  "id": "725-121(a)(4)",
-  "title": "ó (5) siguientes.",
-  "article": 725,
-  "chapter": 7,
-  "page": 634
- },
- "725-121(a)(4)(1)": {
-  "kind": "inciso",
-  "id": "725-121(a)(4)(1)",
+  "id": "725-121(a)(1)",
   "title": "Un transformador aprobado para Clase 2 o Clase 3.",
   "article": 725,
   "chapter": 7,
   "page": 634
  },
- "725-121(a)(4)(2)": {
+ "725-121(a)(2)": {
   "kind": "inciso",
-  "id": "725-121(a)(4)(2)",
+  "id": "725-121(a)(2)",
   "title": "Una fuente de alimentación aprobada para Clase 2 o Clase 3.",
   "article": 725,
   "chapter": 7,
   "page": 634
  },
- "725-121(a)(4)(3)": {
+ "725-121(a)(3)": {
   "kind": "inciso",
-  "id": "725-121(a)(4)(3)",
+  "id": "725-121(a)(3)",
   "title": "Otro equipo aprobado y marcado para identificar la fuente de alimentación Clase ",
+  "article": 725,
+  "chapter": 7,
+  "page": 634
+ },
+ "725-121(a)(4)": {
+  "kind": "inciso",
+  "id": "725-121(a)(4)",
+  "title": "Los circuitos de potencia limitada de los equipos de tecnología de la informació",
+  "article": 725,
+  "chapter": 7,
+  "page": 634
+ },
+ "725-121(a)(5)": {
+  "kind": "inciso",
+  "id": "725-121(a)(5)",
+  "title": "Una pila seca (zinc-carbón, alcalina, de mercurio, óxido de plata, níquel-cadmio",
   "article": 725,
   "chapter": 7,
   "page": 634
@@ -77714,38 +77634,30 @@
  "725-136(d)(1)": {
   "kind": "inciso",
   "id": "725-136(d)(1)",
-  "title": "ó (2).",
-  "article": 725,
-  "chapter": 7,
-  "page": 636
- },
- "725-136(d)(1)(1)": {
-  "kind": "inciso",
-  "id": "725-136(d)(1)(1)",
   "title": "Los conductores de los circuitos de alumbrado, de fuerza, Clase 1, de alarma con",
   "article": 725,
   "chapter": 7,
   "page": 636
  },
- "725-136(d)(1)(2)": {
+ "725-136(d)(2)": {
   "kind": "inciso",
-  "id": "725-136(d)(1)(2)",
+  "id": "725-136(d)(2)",
   "title": "Los conductores del circuito que operen a 150 volts o menos a tierra y cumplan a",
   "article": 725,
   "chapter": 7,
   "page": 636
  },
- "725-136(d)(1)(2)a.": {
+ "725-136(d)(2)a.": {
   "kind": "inciso",
-  "id": "725-136(d)(1)(2)a.",
+  "id": "725-136(d)(2)a.",
   "title": "Que los circuitos Clase 2 y Clase 3 se instalen usando cables de los tipos CL3, ",
   "article": 725,
   "chapter": 7,
   "page": 636
  },
- "725-136(d)(1)(2)b.": {
+ "725-136(d)(2)b.": {
   "kind": "inciso",
-  "id": "725-136(d)(1)(2)b.",
+  "id": "725-136(d)(2)b.",
   "title": "Que los conductores de los circuitos Clase 2 y Clase 3 se instalen como un circu",
   "article": 725,
   "chapter": 7,
@@ -80987,14 +80899,6 @@
   "kind": "inciso",
   "id": "800-50(c)",
   "title": "Entrando a edificios",
-  "article": 800,
-  "chapter": 8,
-  "page": 661
- },
- "800-50(c)(2)": {
-  "kind": "inciso",
-  "id": "800-50(c)(2)",
-  "title": "pasan a través de mampostería; (3) satisfacen los requisitos indicados en 800-50",
   "article": 800,
   "chapter": 8,
   "page": 661
