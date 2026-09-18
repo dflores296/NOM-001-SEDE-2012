@@ -11,6 +11,9 @@ cambia, así que cualquier variación significa que el parser se rompió.
 import json, os, sys
 from collections import Counter
 
+# La captura manual de las tablas es la fuente de verdad; esto la protege.
+from huella import desalineadas, discrepancias, sin_congelar
+
 MIN = {
     'articulos': 151,
     'secciones': 2890,
@@ -143,6 +146,41 @@ def main():
         if vacias:
             fails.append('%d tablas con columnas vacías: %s'
                          % (len(vacias), vacias[:6]))
+
+        # La captura manual es la fuente de verdad y aquí se comprueba, aparte
+        # de lo que ya verifica build_tables, que siga intacta. Son dos cosas
+        # distintas: que la tabla verificada traiga sus propias celdas (y no las
+        # herede del reconstructor), y que su contenido publicado siga siendo el
+        # que se selló. Lo de arriba valida la FORMA de las tablas —anchos de
+        # fila, columnas vacías—; esto valida el CONTENIDO, que es lo que costó
+        # contrastar contra el PDF celda por celda.
+        rpath = os.path.join(d, 'tablas_revisadas.json')
+        if os.path.exists(rpath):
+            revs = json.load(open(rpath, encoding='utf-8'))
+            flojas = sin_congelar(revs)
+            if flojas:
+                fails.append(
+                    '%d tabla(s) marcadas verificada sin congelar sus celdas '
+                    '(publicarían lo que produzca el reconstructor, con la '
+                    'insignia puesta): %s'
+                    % (len(flojas), ', '.join('%s (falta %s)' % (t, '/'.join(f))
+                                              for t, f in flojas[:6])))
+            malas = discrepancias(tabs, revs)
+            if malas:
+                fails.append(
+                    '%d tabla(s) verificadas cambiaron respecto a su huella; '
+                    'si es deliberado, acéptalo con build_tables.py --sellar: %s'
+                    % (len(malas), ', '.join(t for t, _, _ in malas[:6])))
+            # La huella certifica tablas.json, que es derivado; una edición de
+            # tablas_revisadas.json sin reconstruir no la movería. Esto compara
+            # los dos archivos directamente y delata esa desincronización.
+            desal = desalineadas(tabs, revs)
+            if desal:
+                fails.append(
+                    '%d tabla(s) revisadas no coinciden con lo publicado '
+                    '(¿falta regenerar tablas.json?): %s'
+                    % (len(desal), ', '.join('%s (%s)' % (t, '/'.join(c))
+                                             for t, c in desal[:6])))
 
     if fails:
         print('VERIFICACIÓN FALLIDA')

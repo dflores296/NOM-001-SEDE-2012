@@ -47946,12 +47946,8 @@
    ],
    [
     {
-     "t": "",
-     "cs": 2
-    },
-    {
      "t": "FACTOR DE CORRECCION PARA AMPACIDAD",
-     "cs": 6
+     "cs": 8
     }
    ],
    [
@@ -57941,7 +57937,7 @@
   ],
   "page": 720,
   "cols": 8,
-  "header_rows": 4,
+  "header_rows": 3,
   "intro": "",
   "rows": [
    [
@@ -57975,13 +57971,13 @@
    ],
    [
     {
-     "t": "0 a V(2) 750"
+     "t": "0 a 750 V(2)"
     },
     {
      "t": "Más de 750 V"
     },
     {
-     "t": "Hasta V(2) 750"
+     "t": "Hasta 750 V(2)"
     },
     {
      "t": "Más de 750 V a 22 kV"
@@ -57995,12 +57991,8 @@
    ],
    [
     {
-     "t": "Separación",
-     "cs": 3
-    },
-    {
-     "t": "puentes(3) sobre",
-     "cs": 5
+     "t": "Separación sobre puentes(3)",
+     "cs": 8
     }
    ],
    [
@@ -58057,16 +58049,13 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
      "t": "Separación lateral, abajo o dentro de la estructura del puente",
-     "cs": 7
+     "cs": 8
     }
    ],
    [
     {
-     "t": "paredes.(3) a. Partes del puente accesibles, incluyendo salientes y",
+     "t": "a. Partes del puente accesibles, incluyendo salientes y paredes.(3)",
      "cs": 8
     }
    ],
@@ -58124,15 +58113,8 @@
    ],
    [
     {
-     "t": ""
-    },
-    {
-     "t": "puente(4) b. Partes del no",
-     "cs": 3
-    },
-    {
-     "t": "accesibles",
-     "cs": 4
+     "t": "b. Partes del puente(4) no accesibles",
+     "cs": 8
     }
    ],
    [
