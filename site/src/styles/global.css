@@ -452,6 +452,15 @@ p.tabla-intro {
 .tabla-notas p { margin: 0.25rem 0; }
 .tabla-pie { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.4rem; }
 
+/* Aviso de ancla que cambió de identificador. Lo inserta Base.astro cuando un
+   enlace profundo anterior al arreglo de anidamiento apunta a un id retirado. */
+.aviso-ancla {
+  background: var(--warn-bg); border: 1px solid var(--warn-br);
+  border-radius: var(--radius); padding: 0.55rem 0.75rem;
+  font-size: 0.84rem; color: var(--text-dim); margin: 0.9rem 0;
+}
+.aviso-ancla b { font-family: var(--mono); color: var(--text); }
+
 /* backlinks */
 .backlinks { margin-top: 0.7rem; font-size: 0.82rem; }
 .backlinks summary { cursor: pointer; color: var(--text-faint); }
