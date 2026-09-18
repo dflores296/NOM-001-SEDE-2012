@@ -24,6 +24,7 @@ const anot = [
   ...(node.tables || [])
     .map((x) => ({ ...x, k: 'tabla', tabla: tablaPorId.get(x.id) }))
     .filter((x) => x.tabla),
+  ...(node.figures || []).map((f) => ({ ...f, k: 'fig' })),
 ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0));
 
 ---
@@ -31,14 +32,6 @@ const anot = [
   <span class="lbl">{label}</span>
   {node.title && <span class="st">{node.title}. </span>}
   <span set:html={linkify(node.text)} />
-
-  {node.figures?.map((f) => (
-    <figure class="fig">
-      <img src={`${BASE}/img/${f.src}`} alt={f.caption || `Figura de la página ${f.page} del PDF`}
-           width={Math.round(f.w * 4 / 3)} height={Math.round(f.h * 4 / 3)} loading="lazy" />
-      <figcaption>{f.caption || `Página ${f.page} del PDF`}</figcaption>
-    </figure>
-  ))}
 
   {node.definitions?.length > 0 && (
     <dl class="defs-sec">
@@ -50,6 +43,12 @@ const anot = [
 
   {anot.map((n) => (n.k === 'tabla' ? (
     <Tabla t={n.tabla} />
+  ) : n.k === 'fig' ? (
+    <figure class="fig">
+      <img src={`${BASE}/img/${n.src}`} alt={n.caption || `Figura de la página ${n.page} del PDF`}
+           width={Math.round(n.w * 4 / 3)} height={Math.round(n.h * 4 / 3)} loading="lazy" />
+      <figcaption>{n.caption || `Página ${n.page} del PDF`}</figcaption>
+    </figure>
   ) : n.k === 'parr' ? (
     <p class="parr" set:html={linkify(n.text)} />
   ) : (
