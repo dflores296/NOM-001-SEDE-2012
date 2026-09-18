@@ -3413,9 +3413,62 @@
   "verificada": "2026-08-12"
  },
  {
+  "id": "220-83(a)",
+  "title": null,
+  "sin_numero": true,
+  "informativa": false,
+  "article": 220,
+  "pages": [
+   51
+  ],
+  "page": 51,
+  "cols": 2,
+  "header_rows": 1,
+  "intro": "",
+  "rows": [
+   [
+    {
+     "t": "Carga (kVA)"
+    },
+    {
+     "t": "Porcentaje de carga"
+    }
+   ],
+   [
+    {
+     "t": "Primeros 8 kVA de carga al"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "Carga restante al"
+    },
+    {
+     "t": "40"
+    }
+   ]
+  ],
+  "grid": "dibujada",
+  "notes": [],
+  "quality": 1.0,
+  "regions": [
+   {
+    "page": 51,
+    "y0": 305.0,
+    "y1": 348.5,
+    "id": "220-83(a)",
+    "article": 220
+   }
+  ],
+  "verificada": "2026-09-18"
+ },
+ {
   "id": "220-83(b)",
-  "title": "Porcentajes de carga para equipo adicional de aire acondicionado o de calefacción eléctrica de ambiente",
-  "sin_numero": false,
+  "title": null,
+  "sin_numero": true,
   "informativa": false,
   "article": 220,
   "pages": [

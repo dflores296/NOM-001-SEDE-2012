@@ -4,7 +4,7 @@ Estado del proyecto para retomarlo desde otra sesión o cuenta. El README explic
 **qué es** el proyecto y cómo está construido; esto explica **dónde va**, qué hay
 que entender antes de tocarlo y qué queda pendiente.
 
-Última actualización: 18 de septiembre de 2026, sobre `main` en `8779e7f`.
+Última actualización: 18 de septiembre de 2026.
 
 ## Dónde estamos
 
@@ -20,8 +20,8 @@ sobre el PDF deja el árbol idéntico a lo commiteado, byte a byte.
 | Definiciones | 185 |
 | Referencias distintas | 1 850 |
 | Referencias rotas | 0 |
-| Cobertura | 100 % (31 859 de 31 860 renglones) |
-| Tablas | 225, todas contrastadas a mano y congeladas |
+| Cobertura | 100 % (31 858 de 31 859 renglones) |
+| Tablas | 226, todas contrastadas a mano y congeladas |
 
 Para verificar el estado en cualquier momento:
 
@@ -42,13 +42,13 @@ eso es el problema a resolver antes que cualquier otra cosa.
 
 ### 1. La captura manual manda sobre la reconstrucción
 
-Las 225 tablas se contrastaron celda por celda contra el PDF. Ese trabajo vive en
+Las 226 tablas se contrastaron celda por celda contra el PDF. Ese trabajo vive en
 `data/tablas_revisadas.json` y **no es barato de rehacer**. `data/tablas.json` es
 derivado y se regenera en cada publicación.
 
 Tres reglas lo protegen, y las tres rompen el build:
 
-- **Las 225 están congeladas**: cada entrada trae sus propias `rows`, `cols` y
+- **Las 226 están congeladas**: cada entrada trae sus propias `rows`, `cols` y
   `header_rows`. `build_tables.py` ya no decide el contenido de una tabla
   verificada; es una herramienta de arranque para tablas nuevas.
 - **Cada entrada guarda la huella de su contenido** (`sha`, ver `tools/huella.py`).
@@ -112,7 +112,10 @@ parser no se deduce del corpus, hay que abrir el PDF.
 
 ### 6. El DOF tiene erratas de puntuación que rompen detectores
 
-Ya van cuatro, y cada una escondió contenido normativo:
+Ya van cuatro, y cada una escondió contenido normativo. Súmales las tablas que
+la norma imprime SIN número ni título —`220-83(a)`, `220-83(b)`, `922-17(c)` y la
+del `922-56(b)`—, que el detector tampoco puede ver porque no hay título que
+detectar: se dan de alta a mano y se declaran `sin_numero`, sin inventarles uno.
 
 | Impreso | Debía decir | Qué escondía |
 |---|---|---|
@@ -130,8 +133,8 @@ Dieciséis merges sobre `4af7f0b`. Lo sustantivo:
 
 **Contenido recuperado**
 
-- Cinco tablas que no existían en el corpus: **408-56**, **685-3**, **830-15**,
-  **220-83(b)** y la del **922-56(b)**. Todas se publicaban como párrafo corrido.
+- Seis tablas que no existían en el corpus: **408-56**, **685-3**, **830-15**,
+  **220-83(a)**, **220-83(b)** y la del **922-56(b)**. Todas se publicaban como párrafo corrido.
 - **Incisos**: 8 261 → 8 326. Estaban escondidos dentro de notas, excepciones o
   zonas de tabla. `690-31(d)` no estaba mal colocado: **no estaba**.
 - **67 notas y excepciones** se habían quedado con 139 párrafos ajenos
@@ -162,12 +165,19 @@ Las cuatro están probadas: al romper algo a propósito, el build falla.
 
 Ninguno bloquea nada. En orden de valor:
 
-1. **`220-83(b)` lleva un título inventado.** El PDF no imprime título —la tabla
-   arranca directo en «Carga | Porcentaje de carga»— pero la entrada trae
-   `title: "Porcentajes de carga para equipo adicional de aire acondicionado…"`,
-   así que sale como si la norma se lo hubiera dado. Sus hermanas `922-17(c)` y
-   `922-56(b)` se declaran `sin_numero` y el sitio las rotula «La norma la imprime
-   sin número ni título», que es lo honesto. Conviene igualarlas.
+1. **La prosa que sigue a una tabla se pinta antes que ella: 12 nodos.** Es el
+   mismo defecto que ya se arregló para las anotaciones, en su variante de tabla.
+   Un nodo se pinta `text` → anotaciones → tablas → hijos, así que el texto que en
+   el documento va DESPUÉS de la tabla sale por encima. En `220-83(a)` la frase
+   «En los cálculos de la carga se debe incluir lo siguiente:» aparece antes de la
+   tabla que introduce; los otros once son `220-83(b)`, `220-86`, `225-60(a)`,
+   `430-22(e)`, `490-24`, `820-179(b)`, `922-10`, `922-13(b)(2)b.`, `922-83`,
+   `922-93(a)(1)` y `923-5(a)(5)`.
+
+   El arreglo es extender lo que ya existe: dar `seq` también a las tablas y
+   mandar a `parrafos` la prosa posterior, para que las tres cosas —anotaciones,
+   tablas y párrafos— se intercalen por el mismo criterio. Hoy las tablas no
+   participan del `seq`.
 
 2. **`240-4(d)`: los huecos 4 y 6 parecen contenido ausente, no renumeración.**
    Los cinco incisos impresos son todos de cobre (18, 16, 14, 12, 10 AWG) y los
@@ -180,7 +190,7 @@ Ninguno bloquea nada. En orden de valor:
    —solo lo lee una señal que no se muestra en tablas verificadas— pero es una
    trampa para el siguiente que escriba una condición sobre ese campo.
 
-4. **Cobertura: 31 859 de 31 860.** El renglón que falta es
+4. **Cobertura: 31 858 de 31 859.** El renglón que falta es
    `366-58. Conductores aislados.` El README redondea a «100 %».
 
 5. **104 identificadores dejaron de existir y hay 169 nuevos.** Al destapar
