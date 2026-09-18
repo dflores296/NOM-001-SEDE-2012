@@ -2463,9 +2463,26 @@
        "kind": "alpha",
        "level": 1,
        "text": "Todos los dispositivos, excluyendo los tableros de distribución, dotados de terminales para la conexión de conductores y destinados para conectarlos a más de un lado del circuito, deben tener terminales debidamente marcadas para su identificación, a menos que la conexión eléctrica de la terminal destinada para conectarse al conductor puesto a tierra sea evidente.",
+       "children": [],
+       "notes": [],
+       "exceptions": [
+        {
+         "label": "Excepción",
+         "text": "No se requiere la identificación de las terminales para dispositivos que tengan una capacidad normal de corriente mayor que 30 amperes, diferentes a las clavijas polarizadas y los contactos polarizados para clavijas, como se exige en (b) siguiente:",
+         "seq": 8
+        }
+       ],
+       "title": "Terminales de dispositivos"
+      },
+      {
+       "id": "200-10(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "En los contactos, clavijas polarizadas y conectores de cordones para clavijas polarizadas, debe identificarse la terminal destinada para la conexión del conductor puesto a tierra como sigue:",
        "children": [
         {
-         "id": "200-10(a)(1)",
+         "id": "200-10(b)(1)",
          "label": "1",
          "kind": "paren",
          "level": 2,
@@ -2475,7 +2492,7 @@
          "exceptions": []
         },
         {
-         "id": "200-10(a)(2)",
+         "id": "200-10(b)(2)",
          "label": "2",
          "kind": "paren",
          "level": 2,
@@ -2492,20 +2509,8 @@
         }
        ],
        "notes": [],
-       "exceptions": [
-        {
-         "label": "Excepción",
-         "text": "No se requiere la identificación de las terminales para dispositivos que tengan una capacidad normal de corriente mayor que 30 amperes, diferentes a las clavijas polarizadas y los contactos polarizados para clavijas, como se exige en (b) siguiente:",
-         "seq": 8,
-         "items": [
-          {
-           "label": "b",
-           "text": "Contactos, clavijas y conectores. En los contactos, clavijas polarizadas y conectores de cordones para clavijas polarizadas, debe identificarse la terminal destinada para la conexión del conductor puesto a tierra como sigue:"
-          }
-         ]
-        }
-       ],
-       "title": "Terminales de dispositivos"
+       "exceptions": [],
+       "title": "Contactos, clavijas y conectores"
       },
       {
        "id": "200-10(c)",
@@ -5545,10 +5550,21 @@
        "label": "i",
        "kind": "alpha",
        "level": 1,
-       "text": "Excepto como se establece en (j) y (k) siguientes, las salidas de contactos se deben considerar cuando menos de 180 voltamperes para cada contacto sencillo o múltiple instalado en el mismo yugo. Un contacto múltiple compuesto de cuatro o más contactos, se debe calcular con no menos de 90 voltamperes por cada contacto. Esta disposición no se debe aplicar a salidas para contactos especificadas en 210-11c)(1) y (c)(2). J) Alojamientos. En viviendas unifamiliares, bifamiliares y multifamiliares y en habitaciones de huéspedes o suites de huéspedes de hoteles y moteles, las salidas especificadas en este mismo subinciso están incluidas en los cálculos de carga de alumbrado general de 220-12. No se deben exigir cálculos de carga adicionales para estas salidas.",
+       "text": "Excepto como se establece en (j) y (k) siguientes, las salidas de contactos se deben considerar cuando menos de 180 voltamperes para cada contacto sencillo o múltiple instalado en el mismo yugo. Un contacto múltiple compuesto de cuatro o más contactos, se debe calcular con no menos de 90 voltamperes por cada contacto. Esta disposición no se debe aplicar a salidas para contactos especificadas en 210-11c)(1) y (c)(2).",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Salidas para contactos"
+      },
+      {
+       "id": "220-14(j)",
+       "label": "j",
+       "kind": "alpha",
+       "level": 1,
+       "text": "En viviendas unifamiliares, bifamiliares y multifamiliares y en habitaciones de huéspedes o suites de huéspedes de hoteles y moteles, las salidas especificadas en este mismo subinciso están incluidas en los cálculos de carga de alumbrado general de 220-12. No se deben exigir cálculos de carga adicionales para estas salidas.",
        "children": [
         {
-         "id": "220-14(i)(1)",
+         "id": "220-14(j)(1)",
          "label": "1",
          "kind": "paren",
          "level": 2,
@@ -5558,7 +5574,7 @@
          "exceptions": []
         },
         {
-         "id": "220-14(i)(2)",
+         "id": "220-14(j)(2)",
          "label": "2",
          "kind": "paren",
          "level": 2,
@@ -5568,7 +5584,7 @@
          "exceptions": []
         },
         {
-         "id": "220-14(i)(3)",
+         "id": "220-14(j)(3)",
          "label": "3",
          "kind": "paren",
          "level": 2,
@@ -5580,7 +5596,7 @@
        ],
        "notes": [],
        "exceptions": [],
-       "title": "Salidas para contactos"
+       "title": "Alojamientos"
       },
       {
        "id": "220-14(k)",
@@ -42460,7 +42476,7 @@
            "label": "d",
            "kind": "letter",
            "level": 3,
-           "text": "Cuando cualquiera de los cables de un solo conductor instalados sea de 21.2 mm2 (4 AWG) hasta 107 mm2 (4/0 AWG), la suma de los diámetros de todos los cables de un solo conductor no debe exceder el ancho de la charola. 2000 volts permitido en una sola charola portacables no debe exceder los requisitos de esta sección. La suma de los diámetros de los cables de un solo conductor y multiconductores no debe exceder el ancho de la charola portacables y los cables deben estar instalados en una sola capa. Cuando los cables de un solo conductor vayan en grupos de tres conductores o cuatro conductores o atados formando grupos por circuitos, la suma de los diámetros de los conductores individuales no debe exceder el ancho de la charola portacables y estos grupos se deben instalar en un sola capa.",
+           "text": "Cuando cualquiera de los cables de un solo conductor instalados sea de 21.2 mm2 (4 AWG) hasta 107 mm2 (4/0 AWG), la suma de los diámetros de todos los cables de un solo conductor no debe exceder el ancho de la charola.",
            "children": [],
            "notes": [],
            "exceptions": [],
@@ -42475,11 +42491,33 @@
          "notes": [],
          "exceptions": [],
          "title": "Charolas portacables de tipo escalera o de fondo ventilado"
+        },
+        {
+         "id": "392-22(b)(2)",
+         "label": "2",
+         "kind": "num",
+         "level": 2,
+         "text": "Cuando una charola portacables de canal ventilado de 5, 7.50, 10 o 15 centímetros de ancho contenga cables de un solo conductor, la suma de los diámetros de todos los cables de un solo conductor no debe exceder el ancho interior del canal.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Charolas de canal ventilado"
         }
        ],
        "notes": [],
        "exceptions": [],
        "title": "Número de cables de un solo conductor de 2000 volts o menos en charolas portacables"
+      },
+      {
+       "id": "392-22(c)",
+       "label": "c",
+       "kind": "alpha",
+       "level": 1,
+       "text": "El número de cables de más de 2000 volts permitido en una sola charola portacables no debe exceder los requisitos de esta sección. La suma de los diámetros de los cables de un solo conductor y multiconductores no debe exceder el ancho de la charola portacables y los cables deben estar instalados en una sola capa. Cuando los cables de un solo conductor vayan en grupos de tres conductores o cuatro conductores o atados formando grupos por circuitos, la suma de los diámetros de los conductores individuales no debe exceder el ancho de la charola portacables y estos grupos se deben instalar en un sola capa.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Número de cables de media tensión y tipo MC (más de 2000 volts) en charolas portacables"
       }
      ],
      "notes": [],
@@ -58519,63 +58557,7 @@
          "kind": "num",
          "level": 2,
          "text": "Se permitirá que los conductores estén protegidos por el dispositivo de protección contra cortocircuitos y fallas a tierra del circuito derivado del motor y se requerirá solamente protección contra cortocircuitos y fallas a tierra. Cuando los conductores no se extienden más allá del envolvente del equipo de control del motor, el valor nominal del(los) dispositivo de protección no debe exceder el valor especificado en la columna B de la Tabla 430-72(b). Cuando los conductores se extienden más allá del envolvente del equipo de control del motor, el valor nominal del dispositivo de protección no debe exceder el valor especificado en la columna C de la Tabla 430-72(b).",
-         "children": [
-          {
-           "id": "430-72(b)(2)(1)",
-           "label": "1",
-           "kind": "num",
-           "level": 3,
-           "text": "Cuando el transformador alimenta un circuito con potencia limitada Clase 1, un circuito de control remoto Clase 2 o Clase 3 que cumple los requisitos del Artículo 725, la protección debe cumplir con el Artículo 725.",
-           "children": [],
-           "notes": [],
-           "exceptions": [],
-           "title": "Conformidad con el Artículo 725"
-          },
-          {
-           "id": "430-72(b)(2)(2)",
-           "label": "2",
-           "kind": "num",
-           "level": 3,
-           "text": "Se permitirá proporcionar la protección de acuerdo con 450-3.",
-           "children": [],
-           "notes": [],
-           "exceptions": [],
-           "title": "Conformidad con el Artículo 450"
-          },
-          {
-           "id": "430-72(b)(2)(3)",
-           "label": "3",
-           "kind": "num",
-           "level": 3,
-           "text": "Se permitirá que los transformadores de circuitos de control de menos de 50 voltamperes nominales, que son parte integral del controlador del motor y que están ubicados dentro del envolvente del controlador del motor, estén protegidos por los dispositivos de protección contra sobrecorriente del primario, medios de limitación por impedancia u otros medios de protección inherentes.",
-           "children": [],
-           "notes": [],
-           "exceptions": [],
-           "title": "Menos de 50 voltamperes"
-          },
-          {
-           "id": "430-72(b)(2)(4)",
-           "label": "4",
-           "kind": "num",
-           "level": 3,
-           "text": "Cuando la corriente nominal del primario del transformador del circuito de control es menor a 2 amperes, en el circuito primario se permitirá un dispositivo de protección contra sobrecorriente de valor nominal o ajustado para máximo el 500 por ciento de la corriente nominal del primario.",
-           "children": [],
-           "notes": [],
-           "exceptions": [],
-           "title": "Primario de menos de 2 amperes"
-          },
-          {
-           "id": "430-72(b)(2)(5)",
-           "label": "5",
-           "kind": "num",
-           "level": 3,
-           "text": "Se permitirá brindar protección por otros medios aprobados.",
-           "children": [],
-           "notes": [],
-           "exceptions": [],
-           "title": "Otros medios"
-          }
-         ],
+         "children": [],
          "notes": [],
          "exceptions": [],
          "title": "Dispositivo de protección contra sobrecorriente del circuito derivado",
@@ -58601,6 +58583,79 @@
         }
        ],
        "title": "Protección de los conductores"
+      },
+      {
+       "id": "430-72(c)",
+       "label": "c",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Cuando se suministre un transformador para el circuito de control de motores, dicho transformador debe estar protegido de acuerdo con lo siguiente:",
+       "children": [
+        {
+         "id": "430-72(c)(1)",
+         "label": "1",
+         "kind": "num",
+         "level": 2,
+         "text": "Cuando el transformador alimenta un circuito con potencia limitada Clase 1, un circuito de control remoto Clase 2 o Clase 3 que cumple los requisitos del Artículo 725, la protección debe cumplir con el Artículo 725.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Conformidad con el Artículo 725"
+        },
+        {
+         "id": "430-72(c)(2)",
+         "label": "2",
+         "kind": "num",
+         "level": 2,
+         "text": "Se permitirá proporcionar la protección de acuerdo con 450-3.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Conformidad con el Artículo 450"
+        },
+        {
+         "id": "430-72(c)(3)",
+         "label": "3",
+         "kind": "num",
+         "level": 2,
+         "text": "Se permitirá que los transformadores de circuitos de control de menos de 50 voltamperes nominales, que son parte integral del controlador del motor y que están ubicados dentro del envolvente del controlador del motor, estén protegidos por los dispositivos de protección contra sobrecorriente del primario, medios de limitación por impedancia u otros medios de protección inherentes.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Menos de 50 voltamperes"
+        },
+        {
+         "id": "430-72(c)(4)",
+         "label": "4",
+         "kind": "num",
+         "level": 2,
+         "text": "Cuando la corriente nominal del primario del transformador del circuito de control es menor a 2 amperes, en el circuito primario se permitirá un dispositivo de protección contra sobrecorriente de valor nominal o ajustado para máximo el 500 por ciento de la corriente nominal del primario.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Primario de menos de 2 amperes"
+        },
+        {
+         "id": "430-72(c)(5)",
+         "label": "5",
+         "kind": "num",
+         "level": 2,
+         "text": "Se permitirá brindar protección por otros medios aprobados.",
+         "children": [],
+         "notes": [],
+         "exceptions": [],
+         "title": "Otros medios"
+        }
+       ],
+       "notes": [],
+       "exceptions": [
+        {
+         "label": "Excepción",
+         "text": "La protección contra sobrecorriente se debe omitir cuando la apertura del circuito de control pudiera crear una situación de riesgo, como por ejemplo, el circuito de control de un motor de una bomba contra incendios y similares.",
+         "seq": 72
+        }
+       ],
+       "title": "Transformador del circuito de control"
       }
      ],
      "notes": [],
@@ -58666,7 +58721,7 @@
         {
          "label": "Excepción 1",
          "text": "Cuando se requiera desconectar más de 12 conductores del circuito de control del motor, se permitirá que los medios de desconexión no estén localizados inmediatamente adyacentes entre sí, cuando se cumplen todas las condiciones siguientes:",
-         "seq": 72,
+         "seq": 73,
          "items": [
           {
            "label": "a",
@@ -58681,7 +58736,7 @@
         {
          "label": "Excepción 2",
          "text": "Se permitirá que el medio de desconexión del circuito de control del motor esté separado del medio de desconexión de la alimentación del controlador del motor, cuando la apertura de uno o más de los medios de desconexión del circuito de control del motor sea capaz de resultar en condiciones potencialmente inseguras para el personal o la propiedad, y se cumplan las condiciones de los literales (a) y (b) de la Excepción 1 anterior.",
-         "seq": 73
+         "seq": 74
         }
        ],
        "title": "Generalidades"
@@ -58930,7 +58985,7 @@
       {
        "label": "Excepción",
        "text": "Cuando el controlador se utilice también como medio de desconexión, debe abrir todos los conductores de fase del motor, según establece 430-111.",
-       "seq": 74
+       "seq": 75
       }
      ]
     },
@@ -58956,7 +59011,7 @@
       {
        "label": "Excepción 1",
        "text": "Para motores de 600 volts nominales o menos, se permitirá utilizar un solo controlador de valor nominal no menor al valor en caballos de fuerza equivalente de todos los motores del grupo, determinada de acuerdo con 430-110(c)(1), bajo cualquiera de las condiciones siguientes:",
-       "seq": 75,
+       "seq": 76,
        "items": [
         {
          "label": "1",
@@ -58975,7 +59030,7 @@
       {
        "label": "Excepción 2",
        "text": "Se permitirá que el medio de desconexión del circuito derivado que sirve como controlador, tal como lo permite 430- 81(a), alimente a más de un motor.",
-       "seq": 76
+       "seq": 77
       }
      ]
     },
@@ -58991,7 +59046,7 @@
       {
        "label": "Excepción",
        "text": "Se permitirá arrancar con un campo reducido, cuando el motor esté diseñado para arrancar de esa forma.",
-       "seq": 77
+       "seq": 78
       }
      ]
     },
@@ -59034,7 +59089,7 @@
         {
          "label": "Excepción",
          "text": "No se exigirán dispositivos o medios de limitación de velocidad separados bajo ninguna de las condiciones siguientes:",
-         "seq": 78,
+         "seq": 79,
          "items": [
           {
            "label": "1",
@@ -59064,7 +59119,7 @@
       {
        "label": "Excepción",
        "text": "Cuando se utilicen fusibles con un tiempo de retardo adecuado para las características de arranque del motor, se permitirá utilizar portafusibles de menor tamaño al especificado en la Parte C de este Artículo.",
-       "seq": 79
+       "seq": 80
       }
      ]
     },
@@ -59121,18 +59176,18 @@
       {
        "label": "Excepción",
        "text": "Se permitirá un segundo medio de desconexión de acometida para alimentar equipos adicionales.",
-       "seq": 80
+       "seq": 81
       },
       {
        "label": "Excepción",
        "text": "Se permitirá que se conecte como se indica en 250-36 los sistemas con neutro puesto a tierra a través de una alta impedancia.",
-       "seq": 82
+       "seq": 83
       }
      ],
      "parrafos": [
       {
        "text": "Cuando se proporcione un conductor puesto a tierra, el centro de control de motores debe tener un puente de unión principal, dimensionado de acuerdo con 250-28(d), dentro de una de las secciones para la conexión del conductor puesto a tierra, en el lado de alimentación, a la barra conductora de puesta a tierra de equipos del centro de control de motores.",
-       "seq": 81
+       "seq": 82
       }
      ]
     },
@@ -59165,7 +59220,7 @@
         {
          "label": "Excepción",
          "text": "Se permitirá que los conductores atraviesen horizontalmente las secciones verticales siempre que estén separados de las barras colectoras, por una barrera.",
-         "seq": 83
+         "seq": 84
         }
        ],
        "title": "Soporte y disposición"
@@ -59182,7 +59237,7 @@
         {
          "label": "Excepción",
          "text": "Se permitirá que las unidades montadas por detrás conectadas a una barra conductora vertical que es común a las unidades montadas por el frente, tengan las fases en orden C, B, A, siempre que estén debidamente identificadas.",
-         "seq": 84
+         "seq": 85
         }
        ],
        "title": "Disposición de las fases"
@@ -59222,7 +59277,7 @@
        "tables": [
         {
          "id": "430-97",
-         "seq": 85
+         "seq": 86
         }
        ]
       }
@@ -59274,12 +59329,12 @@
       {
        "label": "NOTA 1",
        "text": "Véase la Figura 430-1.",
-       "seq": 86
+       "seq": 87
       },
       {
        "label": "NOTA 2",
        "text": "Para la identificación de los medios de desconexión, véase 110-22.",
-       "seq": 87
+       "seq": 88
       }
      ],
      "exceptions": []
@@ -59324,17 +59379,17 @@
         {
          "label": "Excepción 1",
          "text": "En los circuitos de motores de más de 600 volts nominales, se permitirá instalar fuera del alcance de la vista desde el controlador un medio de desconexión capaz de ser bloqueado en posición abierta, siempre que el controlador esté marcado con una etiqueta de advertencia que indique la ubicación del medio de desconexión.",
-         "seq": 88
+         "seq": 89
         },
         {
          "label": "Excepción 2",
          "text": "Se permitirá un solo medio de desconexión para un grupo de controladores coordinados que accionan varias partes de una sola máquina o pieza de un aparato. El medio de desconexión debe estar ubicado al alcance de la vista desde los controladores, y tanto el medio de desconexión como los controladores deben estar ubicados al alcance de la vista desde la máquina o aparato.",
-         "seq": 89
+         "seq": 90
         },
         {
          "label": "Excepción 3",
          "text": "No se exigirá que el medio de desconexión esté al alcance de la vista desde ensambles de válvulas activadas por motor que contengan el controlador donde tal ubicación introduce riesgos adicionales o los incrementa para las personas o la propiedad y se cumplan las condiciones de los literales (a) y (b).",
-         "seq": 90
+         "seq": 91
         }
        ],
        "title": "Controlador"
@@ -59385,7 +59440,7 @@
             {
              "label": "NOTA 1",
              "text": "Algunos ejemplos de peligros adicionales o incrementados incluyen pero no se limitan a motores con valor nominal mayor a 100 caballos de fuerza, equipos de múltiples motores, motores sumergibles, motores asociados con accionamientos de velocidad ajustable y motores ubicados en lugares (clasificados) peligrosos.",
-             "seq": 92
+             "seq": 93
             }
            ],
            "exceptions": []
@@ -59396,7 +59451,7 @@
           {
            "label": "Excepción para (1) y (2)",
            "text": "No se exigirá el medio de desconexión para el motor bajo la condición (a) o la condición (b), siempre que el medio de desconexión del controlador que se exige según 430-102(a) se pueda bloquear individualmente en la posición abierta. La previsión para bloquear o agregar un bloqueo al medio de desconexión del controlador se debe instalar sobre o en el desconectador o interruptor automático usado como el medio de desconexión y debe permanecer en su lugar con o sin el bloqueo instalado.",
-           "seq": 91
+           "seq": 92
           }
          ],
          "title": "Desconectador controlador"
@@ -59421,7 +59476,7 @@
       {
        "label": "NOTA",
        "text": "Para los equipos que reciben energía desde más de una fuente, véase 430-113.",
-       "seq": 93
+       "seq": 94
       }
      ],
      "exceptions": []
@@ -59711,7 +59766,7 @@
         {
          "label": "Excepción",
          "text": "Se permitirá que un interruptor de circuito de motor, sin fusibles, con un valor nominal de potencia en caballos de fuerza no menor a la potencia del motor en caballos de fuerza, tenga un valor nominal en amperes menor al 115 por ciento del valor nominal de corriente de plena carga del motor.",
-         "seq": 94
+         "seq": 95
         }
        ],
        "title": "Generalidades"
@@ -59746,7 +59801,7 @@
           {
            "label": "Excepción",
            "text": "Cuando parte de la carga concurrente es una carga resistiva y cuando el medio de desconexión es un interruptor con valor nominal en caballos de fuerza y en amperes, se permitirá que el interruptor utilizado tenga un valor de potencia nominal en caballos de fuerza no menor a la carga combinada de los motores, siempre que el valor nominal del interruptor en amperes no sea menor que la corriente con rotor bloqueado del motor o motores más la carga resistiva.",
-           "seq": 95
+           "seq": 96
           }
          ],
          "title": "Valor nominal en caballos de fuerza"
@@ -59763,7 +59818,7 @@
           {
            "label": "Excepción",
            "text": "Se permitirá que un interruptor aprobado de circuito de motor, sin fusibles, con un valor de potencia nominal en caballos de fuerza igual o mayor a la potencia equivalente de las cargas combinadas, determinada de acuerdo con 430-110(c)(1), tenga un valor nominal en amperes menor al 115 por ciento de la suma de todas las corrientes de la condición de plena carga.",
-           "seq": 96
+           "seq": 97
           }
          ],
          "title": "Valor nominal en amperes"
@@ -59867,13 +59922,13 @@
       {
        "label": "Excepción",
        "text": "Se permitirá que un solo medio de desconexión alimente a un grupo de motores si se cumple cualquiera de las condiciones (a), (b) o (c). El medio de desconexión debe tener un valor nominal de acuerdo con 430-110(c).",
-       "seq": 97
+       "seq": 98
       }
      ],
      "parrafos": [
       {
        "text": "(a) Cuando varios motores accionen distintas partes de una sola máquina o pieza de aparato, tales como máquinas herramientas para el trabajo del metal o de la madera, grúas y montacargas. (b) Cuando un grupo de motores esté protegido por un conjunto de dispositivos para protección del circuito derivado, como lo permite 430-53(a). (c) Cuando un grupo de motores esté ubicado en un solo cuarto al alcance de la vista desde el lugar donde se encuentran los medios de desconexión.",
-       "seq": 98
+       "seq": 99
       }
      ]
     },
@@ -59889,12 +59944,12 @@
       {
        "label": "Excepción 1",
        "text": "Cuando un motor reciba energía eléctrica desde más de una fuente, no se exigirá que el medio de desconexión de la fuente principal de alimentación al motor esté colocado inmediatamente al lado del motor, siempre que el medio de desconexión del controlador pueda ser bloqueado en posición abierta.",
-       "seq": 99
+       "seq": 100
       },
       {
        "label": "Excepción 2",
        "text": "No se exigirá un medio de desconexión separado para circuitos de control remoto de  Clase 2 que cumplan con el Artículo 725, que no tengan más de 30 volts nominales, estén separados y no puestos a tierra.",
-       "seq": 100
+       "seq": 101
       }
      ]
     },
@@ -59909,7 +59964,7 @@
       {
        "label": "NOTA",
        "text": "se puede presentar resonancia eléctrica como resultado de la interacción de corrientes no sinusoidales de este tipo de carga con capacitores de corrección del factor de potencia.",
-       "seq": 101
+       "seq": 102
       }
      ],
      "exceptions": []
@@ -59932,7 +59987,7 @@
         {
          "label": "NOTA",
          "text": "El equipo de conversión de potencia puede tener valores nominales múltiples de potencia y corrientes de entradas correspondientes.",
-         "seq": 102
+         "seq": 103
         }
        ],
        "exceptions": [],
@@ -60054,7 +60109,7 @@
           {
            "label": "Excepción para (2)",
            "text": "Para las cargas de servicio continuo no se exigirá memoria de retención de la temperatura a la parada o la pérdida de la energía.",
-           "seq": 103
+           "seq": 104
           }
          ]
         },
@@ -60079,14 +60134,14 @@
           {
            "label": "NOTA",
            "text": "La relación entre la corriente del motor y la temperatura del motor cambia cuando el motor es operado por un accionamiento de velocidad ajustable. En algunas aplicaciones, el sobrecalentamiento de los motores se puede presentar cuando operan a velocidad reducida, incluso en niveles de corriente menores a la corriente nominal de plena carga de los motores. El sobrecalentamiento puede ser el resultado de la reducida refrigeración disminuida del motor cuando el ventilador montado en su eje funciona a una velocidad menor de las revoluciones por minuto de la placa de características. Como parte del análisis para determinar si se producirá sobrecalentamiento, es necesario considerar las curvas de capacidad de par continuo del motor dadas las condiciones la aplicación. Esto facilitará el determinar si la protección contra sobrecarga del motor podrá, por si misma, brindar la protección contra el sobrecalentamiento. Estos requisitos de protección contra el sobrecalentamiento están previstos únicamente para aplicaciones en las que se usan accionamientos de velocidad ajustable, tal como se define en 430-2. Para motores que emplean sistemas externos de refrigeración por líquido o aire forzado, se puede presentar sobretemperatura si el sistema de refrigeración no está funcionando.",
-           "seq": 104
+           "seq": 105
           }
          ],
          "exceptions": [],
          "parrafos": [
           {
            "text": "Aunque este problema no es único de las aplicaciones de velocidad ajustable, con más frecuencia se encuentran motores con refrigeración externa con tales aplicaciones. En estos casos, se recomienda la protección contra sobretemperatura que usa la detección directa de la temperatura [por ejemplo, 430-126(a)(1), (a)(3) o (a)(4)], o deben suministrar medios adicionales para garantizar que el sistema de refrigeración esté funcionando (detección de flujo o presión, enclavamiento del sistema de accionamiento de velocidad ajustable y el sistema de refrigeración, etc.)",
-           "seq": 105
+           "seq": 106
           }
          ]
         }
@@ -60190,7 +60245,7 @@
         {
          "label": "Excepción",
          "text": "Cuando un motor sea crítico para una operación y el motor deba funcionar hasta que falle, si fuera necesario, para evitar un riesgo mayor a las personas, se permitirá conectar el dispositivo de detección a un indicador o alarma supervisados, en lugar de interrumpir el circuito del motor.",
-         "seq": 106
+         "seq": 107
         }
        ],
        "title": "Generalidades"
@@ -60302,7 +60357,7 @@
           {
            "label": "Excepción",
            "text": "Se permitirá el recierre automático de un circuito cuando el circuito esté expuesto a fallas transitorias y cuando su recierre automático no cree peligro para las personas.",
-           "seq": 107
+           "seq": 108
           }
          ],
          "title": "Recierre"
@@ -60395,7 +60450,7 @@
         {
          "label": "Excepción",
          "text": "No se exigirá que las partes vivas de los motores que operan a más de 50 volts entre terminales, tengan protección adicional para motores estacionarios que tienen conmutadores, colectores y montajes de escobillas ubicados dentro de los soportes del extremo del motor y no conectados conductivamente a circuitos de alimentación que operan a más de 150 volts a tierra.",
-         "seq": 108
+         "seq": 109
         }
        ]
       }
@@ -60414,7 +60469,7 @@
       {
        "label": "NOTA",
        "text": "En cuanto al espacio de trabajo, véase 110-26 y 110-34.",
-       "seq": 109
+       "seq": 110
       }
      ],
      "exceptions": []
@@ -60492,24 +60547,24 @@
       {
        "label": "NOTA 1",
        "text": "Para la puesta a tierra de aparatos portátiles en lugares no residenciales, véase 250-114(4).",
-       "seq": 110
+       "seq": 111
       },
       {
        "label": "NOTA 2",
        "text": "Para el color de los conductores de puesta a tierra de los equipos, véase 250-119(c).",
-       "seq": 111
+       "seq": 112
       }
      ],
      "exceptions": [
       {
        "label": "Excepción 1",
        "text": "No se exigirá que las herramientas aprobadas accionadas por motor, los aparatos aprobados accionados por motor y el equipo aprobado accionado por motor estén puestos a tierra si están protegidos por un sistema de doble aislamiento o su equivalente. El equipo con doble aislamiento debe estar marcado distintivamente.",
-       "seq": 112
+       "seq": 113
       },
       {
        "label": "Excepción 2",
        "text": "Las herramientas aprobadas accionadas por motor, los aparatos aprobados accionados por motor y el equipo aprobado accionado por motor conectados con cordón y clavija de conexión diferentes a los que se exige poner a tierra de acuerdo con 250-114.",
-       "seq": 113
+       "seq": 114
       }
      ]
     },
@@ -60525,7 +60580,7 @@
       {
        "label": "Excepción",
        "text": "No se exigirá poner a tierra los envolventes unidos a equipos portátiles no puestos a tierra.",
-       "seq": 114
+       "seq": 115
       }
      ]
     },
@@ -60547,7 +60602,7 @@
         {
          "label": "NOTA",
          "text": "Para los medios de conexión de la puesta a tierra del equipo en las cajas de terminales de los motores, véase 430-12(e).",
-         "seq": 115
+         "seq": 116
         }
        ],
        "exceptions": [],
@@ -60577,27 +60632,27 @@
        "tables": [
         {
          "id": "430-247",
-         "seq": 116
-        },
-        {
-         "id": "430-248",
          "seq": 117
         },
         {
-         "id": "430-249",
+         "id": "430-248",
          "seq": 118
         },
         {
-         "id": "430-250",
+         "id": "430-249",
          "seq": 119
         },
         {
-         "id": "430-251(a)",
+         "id": "430-250",
          "seq": 120
         },
         {
-         "id": "430-251(b)",
+         "id": "430-251(a)",
          "seq": 121
+        },
+        {
+         "id": "430-251(b)",
+         "seq": 122
         }
        ]
       }
@@ -71981,7 +72036,27 @@
            "label": "1",
            "kind": "paren",
            "level": 3,
-           "text": "Separación mínima de 50 milímetros de los conductores de cualquier circuito no intrínsecamente seguro. (2) Separación de los conductores de los circuitos no intrínsecamente seguros mediante una división metálica puesta a tierra de 0.91 milímetros de espesor o más. (3) Separación de los conductores de los circuitos no intrínsecamente seguros mediante una división aislante aprobada.",
+           "text": "Separación mínima de 50 milímetros de los conductores de cualquier circuito no intrínsecamente seguro.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "504-30(a)(2)(2)",
+           "label": "2",
+           "kind": "paren",
+           "level": 3,
+           "text": "Separación de los conductores de los circuitos no intrínsecamente seguros mediante una división metálica puesta a tierra de 0.91 milímetros de espesor o más.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "504-30(a)(2)(3)",
+           "label": "3",
+           "kind": "paren",
+           "level": 3,
+           "text": "Separación de los conductores de los circuitos no intrínsecamente seguros mediante una división aislante aprobada.",
            "children": [],
            "notes": [],
            "exceptions": []
@@ -73239,27 +73314,45 @@
        "label": "d",
        "kind": "alpha",
        "level": 1,
-       "text": "El marcado de temperatura que se especifica a continuación no debe exceder la temperatura de ignición del gas o vapor específico que se va a encontrar. NOTA Figura 505-9(c)(2) Marcado del equipo de zona El equipo eléctrico diseñado para uso en un intervalo de temperatura ambiente diferente de - 20 °C a + 40 °C se considera que es especial y entonces su intervalo de temperatura ambiente se debe marcar en el equipo, incluyendo el símbolo \"Ta\" o \"Tamb\", junto con el intervalo especial de temperatura ambiente en grados Celsius.",
-       "children": [],
-       "notes": [
+       "text": "El marcado de temperatura que se especifica a continuación no debe exceder la temperatura de ignición del gas o vapor específico que se va a encontrar. NOTA Figura 505-9(c)(2) Marcado del equipo de zona",
+       "children": [
         {
-         "label": "NOTA",
-         "text": "Como ejemplo, dicho marcado podría ser \"-30 °C a + 40 °C\".",
-         "seq": 47
+         "id": "505-9(d)(1)",
+         "label": "1",
+         "kind": "num",
+         "level": 2,
+         "text": "El equipo debe estar marcado indicando la temperatura de funcionamiento o la clase de temperatura referenciada para un ambiente a 40 °C, o la temperatura ambiente más alta si el equipo está dimensionado y marcado para una temperatura ambiente mayor que 40 °C. Si se da la clase de temperatura, se debe indicar usando la clase de temperatura (código T) que se muestra en la Tabla 505-9(d)(1). El equipo eléctrico diseñado para uso en un intervalo de temperatura ambiente entre – 20 °C y + 40 °C debe tener un marcado de no temperatura ambiente. El equipo eléctrico diseñado para uso en un intervalo de temperatura ambiente diferente de - 20 °C a + 40 °C se considera que es especial y entonces su intervalo de temperatura ambiente se debe marcar en el equipo, incluyendo el símbolo \"Ta\" o \"Tamb\", junto con el intervalo especial de temperatura ambiente en grados Celsius.",
+         "children": [],
+         "notes": [
+          {
+           "label": "NOTA",
+           "text": "Como ejemplo, dicho marcado podría ser \"-30 °C a + 40 °C\".",
+           "seq": 47
+          }
+         ],
+         "exceptions": [
+          {
+           "label": "Excepción 1",
+           "text": "No se exigirá que los equipos del tipo no generador de calor, como por ejemplo los accesorios de tubo conduit, y los equipos del tipo generador de calor que tengan una temperatura máxima no mayor de 100 ºC, tengan marcada la temperatura de operación o la clase de temperatura.",
+           "seq": 48
+          },
+          {
+           "label": "Excepción 2",
+           "text": "Se permitirá que los equipos identificados para lugares Clase I, División 1 o División 2 de acuerdo con 505-20(b) y (d) estén marcados de acuerdo con 500-8(c) y la Tabla 500-8(c).",
+           "seq": 49
+          }
+         ],
+         "title": "Clasificación de temperatura",
+         "tables": [
+          {
+           "id": "505-9(d)(1)",
+           "seq": 50
+          }
+         ]
         }
        ],
-       "exceptions": [
-        {
-         "label": "Excepción 1",
-         "text": "No se exigirá que los equipos del tipo no generador de calor, como por ejemplo los accesorios de tubo conduit, y los equipos del tipo generador de calor que tengan una temperatura máxima no mayor de 100 ºC, tengan marcada la temperatura de operación o la clase de temperatura.",
-         "seq": 48
-        },
-        {
-         "label": "Excepción 2",
-         "text": "Se permitirá que los equipos identificados para lugares Clase I, División 1 o División 2 de acuerdo con 505-20(b) y (d) estén marcados de acuerdo con 500-8(c) y la Tabla 500-8(c).",
-         "seq": 49
-        }
-       ],
+       "notes": [],
+       "exceptions": [],
        "title": "Temperatura Clase I",
        "figures": [
         {
@@ -73274,10 +73367,6 @@
         {
          "id": "505-9(c)(2)(4)",
          "seq": 46
-        },
-        {
-         "id": "505-9(d)(1)",
-         "seq": 50
         }
        ]
       },
@@ -85008,78 +85097,101 @@
      "text": "Se permitirá que los circuitos de control estén con otros circuitos como se especifica en (a) y (b) a continuación).",
      "children": [
       {
-       "id": "522-24(1)",
-       "label": "1",
-       "kind": "num",
+       "id": "522-24(a)",
+       "label": "a",
+       "kind": "alpha",
        "level": 1,
-       "text": "Se permitirá que los circuitos de control y los circuitos de fuerza ocupen el mismo cable, envolvente o canalización únicamente cuando el equipo alimentado esté funcionalmente asociado.",
+       "text": "Se permitirá que los circuitos de control ocupen el mismo cable, charola portacables, envolvente o canalización sin considerar si los circuitos individuales son de corriente alterna o de corriente continua, siempre que todos los conductores estén aislados para la tensión máxima de cualquier conductor en el cable, charola portacables, envolvente o canalización.",
        "children": [],
        "notes": [],
        "exceptions": [],
-       "title": "En un cable, envolvente o canalización"
+       "title": "Dos o más circuitos de control"
       },
       {
-       "id": "522-24(2)",
-       "label": "2",
-       "kind": "num",
+       "id": "522-24(b)",
+       "label": "b",
+       "kind": "alpha",
        "level": 1,
-       "text": "Se permitirá que los circuitos de control y los circuitos de fuerza se instalen en centros de control ensamblados en fábrica o en campo.",
-       "children": [],
-       "notes": [],
-       "exceptions": [],
-       "title": "En centros de control ensamblados en fábrica o en campo"
-      },
-      {
-       "id": "522-24(3)",
-       "label": "3",
-       "kind": "num",
-       "level": 1,
-       "text": "Se permitirá que los circuitos de control y los circuitos de fuerza se instalen como conductores subterráneos en un pozo de inspección, de acuerdo con una de las siguientes condiciones:",
+       "text": "Se permitirá que los circuitos de control se instalen con los conductores de fuerza tal como se especifica en (1) a (3) siguientes:",
        "children": [
         {
-         "id": "522-24(3)(1)",
+         "id": "522-24(b)(1)",
          "label": "1",
-         "kind": "paren",
+         "kind": "num",
          "level": 2,
-         "text": "Los conductores del circuito de control o de fuerza estén en un cable con envolvente metálica o un cable tipo UF.",
+         "text": "Se permitirá que los circuitos de control y los circuitos de fuerza ocupen el mismo cable, envolvente o canalización únicamente cuando el equipo alimentado esté funcionalmente asociado.",
          "children": [],
          "notes": [],
-         "exceptions": []
+         "exceptions": [],
+         "title": "En un cable, envolvente o canalización"
         },
         {
-         "id": "522-24(3)(2)",
+         "id": "522-24(b)(2)",
          "label": "2",
-         "kind": "paren",
+         "kind": "num",
          "level": 2,
-         "text": "Los conductores estén separados permanentemente de los conductores de fuerza por un elemento no conductor continuo fijado firmemente, tal como tubería flexible, además del aislamiento del conductor.",
+         "text": "Se permitirá que los circuitos de control y los circuitos de fuerza se instalen en centros de control ensamblados en fábrica o en campo.",
          "children": [],
          "notes": [],
-         "exceptions": []
+         "exceptions": [],
+         "title": "En centros de control ensamblados en fábrica o en campo"
         },
         {
-         "id": "522-24(3)(3)",
+         "id": "522-24(b)(3)",
          "label": "3",
-         "kind": "paren",
+         "kind": "num",
          "level": 2,
-         "text": "Los conductores estén separados permanente y eficazmente de los conductores de fuerza y estén sostenidos fijamente a bastidores, aisladores u otros soportes aprobados.",
-         "children": [],
+         "text": "Se permitirá que los circuitos de control y los circuitos de fuerza se instalen como conductores subterráneos en un pozo de inspección, de acuerdo con una de las siguientes condiciones:",
+         "children": [
+          {
+           "id": "522-24(b)(3)(1)",
+           "label": "1",
+           "kind": "paren",
+           "level": 3,
+           "text": "Los conductores del circuito de control o de fuerza estén en un cable con envolvente metálica o un cable tipo UF.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "522-24(b)(3)(2)",
+           "label": "2",
+           "kind": "paren",
+           "level": 3,
+           "text": "Los conductores estén separados permanentemente de los conductores de fuerza por un elemento no conductor continuo fijado firmemente, tal como tubería flexible, además del aislamiento del conductor.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "522-24(b)(3)(3)",
+           "label": "3",
+           "kind": "paren",
+           "level": 3,
+           "text": "Los conductores estén separados permanente y eficazmente de los conductores de fuerza y estén sostenidos fijamente a bastidores, aisladores u otros soportes aprobados.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          },
+          {
+           "id": "522-24(b)(3)(4)",
+           "label": "4",
+           "kind": "paren",
+           "level": 3,
+           "text": "En charolas portacables, cuando los conductores del circuito de control y los conductores de fuerza que no están funcionalmente asociados a ellos, estén separados por una barrera fija y sólida de un material compatible con la charola portacables, o cuando los conductores del circuito de control o de fuerza están en un cable con envolvente metálica.",
+           "children": [],
+           "notes": [],
+           "exceptions": []
+          }
+         ],
          "notes": [],
-         "exceptions": []
-        },
-        {
-         "id": "522-24(3)(4)",
-         "label": "4",
-         "kind": "paren",
-         "level": 2,
-         "text": "En charolas portacables, cuando los conductores del circuito de control y los conductores de fuerza que no están funcionalmente asociados a ellos, estén separados por una barrera fija y sólida de un material compatible con la charola portacables, o cuando los conductores del circuito de control o de fuerza están en un cable con envolvente metálica.",
-         "children": [],
-         "notes": [],
-         "exceptions": []
+         "exceptions": [],
+         "title": "En un pozo de inspección"
         }
        ],
        "notes": [],
        "exceptions": [],
-       "title": "En un pozo de inspección"
+       "title": "Circuitos de control con circuitos de fuerza"
       }
      ],
      "notes": [],
@@ -112840,7 +112952,7 @@
        "label": "c",
        "kind": "alpha",
        "level": 1,
-       "text": "Los cables y cordones flexibles usados para conectar las partes móviles de orientación de los módulos fotovoltaicos, deben cumplir lo establecido en el Artículo 400 y deben ser de un tipo identificado como cordones de uso pesado o como cables portátiles de alimentación; deben ser adecuados para uso extra rudo, estar aprobados para uso en exteriores y ser resistentes al agua y a la luz del sol. La ampacidad permisible debe cumplir lo establecido en la sección 400-5. Cuando la temperatura ambiente supere 30 °C, la ampacidad se debe reducir mediante los factores de corrección dados en la Tabla 690-31(c). mm² (18 AWG) aprobados para uso en intemperie y que sean resistentes a la luz del sol y al agua, para conexiones de módulos siempre que dichos cables cumplan los requisitos de ampacidad de 690-8. Se debe usar 310-15 para determinar los factores de ajuste y corrección de la ampacidad del cable.",
+       "text": "Los cables y cordones flexibles usados para conectar las partes móviles de orientación de los módulos fotovoltaicos, deben cumplir lo establecido en el Artículo 400 y deben ser de un tipo identificado como cordones de uso pesado o como cables portátiles de alimentación; deben ser adecuados para uso extra rudo, estar aprobados para uso en exteriores y ser resistentes al agua y a la luz del sol. La ampacidad permisible debe cumplir lo establecido en la sección 400-5. Cuando la temperatura ambiente supere 30 °C, la ampacidad se debe reducir mediante los factores de corrección dados en la Tabla 690-31(c).",
        "children": [],
        "notes": [],
        "exceptions": [],
@@ -112851,6 +112963,17 @@
          "seq": 23
         }
        ]
+      },
+      {
+       "id": "690-31(d)",
+       "label": "d",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Se permiten cables monoconductores de tamaño nominal de 1.31 mm² (16 AWG) y 0.824 mm² (18 AWG) aprobados para uso en intemperie y que sean resistentes a la luz del sol y al agua, para conexiones de módulos siempre que dichos cables cumplan los requisitos de ampacidad de 690-8. Se debe usar 310-15 para determinar los factores de ajuste y corrección de la ampacidad del cable.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Cables con conductores pequeños"
       },
       {
        "id": "690-31(e)",
@@ -138451,8 +138574,28 @@
      "title": "Generalidades",
      "part": "J",
      "page": 727,
-     "text": "pueden utilizar retenidas transversales y longitudinales opuestas a la vía.",
+     "text": "",
      "children": [
+      {
+       "id": "922-101(a)",
+       "label": "a",
+       "kind": "alpha",
+       "level": 1,
+       "text": "En postes de madera y de concreto se debe considerar que las retenidas llevan la resultante de la carga total en la dirección en que actúen.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
+      {
+       "id": "922-101(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "En líneas que crucen sobre vías férreas, las estructuras adyacentes deben resistir las cargas transversal y longitudinal señaladas en la parte H de este Artículo, con el factor de sobrecarga que corresponda a la clase \"A\" de construcción. Para cumplir este requisito se pueden utilizar retenidas transversales y longitudinales opuestas a la vía.",
+       "children": [],
+       "notes": [],
+       "exceptions": []
+      },
       {
        "id": "922-101(c)",
        "label": "c",

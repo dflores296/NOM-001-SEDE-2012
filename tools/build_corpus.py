@@ -66,7 +66,13 @@ RE_EXC     = re.compile(r'^(Excepci[oó]n[^:]{0,60}):\s*(.*)$')
 # como prosa dentro del inciso anterior, un nivel más abajo del que le toca.
 # Son 28 en todo el documento y 26 caen en el Artículo 800. Las formas
 # numeradas —«(1).» y «1).»— no traen la errata en ninguna página.
-RE_SUB_A   = re.compile(r'^([a-z])\)\.?\s+(.*)$')        # a)   y la errata «a).»
+#
+# La MAYÚSCULA es otra errata del mismo tipo y ocurre una sola vez en las 780
+# páginas: 220-14 imprime «J) Alojamientos» entre sus hermanos i) y k). Sin
+# admitirla, el inciso entero —y los tres numerales que enumera— se los tragaba
+# 220-14(i), que trata de otra cosa. La etiqueta se normaliza a minúscula al
+# construir el id, para que el identificador siga siendo 220-14(j).
+RE_SUB_A   = re.compile(r'^([A-Za-z])\)\.?\s+(.*)$')     # a)  «a).»  y la errata «J)»
 RE_SUB_N   = re.compile(r'^\((\d{1,2})\)\s+(.*)$')      # (1)
 RE_SUB_P   = re.compile(r'^(\d{1,2})\)\s+(.*)$')        # 1)  sin paréntesis inicial
 RE_SUB_L   = re.compile(r'^([a-z])\.\s+(.*)$')          # a.
@@ -134,6 +140,10 @@ RE_FIGCAP = re.compile(r'^Figura\s+\d{3}-\d{1,3}\s*[.\-]')
 # prosa del documento, así que la señal es limpia. Sirve para cerrar una NOTA o
 # una Excepción cuando lo que sigue ya no es suyo.
 SANGRIA_PARRAFO = (47.0, 68.8)
+# La continuación de un párrafo arranca más a la izquierda que su primer
+# renglón. Las tres son sangrías del cuerpo del documento: ninguna celda ni nota
+# al pie de una tabla cae en ellas.
+SANGRIA_CUERPO = (32.8,) + SANGRIA_PARRAFO
 
 
 def extract_images(pdf, img_dir):
@@ -176,8 +186,14 @@ RE_KEEP = re.compile(
     r'^(?:ARTICULO\s+\d{3}|[A-M]\.\s+[0-9A-ZÁÉÍÓÚÑ]|'
     r'\d{3}-\d{1,3}(?:\.\s*[0-9A-ZÁÉÍÓÚÑ]|\s+[A-ZÁÉÍÓÚÑ]))')
 
+# Un inciso cualquiera, para rescatarlo de la zona que ocupa una tabla. Ver
+# `rescatable()`: la zona de una tabla se dibuja con holgura y el primer
+# renglón del inciso que viene DESPUÉS cae dentro, así que se perdía.
+RE_INCISO = re.compile(r'^(?:[A-Za-z]\)\.?|\(\d{1,2}\)|\d{1,2}\)|[a-z]\.)\s+\S')
 
-def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):
+
+def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
+                  texto_tablas=None):
     """Devuelve (lineas, pagina, x0) del documento completo.
 
     La x0 es la sangría de la línea, y distingue un párrafo NUEVO (arranca en
@@ -186,13 +202,58 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):
     o una Excepción se traga el párrafo que viene después: todo lo que no trae
     marcador propio se le sigue pegando.
 
-    `skip` son zonas [(pagina, y0, y1)] que se omiten: las ocupa una tabla, y
+    `skip` son zonas [(pagina, y0, y1, id)] que se omiten: las ocupa una tabla, y
     su texto plano es una ristra de números sin estructura que, si se deja,
     reaparece como un párrafo ilegible dentro de la sección.
+
+    `texto_tablas` es {id: texto que la tabla SÍ capturó}, y es lo que sostiene
+    la regla de `rescatable()`.
     """
     import pymupdf
     doc = pymupdf.open(pdf) if pdf else None
     skip = skip or {}
+    texto_tablas = texto_tablas or {}
+
+    def suyo_de_la_tabla(txt, tid):
+        """¿Este renglón es texto que la tabla `tid` capturó de veras?
+
+        El marcador se quita con RE_INCISO y no partiendo por el primer ')': un
+        renglón de continuación puede traer un paréntesis a media frase —«usando
+        la clase de temperatura (código T)»— y partir por ahí dejaba un cuerpo
+        vacío, que se confundía con texto de la tabla y tiraba el renglón.
+        """
+        m = RE_INCISO.match(txt)
+        cuerpo = txt[m.end() - 1:] if m else txt
+        cuerpo = unaccent(cuerpo).strip().lower()[:40]
+        return not cuerpo or cuerpo in texto_tablas.get(tid, '')
+
+    def rescatable(txt, x0, tid):
+        """¿Esta línea es texto normativo que la tabla no se llevó?
+
+        La zona de una tabla se dibuja con holgura sobre su último renglón, y
+        eso alcanzaba a comerse el primer renglón del inciso siguiente. En
+        690-31 se perdió el inciso (d), "Cables con conductores pequeños": su
+        encabezado cayó dentro de la zona de la Tabla 690-31(c) y el resto del
+        párrafo quedó pegado a la cola de (c), partido a media frase. No era
+        texto mal colocado, era texto que ya no estaba en ninguna parte.
+
+        Se rescata con dos condiciones, y las dos hacen falta:
+
+        - La SANGRIA tiene que ser la de un párrafo del cuerpo. Las notas al pie
+          de las tablas del Capítulo 9 también abren con "(1)", "(2)", pero van
+          sangradas a la columna de su tabla (x=73, 86, 92, 113, 142...), no a
+          x=47. Sin este filtro se colaban 59 notas al pie como si fueran
+          incisos de la norma.
+        - La tabla NO debe haberse llevado ya ese texto. Las notas al pie de la
+          300-50 ("a) Profundidad mínima se define como...") y de la 314-16(a)
+          sí arrancan en x=47, y están capturadas como notas de su tabla: si
+          además se rescataran, saldrían dos veces.
+
+        Dicho de otro modo: una tabla solo puede tragarse el texto que de veras
+        capturó.
+        """
+        return (x0 in SANGRIA_PARRAFO and bool(RE_INCISO.match(txt))
+                and not suyo_de_la_tabla(txt, tid))
     imgs = {}
     for pno, y, name, w, h in (images or []):
         imgs.setdefault(pno, []).append((y, name, w, h))
@@ -219,11 +280,30 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):
         items.sort(key=lambda z: z[0])
 
         zonas = skip.get(pno, [])
+        # Tabla de cuya zona venimos rescatando un párrafo. Un inciso rescatado
+        # no cabe en un renglón: el de 505-9(d)(1) sigue tres renglones más y
+        # sin ellos la frase queda cortada a media línea («...la temperatura de
+        # funcionamiento o la clase de»). Mientras sigamos dentro de la MISMA
+        # zona, con sangría de cuerpo y con texto que la tabla no capturó, el
+        # párrafo continúa.
+        rescatando = None
         for y, txt, x0 in items:
-            if (not txt.startswith(IMG_MARK) and not txt.startswith(TBL_MARK)
-                    and not RE_KEEP.match(unaccent(txt.strip()))
-                    and any(a <= y <= b for a, b in zonas)):
-                continue
+            if not txt.startswith(IMG_MARK) and not txt.startswith(TBL_MARK):
+                limpio = txt.strip()
+                dentro = [tid for a, b, tid in zonas if a <= y <= b]
+                if not dentro:
+                    rescatando = None
+                elif RE_KEEP.match(unaccent(limpio)):
+                    rescatando = None
+                elif any(rescatable(limpio, x0, tid) for tid in dentro):
+                    rescatando = next(tid for tid in dentro
+                                      if rescatable(limpio, x0, tid))
+                elif (rescatando in dentro and x0 in SANGRIA_CUERPO
+                        and not suyo_de_la_tabla(limpio, rescatando)):
+                    pass                      # continúa el párrafo rescatado
+                else:
+                    rescatando = None
+                    continue
             if NOISE.match(txt.strip()):
                 continue
             lines.append(txt.rstrip())
@@ -329,6 +409,30 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
 
     def rank(kind, label):
         return int(label) if kind in ('num', 'paren') else ord(label)
+
+    def abre_lista(kind, label):
+        """¿Este marcador es el PRIMERO de una lista?
+
+        Una NOTA o Excepción que termina en dos puntos se queda con la
+        enumeración que anuncia, y eso es correcto casi siempre. Pero la
+        Excepción de 200-10(a) acaba diciendo "...como se exige en (b)
+        siguiente:" y lo que venía detrás NO era su lista: era el inciso
+        200-10(b), "Contactos, clavijas y conectores", texto normativo hermano
+        de (a). Quedaba enterrado dentro de la excepción, que es el mismo
+        defecto que escondía incisos dentro de una nota en el 800-113.
+
+        Lo que los separa es por dónde empieza la enumeración. La lista que
+        anuncia una anotación arranca siempre en su primer rótulo —(1) o a)—,
+        porque es una lista nueva. Un marcador que entra por la mitad no está
+        empezando nada: está continuando la estructura de fuera, como ese "b)"
+        que sigue al "a)" ya abierto. La NOTA 1 de 500-5(b)(1) enumera diez
+        lugares desde el (1) y se los queda; la Excepción de 200-10(a) se
+        encuentra un "b)" y suelta.
+
+        Solo decide el PRIMER elemento: una vez abierta la lista, el resto la
+        continúa por tipo de marcador, como hasta ahora.
+        """
+        return label == ('1' if kind in ('num', 'paren') else 'a')
 
     def new_sub(label, kind, title_text):
         """Crea un inciso al nivel que corresponde y lo engancha al padre.
@@ -521,6 +625,9 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
         else:
             m = None
         if m and sec is not None:
+            # La etiqueta se normaliza: la única mayúscula del documento es la
+            # errata «J)» de 220-14, y su id canónico es 220-14(j).
+            etiqueta = m.group(1).lower() if kind == 'alpha' else m.group(1)
             # Mientras la enumeración conserve el mismo tipo de marcador con
             # que arrancó, sigue perteneciendo a la nota; un marcador de otro
             # tipo indica que la nota terminó y vuelve a mandar la estructura.
@@ -535,14 +642,15 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
             commit()
             if (annot[0] is not None
                     and annot[0].get('text', '').rstrip().endswith(':')
-                    and (annot[1] is None or annot[1] == kind)):
+                    and (annot[1] == kind
+                         or (annot[1] is None and abre_lista(kind, etiqueta)))):
                 annot[1] = kind
                 annot[0].setdefault('items', []).append(
-                    {'label': m.group(1), 'text': ln[m.start(2):].strip()})
+                    {'label': etiqueta, 'text': ln[m.start(2):].strip()})
                 target = annot[0]['items'][-1]
                 continue
             annot[0], annot[1], annot[2] = None, None, False
-            if new_sub(m.group(1), kind, ln[m.start(2):].strip()):
+            if new_sub(etiqueta, kind, ln[m.start(2):].strip()):
                 continue
 
         # --- texto corrido
@@ -577,7 +685,46 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
         buf.append(ln)
 
     commit()
+    for s_ in art['sections']:
+        partir_marcadores_embebidos(s_)
     return art
+
+
+def partir_marcadores_embebidos(nodo):
+    """Separa el inciso que el DOF imprimió dentro del párrafo del anterior.
+
+    504-30(a)(2) anuncia "...por uno de los métodos (1) a (4) siguientes:" y
+    luego imprime tres de ellos en un solo párrafo: "(1) Separación mínima de 50
+    milímetros... (2) Separación... mediante una división metálica... (3)
+    Separación... mediante una división aislante aprobada." Solo el (1) abre
+    renglón, así que el (2) y el (3) —dos métodos normativos completos— quedaban
+    dentro del texto del (1), y la sección saltaba de (1) a (4).
+
+    El corte se hace únicamente cuando el marcador CONTINUA la secuencia del
+    inciso que lo contiene, va tras punto y seguido y abre con mayúscula. Con
+    esas tres condiciones el patrón aparece una sola vez en las 780 páginas, así
+    que no toca ninguna de las miles de referencias cruzadas del tipo
+    "como se establece en (1) o (2) siguientes".
+    """
+    hijos = nodo.get('children') or []
+    i = 0
+    while i < len(hijos):
+        n = hijos[i]
+        if (n.get('kind') in ('paren', 'num') and str(n.get('label', '')).isdigit()
+                and not n.get('children')):
+            sig = int(n['label']) + 1
+            txt = n.get('text', '')
+            m = re.search(r'\.\s+\(%d\)\s+(?=[A-ZÁÉÍÓÚÑ])' % sig, txt)
+            if m:
+                n['text'] = txt[:m.start() + 1].strip()
+                hijos.insert(i + 1, {
+                    'id': nodo['id'] + ('(%d)' % sig), 'label': str(sig),
+                    'kind': n['kind'], 'level': n.get('level'),
+                    'text': txt[m.end():].strip(),
+                    'children': [], 'notes': [], 'exceptions': []})
+        i += 1
+    for h in hijos:
+        partir_marcadores_embebidos(h)
 
 
 # ------------------------------------------------------------------ definiciones
@@ -669,16 +816,31 @@ def main():
     rpath = os.path.join(out, 'tablas_regiones.json')
     if os.path.exists(rpath):
         for r in sorted(json.load(open(rpath)), key=lambda r: (r['page'], r['y0'])):
-            skip.setdefault(r['page'], []).append((r['y0'], r['y1']))
+            skip.setdefault(r['page'], []).append((r['y0'], r['y1'], r['id']))
             if r['id'] not in vistas:      # solo la primera página de la tabla
                 vistas.add(r['id'])
                 marcas.append((r['page'], r['y0'], r.get('article'), r['id']))
+
+    # Lo que cada tabla capturó de veras: celdas, notas, título y encabezado.
+    # Es contra esto que se decide si un renglón que cae en la zona de una tabla
+    # es suyo o es texto normativo que la zona se está comiendo. Ver
+    # `rescatable()` en build_linemap.
+    texto_tablas = {}
+    tpath = os.path.join(out, 'tablas.json')
+    if os.path.exists(tpath):
+        for t in json.load(open(tpath)):
+            trozos = [t.get('title'), t.get('intro')]
+            trozos.extend(t.get('notes') or [])
+            for fila in t.get('rows') or []:
+                trozos.extend(c.get('t') for c in fila)
+            texto_tablas[t['id']] = unaccent(
+                ' '.join(x for x in trozos if x)).lower()
 
     img_dir = os.environ.get('NOM_IMG_DIR', 'site/public/img')
     images = extract_images(pdf, img_dir)
 
     lines, pageno, sangria = build_linemap(pages, pdf=pdf, skip=skip, images=images,
-                                  marcas=marcas)
+                                  marcas=marcas, texto_tablas=texto_tablas)
     toc, chapters, titulos = parse_toc(pages)
     starts = find_articles(lines, pageno, toc)
 

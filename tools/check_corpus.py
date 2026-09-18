@@ -8,7 +8,7 @@ degrada, para que un cambio en los patrones no llegue al sitio publicado.
 Los umbrales son deliberadamente cercanos a los valores actuales: la norma no
 cambia, así que cualquier variación significa que el parser se rompió.
 """
-import json, os, sys
+import json, os, re, sys
 from collections import Counter
 
 # La captura manual de las tablas es la fuente de verdad; esto la protege.
@@ -28,10 +28,72 @@ MIN_TABLAS = 200
 MIN_TABLAS_FIABLES = 130
 
 
+ABC = 'abcdefghijklmnopqrstuvwxyz'
+
+# Huecos de numeración que trae el propio DOF. Se listan uno por uno, con lo
+# que dice el PDF, porque la diferencia entre un salto impreso y un inciso que
+# el parser perdió no se puede deducir del corpus: en los dos casos falta una
+# letra. Contrastados contra el PDF; si alguno se "arregla" solo, es que el
+# parser empezó a inventar.
+HUECOS_DEL_DOF = {
+    # 225-30 y 230-2 anuncian en su propio encabezado los incisos que tienen:
+    # "a no ser que se permita en las disposiciones de (a), (c), (d) y (e)".
+    '225-30': ['b'],
+    '230-2': ['b'],
+    # 240-4(d) promete "(1) a (7)" y solo imprime 1, 2, 3, 5 y 7. Errata del
+    # DOF del mismo tipo que las de la Tabla 220-42 y la 430-250.
+    '240-4(d)': [4, 6],
+}
+
+
 def walk(n):
     yield n
     for c in n.get('children', []):
         yield from walk(c)
+
+
+def huecos_de_numeracion(nodo):
+    """Incisos que faltan en medio de una enumeración.
+
+    Es el detector que habría cazado solo lo del 800-113, donde el inciso (e)
+    colgaba de (d) porque el DOF lo imprime «e).» con un punto de más: la
+    sección se quedaba con a, b, c, d, f... y ese salto es la huella que deja
+    un inciso mal colocado. Con la misma señal aparecieron 200-10(b), que
+    estaba enterrado dentro de una Excepción; 220-14(j), que el DOF imprime
+    «J)» en mayúscula; 690-31(d), cuyo texto se había perdido dentro de la zona
+    de una tabla; y 504-30(a)(2)(2) y (3), impresos a media línea.
+
+    No mira el PDF: solo comprueba que entre el primer y el último rótulo de
+    cada lista no falte ninguno. Un salto no siempre es un error —el DOF tiene
+    tres—, y por eso van en HUECOS_DEL_DOF con su razón.
+    """
+    falta = []
+    for n in walk(nodo):
+        hijos = n.get('children') or []
+        if len(hijos) < 2:
+            continue
+        suf = [h['id'][len(n['id']):] if h['id'].startswith(n['id']) else None
+               for h in hijos]
+        if not all(suf):
+            continue
+        nums = [re.fullmatch(r'\((\d+)\)', x) for x in suf]
+        if all(nums):
+            v = [int(m.group(1)) for m in nums]
+            hay = [x for x in range(v[0], v[-1] + 1) if x not in v]
+        else:
+            lets = [re.fullmatch(r'\(([a-z])\)|([a-z])\.', x) for x in suf]
+            if not all(lets):
+                continue
+            v = [(m.group(1) or m.group(2)) for m in lets]
+            if ABC.index(v[0]) > ABC.index(v[-1]):
+                continue
+            hay = [x for x in ABC[ABC.index(v[0]):ABC.index(v[-1]) + 1]
+                   if x not in v]
+        hay = [x for x in hay if x not in HUECOS_DEL_DOF.get(n['id'], [])]
+        if hay:
+            falta.append('%s (falta %s)' % (n['id'],
+                                            ', '.join(str(x) for x in hay)))
+    return falta
 
 
 def main():
@@ -80,6 +142,20 @@ def main():
         nums = [int(s['id'].split('-')[1]) for s in a['sections']]
         if any(nums[i] <= nums[i - 1] for i in range(1, len(nums))):
             fails.append('artículo %d: secciones fuera de orden' % a['num'])
+
+    # Incisos perdidos: un salto en la numeración es la única señal que deja un
+    # inciso que se quedó dentro de una nota, de una excepción o de la zona de
+    # una tabla. Ninguna cifra de cobertura lo delata, porque las palabras
+    # siguen en el corpus, solo que colgando del nodo equivocado --o, en el
+    # caso de 690-31(d), ya no están en ninguna parte.
+    saltos = []
+    for a in corpus['articles']:
+        for s_ in a['sections']:
+            saltos.extend(huecos_de_numeracion(s_))
+    if saltos:
+        fails.append('%d hueco(s) de numeración; si el DOF los imprime así, '
+                     'anótalos en HUECOS_DEL_DOF con la cita: %s'
+                     % (len(saltos), ', '.join(saltos[:8])))
 
     tpath = os.path.join(d, 'tablas.json')
     if os.path.exists(tpath):
