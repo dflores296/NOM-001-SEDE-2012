@@ -123,6 +123,12 @@ TBL_MARK = '\x00TBL:'
 # ("...como se indica en la Figura 310-60") y no la hace coincidir.
 RE_FIGCAP = re.compile(r'^Figura\s+\d{3}-\d{1,3}\s*[.\-]')
 
+# Sangrías con las que arranca un párrafo NUEVO en este PDF. La continuación de
+# un párrafo va en 32.8, y entre las dos se reparte el 85% de las líneas de
+# prosa del documento, así que la señal es limpia. Sirve para cerrar una NOTA o
+# una Excepción cuando lo que sigue ya no es suyo.
+SANGRIA_PARRAFO = (47.0, 68.8)
+
 
 def extract_images(pdf, img_dir):
     """Guarda las imágenes del PDF y devuelve [(pagina, y, archivo, w, h)]."""
@@ -166,7 +172,13 @@ RE_KEEP = re.compile(
 
 
 def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):
-    """Devuelve (lineas, pagina_de_cada_linea) del documento completo.
+    """Devuelve (lineas, pagina, x0) del documento completo.
+
+    La x0 es la sangría de la línea, y distingue un párrafo NUEVO (arranca en
+    x=47.0, o en 68.8 si va anidado) de la continuación del párrafo anterior
+    (x=32.8). El texto plano de get_text() no la conserva, y sin ella una NOTA
+    o una Excepción se traga el párrafo que viene después: todo lo que no trae
+    marcador propio se le sigue pegando.
 
     `skip` son zonas [(pagina, y0, y1)] que se omiten: las ocupa una tabla, y
     su texto plano es una ristra de números sin estructura que, si se deja,
@@ -182,26 +194,26 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):
     for pno, y, art, tid in (marcas or []):
         tbls.setdefault(pno, []).append((y, art, tid))
 
-    lines, pageno = [], []
+    lines, pageno, sangria = [], [], []
     for pno in range(1, len(pages) + 1):
         items = []
         if doc is not None:
             for blk in doc[pno - 1].get_text('dict')['blocks']:
                 for ln in blk.get('lines', []):
                     txt = fix_glifos(''.join(sp['text'] for sp in ln['spans']))
-                    items.append((ln['bbox'][1], txt))
+                    items.append((ln['bbox'][1], txt, round(ln['bbox'][0], 1)))
         else:
-            items = [(0, t) for t in pages[pno - 1].split('\n')]
+            items = [(0, t, 0.0) for t in pages[pno - 1].split('\n')]
         for y, name, w, h in imgs.get(pno, []):
-            items.append((y, '%s%s:%d:%d' % (IMG_MARK, name, w, h)))
+            items.append((y, '%s%s:%d:%d' % (IMG_MARK, name, w, h), 0.0))
         # justo por encima de su primera línea, para que caiga en el nodo que
         # la precede y no en el siguiente
         for y, art, tid in tbls.get(pno, []):
-            items.append((y - 0.01, '%s%s|%s' % (TBL_MARK, art or 0, tid)))
+            items.append((y - 0.01, '%s%s|%s' % (TBL_MARK, art or 0, tid), 0.0))
         items.sort(key=lambda z: z[0])
 
         zonas = skip.get(pno, [])
-        for y, txt in items:
+        for y, txt, x0 in items:
             if (not txt.startswith(IMG_MARK) and not txt.startswith(TBL_MARK)
                     and not RE_KEEP.match(unaccent(txt.strip()))
                     and any(a <= y <= b for a, b in zonas)):
@@ -210,7 +222,8 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None):
                 continue
             lines.append(txt.rstrip())
             pageno.append(pno)
-    return lines, pageno
+            sangria.append(x0)
+    return lines, pageno, sangria
 
 
 # ------------------------------------------------------------------ índice (TOC)
@@ -271,7 +284,7 @@ def flush(buf):
     return re.sub(r'\s+', ' ', ' '.join(buf)).strip()
 
 
-def parse_article(num, lines, pageno, lo, hi):
+def parse_article(num, lines, pageno, lo, hi, sangria=None):
     """Parsea un artículo devolviendo partes, secciones e incisos anidados."""
     RE_SEC = sec_re(num)
     art = {'parts': [], 'sections': []}
@@ -291,7 +304,12 @@ def parse_article(num, lines, pageno, lo, hi):
     # NOTA, no incisos del artículo. Meterlos al árbol desplazaba los "1)2)3)"
     # reales, y "Factores de corrección" acababa en 310-15(b)(3)(2) en vez de
     # en 310-15(b)(2).
-    annot = [None, None]
+    # annot[2]: la anotación anunció una lista con dos puntos, así que los
+    # renglones sangrados que siguen son SUYOS y no hay que cortarle. Se decide
+    # una sola vez, en el primer renglón de la lista: después el texto ya
+    # termina en ';' y el indicio se habría perdido —la NOTA de 300-17 enumera
+    # 27 secciones, una por renglón—.
+    annot = [None, None, False]
     # última figura vista, para poder engancharle su leyenda
     ultima_fig = [None]
 
@@ -412,7 +430,7 @@ def parse_article(num, lines, pageno, lo, hi):
                 continue
             last_sec = n_sec
             commit()
-            annot[0] = annot[1] = None
+            annot[0], annot[1], annot[2] = None, None, False
             sid = m.group(1)
             rest = ln[len(m.group(1)) + 1:].lstrip()
             if sid in TITULOS_SIN_PUNTO:
@@ -452,7 +470,7 @@ def parse_article(num, lines, pageno, lo, hi):
                         'seq': next(seq)}
                 owner.setdefault('notes', []).append(node)
                 target = node
-                annot[0], annot[1] = node, None
+                annot[0], annot[1], annot[2] = node, None, False
             continue
 
         # --- Excepción (idem: la continuación pertenece a la excepción)
@@ -466,7 +484,7 @@ def parse_article(num, lines, pageno, lo, hi):
                         'seq': next(seq)}
                 owner.setdefault('exceptions', []).append(node)
                 target = node
-                annot[0], annot[1] = node, None
+                annot[0], annot[1], annot[2] = node, None, False
             continue
 
         # --- término de una sección de definiciones
@@ -513,11 +531,28 @@ def parse_article(num, lines, pageno, lo, hi):
                     {'label': m.group(1), 'text': ln[m.end(1) + 1:].strip()})
                 target = annot[0]['items'][-1]
                 continue
-            annot[0] = annot[1] = None
+            annot[0], annot[1], annot[2] = None, None, False
             if new_sub(m.group(1), kind, ln[m.end(1) + 1:].strip()):
                 continue
 
         # --- texto corrido
+        #
+        # Una NOTA o Excepción abierta se queda con todo lo que no traiga
+        # marcador propio, y eso incluía el párrafo siguiente: la Excepción de
+        # 922-56(b) se llevaba «Para claros a nivel...», que en el PDF va
+        # aparte. La sangría los distingue. Se respeta el caso de la nota que
+        # termina en dos puntos, porque ahí lo que sigue SÍ es suyo: es la
+        # enumeración que anuncia.
+        if (annot[0] is not None and target is annot[0]
+                and sangria is not None
+                and sangria[i] in SANGRIA_PARRAFO and not annot[2]):
+            commit()
+            if annot[0].get('text', '').rstrip().endswith(':'):
+                annot[2] = True
+            else:
+                annot[0], annot[1], annot[2] = None, None, False
+                target = stack[-1]['node'] if stack else sec
+
         buf.append(ln)
 
     commit()
@@ -620,7 +655,7 @@ def main():
     img_dir = os.environ.get('NOM_IMG_DIR', 'site/public/img')
     images = extract_images(pdf, img_dir)
 
-    lines, pageno = build_linemap(pages, pdf=pdf, skip=skip, images=images,
+    lines, pageno, sangria = build_linemap(pages, pdf=pdf, skip=skip, images=images,
                                   marcas=marcas)
     toc, chapters, titulos = parse_toc(pages)
     starts = find_articles(lines, pageno, toc)
@@ -642,7 +677,7 @@ def main():
                               {'letter': 'B', 'title': 'Definiciones de más de 600 volts'}],
                     'sections': []}
         else:
-            body = parse_article(n, lines, pageno, lo, hi)
+            body = parse_article(n, lines, pageno, lo, hi, sangria)
 
         refs = set()
         for s in body['sections']:
