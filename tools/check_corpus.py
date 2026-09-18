@@ -40,8 +40,14 @@ HUECOS_DEL_DOF = {
     # "a no ser que se permita en las disposiciones de (a), (c), (d) y (e)".
     '225-30': ['b'],
     '230-2': ['b'],
-    # 240-4(d) promete "(1) a (7)" y solo imprime 1, 2, 3, 5 y 7. Errata del
-    # DOF del mismo tipo que las de la Tabla 220-42 y la 430-250.
+    # 240-4(d) anuncia en su propio texto que la protección "no debe exceder
+    # lo exigido por (1) a (7)" y solo imprime 1, 2, 3, 5 y 7. No es una
+    # renumeración: FALTA CONTENIDO. Los cinco impresos son todos de cobre
+    # —18, 16, 14, 12 y 10 AWG— y los dos huecos caen entre 14 y 12 y entre 12
+    # y 10, es decir intercalados en la serie, no al final. Quien consulte esta
+    # sección para un conductor que no sea de cobre no encontrará su renglón, y
+    # no porque el parser lo perdiera. Errata del DOF del mismo tipo que las de
+    # la Tabla 220-42 y la 430-250.
     '240-4(d)': [4, 6],
 }
 

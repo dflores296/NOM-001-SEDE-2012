@@ -41,7 +41,7 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | Definiciones | 185 |
 | Referencias enlazadas | 4 618 |
 | Referencias rotas | 0 |
-| Cobertura del texto | 100 % |
+| Cobertura del texto | 31 858 de 31 859 renglones |
 | Tablas reconstruidas | 225 |
 | Tablas contrastadas contra el PDF | 225 |
 

@@ -140,6 +140,10 @@ RE_FIGCAP = re.compile(r'^Figura\s+\d{3}-\d{1,3}\s*[.\-]')
 # prosa del documento, así que la señal es limpia. Sirve para cerrar una NOTA o
 # una Excepción cuando lo que sigue ya no es suyo.
 SANGRIA_PARRAFO = (47.0, 68.8)
+
+# Sangría de continuación: un renglón que va aquí es la segunda línea de un
+# párrafo, no el principio de nada.
+SANGRIA_CONT = 32.8
 # La continuación de un párrafo arranca más a la izquierda que su primer
 # renglón. Las tres son sangrías del cuerpo del documento: ninguna celda ni nota
 # al pie de una tabla cae en ellas.
@@ -549,10 +553,17 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
             name, w, h = ln[len(IMG_MARK):].rsplit(':', 2)
             owner = stack[-1]['node'] if stack else sec
             if owner is not None:
+                # Mismo trato que una tabla: lo acumulado precede a la figura y
+                # lo que siga va a `parrafos`, o se pintaría por encima de ella.
+                commit()
                 fig = {'src': name, 'w': int(w), 'h': int(h),
                        'page': pageno[i], 'seq': next(seq)}
                 owner.setdefault('figures', []).append(fig)
                 ultima_fig[0] = fig
+                annot[0], annot[1], annot[2] = None, None, False
+                node = {'text': '', 'seq': next(seq)}
+                owner.setdefault('parrafos', []).append(node)
+                target = node
             continue
 
         # --- leyenda de una figura: "Figura 310-60.- Dimensiones de..."
@@ -672,6 +683,21 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
                 break
         else:
             m = None
+        # Una frase que ANUNCIA una lista se parte de renglón como cualquier
+        # otra, y a veces justo antes del marcador: 725-121(a) dice "debe ser
+        # una de las fuentes (1), (2), (3), (4) ó (5) siguientes" y la segunda
+        # línea abre con "(4) ó (5) siguientes.". Tomarla por inciso creaba un
+        # nodo fantasma del que colgaban los incisos de verdad.
+        #
+        # La sangría lo distingue —esa línea va en 32.8, no en 47.0— pero no
+        # basta: hay cuatro incisos legítimos impresos ahí (pág. 158). Lo que
+        # los separa es que el inciso real abre en mayúscula y la continuación
+        # sigue la frase en minúscula. Con las dos condiciones se descartan 16
+        # renglones en las 780 páginas y no se pierde ninguno de los cuatro.
+        if (m is not None and sangria is not None
+                and sangria[i] == SANGRIA_CONT
+                and not ln[m.start(2):m.start(2) + 1].isupper()):
+            m = None
         if m and sec is not None:
             # La etiqueta se normaliza: la única mayúscula del documento es la
             # errata «J)» de 220-14, y su id canónico es 220-14(j).
@@ -688,7 +714,21 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
             # El volcado va ANTES de mirar los dos puntos: la nota puede
             # ocupar varias líneas y su texto no está completo hasta aquí.
             commit()
-            if (annot[0] is not None
+            # El marcador tiene que CONTINUAR la lista, no solo compartir su
+            # tipo. Si repite el número anterior o vuelve a empezar, la lista
+            # de la anotación terminó y lo que llega es del nodo: en
+            # 725-121(a) la NOTA enumera cuatro ejemplos y el «(4)» que sigue
+            # es el cuarto inciso de la sección, no un quinto ejemplo; en la
+            # Excepción de 250-32(b)(1) el «(1)» que sigue al «(3)» abre la
+            # lista del párrafo siguiente.
+            sigue = True
+            if annot[0] is not None and annot[0].get('items'):
+                prev = annot[0]['items'][-1].get('label', '')
+                if str(prev).isdigit() and str(etiqueta).isdigit():
+                    sigue = int(etiqueta) == int(prev) + 1
+                elif len(str(prev)) == 1 and len(str(etiqueta)) == 1:
+                    sigue = ord(str(etiqueta)) == ord(str(prev)) + 1
+            if (annot[0] is not None and sigue
                     and annot[0].get('text', '').rstrip().endswith(':')
                     and (annot[1] == kind
                          or (annot[1] is None and abre_lista(kind, etiqueta)))):
