@@ -9983,22 +9983,6 @@
   "chapter": 2,
   "page": 92
  },
- "250-32(b)(1)(1)": {
-  "kind": "inciso",
-  "id": "250-32(b)(1)(1)",
-  "title": "El tamaño requerido por 220-61.",
-  "article": 250,
-  "chapter": 2,
-  "page": 92
- },
- "250-32(b)(1)(2)": {
-  "kind": "inciso",
-  "id": "250-32(b)(1)(2)",
-  "title": "El tamaño requerido por 250-122.",
-  "article": 250,
-  "chapter": 2,
-  "page": 92
- },
  "250-32(b)(2)": {
   "kind": "inciso",
   "id": "250-32(b)(2)",
@@ -39935,6 +39919,14 @@
   "chapter": 4,
   "page": 336
  },
+ "450-4(b)": {
+  "kind": "inciso",
+  "id": "450-4(b)",
+  "title": "Transformador conectado en campo como autotransformador",
+  "article": 450,
+  "chapter": 4,
+  "page": 336
+ },
  "450-5": {
   "kind": "seccion",
   "id": "450-5",
@@ -49371,6 +49363,22 @@
   "kind": "inciso",
   "id": "515-8(a)(3)",
   "title": "Las áreas adicionales pueden ser clasificadas se requiera por la presencia de ot",
+  "article": 515,
+  "chapter": 5,
+  "page": 417
+ },
+ "515-8(b)": {
+  "kind": "inciso",
+  "id": "515-8(b)",
+  "title": "Aislamiento",
+  "article": 515,
+  "chapter": 5,
+  "page": 417
+ },
+ "515-8(c)": {
+  "kind": "inciso",
+  "id": "515-8(c)",
+  "title": "Alambrado no metálico",
   "article": 515,
   "chapter": 5,
   "page": 417

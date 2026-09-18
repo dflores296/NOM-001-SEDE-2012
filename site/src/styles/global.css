@@ -365,6 +365,10 @@ li.sub > .st { font-weight: 600; }
    que la distingue es su posición, no su rango. */
 .parr { margin: 0.6rem 0; }
 
+/* Un párrafo intercalado en la lista de una anotación: es prosa de la
+   anotación, no un elemento numerado, así que va sin viñeta ni sangría. */
+li.anot-parr { list-style: none; margin-left: -1rem; }
+
 /* referencias cruzadas dentro del texto */
 a.xref {
   font-family: var(--mono); font-size: 0.92em;
