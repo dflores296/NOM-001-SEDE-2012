@@ -65,7 +65,7 @@ bien, lo demás sale casi solo.
 ## Reconstruir todo desde el PDF
 
 ```bash
-pip install pymupdf
+pip install -r requirements.txt
 
 python3 tools/extract_index.py NOM-001-SEDE-2012.pdf INDICE.txt
 python3 tools/build_tables.py  NOM-001-SEDE-2012.pdf data/   # antes que el corpus
