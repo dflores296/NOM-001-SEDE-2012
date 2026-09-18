@@ -80,12 +80,18 @@ Excepción deliberada: **si la anotación termina en dos puntos, lo que sigue s�
 suyo** (es la enumeración que anuncia), y la decisión se toma una sola vez, en el
 primer renglón. La NOTA de 300-17 enumera 27 secciones y las conserva.
 
-### 3. `parrafos`: prosa posterior a una anotación
+### 3. `parrafos` y el `seq`: todo lo intercalado va en orden
 
-Un nodo tiene `text`, `notes` y `exceptions`, y se pintan en ese orden. La prosa
-que en el documento va **después** de una nota o excepción no cabe en `text`, así
-que vive en `parrafos`, cada bloque con su `seq`, y se intercala por ese mismo
-`seq`. Hoy son 66 nodos.
+Un nodo tiene `text`, `notes`, `exceptions` y `tables`, y el renderizador los
+pintaba en ese orden fijo. La prosa que en el documento va **después** de una
+nota, de una excepción o de una tabla no cabe en `text`, que se pinta primero.
+
+Vive en `parrafos`, cada bloque con su `seq`, y **notas, excepciones, tablas y
+párrafos se ordenan todos por ese `seq`**, que es su posición real en el PDF. Hoy
+son 83 nodos con `parrafos`.
+
+Si agregas otra cosa que se intercale, dale `seq` y métela en esa misma lista en
+los dos renderizadores. Las figuras todavía no participan.
 
 Si mudas texto de campo, **enséñale el campo nuevo a todo lo que lo lee**:
 `collect_refs` y el contador de cobertura en `build_corpus.py`, `node_text` en
@@ -165,35 +171,21 @@ Las cuatro están probadas: al romper algo a propósito, el build falla.
 
 Ninguno bloquea nada. En orden de valor:
 
-1. **La prosa que sigue a una tabla se pinta antes que ella: 12 nodos.** Es el
-   mismo defecto que ya se arregló para las anotaciones, en su variante de tabla.
-   Un nodo se pinta `text` → anotaciones → tablas → hijos, así que el texto que en
-   el documento va DESPUÉS de la tabla sale por encima. En `220-83(a)` la frase
-   «En los cálculos de la carga se debe incluir lo siguiente:» aparece antes de la
-   tabla que introduce; los otros once son `220-83(b)`, `220-86`, `225-60(a)`,
-   `430-22(e)`, `490-24`, `820-179(b)`, `922-10`, `922-13(b)(2)b.`, `922-83`,
-   `922-93(a)(1)` y `923-5(a)(5)`.
-
-   El arreglo es extender lo que ya existe: dar `seq` también a las tablas y
-   mandar a `parrafos` la prosa posterior, para que las tres cosas —anotaciones,
-   tablas y párrafos— se intercalen por el mismo criterio. Hoy las tablas no
-   participan del `seq`.
-
-2. **`240-4(d)`: los huecos 4 y 6 parecen contenido ausente, no renumeración.**
+1. **`240-4(d)`: los huecos 4 y 6 parecen contenido ausente, no renumeración.**
    Los cinco incisos impresos son todos de cobre (18, 16, 14, 12, 10 AWG) y los
    huecos caen justo donde irían las entradas de aluminio. Está anotado en
    `HUECOS_DEL_DOF` como salto de numeración; vale la pena precisar en el
    comentario que lo que falta es contenido, porque cambia cómo se lee.
 
-3. **`grid` tiene dos valores para lo mismo.** La reconstrucción escribe
+2. **`grid` tiene dos valores para lo mismo.** La reconstrucción escribe
    `"rejilla"` y las altas manuales `"dibujada"` (6 entradas). Hoy no afecta nada
    —solo lo lee una señal que no se muestra en tablas verificadas— pero es una
    trampa para el siguiente que escriba una condición sobre ese campo.
 
-4. **Cobertura: 31 858 de 31 859.** El renglón que falta es
+3. **Cobertura: 31 858 de 31 859.** El renglón que falta es
    `366-58. Conductores aislados.` El README redondea a «100 %».
 
-5. **104 identificadores dejaron de existir y hay 169 nuevos.** Al destapar
+4. **104 identificadores dejaron de existir y hay 169 nuevos.** Al destapar
    estructura mal anidada, ids como `800-113(d)(3)c.a.` pasaron a
    `800-113(d)(3)c.(3)a.`. El grueso es del artículo 800 (87 de los 104), y el
    resto se reparte sobre todo entre el 522, el 430 y el 220. Cualquier enlace
