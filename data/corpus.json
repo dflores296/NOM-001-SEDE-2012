@@ -47575,8 +47575,14 @@
      "exceptions": [
       {
        "label": "Excepción",
-       "text": "Se permitirá que la distancia sea menor a la que se especifica en la Tabla 408-56 en interruptores automáticos, desconectadores y en componentes aprobados instalados en tableros de distribución y tableros de alumbrado y control. Tabla 408.- 56 Espacio mínimo entre las partes metálicas desnudas Volts Polaridad inversa cuando se Polaridad inversa cuando se Partes vivas puestas a montan en la misma superficie sostienen libres en el aire tierra milímetros No más de 120 volts 20 15 15 No más de 250 volts 35 20 15 No más de 600 volts 55 25 25 * Para la separación entre las partes vivas y las puertas de los gabinetes, ver 312-11(a) (1), (2) y (3).",
+       "text": "Se permitirá que la distancia sea menor a la que se especifica en la Tabla 408-56 en interruptores automáticos, desconectadores y en componentes aprobados instalados en tableros de distribución y tableros de alumbrado y control.",
        "seq": 19
+      }
+     ],
+     "tables": [
+      {
+       "id": "408-56",
+       "seq": 20
       }
      ]
     },
@@ -47603,7 +47609,6 @@
     "250-28",
     "250-36",
     "250-66",
-    "312-11(a)",
     "312-2",
     "312-6",
     "312-6(a)",
@@ -110922,10 +110927,16 @@
      "title": "Aplicación de otros Artículos",
      "part": "A",
      "page": 586,
-     "text": "Los Artículos/secciones de la siguiente Tabla se aplican a casos particulares de instalación de conductores y equipo, donde hay requisitos para una interrupción programada, que son complementarios a aquellos de este Artículo o modificaciones de ellos. Tabla 685.-3. Aplicación de otros Artículos Conductor/equipo Sección Coordinación de Sistemas Eléctricos 240-12 Desconexión 430-74 Excepciones 1 y 2 Más de una fuente de energía 430-113 Excepciones 1 y 2 Más de un edificio u otra estructura 225, Parte B Medios de desconexión 645-10 Excepción Medios de desconexión a la vista del controlador 430-102(a) Excepción 2 Parada programada 430-44 Protección de conductores 240-4 Protección de equipo 427-22 Protección por falla a tierra del equipo 230-95, Excepción Protección por falla a tierra del equipo 240-13(1), Puesta a tierra de sistemas de corriente alterna de 50 hasta 250-21 menos de 1000 volts. Punto de conexión 705-12(a) Suministro de energía ininterrumpible 645-11(1)",
+     "text": "Los Artículos/secciones de la siguiente Tabla se aplican a casos particulares de instalación de conductores y equipo, donde hay requisitos para una interrupción programada, que son complementarios a aquellos de este Artículo o modificaciones de ellos. 430-74 Excepciones 1 y 2 430-113 Excepciones 1 y 2 645-10 Excepción",
      "children": [],
      "notes": [],
-     "exceptions": []
+     "exceptions": [],
+     "tables": [
+      {
+       "id": "685-3",
+       "seq": 0
+      }
+     ]
     },
     {
      "id": "685-10",
@@ -110959,19 +110970,9 @@
     }
    ],
    "refs": [
-    "230-95",
-    "240-12",
-    "240-13(1)",
-    "240-4",
-    "250-21",
-    "427-22",
-    "430-102(a)",
     "430-113",
-    "430-44",
     "430-74",
-    "645-10",
-    "645-11(1)",
-    "705-12(a)"
+    "645-10"
    ]
   },
   {
