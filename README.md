@@ -78,6 +78,10 @@ python3 tools/check_corpus.py  data/     # falla si el parseo se degrada
 cd site && npm install && npm run build
 ```
 
+`tools/build_redirects.py` no aparece ahí porque no deriva del PDF: mapea los
+identificadores que una ronda de cambios retiró al destino donde vive hoy su
+contenido, y su salida se versiona ya construida. Ver `CONTEXTO.md`.
+
 El sitio queda en `site/dist/`, son archivos estáticos sin servidor detrás.
 Se publica solo en GitHub Pages con cada push a `main`
 (`.github/workflows/deploy.yml`), que regenera el corpus desde el PDF y corre la
