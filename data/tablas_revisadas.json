@@ -68387,5 +68387,76 @@
    }
   ],
   "sha": "5d23a39df8169af4"
+ },
+ "220-83(b)": {
+  "verificada": "2026-09-18",
+  "title": "Porcentajes de carga para equipo adicional de aire acondicionado o de calefacción eléctrica de ambiente",
+  "article": 220,
+  "pages": [
+   51
+  ],
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Carga"
+    },
+    {
+     "t": "Porcentaje de carga"
+    }
+   ],
+   [
+    {
+     "t": "Equipo de aire acondicionado"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "Equipo de calefacción central eléctrica de ambiente"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "Menos de cuatro unidades de calefacción de ambiente controladas independientemente"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "Primeros 8 kilovoltamperes de todas las demás cargas"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "Resto de todas las demás cargas"
+    },
+    {
+     "t": "40"
+    }
+   ]
+  ],
+  "notes": [],
+  "regions": [
+   {
+    "page": 51,
+    "y0": 512.0,
+    "y1": 615.0,
+    "id": "220-83(b)",
+    "article": 220
+   }
+  ],
+  "sha": "f8845f4c1323393a"
  }
 }

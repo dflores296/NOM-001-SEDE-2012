@@ -6376,7 +6376,7 @@
        "label": "b",
        "kind": "alpha",
        "level": 1,
-       "text": "Cuando se va a instalar equipo adicional de aire acondicionado o de calefacción eléctrica de ambiente. Se deben usar los siguientes porcentajes para cargas existentes y nuevas cargas adicionales. Se debe usar la mayor carga conectada de aire acondicionado o de calefacción de ambiente, pero no ambas. Carga Porcentaje de carga Equipo de aire acondicionado 100 Equipo de calefacción central eléctrica de ambiente 100 Menos de cuatro unidades de calefacción de ambiente 100 controladas independientemente Primeros 8 kilovoltamperes de todas las demás cargas 100 Resto de todas las demás cargas 40 Las otras cargas deben incluir las siguientes:",
+       "text": "Cuando se va a instalar equipo adicional de aire acondicionado o de calefacción eléctrica de ambiente. Se deben usar los siguientes porcentajes para cargas existentes y nuevas cargas adicionales. Se debe usar la mayor carga conectada de aire acondicionado o de calefacción de ambiente, pero no ambas. Las otras cargas deben incluir las siguientes:",
        "children": [
         {
          "id": "220-83(b)(1)",
@@ -6451,7 +6451,13 @@
         }
        ],
        "notes": [],
-       "exceptions": []
+       "exceptions": [],
+       "tables": [
+        {
+         "id": "220-83(b)",
+         "seq": 20
+        }
+       ]
       }
      ],
      "notes": [],
@@ -6493,7 +6499,7 @@
           {
            "label": "Excepción",
            "text": "Cuando la carga calculada para viviendas multifamiliares sin aparatos eléctricos de cocción, según la Parte C de este Artículo supere la calculada según la Parte D para igual carga, más los aparatos eléctricos de cocción (con base en 8 kilowatts por unidad), se permite aplicar la menor de las dos cargas.",
-           "seq": 20
+           "seq": 21
           }
          ]
         },
@@ -6525,7 +6531,7 @@
        "tables": [
         {
          "id": "220-84",
-         "seq": 21
+         "seq": 22
         }
        ]
       },
@@ -6658,7 +6664,7 @@
      "tables": [
       {
        "id": "220-86",
-       "seq": 22
+       "seq": 23
       }
      ]
     },
@@ -6681,7 +6687,7 @@
         {
          "label": "Excepción",
          "text": "Si no existen datos de demanda máxima de todo un año, se permite calcular la carga en base a la demanda máxima (medida como la demanda promedio en periodos de 15 minutos) registrada continuamente durante 30 días consecutivos como mínimo. El equipo registrador debe estar conectado a la fase de mayor carga del alimentador con base en la carga inicial al comienzo del registro. Para que los datos reflejen la demanda máxima verdadera del alimentador, dichas mediciones deben ser tomadas con el edificio ocupado y deben incluir, por medición o por cálculo, la mayor carga de los equipos de calefacción o aire acondicionado y otras cargas que pueden ser de naturaleza periódica debido a condiciones dadas por cambios climáticos o condiciones similares.",
-         "seq": 23
+         "seq": 24
         }
        ]
       },
@@ -6721,7 +6727,7 @@
      "tables": [
       {
        "id": "220-88",
-       "seq": 24
+       "seq": 25
       }
      ]
     },
@@ -6766,7 +6772,7 @@
        "tables": [
         {
          "id": "220-102",
-         "seq": 25
+         "seq": 26
         }
        ]
       }
@@ -6786,7 +6792,7 @@
      "tables": [
       {
        "id": "220-103",
-       "seq": 26
+       "seq": 27
       }
      ]
     }
@@ -8324,7 +8330,7 @@
      "title": "Alcance",
      "part": null,
      "page": 60,
-     "text": "Este Artículo cubre a los conductores de acometida y equipos de recepción del suministro, dispositivos para el control, medición y protección de las acometidas así como de los requisitos para su instalación. Generalidades Parte A Conductores de acometida aérea Parte B Conductores de acometida subterránea Parte C Conductores de acometida Parte D Equipo de acometida - Generalidades Parte E Equipo de acometida – Medios de desconexión Parte F Equipo de acometida – Protección contra corriente Parte G Acometidas de más de 600 volts nominales Parte H",
+     "text": "Este Artículo cubre a los conductores de acometida y equipos de recepción del suministro, dispositivos para el control, medición y protección de las acometidas así como de los requisitos para su instalación.",
      "children": [],
      "notes": [],
      "exceptions": [],
