@@ -24,9 +24,19 @@ conserva las líneas de la rejilla como rectángulos vectoriales:
     eje x y se buscan franjas sin tinta. Usar las líneas verticales fallaría
     en las tablas que solo dibujan el borde exterior, y agrupar por posición
     de inicio fallaría con números centrados o alineados a la derecha.
+
+LA RECONSTRUCCIÓN ESTÁ SUBORDINADA A LA CAPTURA MANUAL. Las 222 tablas se
+contrastaron a ojo contra el PDF y viven congeladas en
+data/tablas_revisadas.json; lo que sale de aquí solo llena los huecos que esa
+captura no cubre. Cada entrada guarda la huella de su contenido y este script
+aborta antes de escribir tablas.json si una tabla verificada salió distinta.
+Para aceptar un cambio deliberado: --sellar. Ver tools/huella.py y el README.
 """
 import json, os, re, sys, unicodedata
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
+
+# La captura manual de las tablas es la fuente de verdad; esto la protege.
+from huella import huella, discrepancias
 
 RULE_MAX = 2.5      # grosor máximo de un rect para contarlo como línea
 GAP_MIN = 3.0       # ancho mínimo de un hueco para separar columnas
@@ -989,10 +999,38 @@ def apply_revisiones(tables, path):
     return n
 
 
+def sellar(path, tables):
+    """Escribe la huella de cada tabla en data/tablas_revisadas.json.
+
+    Es el paso explícito para aceptar un cambio en una tabla verificada: la
+    huella nueva sale en el diff y se revisa como cualquier otro cambio.
+    """
+    with open(path, encoding='utf-8') as fh:
+        revs = json.load(fh, object_pairs_hook=OrderedDict)
+    porid = {t['id']: t for t in tables}
+    n = 0
+    for tid, rev in revs.items():
+        t = porid.get(tid)
+        if t is None:
+            continue
+        nueva = huella(t)
+        if rev.get('sha') != nueva:
+            rev['sha'] = nueva
+            n += 1
+        else:
+            rev['sha'] = nueva
+    with open(path, 'w', encoding='utf-8') as fh:
+        json.dump(revs, fh, ensure_ascii=False, indent=1)
+        fh.write('\n')
+    return n
+
+
 def main():
     import pymupdf
-    pdf = sys.argv[1] if len(sys.argv) > 1 else 'NOM-001-SEDE-2012.pdf'
-    out = sys.argv[2] if len(sys.argv) > 2 else 'data'
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    quiere_sellar = '--sellar' in sys.argv[1:]
+    pdf = args[0] if args else 'NOM-001-SEDE-2012.pdf'
+    out = args[1] if len(args) > 1 else 'data'
     os.makedirs(out, exist_ok=True)
     doc = pymupdf.open(pdf)
 
@@ -1258,6 +1296,29 @@ def main():
     tables.sort(key=lambda t: (t['regions'][0]['page'], t['regions'][0]['y0']))
     for t in tables:
         t['encabezado_dudoso'] = encabezado_dudoso(t)
+
+    # La captura manual manda sobre la reconstrucción, y aquí se comprueba que
+    # siga mandando: si una tabla ya verificada sale distinta de como se selló,
+    # se aborta ANTES de escribir tablas.json. Sin esto, un cambio en el
+    # reconstructor movería celdas de tablas contrastadas a ojo y el sitio las
+    # publicaría igual, con su insignia de «Verificada contra el PDF» intacta.
+    rpath = os.path.join(out, 'tablas_revisadas.json')
+    if os.path.exists(rpath):
+        with open(rpath, encoding='utf-8') as fh:
+            revs = json.load(fh)
+        if quiere_sellar:
+            print('Selladas: %d huellas actualizadas' % sellar(rpath, tables))
+        else:
+            malas = discrepancias(tables, revs)
+            if malas:
+                raise SystemExit(
+                    'La reconstrucción cambió %d tabla(s) ya verificada(s):\n%s\n'
+                    'Si el cambio es deliberado, acéptalo con:\n'
+                    '  python3 tools/build_tables.py %s %s --sellar'
+                    % (len(malas),
+                       '\n'.join('  %-16s sellada=%s  ahora=%s' % (t, s or '(sin sellar)', r)
+                                 for t, s, r in malas),
+                       pdf, out))
 
     json.dump(tables, open(os.path.join(out, 'tablas.json'), 'w'),
               ensure_ascii=False, indent=1)
