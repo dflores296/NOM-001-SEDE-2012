@@ -40,6 +40,7 @@ def node_text(n):
     parts = [n.get('title') or '', n.get('text') or '']
     parts += [z['text'] for z in n.get('notes', [])]
     parts += [z['text'] for z in n.get('exceptions', [])]
+    parts += [z['text'] for z in n.get('parrafos', [])]
     return ' '.join(parts)
 
 
