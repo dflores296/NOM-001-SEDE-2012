@@ -57,7 +57,10 @@ const anot = [
       {n.items?.length > 0 && (
         <ul class="anot-items">
           {n.items.map((it) => (
-            <li><span class="lbl">({it.label})</span> <span set:html={linkify(it.text)} /></li>
+            <li class={it.label ? undefined : 'anot-parr'}>
+                {it.label && <><span class="lbl">({it.label})</span>{' '}</>}
+                <span set:html={linkify(it.text)} />
+              </li>
           ))}
         </ul>
       )}
