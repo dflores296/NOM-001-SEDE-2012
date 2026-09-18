@@ -68285,5 +68285,107 @@
    }
   ],
   "sha": "af67c850fe7984b2"
+ },
+ "830-15": {
+  "verificada": "2026-09-18",
+  "article": 830,
+  "pages": [
+   685
+  ],
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Fuente de alimentación de la red"
+    },
+    {
+     "t": "Bajo"
+    },
+    {
+     "t": "Medio"
+    }
+   ],
+   [
+    {
+     "t": "Tensión máxima del circuito, (volts)*"
+    },
+    {
+     "t": "0-100"
+    },
+    {
+     "t": "0-150"
+    }
+   ],
+   [
+    {
+     "t": "Limitación de potencia, VAmáx. (voltamperes)*"
+    },
+    {
+     "t": "250"
+    },
+    {
+     "t": "250"
+    }
+   ],
+   [
+    {
+     "t": "Limitaciones de corriente, Imáx. (amperes)*"
+    },
+    {
+     "t": "1000/Vmáx"
+    },
+    {
+     "t": "1000/Vmáx"
+    }
+   ],
+   [
+    {
+     "t": "Potencia máxima (voltamperes)*"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "Tensión máxima (volts)*"
+    },
+    {
+     "t": "100"
+    },
+    {
+     "t": "150"
+    }
+   ],
+   [
+    {
+     "t": "Protección máxima contra sobre corriente (A)**"
+    },
+    {
+     "t": "100/Vmáx"
+    },
+    {
+     "t": "N/A"
+    }
+   ]
+  ],
+  "notes": [
+   "* La tensión del circuito, Vmáx, la limitación de corriente Imáx, y la capacidad nominal de potencia máxima VAmáx se determinan con la impedancia para limitar de corriente en el circuito (no derivada), como sigue: Vmáx-Tensión máxima del sistema, independientemente de la carga. I máx-Corriente máxima del sistema bajo cualquier carga no capacitiva, incluida la de cortocircuito, y con la protección contra sobrecorriente derivada, si se usa. Los límites de I máx se aplican después de 1 minuto de operación. VAmáx-Salida máxima de potencia en voltamperes después de 1 minuto de operación, independientemente de la carga y la protección contra sobrecorriente derivada, si se usa.",
+   "** No se requiere protección contra sobrecorriente cuando el dispositivo limitador de corriente brinda una limitación de corriente equivalente y el dispositivo limitador de corriente no se restablece sino hasta quitar la alimentación o la carga."
+  ],
+  "regions": [
+   {
+    "page": 685,
+    "y0": 456.0,
+    "y1": 755.0,
+    "id": "830-15",
+    "article": 830
+   }
+  ],
+  "sha": "5d23a39df8169af4"
  }
 }

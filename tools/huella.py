@@ -2,7 +2,7 @@
 """Huella de contenido de una tabla, para que la captura manual no se pueda
 romper en silencio.
 
-Las 222 tablas se contrastaron celda por celda contra el PDF a mano. Ese
+Las 224 tablas se contrastaron celda por celda contra el PDF a mano. Ese
 trabajo vive en `data/tablas_revisadas.json` y se aplica ENCIMA de lo que
 reconstruye `build_tables.py`. El riesgo es que un cambio en el reconstructor
 —o en la versión de pymupdf, o un merge mal resuelto— mueva una celda de una

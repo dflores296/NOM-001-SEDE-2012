@@ -25,7 +25,7 @@ conserva las líneas de la rejilla como rectángulos vectoriales:
     en las tablas que solo dibujan el borde exterior, y agrupar por posición
     de inicio fallaría con números centrados o alineados a la derecha.
 
-LA RECONSTRUCCIÓN ESTÁ SUBORDINADA A LA CAPTURA MANUAL. Las 222 tablas se
+LA RECONSTRUCCIÓN ESTÁ SUBORDINADA A LA CAPTURA MANUAL. Las 224 tablas se
 contrastaron a ojo contra el PDF y viven congeladas en
 data/tablas_revisadas.json; lo que sale de aquí solo llena los huecos que esa
 captura no cubre. Cada entrada guarda la huella de su contenido y este script
@@ -57,8 +57,15 @@ def unaccent(s):
 # ("Tabla 1 del Capítulo 10.", "Tabla 1, Capítulo 10."). Sin esa distinción, la
 # primera cita del texto se tomaba como el encabezado de la tabla y la tabla
 # real quedaba fuera: le pasaba a la Tabla 1, la más citada de toda la norma.
+# La 830-15 es la única del documento cuyo título el DOF imprime en versalitas
+# —«TABLA 830-15.- Limitaciones para sistemas...»— y por eso no se reconocía:
+# la tabla de límites de potencia de las fuentes de banda ancha se publicaba
+# como párrafo corrido dentro de 830-15. Las otras cuatro líneas que abren con
+# TABLA en mayúscula son los listados de normas del Apéndice B, cuyos
+# identificadores (B1.1, B2.2) no calzan con ningún formato de tabla de la
+# norma, así que admitir la mayúscula no arrastra nada más.
 RE_CAPTION = re.compile(
-    r'^Tabla\s+(\d{3}-\d{1,3}(?:\s*\([a-z0-9]{1,4}\))*|\d{1,2}[A-Z]?(?:\([A-Z]\))?)'
+    r'^(?:Tabla|TABLA)\s+(\d{3}-\d{1,3}(?:\s*\([a-z0-9]{1,4}\))*|\d{1,2}[A-Z]?(?:\([A-Z]\))?)'
     r'\s*(?:\.-|\.|-|—)?\s+([0-9A-ZÁÉÍÓÚÑ].*)$')
 
 RE_NOTE = re.compile(r'^\s*(?:\*+|NOTA|Nota)\b')
