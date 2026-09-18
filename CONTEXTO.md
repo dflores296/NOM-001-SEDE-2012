@@ -15,12 +15,13 @@ sobre el PDF deja el árbol idéntico a lo commiteado, byte a byte.
 |---|---|
 | Artículos | 151 |
 | Secciones | 2 897 |
-| Incisos | 8 314 |
+| Incisos | 8 315 |
 | Notas / Excepciones | 777 / 987 |
 | Definiciones | 185 |
 | Referencias distintas | 1 850 |
 | Referencias rotas | 0 |
 | Cobertura | 100 % (31 858 de 31 859 renglones) |
+| Ids retirados con destino | 143 de 143 |
 | Tablas | 226, todas contrastadas a mano y congeladas |
 
 Para verificar el estado en cualquier momento:
@@ -34,6 +35,11 @@ python3 tools/build_revision.py data/ REVISION-TABLAS.md
 python3 tools/check_corpus.py data/        # debe salir con 0
 git status --porcelain                      # debe quedar vacío
 ```
+
+`tools/build_redirects.py` **no** va en esa lista: no deriva del PDF sino de la
+historia del repositorio, y su salida (`site/public/ids-retirados.json`) se
+versiona ya construida. Solo se vuelve a correr cuando una ronda mueve
+identificadores; ver «Enlaces profundos» más abajo.
 
 Si `git status` no queda vacío después de eso, algo dejó de ser reproducible y
 eso es el problema a resolver antes que cualquier otra cosa.
@@ -88,17 +94,40 @@ nota, de una excepción o de una tabla no cabe en `text`, que se pinta primero.
 
 Vive en `parrafos`, cada bloque con su `seq`, y **notas, excepciones, tablas y
 párrafos se ordenan todos por ese `seq`**, que es su posición real en el PDF. Hoy
-son 83 nodos con `parrafos`.
+son 91 nodos con `parrafos`.
 
 Las figuras entran en la misma lista: la fórmula de 504-10(b)(2) se pintaba
 después de todo el texto, así que el «Donde, T = es la temperatura superficial»
 salía antes que la fórmula que explica. Si agregas otra cosa que se intercale,
 dale `seq` y métela en esa lista en los dos renderizadores.
 
+**Un bloque de `parrafos` no es un solo párrafo.** Dentro de él, cada renglón en
+sangría de párrafo (47.0) abre uno nuevo: tras esa misma fórmula el PDF imprime
+«Donde,», «T = …», «Po = …», «Rt = …» y «Tamb = …» como cinco párrafos, uno por
+renglón, y concatenados se leían como una frase corrida. Son siete nodos, entre
+ellos las variables de 922-12(a)(2) y las observaciones de 924-24.
+
 Si mudas texto de campo, **enséñale el campo nuevo a todo lo que lo lee**:
 `collect_refs` y el contador de cobertura en `build_corpus.py`, `node_text` en
 `build_graph.py`, `flat_text` en `build_search.py` y los dos renderizadores
 (`Sub.astro` y `art/[num].astro`). Omitir uno pierde el texto sin ruido.
+
+### 3b. Un item de anotación puede no tener rótulo
+
+La Excepción de 250-32(b)(1) enumera tres requisitos, luego dice «Si el conductor
+puesto a tierra se usa … de acuerdo con las disposiciones de **esta excepción**,
+el tamaño … no debe ser menor que el mayor de cualquiera de los siguientes:» y
+enumera dos más. Ese párrafo intermedio es de la excepción —se cita a sí misma—,
+pero no es un item numerado.
+
+Se guarda como item con `label: null` para conservar el orden, y eso tiene un
+efecto de segundo orden que hay que respetar: **un item sin rótulo reinicia la
+numeración**, porque la lista que sigue empieza de cero legítimamente. Sin eso,
+la comprobación de continuidad (§5) cortaba la excepción ahí y soltaba los dos
+últimos incisos al nivel del requisito. Hoy son 5 items sin rótulo.
+
+Los dos renderizadores los pintan sin viñeta (`li.anot-parr`). Si agregas un
+campo a los items, acuérdate de que `label` puede ser `null`.
 
 ### 4. Las zonas de tabla recortan el flujo de texto
 
@@ -123,7 +152,28 @@ contenido no reaparezca como párrafo. Dos formas de equivocarse, las dos vistas
 - **Los items de una anotación tienen que CONTINUAR su numeración.** Si el
   marcador repite el anterior o vuelve a empezar, la lista terminó: el «(4)» que
   sigue a la NOTA de 725-121(a)(3) es el cuarto inciso de la sección, no un
-  quinto ejemplo.
+  quinto ejemplo. Salvo que el item anterior sea uno sin rótulo, ver §3b.
+
+### 5b. El pie de figura tiene dos trampas, las dos vistas
+
+El detector (`RE_FIGCAP`) admite sufijo de inciso en el número —«Figura
+550-10 (c).-» con espacio y «Figura 690-1(a).-» sin él—, y eso abre dos formas
+de equivocarse que ya costaron contenido:
+
+- **Una cita del cuerpo que se parte de renglón justo antes queda sola en la
+  línea y parece leyenda.** 820-154 dice «…e ilustrados en la / Figura
+  820-154.» y 551-46(c) «…que cumpla con la configuración mostrada en la /
+  Figura 551-46 (c).» Se distinguen por la sangría de continuación (32.8), que
+  una leyenda de verdad nunca usa. Es la misma señal del punto anterior.
+- **La segunda línea de una leyenda se reconoce por empezar en minúscula, y un
+  marcador de inciso también lo hace.** La leyenda de la Figura 450-4 se tragaba
+  «b) Transformador conectado en campo…», la de la 515-3 los incisos b) y c) de
+  515-8, y la de la 550-10 (c) el inciso d) entero. Hoy se exige que la línea no
+  abra inciso.
+
+Hoy hay 9 figuras con leyenda. Si tocas ese detector, compruébalas todas: cada
+una que se pierda se publica como prosa, y cada una que se pase de largo se
+come el inciso siguiente.
 
 ### 6. Las listas blancas se justifican una por una
 
@@ -151,19 +201,23 @@ parser**.
 
 ## Qué se hizo en esta ronda
 
-Dieciséis merges sobre `4af7f0b`. Lo sustantivo:
+Once merges (23 commits) sobre `4af7f0b`. Lo sustantivo:
 
 **Contenido recuperado**
 
 - Seis tablas que no existían en el corpus: **408-56**, **685-3**, **830-15**,
   **220-83(a)**, **220-83(b)** y la del **922-56(b)**. Todas se publicaban como párrafo corrido.
-- **Incisos**: 8 261 → 8 326. Estaban escondidos dentro de notas, excepciones o
-  zonas de tabla. `690-31(d)` no estaba mal colocado: **no estaba**.
+- **Incisos**: 8 261 → 8 315 (neto: se rescataron más de los que se retiraron al
+  deshacer anidamientos falsos). Estaban escondidos dentro de notas, excepciones,
+  zonas de tabla o pies de figura. `690-31(d)` no estaba mal colocado: **no
+  estaba**.
 - **67 notas y excepciones** se habían quedado con 139 párrafos ajenos
   (~100 000 caracteres devueltos a su inciso).
 - **610-14(a)**: el renglón de temperaturas estaba corrido un grupo de columnas;
   «Tipos MTW, RHW…» —que es 75 °C— aparecía bajo 90 °C.
 - **922-55**: cuatro bandas partidas y con el orden de palabras revuelto.
+- **Cuatro incisos dentro de un pie de figura**: `450-4(b)`, `515-8(b)`,
+  `515-8(c)` y `550-10(d)`. Tampoco estaban mal colocados: no estaban (§5b).
 
 **Redes de seguridad nuevas**
 
@@ -183,16 +237,52 @@ Las cuatro están probadas: al romper algo a propósito, el build falla.
 - El exportador ya no promete tablas que no escribe, y su manifiesto se adapta al
   recorte de `--solo-mt`.
 
+## Enlaces profundos: los identificadores que cambiaron
+
+Al destapar estructura mal anidada, **143 identificadores dejaron de existir y
+aparecieron 197**. `800-113(d)(3)c.a.` pasó a `800-113(d)(3)c.(3)a.`, y los peores
+del Artículo 800 se llamaban `800-113(f)(3)e.e.(3)c.(3)e.(7)(7)(4)a.`, que nunca
+describió la estructura real de la norma. El grueso es del 800 (87 retirados,
+119 nuevos); el resto se reparte entre el 522, el 725, el 430 y el 250.
+
+La lista completa está revisada, y el resultado es que **no se perdió contenido**:
+de los 143 retirados, el texto de todos aparece publicado en el corpus de hoy.
+Los seis que a primera vista no aparecían eran textos que el parser viejo tenía
+pegados —«Ensamble de cable ruteador de propósito general. h). Charolas porta
+cables…»— y hoy están partidos en incisos con título propio (`800-113(h)`,
+`800-113(j)`, `800-44(b)`…). Que la cadena completa ya no exista es el arreglo,
+no una pérdida.
+
+Un enlace profundo anterior sigue siendo un problema real: el ancla no existe, el
+navegador se queda arriba de la página **sin decir nada** y parece que el
+contenido se perdió. Contra eso hay un mapa de 143 entradas en
+`site/public/ids-retirados.json`, que `Base.astro` consulta **solo cuando el ancla
+falla** —la navegación normal no paga nada— y que lleva al lector al destino con
+un aviso de qué pasó. Los destinos salen de dos reglas:
+
+| Regla | Cuántos | Cuándo |
+|---|---|---|
+| Por contenido | 79 | El título y el texto aparecen idénticos en un único nodo nuevo |
+| Por ancestro | 64 | El prefijo más largo que sí existe; 52 de ellos caen en `800-113(f)(3)e.` |
+
+El identificador viejo se deja en la URL a propósito: reescribirla borraría la
+única pista de a dónde quería ir el lector.
+
+Para regenerarlo tras otra ronda que mueva ids:
+
+```
+git show <commit-anterior>:data/corpus.json > /tmp/antes.json
+python3 tools/build_redirects.py /tmp/antes.json data/corpus.json \
+        site/public/ids-retirados.json
+```
+
+Va en `site/public/` y no en `site/public/data/` **a propósito**: ese directorio
+está en `.gitignore` porque `build_search.py` lo regenera en cada publicación, así
+que un archivo puesto ahí existiría en local y desaparecería en CI.
+
 ## Pendientes
 
-Ninguno bloquea nada. En orden de valor:
-
-1. **143 identificadores dejaron de existir y hay 196 nuevos.** Al destapar
-   estructura mal anidada, ids como `800-113(d)(3)c.a.` pasaron a
-   `800-113(d)(3)c.(3)a.`. El grueso es del artículo 800, y el
-   resto se reparte sobre todo entre el 522, el 430 y el 220. Cualquier enlace
-   profundo anterior a esta ronda puede no servir. No es un defecto —la
-   estructura nueva es la correcta— pero nadie ha revisado la lista completa.
+Ninguno. Si aparece algo, va aquí.
 
 ## Trampas del entorno
 
