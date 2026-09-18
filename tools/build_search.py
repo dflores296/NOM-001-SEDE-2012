@@ -13,7 +13,7 @@ Se indexa a nivel de SECCIÓN y no de inciso a propósito: 2 900 documentos
 caben holgadamente en memoria y buscar "GFCI" debe llevar a 210-8 completo,
 no a siete fragmentos sueltos del mismo requisito.
 
-Las 224 tablas se indexan aparte, con `kind: "tabla"`: antes no aparecían en
+Las 225 tablas se indexan aparte, con `kind: "tabla"`: antes no aparecían en
 absoluto en la búsqueda —"ampacidad conductores cobre" no encontraba la
 310-15(b)(16) aunque sea la tabla más citada de la norma—, porque
 flat_text() solo recorre el árbol de incisos y las tablas no viven ahí.
