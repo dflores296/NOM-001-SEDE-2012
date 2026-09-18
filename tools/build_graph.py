@@ -20,7 +20,61 @@ from collections import defaultdict
 # 250-32, 250-32(a), 250-32(a)(1)
 RE_SEC_REF = re.compile(r'\b(\d{3})-(\d{1,3})((?:\([a-z0-9]{1,3}\))*)')
 # Tabla 310-15(b)(16) | Tabla 8 | Tabla 11(A)
-RE_TBL_REF = re.compile(r'Tabla\s+(\d{3}-\d{1,3}(?:\([a-z0-9]{1,3}\))*|\d{1,2}[A-Z]?(?:\([A-Z]\))?)')
+#
+# El espacio y el punto sueltos antes del paréntesis son cosa del DOF, no otra
+# forma de citar: la norma escribe «Tabla 312-6 (a)», «Tabla 310-104 (a)»,
+# «Tabla 430-251 (a)» y hasta «Tabla 430-22.(e)» junto a las formas pegadas. Sin
+# tolerarlos, la cita se cortaba en el identificador del padre —«312-6», que no
+# es ninguna tabla— y el enlace acababa en un ancla muerta de /tablas.
+#
+# El lookahead final protege la forma corta del Capítulo 10. Cuando una
+# referencia viene partida por el corte de línea y en el texto queda «Tabla
+# 230-», la primera alternativa no calza y la segunda se quedaba con «23»,
+# inventando una tabla del Capítulo 10 que no existe. Eran 8 de las 20
+# referencias a tablas inexistentes.
+RE_TBL_REF = re.compile(
+    r'Tabla\s+(\d{3}-\d{1,3}(?:\s*\.?\s*\([a-z0-9]{1,3}\))*'
+    r'|\d{1,2}[A-Z]?(?:\([A-Z]\))?(?![\d-]))')
+
+# El DOF numera mal el título de una tabla y la deja inalcanzable desde el texto
+# que la cita. Es el mismo defecto que escondía la 408-56 y la 685-3, solo que
+# aquí el título sí se detecta: lo que no cuadra es el número.
+ERRATAS_TABLAS = {
+    # El cuerpo de 300-1(c) dice "tal como se indica en la Tabla 300-1(c)" y
+    # justo debajo imprime esa misma tabla titulada "Tabla 300-16(c).-
+    # Designación métrica y tamaños comerciales", que es palabra por palabra el
+    # título del inciso que la cita. El número del título es el equivocado.
+    '300-1(c)': '300-16(c)',
+}
+
+# Destinos que no son tabla de esta norma. No son fallos del parseo, y se
+# listan uno por uno con su cita para que el conteo de referencias rotas pueda
+# quedar en cero sin esconder una tabla que sí exista y se nos escape.
+TABLAS_AUSENTES = {
+    # "los conductores de derivación sean dimensionados de acuerdo con la Tabla
+    # 240-92(b)" (pág. 82). No hay tabla con ese número.
+    '240-92(b)',
+    # "este conductor se debe dimensionar de acuerdo con la Tabla 250-30(a)(3)"
+    # (pág. 577).
+    '250-30(a)(3)',
+    # "se deben marcar de acuerdo con lo establecido en la Tabla 760-176(g)"
+    # (pág. 649).
+    '760-176(g)',
+    # No es una cita: "Tabla 515-2" es una celda de la columna «Sección» del
+    # listado de normas del Apéndice B (pág. 770), que enumera qué partes de la
+    # NOM remiten a la NFPA 30.
+    '515-2',
+    # El DOF escribe "Tabla 310-15(B(3))(a)" en 310-15(b)(3)(a): paréntesis mal
+    # cerrados y la letra en mayúscula. La tabla que quiere citar es la
+    # 310-15(b)(3)(a), que sí existe y que ese mismo inciso cita bien dos
+    # renglones antes.
+    '310-15',
+    # Tablas de OTRA norma. La nota de 924-24(9) sobre el separador decimal
+    # cita "el encabezado de la Tabla 13 ... y el apartado Signo decimal de la
+    # Tabla 21 de la Norma Oficial Mexicana NOM-008-SCFI-2002".
+    '13',
+    '21',
+}
 # Artículo 250 / Artículos 500, 502 y 503
 RE_ART_REF = re.compile(r'Art\S*culos?\s+((?:\d{3})(?:\s*(?:,|y|o|ó|a)\s*\d{3})*)')
 # Capítulo 5
@@ -125,8 +179,17 @@ def main():
                 # --- Tablas (primero: consumen su propio patrón)
                 tablas = set()
                 for m in RE_TBL_REF.finditer(txt):
-                    tablas.add(m.group(1))
-                    add(src, 'tabla:' + m.group(1), 'tabla')
+                    crudo = m.group(1)
+                    tid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
+                    tid = ERRATAS_TABLAS.get(tid, tid)
+                    tablas.add(tid)
+                    if tid != crudo:
+                        # «Tabla 312-6 (a)»: el buscador de secciones de más
+                        # abajo solo alcanza a ver «312-6», así que hay que
+                        # marcarlo como ya consumido o añadiría, además de la
+                        # arista a la tabla, otra a la sección del mismo número.
+                        tablas.add(crudo.split('(')[0].strip().rstrip('.'))
+                    add(src, 'tabla:' + tid, 'tabla')
 
                 # --- Secciones e incisos
                 for m in RE_SEC_REF.finditer(txt):
@@ -174,16 +237,40 @@ def main():
         for s in srcs:
             incoming_roll[root].add(s)
 
-    resolved = sum(1 for e in edges if e['to'] in index or e['to'].startswith(
-        ('tabla:', 'cap:', 'parte:')))
-    broken = sorted({e['to'] for e in edges
-                     if e['to'] not in index
-                     and not e['to'].startswith(('tabla:', 'cap:', 'parte:'))})
+    tpath = os.path.join(out, 'tablas.json')
+    tablas = json.load(open(tpath)) if os.path.exists(tpath) else []
+    tabla_ids = {t['id'] for t in tablas}
+
+    def destino_vivo(dst):
+        """¿La arista lleva a algo que existe?
+
+        Los destinos `tabla:` quedaban fuera de esta cuenta: se daban por
+        buenos sin comprobar nada, así que una referencia a una tabla
+        inexistente nunca contaba como rota y el enlace moría en un ancla
+        vacía de /tablas. Es justo lo que habría cazado solo que la 408-56 se
+        publicara como párrafo y no como tabla, en vez de encontrarlo a mano.
+
+        Al encenderlo salieron 20 destinos muertos, de cinco clases:
+
+        -  6  citas partidas por el corte de línea, que el patrón degradaba a
+               una tabla de dos dígitos del Capítulo 10 («Tabla 230-» -> «23»).
+        -  5  la forma «Tabla 312-6 (a)», con espacio antes del paréntesis.
+        -  1  la Tabla 830-15, que de verdad faltaba: el DOF titula su
+               encabezado en versalitas y el detector de títulos no lo veía.
+        -  1  la 300-1(c), que el DOF imprime titulada 300-16(c) (ERRATAS_TABLAS).
+        -  7  referencias que no son a una tabla de esta norma (TABLAS_AUSENTES).
+        """
+        if dst.startswith('tabla:'):
+            tid = dst[len('tabla:'):]
+            return tid in tabla_ids or tid in TABLAS_AUSENTES
+        if dst.startswith(('cap:', 'parte:')):
+            return True
+        return dst in index
+
+    broken = sorted({e['to'] for e in edges if not destino_vivo(e['to'])})
 
     ranked = sorted(incoming_roll.items(), key=lambda kv: -len(kv[1]))[:30]
 
-    tpath = os.path.join(out, 'tablas.json')
-    tablas = json.load(open(tpath)) if os.path.exists(tpath) else []
     texto_norma = ' '.join(
         node_text(n) for a in articles for s_ in a['sections'] for n in walk(s_))
     uso_tablas = uso_de_tablas(tablas, texto_norma, sec_ids)

@@ -61,6 +61,28 @@ GRUPOS_TABLAS = [
      lambda tid, art: art in (920, 921, 922, 923, 924)),
 ]
 
+# El nombre del archivo que recoge lo que no cae en ningún grupo temático. Ver
+# el bloque que lo escribe en main().
+RESTO_TABLAS = '10-tablas-de-los-articulos-incluidos.json'
+
+# Las cuatro tablas cuyos valores el DOF imprime mal. El texto va aquí y no
+# dentro del manifiesto para que éste pueda decir cuáles entraron de verdad en
+# el recorte: con --solo-mt el artículo 220 se queda fuera y el manifiesto
+# afirmaba igual que la 220-42 venía incluida. El detalle completo de cómo se
+# detectó cada una está en REVISION-TABLAS.md.
+ERRATAS_DEL_DOF = {
+    '505-9(d)(1)': ('la columna de temperatura superficial máxima dice `≤4`, '
+                    '`≤3`, `≤2`, `≤1`, `≤1`, `≤85`; por las clases T1–T6 '
+                    'deberían ser 450, 300, 200, 135, 100 y 85 °C.'),
+    '922-12(a)(2)': ('en la columna de flecha 2.5 m, las filas de 6 600 y '
+                     '23 000 V dicen `96` y `105` donde el patrón pide `960` '
+                     'y `1 050` mm.'),
+    '220-42': ('el último tramo dice `A partir de 1 00000` por `A partir de '
+               '100 000`.'),
+    '430-250': ('la fila de 10 hp dice `44` en la columna de 575 V donde '
+                'debería decir `11`.'),
+}
+
 
 # ---------------------------------------------------------------- tablas
 
@@ -455,8 +477,34 @@ def main():
                                               ', '.join(p['tabla'] for p in planas)),
                            os.path.getsize(ruta)))
 
+    # --- el resto de las tablas de los artículos incluidos
+    #
+    # Los cuatro grupos de arriba están armados por PARA QUÉ se consulta cada
+    # tabla, y eso deja fuera a las que no encajan en ninguno de los cuatro
+    # temas: las de los artículos 110, 240, 300, 312, 314, 352, 400 y 402. El
+    # markdown sí las cita —«se debe calcular como se indica en la Tabla
+    # 314-16(a)»— así que el export prometía 19 tablas que no estaban en
+    # ningún archivo y mandaba a buscarlas a un sitio donde no había nada.
+    resto = sorted((t for t in tablas
+                    if t.get('article') in incluidos
+                    and t['id'] not in ids_tabla),
+                   key=lambda t: (t['article'], t['id']))
+    if resto:
+        planas = [tabla_plana(t) for t in resto]
+        ids_tabla.update(p['tabla'] for p in planas)
+        dudosas.update((p['tabla'], p['pagina_pdf'])
+                       for p in planas if p.get('encabezado_dudoso'))
+        ruta = os.path.join(args.out, RESTO_TABLAS)
+        with open(ruta, 'w', encoding='utf-8') as fh:
+            json.dump(planas, fh, ensure_ascii=False, indent=1)
+        manifiesto.append((RESTO_TABLAS,
+                           'Las demás tablas de los artículos incluidos',
+                           '%d tablas: %s' % (len(planas),
+                                              ', '.join(p['tabla'] for p in planas)),
+                           os.path.getsize(ruta)))
+
     # --- referencias cruzadas
-    nombre = '10-referencias-cruzadas.md'
+    nombre = '11-referencias-cruzadas.md'
     ruta = os.path.join(args.out, nombre)
     with open(ruta, 'w', encoding='utf-8') as fh:
         fh.write(render_referencias(grafo, incluidos, ids_tabla))
@@ -465,14 +513,14 @@ def main():
 
     # --- definiciones
     if defs:
-        nombre = '11-definiciones.md'
+        nombre = '12-definiciones.md'
         ruta = os.path.join(args.out, nombre)
         with open(ruta, 'w', encoding='utf-8') as fh:
             fh.write(render_definiciones(defs))
         manifiesto.append((nombre, 'Definiciones del Artículo 100',
                            '%d términos' % len(defs), os.path.getsize(ruta)))
 
-    escribir_manifiesto(args, manifiesto, incluidos, sorted(dudosas))
+    escribir_manifiesto(args, manifiesto, incluidos, sorted(dudosas), ids_tabla)
 
     total = sum(m[3] for m in manifiesto)
     print('%s: %d archivos, %.1f KB en total'
@@ -481,7 +529,7 @@ def main():
         print('  %-42s %7.1f KB' % (nombre, tam / 1024.0))
 
 
-def escribir_manifiesto(args, manifiesto, incluidos, dudosas):
+def escribir_manifiesto(args, manifiesto, incluidos, dudosas, ids_tabla):
     """El archivo que más rinde: sin él hay que abrir los demás a ciegas."""
     sal = ['# Manifiesto del export — NOM-001-SEDE-2012', '']
     sal.append('Destilado de la NOM-001-SEDE-2012 (Instalaciones Eléctricas '
@@ -569,18 +617,32 @@ def escribir_manifiesto(args, manifiesto, incluidos, dudosas):
     sal.append('')
     sal.append('Cuatro tablas de la norma traen valores mal impresos **en el '
                'DOF** y se dejaron tal cual, porque corregirlos sería editar la '
-               'norma. Dos de ellas están en este export:')
+               'norma.')
     sal.append('')
-    sal.append('- **922-12(a)(2)** — en la columna de flecha 2.5 m, las filas '
-               'de 6 600 y 23 000 V dicen `96` y `105` donde el patrón pide '
-               '`960` y `1 050` mm.')
-    sal.append('- **220-42** — el último tramo dice `A partir de 1 00000` por '
-               '`A partir de 100 000`.')
-    sal.append('')
-    sal.append('Las otras dos quedan fuera del recorte —505-9(d)(1), y la '
-               '430-250, cuya fila de 10 hp dice 44 A en 575 V donde debería '
-               'decir 11—. Las cuatro están en `REVISION-TABLAS.md` del repo '
-               'con el detalle de cómo se detectaron.')
+    # Qué erratas entraron se decide contra las tablas REALMENTE escritas y no
+    # con una lista fija: el recorte cambia con --solo-mt y con los artículos
+    # de BLOQUES, y una lista fija acababa afirmando que la 220-42 venía
+    # incluida en un export que no trae el artículo 220.
+    dentro = [(t, d) for t, d in ERRATAS_DEL_DOF.items() if t in ids_tabla]
+    fuera = [(t, d) for t, d in ERRATAS_DEL_DOF.items() if t not in ids_tabla]
+    if dentro:
+        sal.append('%s de ellas %s en este export:'
+                   % (('Una' if len(dentro) == 1 else '%d' % len(dentro)),
+                      'está' if len(dentro) == 1 else 'están'))
+        sal.append('')
+        for tid, det in dentro:
+            sal.append('- **%s** — %s' % (tid, det))
+        sal.append('')
+    else:
+        sal.append('Ninguna de las cuatro entra en este recorte.')
+        sal.append('')
+    if fuera:
+        sal.append('%s quedan fuera del recorte: %s.'
+                   % ('Las otras' if dentro else 'Las cuatro',
+                      ', '.join('**%s**' % t for t, _ in fuera)))
+        sal.append('')
+    sal.append('Las cuatro están en `REVISION-TABLAS.md` del repo con el '
+               'detalle de cómo se detectaron.')
     sal.append('')
     sal.append('## Alcance de este export')
     sal.append('')

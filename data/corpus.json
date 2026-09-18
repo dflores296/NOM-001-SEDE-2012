@@ -131851,10 +131851,16 @@
        "label": "2",
        "kind": "paren",
        "level": 1,
-       "text": "Las fuentes de alimentación de corriente continua que excedan 150 volts a tierra, pero no más de 200 volts a tierra, y con la corriente a tierra limitada a 10 miliamperes de corriente continua, que cumplan con las limitaciones de corriente y potencia para las fuentes de potencia media que se indican en la Tabla 830-15, se deben clasificar como fuentes de potencia media. TABLA 830-15.- Limitaciones para sistemas de comunicaciones de banda ancha alimentados por una red Fuente de alimentación de la red Bajo Medio Tensión máxima del circuito, (volts)* 0-100 0-150 Limitación de potencia, VAmáx. (voltamperes)* 250 250 Limitaciones de corriente, Imáx. (amperes)* 1000/Vmáx 1000/Vmáx Potencia máxima (voltamperes)* 100 100 Tensión máxima (volts)* 100 150 Protección máxima contra sobre corriente (A)** 100/Vmáx N/A * La tensión del circuito, Vmáx, la limitación de corriente Imáx, y la capacidad nominal de potencia máxima VAmáx se determinan con la impedancia para limitar de corriente en el circuito (no derivada), como sigue: Vmáx-Tensión máxima del sistema, independientemente de la carga. I máx-Corriente máxima del sistema bajo cualquier carga no capacitiva, incluida la de cortocircuito, y con la protección contra sobrecorriente derivada, si se usa. Los límites de I máx se aplican después de 1 minuto de operación. VAmáx-Salida máxima de potencia en voltamperes después de 1 minuto de operación, independientemente de la carga y la protección contra sobrecorriente derivada, si se usa. ** No se requiere protección contra sobrecorriente cuando el dispositivo limitador de corriente brinda una limitación de corriente equivalente y el dispositivo limitador de corriente no se restablece sino hasta quitar la alimentación o la carga.",
+       "text": "Las fuentes de alimentación de corriente continua que excedan 150 volts a tierra, pero no más de 200 volts a tierra, y con la corriente a tierra limitada a 10 miliamperes de corriente continua, que cumplan con las limitaciones de corriente y potencia para las fuentes de potencia media que se indican en la Tabla 830-15, se deben clasificar como fuentes de potencia media.",
        "children": [],
        "notes": [],
-       "exceptions": []
+       "exceptions": [],
+       "tables": [
+        {
+         "id": "830-15",
+         "seq": 3
+        }
+       ]
       }
      ],
      "notes": [],
@@ -132008,12 +132014,12 @@
         {
          "label": "Excepción 1",
          "text": "Edificios auxiliares, tales como cocheras (garajes, estacionamientos) y similares.",
-         "seq": 3
+         "seq": 4
         },
         {
          "label": "Excepción 2",
          "text": "Se permite una reducción en el libramiento sólo en la parte del alerón de la azotea, de cuando menos de 46 centímetros si:",
-         "seq": 4,
+         "seq": 5,
          "items": [
           {
            "label": "1",
@@ -132028,7 +132034,7 @@
         {
          "label": "Excepción 3",
          "text": "Si el techo tiene una pendiente no menor que 10 centímetros por cada 30 centímetros, se permite una reducción del libramiento a un mínimo de 90 centímetros.",
-         "seq": 5
+         "seq": 6
         }
        ],
        "title": "Sobre los techos"
@@ -132098,14 +132104,14 @@
         {
          "label": "Excepción",
          "text": "Se permitirá que los conductores que pasan sobre la parte superior de una ventana estén a menos de los 90 centímetros exigidos.",
-         "seq": 6
+         "seq": 7
         }
        ],
        "title": "Claros interpostales finales",
        "parrafos": [
         {
          "text": "No se deben instalar cables aéreos de comunicaciones de banda ancha energizados por una red, debajo de aberturas a través de las cuales se puedan mover materiales, tales como las aberturas en edificios agrícolas y comerciales, y no se deben instalar donde obstruyan la entrada a estas aberturas.",
-         "seq": 7
+         "seq": 8
         }
        ]
       },
@@ -132121,7 +132127,7 @@
         {
          "label": "Excepción",
          "text": "Cuando un cable de comunicaciones de banda ancha alimentado por una red no tenga la resistencia mecánica suficiente para ser auto soportado, se debe fijar a un cable mensajero de soporte que, junto con los accesorios de sujeción o soportes, deben ser aceptables para el propósito y deben tener una resistencia mecánica suficiente para soportar las cargas a las que puedan estar sometidos.",
-         "seq": 8
+         "seq": 9
         }
        ],
        "title": "Entre edificios"
@@ -132216,12 +132222,12 @@
         {
          "label": "Excepción 1",
          "text": "Cuando los conductores de acometida eléctrica o cables de comunicaciones de banda ancha alimentados por una red estén instalados en canalizaciones o tengan cubierta metálica en el cable.",
-         "seq": 9
+         "seq": 10
         },
         {
          "label": "Excepción 2",
          "text": "Cuando los conductores de alimentadores o circuitos derivados de alumbrado o de fuerza,  o los conductores de circuitos de alarma contra incendios de potencia no limitada, o conductores de un circuito Clase 1 están instalados en una canalización o en cables con cubierta metálica, pantalla metálica o en cables tipo UF o tipo USE; o los cables de comunicaciones de banda ancha alimentados por una red que poseen una pantalla metálica o están instalados en una canalización.",
-         "seq": 10
+         "seq": 11
         }
        ],
        "title": "Cables y canalizaciones directamente enterrados"
@@ -132238,7 +132244,7 @@
         {
          "label": "Excepción",
          "text": "Un circuito de comunicaciones de banda ancha alimentado por una red de baja potencia, equipado con un dispositivo aprobado de protección contra fallas, apropiado para el cable de comunicaciones de banda ancha alimentado por red, usado y localizado en el lado de la red de dicho cable de comunicaciones que se está protegiendo.",
-         "seq": 11
+         "seq": 12
         }
        ],
        "title": "Protección mecánica"
@@ -132256,7 +132262,7 @@
        "tables": [
         {
          "id": "830-47",
-         "seq": 12
+         "seq": 13
         }
        ]
       }
@@ -132305,12 +132311,12 @@
         {
          "label": "NOTA 1",
          "text": "En conductores de comunicaciones de banda ancha alimentados por una red, no expuestos a descargas atmosféricas o a contacto accidental con conductores de fuerza, la instalación de protección eléctrica primaria de acuerdo con este Artículo, ayuda a proteger contra otros peligros, tales como la elevación del potencial a tierra causada por corrientes de falla y tensiones por encima de las normales inducidas por corrientes de falla en los circuitos de fuerza cercanos a los conductores de comunicaciones de banda ancha alimentados por red.",
-         "seq": 14
+         "seq": 15
         },
         {
          "label": "NOTA 2",
          "text": "Se considera que los circuitos de comunicaciones de banda ancha alimentados por una red están expuestos a descargas atmosféricas, a menos que existan una o más de las condiciones siguientes:",
-         "seq": 15,
+         "seq": 16,
          "items": [
           {
            "label": "1",
@@ -132327,7 +132333,7 @@
         {
          "label": "Excepción",
          "text": "Cuando se suministra protección eléctrica en el(los) circuito(s) derivado(s) (del lado de la salida de la unidad de interfaz de red), de acuerdo con la parte (b)(3) de esta sección.",
-         "seq": 13
+         "seq": 14
         }
        ],
        "title": "Aplicación"
@@ -132370,7 +132376,7 @@
           {
            "label": "NOTA",
            "text": "La selección de la ubicación de una unidad de interfaz de red y del protector primario para lograr que el conductor de unión o el conductor de electrodo de puesta a tierra del protector primario sea lo más corto posible, ayuda a limitar las diferencias de potencial entre los circuitos de comunicaciones y otros sistemas metálicos.",
-           "seq": 16
+           "seq": 17
           }
          ],
          "exceptions": []
@@ -132392,7 +132398,7 @@
         {
          "label": "Excepción",
          "text": "Lo permitido en las secciones 501-150, 502-150 y 503-150.",
-         "seq": 17
+         "seq": 18
         }
        ],
        "title": "Areas peligrosas (clasificadas)"
@@ -132430,7 +132436,7 @@
         {
          "label": "NOTA",
          "text": "Véase en 830-2 la definición de punto de entrada.",
-         "seq": 19
+         "seq": 20
         }
        ],
        "exceptions": [],
@@ -132441,7 +132447,7 @@
       {
        "label": "NOTA",
        "text": "La selección de un lugar de puesta a tierra para lograr el conductor de unión o el conductor de electrodo de puesta a tierra más corto posible, ayuda a limitar las diferencias de potencial entre los circuitos de comunicaciones de banda ancha alimentados por una red, y otros sistemas metálicos.",
-       "seq": 18
+       "seq": 19
       }
      ],
      "exceptions": []
@@ -132504,14 +132510,14 @@
           {
            "label": "NOTA",
            "text": "Limitaciones similares de la longitud del conductor de unión o del conductor de electrodo de puesta a tierra aplicadas a edificios de apartamentos y edificios comerciales ayudan a reducir las tensiones que se pueden desarrollar entre los sistemas de alumbrado y fuerza y de comunicaciones del edificio durante eventos de descargas atmosféricas.",
-           "seq": 20
+           "seq": 21
           }
          ],
          "exceptions": [
           {
            "label": "Excepción",
            "text": "En viviendas unifamiliares y bifamiliares donde no es factible cumplir con la longitud máxima del conductor de unión o del conductor de electrodo de puesta a tierra de 6.00 metros, se debe instalar un electrodo de puesta a tierra de comunicaciones por separado, cumpliendo los criterios de dimensiones de (b)(3)(2) que sigue y el conductor de electrodo de puesta a tierra se debe conectar al electrodo de puesta a tierra de comunicaciones de acuerdo con el inciso (c) siguiente. El electrodo de puesta a tierra de comunicaciones se debe unir al sistema del electrodo de puesta a tierra de la alimentación de acuerdo con el inciso (d) más adelante.",
-           "seq": 21
+           "seq": 22
           }
          ],
          "title": "Longitud"
@@ -132700,19 +132706,19 @@
         {
          "label": "NOTA 1",
          "text": "Sobre el sistema de electrodos de puesta a tierra de pararrayos, véase 250-60.",
-         "seq": 23
+         "seq": 24
         },
         {
          "label": "NOTA 2",
          "text": "La unión de todos los electrodos independientes, limita las diferencias de potencial entre dichos electrodos y entre sus sistemas de alambrado asociados.",
-         "seq": 24
+         "seq": 25
         }
        ],
        "exceptions": [
         {
          "label": "Excepción",
          "text": "En las casas móviles, como se indica en 830-106.",
-         "seq": 22
+         "seq": 23
         }
        ],
        "title": "Unión de los electrodos"
@@ -133018,7 +133024,7 @@
             {
              "label": "NOTA",
              "text": "Para los requisitos de cortafuegos, para evitar penetraciones a los pisos ver 820-26.",
-             "seq": 25
+             "seq": 26
             }
            ],
            "exceptions": []
@@ -133087,7 +133093,7 @@
             {
              "label": "NOTA",
              "text": "Para los requisitos de cortafuegos, para evitar penetraciones a los pisos ver 820-26.",
-             "seq": 26
+             "seq": 27
             }
            ],
            "exceptions": []
@@ -133176,7 +133182,7 @@
             {
              "label": "NOTA",
              "text": "Para los requisitos de cortafuegos, para evitar penetraciones a los pisos ver 820-26.",
-             "seq": 27
+             "seq": 28
             }
            ],
            "exceptions": []
@@ -133265,7 +133271,7 @@
             {
              "label": "NOTA",
              "text": "Para los requisitos de cortafuegos, para evitar penetraciones a los pisos ver 820-26.",
-             "seq": 28
+             "seq": 29
             }
            ],
            "exceptions": []
@@ -133388,7 +133394,7 @@
           {
            "label": "NOTA",
            "text": "Esta disposición limita la longitud del cable tipo BLX a 15.00 metros, mientras que en 830-90(b) se exige que el protector primario o la unidad de interfaz de red con protección integral, estén localizados lo más cerca posible al punto por donde el cable entra al edificio. Por tanto, en las instalaciones que requieren un protector primario o una unidad de interfaz de red con protección integral, no se permite que el cable del tipo BLX se extienda más de 15.00 metros dentro del edificio, si es práctico ubicar el protector primario más cerca que 15.00 metros del punto de entrada.",
-           "seq": 29
+           "seq": 30
           }
          ],
          "exceptions": []
@@ -133599,12 +133605,12 @@
             {
              "label": "Excepción 1",
              "text": "Cuando todos los conductores de los circuitos de alumbrado, de fuerza, Clase 1, de alarmas contra incendios de potencia no limitada, están separados de todos los cables comunicaciones de banda ancha energizados desde la instalación del edificio por una barrera permanente o un divisor aprobado.",
-             "seq": 30
+             "seq": 31
             },
             {
              "label": "Excepción 2",
              "text": "Los conductores de fuerza en cajas de salida, cajas de empalme, accesorios similares  o compartimientos cuando estos conductores son introducidos únicamente para alimentar el equipo de distribución del sistema de comunicaciones de banda ancha energizados desde la instalación del edificio. Los conductores de los circuitos de fuerza se deben instalar dentro del envolvente manteniendo una separación mínima de 6 milímetros con los cables de comunicaciones de banda ancha.",
-             "seq": 31
+             "seq": 32
             }
            ]
           }
@@ -133624,12 +133630,12 @@
           {
            "label": "Excepción 1",
            "text": "Cuando (1) todos los conductores de los circuitos de alumbrado, de fuerza, Clase 1 y de alarma contra incendios de potencia no limitada están en una canalización o en cables con recubrimiento metálico, con cubierta metálica, con recubrimiento no metálico, cables tipo AC o UF, o (2) todos los cables de comunicaciones de banda ancha energizados por una red están alojados en una canalización.",
-           "seq": 32
+           "seq": 33
           },
           {
            "label": "Excepción 2",
            "text": "Cuando los cables de comunicaciones de banda ancha energizados por una red estén separados permanentemente de los conductores de los circuitos de alumbrado, de fuerza, Clase 1 y de alarmas contra incendios de potencia no limitada por una barrera no conductora continua y fijada firmemente, tal como tubos de porcelana o tuberías flexibles, además del aislamiento del cable.",
-           "seq": 33
+           "seq": 34
           }
          ],
          "title": "Otras aplicaciones"
@@ -133665,7 +133671,7 @@
      "tables": [
       {
        "id": "830-154(b)",
-       "seq": 34
+       "seq": 35
       }
      ]
     },
@@ -133681,7 +133687,7 @@
      "tables": [
       {
        "id": "830-154(a)",
-       "seq": 35
+       "seq": 36
       }
      ]
     },
@@ -133810,12 +133816,12 @@
       {
        "label": "Excepción 1",
        "text": "Este requisito de aprobación no se debe aplicar a los cables coaxiales de antenas comunales de televisión y de sistemas de distribución de radio que fueron instalados antes de enero 1 de 2000, de acuerdo con el Artículo 820, y que se usan para por circuitos de comunicaciones de banda ancha energizados por una red de baja potencia.",
-       "seq": 36
+       "seq": 37
       },
       {
        "label": "Excepción 2",
        "text": "Se permitirán los cables substitutos de cables de comunicaciones de banda ancha energizados por una red tal como se indica en la Tabla 830-154(b).",
-       "seq": 37
+       "seq": 38
       }
      ]
     }
