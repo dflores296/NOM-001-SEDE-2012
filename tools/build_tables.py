@@ -971,7 +971,7 @@ def tabla_nueva(tid, rev):
 # señalaba a las sanas y no a la enferma.
 #
 # Lo que de verdad protege contra una columna inventada es lo que ya está: las
-# 224 tablas contrastadas celda por celda, con sus celdas congeladas y su huella
+# 225 tablas contrastadas celda por celda, con sus celdas congeladas y su huella
 # de contenido, y el aviso del sitio para cualquier tabla nueva sin verificar.
 
 
