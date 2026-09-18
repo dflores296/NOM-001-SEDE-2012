@@ -1559,17 +1559,25 @@
   "chapter": 2,
   "page": 31
  },
- "200-10(a)(1)": {
+ "200-10(b)": {
   "kind": "inciso",
-  "id": "200-10(a)(1)",
+  "id": "200-10(b)",
+  "title": "Contactos, clavijas y conectores",
+  "article": 200,
+  "chapter": 2,
+  "page": 31
+ },
+ "200-10(b)(1)": {
+  "kind": "inciso",
+  "id": "200-10(b)(1)",
   "title": "La identificación debe hacerse por un metal o recubrimiento metálico de color si",
   "article": 200,
   "chapter": 2,
   "page": 31
  },
- "200-10(a)(2)": {
+ "200-10(b)(2)": {
   "kind": "inciso",
-  "id": "200-10(a)(2)",
+  "id": "200-10(b)(2)",
   "title": "Si la terminal no es visible, el orificio de entrada del conductor para la conex",
   "article": 200,
   "chapter": 2,
@@ -3367,25 +3375,33 @@
   "chapter": 2,
   "page": 46
  },
- "220-14(i)(1)": {
+ "220-14(j)": {
   "kind": "inciso",
-  "id": "220-14(i)(1)",
+  "id": "220-14(j)",
+  "title": "Alojamientos",
+  "article": 220,
+  "chapter": 2,
+  "page": 46
+ },
+ "220-14(j)(1)": {
+  "kind": "inciso",
+  "id": "220-14(j)(1)",
   "title": "Todas las salidas de contactos para uso general de 20 amperes nominales o menos,",
   "article": 220,
   "chapter": 2,
   "page": 46
  },
- "220-14(i)(2)": {
+ "220-14(j)(2)": {
   "kind": "inciso",
-  "id": "220-14(i)(2)",
+  "id": "220-14(j)(2)",
   "title": "Las salidas de contactos especificadas en 210-52(e) y (g).",
   "article": 220,
   "chapter": 2,
   "page": 46
  },
- "220-14(i)(3)": {
+ "220-14(j)(3)": {
   "kind": "inciso",
-  "id": "220-14(i)(3)",
+  "id": "220-14(j)(3)",
   "title": "Las salidas de alumbrado especificadas en 210-70(a) y (b).",
   "article": 220,
   "chapter": 2,
@@ -27263,6 +27279,22 @@
   "chapter": 3,
   "page": 231
  },
+ "392-22(b)(2)": {
+  "kind": "inciso",
+  "id": "392-22(b)(2)",
+  "title": "Charolas de canal ventilado",
+  "article": 392,
+  "chapter": 3,
+  "page": 231
+ },
+ "392-22(c)": {
+  "kind": "inciso",
+  "id": "392-22(c)",
+  "title": "Número de cables de media tensión y tipo MC (más de 2000 volts) en charolas portacables",
+  "article": 392,
+  "chapter": 3,
+  "page": 231
+ },
  "392-30": {
   "kind": "seccion",
   "id": "392-30",
@@ -37735,41 +37767,49 @@
   "chapter": 4,
   "page": 314
  },
- "430-72(b)(2)(1)": {
+ "430-72(c)": {
   "kind": "inciso",
-  "id": "430-72(b)(2)(1)",
+  "id": "430-72(c)",
+  "title": "Transformador del circuito de control",
+  "article": 430,
+  "chapter": 4,
+  "page": 314
+ },
+ "430-72(c)(1)": {
+  "kind": "inciso",
+  "id": "430-72(c)(1)",
   "title": "Conformidad con el Artículo 725",
   "article": 430,
   "chapter": 4,
   "page": 314
  },
- "430-72(b)(2)(2)": {
+ "430-72(c)(2)": {
   "kind": "inciso",
-  "id": "430-72(b)(2)(2)",
+  "id": "430-72(c)(2)",
   "title": "Conformidad con el Artículo 450",
   "article": 430,
   "chapter": 4,
   "page": 314
  },
- "430-72(b)(2)(3)": {
+ "430-72(c)(3)": {
   "kind": "inciso",
-  "id": "430-72(b)(2)(3)",
+  "id": "430-72(c)(3)",
   "title": "Menos de 50 voltamperes",
   "article": 430,
   "chapter": 4,
   "page": 314
  },
- "430-72(b)(2)(4)": {
+ "430-72(c)(4)": {
   "kind": "inciso",
-  "id": "430-72(b)(2)(4)",
+  "id": "430-72(c)(4)",
   "title": "Primario de menos de 2 amperes",
   "article": 430,
   "chapter": 4,
   "page": 314
  },
- "430-72(b)(2)(5)": {
+ "430-72(c)(5)": {
   "kind": "inciso",
-  "id": "430-72(b)(2)(5)",
+  "id": "430-72(c)(5)",
   "title": "Otros medios",
   "article": 430,
   "chapter": 4,
@@ -46023,6 +46063,22 @@
   "chapter": 5,
   "page": 382
  },
+ "504-30(a)(2)(2)": {
+  "kind": "inciso",
+  "id": "504-30(a)(2)(2)",
+  "title": "Separación de los conductores de los circuitos no intrínsecamente seguros median",
+  "article": 504,
+  "chapter": 5,
+  "page": 382
+ },
+ "504-30(a)(2)(3)": {
+  "kind": "inciso",
+  "id": "504-30(a)(2)(3)",
+  "title": "Separación de los conductores de los circuitos no intrínsecamente seguros median",
+  "article": 504,
+  "chapter": 5,
+  "page": 382
+ },
  "504-30(a)(2)(4)": {
   "kind": "inciso",
   "id": "504-30(a)(2)(4)",
@@ -46675,6 +46731,14 @@
   "kind": "inciso",
   "id": "505-9(d)",
   "title": "Temperatura Clase I",
+  "article": 505,
+  "chapter": 5,
+  "page": 388
+ },
+ "505-9(d)(1)": {
+  "kind": "inciso",
+  "id": "505-9(d)(1)",
+  "title": "Clasificación de temperatura",
   "article": 505,
   "chapter": 5,
   "page": 388
@@ -54095,57 +54159,73 @@
   "chapter": 5,
   "page": 460
  },
- "522-24(1)": {
+ "522-24(a)": {
   "kind": "inciso",
-  "id": "522-24(1)",
+  "id": "522-24(a)",
+  "title": "Dos o más circuitos de control",
+  "article": 522,
+  "chapter": 5,
+  "page": 460
+ },
+ "522-24(b)": {
+  "kind": "inciso",
+  "id": "522-24(b)",
+  "title": "Circuitos de control con circuitos de fuerza",
+  "article": 522,
+  "chapter": 5,
+  "page": 460
+ },
+ "522-24(b)(1)": {
+  "kind": "inciso",
+  "id": "522-24(b)(1)",
   "title": "En un cable, envolvente o canalización",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(2)": {
+ "522-24(b)(2)": {
   "kind": "inciso",
-  "id": "522-24(2)",
+  "id": "522-24(b)(2)",
   "title": "En centros de control ensamblados en fábrica o en campo",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(3)": {
+ "522-24(b)(3)": {
   "kind": "inciso",
-  "id": "522-24(3)",
+  "id": "522-24(b)(3)",
   "title": "En un pozo de inspección",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(3)(1)": {
+ "522-24(b)(3)(1)": {
   "kind": "inciso",
-  "id": "522-24(3)(1)",
+  "id": "522-24(b)(3)(1)",
   "title": "Los conductores del circuito de control o de fuerza estén en un cable con envolv",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(3)(2)": {
+ "522-24(b)(3)(2)": {
   "kind": "inciso",
-  "id": "522-24(3)(2)",
+  "id": "522-24(b)(3)(2)",
   "title": "Los conductores estén separados permanentemente de los conductores de fuerza por",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(3)(3)": {
+ "522-24(b)(3)(3)": {
   "kind": "inciso",
-  "id": "522-24(3)(3)",
+  "id": "522-24(b)(3)(3)",
   "title": "Los conductores estén separados permanente y eficazmente de los conductores de f",
   "article": 522,
   "chapter": 5,
   "page": 460
  },
- "522-24(3)(4)": {
+ "522-24(b)(3)(4)": {
   "kind": "inciso",
-  "id": "522-24(3)(4)",
+  "id": "522-24(b)(3)(4)",
   "title": "En charolas portacables, cuando los conductores del circuito de control y los co",
   "article": 522,
   "chapter": 5,
@@ -72327,6 +72407,14 @@
   "chapter": 6,
   "page": 595
  },
+ "690-31(d)": {
+  "kind": "inciso",
+  "id": "690-31(d)",
+  "title": "Cables con conductores pequeños",
+  "article": 690,
+  "chapter": 6,
+  "page": 595
+ },
  "690-31(e)": {
   "kind": "inciso",
   "id": "690-31(e)",
@@ -88699,6 +88787,22 @@
   "kind": "seccion",
   "id": "922-101",
   "title": "Generalidades",
+  "article": 922,
+  "chapter": 9,
+  "page": 727
+ },
+ "922-101(a)": {
+  "kind": "inciso",
+  "id": "922-101(a)",
+  "title": "En postes de madera y de concreto se debe considerar que las retenidas llevan la",
+  "article": 922,
+  "chapter": 9,
+  "page": 727
+ },
+ "922-101(b)": {
+  "kind": "inciso",
+  "id": "922-101(b)",
+  "title": "En líneas que crucen sobre vías férreas, las estructuras adyacentes deben resist",
   "article": 922,
   "chapter": 9,
   "page": 727
