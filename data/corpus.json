@@ -1794,7 +1794,11 @@
           },
           {
            "label": "2",
-           "text": "Circuitos de potencia limitada de alarma contra incendios alimentados como se indica en 760-121. Circuitos de control remoto y circuitos de señalización Clase 2 o Clase 3, o ambos, alimentados según se indica en 725-121."
+           "text": "Circuitos de potencia limitada de alarma contra incendios alimentados como se indica en 760-121."
+          },
+          {
+           "label": null,
+           "text": "Circuitos de control remoto y circuitos de señalización Clase 2 o Clase 3, o ambos, alimentados según se indica en 725-121."
           }
          ]
         }
@@ -15530,28 +15534,7 @@
          "kind": "num",
          "level": 2,
          "text": "Un conductor de puesta a tierra de equipos, tal como se describe en 250- 118, se debe llevar con los conductores de la alimentación y ser conectado al medio de desconexión del edificio o estructura y a los electrodos de puesta a tierra. El conductor de puesta a tierra de equipos se debe usar para la puesta a tierra o la unión de equipos, estructuras o carcasas que se requiere que estén puestos a tierra o sean unidos. El conductor de puesta a tierra de equipos debe estar dimensionado según 250-122. Ningún conductor puesto a tierra ya instalado se debe conectar al conductor de puesta a tierra de equipos ni a los electrodos de puesta a tierra.",
-         "children": [
-          {
-           "id": "250-32(b)(1)(1)",
-           "label": "1",
-           "kind": "paren",
-           "level": 3,
-           "text": "El tamaño requerido por 220-61.",
-           "children": [],
-           "notes": [],
-           "exceptions": []
-          },
-          {
-           "id": "250-32(b)(1)(2)",
-           "label": "2",
-           "kind": "paren",
-           "level": 3,
-           "text": "El tamaño requerido por 250-122.",
-           "children": [],
-           "notes": [],
-           "exceptions": []
-          }
-         ],
+         "children": [],
          "notes": [],
          "exceptions": [
           {
@@ -15569,7 +15552,19 @@
             },
             {
              "label": "3",
-             "text": "No ha sido instalada la protección contra falla a tierra del equipo en el lado fuente del alimentador. Si el conductor puesto a tierra se usa para la puesta a tierra de acuerdo con las disposiciones de esta excepción, el tamaño del conductor puesto a tierra no debe ser menor que el mayor de cualquiera de los siguientes:"
+             "text": "No ha sido instalada la protección contra falla a tierra del equipo en el lado fuente del alimentador."
+            },
+            {
+             "label": null,
+             "text": "Si el conductor puesto a tierra se usa para la puesta a tierra de acuerdo con las disposiciones de esta excepción, el tamaño del conductor puesto a tierra no debe ser menor que el mayor de cualquiera de los siguientes:"
+            },
+            {
+             "label": "1",
+             "text": "El tamaño requerido por 220-61."
+            },
+            {
+             "label": "2",
+             "text": "El tamaño requerido por 250-122."
             }
            ]
           }
@@ -20360,7 +20355,6 @@
    ],
    "refs": [
     "110-14(b)",
-    "220-61",
     "225-32",
     "225-4",
     "230-71(a)",
@@ -62308,8 +62302,16 @@
        ],
        "parrafos": [
         {
-         "text": "1. Cuando el 125 por ciento de la corriente no corresponde a un valor estándar de un fusible o interruptor automático no ajustable, se permitirá elegir el valor nominal estándar inmediatamente superior. 2. Cuando se exija protección contra sobrecorriente en el secundario, se permitirá que el dispositivo de sobrecorriente del secundario esté compuesto por máximo seis interruptores automáticos o seis grupos de fusibles agrupados en un lugar. Cuando se utilicen dispositivos múltiples de protección contra sobrecorriente, el total de todos los valores nominales de los dispositivos no deben exceder el valor permitido para un solo dispositivo de protección contra sobrecorriente. 3. Se permitirá que un transformador equipado por el fabricante con protección térmica coordinada contra sobrecarga y dispuesta para interrumpir la corriente del primario, tenga protección contra sobrecorriente en el primario con valor nominal o ajuste a un valor de corriente que no sea más de seis veces la corriente nominal del transformador, para transformadores que no tienen una impedancia de más del 6 por ciento y no más de cuatro veces la corriente nominal del transformador, para transformadores que tienen una impedancia de más del 6 por ciento pero no más del 10 por ciento.",
+         "text": "1. Cuando el 125 por ciento de la corriente no corresponde a un valor estándar de un fusible o interruptor automático no ajustable, se permitirá elegir el valor nominal estándar inmediatamente superior.",
          "seq": 16
+        },
+        {
+         "text": "2. Cuando se exija protección contra sobrecorriente en el secundario, se permitirá que el dispositivo de sobrecorriente del secundario esté compuesto por máximo seis interruptores automáticos o seis grupos de fusibles agrupados en un lugar. Cuando se utilicen dispositivos múltiples de protección contra sobrecorriente, el total de todos los valores nominales de los dispositivos no deben exceder el valor permitido para un solo dispositivo de protección contra sobrecorriente.",
+         "seq": 17
+        },
+        {
+         "text": "3. Se permitirá que un transformador equipado por el fabricante con protección térmica coordinada contra sobrecarga y dispuesta para interrumpir la corriente del primario, tenga protección contra sobrecorriente en el primario con valor nominal o ajuste a un valor de corriente que no sea más de seis veces la corriente nominal del transformador, para transformadores que no tienen una impedancia de más del 6 por ciento y no más de cuatro veces la corriente nominal del transformador, para transformadores que tienen una impedancia de más del 6 por ciento pero no más del 10 por ciento.",
+         "seq": 18
         }
        ]
       }
@@ -62342,18 +62344,12 @@
        "level": 1,
        "text": "Todos los autotransformadores de 600 volts nominales o menos deben estar protegidos por dispositivos separados de protección contra sobrecorriente instalados en serie con cada conductor de entrada no puesto a tierra. Este dispositivo de protección debe tener un valor nominal o ajuste no mayor al 125 por ciento de la corriente de entrada nominal de plena carga del autotransformador. Cuando este cálculo no corresponda al valor nominal estándar de un fusible o interruptor automático no ajustable, y la corriente nominal de entrada sea de 9 amperes o más, se permitirá elegir el valor nominal estándar inmediatamente superior descrito en 240-6. No se debe instalar un dispositivo de protección contra sobrecorriente en serie con el devanado en derivación (el devanado común a los circuitos de entrada y de salida) del autotransformador, es decir, entre los puntos A y B como se ilustra en la Figura 450-4.",
        "children": [],
-       "notes": [
-        {
-         "label": "NOTA",
-         "text": "Para más información sobre los usos permitidos de los autotransformadores, véase 210-9 y 215-11.",
-         "seq": 20
-        }
-       ],
+       "notes": [],
        "exceptions": [
         {
          "label": "Excepción",
          "text": "Cuando la corriente nominal de entrada del autotransformador sea menor a 9 amperes, se permitirá instalar un dispositivo de protección contra sobrecorriente de corriente nominal o ajuste no mayor al 167por ciento de la corriente de entrada.",
-         "seq": 17
+         "seq": 19
         }
        ],
        "title": "Protección contra sobrecorriente",
@@ -62363,10 +62359,27 @@
          "w": 259,
          "h": 136,
          "page": 336,
-         "seq": 18,
-         "caption": "Figura 450-4.- Autotransformador b) Transformador conectado en campo como autotransformador. Un transformador conectado en campo como un autotransformador, debe estar identificado para su uso a una tensión elevada."
+         "seq": 20,
+         "caption": "Figura 450-4.- Autotransformador"
         }
        ]
+      },
+      {
+       "id": "450-4(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Un transformador conectado en campo como un autotransformador, debe estar identificado para su uso a una tensión elevada.",
+       "children": [],
+       "notes": [
+        {
+         "label": "NOTA",
+         "text": "Para más información sobre los usos permitidos de los autotransformadores, véase 210-9 y 215-11.",
+         "seq": 22
+        }
+       ],
+       "exceptions": [],
+       "title": "Transformador conectado en campo como autotransformador"
       }
      ],
      "notes": [],
@@ -62419,7 +62432,7 @@
           {
            "label": "NOTA",
            "text": "Esta protección se puede conseguir mediante el uso de dos transformadores de corriente, tipo toroidal (dona), conectados sustractivamente e instalados de modo que detecten e indiquen si se produce un desequilibrio en la corriente de línea al autotransformador de 50 por ciento o más de la corriente nominal.",
-           "seq": 22
+           "seq": 24
           }
          ],
          "exceptions": [],
@@ -62489,7 +62502,7 @@
             {
              "label": "Excepción",
              "text": "Para los sistemas puestos a tierra con alta impedancia tratados en 250-36, en donde se diseña la corriente máxima de falla a tierra para que sea como máximo de 10 amperes, y cuando el autotransformador de puesta a tierra y la impedancia de puesta a tierra están clasificadas para servicio continuo, se permitirá instalar un dispositivo de protección contra sobrecorriente, con valor nominal máximo de 20 amperes y que abra simultáneamente todos los conductores de fase, en el lado de alimentación del autotransformador de puesta a tierra.",
-             "seq": 23
+             "seq": 25
             }
            ],
            "title": "Capacidad nominal en amperes"
@@ -62520,7 +62533,7 @@
       {
        "label": "NOTA",
        "text": "La corriente de fase en un autotransformador de puesta a tierra es un tercio de la corriente  del neutro.",
-       "seq": 21
+       "seq": 23
       }
      ],
      "exceptions": []
@@ -62562,7 +62575,7 @@
           {
            "label": "Excepción",
            "text": "Se permitirá que los circuitos de enlace que constan de múltiples conductores por fase, estén dimensionados y protegidos de acuerdo con 450-6(a)(4).",
-           "seq": 24
+           "seq": 26
           }
          ],
          "title": "Cargas conectadas entre los puntos de alimentación del transformador"
@@ -62841,7 +62854,7 @@
         {
          "label": "Excepción",
          "text": "Esta regla no se debe aplicar a transformadores para 600 volts nominales o menos que están completamente encerrados, con o sin aberturas de ventilación.",
-         "seq": 25
+         "seq": 27
         }
        ]
       },
@@ -62857,12 +62870,12 @@
         {
          "label": "Excepción 1",
          "text": "Los transformadores con sistemas de aislamiento Clase 155 o mayor, y separados de materiales combustibles por una barrera resistente al fuego y aislante del calor, o por no menos de 1.83 metros horizontalmente y 3.70 metros verticalmente.",
-         "seq": 26
+         "seq": 28
         },
         {
          "label": "Excepción 2",
          "text": "Los transformadores con sistemas de aislamiento Clase 155 o mayor y encerrados completamente, excepto por las aberturas de ventilación.",
-         "seq": 27
+         "seq": 29
         }
        ]
       },
@@ -62999,7 +63012,7 @@
           {
            "label": "NOTA",
            "text": "Las instalaciones adyacentes a materiales combustibles, salidas de incendios o a las aberturas de puertas y ventanas, pueden requerir protección adicional tal como se indica en 450-27.",
-           "seq": 29
+           "seq": 31
           }
          ],
          "exceptions": []
@@ -63015,7 +63028,7 @@
           {
            "label": "NOTA",
            "text": "Véase la definición de aprobado en el Artículo 100.",
-           "seq": 30
+           "seq": 32
           }
          ],
          "exceptions": []
@@ -63030,7 +63043,7 @@
       {
        "label": "NOTA",
        "text": "Un edificio Tipo I (Resistente al fuego) se compone de losas, columnas y vigas de concreto; Un edificio Tipo II (No combustible) se compone de columnas y vigas de acero sin recubrimiento contra fuego",
-       "seq": 28
+       "seq": 30
       }
      ],
      "exceptions": []
@@ -63046,7 +63059,7 @@
       {
        "label": "NOTA",
        "text": "La seguridad se puede aumentar si se hacen análisis de riesgo de incendio para dichas instalaciones de transformadores. Para los propósitos de esta sección, un fluido dieléctrico no inflamable es el que no tiene punto de inflamación o punto de chispa y no es inflamable en el aire.",
-       "seq": 31
+       "seq": 33
       }
      ],
      "exceptions": []
@@ -63073,32 +63086,32 @@
       {
        "label": "Excepción 1",
        "text": "Cuando la capacidad total no exceda los 112.5 kilovoltamperes, se permitirá que la bóveda especificada en la Parte C de este Artículo esté hecha en concreto reforzado de no menos de 10 centímetros de espesor.",
-       "seq": 32
+       "seq": 34
       },
       {
        "label": "Excepción 2",
        "text": "Cuando la tensión nominal no exceda los 600 volts, no se exigirá una bóveda si se toman las medidas adecuadas para evitar que el fuego del aceite del transformador encienda otros materiales y si la capacidad total de una instalación no excede los 10 kilovoltamperes en una sección del edificio clasificada como combustible, o 75 kilovoltamperes si la estructura que rodea al transformador está clasificada como construcción resistente al fuego.",
-       "seq": 33
+       "seq": 35
       },
       {
        "label": "Excepción 3",
        "text": "Se permitirá que los transformadores de hornos eléctricos con un valor nominal total que no exceda los 75 kilovoltamperes, se instalen sin bóveda en un edificio o cuarto de construcción resistente al fuego, siempre que se tomen las medidas necesarias para evitar que el fuego del aceite del transformador se propague a otros materiales combustibles.",
-       "seq": 34
+       "seq": 36
       },
       {
        "label": "Excepción 4",
        "text": "Se permitirá instalar sin bóveda un transformador con un valor nominal total que no exceda los 75 kilovoltamperes y una tensión de alimentación de 600 volts o menos que sea parte integral de un equipo de aceleración de partículas cargadas, en un edificio o cuarto de construcción no combustible o resistente al fuego, siempre y cuando se tomen las medidas necesarias para evitar que el fuego del aceite del transformador se propague a otros materiales combustibles.",
-       "seq": 35
+       "seq": 37
       },
       {
        "label": "Excepción 5",
        "text": "Se permitirá instalar transformadores en un edificio separado que no cumpla con la Parte C de este Artículo si tanto el edificio como su contenido no presentan riesgo de incendio para otros edificios o propiedades, y si el edificio se utiliza únicamente para suministrar el servicio de electricidad y su interior es accesible sólo a personas calificadas.",
-       "seq": 36
+       "seq": 38
       },
       {
        "label": "Excepción 6",
        "text": "Se permitirá utilizar transformadores con aislamiento de aceite sin bóveda, en equipos portátiles y móviles de minería de superficie (tales como excavadoras eléctricas) si se cumplen todas las condiciones siguientes:",
-       "seq": 37,
+       "seq": 39,
        "items": [
         {
          "label": "a",
@@ -63198,14 +63211,14 @@
       {
        "label": "NOTA 2",
        "text": "Una construcción típica con tres horas de resistencia al fuego es una de concreto reforzado de 15 centímetros de espesor.",
-       "seq": 39
+       "seq": 41
       }
      ],
      "exceptions": [
       {
        "label": "Excepción",
        "text": "Cuando los transformadores estén protegidos con rociadores automáticos, agua en gotas finas, dióxido de carbono o halón, se permitirá que la construcción tenga valor nominal de 1 hora de resistencia al fuego.",
-       "seq": 38
+       "seq": 40
       }
      ]
     },
@@ -63228,7 +63241,7 @@
         {
          "label": "Excepción",
          "text": "Cuando los transformadores estén protegidos por rociadores automáticos, agua en gotas finas, dióxido de carbono o halón, se permitirá una construcción con valor nominal de resistencia al fuego de 1 hora.",
-         "seq": 40
+         "seq": 42
         }
        ],
        "title": "Tipo de puerta"
@@ -66407,7 +66420,11 @@
               },
               {
                "label": "5",
-               "text": "El interior de un ducto de descarga que se utiliza para dar salida a las concentraciones combustibles de gases o vapores. La experiencia ha demostrado que es prudente evitar totalmente la instalación de instrumentación u otros equipos eléctricos en todas estas áreas en particular. Sin embargo, cuando no se pueda evitar porque son esenciales para los procesos y no sea factible hacer la instalación en otros lugares (ver 500-5(a), NOTA), se deben utilizar equipos o instrumentos eléctricos aprobados para esa aplicación específica o que sean sistemas intrínsecamente seguros, como se describe en el Artículo 504."
+               "text": "El interior de un ducto de descarga que se utiliza para dar salida a las concentraciones combustibles de gases o vapores."
+              },
+              {
+               "label": null,
+               "text": "La experiencia ha demostrado que es prudente evitar totalmente la instalación de instrumentación u otros equipos eléctricos en todas estas áreas en particular. Sin embargo, cuando no se pueda evitar porque son esenciales para los procesos y no sea factible hacer la instalación en otros lugares (ver 500-5(a), NOTA), se deben utilizar equipos o instrumentos eléctricos aprobados para esa aplicación específica o que sean sistemas intrínsecamente seguros, como se describe en el Artículo 504."
               }
              ]
             }
@@ -71749,7 +71766,15 @@
           },
           {
            "label": "3",
-           "text": "Fuentes de energía generada, por ejemplo, termopares y fotoceldas, que no generan más de 1.5 volts, 100 miliamperes y 25 miliwatts. Circuito intrínsecamente seguro: Circuito en el cual cualquier chispa o efecto térmico es incapaz de causar la ignición de una mezcla de material combustible o inflamable en aire bajo condiciones de prueba determinadas. Sistema intrínsecamente seguro: Un ensamble de aparatos intrínsecamente seguros interconectados con aparatos asociados y cables de conexión en los que aquellas partes del sistema que puedan ser utilizadas en un área peligrosa (clasificada), son circuitos intrínsecamente seguros."
+           "text": "Fuentes de energía generada, por ejemplo, termopares y fotoceldas, que no generan más de 1.5 volts, 100 miliamperes y 25 miliwatts."
+          },
+          {
+           "label": null,
+           "text": "Circuito intrínsecamente seguro: Circuito en el cual cualquier chispa o efecto térmico es incapaz de causar la ignición de una mezcla de material combustible o inflamable en aire bajo condiciones de prueba determinadas."
+          },
+          {
+           "label": null,
+           "text": "Sistema intrínsecamente seguro: Un ensamble de aparatos intrínsecamente seguros interconectados con aparatos asociados y cables de conexión en los que aquellas partes del sistema que puedan ser utilizadas en un área peligrosa (clasificada), son circuitos intrínsecamente seguros."
           }
          ]
         },
@@ -71866,7 +71891,7 @@
           {
            "label": "NOTA",
            "text": "Los siguientes aparatos son ejemplos de aparatos sencillos:",
-           "seq": 13,
+           "seq": 18,
            "items": [
             {
              "label": "1",
@@ -71891,14 +71916,34 @@
          ],
          "parrafos": [
           {
-           "text": "Donde, T = es la temperatura superficial Po = es la potencia de salida marcada en el aparato asociado o el aparato intrínsecamente seguro. Rt = es la resistencia térmica del aparato sencillo Tamb = es la temperatura ambiente (normalmente 40 ºC) y la Tabla 500-8(c) de referencia. Además, los componentes con un área superficial menor que 10 cm2 (excluyendo las puntas de conductores) se pueden clasificar como T5 si su temperatura superficial no excede de 150 ºC.",
+           "text": "Donde,",
            "seq": 10
+          },
+          {
+           "text": "T = es la temperatura superficial",
+           "seq": 11
+          },
+          {
+           "text": "Po = es la potencia de salida marcada en el aparato asociado o el aparato intrínsecamente seguro.",
+           "seq": 12
+          },
+          {
+           "text": "Rt = es la resistencia térmica del aparato sencillo",
+           "seq": 13
+          },
+          {
+           "text": "Tamb = es la temperatura ambiente (normalmente 40 ºC) y la Tabla 500-8(c) de referencia.",
+           "seq": 14
+          },
+          {
+           "text": "Además, los componentes con un área superficial menor que 10 cm2 (excluyendo las puntas de conductores) se pueden clasificar como T5 si su temperatura superficial no excede de 150 ºC.",
+           "seq": 15
           }
          ],
          "tables": [
           {
            "id": "504-10(b)",
-           "seq": 11
+           "seq": 16
           }
          ]
         }
@@ -71946,39 +71991,39 @@
           {
            "label": "NOTA",
            "text": "Divisiones de lámina metálica de 0.90 milímetros de espesor o mayores, se consideran normalmente aceptables.",
-           "seq": 15
+           "seq": 20
           },
           {
            "label": "NOTA",
            "text": "Los cables que cumplen con los requisitos indicados en los Artículos 330 y 332 son típicos de aquéllos considerados aceptables.",
-           "seq": 17
+           "seq": 22
           },
           {
            "label": "NOTA",
            "text": "Los circuitos de alambrado no incendiario instalados en campo se describen en 501-10(b)(3), 502-10(b)(3), 503-10(b)(3), 505- 15(c)(1)(g) y 506-15(c)(7).",
-           "seq": 20
+           "seq": 25
           }
          ],
          "exceptions": [
           {
            "label": "Excepción 1",
            "text": "Cuando los conductores de circuitos intrínsecamente seguros estén separados de los conductores de circuitos no intrínsecamente seguros por una distancia de al menos 50 milímetros y asegurados, o mediante una división metálica puesta a tierra o mediante una división de aislamiento adecuado.",
-           "seq": 14
+           "seq": 19
           },
           {
            "label": "Excepción 2",
            "text": "Cuando: (1) todos los conductores de circuitos intrínsecamente seguros o (2) todos los conductores de circuitos no intrínsecamente seguros estén en cables con cubierta o armadura metálica puesta a tierra, donde esos elementos metálicos sean capaces de transportar la corriente de falla a tierra.",
-           "seq": 16
+           "seq": 21
           },
           {
            "label": "Excepción 3",
            "text": "Se permitirá instalar circuitos intrínsecamente seguros en lugares de División 2 o Zona 2 en una canalización, charola portacables o cable junto con circuitos de alambrado no incendiario instalados en campo, si se instalan de acuerdo con 504-30(b).",
-           "seq": 18
+           "seq": 23
           },
           {
            "label": "Excepción 4",
            "text": "Se permitirá instalar circuitos intrínsecamente seguros que pasen de un lugar de División 2 o Zona 2 para alimentar un aparato ubicado en un lugar de División 1, Zona o Zona 1 en una canalización, charola portacables o cable junto con circuitos de alambrado no incendiario instalados en campo, si se instalan de acuerdo con 504-30 (b).",
-           "seq": 19
+           "seq": 24
           }
          ],
          "title": "En canalizaciones, charolas portacables y cables"
@@ -72031,17 +72076,17 @@
             {
              "label": "NOTA 1",
              "text": "Se consideran como casos típicos aceptables los cables que cumplan los requisitos de los Artículos 330 y 332.",
-             "seq": 21
+             "seq": 26
             },
             {
              "label": "NOTA 2",
              "text": "Un método típico para cumplir con este requisito es el uso de compartimientos de alambrado separados para las terminales de los circuitos intrínsecamente seguros y los no intrínsecamente seguros.",
-             "seq": 22
+             "seq": 27
             },
             {
              "label": "NOTA 3",
              "text": "Para asegurar la separación necesaria del alambrado se pueden utilizar barreras físicas, tales como divisiones metálicas puestas a tierra aprobadas, divisiones aislantes aprobadas o ductos de alambrado de acceso restringido aprobados, separados de otros ductos por un mínimo de 19 milímetros.",
-             "seq": 23
+             "seq": 28
             }
            ],
            "exceptions": []
@@ -72063,7 +72108,7 @@
           {
            "label": "Excepción",
            "text": "Donde: (1) todos los conductores del circuito intrínsecamente seguro estén en cables del tipo MI o MC, o (2) todos los conductores del circuito no intrínsecamente seguro estén instalados en canalizaciones o en cables del tipo MI o MC cuya cubierta o blindaje sea capaz de transportar la corriente de falla a tierra.",
-           "seq": 24
+           "seq": 29
           }
          ],
          "title": "Otros (que no estén en sistemas de canalizaciones o charolas portacables)"
@@ -72101,7 +72146,7 @@
           {
            "label": "Excepción",
            "text": "A menos que estén identificados de otra manera.",
-           "seq": 25
+           "seq": 30
           }
          ]
         }
@@ -72132,7 +72177,7 @@
         {
          "label": "NOTA",
          "text": "Puede ser necesaria una unión suplementaria al electrodo de puesta a tierra para algunos aparatos asociados, por ejemplo, las barreras de diodos zener, si se especifica en el diagrama de control.",
-         "seq": 26
+         "seq": 31
         }
        ],
        "exceptions": [],
@@ -72209,7 +72254,7 @@
       {
        "label": "Excepción",
        "text": "No se requieren sellos para envolventes que contengan únicamente aparatos intrínsecamente seguros, excepto por lo requerido en 501-17.",
-       "seq": 27
+       "seq": 32
       }
      ]
     },
@@ -72242,19 +72287,19 @@
         {
          "label": "NOTA 1",
          "text": "Los métodos de alambrado permitidos en áreas no clasificadas pueden utilizarse para sistemas intrínsecamente seguros en áreas peligrosas (clasificadas). Sin etiquetas que identifiquen la aplicación del alambrado, no se puede determinar si la instalación cumple con esta NOM.",
-         "seq": 29
+         "seq": 34
         },
         {
          "label": "NOTA 2",
          "text": "En áreas no clasificadas, la identificación es necesaria para evitar que en un futuro, se agregue inadvertidamente a canalizaciones existentes un alambrado no intrínsecamente seguro.",
-         "seq": 30
+         "seq": 35
         }
        ],
        "exceptions": [
         {
          "label": "Excepción",
          "text": "Se permite identificar los circuitos subterráneos, cuando sean accesibles después de salir del suelo.",
-         "seq": 28
+         "seq": 33
         }
        ],
        "title": "Alambrado"
@@ -77710,9 +77755,31 @@
          "h": 272,
          "page": 417,
          "seq": 4,
-         "caption": "Figura 515-3.- Terminal marítima para manipulación de líquidos inflamables. b) Aislamiento. El aislamiento de los conductores debe cumplir con lo indicado en 501-20. c) Alambrado no metálico. Cuando se utilice tubo conduit Tipo PVC, tubo conduit Tipo RTRC o cables con cubierta no metálica, se debe incluir un conductor de puesta a tierra del equipo, para que brinde continuidad eléctrica al sistema de canalización y permita poner a tierra las partes metálicas no portadoras de corriente."
+         "caption": "Figura 515-3.- Terminal marítima para manipulación de líquidos inflamables."
         }
        ]
+      },
+      {
+       "id": "515-8(b)",
+       "label": "b",
+       "kind": "alpha",
+       "level": 1,
+       "text": "El aislamiento de los conductores debe cumplir con lo indicado en 501-20.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Aislamiento"
+      },
+      {
+       "id": "515-8(c)",
+       "label": "c",
+       "kind": "alpha",
+       "level": 1,
+       "text": "Cuando se utilice tubo conduit Tipo PVC, tubo conduit Tipo RTRC o cables con cubierta no metálica, se debe incluir un conductor de puesta a tierra del equipo, para que brinde continuidad eléctrica al sistema de canalización y permita poner a tierra las partes metálicas no portadoras de corriente.",
+       "children": [],
+       "notes": [],
+       "exceptions": [],
+       "title": "Alambrado no metálico"
       }
      ],
      "notes": [],
@@ -77756,6 +77823,7 @@
     }
    ],
    "refs": [
+    "501-20",
     "501-30",
     "505-25",
     "515-3",
@@ -87920,13 +87988,26 @@
          "w": 267,
          "h": 118,
          "page": 473,
-         "seq": 3
+         "seq": 3,
+         "caption": "Figura 550-10 (c).- Configuraciones de contacto y clavija de 220Y/127 volts, 50 amperes, 3 fases, 4 hilos, con conductor puesto a tierra, para uso con cordones de alimentación en casas móviles y sus estacionamientos."
         }
        ],
        "parrafos": [
         {
-         "text": "Donde: G: Puesta a tierra W: Puesto a tierra X, Y: Conductores de fase Figura 550-10 (c).- Configuraciones de contacto y clavija de 220Y/127 volts, 50 amperes, 3 fases, 4 hilos, con conductor puesto a tierra, para uso con cordones de alimentación en casas móviles y sus estacionamientos.",
+         "text": "Donde:",
          "seq": 4
+        },
+        {
+         "text": "G: Puesta a tierra",
+         "seq": 5
+        },
+        {
+         "text": "W: Puesto a tierra",
+         "seq": 6
+        },
+        {
+         "text": "X, Y: Conductores de fase",
+         "seq": 7
         }
        ]
       },
@@ -88039,7 +88120,7 @@
         {
          "label": "NOTA",
          "text": "Véase la Sección 550-20(b) para información de los medios de desconexión de circuitos derivados diseñados para energizar equipos de calefacción, aire acondicionado o ambos, localizados fuera de la casa móvil, diferentes de los acondicionadores de aire de habitación.",
-         "seq": 6
+         "seq": 9
         }
        ],
        "exceptions": [],
@@ -88047,7 +88128,7 @@
        "parrafos": [
         {
          "text": "El tablero de distribución debe tener por lo menos una capacidad de 50 amperes y debe emplear un interruptor automático de 2 polos de 40 amperes para un cordón de alimentación de 40 amperes, o, de 50 amperes para un cordón de alimentación de 50 amperes. Si el tablero de distribución emplea un desconectador con fusibles, debe ser de 60 amperes y debe tener un solo portafusibles de dos polos a 60 amperes, con fusibles principales de 40 o 50 amperes para los cordones de suministro de 40 o 50 amperes, respectivamente. En la parte exterior del tablero de distribución debe estar marcada la capacidad del fusible. El tablero de distribución se debe colocar en un lugar accesible; pero no se debe colocar ni en baños ni en armarios de ropa. Se debe proporcionar un espacio de trabajo libre de por lo menos 75 centímetros de ancho por 75 centímetros en el frente del tablero de distribución. Este espacio debe extenderse desde el piso hasta la parte superior del tablero.",
-         "seq": 7
+         "seq": 10
         }
        ]
       },
@@ -88116,7 +88197,7 @@
         {
          "label": "Excepción",
          "text": "Para casas prefabricadas, el fabricante debe suministrar en sus instrucciones de instalación escritas o en la placa de datos el valor nominal mínimo en amperes del ensamble del alimentador o, cuando se suministra, los conductores de acometida proyectados para la conexión a la casa prefabricada. El valor nominal proporcionado no debe ser inferior a la carga mínima calculada según 550-18.",
-         "seq": 8
+         "seq": 11
         }
        ],
        "title": "Placa de datos eléctricos"
@@ -88126,7 +88207,7 @@
       {
        "label": "NOTA",
        "text": "Véase 110-22, referente a la identificación de cada medio de desconexión y cada acometida, alimentador o circuito derivado en el punto donde éste se origina y el tipo de marcado requerido.",
-       "seq": 5
+       "seq": 8
       }
      ],
      "exceptions": []
@@ -88154,7 +88235,7 @@
          "w": 232,
          "h": 25,
          "page": 475,
-         "seq": 9
+         "seq": 12
         }
        ]
       },
@@ -88170,24 +88251,24 @@
         {
          "label": "Excepción 1",
          "text": "Se permitirán salidas de contactos instalados únicamente para alimentación eléctrica y soporte de un reloj eléctrico en cualquiera de los cuartos especificados en esta sección.",
-         "seq": 11
+         "seq": 14
         },
         {
          "label": "Excepción 2",
          "text": "Se permitirán salidas de contactos instalados para alimentar equipos complementarios y alumbrado en estufas de gas, hornos o unidades de cocción montadas en la cubierta.",
-         "seq": 12
+         "seq": 15
         },
         {
          "label": "Excepción 3",
          "text": "Se permitirá que un solo contacto para equipo de refrigeración sea alimentado por un circuito derivado individual con valor nominal de 15 amperes o más.",
-         "seq": 13
+         "seq": 16
         }
        ],
        "title": "Aparatos pequeños",
        "parrafos": [
         {
          "text": "Las salidas de los contactos de la cubierta instaladas en la cocina deben estar alimentados mediante no menos de dos circuitos derivados para aparatos pequeños y se permitirá que ambos o cualquiera de ellos alimenten a las salidas de los contactos de la cocina y de otros lugares especificados en esta sección.",
-         "seq": 14
+         "seq": 17
         }
        ]
       },
@@ -88254,7 +88335,7 @@
         {
          "label": "NOTA",
          "text": "Para equipo de aire acondicionado central véase el Artículo 440.",
-         "seq": 15
+         "seq": 18
         }
        ],
        "exceptions": [],
@@ -88806,7 +88887,7 @@
         {
          "label": "Excepción",
          "text": "Cajas tipo de fijación rápida (por resorte). Las cajas que están equipadas con soportes especiales para pared o plafón y los artefactos eléctricos con cajas integrales, que pueden asegurarse firmemente a las paredes o al plafón, y que estén marcados para ese uso, se permiten sin soportarse de un miembro estructural o soporte. La prueba y aprobación debe incluir a los sistemas de construcción de paredes y plafones para los cuales las cajas y dispositivos son destinados a ser utilizados.",
-         "seq": 16
+         "seq": 19
         }
        ],
        "title": "Cajas, accesorios y gabinetes"
@@ -88854,7 +88935,7 @@
         {
          "label": "NOTA",
          "text": "Ver 550-19 con respecto a la interconexión de las unidades con secciones múltiples.",
-         "seq": 17
+         "seq": 20
         }
        ],
        "exceptions": [],
@@ -89046,7 +89127,7 @@
         {
          "label": "Excepción",
          "text": "Los equipos de alumbrado y aparatos que estén aprobados no requieren ser sometidos a la prueba de rigidez dieléctrica.",
-         "seq": 18
+         "seq": 21
         }
        ],
        "title": "Prueba de rigidez dieléctrica"
@@ -89242,7 +89323,7 @@
            "w": 441,
            "h": 341,
            "page": 480,
-           "seq": 19
+           "seq": 22
           }
          ]
         }
@@ -89284,7 +89365,7 @@
         {
          "label": "NOTA",
          "text": "Ver 550-15(k) con relación a la interconexión de los componentes.",
-         "seq": 21
+         "seq": 24
         }
        ],
        "exceptions": [],
@@ -89410,7 +89491,7 @@
        "tables": [
         {
          "id": "550-31",
-         "seq": 22
+         "seq": 25
         }
        ]
       }
@@ -89596,7 +89677,7 @@
         {
          "label": "Excepción",
          "text": "Cuando el alimentador para una casa móvil se instale entre la acometida y un medio de desconexión de la casa móvil como lo indica la Sección 550-32(a), se permite omitir el conductor de puesta a tierra de equipo, cuando el conductor puesto a tierra del circuito es puesto a tierra en los medios de desconexión como se requiere en 250-32(b) excepción.",
-         "seq": 24
+         "seq": 27
         }
        ],
        "title": "Conductores de los alimentadores"
@@ -93223,8 +93304,12 @@
          "seq": 25
         },
         {
-         "text": "Total = voltamperes de alumbrado + voltamperes de aparatos pequeños. Los primeros 3 000 voltamperes se consideran a 100 por ciento y para el resto de la carga se considera un factor de 35 por ciento = VA que se dividen entre 220 o 240 volts para obtener los amperes por fase.",
+         "text": "Total = voltamperes de alumbrado + voltamperes de aparatos pequeños.",
          "seq": 27
+        },
+        {
+         "text": "Los primeros 3 000 voltamperes se consideran a 100 por ciento y para el resto de la carga se considera un factor de 35 por ciento = VA que se dividen entre 220 o 240 volts para obtener los amperes por fase.",
+         "seq": 28
         }
        ]
       },
@@ -93378,12 +93463,12 @@
         {
          "label": "Excepción 1",
          "text": "Se permiten cajas del tipo de puesta a presión o cajas provistas con herrajes especiales para pared o techo que las aseguren firmemente a las paredes o techos.",
-         "seq": 28
+         "seq": 29
         },
         {
          "label": "Excepción 2",
          "text": "Se considera como medio aprobado para el montaje de una caja de salida, una placa de madera, que brinde un soporte de 4 centímetros como mínimo alrededor de la caja, y de un espesor mínimo de 12 milímetros o mayor fijada directamente al panel de la pared.",
-         "seq": 29
+         "seq": 30
         }
        ],
        "title": "Montaje"
@@ -93937,7 +94022,7 @@
         {
          "label": "Excepción",
          "text": "Debe considerarse como unido cualquier remolque estacionado que emplee un chasis metálico de construcción unitaria al cual el tablero de distribución esté firmemente asegurado con pernos y tuercas o por soldadura o remachado.",
-         "seq": 30
+         "seq": 31
         }
        ],
        "title": "Unión del chasis"
@@ -111677,7 +111762,8 @@
        "w": 438,
        "h": 380,
        "page": 588,
-       "seq": 0
+       "seq": 0,
+       "caption": "Figura 690-1(a).- Identificación de los componentes de un sistema solar fotovoltaico"
       },
       {
        "src": "fig-1225.png",
@@ -111685,12 +111771,6 @@
        "h": 197,
        "page": 588,
        "seq": 2
-      }
-     ],
-     "parrafos": [
-      {
-       "text": "Figura 690-1(a).- Identificación de los componentes de un sistema solar fotovoltaico",
-       "seq": 1
       }
      ]
     },
@@ -136582,8 +136662,32 @@
          ],
          "parrafos": [
           {
-           "text": "Dónde: S es la separación en milímetros. kV es la tensión entre los dos conductores para los que se calcula la separación; excepto el caso de alimentadores de transporte eléctrico, en que la tensión es de fase a tierra. f es la flecha final en milímetros, del conductor de mayor flecha en el claro, a una temperatura de 16 °C y con una tensión mecánica de 25 por ciento de la de ruptura. La Tabla 922-12(a)(2) muestra las separaciones que se obtienen al aplicar las ecuaciones 1 y 2 anteriores, en algunos valores de flecha y de tensión de conductores. La separación entre conductores de circuitos con tensión mayor que 50 kilovolts se debe incrementar 3 por ciento por cada 300 metros de altura en exceso de 1000 metros sobre el nivel del mar. Todas las separaciones para tensiones superiores a 50 kilovolts deben determinarse con base en la tensión máxima de operación.",
+           "text": "Dónde:",
            "seq": 8
+          },
+          {
+           "text": "S es la separación en milímetros.",
+           "seq": 9
+          },
+          {
+           "text": "kV es la tensión entre los dos conductores para los que se calcula la separación; excepto el caso de alimentadores de transporte eléctrico, en que la tensión es de fase a tierra.",
+           "seq": 10
+          },
+          {
+           "text": "f es la flecha final en milímetros, del conductor de mayor flecha en el claro, a una temperatura de 16 °C y con una tensión mecánica de 25 por ciento de la de ruptura.",
+           "seq": 11
+          },
+          {
+           "text": "La Tabla 922-12(a)(2) muestra las separaciones que se obtienen al aplicar las ecuaciones 1 y 2 anteriores, en algunos valores de flecha y de tensión de conductores.",
+           "seq": 12
+          },
+          {
+           "text": "La separación entre conductores de circuitos con tensión mayor que 50 kilovolts se debe incrementar 3 por ciento por cada 300 metros de altura en exceso de 1000 metros sobre el nivel del mar.",
+           "seq": 13
+          },
+          {
+           "text": "Todas las separaciones para tensiones superiores a 50 kilovolts deben determinarse con base en la tensión máxima de operación.",
+           "seq": 14
           }
          ]
         }
@@ -136605,11 +136709,11 @@
        "tables": [
         {
          "id": "922-12(a)(1)",
-         "seq": 9
+         "seq": 15
         },
         {
          "id": "922-12(a)(2)",
-         "seq": 11
+         "seq": 17
         }
        ]
       }
@@ -136636,12 +136740,12 @@
         {
          "label": "Excepción 1",
          "text": "Los conductores soportados por bastidores verticales, o por ménsulas separadas colocadas verticalmente, deben tener los espaciamientos indicados en 922-17.",
-         "seq": 13
+         "seq": 19
         },
         {
          "label": "Excepción 2",
          "text": "Este requisito no se aplica a conductores forrados del mismo circuito, de conformidad con lo indicado en 922-4(c).",
-         "seq": 14
+         "seq": 20
         }
        ],
        "title": "Separación de conductores"
@@ -136692,13 +136796,13 @@
            "tables": [
             {
              "id": "922-13(a)",
-             "seq": 15
+             "seq": 21
             }
            ],
            "parrafos": [
             {
              "text": "neutros conectados efectivamente a tierra, en circuitos hasta de 22 kilovolts a tierra.",
-             "seq": 16
+             "seq": 22
             }
            ]
           }
@@ -136730,7 +136834,7 @@
        "w": 336,
        "h": 207,
        "page": 711,
-       "seq": 17
+       "seq": 23
       }
      ]
     },
@@ -136765,7 +136869,7 @@
        "tables": [
         {
          "id": "922-15(a)",
-         "seq": 19
+         "seq": 25
         }
        ]
       }
@@ -136863,13 +136967,13 @@
         {
          "label": "Excepción",
          "text": "Si los conductores tienen separadores intermedios adecuados, el espaciamiento vertical puede ser como mínimo de 10 centímetros en cualquier caso.",
-         "seq": 23
+         "seq": 29
         }
        ],
        "tables": [
         {
          "id": "922-17(c)",
-         "seq": 21
+         "seq": 27
         }
        ]
       }
@@ -136980,12 +137084,12 @@
         {
          "label": "Excepción 1",
          "text": "Este requisito no se aplica en caso de que se tenga establecida la práctica de que los trabajadores no suban más allá de los conductores y del equipo, a menos que estén desenergizados.",
-         "seq": 24
+         "seq": 30
         },
         {
          "label": "Excepción 2",
          "text": "Este requisito no se aplica si el espacio para subir puede ser obtenido con el desplazamiento temporal de los conductores, utilizando equipo para trabajar con línea energizada.",
-         "seq": 25
+         "seq": 31
         }
        ],
        "title": "Espacio para subir entre conductores"
@@ -137002,7 +137106,7 @@
         {
          "label": "Excepción",
          "text": "Si se instala un tramo longitudinal en el lado o esquina de la estructura donde se encuentre el espacio para subir, el ancho de este espacio debe medirse horizontalmente del centro de la estructura hacia los conductores eléctricos más próximos sobre la cruceta, siempre que se cumplan las dos condiciones siguientes:",
-         "seq": 26,
+         "seq": 32,
          "items": [
           {
            "label": "1",
@@ -137030,7 +137134,7 @@
        "tables": [
         {
          "id": "922-19(e)",
-         "seq": 27
+         "seq": 33
         }
        ]
       }
@@ -137171,7 +137275,7 @@
          "w": 347,
          "h": 214,
          "page": 714,
-         "seq": 29
+         "seq": 35
         }
        ]
       }
@@ -137208,7 +137312,7 @@
        "tables": [
         {
          "id": "922-21",
-         "seq": 31
+         "seq": 37
         }
        ]
       }
@@ -137321,7 +137425,7 @@
            "tables": [
             {
              "id": "922-22(a)",
-             "seq": 33
+             "seq": 39
             }
            ]
           },
@@ -137486,7 +137590,7 @@
          "tables": [
           {
            "id": "922-31(e)(2)",
-           "seq": 35
+           "seq": 41
           }
          ]
         }
@@ -137520,7 +137624,7 @@
      "tables": [
       {
        "id": "922-33",
-       "seq": 37
+       "seq": 43
       }
      ]
     },
@@ -137584,14 +137688,14 @@
         {
          "label": "Excepción",
          "text": "En cruzamientos sobre vías de ferrocarril en la Zona I, debe aplicarse a la altura un incremento de 1.50 centímetros por cada metro del claro en exceso de 75 metros.",
-         "seq": 39
+         "seq": 45
         }
        ],
        "title": "Tensión mayor que 50 kilovolts a tierra",
        "parrafos": [
         {
          "text": "Los incrementos anteriores no requieren ser mayores que el resultado de la diferencia aritmética entre las flechas finales calculadas para el claro, en reposo y temperaturas en el conductor de 50 °C y 15 °C,",
-         "seq": 40
+         "seq": 46
         }
        ]
       }
@@ -137630,11 +137734,11 @@
        "tables": [
         {
          "id": "922-41",
-         "seq": 41
+         "seq": 47
         },
         {
          "id": "922-43",
-         "seq": 43
+         "seq": 49
         }
        ]
       }
@@ -137766,7 +137870,7 @@
         {
          "label": "Excepción",
          "text": "Cuando la tensión no excede de 300 volts a tierra y los cables son de los tipos mencionados en 922-4(b), las separaciones vertical y horizontal pueden ser reducidas a un mínimo de 60.00 centímetros y 90.00 centímetros respectivamente medidas a 15 °C sin deflexión por viento.",
-         "seq": 45
+         "seq": 51
         }
        ]
       }
@@ -137793,13 +137897,13 @@
         {
          "label": "Excepción",
          "text": "Este requisito no se aplica cuando por limitaciones de espacio no es posible ubicar los conductores suministradores en otra disposición.",
-         "seq": 46
+         "seq": 52
         }
        ],
        "parrafos": [
         {
          "text": "Por otra parte, las estructuras de la línea deben estar separadas de las tomas de agua contra incendio por una distancia mínima de 1.00 metro.",
-         "seq": 47
+         "seq": 53
         }
        ]
       },
@@ -137856,7 +137960,7 @@
         {
          "label": "Excepción",
          "text": "Este requisito no se aplica a retenidas, mensajeros, cables de guarda, neutros como los descritos en 922-4(d) y cables aislados.",
-         "seq": 48
+         "seq": 54
         }
        ],
        "title": "Separaciones básicas"
@@ -137874,11 +137978,11 @@
        "tables": [
         {
          "id": "922-54",
-         "seq": 49
+         "seq": 55
         },
         {
          "id": "922-55",
-         "seq": 53
+         "seq": 59
         }
        ],
        "figures": [
@@ -137887,7 +137991,7 @@
          "w": 184,
          "h": 260,
          "page": 720,
-         "seq": 51
+         "seq": 57
         }
        ]
       }
@@ -137925,20 +138029,20 @@
         {
          "label": "Excepción",
          "text": "Las separaciones no requieren incrementarse cuando los claros sean iguales o menores a 100 metros (75 metros en la zona de carga I) y la temperatura del conductor no excedan de 50 °C.",
-         "seq": 55
+         "seq": 61
         }
        ],
        "title": "Claros mayores al claro básico",
        "parrafos": [
         {
          "text": "Para claros a nivel, cuando la separación no se localice a la mitad del claro, el incremento anterior puede reducirse multiplicando por los siguientes factores:",
-         "seq": 56
+         "seq": 62
         }
        ],
        "tables": [
         {
          "id": "922-56(b)",
-         "seq": 57
+         "seq": 63
         }
        ]
       }
@@ -138084,7 +138188,7 @@
        "w": 440,
        "h": 324,
        "page": 723,
-       "seq": 59
+       "seq": 65
       }
      ]
     },
@@ -138100,13 +138204,13 @@
      "tables": [
       {
        "id": "922-83",
-       "seq": 61
+       "seq": 67
       }
      ],
      "parrafos": [
       {
        "text": "estructuras. Para cualquiera de las zonas (excepto la Zona I), pueden considerarse los espesores de hielo de la Zona I, con una temperatura de -5 °C. El peso del hielo se considera de 913 kilogramos por metro cúbico",
-       "seq": 62
+       "seq": 68
       }
      ]
     },
@@ -138141,7 +138245,7 @@
        "tables": [
         {
          "id": "922-84",
-         "seq": 63
+         "seq": 69
         }
        ]
       }
@@ -138161,7 +138265,7 @@
      "tables": [
       {
        "id": "922-84(a)",
-       "seq": 65
+       "seq": 71
       }
      ]
     },
@@ -138265,7 +138369,7 @@
           {
            "label": "Excepción",
            "text": "En el caso de ruptura de cables en estructuras tipo H semiflexibles, donde deben considerarse solamente las cargas vertical y longitudinal actuando simultáneamente.",
-           "seq": 67
+           "seq": 73
           }
          ]
         }
@@ -138315,13 +138419,13 @@
          "tables": [
           {
            "id": "922-93(a)(1)",
-           "seq": 68
+           "seq": 74
           }
          ],
          "parrafos": [
           {
            "text": "Los conductores deben ser resistentes a la corrosión que pueda provocar el ambiente donde se instalen.",
-           "seq": 69
+           "seq": 75
           }
          ]
         },
@@ -138401,7 +138505,7 @@
          "tables": [
           {
            "id": "922-93(b)(1)",
-           "seq": 70
+           "seq": 76
           }
          ]
         },
@@ -138567,7 +138671,7 @@
        "tables": [
         {
          "id": "922-93",
-         "seq": 72
+         "seq": 78
         }
        ]
       }
@@ -138587,7 +138691,7 @@
      "tables": [
       {
        "id": "922-94",
-       "seq": 74
+       "seq": 80
       }
      ]
     },
@@ -139470,8 +139574,16 @@
          ],
          "parrafos": [
           {
-           "text": "Observaciones: 1. Para tensiones mayores a 22 kilovolts, las alturas especificadas en la última columna deben incrementarse 1.00 centímetro por cada kilovolts en exceso de 22 kilovolts. 2. Cuando se instalen terminales de baja tensión en paredes, la altura mínima debe ser de 2.90 metros.",
+           "text": "Observaciones:",
            "seq": 13
+          },
+          {
+           "text": "1. Para tensiones mayores a 22 kilovolts, las alturas especificadas en la última columna deben incrementarse 1.00 centímetro por cada kilovolts en exceso de 22 kilovolts.",
+           "seq": 14
+          },
+          {
+           "text": "2. Cuando se instalen terminales de baja tensión en paredes, la altura mínima debe ser de 2.90 metros.",
+           "seq": 15
           }
          ]
         },
@@ -139604,7 +139716,7 @@
           {
            "label": "NOTA",
            "text": "Los empalmes terminales y accesorios que se usen en líneas subterráneas deben cumplir con las pruebas y requisitos que se indican en las normas de producto correspondientes.",
-           "seq": 14
+           "seq": 16
           }
          ],
          "exceptions": []
@@ -139651,7 +139763,7 @@
           {
            "label": "Excepción",
            "text": "Podrán quedar localizados directamente enterrados para el caso de cables directamente enterrados.",
-           "seq": 15
+           "seq": 17
           }
          ]
         }
@@ -139831,7 +139943,7 @@
             {
              "label": "NOTA",
              "text": "La palanca o mecanismo de control de los interruptores debe operar en una dirección para abrir y en otra para cerrar con objeto de evitar confusiones.",
-             "seq": 16
+             "seq": 18
             }
            ],
            "exceptions": []
@@ -140153,7 +140265,7 @@
           {
            "label": "NOTA",
            "text": "Se recomienda que el cambio máximo de dirección en un tramo recto de un banco de ductos aplicando el doblez natural de éstos, no sea mayor que cinco grados.",
-           "seq": 17
+           "seq": 19
           }
          ],
          "exceptions": []
@@ -140227,7 +140339,7 @@
            "w": 442,
            "h": 524,
            "page": 734,
-           "seq": 18
+           "seq": 20
           }
          ]
         }
@@ -140257,7 +140369,7 @@
         {
          "label": "NOTA",
          "text": "Cuando no sea posible cumplir con las profundidades marcadas en este punto, éstas se pueden reducir previo acuerdo entre las partes involucradas, pero en ningún caso los bancos de ductos o alguna protección de éstos debe estar expuesta a la carpeta de agregados donde se hacen trabajos de mantenimiento y limpieza.",
-         "seq": 20
+         "seq": 22
         }
        ],
        "exceptions": [],
@@ -140301,7 +140413,7 @@
      "tables": [
       {
        "id": "923-11",
-       "seq": 21
+       "seq": 23
       }
      ]
     },
@@ -140323,7 +140435,7 @@
         {
          "label": "NOTA",
          "text": "Cuando un banco de ductos cruce un pozo, una bóveda o por el techo de túneles de tránsito vehicular, éstos pueden estar soportados directamente en el techo, si las partes involucradas están de acuerdo.",
-         "seq": 23
+         "seq": 25
         }
        ],
        "exceptions": [],
@@ -140342,13 +140454,13 @@
        "tables": [
         {
          "id": "923-12(b)",
-         "seq": 24
+         "seq": 26
         }
        ],
        "parrafos": [
         {
          "text": "separaciones.",
-         "seq": 25
+         "seq": 27
         }
        ]
       },
@@ -140498,7 +140610,7 @@
           {
            "label": "Excepción",
            "text": "Se permite utilizar hasta tres conductores en una canalización en transiciones  aéreo-subterráneas.",
-           "seq": 26
+           "seq": 28
           }
          ]
         },
@@ -140741,7 +140853,7 @@
          "w": 381,
          "h": 378,
          "page": 737,
-         "seq": 27
+         "seq": 29
         }
        ]
       }
@@ -141838,7 +141950,7 @@
       {
        "label": "NOTAS",
        "text": "",
-       "seq": 23
+       "seq": 26
       }
      ],
      "exceptions": [],
@@ -141848,20 +141960,32 @@
        "seq": 13
       },
       {
-       "text": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, OR MV-90* Tamaño Corriente nominal total por fase en amperes (kcmil) RHO DE LA TIERRA 60 RHO DE LA TIERRA 90 RHO DE LA TIERRA 120 2340 1530 1395 250 (260 A / Cable) (170 A / Cable) (155 A / Cable) 2790 1800 1665 350 (310 A / Cable) (200 A / Cable) (185 A / Cable) 3375 2160 1980 500 (375 A / Cable) (240 A / Cable) (220 A / Cable) Temperatura Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor Ambiente ambiente (°C) adecuado de los siguientes: (°C) 6-10 1.09 1.09 1.09 1.09 1.09 11-15 1.04 1.04 1.04 1.04 1.04 16-20 1.00 1.00 1.00 1.00 1.00 21-25 0.95 0.95 0.95 0.95 0.95 26-30 0.90 0.90 0.90 0.90 0.90 Limitado a la temperatura del conductor de 75 °C. NOTA a la Figura B.310.15(B)(2)(3) Ampacidad de los conductores sencillos aislados, de 0 a 5000 volts nominales, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), nueve cables de un solo conductor, por fase, con base en una temperatura ambiente de la tierra de 20 °C y temperatura de los conductores de 75 °C.",
+       "text": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, OR MV-90* Tamaño Corriente nominal total por fase en amperes (kcmil) RHO DE LA TIERRA 60 RHO DE LA TIERRA 90 RHO DE LA TIERRA 120 2340 1530 1395 250 (260 A / Cable) (170 A / Cable) (155 A / Cable) 2790 1800 1665 350 (310 A / Cable) (200 A / Cable) (185 A / Cable) 3375 2160 1980 500 (375 A / Cable) (240 A / Cable) (220 A / Cable) Temperatura Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor Ambiente ambiente (°C) adecuado de los siguientes: (°C) 6-10 1.09 1.09 1.09 1.09 1.09 11-15 1.04 1.04 1.04 1.04 1.04 16-20 1.00 1.00 1.00 1.00 1.00 21-25 0.95 0.95 0.95 0.95 0.95 26-30 0.90 0.90 0.90 0.90 0.90 Limitado a la temperatura del conductor de 75 °C.",
        "seq": 18
       },
       {
-       "text": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, O MV-90* Tamaño Corriente nominal total por fase en amperes (kcmil) RHO DE LA TIERRA 60 RHO DE LA TIERRA 90 RHO DE LA TIERRA 120 2820 1860 1680 750 (705 A / Cable) (465 A / Cable) (420 A / Cable) 3300 2140 1920 1000 (825 A / Cable) (535A / Cable) (480 A / Cable) 3700 2380 2120 1250 (925 A / Cable) (595 A / Cable) (530 A / Cable) 4060 2580 2300 1500 (260 A / Cable) (645A / Cable) (575 A / Cable) 4360 2740 2460 1750 (260 A / Cable) (685 A / Cable) (615A / Cable) Temperatura Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor Ambiente ambiente (°C) adecuado de los siguientes : (°C) 6-10 1.09 1.09 1.09 1.09 1.09 11-15 1.04 1.04 1.04 1.04 1.04 16-20 1.00 1.00 1.00 1.00 1.00 21-25 0.95 0.95 0.95 0.95 0.95 26-30 0.90 0.90 0.90 0.90 0.90 NOTA a la Figura B.310.15(B)(2)(4)Ampacidad de los conductores sencillos aislados, de 0 a 5000 volts nominales, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), nueve cables de un solo conductor, por fase, con base en una temperatura ambiente de la tierra de 20 °C y temperatura de los conductores de 75 °C.",
-       "seq": 20
+       "text": "NOTA a la Figura B.310.15(B)(2)(3) Ampacidad de los conductores sencillos aislados, de 0 a 5000 volts nominales, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), nueve cables de un solo conductor, por fase, con base en una temperatura ambiente de la tierra de 20 °C y temperatura de los conductores de 75 °C.",
+       "seq": 19
       },
       {
-       "text": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, O MV-90* Tamaño Corriente nominal total por fase en amperes (kcmil) RHO DE LA TIERRA 60 RHO DE LA TIERRA 90 RHO DE LA TIERRA 120 5575 3375 3000 2000 (1115 A / Cable) (675 A / Cable) (600 A / Cable) Temperatura Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor Ambiente ambiente (°C) adecuado de los siguientes: (°C) 6-10 1.09 1.09 1.09 1.09 1.09 11-15 1.04 1.04 1.04 1.04 1.04 16-20 1.00 1.00 1.00 1.00 1.00 21-25 0.95 0.95 0.95 0.95 0.95 26-30 0.90 0.90 0.90 0.90 0.90 NOTA a la Figura B.310.15(B)(2)(5)Ampacidad de los conductores sencillos aislados, de 0 a 5000 volts nominales, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), nueve cables de un solo conductor, por fase, con base en una temperatura ambiente de la tierra de 20 °C y temperatura de los conductores de 75 °C APENDICE B (Informativo) Este apéndice no es parte de los requerimientos y especificaciones de la NOM, se incluye únicamente con propósitos informativos TABLA B1.1 LISTA DE NORMAS OFICIALES Y NORMAS MEXICANAS NORMA Título Sección NOM-022-STPS-2008 Electricidad estática en los centros de trabajo-Condiciones de seguridad e 500-4 (c) higiene NOM-029-STPS-2005 Mantenimiento de las instalaciones eléctricas en los centros de trabajo- Condiciones de seguridad NOM-010-SECRE-2002 Gas natural comprimido para uso automotor. Requisitos mínimos de 514-2(b) seguridad para estaciones de servicio NMX-J-163-ANCE-2004 Artefactos eléctricos-Configuraciones 550-5 550-23 555-3 NMX-J-472-ANCE-2008 Conductores-Determinación de la cantidad de gas ácido halogenado 725-71(a) generado durante la combustión controlada de materiales poliméricos tomados de cables eléctricos-Método de prueba NMX-J-498-ANCE-2011 Conductores-Determinación de la resistencia a la propagación de la flama 725-71(b) en conductores eléctricos que se colocan en charola vertical-Método de prueba NRF-011-CFE-2004 Sistema de tierras para plantas y subestaciones eléctricas 921-25, 250-191 NOM-007-ENER-2004 Eficiencia energética en sistemas de alumbrado en edificios no 220-3 residenciales NOM-053-SCFI-2000 Elevadores eléctricos de tracción para pasajeros y carga-Especificaciones 620-2 de seguridad y métodos de prueba para equipos nuevos TABLA B1.2 LISTADO DE NORMAS DE PRODUCTOS ELECTRICOS NORMA TITULO Sección NOM-003-SCFI-2000 Productos eléctricos especificaciones de seguridad NMX-J-005-ANCE-2005 Interruptores de uso general para instalaciones eléctricas fijas – Especificaciones 404-9 generales y métodos de prueba 210-24 240 NOM-058-SCFI-2007 Productos eléctricos-Balastros para lámparas de descarga eléctrica en gas- 300-3 (c) (2) 410 Especificaciones de seguridad NOM-063-SCFI-2001 Productos eléctricos - Conductores-Requisitos de seguridad 310 NOM-064-SCFI-2000 Productos eléctricos - Luminarios para uso en interiores y exteriores-especificaciones 410 de seguridad y métodos de prueba NOM-021-ENER/SCFI-2008 Eficiencia energética, requisitos de seguridad al usuario en acondicionadores de aire 440 tipo cuarto. Límites, métodos de prueba y etiquetado NOM-011-ENER-2006 Eficiencia energética en acondicionadores de aire tipo central, paquete o dividido. 440 Límite, métodos de prueba y etiquetado NOM-014-ENER-2004 Eficiencia energética de motores eléctricos de corriente alterna, monofásicos, de inducción, tipo jaula de ardilla, enfriados con aire, en potencia nominal de 0.180 kW a 430 1.500 kW. Límites, método de prueba y marcado NOM-016-ENER-2010 Eficiencia energética de motores de corriente alterna, trifásicos, de inducción, tipo jaula de ardilla, en potencia nominal de 0.746 a 373 kW. Límites, método de prueba y 430 marcado NMX-J-002-ANCE-2001 Conductores – Alambres de cobre duro para usos eléctricos-Especificaciones 310 NMX-J-008-ANCE-2001 Conductores – Alambres de cobre estañado suave o recocido para usos eléctricos- 310 Especificaciones NMX-J-009/248-1-ANCE-2006 Fusibles para baja tensión – Parte 1: Requisitos generales 240 NMX-J-009/248-4-ANCE-2006 Fusible para baja tensión – Parte 4: Fusibles clase CC 240-4 (d)(1) NMX-J-009/248-8-ANCE-2006 Fusible para baja tensión – Parte 8: Fusibles clase J 240-4 (d)(1) NMX-J-009/248-15-ANCE-2006 Fusible para baja tensión – Parte 15: Fusibles clase T 240-4 (d)(1) NMX-J-009/248-7-ANCE-2000 Fusibles para baja tensión – Parte 7: Fusibles renovables clase H 240-60 (d) NMX-J-009/248-11-ANCE-2006 Fusibles para baja tensión – Parte 11: Fusibles tipo tapón 240 e NMX-J-010-ANCE-2011 Conductores – Conductores con aislamiento termoplástico para instalaciones hasta 310-104 600 V – Especificaciones NMX-J-012-ANCE-2008 Conductores – Cable de cobre con cableado concéntrico para usos eléctricos – 315 Especificaciones NMX-J-017-ANCE-2006 Accesorios para cables y tubos – Especificaciones y métodos de prueba 342, 358, 360, 348, 350, 356 NMX-J-023/1-ANCE-2007 Cajas registro metálicas y sus accesorios – Parte 1: Especificaciones y métodos de 110-28 prueba 314-40 NMX-J-024-ANCE-2005 Artefactos eléctricos – Portalámparas roscados tipo Edison – Especificaciones y 422-40 métodos de prueba 422-48 (b) NMX-J-028-ANCE-2001 Conductores – Cables concéntricos tipo espiral para acometida aérea a baja tensión, 230 D hasta 600 V – Especificaciones NMX-J-032-ANCE-2009 Conductores de aluminio – Cable de aluminio de aleación 1350 con cableado 810 concéntrico, para usos eléctricos – Especificaciones NMX-J-036-ANCE-2001 Conductores – Alambre de cobre suave para usos eléctricos – Especificaciones 310 NMX-J-038/11-ANCE-2007 Equipos de soldadura eléctrica por arco – Parte 11: Portaelectrodos 630 NMX-J-058-ANCE-2007 Conductores – Cable de aluminio con cableado concéntrico y alma de acero (ACSR) 230 – Especificaciones NMX-J-059-ANCE-2004 Conductores – Cable de cobre con cableado concéntrico compacto, para usos 315 eléctricos – Especificaciones NMX-J-075/1-ANCE-1994 Aparatos eléctricos – Máquinas rotatorias – Parte 1: Motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias desde 0,062 a 373 430 kW – Especificaciones NMX-J-075/2-ANCE-1994 Aparatos eléctricos – Máquinas rotatorias – Parte 2: Motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias grandes – 430 Especificaciones NMX-J-075/3-ANCE-1994 Aparatos eléctricos – Máquinas rotatorias – Parte 3: Métodos de prueba para motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias desde 430 0,062 kW NMX-J-093-ANCE-2009 Conductores – Determinación de la resistencia a la propagación de incendio en Tabla 310-104 (a) conductores eléctricos – Métodos de prueba NMX-J-102-ANCE-2005 Conductores – Cordones flexibles tipo SPT con aislamiento termoplástico a base de 400-5 a) policloruro de vinilo para instalaciones hasta 300 V – Especificaciones NMX-J-116-ANCE-2005 Transformadores de distribución tipo poste y tipo subestación – Especificaciones 450 NMX-J-118/1-ANCE-2000 Productos eléctricos - Tableros de alumbrado y distribución en baja tensión - 480 Especificaciones y métodos de prueba NMX-J-118/2-ANCE-2007 Tableros – Tableros de distribución de baja tensión – Especificaciones y métodos de 480 prueba NMX-J-142/1-ANCE-2011 Conductores – Cables de energía con pantalla metálica, aislados con polietileno de 250-190 cadena cruzada o a base de etileno-propileno para tensiones de 5 kV a 35 kV – 504-30 b) Especificaciones y métodos de prueba NMX-J-148-ANCE-2001 Electroductos - Especificaciones y métodos de prueba 368 NMX-J-149/2-ANCE-2008 Fusibles para media y alta tensión – Parte 2: Cortacircuitos fusible de expulsión – 490-21(b) Especificaciones y métodos de prueba NMX-J-150/1-ANCE-2008 Coordinación de aislamiento – Parte 1: Definiciones, principios y reglas 922-11 NMX-J-150/2-ANCE-2004 Coordinación de aislamiento – Parte 2: Guía de aplicación 922-11 NMX-J-192-ANCE-2009 Conductores – Resistencia a la propagación de la flama en conductores eléctricos – Tabla 310-104(a) Métodos de prueba NMX-J-203/1-ANCE-2005 Capacitores – Parte 1: Capacitores de potencia en conexión paralelo – 460 Especificaciones y métodos de prueba NMX-J-203/2-ANCE-2006 Capacitores – Parte 2: Bancos de capacitores de potencia en conexión paralelo – 460 Especificaciones y guía para la instalación y operación NMX-J-203/3-ANCE-2008 Capacitores – Parte 3: Fusibles de media y alta tensión para la protección externa de 460-8 bancos de capacitores y unidades capacitivas de potencia en conexión paralelo – 460-25 Especificaciones y métodos de prueba NMX-J-203/4-ANCE-2010 Capacitores – Parte 4: Guía para realizar la pruebas de envejecimiento de ciclo de 460 sobre tensión NMX-J-234-ANCE-2008 Aisladores – Boquillas de extra alta, alta y media tensión para corriente alterna – 922 Especificaciones y métodos de prueba NMX-J-235/1-ANCE-2008 Envolventes – Envolventes para uso en equipo eléctrico – Parte 1: Consideraciones 314-40 c) no ambientales – Especificaciones y métodos de prueba NMX-J-235/2-ANCE-2000 Envolventes - Envolventes (gabinetes) para uso en equipo eléctrico - Parte 2: 314-40 c) requerimientos específicos - Especificaciones y métodos de prueba NMX-J-266-ANCE-1999 Productos eléctricos – Interruptores – Interruptores automáticos en caja moldeada – 110-22 Especificaciones y métodos de prueba 230 NMX-J-281/601-ANCE-2011 Vocabulario electrotécnico – Parte 601: Generación, transmisión y distribución de 100 energía eléctrica – Generalidades NMX-J-285-ANCE-2005 Transformadores de distribución tipo pedestal monobásico y trifásico para distribución 450 subterránea. NMX-J-297-ANCE-2005 Conductores – Conductores flexibles de cobre para usos eléctricos y electrónicos – 400-5 a) Especificaciones NMX-J-298-ANCE-2007 Conductores – Conductores tipo dúplex (TWD) con aislamiento termoplástico para 396-2 instalaciones hasta 600 V – Especificaciones NMX-J-300-ANCE- Conductores-Cables control- Especificaciones 392 NMX-J-321-ANCE-2005 Apartarrayos de óxidos metálicos sin explosores, para sistemas de corriente alterna – 922 Especificaciones y métodos de prueba NMX-J-321/5-ANCE-2008 Apartarrayos – Parte 5: Recomendaciones para selección y aplicación 922 NMX-J-412-ANCE-2008 Clavijas y receptáculos - Especificaciones y métodos de prueba generales 517-2 NMX-J-412/1-ANCE-2004 Clavijas y contactos para uso doméstico y similar – Parte 1: requisitos generales 406-6 NMX-J-412/2-3-ANCE-2009 Conectores – Especificaciones y métodos de prueba 200-10 406 NMX-J-412/2-6-ANCE-2009 Artefactos grado hospital – Especificaciones y métodos de prueba 517-2 517-19 NMX-J-429-ANCE-2009 Conductores – Alambres, cables y cordones con aislamiento de PVC 80 ºC, 9 ºC y 400-5(a) 105 ºC, para equipos electrónicos – Especificaciones. NMX-J-436-ANCE-2007 Conductores – Cordones y cables flexibles – Especificaciones 400-5 NMX-J-508-ANCE-2010 Artefactos eléctricos – Requisitos de seguridad – Especificaciones y métodos de 404 prueba. 406 NMX-J-511-ANCE-2011 Soportes para conductores eléctricos – Sistemas de soportes metálicos tipo charola – 392-12 Especificaciones y métodos de prueba. 392-100 NMX-J-515-ANCE-2003 Equipos de control y distribución – Requisitos generales de seguridad – 408 Especificaciones y métodos de prueba. 409 NMX-J-519-ANCE-2011 Conectadores – Conectadores sellados – Especificaciones y métodos de prueba 110-14 NMX-J-520-ANCE-2006 Interruptores de circuito por falla a tierra – Especificaciones y métodos de prueba 406-4 (d) 406-6 409-21 (c) NMX-J-529-ANCE-2006 Grados de protección proporcionados por los envolventes (código IP) 110-28 NMX-J-534-ANCE-2008 Tubos metálicos rígidos de acero tipo pesado y sus accesorios para la protección de 344 conductores – Especificaciones y métodos de prueba NMX-J-535-ANCE-2008 Tubos metálicos rígidos de acero tipo semipesado y sus accesorios para la protección 342 de conductores – Especificaciones y métodos de prueba NMX-J-536-ANCE-2008 Tubos metálicos rígidos de acero tipo ligero y sus accesorios para la protección de 358 conductores – Especificaciones y métodos de prueba NMX-J-538/1-ANCE-2005 Productos de distribución y de control de baja tensión – Parte 1: Reglas generales 230, 240, 408, 520-27 NMX-J-538/2-ANCE-2005 Productos de distribución y de control de baja tensión – Parte 2: Interruptores 230, 240, 408, automáticos 520-27 NMX-J-542-ANCE-2006 Tubo corrugado (flexible) no metálico para la protección de conductores eléctricos – 360 Especificaciones y Métodos de prueba NMX-J-543-ANCE-2008 Conectadores – Conectadores para instalaciones eléctricas utilización hasta 34,5 kV 110-14 – Especificaciones y métodos de prueba 210-10 250-70 NMX-J-548-ANCE-2008 Conectadores – Conectadores tipo empalme para instalaciones eléctricas utilización – 110-14 Especificaciones y métodos de prueba 210-10 250-70 4.1.6, 250‑4, NMX-J-549-ANCE-2005 Sistema de protección contra tormentas eléctricas – Especificaciones, materiales y 205‑106, 620-37, métodos de medición 800 NMX-J-550/1-1-ANCE-2008 Compatibilidad electromagnética (EMC) Parte 1-1: Generalidades Aplicación e 200, 250, 517, interpretación de definiciones y términos básicos 650, 668 NMX-J-554-ANCE-2004 Roscas para tubo (conduit) y sus accesorios – Especificaciones y método de prueba. 342, 344, 500-8 NMX-J-569-ANCE-2005 Accesorios eléctricos - Interruptores automáticos para protección contra sobrecorriente en instalaciones domésticas y similares - Interruptores automáticos 406-6 para operación con c.a. NMX-J-570/1-ANCE-2006 Sistema de canalizaciones y ductos para instalaciones eléctricas – Parte 1: Requisitos 376-100 generales 388-100 NMX-J-570/2-ANCE-2006 Sistema de canalizaciones y ductos para instalaciones eléctricas – Parte 2: Requisitos 376-100 particulares – Sección 1: Sistemas de canalizaciones y ductos diseñados para 388-100 montarse en techos NMX-J-575-ANCE-2006 Interruptores automáticos operados con corriente diferencial residual sin protección integrada contra sobrecorrientes para instalaciones domésticas y usos similares (IDS) 406-6 Parte 1: Reglas generales NMX-J-576-ANCE-2005 Tubos rígidos de aluminio para la protección de conductores eléctricos y sus 344 accesorios – Especificaciones y métodos de prueba NMX-J-580/1-ANCE-2006 Ensambles de tableros de baja tensión – Parte 1: Ensambles con pruebas tipo y 480 ensambles con pruebas tipo parciales NMX-J-589-ANCE-2010 Métodos de medición para instalaciones eléctricas 4.2.12, 110-26, 250-12, 312-6, 680 NMX-J-590-ANCE-2009 Conectadores – Equipo para puesta tierra 250-70 NMX-J-592/1-ANCE-2008 Sistemas de gestión de energía - Esquemas de funcionamiento - Parte 1: Directrices Capítulo 9 y requisitos generales NMX-J-592/2-ANCE-2008 Sistemas de gestión de energía – Esquemas de funcionamiento – Parte 1: Capítulo 9 Definiciones NMX-J-593/1-ANCE-2008 Sistemas de interconexión de subestaciones eléctricas - Parte 1: Introducción y visión 924 de conjunto NMX-J-593/2-ANCE-2008 Sistemas de interconexión de subestaciones eléctricas – Parte 2: Definiciones 924 NMX-J-593/3-ANCE-2008 Sistemas de interconexión de subestaciones eléctricas – Parte 3: Requisitos 924 generales NMX-J-594-ANCE-2008 Relevadores de protección y control en la operación de sistemas eléctricos - Guía de 250-170 aplicación 250-174 250-176 250-188 NMX-J-603-ANCE-2008 Guía de aplicación del sistema de protección contra tormentas eléctricas 4.1.6, 250-4, 205- 106, 620-37, 800 NMX-J-604-ANCE-2008 Instalaciones eléctricas- Métodos de diagnóstico y reacondicionamiento de 4.4.2 instalaciones eléctricas en operación – Especificaciones 110 240 NMX-J-609/826-ANCE-2009 Vocabulario electrotécnico - Parte 826: Instalaciones eléctricas (Utilización) 100 NMX-J-616-ANCE-2009 Guía de aplicación de filtros y capacitores con conexión en paralelo para la corrección 460 de distorsión armónica SERIE Evaluación de la seguridad en módulos fotovoltaicos (FV) – Parte 1: Requisitos 690 generales para construcción NMX-J-618/1-ANCE-2010 SERIE Dispositivos fotovoltaicos – Parte 1: Medición de la característica corriente-Tensión de 690 los dispositivos fotovoltaicos NMX-J-643/1-ANCE-2011 NMXJ-620/1-ANCE-2009 Interruptores automáticos operados con corriente residual con protección integrada contra sobrecorrientes para instalaciones domésticas y usos similares (IDCS) Parte 1: 406-6 Reglas generales NMX-J-623-ANCE-2009 Sistemas de canalizaciones para cables - Cinchos de sujeción para cables para 320-30, 330-30 instalaciones eléctricas NMX-J-627-ANCE-2009 Envolventes – Grados de protección proporcionados por la envolventes de equipos 376-12 eléctricos en contra de impactos mecánicos (Código IK) 378-12 (1) NMX-J-631-ANCE-2011 Canalizaciones eléctricas - Ductos metálicos, canales auxiliares y accesorios 366 asociados – Especificaciones y métodos de prueba NMX-J-643/1-ANCE-2011 Dispositivos fotovoltaicos- Parte 1: Medición de la característica corriente –Tensión de 690 los dispositivos fotovoltaicos NMX-E-242/1-ANCE-CNCP-2005 Industria del plástico – Tubo de polietileno de alta densidad (PEAD) para instalaciones eléctricas subterráneas (Conduit) – Especificaciones y métodos de prueba – Parte 1: 353 Pared corrugada NMX-E-242/2-ANCE-CNCP-2005 Industria del plástico – Tubo de polietileno de alta densidad (PEAD) para instalaciones 353 eléctricas subterráneas – Especificaciones y métodos de prueba – Parte 2: Pared lisa NMX-E-252-ANCE-CNCP-2008 Industrial del plástico – Tubos (Conduit) y conexiones poli(cloruro de vinilo) (PVC) sin plastificante tipo 1 (cédula 40) y tipo 2 (cédula 80) para instalaciones eléctricas – 352 Especificaciones y métodos de prueba NMX-I-118/02 NYCE Telecomunicaciones-Cables-Parte 02-Cable Coaxial para acometida en sistemas de 250, 324, 800 televisión por cable (STVC) NMX-I-236/01 NYCE Telecomunicaciones-Cables-Cables de fibras ópticas para uso interior- 250, 324, 800 Especificaciones y métodos de prueba-Parte 01: Características básicas NMX-I-237 NYCE Telecomunicaciones-Cables-Cables de fibras ópticas para uso interior- 250, 324, 800 Especificaciones y métodos de prueba. TABLA B2.1 LISTADO DE NORMAS INTERNACIONALES NORMA Título Sección ISO 965-1: 1998 ISO general-purpose metric screw threads - Tolerances - Part 1: Principles and basic 500-4 data ISO 965-3: 1998 ISO general purpose metric screw threads - Tolerances - Part 3: Deviations for 500-4 constructional screw threads IEC 60079-0 (2011-06) Explosive atmospheres - Part 0: Equipment - General requirements 505-4 IEC 60079-1 (2007-04) Explosive atmospheres - Part 1: Equipment protection by flameproof enclosures \"d\" 505-8 IEC 60079-2 (2007-02) Explosive atmospheres - Part 2: Equipment protection by pressurized enclosures \"p\" 505-8 IEC 60079- 13 (2010-10) Explosive atmospheres - Part 13: Equipment protection by pressurized room \"p\" 505-8 IEC 60079-15 (2010-01) Explosive atmospheres - Part 15: Equipment protection by type of protection \"n\" 505-8 IEC 60079-6 (2007-03) Explosive atmospheres - Part 6: Equipment protection by oil immersion \"o\" 505-8 IEC 60079-7 (2006-07) Explosive atmospheres - Part 7: Equipment protection by increased safety \"e\" 505-8 IEC 60079-18 (2009-05) Explosive atmospheres - Part 18: Equipment protection by encapsulation \"m\" 505-8 IEC 60079-5 (2007-03) Explosive atmospheres - Part 5: Equipment protection by powder filling \"q\" 505-8 IEC 60079-10-1 (2008-12) Explosive atmospheres - Part 10-1: Classification of areas - Explosive gas 505-5 Nota 2 atmospheres 505-9 (a) 505-10 IEC 60079-10-2 (2008-12) Explosive atmospheres - Part 10-2: Classification of areas - Combustible dust 505-5 Nota 2 atmospheres 505-9 (a) 505-10 IEC 60079-16 (1990-05) Electrical apparatus for explosive gas atmospheres. Part 16: Artificial ventilation for 505-5 Nota 6 the protection of analyzer (s) houses IEC 60079-20-1 (2010-01) Electrical apparatus for explosive gas atmospheres-Part 20: Data for Flammable 505-7 gases and vapors, relating to use of electrical apparatus 505-8 IEC 60598-2-22 (2008-04) Luminaires - Part 2-22: Particular requirements - Luminaires for emergency lighting 517-40 700-12 IEC 61400-1 ed3.0 (2005-08) Wind turbines Part 1: Design requirements 694 ISO 30061 (2007) Emergency lighting 700-16 924 IEC 60287-2-1 (2006-05) Electric cables – Calculation of the current rating – Part 2-1: Thermal resistance – B.310.15(B)(2) Calculation of thermal resistance IEC 60287-3-1 (1999-05) Electric cables – Calculation of the current rating – Part 3-1: Sections on operating TABLA conditions – Reference operating conditions and selection of cable type B.310.15(B)(2)(1) TABLA B2.2 LISTADO DE NORMAS EXTRANJERAS NORMA Título Sección C2-2012 National Electrical Safety Code (NESC) 110-31(b)(1) 225-18 225-19 500-5(b)(3) 551-79 nota 830-10 NFPA 20-2010 Standard for the Installation of Stationary Pumps for Fire Protection 240-3 (a) 517-30(a) IEEE 142-2007 Recommended practice for grounded of industrial and commercial power systems 250-27 (c) NFPA 30-2012 Flammable and Combustible Liquids Code 500-3(c) 500-7(b) 505-5 513-1 515-1, 515-2 Tabla 515-2 515-16 NFPA 32-2011 Standard for Dry Cleaning Plants 500-3 (c) NFPA 33-2011 Standard for Spray Application Using Flammable or Combustible Materials 500-3 (c) 516-1 NFPA 34-2011 Standard for Dipping, Coating and Printing Processes Using Flammable or 500-3 (c) Combustible Liquids 516-1 NFPA 35-2011 Standard for the Manufacture of Organic Coatings 500-3 (c) NFPA 36-2009 Standard for Solvent Extraction Plants 500-3 (c) NFPA 45-2011 Standard on Fire Protection for Laboratories using Chemicals 500-3 (c) NFPA 50A-1999 Standard for Gaseous Hydrogen Systems at Consumer Sites 500-3 (c) NFPA 50B-1999 Standard for Liquefied Hydrogen Systems at Consumer Sites 500-3 (c) NFPA 58-2011 Liquefied Petroleum Gas Code 500-3 (c) 500-7(b) NFPA 59-2012 Utility LP-Gas Plant Code 500-3 (c) NFPA 77-2007 Recommended Practice on Static Electricity 500-3 (c) 505-5 NOTA 3 NFPA 496-2008 Standard for Purged Pressurized Enclosure for Electrical Equipment 500-4(d) 501-3(a) 501-5(a)(2) 501-5(b)(2) 505-4(b) UL 886-1994 Outlet Boxes and Fittings for Use in (Classified) Locations 501-5(e)(2) NOTA 2 NFPA 497-2008 Recommended Practice for the Classification of Flammable Liquids, Gases, or 500-3 (c) Vapors and of Hazardous (Classified) Locations for Electrical Installations in 500-5(a)(4) Chemical Process Areas 500-5(e) 505-8 800-31 NFPA 499-2008 Recommended Practice for the Classification of Combustible Dusts and of 500-3 (c) Hazardous Locations for Electrical Installations in Chemical Process Areas 500-5(b)(3) 500-5(e) 500-5(f) NFPA 780-2011 Standard for the Installation of Lightning Protection Systems 500-3 (c) 505-5 NFPA 820-2012 Standard for Fire Protection in Wastewater Treatment and Collection Facilities 500-3 (c) API RP 500-1 2002 Recommended Practice for Classification of Locations for Electrical Installations at 500-3 (c) Petroleum Facilities Classified as Class I, Division 1 and Division 2 505-5 Nota 4 505-10(c) API 2003-1998 Protection Against Ignitions Arising Out of Static Lightning and Stray Currents 500-3 (c) 505-5 Nota 3 ANSI/API RP 14F Design, Installation, and Maintenance of Electrical Systems for Fixed and Floating 500-3 (c) Offshore Petroleum Facilities for Unclassified and Class 1, Division 1 and Division 2008 505-5 2 Locations Nota 5 UL 1203-2006 Standard for Explosion-Proof and Dust-Ignition-Proof Electrical Equipment for Use 500-4 (a) in Hazardous (Classified) Locations 500-4 (b) 502-1 UL 1604-2004 Standard for Electrical Equipment For Use In Class I and II, Division 2, And Class 500-4(c) III Hazardous (Classified) Locations 500-4(f)(2) UL 913-2006 Standard for Intrinsically Safe Apparatus and Associated Apparatus for Use in 500-4(e) Class I, II, III, Division 1, Hazardous (Classified) Locations 505-4(c) UL 698A-2008 Standard for Industrial Control Panels Relating to Hazardous (Classified) 500-4(g) Locations ANSI/ASHRAE Safety Standard for Mechanical Refrigeration 500-5(a)(4) 15- 2010 ANSI CGA G2.1-1999 Safety Requirements for the Storage and Handling of Anhydrous Ammonia. 500-5(a)(4) ASTM D 3175-11 Standard Test Method for Volatile Material in the Analysis Sample for Coal and 500-5(b)(2) Coke NFPA 505-2011 Fire Safety Standard for Powered Industrial Trucks Including Type Designations, 503-1 Areas of Use, Conversions, Maintenance, and Operation 625-1 ANSI/ISA RP12.06.01-2003 Recommended Practice for Wiring Methods for Hazardous (Classified) Locations 504-1 Instrumentation Part 1: Intrinsic Safety 504-50 UL 913-2006 Standard for Safety, Intrinsically Safe Apparatus and Associated Apparatus for 504-2 Use in Class I, II, and III, Division 1, Hazardous (Classified) Locations UL 2279-1996 Electrical Equipment for use In Class I, Zone 0, 1 and 2 Hazardous (Classified) 505-4 Locations ANSI/ISA-60079-0-(12.00.01)-2009 Electrical Apparatus for Use in Class I, Zones 0, 1 & 2 Hazardous (Classified) 505-4 Locations: General Requirements (IEC 60079-0 Mod) ANSI/ISA-S12.10-1988 Area Classification in Hazardous (Classified) Dust Locations 500-3 (c) ANSI/ISA 12.12.01-2011 Non incendive Electrical Equipment for Use in Class I & II, Division 2 & Class III, 500-4(c) Divisions I & 2 Hazardous 500-4(f)(1) 500-4(f)(2) 500-4(h) ANSI/ISA-60079-7 (12.16.01)-2008 Electrical Apparatus for Use in Class I, Zone 1 Hazardous (Classified) Locations: 505-4(f) Type of Protection-Increased Safety \"e\" (IEC 60079-7 Mod) ANSI/ISA-60079-1-(12.22.01)-2009 Electrical Apparatus for use in Class I, Zone 1 and 2 Hazardous (Classified) 505-4(a) Locations, Type of Protection -Flameproof \"d\" ANSI/ISA-60079-18- (12.23.01)-2009 Electrical Apparatus for Use in Class I, Zone 1 Hazardous (Classified) Locations 505-4(g) Type of Protection-Encapsulation \"m\" (IEC 60079-18 Mod) ANSI/ISA-60079-5-(12.00.04)-2009 Explosive atmospheres - Part 5: Equipment Protection by Powder Filling \"q\" (IEC 505-4(h) 60079-5 Mod) ANSI/ISA-60079-6-(12.00.05)-2009 Explosive atmospheres - Part 6: Equipment Protection by Oil Immersion \"o\" (IEC 505-4(e) 60079-6 Mod) API RP 505 Recommended Practice for Classification of Locations for Electrical Installations at 505-5 Petroleum Facilities Classified as Class I, Zone 0, and Zone 2 1998 Nota 2 505-9 505-10 ISA S12.24.01-1998 Recommended Practice for Classification of Locations for Electrical Installations 505-5 Classified as Class I, Zone 0, Zone 1, or Zone 2 505-9(a) 505-10(c) NFPA 88A -2011 Standard for Parking Structures 511-2 NFPA 88B -1997 Standard for Repair Garages 511-2 NFPA 409-2011 Standard on Aircraft hangars 513-1 NFPA 30A-2012 Code for Motor Fuel Dispensing Facilities and Repair Garages 514-5(c) 555-10 NFPA 91-2010 Standard for Exhaust Systems for Air Conveying of Vapors, Gases, Mists, and 516-1 Noncombustible Particulate Solids NFPA 99-2012 Health Care Facilities Code Handbook 517-2, 517-20 (c), 517- 25, 517-30(a), 517- 30(b)(4), 517- 30(b)(6), 517- 30(e), 517-31, 517-32(c)(2), 517- 32(g), 517-33(a) (9), 517-34, 517-34(b)(3), 517- 34(b)(9), 517- 35(a), 517-40(a) Excepción (c) 517-40(c) 517-41(a) 517-41(b)(2) 517-41(e) 517-42 517-42(c)(2) 517- 42(g) 517-43(b)(3) 517- 44(a) 517-44(b) Excepción 2 517- 45(a) 517-45(b) 517-45(c) 517- 60(a)(1) 517-61(a)(1) 517- 61(a)(3) 517-64(f) 517-160(a)(2) 517-160 (a) (4) (2) 517-160 (a) 6 NOTAS 1 y 2, 517-160 (c) (1) a., b., c., d., e., f., g., h., i. y j 700-1 701-1 NFPA 101-2012 Life Safety Code 517-1 517-2 517-10(b)(2) 517- 32(a) 517-32(b) 517-32(c )(1) 517- 40 (a) Excepción (c) 571-41(b) 517- 42(a) 517-42(b) 517-42(c)(1) 540- 10 700-9 700-12 ASHRAE Handbook of fundamentals (Indicado en el Capítulo 24) 517-34 517-43-(b)(1) Standard for the Storage and Handling of Cellulose Nitrate Motion Picture Film 530-1 NFPA 40-2011 540-1 Equipotential Planes in Animal Containment Areas, American Society of 547-9 ASAE EP 473-1997 Agricultural Engineers Low-Tension Primary Cable 551-10 SAE J1128-2011 552-10(b) Low Voltage Battery Cable 551-10 SAE J1127-2010 552-10(b) Standard on Recreational Vehicles 551-30(d) NFPA 1192-2011 Fire Protection Standard for Pleasure and Commercial Motor Craft 555-2 NFPA 302-2010 555-3 Fire Protection Standard for Marinas and Boatyards 555-3 NFPA 303-2011 555-7 555-10 Standard for Emergency and Standby Power Systems 700-1 NFPA 110-2010 700-7 701-1 701-8 Recommended Practice for Emergency and Standby Power Systems for Industrial 701-1 IEEE 446-1995 and Commercial Applications Handbook for Electrical Safety in the Workplace 710-1 NFPA 70E-2012 National Fire Alarm and Signaling Code 760-1 NFPA 72-2010 Commercial Building Telecommunications, Wiring Standard 725-7 TIA/EIA 568-A-1995 760-8 770-8 800-6 830-7 Commercial Building Standard for Telecommunications Pathways and Spaces 725-7 TIA/EIA 569 -2004 760-8 770-8 800-6 830-7 Residential and Light Commercial Telecommunications Wiring Standard 725-7 TIA/EIA 570-2004 760-8 770-8 800-6 830-7 Test for Flame Propagation Height of Electrical and Optical-Fiber Cable Installed 760-31(d) UL 1666-2007 Vertically in Shafts 760-31(e) 760-71(e) 800-51 (b) 770-51(b) 820-51(b) 830-5(a) Standard for Signaling, Optical Fiber and Communications Raceways and Cable 770-6 UL 2024 -2011 Routing Assemblies 800-4 Standard for Safety, Telephone Equipment 800-4 UL 1459-1995 Standard for Safety, Communications Circuit Accessories 800-4 UL 1863-2004 Standard for Secondary Protectors for Communications Circuits 800-32 UL 497A-2001 Standard for Ovens and Furnaces 516-2 (e) NFPA 86-2011 Enclosures for Electrical Equipment (1 000 volts Maximum) 500-4 (c) NEMA 250-2008 Electric Fuses (Cartridge Type) 551-10(e)2 SAE J554-1987 Blade Type Electric Fuses 551-10(e)2 SAE J1284-1988 Automotive Glass-Tube Fuses 551-10(e)2 UL 275-1993 Wiring Devices-Dimensional Requirements 551-46(c) NEMA WD6-2002 552-44 APENDICE C (Informativo) TABLAS DE OCUPACION EN TUBO CONDUIT DE CONDUCTORES Y CABLES DEL MISMO TAMAÑO NOMINAL Este apéndice no es parte de los requerimientos y especificaciones de la NOM, se incluye únicamente con propósitos informativos Tabla C‑1.- Número máximo de conductores o alambres para artefactos en tubería metálica eléctrica (EMT) CONDUCTORES Tamaño o Designación métrica (Tamaño comercial) designación Tipo 16 21 27 35 41 53 63 78 91 103 AWG o mm2 kcmil (½) (¾) (1) (1¼) (1½) (2) (2½) (3) (3½) (4) RHH, RHW, RHW‑2 2.08 14 4 7 11 20 27 46 80 120 157 201 3.31 12 3 6 9 17 23 38 66 100 131 167 5.26 10 2 5 8 13 18 30 53 81 105 135 8.37 8 1 2 4 7 9 16 28 42 55 70 13.3 6 1 1 3 5 8 13 22 34 44 56 21.2 4 1 1 2 4 6 10 17 26 34 44 26.7 3 1 1 1 4 5 9 15 23 30 38 33.6 2 1 1 1 3 4 7 13 20 26 33 42.4 1 0 1 1 1 3 5 9 13 17 22 53.5 1/0 0 1 1 1 2 4 7 11 15 19 67.4 2/0 0 1 1 1 2 4 6 10 13 17 85.0 3/0 0 0 1 1 1 3 5 8 11 14 107 4/0 0 0 1 1 1 3 5 7 9 12 127 250 0 0 0 1 1 1 3 5 7 9 152 300 0 0 0 1 1 1 3 5 6 8 177 350 0 0 0 1 1 1 3 4 6 7 203 400 0 0 0 1 1 1 2 4 5 7 253 500 0 0 0 0 1 1 2 3 4 6 304 600 0 0 0 0 1 1 1 3 4 5 355 700 0 0 0 0 0 1 1 2 3 4 380 750 0 0 0 0 0 1 1 2 3 4 405 800 0 0 0 0 0 1 1 2 3 4 456 900 0 0 0 0 0 1 1 1 3 3 507 1000 0 0 0 0 0 1 1 1 2 3 633 1250 0 0 0 0 0 0 1 1 1 2 760 1500 0 0 0 0 0 0 1 1 1 1 887 1750 0 0 0 0 0 0 1 1 1 1 1013 2000 0 0 0 0 0 0 1 1 1 1 TW 2.08 14 8 15 25 43 58 96 168 254 332 424 3.31 12 6 11 19 33 45 74 129 195 255 326 5.26 10 5 8 14 24 33 55 96 145 190 243 8.37 8 2 5 8 13 18 30 53 81 105 135 RHW‑2* RHH* RHW* 2.08 14 6 10 16 28 39 64 112 169 221 282 THHW, THW, THW‑2 RHW‑2* RHH* RHW* 3.31 12 4 8 13 23 31 51 90 136 177 227 THHW, THW 5.26 10 3 6 10 18 24 40 70 106 138 177 RHH* RHW* RHW-2* 8.37 8 1 4 6 10 14 24 42 63 83 106 THHW, THW THW-2 RHH, RHW, RHW-2 TW, 13.3 6 1 3 4 8 11 18 32 48 63 81 THW, THHW, THW-2 21.2 4 1 1 3 6 8 13 24 36 47 60 26.7 3 1 1 3 5 7 12 20 31 40 52 33.6 2 1 1 2 4 6 10 17 26 34 44 42.4 1 1 1 1 3 4 7 12 18 24 31 53.5 1/0 0 1 1 2 3 6 10 16 20 26 67.4 2/0 0 1 1 1 3 5 9 13 17 22 85.0 3/0 0 1 1 1 2 4 7 11 15 19 107 4/0 0 0 1 1 1 3 6 9 12 16 127 250 0 0 1 1 1 3 5 7 10 13 152 300 0 0 1 1 1 2 4 6 8 11 177 350 0 0 0 1 1 1 4 6 7 10 203 400 0 0 0 1 1 1 3 5 7 9 253 500 0 0 0 1 1 1 3 4 6 7 304 600 0 0 0 1 1 1 2 3 4 6 355 700 0 0 0 0 1 1 1 3 4 5 380 750 0 0 0 0 1 1 1 3 4 5 405 800 0 0 0 0 1 1 1 3 3 5 456 900 0 0 0 0 0 1 1 2 3 4 507 1000 0 0 0 0 0 1 1 2 3 4 633 1250 0 0 0 0 0 1 1 1 2 3 760 1500 0 0 0 0 0 1 1 1 1 2 887 1750 0 0 0 0 0 0 1 1 1 2 1013 2000 0 0 0 0 0 0 1 1 1 1 THHN, THWN, THWN‑2 2.08 14 12 22 35 61 84 138 241 364 476 608 3.31 12 9 16 26 45 61 101 176 266 347 443 5.26 10 5 10 16 28 38 63 111 167 219 279 8.37 8 3 6 9 16 22 36 64 96 126 161 13.3 6 2 4 7 12 16 26 46 69 91 116 21.2 4 1 2 4 7 10 16 28 43 56 71 26.7 3 1 1 3 6 8 13 24 36 47 60 33.6 2 1 1 3 5 7 11 20 30 40 51 42.4 1 1 1 1 4 5 8 15 22 29 37 53.5 1/0 1 1 1 3 4 7 12 19 25 32 67.4 2/0 0 1 1 2 3 6 10 16 20 26 85.0 3/0 0 1 1 1 3 5 8 13 17 22 107 4/0 0 1 1 1 2 4 7 11 14 18 127 250 0 0 1 1 1 3 6 9 11 15 152 300 0 0 1 1 1 3 5 7 10 13 177 350 0 0 1 1 1 2 4 6 9 11 203 400 0 0 0 1 1 1 4 6 8 10 253 500 0 0 0 1 1 1 3 5 6 8 304 600 0 0 0 1 1 1 2 4 5 7 355 700 0 0 0 1 1 1 2 3 4 6 380 750 0 0 0 0 1 1 1 3 4 5 405 800 0 0 0 0 1 1 1 3 4 5 456 900 0 0 0 0 1 1 1 3 3 4 507 1000 0 0 0 0 1 1 1 2 3 4 FEP, FEPB, PFA, PFAH, 2.08 14 12 21 34 60 81 134 234 354 462 590 TFE 3.31 12 9 15 25 43 59 98 171 258 337 430 5.26 10 6 11 18 31 42 70 122 185 241 309 8.37 8 3 6 10 18 24 40 70 106 138 177 13.3 6 2 4 7 12 17 28 50 75 98 126 21.2 4 1 3 5 9 12 20 35 53 69 88 26.7 3 1 2 4 7 10 16 29 44 57 73 33.6 2 1 1 3 6 8 13 24 36 47 60 PFA, FAH, TFE 42.4 1 1 1 2 4 6 9 16 25 33 42 PFAH, TFE, PFA, PFAH, 53.5 1/0 1 1 1 3 5 8 14 21 27 35 TFE,Z 67.4 2/0 0 1 1 3 4 6 11 17 22 29 85.0 3/0 0 1 1 2 3 5 9 14 18 24 107 4/0 0 1 1 1 2 4 8 11 15 19 Z 2.08 14 14 25 41 72 98 161 282 426 556 711 3.31 12 10 18 29 51 69 114 200 302 394 504 5.26 10 6 11 18 31 42 70 122 185 241 309 8.37 8 4 7 11 20 27 44 77 117 153 195 13.3 6 3 5 8 14 19 31 54 82 107 137 21.2 4 1 3 5 9 13 21 37 56 74 94 26.7 3 1 2 4 7 9 15 27 41 54 69 33.6 2 1 1 3 6 8 13 22 34 45 57 42.4 1 1 1 2 4 6 10 18 28 36 46 XHH, XHHW, XHHW‑2, 2.08 14 8 15 25 43 58 96 168 254 332 424 ZW 3.31 12 6 11 19 33 45 74 129 195 255 326 5.26 10 5 8 14 24 33 55 96 145 190 243 8.37 8 2 5 8 13 18 30 53 81 105 135 13.3 6 1 3 6 10 14 22 39 60 78 100 21.2 4 1 2 4 7 10 16 28 43 56 72 26.7 3 1 1 3 6 8 14 24 36 48 61 33.6 2 1 1 3 5 7 11 20 31 40 51 XHH, XHHW, XHHW-2 42.4 1 1 1 1 4 5 8 15 23 30 38 53.5 1/0 1 1 1 3 4 7 13 19 25 32 67.4 2/0 0 1 1 2 3 6 10 16 21 27 85.0 3/0 0 1 1 1 3 5 9 13 17 22 107 4/0 0 1 1 1 2 4 7 11 14 18 127 250 0 0 1 1 1 3 6 9 12 15 152 300 0 0 1 1 1 3 5 8 10 13 177 350 0 0 1 1 1 2 4 7 9 11 203 400 0 0 0 1 1 1 4 6 8 10 253 500 0 0 0 1 1 1 3 5 6 8 304 600 0 0 0 1 1 1 2 4 5 6 355 700 0 0 0 0 1 1 2 3 4 6 380 750 0 0 0 0 1 1 1 3 4 5 405 800 0 0 0 0 1 1 1 3 4 5 456 900 0 0 0 0 1 1 1 3 3 4 507 1000 0 0 0 0 0 1 1 2 3 4 633 1250 0 0 0 0 0 1 1 1 2 3 760 1500 0 0 0 0 0 1 1 1 1 3 887 1750 0 0 0 0 0 0 1 1 1 2 1013 2000 0 0 0 0 0 0 1 1 1 1 ALAMBRES PARA APARATOS FFH-2, FH-2, RFHH-3 0.824 18 8 14 24 41 56 92 - - - - 1.31 16 7 12 20 34 47 78 - - - - SF-2, SFF-2 0.824 18 10 18 30 52 71 116 - - - - 1.31 16 8 15 25 43 58 96 - - - - 2.08 14 7 12 20 34 47 78 - - - - SF-1, SFF-1 0.824 18 18 33 53 92 125 206 - - - - RFHH-1, RFHH-2, TF, 0.824 18 14 24 39 68 92 152 - - - - TFF, XF, XFF RFHH-2, TF, TFF, XF, 1.31 16 11 19 31 55 74 123 - - - - XFF XF, XFF 2.08 14 8 15 25 43 58 96 - - - - TFN, TFFN 0.824 18 22 38 63 108 148 244 - - - - 1.31 16 17 29 48 83 113 186 - - - - PF, PFF, PGF, PGFF, 0.824 18 21 36 59 103 140 231 - - - - PAF, PTF, PTFF, PAFF 1.31 16 16 28 46 79 108 179 - - - - 2.08 14 12 21 34 60 81 134 - - - - ZF, ZFF, ZHF, HF, HFF 0.824 18 27 47 77 133 181 298 - - - - 1.31 16 20 35 56 98 133 220 - - - - 2.08 14 14 25 41 72 98 161 - - - - KF-2, KFF-2 0.824 18 39 69 111 193 262 433 - - - - 1.31 16 27 48 78 136 185 305 - - - - 2.08 14 19 33 54 93 127 209 - - - - 3.31 12 13 23 37 64 87 144 - - - - 5.26 10 8 15 25 43 58 96 - - - - KF-1, KFF-1 0.824 18 46 82 133 230 313 516 - - - - 1.31 16 33 57 93 161 220 362 - - - - 2.08 14 22 38 63 108 148 244 - - - - 3.31 12 14 25 41 72 98 161 - - - - 5.26 10 9 16 27 47 64 105 - - - - XF, XFF 3.31 12 4 8 13 23 31 51 - - - - 5.26 10 3 6 10 18 24 40 - - - -",
+       "text": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, O MV-90* Tamaño Corriente nominal total por fase en amperes (kcmil) RHO DE LA TIERRA 60 RHO DE LA TIERRA 90 RHO DE LA TIERRA 120 2820 1860 1680 750 (705 A / Cable) (465 A / Cable) (420 A / Cable) 3300 2140 1920 1000 (825 A / Cable) (535A / Cable) (480 A / Cable) 3700 2380 2120 1250 (925 A / Cable) (595 A / Cable) (530 A / Cable) 4060 2580 2300 1500 (260 A / Cable) (645A / Cable) (575 A / Cable) 4360 2740 2460 1750 (260 A / Cable) (685 A / Cable) (615A / Cable) Temperatura Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor Ambiente ambiente (°C) adecuado de los siguientes : (°C) 6-10 1.09 1.09 1.09 1.09 1.09 11-15 1.04 1.04 1.04 1.04 1.04 16-20 1.00 1.00 1.00 1.00 1.00 21-25 0.95 0.95 0.95 0.95 0.95 26-30 0.90 0.90 0.90 0.90 0.90",
+       "seq": 21
+      },
+      {
+       "text": "NOTA a la Figura B.310.15(B)(2)(4)Ampacidad de los conductores sencillos aislados, de 0 a 5000 volts nominales, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), nueve cables de un solo conductor, por fase, con base en una temperatura ambiente de la tierra de 20 °C y temperatura de los conductores de 75 °C.",
        "seq": 22
       },
       {
-       "text": "1. Esta tabla es sólo para conductores trenzados concéntricos. Para los conductores trenzados compactos se debería usar la Tabla C‑1 (a). 2. El cable tipo RHH con resistencia al fuego de dos horas tiene un aislamiento que se puede convertir en cerámica, el cual tiene diámetros mucho más grandes que otros alambres RHH. Consulte las tablas de ocupación de conduit del fabricante. *Los tipos RHH, RHW y RHW-2 sin recubrimiento exterior. Tabla C-1(a).- Número máximo de conductores compactos en tubería metálica eléctrica (EMT) CONDUCTORES COMPACTOS Tamaño o Designación métrica (Tamaño comercial) designación 16 21 27 35 41 53 63 78 91 103 Tipo AWG o mm2 kcmil (½) (¾) (1) (1¼) (1½) (2) (2½) (3) (3½) (4) THW, THW-2, THHW 8.37 8 2 4 6 11 16 26 46 69 90 115 13.3 6 1 3 5 9 12 20 35 53 70 89 21.2 4 1 2 4 6 9 15 26 40 52 67 26.7 2 1 1 3 5 7 11 19 29 38 49 42.4 1 1 1 1 3 4 8 13 21 27 34 53.5 1/0 1 1 1 3 4 7 12 18 23 30 67.4 2/0 0 1 1 2 3 5 10 15 20 25 85.0 3/0 0 1 1 1 3 5 8 13 17 21 107 4/0 0 1 1 1 2 4 7 11 14 18 127 250 0 0 1 1 1 3 5 8 11 14 152 300 0 0 1 1 1 3 5 7 9 12 177 350 0 0 1 1 1 2 4 6 8 11 203 400 0 0 0 1 1 1 4 6 8 10 253 500 0 0 0 1 1 1 3 5 6 8 304 600 0 0 0 1 1 1 2 4 5 7 355 700 0 0 0 1 1 1 2 3 4 6 380 750 0 0 0 0 1 1 1 3 4 5 456 900 0 0 0 0 1 1 2 3 4 5 507 1000 0 0 0 0 1 1 1 2 3 4 THHN, THWN, THWN-2 8.37 8 - - - - - - - - - - 13.3 6 2 4 7 13 18 29 52 78 102 130 21.2 4 1 3 4 8 11 18 32 48 63 81 26.7 2 1 1 3 6 8 13 23 34 45 58 42.4 1 1 1 2 4 6 10 17 26 34 43 53.5 1/0 1 1 1 3 5 8 14 22 29 37 67.4 2/0 1 1 1 3 4 7 12 18 24 30 85.0 3/0 0 1 1 2 3 6 10 15 20 25 107 4/0 0 1 1 1 3 5 8 12 16 21 127 250 0 1 1 1 1 4 6 10 13 16 152 300 0 0 1 1 1 3 5 8 11 14 177 350 0 0 1 1 1 3 5 7 10 12 203 400 0 0 1 1 1 2 4 6 9 11 253 500 0 0 0 1 1 1 4 5 7 9 304 600 0 0 0 1 1 1 3 4 6 7 355 700 0 0 0 1 1 1 2 4 5 7 380 750 0 0 0 1 1 1 2 4 5 6 456 900 0 0 0 0 1 1 2 3 4 5 507 1000 0 0 0 0 1 1 1 3 3 4 XHHW, XHHW-2 8.37 8 3 5 8 15 20 34 59 90 117 149 13.3 6 1 4 6 11 15 25 44 66 87 111 21.2 4 1 3 4 8 11 18 32 48 63 81 26.7 2 1 1 3 6 8 13 23 34 45 58 42.4 1 1 1 2 4 6 10 17 26 34 43 53.5 1/0 1 1 1 3 5 8 14 22 29 37 67.4 2/0 1 1 1 3 4 7 12 18 24 31 85.0 3/0 0 1 1 2 3 6 10 15 20 25 107 4/0 0 1 1 1 3 5 8 13 17 21 127 250 0 1 1 1 2 4 7 10 13 17 152 300 0 0 1 1 1 3 6 9 11 14 177 350 0 0 1 1 1 3 5 8 10 13 203 400 0 0 1 1 1 2 4 7 9 11 253 500 0 0 0 1 1 1 4 6 7 9 304 600 0 0 0 1 1 1 3 4 6 8 355 700 0 0 0 1 1 1 2 4 5 7 380 750 0 0 0 1 1 1 2 3 5 6 456 900 0 0 0 0 1 1 2 3 4 5 507 1000 0 0 0 0 1 1 1 3 4 5 Definición: El trenzado compacto es el resultado de un proceso de fabricación, en el cual un conductor aprobado se comprime hasta que prácticamente se eliminan los intersticios (espacios entre los hilos trenzados). Tabla C‑2.- Número máximo de conductores o alambres para artefactos en tuberías eléctricas no metálicas (ENT) CONDUCTORES Tamaño o designación Designación métrica (Tamaño comercial) Tipo 16 21 27 35 41 53 AWG o mm2 kcmil (½) (¾) (1) (1¼) (1½) (2) RHH, RHW, RHW‑2 2.08 14 3 6 10 19 26 43 3.31 12 2 5 9 16 22 36 5.26 10 1 4 7 13 17 29 8.37 8 1 1 3 6 9 15 13.3 6 1 1 3 5 7 12 21.2 4 1 1 2 4 6 9 26.7 3 1 1 1 3 5 8 33.6 2 0 1 1 3 4 7 42.4 1 0 1 1 1 3 5 53.5 1/0 0 0 1 1 2 4 67.4 2/0 0 0 1 1 1 3 85.0 3/0 0 0 1 1 1 3 107 4/0 0 0 1 1 1 2 127 250 0 0 0 1 1 1 152 300 0 0 0 1 1 1 177 350 0 0 0 1 1 1 203 400 0 0 0 1 1 1 253 500 0 0 0 0 1 1 304 600 0 0 0 0 1 1 355 700 0 0 0 0 0 1 380 750 0 0 0 0 0 1 405 800 0 0 0 0 0 1 456 900 0 0 0 0 0 1 507 1000 0 0 0 0 0 1 633 1250 0 0 0 0 0 0 760 1500 0 0 0 0 0 0 887 1750 0 0 0 0 0 0 1013 2000 0 0 0 0 0 0 TW 2.08 14 7 13 22 40 55 92 3.31 12 5 10 17 31 42 71 5.26 10 4 7 13 23 32 52 8.37 8 1 4 7 13 17 29 RHW‑2* RHH* RHW* 2.08 14 4 8 15 27 37 61 THHW, THW, THW‑2 RHW‑2* RHH* RHW* 3.31 12 3 5 12 21 29 49 THHW, THW 5.26 10 3 7 9 17 23 38 RHW‑2* RHH* RHW* 8.37 8 1 3 5 10 14 23 THHW, THW THW‑2 RHH*, RHW*, RHW‑2*, 13.3 6 1 2 4 7 10 17 TW, THW, THHW, THW‑2 21.2 4 1 1 3 5 8 13 26.7 3 1 1 2 5 7 11 33.6 2 1 1 2 4 6 9 42.4 1 0 1 1 3 4 6 53.5 1/0 0 1 1 2 3 5 67.4 2/0 0 1 1 1 3 5 85.0 3/0 0 0 1 1 2 4 107 4/0 0 0 1 1 1 3 127 250 0 0 1 1 1 2 152 300 0 0 0 1 1 2 177 350 0 0 0 1 1 1 203 400 0 0 0 1 1 1 253 500 0 0 0 1 1 1 304 600 0 0 0 0 1 1 355 700 0 0 0 0 1 1 380 750 0 0 0 0 1 1 405 800 0 0 0 0 1 1 456 900 0 0 0 0 0 1 507 1000 0 0 0 0 0 1 633 1250 0 0 0 0 0 1 760 1500 0 0 0 0 0 0 887 1750 0 0 0 0 0 0 1013 2000 0 0 0 0 0 0 THHN, THWN, THWN‑2 2.08 14 10 18 32 58 80 132 3.31 12 7 13 23 42 58 96 5.26 10 4 8 15 26 36 60 8.37 8 2 5 8 15 21 35 13.3 6 1 3 6 11 15 25 21.2 4 1 1 4 7 9 15 26.7 3 1 1 3 5 8 13 33.6 2 1 1 2 5 6 11 42.4 1 1 1 1 3 5 8 53.5 1/0 0 1 1 3 4 7 67.4 2/0 0 1 1 2 3 5 85.0 3/0 0 1 1 1 3 4 107 4/0 0 0 1 1 2 4 127 250 0 0 1 1 1 3 152 300 0 0 1 1 1 2 177 350 0 0 0 1 1 2 203 400 0 0 0 1 1 1 253 500 0 0 0 1 1 1 304 600 0 0 0 1 1 1 355 700 0 0 0 0 1 1 380 750 0 0 0 0 1 1 405 800 0 0 0 0 1 1 456 900 0 0 0 0 1 1 507 1000 0 0 0 0 0 1 FEP, FEPB, PFA, PFAH, 2.08 14 10 18 31 56 77 128 TFE 3.31 12 7 13 23 41 56 93 5.26 10 5 9 16 29 40 67 8.37 8 3 5 9 17 23 38 13.3 6 1 4 6 12 16 27 21.2 4 1 2 4 8 11 19 26.7 3 1 1 4 7 9 16 33.6 2 1 1 3 5 8 13 PFA, PFAH, TFE 42.4 1 1 1 1 4 5 9 PFA, PFAH, TFE, Z 53.5 1/0 0 1 1 3 4 7 67.4 2/0 0 1 1 2 4 6 85.0 3/0 0 1 1 1 3 5 107 4/0 0 1 1 1 2 4 Z 2.08 14 12 22 38 68 93 154 3.31 12 8 15 27 48 66 109 5.26 10 5 9 16 29 40 67 8.37 8 3 6 10 18 25 42 13.3 6 1 4 7 13 18 30 21.2 4 1 3 5 9 12 20 26.7 3 1 1 3 6 9 15 33.6 2 1 1 3 5 7 12 42.4 1 1 1 2 4 6 10 XHH, XHHW, XHHW2, 2.08 14 7 13 22 40 55 92 ZW 3.31 12 5 10 17 31 42 71 5.26 10 4 7 13 23 32 52 8.37 8 1 4 7 13 17 29 13.3 6 1 3 5 9 13 21 21.2 4 1 1 4 7 9 15 26.7 3 1 1 3 6 8 13 33.6 2 1 1 2 5 6 11 XHH, XHHW, XHHW‑2 42.4 1 1 1 1 3 5 8 53.5 1/0 0 1 1 3 4 7 67.4 2/0 0 1 1 2 3 6 85.0 3/0 0 1 1 1 3 5 107 4/0 0 0 1 1 2 4 127 250 0 0 1 1 1 3 152 300 0 0 1 1 1 3 177 350 0 0 1 1 1 2 203 400 0 0 0 1 1 1 253 500 0 0 0 1 1 1 304 600 0 0 0 1 1 1 355 700 0 0 0 0 1 1 380 750 0 0 0 0 1 1 405 800 0 0 0 0 1 1 456 900 0 0 0 0 1 1 507 1000 0 0 0 0 0 1 633 1250 0 0 0 0 0 1 760 1500 0 0 0 0 0 1 887 1750 0 0 0 0 0 0 1013 2000 0 0 0 0 0 0 ALAMBRES PARA ARTEFACTOS FFH‑2, RFH‑2, RFHH‑3, 0.823 18 6 12 21 39 53 88 SF‑2, SFF‑2 1.31 16 5 10 18 32 45 74 0.823 18 8 15 27 49 67 111 1.31 16 7 13 22 40 55 92 2.08 14 5 10 18 32",
+       "text": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, O MV-90* Tamaño Corriente nominal total por fase en amperes (kcmil) RHO DE LA TIERRA 60 RHO DE LA TIERRA 90 RHO DE LA TIERRA 120 5575 3375 3000 2000 (1115 A / Cable) (675 A / Cable) (600 A / Cable) Temperatura Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor Ambiente ambiente (°C) adecuado de los siguientes: (°C) 6-10 1.09 1.09 1.09 1.09 1.09 11-15 1.04 1.04 1.04 1.04 1.04 16-20 1.00 1.00 1.00 1.00 1.00 21-25 0.95 0.95 0.95 0.95 0.95 26-30 0.90 0.90 0.90 0.90 0.90",
        "seq": 24
+      },
+      {
+       "text": "NOTA a la Figura B.310.15(B)(2)(5)Ampacidad de los conductores sencillos aislados, de 0 a 5000 volts nominales, en ductos eléctricos subterráneos (tres conductores por ducto eléctrico), nueve cables de un solo conductor, por fase, con base en una temperatura ambiente de la tierra de 20 °C y temperatura de los conductores de 75 °C APENDICE B (Informativo) Este apéndice no es parte de los requerimientos y especificaciones de la NOM, se incluye únicamente con propósitos informativos TABLA B1.1 LISTA DE NORMAS OFICIALES Y NORMAS MEXICANAS NORMA Título Sección NOM-022-STPS-2008 Electricidad estática en los centros de trabajo-Condiciones de seguridad e 500-4 (c) higiene NOM-029-STPS-2005 Mantenimiento de las instalaciones eléctricas en los centros de trabajo- Condiciones de seguridad NOM-010-SECRE-2002 Gas natural comprimido para uso automotor. Requisitos mínimos de 514-2(b) seguridad para estaciones de servicio NMX-J-163-ANCE-2004 Artefactos eléctricos-Configuraciones 550-5 550-23 555-3 NMX-J-472-ANCE-2008 Conductores-Determinación de la cantidad de gas ácido halogenado 725-71(a) generado durante la combustión controlada de materiales poliméricos tomados de cables eléctricos-Método de prueba NMX-J-498-ANCE-2011 Conductores-Determinación de la resistencia a la propagación de la flama 725-71(b) en conductores eléctricos que se colocan en charola vertical-Método de prueba NRF-011-CFE-2004 Sistema de tierras para plantas y subestaciones eléctricas 921-25, 250-191 NOM-007-ENER-2004 Eficiencia energética en sistemas de alumbrado en edificios no 220-3 residenciales NOM-053-SCFI-2000 Elevadores eléctricos de tracción para pasajeros y carga-Especificaciones 620-2 de seguridad y métodos de prueba para equipos nuevos TABLA B1.2 LISTADO DE NORMAS DE PRODUCTOS ELECTRICOS NORMA TITULO Sección NOM-003-SCFI-2000 Productos eléctricos especificaciones de seguridad NMX-J-005-ANCE-2005 Interruptores de uso general para instalaciones eléctricas fijas – Especificaciones 404-9 generales y métodos de prueba 210-24 240 NOM-058-SCFI-2007 Productos eléctricos-Balastros para lámparas de descarga eléctrica en gas- 300-3 (c) (2) 410 Especificaciones de seguridad NOM-063-SCFI-2001 Productos eléctricos - Conductores-Requisitos de seguridad 310 NOM-064-SCFI-2000 Productos eléctricos - Luminarios para uso en interiores y exteriores-especificaciones 410 de seguridad y métodos de prueba NOM-021-ENER/SCFI-2008 Eficiencia energética, requisitos de seguridad al usuario en acondicionadores de aire 440 tipo cuarto. Límites, métodos de prueba y etiquetado NOM-011-ENER-2006 Eficiencia energética en acondicionadores de aire tipo central, paquete o dividido. 440 Límite, métodos de prueba y etiquetado NOM-014-ENER-2004 Eficiencia energética de motores eléctricos de corriente alterna, monofásicos, de inducción, tipo jaula de ardilla, enfriados con aire, en potencia nominal de 0.180 kW a 430 1.500 kW. Límites, método de prueba y marcado NOM-016-ENER-2010 Eficiencia energética de motores de corriente alterna, trifásicos, de inducción, tipo jaula de ardilla, en potencia nominal de 0.746 a 373 kW. Límites, método de prueba y 430 marcado NMX-J-002-ANCE-2001 Conductores – Alambres de cobre duro para usos eléctricos-Especificaciones 310 NMX-J-008-ANCE-2001 Conductores – Alambres de cobre estañado suave o recocido para usos eléctricos- 310 Especificaciones NMX-J-009/248-1-ANCE-2006 Fusibles para baja tensión – Parte 1: Requisitos generales 240 NMX-J-009/248-4-ANCE-2006 Fusible para baja tensión – Parte 4: Fusibles clase CC 240-4 (d)(1) NMX-J-009/248-8-ANCE-2006 Fusible para baja tensión – Parte 8: Fusibles clase J 240-4 (d)(1) NMX-J-009/248-15-ANCE-2006 Fusible para baja tensión – Parte 15: Fusibles clase T 240-4 (d)(1) NMX-J-009/248-7-ANCE-2000 Fusibles para baja tensión – Parte 7: Fusibles renovables clase H 240-60 (d) NMX-J-009/248-11-ANCE-2006 Fusibles para baja tensión – Parte 11: Fusibles tipo tapón 240 e NMX-J-010-ANCE-2011 Conductores – Conductores con aislamiento termoplástico para instalaciones hasta 310-104 600 V – Especificaciones NMX-J-012-ANCE-2008 Conductores – Cable de cobre con cableado concéntrico para usos eléctricos – 315 Especificaciones NMX-J-017-ANCE-2006 Accesorios para cables y tubos – Especificaciones y métodos de prueba 342, 358, 360, 348, 350, 356 NMX-J-023/1-ANCE-2007 Cajas registro metálicas y sus accesorios – Parte 1: Especificaciones y métodos de 110-28 prueba 314-40 NMX-J-024-ANCE-2005 Artefactos eléctricos – Portalámparas roscados tipo Edison – Especificaciones y 422-40 métodos de prueba 422-48 (b) NMX-J-028-ANCE-2001 Conductores – Cables concéntricos tipo espiral para acometida aérea a baja tensión, 230 D hasta 600 V – Especificaciones NMX-J-032-ANCE-2009 Conductores de aluminio – Cable de aluminio de aleación 1350 con cableado 810 concéntrico, para usos eléctricos – Especificaciones NMX-J-036-ANCE-2001 Conductores – Alambre de cobre suave para usos eléctricos – Especificaciones 310 NMX-J-038/11-ANCE-2007 Equipos de soldadura eléctrica por arco – Parte 11: Portaelectrodos 630 NMX-J-058-ANCE-2007 Conductores – Cable de aluminio con cableado concéntrico y alma de acero (ACSR) 230 – Especificaciones NMX-J-059-ANCE-2004 Conductores – Cable de cobre con cableado concéntrico compacto, para usos 315 eléctricos – Especificaciones NMX-J-075/1-ANCE-1994 Aparatos eléctricos – Máquinas rotatorias – Parte 1: Motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias desde 0,062 a 373 430 kW – Especificaciones NMX-J-075/2-ANCE-1994 Aparatos eléctricos – Máquinas rotatorias – Parte 2: Motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias grandes – 430 Especificaciones NMX-J-075/3-ANCE-1994 Aparatos eléctricos – Máquinas rotatorias – Parte 3: Métodos de prueba para motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias desde 430 0,062 kW NMX-J-093-ANCE-2009 Conductores – Determinación de la resistencia a la propagación de incendio en Tabla 310-104 (a) conductores eléctricos – Métodos de prueba NMX-J-102-ANCE-2005 Conductores – Cordones flexibles tipo SPT con aislamiento termoplástico a base de 400-5 a) policloruro de vinilo para instalaciones hasta 300 V – Especificaciones NMX-J-116-ANCE-2005 Transformadores de distribución tipo poste y tipo subestación – Especificaciones 450 NMX-J-118/1-ANCE-2000 Productos eléctricos - Tableros de alumbrado y distribución en baja tensión - 480 Especificaciones y métodos de prueba NMX-J-118/2-ANCE-2007 Tableros – Tableros de distribución de baja tensión – Especificaciones y métodos de 480 prueba NMX-J-142/1-ANCE-2011 Conductores – Cables de energía con pantalla metálica, aislados con polietileno de 250-190 cadena cruzada o a base de etileno-propileno para tensiones de 5 kV a 35 kV – 504-30 b) Especificaciones y métodos de prueba NMX-J-148-ANCE-2001 Electroductos - Especificaciones y métodos de prueba 368 NMX-J-149/2-ANCE-2008 Fusibles para media y alta tensión – Parte 2: Cortacircuitos fusible de expulsión – 490-21(b) Especificaciones y métodos de prueba NMX-J-150/1-ANCE-2008 Coordinación de aislamiento – Parte 1: Definiciones, principios y reglas 922-11 NMX-J-150/2-ANCE-2004 Coordinación de aislamiento – Parte 2: Guía de aplicación 922-11 NMX-J-192-ANCE-2009 Conductores – Resistencia a la propagación de la flama en conductores eléctricos – Tabla 310-104(a) Métodos de prueba NMX-J-203/1-ANCE-2005 Capacitores – Parte 1: Capacitores de potencia en conexión paralelo – 460 Especificaciones y métodos de prueba NMX-J-203/2-ANCE-2006 Capacitores – Parte 2: Bancos de capacitores de potencia en conexión paralelo – 460 Especificaciones y guía para la instalación y operación NMX-J-203/3-ANCE-2008 Capacitores – Parte 3: Fusibles de media y alta tensión para la protección externa de 460-8 bancos de capacitores y unidades capacitivas de potencia en conexión paralelo – 460-25 Especificaciones y métodos de prueba NMX-J-203/4-ANCE-2010 Capacitores – Parte 4: Guía para realizar la pruebas de envejecimiento de ciclo de 460 sobre tensión NMX-J-234-ANCE-2008 Aisladores – Boquillas de extra alta, alta y media tensión para corriente alterna – 922 Especificaciones y métodos de prueba NMX-J-235/1-ANCE-2008 Envolventes – Envolventes para uso en equipo eléctrico – Parte 1: Consideraciones 314-40 c) no ambientales – Especificaciones y métodos de prueba NMX-J-235/2-ANCE-2000 Envolventes - Envolventes (gabinetes) para uso en equipo eléctrico - Parte 2: 314-40 c) requerimientos específicos - Especificaciones y métodos de prueba NMX-J-266-ANCE-1999 Productos eléctricos – Interruptores – Interruptores automáticos en caja moldeada – 110-22 Especificaciones y métodos de prueba 230 NMX-J-281/601-ANCE-2011 Vocabulario electrotécnico – Parte 601: Generación, transmisión y distribución de 100 energía eléctrica – Generalidades NMX-J-285-ANCE-2005 Transformadores de distribución tipo pedestal monobásico y trifásico para distribución 450 subterránea. NMX-J-297-ANCE-2005 Conductores – Conductores flexibles de cobre para usos eléctricos y electrónicos – 400-5 a) Especificaciones NMX-J-298-ANCE-2007 Conductores – Conductores tipo dúplex (TWD) con aislamiento termoplástico para 396-2 instalaciones hasta 600 V – Especificaciones NMX-J-300-ANCE- Conductores-Cables control- Especificaciones 392 NMX-J-321-ANCE-2005 Apartarrayos de óxidos metálicos sin explosores, para sistemas de corriente alterna – 922 Especificaciones y métodos de prueba NMX-J-321/5-ANCE-2008 Apartarrayos – Parte 5: Recomendaciones para selección y aplicación 922 NMX-J-412-ANCE-2008 Clavijas y receptáculos - Especificaciones y métodos de prueba generales 517-2 NMX-J-412/1-ANCE-2004 Clavijas y contactos para uso doméstico y similar – Parte 1: requisitos generales 406-6 NMX-J-412/2-3-ANCE-2009 Conectores – Especificaciones y métodos de prueba 200-10 406 NMX-J-412/2-6-ANCE-2009 Artefactos grado hospital – Especificaciones y métodos de prueba 517-2 517-19 NMX-J-429-ANCE-2009 Conductores – Alambres, cables y cordones con aislamiento de PVC 80 ºC, 9 ºC y 400-5(a) 105 ºC, para equipos electrónicos – Especificaciones. NMX-J-436-ANCE-2007 Conductores – Cordones y cables flexibles – Especificaciones 400-5 NMX-J-508-ANCE-2010 Artefactos eléctricos – Requisitos de seguridad – Especificaciones y métodos de 404 prueba. 406 NMX-J-511-ANCE-2011 Soportes para conductores eléctricos – Sistemas de soportes metálicos tipo charola – 392-12 Especificaciones y métodos de prueba. 392-100 NMX-J-515-ANCE-2003 Equipos de control y distribución – Requisitos generales de seguridad – 408 Especificaciones y métodos de prueba. 409 NMX-J-519-ANCE-2011 Conectadores – Conectadores sellados – Especificaciones y métodos de prueba 110-14 NMX-J-520-ANCE-2006 Interruptores de circuito por falla a tierra – Especificaciones y métodos de prueba 406-4 (d) 406-6 409-21 (c) NMX-J-529-ANCE-2006 Grados de protección proporcionados por los envolventes (código IP) 110-28 NMX-J-534-ANCE-2008 Tubos metálicos rígidos de acero tipo pesado y sus accesorios para la protección de 344 conductores – Especificaciones y métodos de prueba NMX-J-535-ANCE-2008 Tubos metálicos rígidos de acero tipo semipesado y sus accesorios para la protección 342 de conductores – Especificaciones y métodos de prueba NMX-J-536-ANCE-2008 Tubos metálicos rígidos de acero tipo ligero y sus accesorios para la protección de 358 conductores – Especificaciones y métodos de prueba NMX-J-538/1-ANCE-2005 Productos de distribución y de control de baja tensión – Parte 1: Reglas generales 230, 240, 408, 520-27 NMX-J-538/2-ANCE-2005 Productos de distribución y de control de baja tensión – Parte 2: Interruptores 230, 240, 408, automáticos 520-27 NMX-J-542-ANCE-2006 Tubo corrugado (flexible) no metálico para la protección de conductores eléctricos – 360 Especificaciones y Métodos de prueba NMX-J-543-ANCE-2008 Conectadores – Conectadores para instalaciones eléctricas utilización hasta 34,5 kV 110-14 – Especificaciones y métodos de prueba 210-10 250-70 NMX-J-548-ANCE-2008 Conectadores – Conectadores tipo empalme para instalaciones eléctricas utilización – 110-14 Especificaciones y métodos de prueba 210-10 250-70 4.1.6, 250‑4, NMX-J-549-ANCE-2005 Sistema de protección contra tormentas eléctricas – Especificaciones, materiales y 205‑106, 620-37, métodos de medición 800 NMX-J-550/1-1-ANCE-2008 Compatibilidad electromagnética (EMC) Parte 1-1: Generalidades Aplicación e 200, 250, 517, interpretación de definiciones y términos básicos 650, 668 NMX-J-554-ANCE-2004 Roscas para tubo (conduit) y sus accesorios – Especificaciones y método de prueba. 342, 344, 500-8 NMX-J-569-ANCE-2005 Accesorios eléctricos - Interruptores automáticos para protección contra sobrecorriente en instalaciones domésticas y similares - Interruptores automáticos 406-6 para operación con c.a. NMX-J-570/1-ANCE-2006 Sistema de canalizaciones y ductos para instalaciones eléctricas – Parte 1: Requisitos 376-100 generales 388-100 NMX-J-570/2-ANCE-2006 Sistema de canalizaciones y ductos para instalaciones eléctricas – Parte 2: Requisitos 376-100 particulares – Sección 1: Sistemas de canalizaciones y ductos diseñados para 388-100 montarse en techos NMX-J-575-ANCE-2006 Interruptores automáticos operados con corriente diferencial residual sin protección integrada contra sobrecorrientes para instalaciones domésticas y usos similares (IDS) 406-6 Parte 1: Reglas generales NMX-J-576-ANCE-2005 Tubos rígidos de aluminio para la protección de conductores eléctricos y sus 344 accesorios – Especificaciones y métodos de prueba NMX-J-580/1-ANCE-2006 Ensambles de tableros de baja tensión – Parte 1: Ensambles con pruebas tipo y 480 ensambles con pruebas tipo parciales NMX-J-589-ANCE-2010 Métodos de medición para instalaciones eléctricas 4.2.12, 110-26, 250-12, 312-6, 680 NMX-J-590-ANCE-2009 Conectadores – Equipo para puesta tierra 250-70 NMX-J-592/1-ANCE-2008 Sistemas de gestión de energía - Esquemas de funcionamiento - Parte 1: Directrices Capítulo 9 y requisitos generales NMX-J-592/2-ANCE-2008 Sistemas de gestión de energía – Esquemas de funcionamiento – Parte 1: Capítulo 9 Definiciones NMX-J-593/1-ANCE-2008 Sistemas de interconexión de subestaciones eléctricas - Parte 1: Introducción y visión 924 de conjunto NMX-J-593/2-ANCE-2008 Sistemas de interconexión de subestaciones eléctricas – Parte 2: Definiciones 924 NMX-J-593/3-ANCE-2008 Sistemas de interconexión de subestaciones eléctricas – Parte 3: Requisitos 924 generales NMX-J-594-ANCE-2008 Relevadores de protección y control en la operación de sistemas eléctricos - Guía de 250-170 aplicación 250-174 250-176 250-188 NMX-J-603-ANCE-2008 Guía de aplicación del sistema de protección contra tormentas eléctricas 4.1.6, 250-4, 205- 106, 620-37, 800 NMX-J-604-ANCE-2008 Instalaciones eléctricas- Métodos de diagnóstico y reacondicionamiento de 4.4.2 instalaciones eléctricas en operación – Especificaciones 110 240 NMX-J-609/826-ANCE-2009 Vocabulario electrotécnico - Parte 826: Instalaciones eléctricas (Utilización) 100 NMX-J-616-ANCE-2009 Guía de aplicación de filtros y capacitores con conexión en paralelo para la corrección 460 de distorsión armónica SERIE Evaluación de la seguridad en módulos fotovoltaicos (FV) – Parte 1: Requisitos 690 generales para construcción NMX-J-618/1-ANCE-2010 SERIE Dispositivos fotovoltaicos – Parte 1: Medición de la característica corriente-Tensión de 690 los dispositivos fotovoltaicos NMX-J-643/1-ANCE-2011 NMXJ-620/1-ANCE-2009 Interruptores automáticos operados con corriente residual con protección integrada contra sobrecorrientes para instalaciones domésticas y usos similares (IDCS) Parte 1: 406-6 Reglas generales NMX-J-623-ANCE-2009 Sistemas de canalizaciones para cables - Cinchos de sujeción para cables para 320-30, 330-30 instalaciones eléctricas NMX-J-627-ANCE-2009 Envolventes – Grados de protección proporcionados por la envolventes de equipos 376-12 eléctricos en contra de impactos mecánicos (Código IK) 378-12 (1) NMX-J-631-ANCE-2011 Canalizaciones eléctricas - Ductos metálicos, canales auxiliares y accesorios 366 asociados – Especificaciones y métodos de prueba NMX-J-643/1-ANCE-2011 Dispositivos fotovoltaicos- Parte 1: Medición de la característica corriente –Tensión de 690 los dispositivos fotovoltaicos NMX-E-242/1-ANCE-CNCP-2005 Industria del plástico – Tubo de polietileno de alta densidad (PEAD) para instalaciones eléctricas subterráneas (Conduit) – Especificaciones y métodos de prueba – Parte 1: 353 Pared corrugada NMX-E-242/2-ANCE-CNCP-2005 Industria del plástico – Tubo de polietileno de alta densidad (PEAD) para instalaciones 353 eléctricas subterráneas – Especificaciones y métodos de prueba – Parte 2: Pared lisa NMX-E-252-ANCE-CNCP-2008 Industrial del plástico – Tubos (Conduit) y conexiones poli(cloruro de vinilo) (PVC) sin plastificante tipo 1 (cédula 40) y tipo 2 (cédula 80) para instalaciones eléctricas – 352 Especificaciones y métodos de prueba NMX-I-118/02 NYCE Telecomunicaciones-Cables-Parte 02-Cable Coaxial para acometida en sistemas de 250, 324, 800 televisión por cable (STVC) NMX-I-236/01 NYCE Telecomunicaciones-Cables-Cables de fibras ópticas para uso interior- 250, 324, 800 Especificaciones y métodos de prueba-Parte 01: Características básicas NMX-I-237 NYCE Telecomunicaciones-Cables-Cables de fibras ópticas para uso interior- 250, 324, 800 Especificaciones y métodos de prueba. TABLA B2.1 LISTADO DE NORMAS INTERNACIONALES NORMA Título Sección ISO 965-1: 1998 ISO general-purpose metric screw threads - Tolerances - Part 1: Principles and basic 500-4 data ISO 965-3: 1998 ISO general purpose metric screw threads - Tolerances - Part 3: Deviations for 500-4 constructional screw threads IEC 60079-0 (2011-06) Explosive atmospheres - Part 0: Equipment - General requirements 505-4 IEC 60079-1 (2007-04) Explosive atmospheres - Part 1: Equipment protection by flameproof enclosures \"d\" 505-8 IEC 60079-2 (2007-02) Explosive atmospheres - Part 2: Equipment protection by pressurized enclosures \"p\" 505-8 IEC 60079- 13 (2010-10) Explosive atmospheres - Part 13: Equipment protection by pressurized room \"p\" 505-8 IEC 60079-15 (2010-01) Explosive atmospheres - Part 15: Equipment protection by type of protection \"n\" 505-8 IEC 60079-6 (2007-03) Explosive atmospheres - Part 6: Equipment protection by oil immersion \"o\" 505-8 IEC 60079-7 (2006-07) Explosive atmospheres - Part 7: Equipment protection by increased safety \"e\" 505-8 IEC 60079-18 (2009-05) Explosive atmospheres - Part 18: Equipment protection by encapsulation \"m\" 505-8 IEC 60079-5 (2007-03) Explosive atmospheres - Part 5: Equipment protection by powder filling \"q\" 505-8 IEC 60079-10-1 (2008-12) Explosive atmospheres - Part 10-1: Classification of areas - Explosive gas 505-5 Nota 2 atmospheres 505-9 (a) 505-10 IEC 60079-10-2 (2008-12) Explosive atmospheres - Part 10-2: Classification of areas - Combustible dust 505-5 Nota 2 atmospheres 505-9 (a) 505-10 IEC 60079-16 (1990-05) Electrical apparatus for explosive gas atmospheres. Part 16: Artificial ventilation for 505-5 Nota 6 the protection of analyzer (s) houses IEC 60079-20-1 (2010-01) Electrical apparatus for explosive gas atmospheres-Part 20: Data for Flammable 505-7 gases and vapors, relating to use of electrical apparatus 505-8 IEC 60598-2-22 (2008-04) Luminaires - Part 2-22: Particular requirements - Luminaires for emergency lighting 517-40 700-12 IEC 61400-1 ed3.0 (2005-08) Wind turbines Part 1: Design requirements 694 ISO 30061 (2007) Emergency lighting 700-16 924 IEC 60287-2-1 (2006-05) Electric cables – Calculation of the current rating – Part 2-1: Thermal resistance – B.310.15(B)(2) Calculation of thermal resistance IEC 60287-3-1 (1999-05) Electric cables – Calculation of the current rating – Part 3-1: Sections on operating TABLA conditions – Reference operating conditions and selection of cable type B.310.15(B)(2)(1) TABLA B2.2 LISTADO DE NORMAS EXTRANJERAS NORMA Título Sección C2-2012 National Electrical Safety Code (NESC) 110-31(b)(1) 225-18 225-19 500-5(b)(3) 551-79 nota 830-10 NFPA 20-2010 Standard for the Installation of Stationary Pumps for Fire Protection 240-3 (a) 517-30(a) IEEE 142-2007 Recommended practice for grounded of industrial and commercial power systems 250-27 (c) NFPA 30-2012 Flammable and Combustible Liquids Code 500-3(c) 500-7(b) 505-5 513-1 515-1, 515-2 Tabla 515-2 515-16 NFPA 32-2011 Standard for Dry Cleaning Plants 500-3 (c) NFPA 33-2011 Standard for Spray Application Using Flammable or Combustible Materials 500-3 (c) 516-1 NFPA 34-2011 Standard for Dipping, Coating and Printing Processes Using Flammable or 500-3 (c) Combustible Liquids 516-1 NFPA 35-2011 Standard for the Manufacture of Organic Coatings 500-3 (c) NFPA 36-2009 Standard for Solvent Extraction Plants 500-3 (c) NFPA 45-2011 Standard on Fire Protection for Laboratories using Chemicals 500-3 (c) NFPA 50A-1999 Standard for Gaseous Hydrogen Systems at Consumer Sites 500-3 (c) NFPA 50B-1999 Standard for Liquefied Hydrogen Systems at Consumer Sites 500-3 (c) NFPA 58-2011 Liquefied Petroleum Gas Code 500-3 (c) 500-7(b) NFPA 59-2012 Utility LP-Gas Plant Code 500-3 (c) NFPA 77-2007 Recommended Practice on Static Electricity 500-3 (c) 505-5 NOTA 3 NFPA 496-2008 Standard for Purged Pressurized Enclosure for Electrical Equipment 500-4(d) 501-3(a) 501-5(a)(2) 501-5(b)(2) 505-4(b) UL 886-1994 Outlet Boxes and Fittings for Use in (Classified) Locations 501-5(e)(2) NOTA 2 NFPA 497-2008 Recommended Practice for the Classification of Flammable Liquids, Gases, or 500-3 (c) Vapors and of Hazardous (Classified) Locations for Electrical Installations in 500-5(a)(4) Chemical Process Areas 500-5(e) 505-8 800-31 NFPA 499-2008 Recommended Practice for the Classification of Combustible Dusts and of 500-3 (c) Hazardous Locations for Electrical Installations in Chemical Process Areas 500-5(b)(3) 500-5(e) 500-5(f) NFPA 780-2011 Standard for the Installation of Lightning Protection Systems 500-3 (c) 505-5 NFPA 820-2012 Standard for Fire Protection in Wastewater Treatment and Collection Facilities 500-3 (c) API RP 500-1 2002 Recommended Practice for Classification of Locations for Electrical Installations at 500-3 (c) Petroleum Facilities Classified as Class I, Division 1 and Division 2 505-5 Nota 4 505-10(c) API 2003-1998 Protection Against Ignitions Arising Out of Static Lightning and Stray Currents 500-3 (c) 505-5 Nota 3 ANSI/API RP 14F Design, Installation, and Maintenance of Electrical Systems for Fixed and Floating 500-3 (c) Offshore Petroleum Facilities for Unclassified and Class 1, Division 1 and Division 2008 505-5 2 Locations Nota 5 UL 1203-2006 Standard for Explosion-Proof and Dust-Ignition-Proof Electrical Equipment for Use 500-4 (a) in Hazardous (Classified) Locations 500-4 (b) 502-1 UL 1604-2004 Standard for Electrical Equipment For Use In Class I and II, Division 2, And Class 500-4(c) III Hazardous (Classified) Locations 500-4(f)(2) UL 913-2006 Standard for Intrinsically Safe Apparatus and Associated Apparatus for Use in 500-4(e) Class I, II, III, Division 1, Hazardous (Classified) Locations 505-4(c) UL 698A-2008 Standard for Industrial Control Panels Relating to Hazardous (Classified) 500-4(g) Locations ANSI/ASHRAE Safety Standard for Mechanical Refrigeration 500-5(a)(4) 15- 2010 ANSI CGA G2.1-1999 Safety Requirements for the Storage and Handling of Anhydrous Ammonia. 500-5(a)(4) ASTM D 3175-11 Standard Test Method for Volatile Material in the Analysis Sample for Coal and 500-5(b)(2) Coke NFPA 505-2011 Fire Safety Standard for Powered Industrial Trucks Including Type Designations, 503-1 Areas of Use, Conversions, Maintenance, and Operation 625-1 ANSI/ISA RP12.06.01-2003 Recommended Practice for Wiring Methods for Hazardous (Classified) Locations 504-1 Instrumentation Part 1: Intrinsic Safety 504-50 UL 913-2006 Standard for Safety, Intrinsically Safe Apparatus and Associated Apparatus for 504-2 Use in Class I, II, and III, Division 1, Hazardous (Classified) Locations UL 2279-1996 Electrical Equipment for use In Class I, Zone 0, 1 and 2 Hazardous (Classified) 505-4 Locations ANSI/ISA-60079-0-(12.00.01)-2009 Electrical Apparatus for Use in Class I, Zones 0, 1 & 2 Hazardous (Classified) 505-4 Locations: General Requirements (IEC 60079-0 Mod) ANSI/ISA-S12.10-1988 Area Classification in Hazardous (Classified) Dust Locations 500-3 (c) ANSI/ISA 12.12.01-2011 Non incendive Electrical Equipment for Use in Class I & II, Division 2 & Class III, 500-4(c) Divisions I & 2 Hazardous 500-4(f)(1) 500-4(f)(2) 500-4(h) ANSI/ISA-60079-7 (12.16.01)-2008 Electrical Apparatus for Use in Class I, Zone 1 Hazardous (Classified) Locations: 505-4(f) Type of Protection-Increased Safety \"e\" (IEC 60079-7 Mod) ANSI/ISA-60079-1-(12.22.01)-2009 Electrical Apparatus for use in Class I, Zone 1 and 2 Hazardous (Classified) 505-4(a) Locations, Type of Protection -Flameproof \"d\" ANSI/ISA-60079-18- (12.23.01)-2009 Electrical Apparatus for Use in Class I, Zone 1 Hazardous (Classified) Locations 505-4(g) Type of Protection-Encapsulation \"m\" (IEC 60079-18 Mod) ANSI/ISA-60079-5-(12.00.04)-2009 Explosive atmospheres - Part 5: Equipment Protection by Powder Filling \"q\" (IEC 505-4(h) 60079-5 Mod) ANSI/ISA-60079-6-(12.00.05)-2009 Explosive atmospheres - Part 6: Equipment Protection by Oil Immersion \"o\" (IEC 505-4(e) 60079-6 Mod) API RP 505 Recommended Practice for Classification of Locations for Electrical Installations at 505-5 Petroleum Facilities Classified as Class I, Zone 0, and Zone 2 1998 Nota 2 505-9 505-10 ISA S12.24.01-1998 Recommended Practice for Classification of Locations for Electrical Installations 505-5 Classified as Class I, Zone 0, Zone 1, or Zone 2 505-9(a) 505-10(c) NFPA 88A -2011 Standard for Parking Structures 511-2 NFPA 88B -1997 Standard for Repair Garages 511-2 NFPA 409-2011 Standard on Aircraft hangars 513-1 NFPA 30A-2012 Code for Motor Fuel Dispensing Facilities and Repair Garages 514-5(c) 555-10 NFPA 91-2010 Standard for Exhaust Systems for Air Conveying of Vapors, Gases, Mists, and 516-1 Noncombustible Particulate Solids NFPA 99-2012 Health Care Facilities Code Handbook 517-2, 517-20 (c), 517- 25, 517-30(a), 517- 30(b)(4), 517- 30(b)(6), 517- 30(e), 517-31, 517-32(c)(2), 517- 32(g), 517-33(a) (9), 517-34, 517-34(b)(3), 517- 34(b)(9), 517- 35(a), 517-40(a) Excepción (c) 517-40(c) 517-41(a) 517-41(b)(2) 517-41(e) 517-42 517-42(c)(2) 517- 42(g) 517-43(b)(3) 517- 44(a) 517-44(b) Excepción 2 517- 45(a) 517-45(b) 517-45(c) 517- 60(a)(1) 517-61(a)(1) 517- 61(a)(3) 517-64(f) 517-160(a)(2) 517-160 (a) (4) (2) 517-160 (a) 6 NOTAS 1 y 2, 517-160 (c) (1) a., b., c., d., e., f., g., h., i. y j 700-1 701-1 NFPA 101-2012 Life Safety Code 517-1 517-2 517-10(b)(2) 517- 32(a) 517-32(b) 517-32(c )(1) 517- 40 (a) Excepción (c) 571-41(b) 517- 42(a) 517-42(b) 517-42(c)(1) 540- 10 700-9 700-12 ASHRAE Handbook of fundamentals (Indicado en el Capítulo 24) 517-34 517-43-(b)(1) Standard for the Storage and Handling of Cellulose Nitrate Motion Picture Film 530-1 NFPA 40-2011 540-1 Equipotential Planes in Animal Containment Areas, American Society of 547-9 ASAE EP 473-1997 Agricultural Engineers Low-Tension Primary Cable 551-10 SAE J1128-2011 552-10(b) Low Voltage Battery Cable 551-10 SAE J1127-2010 552-10(b) Standard on Recreational Vehicles 551-30(d) NFPA 1192-2011 Fire Protection Standard for Pleasure and Commercial Motor Craft 555-2 NFPA 302-2010 555-3 Fire Protection Standard for Marinas and Boatyards 555-3 NFPA 303-2011 555-7 555-10 Standard for Emergency and Standby Power Systems 700-1 NFPA 110-2010 700-7 701-1 701-8 Recommended Practice for Emergency and Standby Power Systems for Industrial 701-1 IEEE 446-1995 and Commercial Applications Handbook for Electrical Safety in the Workplace 710-1 NFPA 70E-2012 National Fire Alarm and Signaling Code 760-1 NFPA 72-2010 Commercial Building Telecommunications, Wiring Standard 725-7 TIA/EIA 568-A-1995 760-8 770-8 800-6 830-7 Commercial Building Standard for Telecommunications Pathways and Spaces 725-7 TIA/EIA 569 -2004 760-8 770-8 800-6 830-7 Residential and Light Commercial Telecommunications Wiring Standard 725-7 TIA/EIA 570-2004 760-8 770-8 800-6 830-7 Test for Flame Propagation Height of Electrical and Optical-Fiber Cable Installed 760-31(d) UL 1666-2007 Vertically in Shafts 760-31(e) 760-71(e) 800-51 (b) 770-51(b) 820-51(b) 830-5(a) Standard for Signaling, Optical Fiber and Communications Raceways and Cable 770-6 UL 2024 -2011 Routing Assemblies 800-4 Standard for Safety, Telephone Equipment 800-4 UL 1459-1995 Standard for Safety, Communications Circuit Accessories 800-4 UL 1863-2004 Standard for Secondary Protectors for Communications Circuits 800-32 UL 497A-2001 Standard for Ovens and Furnaces 516-2 (e) NFPA 86-2011 Enclosures for Electrical Equipment (1 000 volts Maximum) 500-4 (c) NEMA 250-2008 Electric Fuses (Cartridge Type) 551-10(e)2 SAE J554-1987 Blade Type Electric Fuses 551-10(e)2 SAE J1284-1988 Automotive Glass-Tube Fuses 551-10(e)2 UL 275-1993 Wiring Devices-Dimensional Requirements 551-46(c) NEMA WD6-2002 552-44 APENDICE C (Informativo) TABLAS DE OCUPACION EN TUBO CONDUIT DE CONDUCTORES Y CABLES DEL MISMO TAMAÑO NOMINAL Este apéndice no es parte de los requerimientos y especificaciones de la NOM, se incluye únicamente con propósitos informativos Tabla C‑1.- Número máximo de conductores o alambres para artefactos en tubería metálica eléctrica (EMT) CONDUCTORES Tamaño o Designación métrica (Tamaño comercial) designación Tipo 16 21 27 35 41 53 63 78 91 103 AWG o mm2 kcmil (½) (¾) (1) (1¼) (1½) (2) (2½) (3) (3½) (4) RHH, RHW, RHW‑2 2.08 14 4 7 11 20 27 46 80 120 157 201 3.31 12 3 6 9 17 23 38 66 100 131 167 5.26 10 2 5 8 13 18 30 53 81 105 135 8.37 8 1 2 4 7 9 16 28 42 55 70 13.3 6 1 1 3 5 8 13 22 34 44 56 21.2 4 1 1 2 4 6 10 17 26 34 44 26.7 3 1 1 1 4 5 9 15 23 30 38 33.6 2 1 1 1 3 4 7 13 20 26 33 42.4 1 0 1 1 1 3 5 9 13 17 22 53.5 1/0 0 1 1 1 2 4 7 11 15 19 67.4 2/0 0 1 1 1 2 4 6 10 13 17 85.0 3/0 0 0 1 1 1 3 5 8 11 14 107 4/0 0 0 1 1 1 3 5 7 9 12 127 250 0 0 0 1 1 1 3 5 7 9 152 300 0 0 0 1 1 1 3 5 6 8 177 350 0 0 0 1 1 1 3 4 6 7 203 400 0 0 0 1 1 1 2 4 5 7 253 500 0 0 0 0 1 1 2 3 4 6 304 600 0 0 0 0 1 1 1 3 4 5 355 700 0 0 0 0 0 1 1 2 3 4 380 750 0 0 0 0 0 1 1 2 3 4 405 800 0 0 0 0 0 1 1 2 3 4 456 900 0 0 0 0 0 1 1 1 3 3 507 1000 0 0 0 0 0 1 1 1 2 3 633 1250 0 0 0 0 0 0 1 1 1 2 760 1500 0 0 0 0 0 0 1 1 1 1 887 1750 0 0 0 0 0 0 1 1 1 1 1013 2000 0 0 0 0 0 0 1 1 1 1 TW 2.08 14 8 15 25 43 58 96 168 254 332 424 3.31 12 6 11 19 33 45 74 129 195 255 326 5.26 10 5 8 14 24 33 55 96 145 190 243 8.37 8 2 5 8 13 18 30 53 81 105 135 RHW‑2* RHH* RHW* 2.08 14 6 10 16 28 39 64 112 169 221 282 THHW, THW, THW‑2 RHW‑2* RHH* RHW* 3.31 12 4 8 13 23 31 51 90 136 177 227 THHW, THW 5.26 10 3 6 10 18 24 40 70 106 138 177 RHH* RHW* RHW-2* 8.37 8 1 4 6 10 14 24 42 63 83 106 THHW, THW THW-2 RHH, RHW, RHW-2 TW, 13.3 6 1 3 4 8 11 18 32 48 63 81 THW, THHW, THW-2 21.2 4 1 1 3 6 8 13 24 36 47 60 26.7 3 1 1 3 5 7 12 20 31 40 52 33.6 2 1 1 2 4 6 10 17 26 34 44 42.4 1 1 1 1 3 4 7 12 18 24 31 53.5 1/0 0 1 1 2 3 6 10 16 20 26 67.4 2/0 0 1 1 1 3 5 9 13 17 22 85.0 3/0 0 1 1 1 2 4 7 11 15 19 107 4/0 0 0 1 1 1 3 6 9 12 16 127 250 0 0 1 1 1 3 5 7 10 13 152 300 0 0 1 1 1 2 4 6 8 11 177 350 0 0 0 1 1 1 4 6 7 10 203 400 0 0 0 1 1 1 3 5 7 9 253 500 0 0 0 1 1 1 3 4 6 7 304 600 0 0 0 1 1 1 2 3 4 6 355 700 0 0 0 0 1 1 1 3 4 5 380 750 0 0 0 0 1 1 1 3 4 5 405 800 0 0 0 0 1 1 1 3 3 5 456 900 0 0 0 0 0 1 1 2 3 4 507 1000 0 0 0 0 0 1 1 2 3 4 633 1250 0 0 0 0 0 1 1 1 2 3 760 1500 0 0 0 0 0 1 1 1 1 2 887 1750 0 0 0 0 0 0 1 1 1 2 1013 2000 0 0 0 0 0 0 1 1 1 1 THHN, THWN, THWN‑2 2.08 14 12 22 35 61 84 138 241 364 476 608 3.31 12 9 16 26 45 61 101 176 266 347 443 5.26 10 5 10 16 28 38 63 111 167 219 279 8.37 8 3 6 9 16 22 36 64 96 126 161 13.3 6 2 4 7 12 16 26 46 69 91 116 21.2 4 1 2 4 7 10 16 28 43 56 71 26.7 3 1 1 3 6 8 13 24 36 47 60 33.6 2 1 1 3 5 7 11 20 30 40 51 42.4 1 1 1 1 4 5 8 15 22 29 37 53.5 1/0 1 1 1 3 4 7 12 19 25 32 67.4 2/0 0 1 1 2 3 6 10 16 20 26 85.0 3/0 0 1 1 1 3 5 8 13 17 22 107 4/0 0 1 1 1 2 4 7 11 14 18 127 250 0 0 1 1 1 3 6 9 11 15 152 300 0 0 1 1 1 3 5 7 10 13 177 350 0 0 1 1 1 2 4 6 9 11 203 400 0 0 0 1 1 1 4 6 8 10 253 500 0 0 0 1 1 1 3 5 6 8 304 600 0 0 0 1 1 1 2 4 5 7 355 700 0 0 0 1 1 1 2 3 4 6 380 750 0 0 0 0 1 1 1 3 4 5 405 800 0 0 0 0 1 1 1 3 4 5 456 900 0 0 0 0 1 1 1 3 3 4 507 1000 0 0 0 0 1 1 1 2 3 4 FEP, FEPB, PFA, PFAH, 2.08 14 12 21 34 60 81 134 234 354 462 590 TFE 3.31 12 9 15 25 43 59 98 171 258 337 430 5.26 10 6 11 18 31 42 70 122 185 241 309 8.37 8 3 6 10 18 24 40 70 106 138 177 13.3 6 2 4 7 12 17 28 50 75 98 126 21.2 4 1 3 5 9 12 20 35 53 69 88 26.7 3 1 2 4 7 10 16 29 44 57 73 33.6 2 1 1 3 6 8 13 24 36 47 60 PFA, FAH, TFE 42.4 1 1 1 2 4 6 9 16 25 33 42 PFAH, TFE, PFA, PFAH, 53.5 1/0 1 1 1 3 5 8 14 21 27 35 TFE,Z 67.4 2/0 0 1 1 3 4 6 11 17 22 29 85.0 3/0 0 1 1 2 3 5 9 14 18 24 107 4/0 0 1 1 1 2 4 8 11 15 19 Z 2.08 14 14 25 41 72 98 161 282 426 556 711 3.31 12 10 18 29 51 69 114 200 302 394 504 5.26 10 6 11 18 31 42 70 122 185 241 309 8.37 8 4 7 11 20 27 44 77 117 153 195 13.3 6 3 5 8 14 19 31 54 82 107 137 21.2 4 1 3 5 9 13 21 37 56 74 94 26.7 3 1 2 4 7 9 15 27 41 54 69 33.6 2 1 1 3 6 8 13 22 34 45 57 42.4 1 1 1 2 4 6 10 18 28 36 46 XHH, XHHW, XHHW‑2, 2.08 14 8 15 25 43 58 96 168 254 332 424 ZW 3.31 12 6 11 19 33 45 74 129 195 255 326 5.26 10 5 8 14 24 33 55 96 145 190 243 8.37 8 2 5 8 13 18 30 53 81 105 135 13.3 6 1 3 6 10 14 22 39 60 78 100 21.2 4 1 2 4 7 10 16 28 43 56 72 26.7 3 1 1 3 6 8 14 24 36 48 61 33.6 2 1 1 3 5 7 11 20 31 40 51 XHH, XHHW, XHHW-2 42.4 1 1 1 1 4 5 8 15 23 30 38 53.5 1/0 1 1 1 3 4 7 13 19 25 32 67.4 2/0 0 1 1 2 3 6 10 16 21 27 85.0 3/0 0 1 1 1 3 5 9 13 17 22 107 4/0 0 1 1 1 2 4 7 11 14 18 127 250 0 0 1 1 1 3 6 9 12 15 152 300 0 0 1 1 1 3 5 8 10 13 177 350 0 0 1 1 1 2 4 7 9 11 203 400 0 0 0 1 1 1 4 6 8 10 253 500 0 0 0 1 1 1 3 5 6 8 304 600 0 0 0 1 1 1 2 4 5 6 355 700 0 0 0 0 1 1 2 3 4 6 380 750 0 0 0 0 1 1 1 3 4 5 405 800 0 0 0 0 1 1 1 3 4 5 456 900 0 0 0 0 1 1 1 3 3 4 507 1000 0 0 0 0 0 1 1 2 3 4 633 1250 0 0 0 0 0 1 1 1 2 3 760 1500 0 0 0 0 0 1 1 1 1 3 887 1750 0 0 0 0 0 0 1 1 1 2 1013 2000 0 0 0 0 0 0 1 1 1 1 ALAMBRES PARA APARATOS FFH-2, FH-2, RFHH-3 0.824 18 8 14 24 41 56 92 - - - - 1.31 16 7 12 20 34 47 78 - - - - SF-2, SFF-2 0.824 18 10 18 30 52 71 116 - - - - 1.31 16 8 15 25 43 58 96 - - - - 2.08 14 7 12 20 34 47 78 - - - - SF-1, SFF-1 0.824 18 18 33 53 92 125 206 - - - - RFHH-1, RFHH-2, TF, 0.824 18 14 24 39 68 92 152 - - - - TFF, XF, XFF RFHH-2, TF, TFF, XF, 1.31 16 11 19 31 55 74 123 - - - - XFF XF, XFF 2.08 14 8 15 25 43 58 96 - - - - TFN, TFFN 0.824 18 22 38 63 108 148 244 - - - - 1.31 16 17 29 48 83 113 186 - - - - PF, PFF, PGF, PGFF, 0.824 18 21 36 59 103 140 231 - - - - PAF, PTF, PTFF, PAFF 1.31 16 16 28 46 79 108 179 - - - - 2.08 14 12 21 34 60 81 134 - - - - ZF, ZFF, ZHF, HF, HFF 0.824 18 27 47 77 133 181 298 - - - - 1.31 16 20 35 56 98 133 220 - - - - 2.08 14 14 25 41 72 98 161 - - - - KF-2, KFF-2 0.824 18 39 69 111 193 262 433 - - - - 1.31 16 27 48 78 136 185 305 - - - - 2.08 14 19 33 54 93 127 209 - - - - 3.31 12 13 23 37 64 87 144 - - - - 5.26 10 8 15 25 43 58 96 - - - - KF-1, KFF-1 0.824 18 46 82 133 230 313 516 - - - - 1.31 16 33 57 93 161 220 362 - - - - 2.08 14 22 38 63 108 148 244 - - - - 3.31 12 14 25 41 72 98 161 - - - - 5.26 10 9 16 27 47 64 105 - - - - XF, XFF 3.31 12 4 8 13 23 31 51 - - - - 5.26 10 3 6 10 18 24 40 - - - -",
+       "seq": 25
+      },
+      {
+       "text": "1. Esta tabla es sólo para conductores trenzados concéntricos. Para los conductores trenzados compactos se debería usar la Tabla C‑1 (a). 2. El cable tipo RHH con resistencia al fuego de dos horas tiene un aislamiento que se puede convertir en cerámica, el cual tiene diámetros mucho más grandes que otros alambres RHH. Consulte las tablas de ocupación de conduit del fabricante. *Los tipos RHH, RHW y RHW-2 sin recubrimiento exterior. Tabla C-1(a).- Número máximo de conductores compactos en tubería metálica eléctrica (EMT) CONDUCTORES COMPACTOS Tamaño o Designación métrica (Tamaño comercial) designación 16 21 27 35 41 53 63 78 91 103 Tipo AWG o mm2 kcmil (½) (¾) (1) (1¼) (1½) (2) (2½) (3) (3½) (4) THW, THW-2, THHW 8.37 8 2 4 6 11 16 26 46 69 90 115 13.3 6 1 3 5 9 12 20 35 53 70 89 21.2 4 1 2 4 6 9 15 26 40 52 67 26.7 2 1 1 3 5 7 11 19 29 38 49 42.4 1 1 1 1 3 4 8 13 21 27 34 53.5 1/0 1 1 1 3 4 7 12 18 23 30 67.4 2/0 0 1 1 2 3 5 10 15 20 25 85.0 3/0 0 1 1 1 3 5 8 13 17 21 107 4/0 0 1 1 1 2 4 7 11 14 18 127 250 0 0 1 1 1 3 5 8 11 14 152 300 0 0 1 1 1 3 5 7 9 12 177 350 0 0 1 1 1 2 4 6 8 11 203 400 0 0 0 1 1 1 4 6 8 10 253 500 0 0 0 1 1 1 3 5 6 8 304 600 0 0 0 1 1 1 2 4 5 7 355 700 0 0 0 1 1 1 2 3 4 6 380 750 0 0 0 0 1 1 1 3 4 5 456 900 0 0 0 0 1 1 2 3 4 5 507 1000 0 0 0 0 1 1 1 2 3 4 THHN, THWN, THWN-2 8.37 8 - - - - - - - - - - 13.3 6 2 4 7 13 18 29 52 78 102 130 21.2 4 1 3 4 8 11 18 32 48 63 81 26.7 2 1 1 3 6 8 13 23 34 45 58 42.4 1 1 1 2 4 6 10 17 26 34 43 53.5 1/0 1 1 1 3 5 8 14 22 29 37 67.4 2/0 1 1 1 3 4 7 12 18 24 30 85.0 3/0 0 1 1 2 3 6 10 15 20 25 107 4/0 0 1 1 1 3 5 8 12 16 21 127 250 0 1 1 1 1 4 6 10 13 16 152 300 0 0 1 1 1 3 5 8 11 14 177 350 0 0 1 1 1 3 5 7 10 12 203 400 0 0 1 1 1 2 4 6 9 11 253 500 0 0 0 1 1 1 4 5 7 9 304 600 0 0 0 1 1 1 3 4 6 7 355 700 0 0 0 1 1 1 2 4 5 7 380 750 0 0 0 1 1 1 2 4 5 6 456 900 0 0 0 0 1 1 2 3 4 5 507 1000 0 0 0 0 1 1 1 3 3 4 XHHW, XHHW-2 8.37 8 3 5 8 15 20 34 59 90 117 149 13.3 6 1 4 6 11 15 25 44 66 87 111 21.2 4 1 3 4 8 11 18 32 48 63 81 26.7 2 1 1 3 6 8 13 23 34 45 58 42.4 1 1 1 2 4 6 10 17 26 34 43 53.5 1/0 1 1 1 3 5 8 14 22 29 37 67.4 2/0 1 1 1 3 4 7 12 18 24 31 85.0 3/0 0 1 1 2 3 6 10 15 20 25 107 4/0 0 1 1 1 3 5 8 13 17 21 127 250 0 1 1 1 2 4 7 10 13 17 152 300 0 0 1 1 1 3 6 9 11 14 177 350 0 0 1 1 1 3 5 8 10 13 203 400 0 0 1 1 1 2 4 7 9 11 253 500 0 0 0 1 1 1 4 6 7 9 304 600 0 0 0 1 1 1 3 4 6 8 355 700 0 0 0 1 1 1 2 4 5 7 380 750 0 0 0 1 1 1 2 3 5 6 456 900 0 0 0 0 1 1 2 3 4 5 507 1000 0 0 0 0 1 1 1 3 4 5 Definición: El trenzado compacto es el resultado de un proceso de fabricación, en el cual un conductor aprobado se comprime hasta que prácticamente se eliminan los intersticios (espacios entre los hilos trenzados). Tabla C‑2.- Número máximo de conductores o alambres para artefactos en tuberías eléctricas no metálicas (ENT) CONDUCTORES Tamaño o designación Designación métrica (Tamaño comercial) Tipo 16 21 27 35 41 53 AWG o mm2 kcmil (½) (¾) (1) (1¼) (1½) (2) RHH, RHW, RHW‑2 2.08 14 3 6 10 19 26 43 3.31 12 2 5 9 16 22 36 5.26 10 1 4 7 13 17 29 8.37 8 1 1 3 6 9 15 13.3 6 1 1 3 5 7 12 21.2 4 1 1 2 4 6 9 26.7 3 1 1 1 3 5 8 33.6 2 0 1 1 3 4 7 42.4 1 0 1 1 1 3 5 53.5 1/0 0 0 1 1 2 4 67.4 2/0 0 0 1 1 1 3 85.0 3/0 0 0 1 1 1 3 107 4/0 0 0 1 1 1 2 127 250 0 0 0 1 1 1 152 300 0 0 0 1 1 1 177 350 0 0 0 1 1 1 203 400 0 0 0 1 1 1 253 500 0 0 0 0 1 1 304 600 0 0 0 0 1 1 355 700 0 0 0 0 0 1 380 750 0 0 0 0 0 1 405 800 0 0 0 0 0 1 456 900 0 0 0 0 0 1 507 1000 0 0 0 0 0 1 633 1250 0 0 0 0 0 0 760 1500 0 0 0 0 0 0 887 1750 0 0 0 0 0 0 1013 2000 0 0 0 0 0 0 TW 2.08 14 7 13 22 40 55 92 3.31 12 5 10 17 31 42 71 5.26 10 4 7 13 23 32 52 8.37 8 1 4 7 13 17 29 RHW‑2* RHH* RHW* 2.08 14 4 8 15 27 37 61 THHW, THW, THW‑2 RHW‑2* RHH* RHW* 3.31 12 3 5 12 21 29 49 THHW, THW 5.26 10 3 7 9 17 23 38 RHW‑2* RHH* RHW* 8.37 8 1 3 5 10 14 23 THHW, THW THW‑2 RHH*, RHW*, RHW‑2*, 13.3 6 1 2 4 7 10 17 TW, THW, THHW, THW‑2 21.2 4 1 1 3 5 8 13 26.7 3 1 1 2 5 7 11 33.6 2 1 1 2 4 6 9 42.4 1 0 1 1 3 4 6 53.5 1/0 0 1 1 2 3 5 67.4 2/0 0 1 1 1 3 5 85.0 3/0 0 0 1 1 2 4 107 4/0 0 0 1 1 1 3 127 250 0 0 1 1 1 2 152 300 0 0 0 1 1 2 177 350 0 0 0 1 1 1 203 400 0 0 0 1 1 1 253 500 0 0 0 1 1 1 304 600 0 0 0 0 1 1 355 700 0 0 0 0 1 1 380 750 0 0 0 0 1 1 405 800 0 0 0 0 1 1 456 900 0 0 0 0 0 1 507 1000 0 0 0 0 0 1 633 1250 0 0 0 0 0 1 760 1500 0 0 0 0 0 0 887 1750 0 0 0 0 0 0 1013 2000 0 0 0 0 0 0 THHN, THWN, THWN‑2 2.08 14 10 18 32 58 80 132 3.31 12 7 13 23 42 58 96 5.26 10 4 8 15 26 36 60 8.37 8 2 5 8 15 21 35 13.3 6 1 3 6 11 15 25 21.2 4 1 1 4 7 9 15 26.7 3 1 1 3 5 8 13 33.6 2 1 1 2 5 6 11 42.4 1 1 1 1 3 5 8 53.5 1/0 0 1 1 3 4 7 67.4 2/0 0 1 1 2 3 5 85.0 3/0 0 1 1 1 3 4 107 4/0 0 0 1 1 2 4 127 250 0 0 1 1 1 3 152 300 0 0 1 1 1 2 177 350 0 0 0 1 1 2 203 400 0 0 0 1 1 1 253 500 0 0 0 1 1 1 304 600 0 0 0 1 1 1 355 700 0 0 0 0 1 1 380 750 0 0 0 0 1 1 405 800 0 0 0 0 1 1 456 900 0 0 0 0 1 1 507 1000 0 0 0 0 0 1 FEP, FEPB, PFA, PFAH, 2.08 14 10 18 31 56 77 128 TFE 3.31 12 7 13 23 41 56 93 5.26 10 5 9 16 29 40 67 8.37 8 3 5 9 17 23 38 13.3 6 1 4 6 12 16 27 21.2 4 1 2 4 8 11 19 26.7 3 1 1 4 7 9 16 33.6 2 1 1 3 5 8 13 PFA, PFAH, TFE 42.4 1 1 1 1 4 5 9 PFA, PFAH, TFE, Z 53.5 1/0 0 1 1 3 4 7 67.4 2/0 0 1 1 2 4 6 85.0 3/0 0 1 1 1 3 5 107 4/0 0 1 1 1 2 4 Z 2.08 14 12 22 38 68 93 154 3.31 12 8 15 27 48 66 109 5.26 10 5 9 16 29 40 67 8.37 8 3 6 10 18 25 42 13.3 6 1 4 7 13 18 30 21.2 4 1 3 5 9 12 20 26.7 3 1 1 3 6 9 15 33.6 2 1 1 3 5 7 12 42.4 1 1 1 2 4 6 10 XHH, XHHW, XHHW2, 2.08 14 7 13 22 40 55 92 ZW 3.31 12 5 10 17 31 42 71 5.26 10 4 7 13 23 32 52 8.37 8 1 4 7 13 17 29 13.3 6 1 3 5 9 13 21 21.2 4 1 1 4 7 9 15 26.7 3 1 1 3 6 8 13 33.6 2 1 1 2 5 6 11 XHH, XHHW, XHHW‑2 42.4 1 1 1 1 3 5 8 53.5 1/0 0 1 1 3 4 7 67.4 2/0 0 1 1 2 3 6 85.0 3/0 0 1 1 1 3 5 107 4/0 0 0 1 1 2 4 127 250 0 0 1 1 1 3 152 300 0 0 1 1 1 3 177 350 0 0 1 1 1 2 203 400 0 0 0 1 1 1 253 500 0 0 0 1 1 1 304 600 0 0 0 1 1 1 355 700 0 0 0 0 1 1 380 750 0 0 0 0 1 1 405 800 0 0 0 0 1 1 456 900 0 0 0 0 1 1 507 1000 0 0 0 0 0 1 633 1250 0 0 0 0 0 1 760 1500 0 0 0 0 0 1 887 1750 0 0 0 0 0 0 1013 2000 0 0 0 0 0 0 ALAMBRES PARA ARTEFACTOS FFH‑2, RFH‑2, RFHH‑3, 0.823 18 6 12 21 39 53 88 SF‑2, SFF‑2 1.31 16 5 10 18 32 45 74 0.823 18 8 15 27 49 67 111 1.31 16 7 13 22 40 55 92 2.08 14 5 10 18 32",
+       "seq": 27
       }
      ],
      "figures": [
@@ -141884,14 +142008,14 @@
        "w": 341,
        "h": 392,
        "page": 764,
-       "seq": 19
+       "seq": 20
       },
       {
        "src": "fig-1601.png",
        "w": 361,
        "h": 454,
        "page": 765,
-       "seq": 21
+       "seq": 23
       }
      ]
     }

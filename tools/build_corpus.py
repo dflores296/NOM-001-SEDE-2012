@@ -133,7 +133,12 @@ TBL_MARK = '\x00TBL:'
 # Pie de figura: "Figura 310-60.- Dimensiones de instalación de cables...".
 # Siempre empieza la línea; una cita del cuerpo va dentro de la frase
 # ("...como se indica en la Figura 310-60") y no la hace coincidir.
-RE_FIGCAP = re.compile(r'^Figura\s+\d{3}-\d{1,3}\s*[.\-]')
+#
+# El número puede llevar sufijo de inciso —"Figura 550-10 (c).-", con espacio,
+# y "Figura 690-1(a).-", sin él—, y sin admitirlo esas dos leyendas se
+# publicaban como prosa: la de 550-10(c) quedaba pegada a "X, Y: Conductores
+# de fase".
+RE_FIGCAP = re.compile(r'^Figura\s+\d{3}-\d{1,3}(?:\s*\([a-z0-9]{1,2}\))*\s*[.\-]')
 
 # Sangrías con las que arranca un párrafo NUEVO en este PDF. La continuación de
 # un párrafo va en 32.8, y entre las dos se reparte el 85% de las líneas de
@@ -438,6 +443,12 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
     # termina en ';' y el indicio se habría perdido —la NOTA de 300-17 enumera
     # 27 secciones, una por renglón—.
     annot = [None, None, False]
+    # Bloque de `parrafos` vigente y su dueño. La prosa que sigue a una figura
+    # o a una tabla se acumula ahí, y cada renglón en sangría de párrafo abre
+    # uno nuevo: tras la fórmula de 504-10(b)(2) el PDF imprime «Donde,», «T =
+    # …», «Po = …», «Rt = …» y «Tamb = …» como cinco párrafos, uno por renglón,
+    # y concatenados se leían como una sola frase corrida.
+    parr = [None, None]
     # última figura vista, para poder engancharle su leyenda
     ultima_fig = [None]
 
@@ -546,6 +557,7 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
                 node = {'text': '', 'seq': next(seq)}
                 owner.setdefault('parrafos', []).append(node)
                 target = node
+                parr[0], parr[1] = node, owner
             continue
 
         # --- imagen (fórmula o figura): se cuelga del nodo vigente
@@ -564,6 +576,7 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
                 node = {'text': '', 'seq': next(seq)}
                 owner.setdefault('parrafos', []).append(node)
                 target = node
+                parr[0], parr[1] = node, owner
             continue
 
         # --- leyenda de una figura: "Figura 310-60.- Dimensiones de..."
@@ -572,7 +585,13 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
         # normativo. Como párrafo se pegaba a la nota anterior y la
         # ensuciaba: en 310-60(c)(4) el pie de la Figura 310-60 quedó dentro
         # de la NOTA sobre pérdidas dieléctricas, que trata de otra cosa.
-        if ultima_fig[0] is not None and RE_FIGCAP.match(u):
+        # En sangría de continuación no es una leyenda, es una cita del cuerpo
+        # que se partió de renglón justo antes: 820-154 dice "...e ilustrados
+        # en la / Figura 820-154." y 551-46(c) "...que cumpla con la
+        # configuración mostrada en la / Figura 551-46 (c)." Tomarlas por
+        # leyenda se lleva el final de la frase fuera del texto normativo.
+        if (ultima_fig[0] is not None and RE_FIGCAP.match(u)
+                and not (sangria is not None and sangria[i] == SANGRIA_CONT)):
             ultima_fig[0]['caption'] = re.sub(r'\s+', ' ', ln).strip()
             continue
         if ultima_fig[0] is not None and ultima_fig[0].get('caption'):
@@ -580,7 +599,12 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
             # ("Figura 310-60.- Dimensiones de instalación de cables / para
             # uso con las Tablas..."). El segundo empieza en minúscula, que
             # es lo que distingue una línea partida de una frase nueva.
-            if ln[:1].islower():
+            #
+            # Un marcador de inciso también empieza en minúscula, y no es
+            # continuación de nada: el pie de la Figura 550-10 (c) va seguido
+            # de "d) Longitud total del cordón de alimentación." y se lo
+            # tragaba entero, con lo que 550-10(d) dejaba de existir.
+            if ln[:1].islower() and not RE_INCISO.match(u):
                 ultima_fig[0]['caption'] += ' ' + re.sub(r'\s+', ' ', ln).strip()
                 continue
             ultima_fig[0] = None
@@ -723,8 +747,13 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
             # lista del párrafo siguiente.
             sigue = True
             if annot[0] is not None and annot[0].get('items'):
-                prev = annot[0]['items'][-1].get('label', '')
-                if str(prev).isdigit() and str(etiqueta).isdigit():
+                prev = annot[0]['items'][-1].get('label')
+                # Un item sin rótulo es un párrafo intercalado: la numeración
+                # que venga después arranca de cero y no tiene que continuar
+                # la de antes.
+                if prev is None:
+                    sigue = True
+                elif str(prev).isdigit() and str(etiqueta).isdigit():
                     sigue = int(etiqueta) == int(prev) + 1
                 elif len(str(prev)) == 1 and len(str(etiqueta)) == 1:
                     sigue = ord(str(etiqueta)) == ord(str(prev)) + 1
@@ -742,6 +771,32 @@ def parse_article(num, lines, pageno, lo, hi, sangria=None):
                 continue
 
         # --- texto corrido
+        #
+        # Un renglón en sangría de párrafo cierra el bloque de `parrafos` que
+        # venía de una figura o una tabla y abre otro: son párrafos distintos
+        # del documento, no una frase partida.
+        # Un párrafo dentro de la lista de una anotación sigue siendo suyo: la
+        # Excepción de 250-32(b)(1) enumera tres requisitos y luego dice «Si el
+        # conductor puesto a tierra se usa ... de acuerdo con las disposiciones
+        # de ESTA EXCEPCIÓN, el tamaño ... no debe ser menor que el mayor de
+        # cualquiera de los siguientes:» y enumera dos más. Se guarda como item
+        # sin rótulo para conservar el orden, y con eso la numeración de la
+        # segunda lista puede volver a empezar.
+        if (annot[0] is not None and annot[0].get('items')
+                and target is annot[0]['items'][-1]
+                and sangria is not None and sangria[i] == 47.0):
+            commit()
+            annot[0]['items'].append({'label': None, 'text': ''})
+            target = annot[0]['items'][-1]
+
+        if (parr[0] is not None and target is parr[0] and parr[1] is not None
+                and sangria is not None and sangria[i] == 47.0
+                and (buf or parr[0]['text'].strip())):
+            commit()
+            node = {'text': '', 'seq': next(seq)}
+            parr[1].setdefault('parrafos', []).append(node)
+            target = node
+            parr[0] = node
         #
         # Una NOTA o Excepción abierta se queda con todo lo que no traiga
         # marcador propio, y eso incluía el párrafo siguiente: la Excepción de
