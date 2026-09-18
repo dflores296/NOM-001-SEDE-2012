@@ -198,6 +198,16 @@ RE_INCISO = re.compile(r'^(?:[A-Za-z]\)\.?|\(\d{1,2}\)|\d{1,2}\)|[a-z]\.)\s+\S')
 # encabezado de su tabla y otra suelta a media sección.
 RE_TITULO_TABLA = re.compile(r'^(?:Tabla|TABLA)\s+\S+\s*(?:\.-|\.|-|—)')
 
+# Zonas que no son ni prosa ni tabla y hay que ignorar. Solo hay una en las 780
+# páginas: el Artículo 230 imprime bajo su Alcance un índice de sus partes a dos
+# columnas —los títulos a la izquierda, en x=44.0, y las etiquetas «Parte A» a
+# «Parte H» a la derecha, en x=379.2—. El flujo de texto lo lee en dos tiradas y
+# lo pegaba entero al final del Alcance de 230-1, que acababa diciendo
+# «…para su instalación. Generalidades Parte A Conductores de acometida aérea
+# Parte B …». No se pierde nada al quitarlo: las ocho partes ya se recogen de
+# sus encabezados reales, repartidas por el artículo.
+ZONAS_IGNORADAS = [(60, 430.0, 572.0)]
+
 
 def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
                   texto_tablas=None):
@@ -317,6 +327,8 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
         rescatando = None
         for y, txt, x0 in items:
             if not txt.startswith(IMG_MARK) and not txt.startswith(TBL_MARK):
+                if any(pg == pno and a <= y <= b for pg, a, b in ZONAS_IGNORADAS):
+                    continue
                 limpio = txt.strip()
                 dentro = [tid for a, b, tid in zonas if a <= y <= b]
                 if not dentro or RE_KEEP.match(unaccent(limpio)):
