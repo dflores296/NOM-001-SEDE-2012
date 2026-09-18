@@ -25,12 +25,10 @@ jobs:
           python-version: '3.12'
 
       - name: Instalar dependencias de extracción
-        # Fijada a propósito: la norma es un documento estático de 2012 y las
-        # 222 tablas están congeladas con una huella de contenido, así que un
-        # cambio de versión que extrajera un título o una nota distinta ahora
-        # aborta el build en vez de publicar algo movido. Subirla es un cambio
-        # deliberado: regenerar, revisar el diff y volver a sellar.
-        run: pip install pymupdf==1.28.2
+        # La versión va fijada en requirements.txt, que explica por qué. No
+        # instalar aquí un paquete suelto: se despegaría de lo que corre en
+        # local y en las sesiones de Claude Code.
+        run: pip install -r requirements.txt
 
       # El corpus se regenera desde el PDF en cada publicación: así el sitio
       # nunca se despega de la fuente, y si un cambio en el parser rompe algo,

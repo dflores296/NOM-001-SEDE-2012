@@ -1,0 +1,8 @@
+# Dependencias de las herramientas de extracción (tools/*.py).
+#
+# La versión está fijada a propósito: la norma es un documento estático de 2012
+# y las 226 tablas están congeladas con una huella de contenido, así que un
+# cambio de versión que extrajera un título o una nota distinta aborta el build
+# en vez de publicar algo movido. Subirla es un cambio deliberado: regenerar,
+# revisar el diff y volver a sellar.
+pymupdf==1.28.2
