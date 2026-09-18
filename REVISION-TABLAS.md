@@ -11,7 +11,7 @@ La versión navegable, con enlaces a cada tabla, está en
 > REVISION-TABLAS.md`. No editar a mano: los cambios se pierden en la próxima
 > regeneración.
 
-**225 de 225 tablas ya se contrastaron celda por celda contra el PDF**; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**226 de 226 tablas ya se contrastaron celda por celda contra el PDF**; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## Cómo se corrige una tabla
 
