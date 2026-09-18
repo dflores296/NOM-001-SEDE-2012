@@ -42,8 +42,8 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | Referencias enlazadas | 4 637 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 100 % |
-| Tablas reconstruidas | 220 |
-| Tablas contrastadas contra el PDF | 220 |
+| Tablas reconstruidas | 222 |
+| Tablas contrastadas contra el PDF | 222 |
 
 ## El identificador canónico
 
@@ -120,7 +120,7 @@ encontrar:
 - [x] **Fase 2** — Grafo de referencias cruzadas y backlinks
 - [x] **Fase 3** — Sitio navegable con búsqueda y uso sin conexión
 - [x] **Fase 4** — Tablas como datos
-- [x] **Fase 4.5** — Las 220 tablas contrastadas celda por celda contra el PDF
+- [x] **Fase 4.5** — Las 222 tablas contrastadas celda por celda contra el PDF
 - [ ] **Fase 5** — Búsqueda semántica y servidor MCP
 - [ ] **Fase 6** — Calculadoras (ampacidad, caída de tensión, llenado de tubería)
 
@@ -140,7 +140,7 @@ rectángulos vectoriales:
   eje x y busca franjas sin tinta. Ninguno gana siempre: hay tablas con rejilla
   completa y otras que solo trazan el borde exterior. Se puntúa cada resultado
   —una celda con varios números sueltos delata que la separación falló— y gana
-  el que separa mejor. De 220 tablas, 156 traen rejilla dibujada.
+  el que separa mejor. De las 220 que salen del reparto automático, 156 traen rejilla dibujada.
 - **Celdas combinadas**: el PDF fusiona celdas en el encabezado para que se
   entienda —«Rango de temperatura del conductor» cubre las tres columnas de
   60/75/90 °C, y «Temperatura ambiente (°C)» ocupa dos filas—. Esa jerarquía
@@ -165,12 +165,12 @@ rectángulos vectoriales:
   posición del flujo de texto, y el parser la cuelga del inciso por el que iba
   pasando. Así cada tabla se publica donde la norma la imprime —la
   310-15(b)(2)(a) dentro del inciso 310-15(b)(2)— en vez de amontonarse al
-  final. Las 208 tablas de artículo quedan ancladas; las 12 del Capítulo 10 no
+  final. Las 210 tablas de artículo quedan ancladas; las 12 del Capítulo 10 no
   pertenecen a ningún artículo y se publican en su propia página.
 
-### La revisión a mano: 220 de 220
+### La revisión a mano: 222 de 222
 
-**El reparto automático llegó hasta donde llega, así que las 220 tablas se
+**El reparto automático llegó hasta donde llega, así que las 222 tablas se
 contrastaron celda por celda contra el PDF.** Se renderiza la zona de cada tabla
 desde sus coordenadas, se compara con lo publicado y la versión corregida se
 escribe en `data/tablas_revisadas.json`, que se aplica ENCIMA de lo reconstruido
@@ -195,6 +195,15 @@ cubre una columna de menos. Lo que la revisión encontró, por frecuencia:
   secciones enteras del artículo 922; la 400-4 dejaba fuera sus quince notas,
   que acababan pegadas al texto de 400-5(c).
 - **Glitches de fuente del propio PDF**, con `ºC` y `₀C` donde debía ir `°C`.
+
+Dos tablas no estaban en absoluto. El DOF imprime su título con el guion fuera de
+sitio —`Tabla 408.- 56` y `Tabla 685.-3.` en vez de `Tabla 408-56.-` y `Tabla
+685-3.-`— y el detector de títulos no las reconocía como tablas, así que su
+contenido se publicaba como párrafo corrido dentro del artículo: la 408-56
+(espacio mínimo entre partes metálicas desnudas) y la 685-3 (aplicación de otros
+Artículos). Se dan de alta a mano en `data/tablas_revisadas.json` con los campos
+de `CAMPOS_ALTA`, igual que la 922-17(c), que la norma imprime sin número. De ahí
+que el total sea 222 y no 220.
 
 Cuatro tablas traen valores mal impresos **en el PDF de origen** y se dejaron tal
 como los imprime el DOF: la 505-9(d)(1) (`≤4`, `≤3`, `≤2`… donde las clases T1–T6

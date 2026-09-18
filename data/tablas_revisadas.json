@@ -56651,6 +56651,7 @@
  },
  "610-14(a)": {
   "verificada": "2026-08-12",
+  "header_rows": 2,
   "rows": [
    [
     {
@@ -58709,6 +58710,235 @@
   "verificada": "2026-08-12",
   "notes": [
    "Previo acuerdo entre las partes involucradas, pueden reducirse estas separaciones."
+  ]
+ },
+ "408-56": {
+  "verificada": "2026-09-18",
+  "title": "Espacio mínimo entre las partes metálicas desnudas",
+  "article": 408,
+  "pages": [
+   262
+  ],
+  "cols": 4,
+  "header_rows": 2,
+  "rows": [
+   [
+    {
+     "t": "Volts",
+     "rs": 2
+    },
+    {
+     "t": "Polaridad inversa cuando se montan en la misma superficie"
+    },
+    {
+     "t": "Polaridad inversa cuando se sostienen libres en el aire"
+    },
+    {
+     "t": "Partes vivas puestas a tierra"
+    }
+   ],
+   [
+    {
+     "t": "milímetros",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "No más de 120 volts"
+    },
+    {
+     "t": "20"
+    },
+    {
+     "t": "15"
+    },
+    {
+     "t": "15"
+    }
+   ],
+   [
+    {
+     "t": "No más de 250 volts"
+    },
+    {
+     "t": "35"
+    },
+    {
+     "t": "20"
+    },
+    {
+     "t": "15"
+    }
+   ],
+   [
+    {
+     "t": "No más de 600 volts"
+    },
+    {
+     "t": "55"
+    },
+    {
+     "t": "25"
+    },
+    {
+     "t": "25"
+    }
+   ]
+  ],
+  "notes": [
+   "* Para la separación entre las partes vivas y las puertas de los gabinetes, ver 312-11(a) (1), (2) y (3)."
+  ],
+  "regions": [
+   {
+    "page": 262,
+    "y0": 172.0,
+    "y1": 285.0,
+    "id": "408-56",
+    "article": 408
+   }
+  ]
+ },
+ "685-3": {
+  "verificada": "2026-09-18",
+  "title": "Aplicación de otros Artículos",
+  "article": 685,
+  "pages": [
+   587
+  ],
+  "cols": 2,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "Conductor/equipo"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "Coordinación de Sistemas Eléctricos"
+    },
+    {
+     "t": "240-12"
+    }
+   ],
+   [
+    {
+     "t": "Desconexión"
+    },
+    {
+     "t": "430-74 Excepciones 1 y 2"
+    }
+   ],
+   [
+    {
+     "t": "Más de una fuente de energía"
+    },
+    {
+     "t": "430-113 Excepciones 1 y 2"
+    }
+   ],
+   [
+    {
+     "t": "Más de un edificio u otra estructura"
+    },
+    {
+     "t": "225, Parte B"
+    }
+   ],
+   [
+    {
+     "t": "Medios de desconexión"
+    },
+    {
+     "t": "645-10 Excepción"
+    }
+   ],
+   [
+    {
+     "t": "Medios de desconexión a la vista del controlador"
+    },
+    {
+     "t": "430-102(a) Excepción 2"
+    }
+   ],
+   [
+    {
+     "t": "Parada programada"
+    },
+    {
+     "t": "430-44"
+    }
+   ],
+   [
+    {
+     "t": "Protección de conductores"
+    },
+    {
+     "t": "240-4"
+    }
+   ],
+   [
+    {
+     "t": "Protección de equipo"
+    },
+    {
+     "t": "427-22"
+    }
+   ],
+   [
+    {
+     "t": "Protección por falla a tierra del equipo"
+    },
+    {
+     "t": "230-95, Excepción"
+    }
+   ],
+   [
+    {
+     "t": "Protección por falla a tierra del equipo"
+    },
+    {
+     "t": "240-13(1),"
+    }
+   ],
+   [
+    {
+     "t": "Puesta a tierra de sistemas de corriente alterna de 50 hasta menos de 1000 volts."
+    },
+    {
+     "t": "250-21"
+    }
+   ],
+   [
+    {
+     "t": "Punto de conexión"
+    },
+    {
+     "t": "705-12(a)"
+    }
+   ],
+   [
+    {
+     "t": "Suministro de energía ininterrumpible"
+    },
+    {
+     "t": "645-11(1)"
+    }
+   ]
+  ],
+  "notes": [],
+  "regions": [
+   {
+    "page": 587,
+    "y0": 25.0,
+    "y1": 242.0,
+    "id": "685-3",
+    "article": 685
+   }
   ]
  }
 }
