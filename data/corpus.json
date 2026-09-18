@@ -6294,7 +6294,7 @@
        "label": "a",
        "kind": "alpha",
        "level": 1,
-       "text": "Cuando no se va a instalar equipo adicional de aire acondicionado o de calefacción eléctrica de ambiente. Se deben usar los siguientes porcentajes para cargas existentes y nuevas cargas adicionales. Carga (kVA) Porcentaje de carga Primeros 8 kVA de carga al 100 Carga restante al 40 En los cálculos de la carga se debe incluir lo siguiente:",
+       "text": "Cuando no se va a instalar equipo adicional de aire acondicionado o de calefacción eléctrica de ambiente. Se deben usar los siguientes porcentajes para cargas existentes y nuevas cargas adicionales. En los cálculos de la carga se debe incluir lo siguiente:",
        "children": [
         {
          "id": "220-83(a)(1)",
@@ -6369,7 +6369,13 @@
         }
        ],
        "notes": [],
-       "exceptions": []
+       "exceptions": [],
+       "tables": [
+        {
+         "id": "220-83(a)",
+         "seq": 20
+        }
+       ]
       },
       {
        "id": "220-83(b)",
@@ -6455,7 +6461,7 @@
        "tables": [
         {
          "id": "220-83(b)",
-         "seq": 20
+         "seq": 21
         }
        ]
       }
@@ -6499,7 +6505,7 @@
           {
            "label": "Excepción",
            "text": "Cuando la carga calculada para viviendas multifamiliares sin aparatos eléctricos de cocción, según la Parte C de este Artículo supere la calculada según la Parte D para igual carga, más los aparatos eléctricos de cocción (con base en 8 kilowatts por unidad), se permite aplicar la menor de las dos cargas.",
-           "seq": 21
+           "seq": 22
           }
          ]
         },
@@ -6531,7 +6537,7 @@
        "tables": [
         {
          "id": "220-84",
-         "seq": 22
+         "seq": 23
         }
        ]
       },
@@ -6664,7 +6670,7 @@
      "tables": [
       {
        "id": "220-86",
-       "seq": 23
+       "seq": 24
       }
      ]
     },
@@ -6687,7 +6693,7 @@
         {
          "label": "Excepción",
          "text": "Si no existen datos de demanda máxima de todo un año, se permite calcular la carga en base a la demanda máxima (medida como la demanda promedio en periodos de 15 minutos) registrada continuamente durante 30 días consecutivos como mínimo. El equipo registrador debe estar conectado a la fase de mayor carga del alimentador con base en la carga inicial al comienzo del registro. Para que los datos reflejen la demanda máxima verdadera del alimentador, dichas mediciones deben ser tomadas con el edificio ocupado y deben incluir, por medición o por cálculo, la mayor carga de los equipos de calefacción o aire acondicionado y otras cargas que pueden ser de naturaleza periódica debido a condiciones dadas por cambios climáticos o condiciones similares.",
-         "seq": 24
+         "seq": 25
         }
        ]
       },
@@ -6727,7 +6733,7 @@
      "tables": [
       {
        "id": "220-88",
-       "seq": 25
+       "seq": 26
       }
      ]
     },
@@ -6772,7 +6778,7 @@
        "tables": [
         {
          "id": "220-102",
-         "seq": 26
+         "seq": 27
         }
        ]
       }
@@ -6792,7 +6798,7 @@
      "tables": [
       {
        "id": "220-103",
-       "seq": 27
+       "seq": 28
       }
      ]
     }
