@@ -11,18 +11,21 @@ const label = node.kind === 'letter' ? `${node.label}.` : `(${node.label})`;
 // `parrafos` son los párrafos que en el documento van DESPUÉS de una nota o
 // excepción. No caben en `text`, que se pinta antes: la Excepción de 922-56(b)
 // precede al párrafo que introduce su tabla de factores, y al revés se lee mal.
+// Todo lo que el nodo intercala se ordena por su posición original en el
+// documento: notas, excepciones, los párrafos que van DESPUÉS de una de ellas
+// o de una tabla, y las tablas mismas. Las tablas no participaban del `seq` y
+// se pintaban siempre al final, así que la frase que introduce una tabla
+// aparecía por encima de ella --en 220-83(a), «En los cálculos de la carga se
+// debe incluir lo siguiente:»--, y eso en 12 nodos.
 const anot = [
   ...(node.notes || []).map((n) => ({ ...n, k: 'nota' })),
   ...(node.exceptions || []).map((n) => ({ ...n, k: 'exc' })),
   ...(node.parrafos || []).map((n) => ({ ...n, k: 'parr' })),
+  ...(node.tables || [])
+    .map((x) => ({ ...x, k: 'tabla', tabla: tablaPorId.get(x.id) }))
+    .filter((x) => x.tabla),
 ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0));
 
-// Las tablas de este inciso, en el orden en que aparecen en la norma. Van
-// después del texto y antes de los incisos hijos, que es donde el documento
-// las imprime: el parser las enganchó al nodo vigente cuando pasó por ellas.
-const tabs = (node.tables || [])
-  .map((t) => tablaPorId.get(t.id))
-  .filter(Boolean);
 ---
 <li class="sub" id={node.id}>
   <span class="lbl">{label}</span>
@@ -45,7 +48,9 @@ const tabs = (node.tables || [])
     </dl>
   )}
 
-  {anot.map((n) => (n.k === 'parr' ? (
+  {anot.map((n) => (n.k === 'tabla' ? (
+    <Tabla t={n.tabla} />
+  ) : n.k === 'parr' ? (
     <p class="parr" set:html={linkify(n.text)} />
   ) : (
     <div class={n.k}>
@@ -59,8 +64,6 @@ const tabs = (node.tables || [])
       )}
     </div>
   )))}
-
-  {tabs.map((t) => <Tabla t={t} />)}
 
   {node.children?.length > 0 && (
     <ul class="subs">
