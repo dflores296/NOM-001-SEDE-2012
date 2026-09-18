@@ -25,7 +25,7 @@ conserva las líneas de la rejilla como rectángulos vectoriales:
     en las tablas que solo dibujan el borde exterior, y agrupar por posición
     de inicio fallaría con números centrados o alineados a la derecha.
 
-LA RECONSTRUCCIÓN ESTÁ SUBORDINADA A LA CAPTURA MANUAL. Las 224 tablas se
+LA RECONSTRUCCIÓN ESTÁ SUBORDINADA A LA CAPTURA MANUAL. Las 225 tablas se
 contrastaron a ojo contra el PDF y viven congeladas en
 data/tablas_revisadas.json; lo que sale de aquí solo llena los huecos que esa
 captura no cubre. Cada entrada guarda la huella de su contenido y este script

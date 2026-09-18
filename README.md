@@ -42,8 +42,8 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | Referencias enlazadas | 4 619 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 100 % |
-| Tablas reconstruidas | 224 |
-| Tablas contrastadas contra el PDF | 224 |
+| Tablas reconstruidas | 225 |
+| Tablas contrastadas contra el PDF | 225 |
 
 ## El identificador canónico
 
@@ -120,7 +120,7 @@ encontrar:
 - [x] **Fase 2** — Grafo de referencias cruzadas y backlinks
 - [x] **Fase 3** — Sitio navegable con búsqueda y uso sin conexión
 - [x] **Fase 4** — Tablas como datos
-- [x] **Fase 4.5** — Las 224 tablas contrastadas celda por celda contra el PDF
+- [x] **Fase 4.5** — Las 225 tablas contrastadas celda por celda contra el PDF
 - [ ] **Fase 5** — Búsqueda semántica y servidor MCP
 - [ ] **Fase 6** — Calculadoras (ampacidad, caída de tensión, llenado de tubería)
 
@@ -168,9 +168,9 @@ rectángulos vectoriales:
   final. Las 210 tablas de artículo quedan ancladas; las 12 del Capítulo 10 no
   pertenecen a ningún artículo y se publican en su propia página.
 
-### La revisión a mano: 224 de 224
+### La revisión a mano: 225 de 225
 
-**El reparto automático llegó hasta donde llega, así que las 224 tablas se
+**El reparto automático llegó hasta donde llega, así que las 225 tablas se
 contrastaron celda por celda contra el PDF.** Se renderiza la zona de cada tabla
 desde sus coordenadas, se compara con lo publicado y la versión corregida se
 escribe en `data/tablas_revisadas.json`, que se aplica ENCIMA de lo reconstruido
@@ -179,14 +179,14 @@ publicación—. Cada tabla del sitio lleva en su pie la marca de esa revisión.
 
 #### Cómo se protege esa captura
 
-Contrastar 224 tablas celda por celda contra el PDF no fue barato, y
+Contrastar 225 tablas celda por celda contra el PDF no fue barato, y
 `data/tablas.json` se regenera en cada publicación. Sin nada que lo impida, un
 cambio en `build_tables.py` —o en la versión de `pymupdf`, o un merge mal
 resuelto— movería celdas de una tabla ya verificada y el sitio la publicaría
 igual, con su insignia de «Verificada contra el PDF» intacta. Tres reglas lo
 evitan, y las tres fallan el build:
 
-1. **Las 224 están congeladas.** Cada entrada de `data/tablas_revisadas.json`
+1. **Las 225 están congeladas.** Cada entrada de `data/tablas_revisadas.json`
    trae sus propias `rows`, `cols` y `header_rows`, así que el reconstructor ya
    no decide el contenido de una tabla verificada: lo decide la captura.
    `build_tables.py` queda como herramienta de arranque para tablas nuevas.
@@ -236,10 +236,11 @@ contenido se publicaba como párrafo corrido dentro del artículo: la 408-56
 Artículos). Se dan de alta a mano en `data/tablas_revisadas.json` con los campos
 de `CAMPOS_ALTA`, igual que la 922-17(c) y la del inciso 922-56(b) —la de
 factores de reducción por punto de cruce—, que la norma imprime sin número
-alguno y el detector no puede ver porque no hay título que detectar. Y la
-830-15 —límites de potencia de las fuentes de banda ancha— es la única cuyo
-título el DOF imprime en versalitas, «TABLA 830-15.-», que es por lo que el
-detector no la veía. De ahí que el total sea 224 y no 220.
+alguno y el detector no puede ver porque no hay título que detectar —también la
+del 220-83(b), con los porcentajes de carga para equipo adicional de aire
+acondicionado—. Y la 830-15 —límites de potencia de las fuentes de banda ancha—
+es la única cuyo título el DOF imprime en versalitas, «TABLA 830-15.-», que es
+por lo que el detector no la veía. De ahí que el total sea 225 y no 220.
 
 Cuatro tablas traen valores mal impresos **en el PDF de origen** y se dejaron tal
 como los imprime el DOF: la 505-9(d)(1) (`≤4`, `≤3`, `≤2`… donde las clases T1–T6
