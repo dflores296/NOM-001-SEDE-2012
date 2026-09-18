@@ -62445,7 +62445,30 @@
    "1 Para las aplicaciones marítimas, nivel del suelo significa la superficie de un muelle que se encuentra arriba del agua.",
    "2 Ver Figura 514-3."
   ],
-  "sha": "5a62e9ec8aa7c69c"
+  "sha": "5a62e9ec8aa7c69c",
+  "regions": [
+   {
+    "page": 410,
+    "y0": 441.3837890625,
+    "y1": 794.0,
+    "id": "514-3(b)(1)",
+    "article": 514
+   },
+   {
+    "page": 411,
+    "y0": 23.28,
+    "y1": 784.78,
+    "id": "514-3(b)(1)",
+    "article": 514
+   },
+   {
+    "page": 412,
+    "y0": -3.0,
+    "y1": 248.0,
+    "id": "514-3(b)(1)",
+    "article": 514
+   }
+  ]
  },
  "515-3": {
   "verificada": "2026-08-12",
@@ -63191,7 +63214,37 @@
    "1 La liberación de líquidos de Clase I puede generar vapores hasta el punto en que todo el edificio, y posiblemente la zona que la rodea, deban considerarse lugares Clase I, División 2 o Zona 2.",
    "2 Al clasificar la extensión del área, se debe tener en cuenta el hecho de que los vagones y camiones cisterna pueden tener distintas posiciones. Por tanto, se deben usar los extremos de las posiciones de carga o descarga."
   ],
-  "sha": "a6c9d041070f41a2"
+  "sha": "a6c9d041070f41a2",
+  "regions": [
+   {
+    "page": 414,
+    "y0": 644.6337890625,
+    "y1": 794.0,
+    "id": "515-3",
+    "article": 515
+   },
+   {
+    "page": 415,
+    "y0": 24.78,
+    "y1": 794.0,
+    "id": "515-3",
+    "article": 515
+   },
+   {
+    "page": 416,
+    "y0": 12.03,
+    "y1": 787.78,
+    "id": "515-3",
+    "article": 515
+   },
+   {
+    "page": 417,
+    "y0": 15.780000000000001,
+    "y1": 368.0,
+    "id": "515-3",
+    "article": 515
+   }
+  ]
  },
  "520-44": {
   "verificada": "2026-08-12",

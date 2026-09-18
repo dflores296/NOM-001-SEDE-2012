@@ -39,7 +39,7 @@ sus tablas se parten entre páginas. Este proyecto ataca eso.
 | Incisos | 8 326 |
 | Notas / Excepciones | 777 / 986 |
 | Definiciones | 185 |
-| Referencias enlazadas | 4 619 |
+| Referencias enlazadas | 4 618 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 100 % |
 | Tablas reconstruidas | 225 |
