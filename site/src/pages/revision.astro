@@ -67,7 +67,7 @@ const sinSeñales = info
   .filter((x) => !marcadas.has(x.t.id))
   .sort((a, b) => a.t.pages[0] - b.t.pages[0] || a.t.id.localeCompare(b.t.id));
 
-// Con las 220 contrastadas esta página dejó de ser lista de trabajo y pasó a
+// Con las 222 contrastadas esta página dejó de ser lista de trabajo y pasó a
 // ser el registro de lo que se revisó. La priorización se conserva entera —no
 // se borra— porque vuelve a encenderse sola si una tabla nueva o reprocesada
 // se queda sin contrastar.
@@ -251,7 +251,7 @@ const href = (t) =>
       <h2>Qué mirar si quieres comprobarla</h2>
       <p class="rev-nota">
         Esto es lo que falló al reconstruir las tablas y lo que se corrigió una por una. Sirve
-        de guía si quieres contrastar alguna contra el PDF por tu cuenta: son los seis sitios
+        de guía si quieres contrastar alguna contra el PDF por tu cuenta: son los siete sitios
         donde se escondían los errores.
       </p>
       <ul class="rev-check">
