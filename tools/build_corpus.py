@@ -191,6 +191,13 @@ RE_KEEP = re.compile(
 # renglón del inciso que viene DESPUÉS cae dentro, así que se perdía.
 RE_INCISO = re.compile(r'^(?:[A-Za-z]\)\.?|\(\d{1,2}\)|\d{1,2}\)|[a-z]\.)\s+\S')
 
+# El título de una tabla pertenece a la tabla, no a la prosa. Hace falta
+# distinguirlo porque el recorte de una tabla alcanza a veces el título de la
+# SIGUIENTE —en la página 150 la zona de la 310-60(c)(79) llega hasta el título
+# de la 310-60(c)(80)— y rescatarlo lo publicaría dos veces: una en el
+# encabezado de su tabla y otra suelta a media sección.
+RE_TITULO_TABLA = re.compile(r'^(?:Tabla|TABLA)\s+\S+\s*(?:\.-|\.|-|—)')
+
 
 def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
                   texto_tablas=None):
@@ -221,10 +228,19 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
         renglón de continuación puede traer un paréntesis a media frase —«usando
         la clase de temperatura (código T)»— y partir por ahí dejaba un cuerpo
         vacío, que se confundía con texto de la tabla y tiraba el renglón.
+
+        Cuando el renglón no trae un marcador reconocible se descarta todo lo
+        que va ANTES de la primera letra, y los espacios se colapsan. Es lo que
+        hace falta para las notas al pie: la Tabla 400-4 las guarda como
+        «(1) Ver la Nota 10.» y el PDF las imprime «1       Ver la Nota 10.»,
+        sin paréntesis y con la sangría hecha de espacios. Comparando en crudo
+        no coincidían, la tabla parecía no haberlas capturado y sus quince notas
+        se habrían publicado por segunda vez como prosa de otra sección.
         """
         m = RE_INCISO.match(txt)
-        cuerpo = txt[m.end() - 1:] if m else txt
-        cuerpo = unaccent(cuerpo).strip().lower()[:40]
+        cuerpo = (txt[m.end() - 1:] if m
+                  else re.sub(r'^[^A-Za-zÁÉÍÓÚÑáéíóúñ]+', '', txt))
+        cuerpo = re.sub(r'\s+', ' ', unaccent(cuerpo)).strip().lower()[:40]
         return not cuerpo or cuerpo in texto_tablas.get(tid, '')
 
     def rescatable(txt, x0, tid):
@@ -237,22 +253,34 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
         párrafo quedó pegado a la cola de (c), partido a media frase. No era
         texto mal colocado, era texto que ya no estaba en ninguna parte.
 
-        Se rescata con dos condiciones, y las dos hacen falta:
+        Y no solo al inciso que abre: las zonas de las Tablas 620-14 y 680-10
+        son tan altas que se llevaban renglones de EN MEDIO de un párrafo, sin
+        marcador ninguno. 620-15 quedó diciendo "La capacidad nominal del
+        controlador debe cumplir con lo requerido en 430-83. Se la potencia
+        disponible para el motor...", con la oración partida a la mitad.
 
-        - La SANGRIA tiene que ser la de un párrafo del cuerpo. Las notas al pie
-          de las tablas del Capítulo 9 también abren con "(1)", "(2)", pero van
-          sangradas a la columna de su tabla (x=73, 86, 92, 113, 142...), no a
-          x=47. Sin este filtro se colaban 59 notas al pie como si fueran
-          incisos de la norma.
+        Se rescata con tres condiciones:
+
+        - La SANGRIA tiene que ser la del cuerpo del documento (32.8 para una
+          continuación, 47.0 o 68.8 para un párrafo nuevo). Las notas al pie de
+          las tablas del Capítulo 9 van sangradas a la columna de su tabla
+          (x=73, 86, 92, 113, 142...), y sin este filtro se colaban 59 como si
+          fueran incisos de la norma.
+        - No puede ser el TITULO de una tabla, que es de la tabla y no de la
+          prosa: el recorte de una alcanza a veces el título de la siguiente.
         - La tabla NO debe haberse llevado ya ese texto. Las notas al pie de la
-          300-50 ("a) Profundidad mínima se define como...") y de la 314-16(a)
-          sí arrancan en x=47, y están capturadas como notas de su tabla: si
-          además se rescataran, saldrían dos veces.
+          300-50 ("a) Profundidad mínima se define como..."), las de la
+          314-16(a) y las quince de la 400-4 están capturadas como notas de su
+          tabla: si además se rescataran, saldrían dos veces.
 
         Dicho de otro modo: una tabla solo puede tragarse el texto que de veras
-        capturó.
+        capturó. El mínimo de 15 caracteres deja fuera las celdas sueltas y
+        los encabezados de una palabra —el «NOTAS» que precede a las notas al
+        pie de la 400-4—, que no se parecen a una frase. Los renglones cortos
+        que sí son prosa entran por la continuación, más abajo.
         """
-        return (x0 in SANGRIA_PARRAFO and bool(RE_INCISO.match(txt))
+        return (len(txt) >= 15 and x0 in SANGRIA_CUERPO
+                and not RE_TITULO_TABLA.match(txt)
                 and not suyo_de_la_tabla(txt, tid))
     imgs = {}
     for pno, y, name, w, h in (images or []):
@@ -280,20 +308,18 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
         items.sort(key=lambda z: z[0])
 
         zonas = skip.get(pno, [])
-        # Tabla de cuya zona venimos rescatando un párrafo. Un inciso rescatado
-        # no cabe en un renglón: el de 505-9(d)(1) sigue tres renglones más y
-        # sin ellos la frase queda cortada a media línea («...la temperatura de
-        # funcionamiento o la clase de»). Mientras sigamos dentro de la MISMA
-        # zona, con sangría de cuerpo y con texto que la tabla no capturó, el
-        # párrafo continúa.
+        # Tabla de cuya zona venimos rescatando un párrafo. Hace falta recordarlo
+        # porque el último renglón de un párrafo suele ser corto y no pasa el
+        # mínimo de `rescatable`: 430-40 termina en «con 430-52.» y 922-101(a)
+        # en «que actúen.», once caracteres cada uno. Mientras sigamos en la
+        # MISMA zona, con sangría de cuerpo y con texto que la tabla no capturó,
+        # el párrafo continúa.
         rescatando = None
         for y, txt, x0 in items:
             if not txt.startswith(IMG_MARK) and not txt.startswith(TBL_MARK):
                 limpio = txt.strip()
                 dentro = [tid for a, b, tid in zonas if a <= y <= b]
-                if not dentro:
-                    rescatando = None
-                elif RE_KEEP.match(unaccent(limpio)):
+                if not dentro or RE_KEEP.match(unaccent(limpio)):
                     rescatando = None
                 elif any(rescatable(limpio, x0, tid) for tid in dentro):
                     rescatando = next(tid for tid in dentro
@@ -833,8 +859,8 @@ def main():
             trozos.extend(t.get('notes') or [])
             for fila in t.get('rows') or []:
                 trozos.extend(c.get('t') for c in fila)
-            texto_tablas[t['id']] = unaccent(
-                ' '.join(x for x in trozos if x)).lower()
+            texto_tablas[t['id']] = re.sub(
+                r'\s+', ' ', unaccent(' '.join(x for x in trozos if x))).lower()
 
     img_dir = os.environ.get('NOM_IMG_DIR', 'site/public/img')
     images = extract_images(pdf, img_dir)
