@@ -696,11 +696,14 @@ section.sec:hover .report, figure.tabla:hover .report { opacity: 1; }
    Índice de tablas por capítulo. Con 226 tablas, el salto directo al capítulo
    evita que haya que bajar a ciegas para encontrar una.
    -------------------------------------------------------------------------- */
+/* Flex y no rejilla: con columnas de ancho fijo, dos elementos se quedaban en
+   13rem y truncaban su texto con media fila vacía al lado. Así crecen para
+   llenar el renglón cuando son pocos y siguen partiéndose cuando son diez. */
 .cap-nav {
-  display: grid; gap: 0.5rem; margin: 1.5rem 0 0.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 0.5rem;
 }
 .cap-nav a {
+  flex: 1 1 13rem;
   display: grid; grid-template-columns: auto 1fr auto; align-items: baseline;
   gap: 0.45rem; text-decoration: none; color: inherit;
   background: var(--panel); border: 1px solid var(--border);
@@ -730,3 +733,22 @@ section.sec:hover .report, figure.tabla:hover .report { opacity: 1; }
 .sec-head h2 { font-size: 1rem; margin: 0; }
 .sec-head h2 span.n { font-family: var(--mono); color: var(--accent); margin-right: 0.5rem; }
 .sec-head .desc { font-size: 0.78rem; color: var(--text-faint); white-space: nowrap; }
+
+/* Cuando el bloque de cifras cierra el hero, su borde inferior y el del hero
+   caen uno sobre otro y se ve una línea doble. Le pasa a cualquier página que
+   no ponga nada después de las cifras, no solo al glosario. */
+.hero > .cifras:last-child { border-bottom: none; }
+
+/* Texto de la norma citado dentro de una página que no es un artículo: el
+   Alcance del 100 en el glosario. Es cuerpo normativo, no prosa de la página,
+   así que va a todo lo ancho y no con la medida corta del hero. */
+.cita-norma {
+  margin: 0 0 1.6rem; padding: 0.8rem 1rem;
+  background: var(--bg-soft); border-left: 3px solid var(--border);
+  border-radius: var(--radius);
+}
+.cita-norma .lb {
+  display: block; font-weight: 650; font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 0.35rem;
+}
+.cita-norma p { margin: 0; font-size: 0.92rem; }
