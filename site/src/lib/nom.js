@@ -144,6 +144,10 @@ export function hrefFor(id) {
     const [, num, letra] = id.split(':');
     return `${BASE}/art/${num}#parte-${letra}`;
   }
+  if (id.startsWith('figura:')) {
+    const im = figuraPorId.get(id.slice(7));
+    return im ? hrefImagen(im.figura, im.ancla) : `${BASE}/figuras/`;
+  }
   if (id.startsWith('tabla:')) {
     const t = id.slice(6);
     const tb = tablas.find((x) => x.id === t);
@@ -164,6 +168,7 @@ export function labelFor(id) {
   if (id.startsWith('art:')) return `Artículo ${id.slice(4)}`;
   if (id.startsWith('cap:')) return `Capítulo ${id.slice(4)}`;
   if (id.startsWith('tabla:')) return `Tabla ${id.slice(6)}`;
+  if (id.startsWith('figura:')) return `Figura ${id.slice(7)}`;
   if (id.startsWith('parte:')) {
     const [, num, letra] = id.split(':');
     return `Parte ${letra} · Art. ${num}`;

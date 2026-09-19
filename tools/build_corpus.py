@@ -155,11 +155,35 @@ SANGRIA_CONT = 32.8
 SANGRIA_CUERPO = (32.8,) + SANGRIA_PARRAFO
 
 
+# Ancho al que se reducen las miniaturas del índice de figuras. Las 59
+# imágenes a tamaño completo son 4.1 MB, que es mucho para una página que solo
+# sirve para elegir; reducidas son una décima parte. No se recortan ni se
+# reencuadran: una miniatura que miente sobre lo que hay dentro no sirve para
+# elegir, que es justo para lo que está.
+#
+# La reducción va por mitades (`shrink`), que es lo único que pymupdf hace sin
+# interpolar: el resultado es el mismo byte a byte en cada corrida, que es lo
+# que el pipeline exige. Por eso el ancho final no es exacto sino "la mitad
+# más chica que siga por encima de este umbral".
+MINIATURA_MIN = 120
+
+
+def guardar_miniatura(pix, destino):
+    """Copia reducida de la imagen, para el índice de figuras."""
+    import pymupdf
+    chica = pymupdf.Pixmap(pix)
+    while chica.width // 2 >= MINIATURA_MIN and chica.height // 2 >= 1:
+        chica.shrink(1)
+    chica.save(destino)
+
+
 def extract_images(pdf, img_dir):
     """Guarda las imágenes del PDF y devuelve [(pagina, y, archivo, w, h)]."""
     import pymupdf
     doc = pymupdf.open(pdf)
     os.makedirs(img_dir, exist_ok=True)
+    min_dir = os.path.join(img_dir, 'min')
+    os.makedirs(min_dir, exist_ok=True)
     out, seen = [], {}
     for pno in range(doc.page_count):
         page = doc[pno]
@@ -174,6 +198,7 @@ def extract_images(pdf, img_dir):
                 if pix.n - pix.alpha >= 4:
                     pix = pymupdf.Pixmap(pymupdf.csRGB, pix)
                 pix.save(os.path.join(img_dir, name))
+                guardar_miniatura(pix, os.path.join(min_dir, name))
                 seen[xref] = (pix.width, pix.height)
             w, h = seen[xref]
             for r in rects:
@@ -1010,6 +1035,9 @@ def aplicar_figuras(articles, img_dir, ruta):
                           % (src, sha, e.get('sha')))
             continue
         f['pw'], f['ph'] = _png_size(ruta_png)
+        # La miniatura del índice: sus medidas van en el corpus para que la
+        # tarjeta reserve el hueco y la página no salte al cargarla.
+        f['mw'], f['mh'] = _png_size(os.path.join(img_dir, 'min', src))
         f['kind'] = e['kind']
         for campo in ('titulo', 'informativa', 'nota', 'transcripcion'):
             if e.get(campo):

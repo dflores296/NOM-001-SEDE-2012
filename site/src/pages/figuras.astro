@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { figuras, chapters, byNum, hrefImagen, rotuloImagen, subtituloImagen,
-         validacion } from '../lib/nom.js';
+         validacion, BASE } from '../lib/nom.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -17,6 +17,7 @@ const numeradas = figuras.flatMap((f) =>
     page: f.page,
     kind: f.kind,
     informativa: f.informativa,
+    f,
   }))
 );
 
@@ -32,6 +33,7 @@ const formulas = figuras
     articulo: f.articulo,
     nodo: f.nodo,
     page: f.page,
+    f,
   }))
   .sort((a, b) => a.page - b.page);
 
@@ -94,7 +96,9 @@ const transcritas = figuras.filter((f) => f.transcripcion?.length).length;
         </div>
         <div class="grid">
           {fs.map((f) => (
-            <a class="card" href={f.href}>
+            <a class="card card-fig" href={f.href}>
+              <img class="miniatura" src={`${BASE}/img/min/${f.f.src}`}
+                   alt="" width={f.f.mw} height={f.f.mh} loading="lazy" />
               <b>{f.rotulo}</b>
               <span>{f.titulo || 'La norma la imprime sin título'}</span>
               <em>
@@ -120,7 +124,9 @@ const transcritas = figuras.filter((f) => f.transcripcion?.length).length;
       </p>
       <div class="grid">
         {formulas.map((f) => (
-          <a class="card" href={f.href}>
+          <a class="card card-fig" href={f.href}>
+            <img class="miniatura" src={`${BASE}/img/min/${f.f.src}`}
+                 alt="" width={f.f.mw} height={f.f.mh} loading="lazy" />
             <b class="mono">{f.nodo}</b>
             <span>{f.titulo}</span>
             <em>Artículo {f.articulo} · página {f.page} del PDF</em>

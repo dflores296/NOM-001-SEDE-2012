@@ -175,9 +175,11 @@ def revisar_figuras(corpus, d, img_dir):
                      'mirarlas y darles su rótulo): %s'
                      % (len(sin_captura), ', '.join(sin_captura[:6])))
 
-    faltan, movidas = [], []
+    faltan, movidas, sin_min = [], [], []
     for src, e in sorted(captura.items()):
         ruta_png = os.path.join(img_dir, src)
+        if not os.path.exists(os.path.join(img_dir, 'min', src)):
+            sin_min.append(src)
         if not os.path.exists(ruta_png):
             faltan.append(src)
             continue
@@ -192,15 +194,22 @@ def revisar_figuras(corpus, d, img_dir):
                      'capturada ya no las describe, hay que volver a mirarlas: %s'
                      % (len(movidas), ', '.join(movidas[:4])))
 
-    if os.path.isdir(img_dir):
-        usadas = {f['src'] for f in figs}
-        huerfanos = sorted(x for x in os.listdir(img_dir)
+    if sin_min:
+        fails.append('%d figura(s) sin miniatura en %s/min; el índice de '
+                     'figuras las publicaría rotas: %s'
+                     % (len(sin_min), img_dir, ', '.join(sin_min[:6])))
+
+    usadas = {f['src'] for f in figs}
+    for carpeta in (img_dir, os.path.join(img_dir, 'min')):
+        if not os.path.isdir(carpeta):
+            continue
+        huerfanos = sorted(x for x in os.listdir(carpeta)
                            if x.endswith('.png') and x not in usadas)
         if huerfanos:
             fails.append('%d PNG en %s que ninguna figura usa; el directorio se '
                          'versiona y el pipeline no lo limpia, así que se '
                          'publicarían igual: %s'
-                         % (len(huerfanos), img_dir, ', '.join(huerfanos[:6])))
+                         % (len(huerfanos), carpeta, ', '.join(huerfanos[:6])))
 
     # El ancla de la figura es la de su primer rótulo, así que solo se cuentan
     # los rótulos; una imagen sin rótulo -una fórmula- aporta la suya.
