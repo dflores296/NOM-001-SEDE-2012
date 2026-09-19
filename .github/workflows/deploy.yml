@@ -46,6 +46,11 @@ jobs:
           python3 tools/build_search.py data/ site/public/data/
           python3 tools/build_revision.py data/ REVISION-TABLAS.md
 
+      # --check no escribe: falla el build si la tabla de cifras del README se
+      # despegó de los datos. Regenerarla es parte del cambio, no del deploy.
+      - name: Verificar las cifras del README
+        run: python3 tools/build_cifras.py data/ README.md --check
+
       - name: Verificar cobertura del parseo
         run: python3 tools/check_corpus.py data/
 
