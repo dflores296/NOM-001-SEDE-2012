@@ -1,6 +1,7 @@
 ---
 import { linkify, tablaSlug, rotuloTabla, subtituloTabla } from '../lib/nom.js';
 const { t } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const head = t.rows.slice(0, t.header_rows || 0);
 const body = t.rows.slice(t.header_rows || 0);
 // El aviso se dispara por la FALTA de revisión manual, no por la calidad
@@ -118,14 +119,9 @@ const larga = (c) => ((c.t || '').length > 28 ? 'larga' : undefined);
     {t.rows.length} filas · {t.cols} columnas · página{t.pages.length > 1 ? 's' : ''}{' '}
     {t.pages.join(', ')} del PDF ·{' '}
     <a
-      href={`https://github.com/dflores296/NOM-001-SEDE-2012/issues/new?title=${
-        encodeURIComponent(rotuloTabla(t) + ': revisar valores')
-      }&body=${encodeURIComponent(
-        rotuloTabla(t) + ' (página ' + t.pages.join(', ') + ' del PDF)\n\n' +
-        'Qué está mal:\n\nQué dice el PDF:\n'
-      )}`}
-      rel="noopener"
-      target="_blank"
+      href={`${base}/observaciones/?ref=${encodeURIComponent(rotuloTabla(t))}&de=${
+        encodeURIComponent(`${base}/tablas/#${tablaSlug(t)}`)
+      }`}
     >¿Ves un error? Repórtalo</a>
   </div>
 </figure>

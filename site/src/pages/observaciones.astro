@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// ---------------------------------------------------------------------------
+// A DÓNDE SE MANDAN LAS OBSERVACIONES
+//
+// El sitio es estático y no tiene servidor que reciba el formulario, así que
+// el envío va a un servicio externo. Pegar aquí el endpoint de Formspree
+// (https://formspree.io) — se ve como 'https://formspree.io/f/xxxxxxxx'.
+//
+// Mientras esté vacío, la página NO muestra un formulario roto: avisa que el
+// canal todavía no está abierto y deja el resto de la información visible.
+// ---------------------------------------------------------------------------
+const ENDPOINT = '';
+---
+
+<Base title="Observaciones — NOM-001-SEDE-2012"
+      desc="Reporta una diferencia con el DOF, un error de transcripción o una sugerencia sobre la guía de la NOM-001-SEDE-2012.">
+  <main class="wrap obs">
+    <h1>Observaciones</h1>
+
+    <p class="obs-intro">
+      Esta guía se transcribió del PDF del Diario Oficial, y una transcripción
+      puede fallar. Si algo no coincide con la norma, díganoslo: es la forma más
+      rápida de que quede bien para todos los que la consultan.
+    </p>
+
+    <h2>Qué puedes reportar</h2>
+    <ul class="obs-tipos">
+      <li><b>Una diferencia con el DOF</b> — un valor, una palabra o una tabla que aquí dice algo distinto del PDF oficial.</li>
+      <li><b>Algo que falta</b> — una nota, una excepción, un inciso o una figura que no aparece.</li>
+      <li><b>Algo que no se ve bien</b> — una tabla cortada, un enlace que no lleva a ninguna parte, texto encimado en el celular.</li>
+      <li><b>Una sugerencia</b> — algo que te facilitaría consultarla en obra.</li>
+    </ul>
+
+    <div class="obs-tip">
+      <b>No hace falta que expliques dónde estaba.</b> Si llegaste aquí desde el
+      botón <span class="obs-chip">Reportar</span> de un artículo o una tabla, la
+      referencia exacta ya viene cargada abajo.
+    </div>
+
+    <h2>Reportar</h2>
+
+    {ENDPOINT ? (
+      <form class="obs-form" action={ENDPOINT} method="POST">
+        <label>
+          <span>Dónde lo viste</span>
+          <input type="text" name="referencia" id="ref"
+                 placeholder="Por ejemplo: 250-32(a)(1), o Tabla 430-250" />
+          <small>Si venías de un artículo o una tabla, ya viene lleno. Si no, escríbelo como puedas: con eso basta.</small>
+        </label>
+
+        <label>
+          <span>Qué tipo de observación es</span>
+          <select name="tipo">
+            <option>Diferencia con el DOF</option>
+            <option>Falta algo</option>
+            <option>No se ve bien</option>
+            <option>Sugerencia</option>
+            <option>Otra cosa</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Qué viste <em>(obligatorio)</em></span>
+          <textarea name="observacion" rows="4" required
+                    placeholder="Qué dice la guía y qué esperabas encontrar."></textarea>
+        </label>
+
+        <label>
+          <span>Qué dice el PDF del DOF <em>(si lo tienes a la mano)</em></span>
+          <textarea name="dice_el_dof" rows="2"
+                    placeholder="El texto o el valor tal como aparece en el documento oficial."></textarea>
+        </label>
+
+        <label>
+          <span>Tu correo <em>(opcional)</em></span>
+          <input type="email" name="email" placeholder="Solo para avisarte en qué quedó." />
+        </label>
+
+        <input type="hidden" name="url" id="origen" />
+        <button type="submit">Enviar observación</button>
+        <p class="obs-nota">No se pide registro ni cuenta de nada.</p>
+      </form>
+    ) : (
+      <div class="obs-cerrado">
+        <p><b>El formulario todavía no está conectado.</b></p>
+        <p>
+          Mientras tanto, si encontraste una diferencia con el DOF, puedes
+          reportarla en <a href="https://github.com/dflores296/NOM-001-SEDE-2012/issues/new"
+          rel="noopener" target="_blank">el repositorio del proyecto</a>.
+        </p>
+      </div>
+    )}
+
+    <h2>Qué pasa con lo que mandas</h2>
+    <ol class="obs-flujo">
+      <li><b>Se contrasta contra el PDF.</b> Cada observación se compara con la página del Diario Oficial que corresponde, no con lo que nos parezca.</li>
+      <li><b>Si la guía se equivocó, se corrige</b> y se vuelve a publicar. El cambio queda registrado.</li>
+      <li>
+        <b>Si el error viene del DOF, no se corrige: se anota.</b> Esta guía
+        reproduce la norma, no la edita. Cuando el documento oficial trae un
+        valor mal impreso, se deja igual y se señala, para que quien lo consulte
+        sepa que ahí hay algo raro. Las que ya están anotadas se ven en cada tabla.
+      </li>
+      <li><b>Si dejaste correo, te avisamos</b> en qué quedó.</li>
+    </ol>
+
+    <p class="obs-cierre">
+      Y lo de siempre: esto <b>no es una edición oficial</b>. Ante cualquier
+      discrepancia prevalece el texto del DOF, y nada de aquí sustituye el
+      criterio de una Unidad de Verificación.
+    </p>
+  </main>
+</Base>
+
+<script>
+  // La referencia viaja en la URL (?ref=250-32(a)(1)&de=/art/250#250-32) porque
+  // el sitio es estático: no hay servidor que la inyecte al generar la página.
+  const p = new URLSearchParams(location.search);
+  const ref = document.getElementById('ref');
+  if (ref && p.get('ref')) {
+    ref.value = p.get('ref');
+    ref.setAttribute('readonly', '');
+    ref.classList.add('fijo');
+  }
+  const origen = document.getElementById('origen');
+  if (origen) origen.value = p.get('de') || document.referrer || '';
+</script>
