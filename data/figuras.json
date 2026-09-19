@@ -317,6 +317,23 @@
   "kind": "formula",
   "rotulos": [],
   "titulo": "Ejemplo de cálculo de la carga por fase de una casa móvil",
+  "transcripcion": [
+   "Carga para alumbrado y aparatos pequeños:",
+   "Alumbrado: 20 [m] × 3 [m] × 33 [VA/m²] = 1980 [VA]",
+   "Aparatos pequeños: 1500 [VA] × 2 = 3000 [VA]",
+   "Lavandería: 1500 [VA] × 1 = 1500 [VA]",
+   "Subtotal: 6480 [VA]",
+   "Los primeros 3000 VA al 100 %: 3000 [VA]",
+   "Resto de la carga: (6480 − 3000) [VA] × 0.35 = 1218 [VA]",
+   "Subtotal: 4218 [VA]",
+   "Carga por fase (A), fase A y fase B:",
+   "Alumbrado y aparatos pequeños: 4218 [VA] / 220 [V] = 19.17 y 19.17",
+   "Calentador: 1000 [VA] / 220 [V] = 4.54 y 4.54",
+   "Extractor de aire: 200 [VA] / 127 [V] = 1.57 en la fase A",
+   "Lavavajillas: 400 [VA] / 127 [V] = 3.15 en la fase B",
+   "Estufa: 6000 [VA] × 0.8 / 220 [V] = 21.82 y 21.82",
+   "Carga total por fase: 47.1 y 48.68"
+  ],
   "sha": "ca8e478ed544f6a4"
  },
  "fig-1013.png": {

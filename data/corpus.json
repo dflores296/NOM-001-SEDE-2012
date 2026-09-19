@@ -4407,6 +4407,8 @@
              "seq": 56,
              "pw": 404,
              "ph": 480,
+             "mw": 202,
+             "mh": 240,
              "kind": "figura",
              "rotulos": [
               {
@@ -5342,6 +5344,8 @@
        "seq": 1,
        "pw": 509,
        "ph": 397,
+       "mw": 128,
+       "mh": 100,
        "kind": "figura",
        "rotulos": [
         {
@@ -8378,6 +8382,8 @@
        "seq": 0,
        "pw": 561,
        "ph": 358,
+       "mw": 141,
+       "mh": 90,
        "kind": "figura",
        "rotulos": [
         {
@@ -13413,6 +13419,8 @@
          "seq": 14,
          "pw": 587,
          "ph": 399,
+         "mw": 147,
+         "mh": 100,
          "kind": "tabla",
          "nota": "La norma la imprime como imagen, no como rejilla, y por eso no está entre las 226 tablas reconstruidas. Su contenido va transcrito.",
          "transcripcion": [
@@ -13965,6 +13973,8 @@
          "seq": 1,
          "pw": 298,
          "ph": 381,
+         "mw": 149,
+         "mh": 191,
          "kind": "figura",
          "rotulos": [
           {
@@ -18968,6 +18978,8 @@
          "seq": 84,
          "pw": 111,
          "ph": 111,
+         "mw": 111,
+         "mh": 111,
          "kind": "figura",
          "nota": "La norma la imprime sin título; la NOTA que la sigue en el cuerpo la describe.",
          "rotulos": [
@@ -23757,6 +23769,8 @@
            "seq": 21,
            "pw": 358,
            "ph": 183,
+           "mw": 179,
+           "mh": 92,
            "kind": "formula",
            "titulo": "Ampacidad corregida por temperatura ambiente",
            "transcripcion": [
@@ -24097,6 +24111,8 @@
          "seq": 35,
          "pw": 510,
          "ph": 212,
+         "mw": 128,
+         "mh": 53,
          "kind": "formula",
          "titulo": "Ampacidad calculada bajo supervisión de ingeniería",
          "transcripcion": [
@@ -24292,6 +24308,8 @@
            "seq": 52,
            "pw": 607,
            "ph": 488,
+           "mw": 152,
+           "mh": 122,
            "kind": "formula",
            "titulo": "Ampacidad corregida por temperatura ambiente y por supervisión de ingeniería",
            "nota": "Además de las dos ecuaciones, la imagen contiene el inciso d) Supervisión de Ingeniería completo: es texto normativo que en el PDF no existe como texto.",
@@ -24325,6 +24343,8 @@
            "caption": "Figura 310-60.- Dimensiones de instalación de cables para uso con las Tablas 310-60c)(77) a 310-60c)(86).",
            "pw": 581,
            "ph": 742,
+           "mw": 146,
+           "mh": 186,
            "kind": "figura",
            "rotulos": [
             {
@@ -47109,6 +47129,8 @@
            "seq": 14,
            "pw": 128,
            "ph": 116,
+           "mw": 128,
+           "mh": 116,
            "kind": "figura",
            "nota": "La norma la imprime sin título; la NOTA que la sigue en el cuerpo la describe.",
            "rotulos": [
@@ -48459,6 +48481,8 @@
        "caption": "Figura 410-2.- Espacio de almacenamiento del armario.",
        "pw": 308,
        "ph": 481,
+       "mw": 154,
+       "mh": 241,
        "kind": "figura",
        "rotulos": [
         {
@@ -56119,6 +56143,8 @@
        "caption": "Figura 430-1.- Contenido del Artículo 430.",
        "pw": 524,
        "ph": 495,
+       "mw": 131,
+       "mh": 124,
        "kind": "figura",
        "rotulos": [
         {
@@ -62553,6 +62579,8 @@
          "caption": "Figura 450-4.- Autotransformador",
          "pw": 345,
          "ph": 182,
+         "mw": 173,
+         "mh": 91,
          "kind": "figura",
          "rotulos": [
           {
@@ -72116,6 +72144,8 @@
            "seq": 9,
            "pw": 120,
            "ph": 28,
+           "mw": 120,
+           "mh": 28,
            "kind": "formula",
            "titulo": "Temperatura superficial de un equipo intrínsecamente seguro",
            "transcripcion": [
@@ -73578,6 +73608,8 @@
          "seq": 47,
          "pw": 581,
          "ph": 207,
+         "mw": 146,
+         "mh": 52,
          "kind": "figura",
          "transcripcion": [
           "Clase 1 Zona 0  AEX  ia  IIC  T6",
@@ -77627,6 +77659,8 @@
            "caption": "Figura 514-3.- Diagrama de áreas peligrosas (clasificadas) adyacentes a los surtidores de gas natural y gas L.P. (dispensarios) como se detalla en la tabla 514-3(b)(1)",
            "pw": 497,
            "ph": 499,
+           "mw": 125,
+           "mh": 125,
            "kind": "figura",
            "rotulos": [
             {
@@ -78001,6 +78035,8 @@
          "caption": "Figura 515-3.- Terminal marítima para manipulación de líquidos inflamables.",
          "pw": 528,
          "ph": 363,
+         "mw": 132,
+         "mh": 91,
          "kind": "figura",
          "rotulos": [
           {
@@ -78364,6 +78400,8 @@
            "seq": 2,
            "pw": 573,
            "ph": 876,
+           "mw": 144,
+           "mh": 219,
            "kind": "figura",
            "rotulos": [
             {
@@ -78389,6 +78427,8 @@
            "seq": 4,
            "pw": 579,
            "ph": 888,
+           "mw": 145,
+           "mh": 222,
            "kind": "figura",
            "rotulos": [
             {
@@ -80119,6 +80159,8 @@
            "seq": 18,
            "pw": 594,
            "ph": 908,
+           "mw": 149,
+           "mh": 227,
            "kind": "figura",
            "rotulos": [
             {
@@ -81274,6 +81316,8 @@
          "seq": 30,
          "pw": 589,
          "ph": 433,
+         "mw": 148,
+         "mh": 109,
          "kind": "figura",
          "rotulos": [
           {
@@ -81293,6 +81337,8 @@
          "seq": 32,
          "pw": 563,
          "ph": 427,
+         "mw": 141,
+         "mh": 107,
          "kind": "figura",
          "rotulos": [
           {
@@ -88325,6 +88371,8 @@
          "caption": "Figura 550-10 (c).- Configuraciones de contacto y clavija de 220Y/127 volts, 50 amperes, 3 fases, 4 hilos, con conductor puesto a tierra, para uso con cordones de alimentación en casas móviles y sus estacionamientos.",
          "pw": 356,
          "ph": 158,
+         "mw": 178,
+         "mh": 79,
          "kind": "figura",
          "rotulos": [
           {
@@ -88583,6 +88631,8 @@
          "seq": 12,
          "pw": 309,
          "ph": 33,
+         "mw": 155,
+         "mh": 17,
          "kind": "formula",
          "titulo": "Número de circuitos derivados de 15 A (ó 20 A) para el alumbrado general",
          "transcripcion": [
@@ -89680,8 +89730,27 @@
            "seq": 22,
            "pw": 600,
            "ph": 464,
+           "mw": 150,
+           "mh": 116,
            "kind": "formula",
            "titulo": "Ejemplo de cálculo de la carga por fase de una casa móvil",
+           "transcripcion": [
+            "Carga para alumbrado y aparatos pequeños:",
+            "Alumbrado: 20 [m] × 3 [m] × 33 [VA/m²] = 1980 [VA]",
+            "Aparatos pequeños: 1500 [VA] × 2 = 3000 [VA]",
+            "Lavandería: 1500 [VA] × 1 = 1500 [VA]",
+            "Subtotal: 6480 [VA]",
+            "Los primeros 3000 VA al 100 %: 3000 [VA]",
+            "Resto de la carga: (6480 − 3000) [VA] × 0.35 = 1218 [VA]",
+            "Subtotal: 4218 [VA]",
+            "Carga por fase (A), fase A y fase B:",
+            "Alumbrado y aparatos pequeños: 4218 [VA] / 220 [V] = 19.17 y 19.17",
+            "Calentador: 1000 [VA] / 220 [V] = 4.54 y 4.54",
+            "Extractor de aire: 200 [VA] / 127 [V] = 1.57 en la fase A",
+            "Lavavajillas: 400 [VA] / 127 [V] = 3.15 en la fase B",
+            "Estufa: 6000 [VA] × 0.8 / 220 [V] = 21.82 y 21.82",
+            "Carga total por fase: 47.1 y 48.68"
+           ],
            "rotulos": [],
            "ancla": "formula-550-18-b-6"
           }
@@ -91253,6 +91322,8 @@
          "seq": 20,
          "pw": 565,
          "ph": 467,
+         "mw": 142,
+         "mh": 117,
          "kind": "figura",
          "rotulos": [
           {
@@ -93410,6 +93481,8 @@
            "seq": 15,
            "pw": 512,
            "ph": 168,
+           "mw": 128,
+           "mh": 42,
            "kind": "figura",
            "rotulos": [
             {
@@ -93559,6 +93632,8 @@
            "seq": 20,
            "pw": 308,
            "ph": 32,
+           "mw": 154,
+           "mh": 16,
            "kind": "formula",
            "titulo": "Número de circuitos derivados de 15 A (ó 20 A) para el alumbrado general",
            "transcripcion": [
@@ -93684,6 +93759,8 @@
          "seq": 24,
          "pw": 408,
          "ph": 16,
+         "mw": 204,
+         "mh": 8,
          "kind": "formula",
          "titulo": "Carga de alumbrado",
          "transcripcion": [
@@ -93700,6 +93777,8 @@
          "seq": 26,
          "pw": 342,
          "ph": 16,
+         "mw": 171,
+         "mh": 8,
          "kind": "formula",
          "titulo": "Voltamperes de aparatos pequeños",
          "transcripcion": [
@@ -99719,6 +99798,8 @@
        "seq": 2,
        "pw": 565,
        "ph": 354,
+       "mw": 142,
+       "mh": 89,
        "kind": "figura",
        "informativa": true,
        "nota": "El pie de la figura dice «Esta figura es únicamente informativa».",
@@ -99995,6 +100076,8 @@
          "seq": 9,
          "pw": 551,
          "ph": 510,
+         "mw": 138,
+         "mh": 128,
          "kind": "figura",
          "rotulos": [
           {
@@ -101995,6 +102078,8 @@
              "seq": 7,
              "pw": 376,
              "ph": 30,
+             "mw": 188,
+             "mh": 15,
              "kind": "formula",
              "titulo": "Ventilación monofásica en metros cúbicos por minuto",
              "transcripcion": [
@@ -102023,6 +102108,8 @@
              "seq": 9,
              "pw": 329,
              "ph": 25,
+             "mw": 165,
+             "mh": 13,
              "kind": "formula",
              "titulo": "Ventilación trifásica en metros cúbicos por minuto",
              "transcripcion": [
@@ -103133,6 +103220,8 @@
          "seq": 5,
          "pw": 129,
          "ph": 20,
+         "mw": 129,
+         "mh": 20,
          "kind": "formula",
          "titulo": "Corriente eficaz de una soldadora",
          "transcripcion": [
@@ -108494,6 +108583,8 @@
        "caption": "Figura 680-8.- Distancias desde las estructuras de la alberca",
        "pw": 434,
        "ph": 263,
+       "mw": 217,
+       "mh": 132,
        "kind": "figura",
        "rotulos": [
         {
@@ -112242,6 +112333,8 @@
        "caption": "Figura 690-1(a).- Identificación de los componentes de un sistema solar fotovoltaico",
        "pw": 602,
        "ph": 522,
+       "mw": 151,
+       "mh": 131,
        "kind": "figura",
        "rotulos": [
         {
@@ -112261,6 +112354,8 @@
        "seq": 2,
        "pw": 568,
        "ph": 263,
+       "mw": 142,
+       "mh": 66,
        "kind": "figura",
        "rotulos": [
         {
@@ -115572,6 +115667,8 @@
        "seq": 1,
        "pw": 594,
        "ph": 466,
+       "mw": 149,
+       "mh": 117,
        "kind": "figura",
        "nota": "El DOF rotula las dos figuras «Figura 694-1»: la segunda como «Figura 694-1.- No. 2». El cuerpo cita «Figura 694-1» una sola vez. Se reproducen tal como se imprimen.",
        "rotulos": [
@@ -121615,6 +121712,8 @@
            "seq": 12,
            "pw": 468,
            "ph": 325,
+           "mw": 234,
+           "mh": 163,
            "kind": "figura",
            "rotulos": [
             {
@@ -122407,6 +122506,8 @@
          "seq": 26,
          "pw": 434,
          "ph": 444,
+         "mw": 217,
+         "mh": 222,
          "kind": "figura",
          "rotulos": [
           {
@@ -124322,6 +124423,8 @@
          "seq": 38,
          "pw": 391,
          "ph": 390,
+         "mw": 196,
+         "mh": 195,
          "kind": "figura",
          "rotulos": [
           {
@@ -126505,6 +126608,8 @@
          "seq": 24,
          "pw": 446,
          "ph": 336,
+         "mw": 223,
+         "mh": 168,
          "kind": "figura",
          "rotulos": [
           {
@@ -129036,6 +129141,8 @@
        "seq": 38,
        "pw": 355,
        "ph": 437,
+       "mw": 178,
+       "mh": 219,
        "kind": "figura",
        "rotulos": [
         {
@@ -132092,6 +132199,8 @@
        "seq": 30,
        "pw": 374,
        "ph": 341,
+       "mw": 187,
+       "mh": 171,
        "kind": "figura",
        "rotulos": [
         {
@@ -136766,6 +136875,8 @@
        "seq": 0,
        "pw": 395,
        "ph": 316,
+       "mw": 198,
+       "mh": 158,
        "kind": "figura",
        "nota": "La norma la imprime sin título, como «Figura.- 922-2.».",
        "rotulos": [
@@ -137258,6 +137369,8 @@
            "seq": 7,
            "pw": 603,
            "ph": 113,
+           "mw": 151,
+           "mh": 29,
            "kind": "formula",
            "titulo": "Separación entre conductores del mismo circuito con tensión mayor que 50 kV",
            "nota": "La imagen contiene una Excepción completa: es texto normativo que en el PDF no existe como texto.",
@@ -137447,6 +137560,8 @@
        "seq": 23,
        "pw": 448,
        "ph": 276,
+       "mw": 224,
+       "mh": 138,
        "kind": "figura",
        "nota": "La norma la imprime sin título, como «Figura.- 922-14».",
        "rotulos": [
@@ -137901,6 +138016,8 @@
          "seq": 35,
          "pw": 463,
          "ph": 286,
+         "mw": 232,
+         "mh": 143,
          "kind": "figura",
          "rotulos": [
           {
@@ -138629,6 +138746,8 @@
          "seq": 57,
          "pw": 245,
          "ph": 347,
+         "mw": 123,
+         "mh": 174,
          "kind": "figura",
          "nota": "La norma la imprime sin título, como «Figura.- 922-54».",
          "rotulos": [
@@ -138839,6 +138958,8 @@
        "seq": 65,
        "pw": 587,
        "ph": 432,
+       "mw": 147,
+       "mh": 108,
        "kind": "figura",
        "rotulos": [
         {
@@ -139947,6 +140068,8 @@
              "seq": 10,
              "pw": 545,
              "ph": 288,
+             "mw": 137,
+             "mh": 72,
              "kind": "figura",
              "nota": "La norma la imprime sin título, como «Figura.- 923-3(f)(2)».",
              "rotulos": [
@@ -141015,6 +141138,8 @@
            "seq": 20,
            "pw": 589,
            "ph": 699,
+           "mw": 148,
+           "mh": 175,
            "kind": "figura",
            "rotulos": [
             {
@@ -141547,6 +141672,8 @@
          "seq": 29,
          "pw": 508,
          "ph": 504,
+         "mw": 127,
+         "mh": 126,
          "kind": "figura",
          "rotulos": [
           {
@@ -142700,6 +142827,8 @@
        "seq": 15,
        "pw": 602,
        "ph": 768,
+       "mw": 151,
+       "mh": 192,
        "kind": "figura",
        "transcripcion": [
         "A₂ = [ √(0.5 N / E) × (A₁) ] o A₁, el que sea menor",
@@ -142727,6 +142856,8 @@
        "seq": 17,
        "pw": 374,
        "ph": 468,
+       "mw": 187,
+       "mh": 234,
        "kind": "figura",
        "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
        "rotulos": [
@@ -142747,6 +142878,8 @@
        "seq": 20,
        "pw": 454,
        "ph": 522,
+       "mw": 227,
+       "mh": 261,
        "kind": "figura",
        "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
        "rotulos": [
@@ -142767,6 +142900,8 @@
        "seq": 23,
        "pw": 481,
        "ph": 606,
+       "mw": 121,
+       "mh": 152,
        "kind": "figura",
        "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
        "rotulos": [

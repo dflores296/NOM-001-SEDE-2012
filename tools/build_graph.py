@@ -32,6 +32,13 @@ RE_SEC_REF = re.compile(r'\b(\d{3})-(\d{1,3})((?:\([a-z0-9]{1,3}\))*)')
 # 230-», la primera alternativa no calza y la segunda se quedaba con «23»,
 # inventando una tabla del Capítulo 10 que no existe. Eran 8 de las 20
 # referencias a tablas inexistentes.
+# Figura 551-46(c) | Figura 922-54. Va ANTES que el patrón de sección: la
+# norma imprime la figura donde cabe en la página y no donde la citan --la
+# 551-46(c) está en 551-47(a)--, así que tomar el número por una sección
+# manda el backlink al sitio equivocado.
+RE_FIG_REF = re.compile(
+    r'Figura\s+(\d{3}-\d{1,3}(?:\s*\.?\s*\([a-z0-9]{1,3}\))*)')
+
 RE_TBL_REF = re.compile(
     r'Tabla\s+(\d{3}-\d{1,3}(?:\s*\.?\s*\([a-z0-9]{1,3}\))*'
     r'|\d{1,2}[A-Z]?(?:\([A-Z]\))?(?![\d-]))')
@@ -157,6 +164,33 @@ def main():
                 }
                 sec_ids.add(n['id'])
 
+    # Los números de figura que la norma imprime, con la imagen donde viven.
+    # Una imagen puede traer más de uno (la 516-3(c)(1) y la (c)(2) comparten
+    # dibujo), y dos pueden compartir número (las dos del 694): gana la
+    # primera, que es la que el cuerpo cita.
+    figura_ids = []
+    for a in articles:
+        for s_ in a['sections']:
+            for n in walk(s_):
+                for f in n.get('figures', []):
+                    for r in f.get('rotulos', []):
+                        if r['id'] not in figura_ids:
+                            figura_ids.append(r['id'])
+    figura_ids = set(figura_ids)
+
+    def resolver_figura(fid):
+        """De la cita más específica a la más general, como en el sitio.
+
+        La norma cita «Figura 310-60» y la figura puede estar rotulada con
+        sufijo de inciso, o al revés.
+        """
+        while True:
+            if fid in figura_ids:
+                return fid
+            if '(' not in fid:
+                return None
+            fid = re.sub(r'\([^()]*\)$', '', fid)
+
     # ------------------------------------------------------------- aristas
     edges = []          # (origen, destino, tipo)
     seen = set()
@@ -172,6 +206,19 @@ def main():
             for n in walk(s):
                 src = n['id']
                 txt = node_text(n)
+
+                # --- Figuras (antes que las tablas y las secciones: una
+                #     figura tiene número de sección y no es una sección)
+                figuras = set()
+                for m in RE_FIG_REF.finditer(txt):
+                    crudo = m.group(1)
+                    fid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
+                    destino = resolver_figura(fid)
+                    if destino is None:
+                        continue
+                    figuras.add(fid)
+                    figuras.add(crudo.split('(')[0].strip().rstrip('.'))
+                    add(src, 'figura:' + destino, 'figura')
 
                 # --- Tablas (primero: consumen su propio patrón)
                 tablas = set()
@@ -195,6 +242,8 @@ def main():
                         continue
                     full = '%d-%s%s' % (num, sec, sub)
                     if full in tablas or ('%d-%s' % (num, sec)) in tablas:
+                        continue
+                    if full in figuras or ('%d-%s' % (num, sec)) in figuras:
                         continue
                     # resolver al nodo más específico que exista
                     target = full if full in sec_ids else '%d-%s' % (num, sec)
@@ -227,10 +276,17 @@ def main():
         incoming[e['to']].append(e['from'])
 
     # los backlinks de un inciso cuentan también para su sección padre,
-    # que es como uno lo consulta en la práctica
+    # que es como uno lo consulta en la práctica.
+    #
+    # Eso vale para un id de sección y NO para un destino con prefijo: en
+    # «figura:551-46(c)» el sufijo es parte del nombre de la figura, no un
+    # inciso de ella, y recortarlo juntaba en «figura:551-46» las citas de
+    # figuras distintas --las tres del 516-3(c) son tres dibujos--. Las
+    # figuras son el primer destino con prefijo que enseña sus backlinks, así
+    # que hasta ahora el recorte no se notaba.
     incoming_roll = defaultdict(set)
     for tgt, srcs in incoming.items():
-        root = tgt.split('(')[0]
+        root = tgt if ':' in tgt else tgt.split('(')[0]
         for s in srcs:
             incoming_roll[root].add(s)
 
@@ -268,6 +324,8 @@ def main():
         if dst.startswith('tabla:'):
             tid = dst[len('tabla:'):]
             return tid in tabla_ids or tid in TABLAS_AUSENTES
+        if dst.startswith('figura:'):
+            return dst[len('figura:'):] in figura_ids
         if dst.startswith(('cap:', 'parte:')):
             return True
         return dst in index

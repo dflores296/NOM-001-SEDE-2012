@@ -257,11 +257,27 @@ Las figuras eran el único contenido de la norma sin número, sin ancla, sin
   puntos donde el PDF coloca la imagen: la del 310-15(c) se publicaba estirada
   un 3.6 %.
 
+Después, en la misma rama: transcripción del ejemplo de cálculo de
+550-18(b)(6) (16 imágenes transcritas), **miniaturas** para el índice
+—`build_corpus.py` las escribe en `site/public/img/min/` reduciendo por
+mitades, que es lo único que `pymupdf` hace sin interpolar y por tanto lo único
+reproducible: 720 KB frente a los 4.1 MB de las originales— y **backlinks de
+figura**: destino `figura:` en el grafo, 41 aristas, y la figura enseña quién
+la cita como ya lo hacía una sección.
+
+Ese último destapó un defecto viejo: el recorte de `incoming_roll` quitaba el
+paréntesis a TODOS los destinos, así que `figura:551-46(c)` caía en
+`figura:551-46` y las tres figuras del 516-3(c) juntaban sus citas en una. En
+un id de sección el sufijo es un inciso; en `tabla:` o `figura:` es parte del
+nombre. Las figuras son el primer destino con prefijo que enseña backlinks, así
+que hasta ahora no se notaba.
+
 **Redes de seguridad nuevas**
 
 | Detector | Qué caza | Dónde |
 |---|---|---|
 | Piso de figuras en `MIN` | Que una regresión deje artículos sin su diagrama | `check_corpus.py` |
+| Miniatura ausente | Una tarjeta rota en el índice de figuras | `check_corpus.py` |
 | Huella del PNG | Que la imagen cambie y la leyenda deje de describirla | `check_corpus.py`, `build_corpus.py` |
 | Captura obligatoria | Una figura nueva publicada sin rótulo | `build_corpus.py` |
 | Archivo ausente / huérfano | Una imagen rota, o un PNG publicado que nadie cita | `check_corpus.py` |
@@ -352,22 +368,45 @@ que un archivo puesto ahí existiría en local y desaparecería en CI.
 
 ## Pendientes
 
-De la ronda de figuras, tres cosas que quedaron fuera a propósito:
+Uno, y es grande: **los Apéndices no tienen estructura**. Ver más abajo.
 
-- **`fig-996.png` (550-18(b)(6)) sin transcribir.** Es un ejemplo de cálculo
-  numérico de media página; las 15 transcritas son las que encierran texto
-  normativo o definiciones de variables.
-- **Miniaturas para `/figuras`.** El índice va en texto, como el de tablas.
-  Poner las 59 imágenes a tamaño completo son 4.1 MB; con miniaturas generadas
-  desde `pymupdf` bajaría a unos 600 KB, a cambio de más binarios versionados.
-- **Backlinks de figura en el grafo.** Hoy una figura no sabe quién la cita; la
-  «Figura 551-46(c)» tiene 7 citas y no se ven. Sería un destino `figura:` en
-  `build_graph.py`, análogo a `tabla:`.
+## Los Apéndices: las últimas 26 páginas no tienen estructura
 
-Y una que no es de figuras: **el Anexo B cuelga del Artículo 924.** Las tablas y
-figuras `B.310-15(B)(2)(x)` están dentro de `924-24`, que se titula «Tarimas y
-tapetes aislantes». El contenido está publicado y no se pierde, pero su lugar en
-el árbol no es el que le toca.
+El corpus tiene 151 artículos y 10 capítulos, y ahí se acaba lo que el parser
+conoce. Pero el documento sigue 26 páginas más:
+
+| Dónde | Qué es |
+|---|---|
+| pág. 754 | `BIBLIOGRAFIA` (el título 7 de la norma) |
+| pág. 755-764 | `APENDICE A (Informativo)`: las tablas de ampacidad `B.310-15(B)(2)(x)` y sus cuatro figuras |
+| pág. 765-772 | `APENDICE B`: el listado de normas NOM/NMX/IEC/UL con las secciones que las citan |
+| pág. 773-780 | `APENDICE C (Informativo)` |
+
+Como el 924 es el último artículo, sus límites llegan hasta el final del
+documento y **todo eso cae dentro de `924-24`**, que se titula «Tarimas y
+tapetes aislantes». Las consecuencias, medidas:
+
+- Un solo párrafo, `924-24` seq 25, tiene **35 389 caracteres**: es una tabla
+  de ampacidad entera aplanada a prosa corrida.
+- Los nueve hijos `924-24(1)` a `924-24(9)` **no son incisos del 924-24**: son
+  las notas al pie de la Tabla 1 del Capítulo 10 («Véase el apéndice C para el
+  número máximo de conductores…»).
+- **Ninguna tabla de las páginas 755-780 está reconstruida.** Las 226 llegan
+  hasta la pág. 754. Las ~12 de los Apéndices se publican como párrafo.
+
+La cobertura del 100 % no lo delata, y no es un defecto de la métrica: cuenta
+si las palabras de cada renglón aparecen en el corpus, y aparecen. Lo que no
+dice es que estén en el nodo que les toca.
+
+Arreglarlo tiene dos mitades de costo muy distinto:
+
+1. **La estructura** (cerrar el 924 donde de verdad acaba, detectar los tres
+   apéndices, darles su sitio en el corpus, el sitio, la búsqueda y los
+   checks). Es trabajo acotado y sin sorpresas.
+2. **Las ~12 tablas de los Apéndices**, que hay que reconstruir y luego
+   contrastar celda por celda contra el PDF, como se hizo con las 226. Eso es
+   lo caro, y es la política del proyecto: sin contrastar no se marcan
+   verificadas (§1).
 
 ## Trampas del entorno
 

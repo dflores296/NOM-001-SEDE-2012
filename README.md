@@ -42,7 +42,7 @@ navegables, backlinks y búsqueda instantánea que funciona sin conexión.
 | Definiciones | 185 |
 | Figuras / Fórmulas | 45 / 13 |
 | Tablas | 226 |
-| Referencias enlazadas | 4 618 |
+| Referencias enlazadas | 4 635 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 31 856 de 31 857 renglones (100 %) |
 <!-- CIFRAS:FIN -->

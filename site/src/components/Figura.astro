@@ -5,7 +5,7 @@
 // Antes esto vivía duplicado palabra por palabra en Sub.astro y en
 // art/[num].astro, así que toda mejora había que hacerla dos veces --la trampa
 // que CONTEXTO.md advierte para los dos renderizadores--.
-import { linkify, BASE, rotuloImagen, subtituloImagen } from '../lib/nom.js';
+import { linkify, BASE, rotuloImagen, subtituloImagen, backlinks } from '../lib/nom.js';
 const { f, origen } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -23,6 +23,16 @@ const h = f.ph || Math.round(f.h * 4 / 3);
 const rotulo = rotuloImagen(f);
 const subtitulo = subtituloImagen(f);
 const alt = [rotulo, subtitulo].filter(Boolean).join('. ');
+
+// Quién cita esta figura. La 551-46(c) la citan 6 requisitos y desde la figura
+// no se veía ninguno, aunque las secciones lleven backlinks desde siempre.
+// Los de todos sus números se juntan: dos figuras en un dibujo se leen juntas.
+const citas = [];
+for (const r of f.rotulos || []) {
+  for (const b of backlinks('figura:' + r.id)) {
+    if (!citas.some((x) => x.id === b.id)) citas.push(b);
+  }
+}
 ---
 <figure class="fig" id={f.ancla}>
   {/* Una imagen puede traer más de una figura --la 516-3(c)(1) y la (c)(2) van
@@ -68,6 +78,20 @@ const alt = [rotulo, subtitulo].filter(Boolean).join('. ');
     )}
 
     {f.nota && <p class="fig-nota">{f.nota}</p>}
+
+    {citas.length > 0 && (
+      <details class="backlinks fig-citas">
+        <summary>Citada por {citas.length} {citas.length === 1 ? 'requisito' : 'requisitos'}</summary>
+        <ul>
+          {citas.map((b) => (
+            <li>
+              <a href={b.href} class="mono">{b.id}</a>
+              {b.titulo && <span> — {b.titulo}</span>}
+            </li>
+          ))}
+        </ul>
+      </details>
+    )}
 
     <div class="fig-pie">
       Página {f.page} del PDF ·{' '}

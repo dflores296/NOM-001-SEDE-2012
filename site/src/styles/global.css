@@ -582,6 +582,24 @@ figure.fig img {
   background: #fff; border: 1px solid var(--border-soft);
   border-radius: var(--radius); padding: 0.5rem;
 }
+/* Tarjeta del índice de figuras. Una figura no tiene más asidero que su
+   dibujo: "Jerarquía de sustitución de cables" es el título de cuatro
+   distintas, y el número no dice nada a quien no lo tiene memorizado. La
+   miniatura es lo que hace elegible el índice. Va con alt vacío a propósito:
+   el rótulo y el título que la acompañan ya dicen lo que es, y repetirlo
+   obligaría a oírlo dos veces. */
+/* Caja de alto fijo, con la imagen contenida dentro: las miniaturas van de
+   204x8 (una fórmula de un renglón) a 234x298, y dejándolas a su tamaño cada
+   tarjeta empujaba su texto a una altura distinta. `contain` es lo que impide
+   recortar: una miniatura recortada deja de servir para elegir. */
+.card-fig .miniatura {
+  display: block;
+  width: 100%; height: 150px; object-fit: contain;
+  margin: 0 0 0.6rem;
+  background: #fff; border: 1px solid var(--border-soft);
+  border-radius: var(--radius); padding: 0.35rem;
+}
+
 /* Ancla de la segunda figura de una imagen compartida: no se ve, solo
    existe para que la cita del texto pueda aterrizar en ella. */
 figure.fig .ancla-extra { display: block; height: 0; }
