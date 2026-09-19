@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import Tabla from '../../components/Tabla.astro';
+import { tablas } from '../../lib/nom.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Las tablas del Capítulo 10 no cuelgan de ningún artículo: la norma las
+// publica juntas, al final, como tablas generales. Por eso tienen su propia
+// página en vez de aparecer dentro de un artículo como las demás.
+const cap10 = tablas.filter((t) => t.article == null).sort((a, b) => a.page - b.page);
+---
+
+<Base
+  title="Capítulo 10, Tablas generales — NOM-001-SEDE-2012"
+  desc={`Las ${cap10.length} tablas generales del Capítulo 10 de la NOM-001-SEDE-2012.`}
+>
+  <div class="wrap">
+    <div class="hero">
+      <p class="migaja"><a href={`${base}/tablas/`}>Tablas</a> · Capítulo 10</p>
+      <h1>Tablas generales</h1>
+      <p>
+        Las {cap10.length} tablas del Capítulo 10. A diferencia del resto, no
+        pertenecen a ningún artículo: la norma las publica juntas al final.
+      </p>
+    </div>
+
+    <div class="chap">
+      {cap10.map((t) => <Tabla t={t} origen={`${base}/tablas/generales/`} />)}
+    </div>
+  </div>
+</Base>

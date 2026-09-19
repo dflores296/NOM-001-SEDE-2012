@@ -53,8 +53,8 @@ const todoVerificado = verificadas === tablas.length;
         ) : (
           <span class="aparte">
             El resto sale de la reconstrucción automática, que no es exacta. Contrasta con el
-            original antes de usar un valor y consulta <a href={`${base}/revision/`}>qué falta
-            revisar</a>.
+            original antes de usar un valor y <a href={`${base}/observaciones/`}>repórtanos</a>
+            cualquier diferencia.
           </span>
         )}
       </div>
@@ -108,7 +108,7 @@ const todoVerificado = verificadas === tablas.length;
     <div class="sec" id="cap10">
       <div class="sec-head"><h2><span class="n">Capítulo 10</span>Tablas generales</h2></div>
       <div class="grid">
-        <a class="card" href={`${base}/tablas/`}>
+        <a class="card" href={`${base}/tablas/generales/`}>
           <b>10</b>
           <span>Tablas generales</span>
           <em class="tabular">{cap10.length} tablas</em>
@@ -150,17 +150,8 @@ const todoVerificado = verificadas === tablas.length;
   .estado .aparte { flex-basis: 100%; margin-top: 0.1rem; font-size: 0.78rem; color: var(--text-faint); }
   .estado .aparte a { color: var(--accent); }
 
-  /* --------------------------------------------------------------- secciones
-     Encabezado compartido por "más citados" y cada capítulo; sustituye
-     .chap para la portada (las demás páginas siguen usando .chap tal cual). */
-  .sec { margin: 2rem 0; }
-  .sec-head {
-    display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
-    padding-bottom: 0.35rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--border-soft);
-  }
-  .sec-head h2 { font-size: 1rem; margin: 0; }
-  .sec-head h2 span.n { font-family: var(--mono); color: var(--accent); margin-right: 0.5rem; }
-  .sec-head .desc { font-size: 0.78rem; color: var(--text-faint); white-space: nowrap; }
+  /* .sec y .sec-head viven en global.css: los comparten la portada y el
+     índice de tablas. */
 
   /* --------------------------------------------------------------- ranking
      Los "más citados" sí tienen un orden real -numérico, por peso de citas-
