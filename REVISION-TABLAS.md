@@ -17,7 +17,7 @@ estimada de la separación en celdas (1.00 = ninguna celda con varios valores ju
 `huecos` son los espacios entre palabras, que es mucho menos fiable y no recupera
 celdas combinadas.
 
-**236 de 245 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**238 de 245 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -37,14 +37,12 @@ Salieron limpias y son muy usadas. Conviene mirarlas justamente por eso: una tab
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (9)
+## 4 · Sin señales (7)
 
 Ninguna heurística las marcó —ni calidad baja, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|
-| [ ] | `B.310.15(B)(2)(7)` | Ampacidades de tres conductores sencillos aislados, de 0 a 2000 volts… | 759, 760 | 0 | 0.95 | **huecos** | 27×20 |
-| [ ] | `B.310.15(B)(2)(11)` | Factores de ajuste para más de tres conductores portadores de corrient… | 761, 762 | 0 | 1.00 | dibujada | 6×2 |
 | [ ] | `B1.1` | LISTA DE NORMAS OFICIALES Y NORMAS MEXICANAS | 765, 766 | 1 | 1.00 | dibujada | 10×3 |
 | [ ] | `B1.2` | LISTADO DE NORMAS DE PRODUCTOS ELECTRICOS | 766, 767, 768, 769 | 1 | 0.94 | dibujada | 112×3 |
 | [ ] | `B2.1` | LISTADO DE NORMAS INTERNACIONALES | 769, 770 | 0 | 1.00 | dibujada | 21×3 |
