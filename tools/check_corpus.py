@@ -88,11 +88,19 @@ FIGURAS_AUSENTES_DEL_DOF = {
 # entera aplanada, que es como se publicaban las tablas de ampacidad del
 # Apéndice A antes de contrastarlas. Estas son las que de verdad imprime así el
 # DOF, contrastadas contra el PDF.
+# `None` es la tabla entera; una tupla, solo esas columnas.
 CELDAS_APILADAS = {
     # La Tabla 400-4 pone en una sola celda los espesores que corresponden a
     # los tramos de calibre de la celda de al lado: "8 - 2 | 1 - 4/0 | 250"
     # frente a "1.52 2.03 2.41". Son tres renglones 64, 67 y 117.
-    '400-4',
+    '400-4': None,
+    # La columna «Sección» de los listados del Apéndice B es una LISTA de
+    # referencias por diseño, impresa una por renglón: la NMX-J-604-ANCE-2008
+    # remite a "4.4.2", "110" y "240" (pág. 769). Las otras tres tablas del
+    # listado tienen celdas iguales y hoy no calzan con el patrón solo porque
+    # sus referencias llevan guion ("550-5 550-23 555-3"); si alguna cambiara,
+    # su columna 2 va aquí por la misma razón y no por hacer pasar el check.
+    'B1.2': (2,),
 }
 
 # Un número, con su decimal y su llamada al pie, tres veces o más seguidas y
@@ -117,10 +125,15 @@ def celdas_colapsadas(tabs):
     """
     malas = []
     for t in tabs:
-        if not t.get('verificada') or t['id'] in CELDAS_APILADAS:
+        if not t.get('verificada'):
             continue
-        hits = [c.get('t') for fila in t['rows'] for c in fila
-                if RE_CELDA_COLAPSADA.fullmatch((c.get('t') or '').strip())]
+        libres = CELDAS_APILADAS.get(t['id'], ())
+        if libres is None:
+            continue
+        hits = [c.get('t') for fila in t['rows']
+                for i, c in enumerate(fila)
+                if i not in libres
+                and RE_CELDA_COLAPSADA.fullmatch((c.get('t') or '').strip())]
         if hits:
             malas.append('%s (%d: %s)' % (t['id'], len(hits), hits[0][:30]))
     if not malas:
