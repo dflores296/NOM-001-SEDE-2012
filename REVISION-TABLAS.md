@@ -17,7 +17,7 @@ estimada de la separación en celdas (1.00 = ninguna celda con varios valores ju
 `huecos` son los espacios entre palabras, que es mucho menos fiable y no recupera
 celdas combinadas.
 
-**232 de 245 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**236 de 245 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -25,16 +25,11 @@ Muy usadas y con la reconstrucción insegura: la calidad las señala. Un error a
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 2 · Dudosas (4)
+## 2 · Dudosas (0)
 
 Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
 
-| | Tabla | Título | Pág. PDF | Usos | Cal. | Rejilla | Tamaño |
-|---|---|---|---|---|---|---|---|
-| [ ] | `B.310.15(B)(2)(6)` | Ampacidades de tres conductores aislados, de 0 a 2000 volts nominales… | 758, 759 | 0 | 0.43 | dibujada | 10×8 |
-| [ ] | `B.310.15(B)(2)(10)` | Ampacidades de tres conductores sencillos aislados, de 0 a 2000 volts… | 761 | 0 | 0.56 | **huecos** | 11×10 |
-| [ ] | `B.310.15(B)(2)(8)` | Ampacidades de dos o tres conductores aislados, de 0 a 2000 volts nomi… | 760 | 0 | 0.57 | **huecos** | 10×10 |
-| [ ] | `B.310.15(B)(2)(9)` | Ampacidades de tres ternas de conductores sencillos aislados, de 0 a 2… | 760, 761 | 0 | 0.57 | **huecos** | 10×10 |
+Ninguna: ya están todas contrastadas contra el PDF.
 
 ## 3 · Verificación de control (0)
 
