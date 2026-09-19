@@ -1,0 +1,41 @@
+---
+// Los bloques de un hito de la región de cierre --Capítulo 10, Títulos 6 a 8,
+// Apéndices A, B y C--. A diferencia del articulado, aquí no hay secciones
+// numeradas: es una sucesión de encabezados, párrafos, listas, tablas y
+// figuras, y el orden en que van es el del documento.
+import Tabla from './Tabla.astro';
+import Figura from './Figura.astro';
+import { linkify, tablaPorId } from '../lib/nom.js';
+
+const { hito, origen } = Astro.props;
+
+// Los items sueltos se agrupan para que la lista numerada salga como lista y
+// no como nueve párrafos: las Notas de las Tablas del Capítulo 10 son una
+// enumeración de nueve puntos, y sin agruparlas se leían corridas.
+const grupos = [];
+for (const b of hito.bloques) {
+  const last = grupos[grupos.length - 1];
+  if (b.tipo === 'item' && last?.tipo === 'items') last.items.push(b);
+  else if (b.tipo === 'item') grupos.push({ tipo: 'items', items: [b] });
+  else grupos.push(b);
+}
+---
+{grupos.map((b) => (
+  b.tipo === 'items' ? (
+    <ol class="cierre-items">
+      {b.items.map((it) => (
+        <li value={it.label}><span set:html={linkify(it.text)} /></li>
+      ))}
+    </ol>
+  ) : b.tipo === 'tabla' ? (
+    tablaPorId.get(b.id) ? <Tabla t={tablaPorId.get(b.id)} origen={origen} /> : null
+  ) : b.tipo === 'figura' ? (
+    <Figura f={b} origen={origen} />
+  ) : b.tipo === 'titulo' ? (
+    <h2 class="cierre-tit">{b.text}</h2>
+  ) : b.tipo === 'subtitulo' ? (
+    <h3 class="cierre-subtit" set:html={linkify(b.text)} />
+  ) : (
+    <p set:html={linkify(b.text)} />
+  )
+))}

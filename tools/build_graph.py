@@ -164,6 +164,22 @@ def main():
                 }
                 sec_ids.add(n['id'])
 
+    # La región de cierre --Capítulo 10, Títulos 6 a 8 y los tres Apéndices--
+    # entra al grafo como origen: las Notas de las Tablas citan 310-15(b)(3) y
+    # el Apéndice A cita la 310-60, y esas secciones no veían esos backlinks
+    # porque el cierre no existía para el corpus. Ver `parse_cierre`.
+    ROTULO_CIERRE = {'capitulo': 'Capítulo %s', 'titulo': 'Título %s',
+                     'apendice': 'Apéndice %s'}
+    for h in corpus.get('cierre', []):
+        index[h['id']] = {
+            'kind': 'cierre',
+            'id': h['id'],
+            'title': (ROTULO_CIERRE[h['kind']]
+                      % (h.get('letra') or h.get('num'))
+                      + (' — ' + h['titulo'] if h['titulo'] else '')),
+            'article': None, 'chapter': None, 'page': h['page'],
+        }
+
     # Los números de figura que la norma imprime, con la imagen donde viven.
     # Una imagen puede traer más de uno (la 516-3(c)(1) y la (c)(2) comparten
     # dibujo), y dos pueden compartir número (las dos del 694): gana la
@@ -201,72 +217,73 @@ def main():
             seen.add(k)
             edges.append({'from': src, 'to': dst, 'type': kind})
 
-    for a in articles:
-        for s in a['sections']:
-            for n in walk(s):
-                src = n['id']
-                txt = node_text(n)
+    fuentes = [(n['id'], node_text(n))
+               for a in articles for s in a['sections'] for n in walk(s)]
+    fuentes += [(h['id'], ' '.join(b.get('text') or '' for b in h['bloques']))
+                for h in corpus.get('cierre', [])]
 
-                # --- Figuras (antes que las tablas y las secciones: una
-                #     figura tiene número de sección y no es una sección)
-                figuras = set()
-                for m in RE_FIG_REF.finditer(txt):
-                    crudo = m.group(1)
-                    fid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
-                    destino = resolver_figura(fid)
-                    if destino is None:
-                        continue
-                    figuras.add(fid)
-                    figuras.add(crudo.split('(')[0].strip().rstrip('.'))
-                    add(src, 'figura:' + destino, 'figura')
+    for src, txt in fuentes:
 
-                # --- Tablas (primero: consumen su propio patrón)
-                tablas = set()
-                for m in RE_TBL_REF.finditer(txt):
-                    crudo = m.group(1)
-                    tid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
-                    tid = ERRATAS_TABLAS.get(tid, tid)
-                    tablas.add(tid)
-                    if tid != crudo:
-                        # «Tabla 312-6 (a)»: el buscador de secciones de más
-                        # abajo solo alcanza a ver «312-6», así que hay que
-                        # marcarlo como ya consumido o añadiría, además de la
-                        # arista a la tabla, otra a la sección del mismo número.
-                        tablas.add(crudo.split('(')[0].strip().rstrip('.'))
-                    add(src, 'tabla:' + tid, 'tabla')
+        # --- Figuras (antes que las tablas y las secciones: una
+        #     figura tiene número de sección y no es una sección)
+        figuras = set()
+        for m in RE_FIG_REF.finditer(txt):
+            crudo = m.group(1)
+            fid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
+            destino = resolver_figura(fid)
+            if destino is None:
+                continue
+            figuras.add(fid)
+            figuras.add(crudo.split('(')[0].strip().rstrip('.'))
+            add(src, 'figura:' + destino, 'figura')
 
-                # --- Secciones e incisos
-                for m in RE_SEC_REF.finditer(txt):
-                    num, sec, sub = int(m.group(1)), m.group(2), m.group(3)
-                    if num not in art_nums:
-                        continue
-                    full = '%d-%s%s' % (num, sec, sub)
-                    if full in tablas or ('%d-%s' % (num, sec)) in tablas:
-                        continue
-                    if full in figuras or ('%d-%s' % (num, sec)) in figuras:
-                        continue
-                    # resolver al nodo más específico que exista
-                    target = full if full in sec_ids else '%d-%s' % (num, sec)
-                    if target in sec_ids:
-                        add(src, target, 'seccion')
-                    elif num in art_nums:
-                        add(src, 'art:%d' % num, 'articulo')
+        # --- Tablas (primero: consumen su propio patrón)
+        tablas = set()
+        for m in RE_TBL_REF.finditer(txt):
+            crudo = m.group(1)
+            tid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
+            tid = ERRATAS_TABLAS.get(tid, tid)
+            tablas.add(tid)
+            if tid != crudo:
+                # «Tabla 312-6 (a)»: el buscador de secciones de más
+                # abajo solo alcanza a ver «312-6», así que hay que
+                # marcarlo como ya consumido o añadiría, además de la
+                # arista a la tabla, otra a la sección del mismo número.
+                tablas.add(crudo.split('(')[0].strip().rstrip('.'))
+            add(src, 'tabla:' + tid, 'tabla')
 
-                # --- Artículos completos ("Artículos 500, 502 y 503")
-                for m in RE_ART_REF.finditer(txt):
-                    for g in re.findall(r'\d{3}', m.group(1)):
-                        if int(g) in art_nums:
-                            add(src, 'art:%d' % int(g), 'articulo')
+        # --- Secciones e incisos
+        for m in RE_SEC_REF.finditer(txt):
+            num, sec, sub = int(m.group(1)), m.group(2), m.group(3)
+            if num not in art_nums:
+                continue
+            full = '%d-%s%s' % (num, sec, sub)
+            if full in tablas or ('%d-%s' % (num, sec)) in tablas:
+                continue
+            if full in figuras or ('%d-%s' % (num, sec)) in figuras:
+                continue
+            # resolver al nodo más específico que exista
+            target = full if full in sec_ids else '%d-%s' % (num, sec)
+            if target in sec_ids:
+                add(src, target, 'seccion')
+            elif num in art_nums:
+                add(src, 'art:%d' % num, 'articulo')
 
-                # --- Parte X del Artículo N
-                for m in RE_PART_REF.finditer(txt):
-                    if int(m.group(2)) in art_nums:
-                        add(src, 'parte:%s:%s' % (m.group(2), m.group(1)), 'parte')
+        # --- Artículos completos ("Artículos 500, 502 y 503")
+        for m in RE_ART_REF.finditer(txt):
+            for g in re.findall(r'\d{3}', m.group(1)):
+                if int(g) in art_nums:
+                    add(src, 'art:%d' % int(g), 'articulo')
 
-                # --- Capítulos
-                for m in RE_CAP_REF.finditer(txt):
-                    if int(m.group(1)) in chapters:
-                        add(src, 'cap:%s' % m.group(1), 'capitulo')
+        # --- Parte X del Artículo N
+        for m in RE_PART_REF.finditer(txt):
+            if int(m.group(2)) in art_nums:
+                add(src, 'parte:%s:%s' % (m.group(2), m.group(1)), 'parte')
+
+        # --- Capítulos
+        for m in RE_CAP_REF.finditer(txt):
+            if int(m.group(1)) in chapters:
+                add(src, 'cap:%s' % m.group(1), 'capitulo')
 
     # ------------------------------------------------------------- backlinks
     outgoing = defaultdict(list)

@@ -90831,76 +90831,60 @@
   "chapter": 9,
   "page": 742
  },
- "924-24(1)": {
-  "kind": "inciso",
-  "id": "924-24(1)",
-  "title": "Véase el apéndice C para el número máximo de conductores y cables de aparatos, t",
-  "article": 924,
-  "chapter": 9,
+ "capitulo-10": {
+  "kind": "cierre",
+  "id": "capitulo-10",
+  "title": "Capítulo 10 — TABLAS",
+  "article": null,
+  "chapter": null,
   "page": 742
  },
- "924-24(2)": {
-  "kind": "inciso",
-  "id": "924-24(2)",
-  "title": "La Tabla 1 se aplica sólo a instalaciones completas de tubo conduit o tuberías y",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
+ "titulo-6": {
+  "kind": "cierre",
+  "id": "titulo-6",
+  "title": "Título 6 — VIGILANCIA",
+  "article": null,
+  "chapter": null,
+  "page": 754
  },
- "924-24(3)": {
-  "kind": "inciso",
-  "id": "924-24(3)",
-  "title": "Para calcular el por ciento de ocupación de los cables en tubo conduit, se deben",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
+ "titulo-7": {
+  "kind": "cierre",
+  "id": "titulo-7",
+  "title": "Título 7 — BIBLIOGRAFIA",
+  "article": null,
+  "chapter": null,
+  "page": 754
  },
- "924-24(4)": {
-  "kind": "inciso",
-  "id": "924-24(4)",
-  "title": "Cuando entre las cajas, gabinetes y envolventes similares se instalan niples cuy",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
+ "titulo-8": {
+  "kind": "cierre",
+  "id": "titulo-8",
+  "title": "Título 8 — CONCORDANCIA CON NORMAS INTERNACIONALES Y NORMAS MEXICANAS",
+  "article": null,
+  "chapter": null,
+  "page": 755
  },
- "924-24(5)": {
-  "kind": "inciso",
-  "id": "924-24(5)",
-  "title": "Para conductores no incluidos en el Capítulo 10, como por ejemplo los cables mul",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
+ "apendice-A": {
+  "kind": "cierre",
+  "id": "apendice-A",
+  "title": "Apéndice A — TABLAS ADICIONALES DE AMPACIDAD",
+  "article": null,
+  "chapter": null,
+  "page": 755
  },
- "924-24(6)": {
-  "kind": "inciso",
-  "id": "924-24(6)",
-  "title": "Para combinaciones de conductores de distinto tamaño nominal se aplican las Tabl",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
+ "apendice-B": {
+  "kind": "cierre",
+  "id": "apendice-B",
+  "title": "Apéndice B",
+  "article": null,
+  "chapter": null,
+  "page": 765
  },
- "924-24(7)": {
-  "kind": "inciso",
-  "id": "924-24(7)",
-  "title": "Cuando se calcula el número máximo de conductores permitidos en tubo conduit, to",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
- },
- "924-24(8)": {
-  "kind": "inciso",
-  "id": "924-24(8)",
-  "title": "Cuando otras Secciones de esta norma permitan utilizar conductores desnudos, se ",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
- },
- "924-24(9)": {
-  "kind": "inciso",
-  "id": "924-24(9)",
-  "title": "Para calcular el por ciento de ocupación en tubo (conduit), un cable multiconduc",
-  "article": 924,
-  "chapter": 9,
-  "page": 742
+ "apendice-C": {
+  "kind": "cierre",
+  "id": "apendice-C",
+  "title": "Apéndice C — TABLAS DE OCUPACION EN TUBO CONDUIT DE CONDUCTORES Y CABLES DEL MISMO TAMAÑO NOMINAL",
+  "article": null,
+  "chapter": null,
+  "page": 773
  }
 }

@@ -120,6 +120,8 @@ def main():
     figs = [(a['num'], n['id'], f)
             for a in corpus['articles'] for s_ in a['sections']
             for n in walk(s_) for f in n.get('figures', [])]
+    figs += [(None, h['id'], b) for h in corpus.get('cierre', [])
+             for b in h['bloques'] if b['tipo'] == 'figura']
     n_figs = 0
     for art, nodo, f in figs:
         comun = {
@@ -142,6 +144,27 @@ def main():
                              text=' '.join([f.get('titulo') or ''] + cuerpo).strip()))
             n_figs += 1
 
+    # La región de cierre: Capítulo 10, Títulos 6 a 8 y los tres Apéndices.
+    # Hasta que tuvo estructura, su texto vivía revuelto dentro de 924-24 y
+    # buscar «bibliografía» o «vigilancia» no llevaba a ninguna parte.
+    ROTULO = {'capitulo': 'Capítulo %s', 'titulo': 'Título %s',
+              'apendice': 'Apéndice %s'}
+    n_cierre = 0
+    for h in corpus.get('cierre', []):
+        rotulo = ROTULO[h['kind']] % (h.get('letra') or h.get('num'))
+        docs.append({
+            'id': 'cierre:' + h['id'],
+            'kind': 'cierre',
+            'cid': h['id'],
+            'fid': rotulo,
+            'title': h['titulo'] or rotulo,
+            'art': None,
+            'artTitle': rotulo,
+            'text': re.sub(r'\s+', ' ', ' '.join(
+                [h['titulo'] or ''] + [b.get('text') or '' for b in h['bloques']])).strip(),
+        })
+        n_cierre += 1
+
     # MiniSearch usa el campo `id` como clave del documento. Los ids de
     # sección, los términos del glosario y las tablas (con su prefijo
     # `tabla:`) ya son únicos entre sí; se verifica porque un duplicado
@@ -155,8 +178,8 @@ def main():
     out = os.path.join(dst, 'search.json')
     json.dump(docs, open(out, 'w'), ensure_ascii=False, separators=(',', ':'))
     size = os.path.getsize(out)
-    print('Documentos indexables: %d (%d tablas, %d figuras)'
-          % (len(docs), len(tablas), n_figs))
+    print('Documentos indexables: %d (%d tablas, %d figuras, %d del cierre)'
+          % (len(docs), len(tablas), n_figs, n_cierre))
     print('search.json          : %.1f KB' % (size / 1024))
 
 

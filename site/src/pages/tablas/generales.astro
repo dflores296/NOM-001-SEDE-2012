@@ -1,14 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Tabla from '../../components/Tabla.astro';
-import { tablas } from '../../lib/nom.js';
+import Bloques from '../../components/Bloques.astro';
+import { tablas, capitulo10 } from '../../lib/nom.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Las tablas del Capítulo 10 no cuelgan de ningún artículo: la norma las
 // publica juntas, al final, como tablas generales. Por eso tienen su propia
 // página en vez de aparecer dentro de un artículo como las demás.
-const cap10 = tablas.filter((t) => t.article == null).sort((a, b) => a.page - b.page);
+// Las de los Apéndices tampoco cuelgan de un artículo, y no son de aquí.
+const cap10 = tablas.filter((t) => t.article == null && !t.apendice);
 ---
 
 <Base
@@ -21,12 +22,17 @@ const cap10 = tablas.filter((t) => t.article == null).sort((a, b) => a.page - b.
       <h1>Tablas generales</h1>
       <p>
         Las {cap10.length} tablas del Capítulo 10. A diferencia del resto, no
-        pertenecen a ningún artículo: la norma las publica juntas al final.
+        pertenecen a ningún artículo: la norma las publica juntas al final, con
+        sus Notas de las Tablas y la explicación de las 11(A) a la 12(B).
       </p>
     </div>
 
+    {/* Las notas y la prosa del capítulo se publicaban como nueve «incisos»
+        del 924-24, «Tarimas y tapetes aislantes», porque el último artículo
+        llegaba hasta el final del PDF. Aquí van en el orden del documento,
+        intercaladas con sus tablas. */}
     <div class="chap">
-      {cap10.map((t) => <Tabla t={t} origen={`${base}/tablas/generales/`} />)}
+      <Bloques hito={capitulo10} origen={`${base}/tablas/generales/`} />
     </div>
   </div>
 </Base>

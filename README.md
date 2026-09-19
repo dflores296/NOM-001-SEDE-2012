@@ -21,10 +21,13 @@ navegables, backlinks y búsqueda instantánea que funciona sin conexión.
 
 - **151 artículos**, uno por página, con URL estable.
 - **4 618 referencias cruzadas** enlazadas, y en cada artículo quién lo cita a él.
-- **226 tablas** fieles al PDF, como datos consultables.
+- **245 tablas** como datos consultables: las 226 del cuerpo, contrastadas
+  celda por celda, y las 19 de los Apéndices.
 - **185 definiciones** del Artículo 100, enlazadas donde se usan.
 - **51 figuras** con su número y su leyenda, más **13 fórmulas** que la norma
   publica como imagen.
+- **Los tres Apéndices y los Títulos de cierre**, que son las últimas 38
+  páginas de la norma.
 - **Búsqueda instantánea** sobre el texto completo, sin conexión.
 
 ## Cifras
@@ -37,14 +40,14 @@ navegables, backlinks y búsqueda instantánea que funciona sin conexión.
 |---|---|
 | Artículos | 151 |
 | Secciones | 2 897 |
-| Incisos | 8 315 |
-| Notas / Excepciones | 777 / 987 |
+| Incisos | 8 306 |
+| Notas / Excepciones | 773 / 986 |
 | Definiciones | 185 |
 | Figuras / Fórmulas | 45 / 13 |
-| Tablas | 226 |
-| Referencias enlazadas | 4 635 |
+| Tablas | 245 |
+| Referencias enlazadas | 4 484 |
 | Referencias rotas | 0 |
-| Cobertura del texto | 31 856 de 31 857 renglones (100 %) |
+| Cobertura del texto | 31 452 de 31 453 renglones (100 %) |
 <!-- CIFRAS:FIN -->
 
 ## El identificador canónico
@@ -95,6 +98,24 @@ copiarlo y leerlo con un lector de pantalla.
 | `data/` | Corpus, definiciones, grafo, tablas, figuras, índice y métricas |
 | `tools/` | Los scripts que generan `data/` desde el PDF |
 | `site/` | Sitio estático (Astro) |
+
+## Lo que viene después del último artículo
+
+La norma no termina en el Artículo 924. Siguen 38 páginas: el **Capítulo 10**
+con sus tablas generales y sus Notas de las Tablas, los **Títulos 6, 7 y 8**
+—vigilancia, bibliografía y concordancia— y los **Apéndices A, B y C**, que la
+propia norma declara informativos.
+
+Como el 924 es el último artículo, sus límites llegaban hasta el final del PDF y
+todo eso caía dentro de `924-24`, «Tarimas y tapetes aislantes»: un solo párrafo
+de esa sección llegó a tener 35 389 caracteres, que era una tabla de ampacidad
+aplanada a prosa. Hoy cada cosa está en su sitio, con sus 19 tablas
+reconstruidas —entre ellas las del **Apéndice C**, las de ocupación en tubo
+conduit—.
+
+El índice de la norma anuncia cinco apéndices, «A, B, C, D y E». El documento
+publicado en el DOF termina en la página 780, con el C: el D y el E no están en
+la fuente, así que tampoco aquí.
 
 Cómo se reconstruye todo desde el PDF, en
 [docs/arquitectura.md](docs/arquitectura.md).

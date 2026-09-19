@@ -57,16 +57,58 @@ def unaccent(s):
 # ("Tabla 1 del Capítulo 10.", "Tabla 1, Capítulo 10."). Sin esa distinción, la
 # primera cita del texto se tomaba como el encabezado de la tabla y la tabla
 # real quedaba fuera: le pasaba a la Tabla 1, la más citada de toda la norma.
-# La 830-15 es la única del documento cuyo título el DOF imprime en versalitas
+# La 830-15 es la única del cuerpo cuyo título el DOF imprime en versalitas
 # —«TABLA 830-15.- Limitaciones para sistemas...»— y por eso no se reconocía:
 # la tabla de límites de potencia de las fuentes de banda ancha se publicaba
 # como párrafo corrido dentro de 830-15. Las otras cuatro líneas que abren con
-# TABLA en mayúscula son los listados de normas del Apéndice B, cuyos
-# identificadores (B1.1, B2.2) no calzan con ningún formato de tabla de la
-# norma, así que admitir la mayúscula no arrastra nada más.
+# TABLA en mayúscula son los listados de normas del Apéndice B.
+#
+# Los Apéndices numeran sus tablas de tres maneras distintas, y ninguna se
+# parece a la del cuerpo. Se admiten las tres tal como las imprime el DOF,
+# porque unificarlas sería editar la norma:
+#
+#   Apéndice A  «Tabla B.310.15(B)(2)(1)»  con PUNTOS entre el 310 y el 15
+#   Apéndice B  «TABLA B1.1»               en mayúscula y sin guion
+#   Apéndice C  «Tabla C‑1.-»              con guion de no separación (U+2011)
+#
+# El guion de no separación se normaliza a guion normal en el identificador
+# —es el mismo carácter que ya mordió al enlazador con «675‑22(a)»—, pero los
+# puntos del Apéndice A se conservan: el mismo documento llama «B. 310-15» a
+# sus FIGURAS y «B.310.15» a sus tablas, y darles un número común sería
+# inventarlo.
+#
+# Lo que NO puede colarse son dos cosas que también empiezan por «Tabla» en
+# estas páginas: la cita en prosa «Tabla B.310.15(2)(11) ofrece el factor de
+# ajuste…», que se cae sola porque lo que sigue va en minúscula, y las celdas
+# «Tabla 310-104 (a)» y «Tabla 515-2» de la columna Sección del Apéndice B,
+# que no llevan título detrás.
+RE_ID_APENDICE = (
+    r'B\.310\.15(?:\s*\([A-Za-z0-9]{1,3}\))+'
+    r'|B\d\.\d'
+    r'|C[-\u2011]\d{1,2}(?:\s*\([a-z]\))?')
+
 RE_CAPTION = re.compile(
-    r'^(?:Tabla|TABLA)\s+(\d{3}-\d{1,3}(?:\s*\([a-z0-9]{1,4}\))*|\d{1,2}[A-Z]?(?:\([A-Z]\))?)'
+    r'^(?:Tabla|TABLA)\s+(' + RE_ID_APENDICE +
+    r'|\d{3}-\d{1,3}(?:\s*\([a-z0-9]{1,4}\))*|\d{1,2}[A-Z]?(?:\([A-Z]\))?)'
     r'\s*(?:\.-|\.|-|—)?\s+([0-9A-ZÁÉÍÓÚÑ].*)$')
+
+# Dónde empieza cada Apéndice, con página Y altura. Sirve para marcar a qué
+# apéndice pertenece una tabla, igual que `article` dice de qué artículo es.
+#
+# La altura no es un lujo: los tres arrancan a media página, y la última tabla
+# del Apéndice A está impresa en la 765 por encima del encabezado del B
+# (y=679). Contando solo la página, esa tabla quedaba en el apéndice
+# equivocado.
+APENDICES = ((755, 386.0, 'A'), (765, 679.0, 'B'), (773, 566.0, 'C'))
+
+
+def apendice_de(page, y=0.0):
+    """Letra del apéndice en el que cae un punto, o None si es del cuerpo."""
+    letra = None
+    for pag, alto, l in APENDICES:
+        if page > pag or (page == pag and y >= alto):
+            letra = l
+    return letra
 
 RE_NOTE = re.compile(r'^\s*(?:\*+|NOTA|Nota)\b')
 
@@ -874,7 +916,11 @@ def find_captions(doc):
                 m = RE_CAPTION.match(unaccent(first))
                 if not m:
                     continue
-                tid = re.sub(r'\s+', '', m.group(1))
+                # El guion de no separación (U+2011) con el que el DOF
+                # escribe «Tabla C‑1» se normaliza: en el identificador es el
+                # mismo guion, y dejarlo haría imposible enlazar la tabla
+                # desde un texto que la cite con guion normal.
+                tid = re.sub(r'\s+', '', m.group(1)).replace('\u2011', '-')
                 title = first[len(first) - len(m.group(2)):].strip() if m.group(2) else ''
                 for j in range(i + 1, min(i + CAPTION_MAX_LINES, len(txts))):
                     extra = txts[j]
@@ -941,6 +987,8 @@ def tabla_nueva(tid, rev):
         'sin_numero': not bool(rev.get('title')),
         'informativa': rev.get('informativa', False),
         'article': rev['article'],
+        'apendice': apendice_de(rev['pages'][0],
+                                (rev['regions'] or [{}])[0].get('y0', 0.0)),
         'pages': rev['pages'],
         'page': rev['pages'][0],
         'cols': rev['cols'],
@@ -1337,6 +1385,10 @@ def main():
             'title': cap['title'],
             'informativa': cap.get('informativa', False),
             'article': art,
+            # Las tablas de los Apéndices no cuelgan de ningún artículo, como
+            # las del Capítulo 10, pero tampoco son del Capítulo 10: llevan su
+            # letra para poder agruparlas donde toca.
+            'apendice': apendice_de(cap['page'], cap['y']),
             'pages': npages or [cap['page']],
             'page': cap['page'],
             'cols': ncols,
@@ -1404,6 +1456,7 @@ def main():
 
     print('Tablas reconstruidas : %d' % len(tables))
     print('  ligadas a artículo : %d' % sum(1 for t in tables if t['article']))
+    print('  de los Apéndices   : %d' % sum(1 for t in tables if t.get('apendice')))
     print('  en varias páginas  : %d' % sum(1 for t in tables if len(t['pages']) > 1))
     print('  filas totales      : %d' % sum(len(t['rows']) for t in tables))
     print('  columnas: mín %d · mediana %d · máx %d' % (

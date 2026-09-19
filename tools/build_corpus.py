@@ -206,6 +206,12 @@ def extract_images(pdf, img_dir):
     return out
 
 
+# La rama «[A-M]. Xxx» es para un encabezado de parte —«A. Generalidades»— y
+# exige minúsculas detrás a propósito: sin eso también rescataba «F. DEF.
+# CARGA 50», que es el segundo renglón del encabezado de las tres tablas que
+# acompañan a las Figuras B.310.15(B)(2)(3) a (5), y las sacaba de su tabla
+# para publicarlas como prosa suelta del Apéndice A.
+#
 # Un encabezado nunca se omite, aunque caiga dentro de una zona de tabla: el
 # alto detectado de una tabla puede pasarse de largo y tragarse la sección que
 # viene justo debajo. Sin esta salvaguarda desaparecían 110-36, 210-3, 550-32,
@@ -216,8 +222,16 @@ def extract_images(pdf, img_dir):
 # 110-34(a) —rango de tensión con espacio como separador de miles— y sin esta
 # distinción calzaba con el patrón y se colaba entero en la Excepción de
 # 110-34(a). Es el único caso en las 780 páginas con esa forma.
+# Los encabezados de la región de cierre corren el mismo riesgo, y uno ya se
+# perdía: la zona de la Tabla B2.2 termina en y=567.1 de la página 773 y el
+# «APENDICE C (Informativo)» está impreso en y=566, un punto más arriba. Sin
+# esta salvaguarda el Apéndice C entero se quedaba dentro del B.
+#
+# Se exige el dígito en CAPITULO y TITULO a propósito: «Título» es el nombre
+# de una columna de los listados de normas del Apéndice B y no un encabezado.
 RE_KEEP = re.compile(
-    r'^(?:ARTICULO\s+\d{3}|[A-M]\.\s+[0-9A-ZÁÉÍÓÚÑ]|'
+    r'^(?:ARTICULO\s+\d{3}|[A-M]\.\s+[0-9A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,}|'
+    r'APENDICE\s+[A-E]\b|CAPITULO\s+\d{1,2}\b|TITULO\s+\d{1,2}\b|'
     r'\d{3}-\d{1,3}(?:\.\s*[0-9A-ZÁÉÍÓÚÑ]|\s+[A-ZÁÉÍÓÚÑ]))')
 
 # Un inciso cualquiera, para rescatarlo de la zona que ocupa una tabla. Ver
@@ -1004,7 +1018,7 @@ def slug_figura(fid, prefijo='figura'):
     return prefijo + '-' + re.sub(r'[^\w-]+', '-', fid).strip('-').lower()
 
 
-def aplicar_figuras(articles, img_dir, ruta):
+def aplicar_figuras(articles, cierre, img_dir, ruta):
     """Cuelga de cada figura del corpus su rótulo capturado a mano.
 
     Una imagen puede llevar MÁS DE UNA figura: el PDF imprime la 516-3(c)(1) y
@@ -1021,6 +1035,9 @@ def aplicar_figuras(articles, img_dir, ruta):
 
     figuras = [(n['id'], f) for a in articles for s in a['sections']
                for n in walk(s) for f in n.get('figures', [])]
+    # Las cuatro del Apéndice A no cuelgan de ningún inciso: van en el cierre.
+    figuras += [(h['id'], b) for h in cierre for b in h['bloques']
+                if b['tipo'] == 'figura']
     for nodo, f in figuras:
         src = f['src']
         vistas.add(src)
@@ -1081,6 +1098,146 @@ def aplicar_figuras(articles, img_dir, ruta):
     return figuras
 
 
+# ------------------------------------------------------- región de cierre
+#
+# Después del último artículo el documento sigue 38 páginas más, y hasta aquí
+# no existían para el corpus: como el 924 es el último artículo, sus límites
+# llegaban al final del PDF y TODO eso caía dentro de `924-24`, que se titula
+# «Tarimas y tapetes aislantes». Un solo párrafo de esa sección llegó a tener
+# 35 389 caracteres --una tabla de ampacidad entera aplanada a prosa--, y sus
+# nueve «incisos» eran en realidad las Notas de las Tablas del Capítulo 10.
+#
+# La cobertura del 100% no lo delataba, y no es un defecto de la métrica:
+# cuenta si las palabras de cada renglón aparecen en el corpus, y aparecían.
+# Lo que no dice es que estuvieran en el nodo que les toca.
+#
+# Lo que hay ahí es, en orden: el Capítulo 10 (las tablas generales con sus
+# notas), los Títulos 6, 7 y 8, y los Apéndices A, B y C. Se parsea aparte
+# porque su forma no es la del articulado --no hay secciones numeradas-- sino
+# una sucesión de encabezados, párrafos, listas, tablas y figuras.
+
+RE_HITO_CIERRE = re.compile(r'^(CAPITULO\s+10|TITULO\s+([678])|APENDICE\s+([ABC]))\b')
+RE_ITEM_CIERRE = re.compile(r'^\((\d{1,2})\)\s+(.*)$')
+# Los apartados del Apéndice A se numeran como la norma de la que vienen.
+RE_SUBTIT_CIERRE = re.compile(r'^B\.310\.15\([B0-9]\)\(\d+\)')
+RE_INFORMATIVO = re.compile(
+    r'Este\s+ap[eé]ndice\s+no\s+es\s+parte\s+de\s+los\s+requerimientos', re.I)
+
+# Sangría a partir de la cual una línea va centrada, que es como el documento
+# marca sus encabezados en esta región.
+SANGRIA_CENTRADO = 100.0
+
+
+def parse_cierre(lines, pageno, sangria, desde):
+    """Estructura las páginas que siguen al último artículo."""
+    hitos, actual, esperando = [], None, None
+
+    def nuevo(kind, **kw):
+        nonlocal actual
+        actual = dict(kind=kind, bloques=[], titulo='', **kw)
+        hitos.append(actual)
+
+    def add(tipo, **kw):
+        actual['bloques'].append(dict(tipo=tipo, **kw))
+
+    i = desde
+    while i < len(lines):
+        ln = lines[i].rstrip()
+        x0, crudo = sangria[i], ln.strip()
+
+        if ln.startswith(TBL_MARK):
+            if actual is not None:
+                add('tabla', id=ln[len(TBL_MARK):].split('|', 1)[1])
+            i += 1
+            continue
+        if ln.startswith(IMG_MARK):
+            if actual is not None:
+                name, w, h = ln[len(IMG_MARK):].rsplit(':', 2)
+                add('figura', src=name, w=int(w), h=int(h), page=pageno[i])
+            i += 1
+            continue
+        if not crudo:
+            i += 1
+            continue
+
+        u = unaccent(crudo).upper()
+        m = RE_HITO_CIERRE.match(u)
+        if m:
+            if m.group(2):
+                nuevo('titulo', num=int(m.group(2)), page=pageno[i],
+                      id='titulo-%s' % m.group(2))
+            elif m.group(3):
+                nuevo('apendice', letra=m.group(3), page=pageno[i],
+                      id='apendice-%s' % m.group(3),
+                      informativo='INFORMATIVO' in u)
+            else:
+                nuevo('capitulo', num=10, page=pageno[i], id='capitulo-10')
+            esperando = actual
+            i += 1
+            continue
+
+        if actual is None:
+            i += 1
+            continue
+
+        # «(Informativo)» va en su propio renglón en el Apéndice B, justo donde
+        # iría el nombre, y no es el nombre.
+        if actual['kind'] == 'apendice' and re.fullmatch(r'\(Informativo\)', crudo, re.I):
+            actual['informativo'] = True
+            i += 1
+            continue
+
+        # El nombre del hito son las líneas centradas que siguen al encabezado,
+        # y se corta en la primera que no lo esté. Sin ese corte, el Apéndice B
+        # --que el DOF no nombra-- se quedaba con la primera celda suelta que
+        # apareciera más abajo.
+        if esperando is not None:
+            if x0 >= SANGRIA_CENTRADO and not crudo[:1].islower():
+                esperando['titulo'] = (esperando['titulo'] + ' ' + crudo).strip()
+                i += 1
+                continue
+            esperando = None
+
+        if RE_INFORMATIVO.search(crudo):
+            actual['informativo'] = True
+
+        if x0 >= SANGRIA_CENTRADO and not crudo[:1].islower():
+            add('titulo', text=crudo)
+            i += 1
+            continue
+
+        m = RE_ITEM_CIERRE.match(crudo)
+        if m and x0 in SANGRIA_PARRAFO:
+            add('item', label=m.group(1), text=m.group(2))
+            i += 1
+            continue
+
+        prev = actual['bloques'][-1] if actual['bloques'] else None
+        continua = x0 == SANGRIA_CONT or (x0 >= SANGRIA_CENTRADO and crudo[:1].islower())
+        if continua and prev and prev['tipo'] in ('parrafo', 'item', 'titulo', 'subtitulo'):
+            prev['text'] = (prev['text'] + ' ' + crudo).strip()
+            i += 1
+            continue
+        if x0 == 68.8 and prev and prev['tipo'] == 'item':
+            prev['text'] = (prev['text'] + ' ' + crudo).strip()
+            i += 1
+            continue
+
+        add('subtitulo' if RE_SUBTIT_CIERRE.match(crudo) else 'parrafo', text=crudo)
+        i += 1
+    return hitos
+
+
+def texto_cierre(hitos):
+    """Todo el texto del cierre, para contar cobertura y recoger referencias."""
+    out = []
+    for h in hitos:
+        out.append(h.get('titulo') or '')
+        for b in h['bloques']:
+            out.append(b.get('text') or '')
+    return ' '.join(x for x in out if x)
+
+
 def main():
     pdf = sys.argv[1] if len(sys.argv) > 1 else 'NOM-001-SEDE-2012.pdf'
     out = sys.argv[2] if len(sys.argv) > 2 else 'data'
@@ -1126,11 +1283,19 @@ def main():
     toc, chapters, titulos = parse_toc(pages)
     starts = find_articles(lines, pageno, toc)
 
+    # Dónde deja de haber articulado. El último artículo llegaba hasta el final
+    # del PDF y se tragaba el Capítulo 10, los Títulos 6 a 8 y los tres
+    # Apéndices; ver `parse_cierre`.
+    corte_cierre = next(
+        (i for i, ln in enumerate(lines)
+         if pageno[i] > 700 and unaccent(ln).strip().upper().startswith('CAPITULO 10')),
+        len(lines))
+
     order = sorted(starts, key=lambda n: starts[n])
     bounds = {}
     for idx, n in enumerate(order):
         lo = starts[n]
-        hi = starts[order[idx + 1]] if idx + 1 < len(order) else len(lines)
+        hi = starts[order[idx + 1]] if idx + 1 < len(order) else corte_cierre
         bounds[n] = (lo, hi)
 
     articles, definitions, alcance_100 = [], [], ''
@@ -1161,9 +1326,12 @@ def main():
             art['alcance'] = alcance_100
         articles.append(art)
 
+    cierre = parse_cierre(lines, pageno, sangria, corte_cierre)
+
     # El rótulo de una figura no sale del PDF: se captura a mano y se aplica
     # aquí, antes de escribir nada. Ver `aplicar_figuras`.
-    figuras = aplicar_figuras(articles, img_dir, os.path.join(out, 'figuras.json'))
+    figuras = aplicar_figuras(articles, cierre, img_dir,
+                              os.path.join(out, 'figuras.json'))
 
     corpus = {
         'meta': {
@@ -1180,6 +1348,7 @@ def main():
         'titulos': [{'num': k, 'title': v} for k, v in titulos.items()],
         'chapters': [{'num': k, 'title': v} for k, v in chapters.items()],
         'articles': articles,
+        'cierre': cierre,
     }
 
     json.dump(corpus, open(os.path.join(out, 'corpus.json'), 'w'),
@@ -1253,6 +1422,27 @@ def main():
                 if len(lost_examples) < 25:
                     lost_examples.append({'articulo': n, 'linea': ln[:120]})
 
+    # La región de cierre se mide igual que el articulado. Sin esto, sacarla de
+    # los límites del 924 la habría dejado fuera de la cuenta: la cobertura
+    # seguiría diciendo 100% sobre 38 páginas menos, que es peor que el
+    # problema que se venía a resolver.
+    got_cierre = set(re.findall(r'\w+', unaccent(texto_cierre(cierre)).lower()))
+    cierre_total = cierre_lost = 0
+    for j in range(corte_cierre, len(lines)):
+        ln = lines[j].strip()
+        if len(ln) < 25 or ln.startswith(IMG_MARK) or ln.startswith(TBL_MARK):
+            continue
+        w = re.findall(r'\w+', unaccent(ln).lower())
+        if not w:
+            continue
+        cierre_total += 1
+        if sum(1 for x in w if x in got_cierre) / len(w) < 0.6:
+            cierre_lost += 1
+            if len(lost_examples) < 25:
+                lost_examples.append({'articulo': 'cierre', 'linea': ln[:120]})
+    lines_total += cierre_total
+    lines_lost += cierre_lost
+
     empty = [s['id'] for a in articles for s in a['sections']
              if not (s.get('text') or s.get('children') or s.get('definitions'))]
 
@@ -1266,6 +1456,9 @@ def main():
         'definiciones': len(definitions),
         'figuras': n_figs,
         'formulas': n_form,
+        'cierre_bloques': sum(len(h['bloques']) for h in cierre),
+        'cierre_hitos': [h['id'] for h in cierre],
+        'cierre_lineas': cierre_total,
         'imagenes': len(figuras),
         'figuras_numeradas': n_rotulos,
         'referencias_distintas': len(set(r for a in articles for r in a['refs'])),
@@ -1292,6 +1485,8 @@ def main():
     print('Referencias    : %d distintas' % val['referencias_distintas'])
     print('Cobertura      : %.2f%% (%d de %d líneas de contenido)'
           % (val['cobertura_pct'], lines_total - lines_lost, lines_total))
+    print('Cierre         : %d hitos, %d bloques, %d líneas de contenido'
+          % (len(cierre), sum(len(h['bloques']) for h in cierre), cierre_total))
     print('Secciones vacías: %d' % len(empty))
     print('Artículos sin secciones: %s' % val['articulos_sin_secciones'])
 

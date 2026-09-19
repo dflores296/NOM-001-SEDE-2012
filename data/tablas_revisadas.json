@@ -68558,5 +68558,718 @@
    }
   ],
   "sha": "93674449075994f8"
+ },
+ "Figura B.310.15(B)(2)(3)": {
+  "verificada": "2026-09-19",
+  "article": null,
+  "pages": [
+   763
+  ],
+  "cols": 16,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Tamaño (kcmil)",
+     "rs": 3
+    },
+    {
+     "t": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, OR MV-90*",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "Corriente nominal total por fase en amperes",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "RHO DE LA TIERRA 60 F. DEF. CARGA 50",
+     "cs": 5
+    },
+    {
+     "t": "RHO DE LA TIERRA 90 F. DEF. CARGA 100",
+     "cs": 5
+    },
+    {
+     "t": "RHO DE LA TIERRA 120 F. DEF. CARGA 100",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "250"
+    },
+    {
+     "t": "2340 (260 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "1530 (170 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "1395 (155 A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "350"
+    },
+    {
+     "t": "2790 (310 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "1800 (200 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "1665 (185 A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "500"
+    },
+    {
+     "t": "3375 (375 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "2160 (240 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "1980 (220 A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "Temperatura Ambiente (°C)"
+    },
+    {
+     "t": "Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor ambiente (°C) adecuado de los siguientes:",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "6-10"
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "11-15"
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "16-20"
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "21-25"
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "26-30"
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    }
+   ]
+  ],
+  "notes": [
+   "Limitado a la temperatura del conductor de 75 °C."
+  ],
+  "regions": [
+   {
+    "page": 763,
+    "y0": 400.0,
+    "y1": 616.0,
+    "id": "Figura B.310.15(B)(2)(3)",
+    "article": null
+   }
+  ],
+  "sha": "a52ef3af35aa935b"
+ },
+ "Figura B.310.15(B)(2)(4)": {
+  "verificada": "2026-09-19",
+  "article": null,
+  "pages": [
+   764
+  ],
+  "cols": 16,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Tamaño (kcmil)",
+     "rs": 3
+    },
+    {
+     "t": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, O MV-90*",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "Corriente nominal total por fase en amperes",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "RHO DE LA TIERRA 60 F. DEF. CARGA 50",
+     "cs": 5
+    },
+    {
+     "t": "RHO DE LA TIERRA 90 F. DEF. CARGA 100",
+     "cs": 5
+    },
+    {
+     "t": "RHO DE LA TIERRA 120 F. DEF. CARGA 100",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "750"
+    },
+    {
+     "t": "2820 (705 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "1860 (465 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "1680 (420 A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "1000"
+    },
+    {
+     "t": "3300 (825 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "2140 (535A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "1920 (480 A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "1250"
+    },
+    {
+     "t": "3700 (925 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "2380 (595 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "2120 (530 A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "1500"
+    },
+    {
+     "t": "4060 (260 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "2580 (645A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "2300 (575 A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "1750"
+    },
+    {
+     "t": "4360 (260 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "2740 (685 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "2460 (615A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "Temperatura Ambiente (°C)"
+    },
+    {
+     "t": "Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor ambiente (°C) adecuado de los siguientes :",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "6-10"
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "11-15"
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "16-20"
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "21-25"
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "26-30"
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    }
+   ]
+  ],
+  "notes": [],
+  "regions": [
+   {
+    "page": 764,
+    "y0": 441.0,
+    "y1": 634.5,
+    "id": "Figura B.310.15(B)(2)(4)",
+    "article": null
+   }
+  ],
+  "sha": "c5f2238dc0085790"
+ },
+ "Figura B.310.15(B)(2)(5)": {
+  "verificada": "2026-09-19",
+  "article": null,
+  "pages": [
+   765
+  ],
+  "cols": 16,
+  "header_rows": 3,
+  "rows": [
+   [
+    {
+     "t": "Tamaño (kcmil)",
+     "rs": 3
+    },
+    {
+     "t": "TIPOS RHW, THHW, THW, THWN, XHHW,USE, O MV-90*",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "Corriente nominal total por fase en amperes",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "RHO DE LA TIERRA 60 F. DEF. CARGA 50",
+     "cs": 5
+    },
+    {
+     "t": "RHO DE LA TIERRA 90 F. DEF. CARGA 100",
+     "cs": 5
+    },
+    {
+     "t": "RHO DE LA TIERRA 120 F. DEF. CARGA 100",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "2000"
+    },
+    {
+     "t": "5575 (1115 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "3375 (675 A / Cable)",
+     "cs": 5
+    },
+    {
+     "t": "3000 (600 A / Cable)",
+     "cs": 5
+    }
+   ],
+   [
+    {
+     "t": "Temperatura Ambiente (°C)"
+    },
+    {
+     "t": "Para temperaturas ambiente distintas de 20 °C, multiplicar las temperaturas ambiente anteriores por el factor ambiente (°C) adecuado de los siguientes:",
+     "cs": 15
+    }
+   ],
+   [
+    {
+     "t": "6-10"
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    },
+    {
+     "t": "1.09",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "11-15"
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    },
+    {
+     "t": "1.04",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "16-20"
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    },
+    {
+     "t": "1.00",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "21-25"
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    },
+    {
+     "t": "0.95",
+     "cs": 3
+    }
+   ],
+   [
+    {
+     "t": "26-30"
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    },
+    {
+     "t": "0.90",
+     "cs": 3
+    }
+   ]
+  ],
+  "notes": [],
+  "regions": [
+   {
+    "page": 765,
+    "y0": 504.0,
+    "y1": 642.6,
+    "id": "Figura B.310.15(B)(2)(5)",
+    "article": null
+   }
+  ],
+  "sha": "282933fe79388cf9"
  }
 }

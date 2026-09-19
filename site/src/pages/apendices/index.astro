@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import { apendices, tablas, titulosFinales, rotuloTabla, subtituloTabla,
+         tablaSlug } from '../../lib/nom.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const tablasDe = (l) => tablas.filter((t) => t.apendice === l);
+const total = tablas.filter((t) => t.apendice).length;
+
+// El índice del documento anuncia cinco apéndices, «A, B, C, D y E», y el PDF
+// publicado por el DOF termina en la página 780 con el C. Decirlo es parte de
+// reproducir el documento con fidelidad: quien busque el D no lo va a
+// encontrar aquí porque no está en la fuente.
+const ANUNCIADOS = ['A', 'B', 'C', 'D', 'E'];
+const faltantes = ANUNCIADOS.filter((l) => !apendices.some((h) => h.letra === l));
+---
+
+<Base
+  title="Apéndices — NOM-001-SEDE-2012"
+  desc={`Los apéndices de la NOM-001-SEDE-2012, con sus ${total} tablas.`}
+>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Apéndices</h1>
+      <p>
+        Lo que la norma publica después del último artículo. Los tres son
+        informativos: la propia norma dice de cada uno que no es parte de sus
+        requerimientos y especificaciones.
+      </p>
+      <div class="cifras">
+        <div class="cifra"><b class="tabular">{apendices.length}</b><span>Apéndices</span></div>
+        <div class="cifra"><b class="tabular">{total}</b><span>Tablas</span></div>
+        <div class="cifra"><b class="tabular">{tablasDe('C').reduce((n, t) => n + t.rows.length, 0)}</b><span>Filas en el Apéndice C</span></div>
+      </div>
+      {faltantes.length > 0 && (
+        <p class="aparte">
+          El índice de la norma anuncia los apéndices {ANUNCIADOS.join(', ')}, y
+          el documento publicado en el DOF termina en el {apendices[apendices.length - 1].letra}.
+          {' '}El {faltantes.join(' y el ')} no aparecen en la fuente, así que
+          tampoco aquí.
+        </p>
+      )}
+    </div>
+
+    {apendices.map((h) => (
+      <div class="sec" id={`apendice-${h.letra}`}>
+        <div class="sec-head">
+          <h2>
+            <span class="n">Apéndice {h.letra}</span>
+            <a href={`${base}/apendices/${h.letra}/`}>{h.titulo || 'Listados de normas'}</a>
+          </h2>
+          <em class="desc">{tablasDe(h.letra).length} tablas · página {h.page} del PDF</em>
+        </div>
+        <div class="grid">
+          {tablasDe(h.letra).map((t) => (
+            <a class="card" href={`${base}/apendices/${h.letra}/#${tablaSlug(t.id)}`}>
+              <b>{rotuloTabla(t)}</b>
+              <span>{subtituloTabla(t)}</span>
+              <em>{t.rows.length} filas · {t.cols} col.</em>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <div class="sec" id="titulos">
+      <div class="sec-head">
+        <h2><span class="n">Y además</span>Los títulos de cierre</h2>
+        <em class="desc">{titulosFinales.length} títulos</em>
+      </div>
+      <div class="grid">
+        {titulosFinales.map((t) => (
+          <a class="card" href={`${base}/cierre/#${t.id}`}>
+            <b>Título {t.num}</b>
+            <span>{t.titulo}</span>
+            <em>página {t.page} del PDF</em>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>

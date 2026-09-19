@@ -1,12 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { tablas, chapters, byNum, tablaSlug, rotuloTabla, subtituloTabla } from '../../lib/nom.js';
+import { tablas, chapters, byNum, tablaSlug, rotuloTabla, subtituloTabla,
+         apendices } from '../../lib/nom.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Una tabla pertenece al capítulo de su artículo. Las que no cuelgan de
 // ninguno son las del Capítulo 10, que la norma publica como tablas generales.
-const capDe = (t) => (t.article == null ? 10 : byNum.get(t.article)?.chapter);
+// Las de los Apéndices no son de ningún capítulo: se listan aparte al final.
+const capDe = (t) =>
+  t.apendice ? null : t.article == null ? 10 : byNum.get(t.article)?.chapter;
+const deApendice = tablas.filter((t) => t.apendice);
 
 // El Capítulo 10 no tiene páginas de artículo donde mostrarse, así que sus
 // tablas viven en su propia página; las demás se ven dentro de su artículo.
@@ -40,6 +44,7 @@ const verificadas = tablas.filter((t) => t.verificada).length;
         <div class="cifra"><b class="tabular">{tablas.length}</b><span>Tablas</span></div>
         <div class="cifra"><b class="tabular">{filas.toLocaleString('es-MX')}</b><span>Filas</span></div>
         <div class="cifra"><b class="tabular">{porCapitulo.length}</b><span>Capítulos</span></div>
+        <div class="cifra"><b class="tabular">{deApendice.length}</b><span>En los apéndices</span></div>
         <div class="cifra"><b class="tabular">{verificadas}</b><span>Verificadas contra el PDF</span></div>
       </div>
       <p class="aparte">
@@ -57,6 +62,11 @@ const verificadas = tablas.filter((t) => t.verificada).length;
           <em class="tabular">{ts.length}</em>
         </a>
       ))}
+      <a href="#apendices">
+        <b>Apéndices</b>
+        <span>Ampacidad, normas citadas y ocupación en tubo conduit</span>
+        <em class="tabular">{deApendice.length}</em>
+      </a>
     </nav>
 
     {porCapitulo.map(({ c, ts }) => (
@@ -79,5 +89,26 @@ const verificadas = tablas.filter((t) => t.verificada).length;
         </div>
       </div>
     ))}
+
+    <div class="sec" id="apendices">
+      <div class="sec-head">
+        <h2><span class="n">Apéndices</span>A, B y C</h2>
+        <em class="desc">{deApendice.length} tablas · informativas</em>
+      </div>
+      <p class="aparte">
+        La norma dice de los tres apéndices que no son parte de sus
+        requerimientos y especificaciones. Cada uno tiene su
+        {' '}<a href={`${base}/apendices/`}>página</a>.
+      </p>
+      <div class="grid">
+        {deApendice.map((t) => (
+          <a class="card" href={`${base}/apendices/${t.apendice}/#${tablaSlug(t.id)}`}>
+            <b>{rotuloTabla(t)}</b>
+            <span>{subtituloTabla(t)}</span>
+            <em>Apéndice {t.apendice} · {t.rows.length} filas · {t.cols} col.</em>
+          </a>
+        ))}
+      </div>
+    </div>
   </div>
 </Base>

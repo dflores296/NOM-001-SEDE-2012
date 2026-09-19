@@ -47,6 +47,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <a href={`${base}/`}>Índice</a>
           <a href={`${base}/tablas/`}>Tablas</a>
           <a href={`${base}/figuras/`}>Figuras</a>
+          <a href={`${base}/apendices/`}>Apéndices</a>
           <a href={`${base}/glosario/`}>Glosario</a>
           <a href={`${base}/observaciones/`}>Observaciones</a>
           <select id="tema" class="theme-pick" aria-label="Tema de color">
@@ -204,7 +205,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               // se descartaba, así que un resultado no decía DÓNDE dentro
               // de la sección apareció lo que buscaste.
               storeFields: ['id', 'title', 'art', 'artTitle', 'kind', 'tid', 'sinNumero',
-                            'text', 'fid', 'ancla'],
+                            'text', 'fid', 'ancla', 'cid'],
               processTerm: (term) => sinAcentos(term.toLowerCase()),
               searchOptions: { boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15 },
             });
@@ -245,7 +246,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         }
         // El ancla de una figura ya viene calculada: una imagen puede traer
         // dos números y cada uno aterriza en el suyo.
-        if (r.kind === 'fig') return `${base}/art/${r.art}#${r.ancla}`;
+        if (r.kind === 'fig') {
+          return r.art ? `${base}/art/${r.art}#${r.ancla}`
+                       : `${base}/apendices/A/#${r.ancla}`;
+        }
+        if (r.kind === 'cierre') {
+          if (r.cid.startsWith('apendice-')) return `${base}/apendices/${r.cid.slice(9)}/`;
+          if (r.cid === 'capitulo-10') return `${base}/tablas/generales/`;
+          return `${base}/cierre/#${r.cid}`;
+        }
         return `${base}/art/${r.art}#${r.id}`;
       }
 
@@ -304,7 +313,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
 
       const ETIQUETA = { sec: 'Secciones', tabla: 'Tablas', def: 'Definiciones',
-                         fig: 'Figuras' };
+                         fig: 'Figuras', cierre: 'Apéndices y cierre' };
 
       function itemHtml(r, q) {
         const esTabla = r.kind === 'tabla';
@@ -312,7 +321,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         // los dos era repetir la misma palabra dos veces seguidas.
         const rid = esTabla
           ? (r.sinNumero ? `Tabla del ${r.tid}` : `Tabla ${r.tid}`)
-          : r.kind === 'fig' ? r.fid
+          : r.kind === 'fig' || r.kind === 'cierre' ? r.fid
           : (r.kind === 'def' ? '' : r.id);
         const rsn = r.art ? `Art. ${r.art} · ${r.artTitle || ''}` : (r.artTitle || '');
         const frag = fragmento(r.text, q);
@@ -338,7 +347,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         // mucho a cualquier sección (88 de score contra 29), y un orden fijo
         // "Secciones primero" la mandaría al fondo aunque sea la más
         // relevante con diferencia.
-        const porTipo = { sec: [], tabla: [], def: [], fig: [] };
+        const porTipo = { sec: [], tabla: [], def: [], fig: [], cierre: [] };
         for (const r of list) porTipo[r.kind]?.push(r);
         box.innerHTML = Object.keys(porTipo)
           .filter((k) => porTipo[k].length)

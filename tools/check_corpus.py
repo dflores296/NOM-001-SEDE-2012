@@ -25,7 +25,19 @@ MIN = {
     'imagenes': 59,
     'figuras': 45,
     'figuras_numeradas': 51,
+    # La región de cierre: 7 hitos (Capítulo 10, Títulos 6 a 8, Apéndices A a
+    # C) y sus bloques. Antes no existía y sus 38 páginas caían dentro de
+    # 924-24 sin que ninguna cifra lo delatara.
+    'cierre_bloques': 120,
+    'cierre_lineas': 165,
 }
+
+# Los siete hitos de la región de cierre. Que falte uno significa que el
+# documento dejó de parsearse donde debía: se exige la lista completa y no un
+# conteo, porque perder el Apéndice C --el de las tablas de ocupación en tubo
+# conduit-- y ganar un Título repetido daría el mismo número.
+HITOS_CIERRE = ['capitulo-10', 'titulo-6', 'titulo-7', 'titulo-8',
+                'apendice-A', 'apendice-B', 'apendice-C']
 
 # Tablas: umbrales aparte, porque su reconstrucción es aproximada por
 # naturaleza y conviene vigilar que no se degrade, no que sea perfecta.
@@ -168,6 +180,11 @@ def revisar_figuras(corpus, d, img_dir):
 
     figs = [f for a in corpus['articles'] for s in a['sections']
             for n in walk(s) for f in n.get('figures', [])]
+    # Las cuatro del Apéndice A no cuelgan de ningún inciso: viven en la
+    # región de cierre, y sin mirarlas ahí el detector de huérfanos las daba
+    # por PNG sobrantes.
+    figs += [b for h in corpus.get('cierre', []) for b in h['bloques']
+             if b['tipo'] == 'figura']
 
     sin_captura = sorted({f['src'] for f in figs if f['src'] not in captura})
     if sin_captura:
@@ -391,6 +408,11 @@ def main():
                     % (len(desal), ', '.join('%s (%s)' % (t, '/'.join(c))
                                              for t, c in desal[:6])))
 
+    if val.get('cierre_hitos') != HITOS_CIERRE:
+        fails.append('los hitos de la región de cierre no son los esperados: '
+                     '%s (se esperaban %s)'
+                     % (val.get('cierre_hitos'), HITOS_CIERRE))
+
     fails.extend(revisar_figuras(
         corpus, d, os.environ.get('NOM_IMG_DIR', 'site/public/img')))
 
@@ -415,6 +437,9 @@ def main():
            'cobertura %.2f%%, 0 referencias rotas.'
            % (val['articulos'], val['secciones'], val['incisos'],
               val['cobertura_pct']))
+    msg += ('\n  Cierre: %d hitos, %d bloques, %d líneas.'
+            % (len(val.get('cierre_hitos') or []), val.get('cierre_bloques', 0),
+               val.get('cierre_lineas', 0)))
     msg += ('\n  Figuras: %d con %d número(s), %d fórmulas, %d imágenes '
             'capturadas.' % (val.get('figuras', 0), val.get('figuras_numeradas', 0),
                              val.get('formulas', 0), val.get('imagenes', 0)))
