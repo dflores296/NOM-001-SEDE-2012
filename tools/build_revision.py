@@ -11,14 +11,17 @@ import json
 import sys
 from pathlib import Path
 
-SITIO = 'https://dflores296.github.io/NOM-001-SEDE-2012/revision/'
+# La página /revision se retiró del sitio al terminarse la revisión: era una
+# lista de trabajo, no algo que un lector consultara. Este archivo queda como el
+# registro, y lo que el sitio ofrece hoy es reportar lo que se encuentre.
+SITIO = 'https://dflores296.github.io/NOM-001-SEDE-2012/observaciones/'
 
 CABECERA = """# Revisión de tablas — NOM-001-SEDE-2012
 
 {intro}
 
-La versión navegable, con enlaces a cada tabla, está en
-[/revision]({sitio}).
+¿Encontraste una diferencia con el DOF? Se reporta en
+[/observaciones]({sitio}).
 
 > Este archivo se genera con `python3 tools/build_revision.py data/
 > REVISION-TABLAS.md`. No editar a mano: los cambios se pierden en la próxima

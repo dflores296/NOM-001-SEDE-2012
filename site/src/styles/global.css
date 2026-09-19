@@ -621,3 +621,73 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
   border-left: 3px solid var(--border);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
+
+/* --------------------------------------------------------------------------
+   Observaciones: la página donde el lector reporta lo que encontró.
+   Sustituyó a /revision, que era la lista de trabajo de la revisión de tablas
+   y quedó vacía al terminarse.
+   -------------------------------------------------------------------------- */
+.obs { max-width: 46rem; }
+.obs h2 { margin: 2rem 0 0.6rem; font-size: 1.05rem; }
+.obs-intro { color: var(--text-dim); }
+.obs-tipos { padding-left: 1.1rem; }
+.obs-tipos li { margin: 0.4rem 0; }
+
+.obs-tip {
+  background: var(--accent-soft); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 0.7rem 0.9rem; margin: 1rem 0;
+  font-size: 0.93rem;
+}
+.obs-chip {
+  font-family: var(--mono); font-size: 0.8rem; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 4px; padding: 0.05rem 0.3rem;
+  background: var(--panel);
+}
+
+.obs-form { display: grid; gap: 1rem; margin: 0.8rem 0 1.5rem; }
+.obs-form label { display: grid; gap: 0.3rem; }
+.obs-form label > span { font-weight: 600; font-size: 0.93rem; }
+.obs-form label em { font-weight: 400; color: var(--text-faint); font-style: normal; }
+.obs-form small { color: var(--text-faint); font-size: 0.82rem; }
+.obs-form input, .obs-form select, .obs-form textarea {
+  font: inherit; font-size: 0.95rem; color: var(--text);
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 0.5rem 0.6rem; width: 100%;
+}
+.obs-form textarea { resize: vertical; }
+.obs-form input:focus, .obs-form select:focus, .obs-form textarea:focus {
+  outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent);
+}
+/* Cuando la referencia llegó por la URL no se edita: se muestra como dato. */
+.obs-form input.fijo {
+  font-family: var(--mono); color: var(--accent); background: var(--bg-soft);
+}
+.obs-form button {
+  font: inherit; font-weight: 600; cursor: pointer;
+  background: var(--accent); color: var(--panel);
+  border: 1px solid var(--accent); border-radius: var(--radius);
+  padding: 0.6rem 1.1rem; justify-self: start;
+}
+.obs-form button:hover { filter: brightness(1.1); }
+.obs-nota { color: var(--text-faint); font-size: 0.85rem; margin: 0; }
+
+.obs-cerrado {
+  background: var(--warn-bg); border: 1px solid var(--warn-br);
+  border-radius: var(--radius); padding: 0.8rem 1rem; margin: 0.8rem 0 1.5rem;
+}
+.obs-cerrado p { margin: 0.3rem 0; }
+
+.obs-flujo { padding-left: 1.2rem; }
+.obs-flujo li { margin: 0.5rem 0; }
+.obs-cierre { color: var(--text-dim); font-size: 0.9rem; margin-top: 1.5rem; }
+
+/* El botón de reportar de cada sección: igual de discreto que el ancla `#`,
+   aparece al pasar el cursor y siempre es visible en pantallas táctiles, donde
+   no hay hover que valga. */
+.report {
+  color: var(--text-faint); opacity: 0; font-weight: 400; font-size: 0.75rem;
+  margin-left: 0.4rem; text-decoration: none; white-space: nowrap;
+}
+section.sec:hover .report, figure.tabla:hover .report { opacity: 1; }
+.report:hover { color: var(--accent); text-decoration: underline; }
+@media (hover: none) { .report { opacity: 0.6; } }

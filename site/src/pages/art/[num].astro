@@ -94,6 +94,10 @@ const sueltas = tabs.filter((t) => !ancladas.has(t.id));
               <h2>
                 <span class="sid">{s.id}</span>{s.title}
                 <a class="anchor" href={`#${s.id}`} aria-label="Enlace a esta sección">#</a>
+                <a class="report"
+                   href={`${base}/observaciones/?ref=${encodeURIComponent(s.id)}&de=${encodeURIComponent(`${base}/art/${a.num}/#${s.id}`)}`}
+                   aria-label={`Reportar una observación sobre ${s.id}`}
+                >Reportar</a>
               </h2>
 
               {s.text && <p set:html={linkify(s.text)} />}

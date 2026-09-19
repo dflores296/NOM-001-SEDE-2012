@@ -16,5 +16,11 @@ export default defineConfig({
   // publicados antes de mover el contenido.
   // Astro le pone el `base` a la clave, pero no al destino: ese hay que
   // escribirlo entero o el desvío sale del sitio publicado.
-  redirects: { '/art/100': '/NOM-001-SEDE-2012/glosario/' },
+  // /revision era la lista de trabajo de la revisión de tablas y se retiró al
+  // terminarse. La ruta sigue publicada en REVISION-TABLAS.md y en enlaces
+  // viejos, así que lleva a donde hoy se reporta.
+  redirects: {
+    '/art/100': '/NOM-001-SEDE-2012/glosario/',
+    '/revision': '/NOM-001-SEDE-2012/observaciones/',
+  },
 });

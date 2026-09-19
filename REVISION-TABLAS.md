@@ -4,8 +4,8 @@ Registro de la revisión de las tablas contra el PDF del DOF. **No queda ninguna
 pendiente**: las tablas se reconstruyen automáticamente desde el PDF y ese proceso no
 es exacto, así que se contrastaron todas celda por celda contra el documento original.
 
-La versión navegable, con enlaces a cada tabla, está en
-[/revision](https://dflores296.github.io/NOM-001-SEDE-2012/revision/).
+¿Encontraste una diferencia con el DOF? Se reporta en
+[/observaciones](https://dflores296.github.io/NOM-001-SEDE-2012/observaciones/).
 
 > Este archivo se genera con `python3 tools/build_revision.py data/
 > REVISION-TABLAS.md`. No editar a mano: los cambios se pierden en la próxima
