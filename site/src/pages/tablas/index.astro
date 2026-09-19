@@ -1,0 +1,87 @@
+---
+import Base from '../../layouts/Base.astro';
+import { tablas, chapters, byNum, tablaSlug, rotuloTabla, subtituloTabla } from '../../lib/nom.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Una tabla pertenece al capítulo de su artículo. Las que no cuelgan de
+// ninguno son las del Capítulo 10, que la norma publica como tablas generales.
+const capDe = (t) => (t.article == null ? 10 : byNum.get(t.article)?.chapter);
+
+// El Capítulo 10 no tiene páginas de artículo donde mostrarse, así que sus
+// tablas viven en su propia página; las demás se ven dentro de su artículo.
+const destino = (t) =>
+  t.article == null
+    ? `${base}/tablas/generales/#${tablaSlug(t.id)}`
+    : `${base}/art/${t.article}/#${tablaSlug(t.id)}`;
+
+const porCapitulo = chapters
+  .map((c) => ({
+    c,
+    ts: tablas
+      .filter((t) => capDe(t) === c.num)
+      .sort((a, b) => (a.article || 0) - (b.article || 0) || a.page - b.page),
+  }))
+  .filter((g) => g.ts.length > 0);
+
+const filas = tablas.reduce((n, t) => n + t.rows.length, 0);
+const verificadas = tablas.filter((t) => t.verificada).length;
+---
+
+<Base
+  title="Tablas — NOM-001-SEDE-2012"
+  desc={`Índice de las ${tablas.length} tablas de la NOM-001-SEDE-2012, por capítulo.`}
+>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Tablas</h1>
+      <p>
+        Las {tablas.length} tablas de la norma, por capítulo. En el PDF se parten entre
+        páginas y pierden su estructura al copiarse; aquí se leen completas y se
+        enlazan directamente.
+      </p>
+      <div class="cifras">
+        <div class="cifra"><b class="tabular">{tablas.length}</b><span>Tablas</span></div>
+        <div class="cifra"><b class="tabular">{filas.toLocaleString('es-MX')}</b><span>Filas</span></div>
+        <div class="cifra"><b class="tabular">{porCapitulo.length}</b><span>Capítulos</span></div>
+        <div class="cifra"><b class="tabular">{verificadas}</b><span>Verificadas contra el PDF</span></div>
+      </div>
+      <p class="aparte">
+        Ante cualquier discrepancia prevalece el texto del DOF. Si encuentras una
+        diferencia, cada tabla tiene un enlace para <a href={`${base}/observaciones/`}>reportarla</a>.
+      </p>
+    </div>
+
+    {/* Salto directo al capítulo: con 226 tablas, bajar a ciegas no es opción. */}
+    <nav class="cap-nav" aria-label="Ir a un capítulo">
+      {porCapitulo.map(({ c, ts }) => (
+        <a href={`#cap${c.num}`}>
+          <b>Cap. {c.num}</b>
+          <span>{c.title}</span>
+          <em class="tabular">{ts.length}</em>
+        </a>
+      ))}
+    </nav>
+
+    {porCapitulo.map(({ c, ts }) => (
+      <div class="sec" id={`cap${c.num}`}>
+        <div class="sec-head">
+          <h2><span class="n">Capítulo {c.num}</span>{c.title}</h2>
+          <em class="desc">{ts.length} tabla{ts.length === 1 ? '' : 's'}</em>
+        </div>
+        <div class="grid">
+          {ts.map((t) => (
+            <a class="card" href={destino(t)}>
+              <b>{rotuloTabla(t)}</b>
+              <span>{subtituloTabla(t)}</span>
+              <em>
+                {t.rows.length} filas · {t.cols} col.
+                {t.informativa ? ' · informativa' : ''}
+              </em>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</Base>

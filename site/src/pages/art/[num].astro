@@ -125,7 +125,7 @@ const sueltas = tabs.filter((t) => !ancladas.has(t.id));
                   .filter((x) => x.tabla),
                 ...(s.figures || []).map((f) => ({ ...f, k: 'fig' })),
               ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0)).map((n) => (n.k === 'tabla' ? (
-                <Tabla t={n.tabla} />
+                <Tabla t={n.tabla} origen={`${base}/art/${a.num}/`} />
               ) : n.k === 'fig' ? (
                 <figure class="fig">
                   <img src={`${BASE}/img/${n.src}`}
@@ -178,7 +178,7 @@ const sueltas = tabs.filter((t) => !ancladas.has(t.id));
         </>
       ))}
 
-      {sueltas.map((t) => <Tabla t={t} />)}
+      {sueltas.map((t) => <Tabla t={t} origen={`${base}/art/${a.num}/`} />)}
 
       <nav class="pager">
         {prev && (

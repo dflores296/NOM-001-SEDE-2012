@@ -1,6 +1,6 @@
 ---
 import { linkify, tablaSlug, rotuloTabla, subtituloTabla } from '../lib/nom.js';
-const { t } = Astro.props;
+const { t, origen } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const head = t.rows.slice(0, t.header_rows || 0);
 const body = t.rows.slice(t.header_rows || 0);
@@ -120,7 +120,7 @@ const larga = (c) => ((c.t || '').length > 28 ? 'larga' : undefined);
     {t.pages.join(', ')} del PDF ·{' '}
     <a
       href={`${base}/observaciones/?ref=${encodeURIComponent(rotuloTabla(t))}&de=${
-        encodeURIComponent(`${base}/tablas/#${tablaSlug(t)}`)
+        encodeURIComponent(origen ? `${origen}#${tablaSlug(t.id)}` : '')
       }`}
     >¿Ves un error? Repórtalo</a>
   </div>
