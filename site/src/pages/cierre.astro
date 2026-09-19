@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Bloques from '../components/Bloques.astro';
+import { titulosFinales, apendices } from '../lib/nom.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Base
+  title="Vigilancia, bibliografía y concordancia — NOM-001-SEDE-2012"
+  desc="Los Títulos 6, 7 y 8 de la NOM-001-SEDE-2012: vigilancia, bibliografía y concordancia con normas internacionales."
+>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Los títulos de cierre</h1>
+      <p>
+        Los Títulos 6, 7 y 8 de la norma: quién la vigila, de dónde viene y con
+        qué normas internacionales concuerda. Van después del último artículo,
+        antes de los <a href={`${base}/apendices/`}>apéndices</a>.
+      </p>
+    </div>
+
+    {titulosFinales.map((h) => (
+      <section class="sec" id={h.id}>
+        <div class="sec-head">
+          <h2><span class="n">Título {h.num}</span>{h.titulo}</h2>
+          <em class="desc">página {h.page} del PDF</em>
+        </div>
+        <Bloques hito={h} origen={`${base}/cierre/`} />
+      </section>
+    ))}
+
+    <p class="aparte">
+      Siguen los {apendices.length} <a href={`${base}/apendices/`}>apéndices</a>,
+      que la norma publica con carácter informativo.
+    </p>
+  </div>
+</Base>

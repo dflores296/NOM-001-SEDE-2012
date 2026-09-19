@@ -18,7 +18,11 @@ export function tablaSlug(id) {
  * que llevan por identificador es el inciso donde están impresas.
  */
 export function rotuloTabla(t) {
-  return t.sin_numero ? `Tabla del ${t.id}` : `Tabla ${t.id}`;
+  if (!t.sin_numero) return `Tabla ${t.id}`;
+  // Las tres del Apéndice A no llevan número propio y lo que las identifica
+  // es la figura bajo la que están impresas, no un inciso.
+  if (t.id.startsWith('Figura ')) return `Tabla de la ${t.id}`;
+  return `Tabla del ${t.id}`;
 }
 
 /** Lo que va después del rótulo: el título de la norma, o la falta de él. */
@@ -57,6 +61,12 @@ export const figuras = (() => {
     for (const c of n.children || []) walk(c, art);
   };
   for (const a of corpus.articles) for (const s of a.sections) walk(s, a.num);
+  // Las cuatro del Apéndice A no cuelgan de ningún inciso.
+  for (const h of corpus.cierre || []) {
+    for (const b of h.bloques) {
+      if (b.tipo === 'figura') out.push({ ...b, articulo: null, nodo: h.id, hito: h });
+    }
+  }
   return out;
 })();
 
@@ -106,9 +116,10 @@ export function subtituloImagen(f) {
   return f.titulo || '';
 }
 
-/** URL navegable de una imagen, dentro de la página de su artículo. */
+/** URL navegable de una imagen, donde sea que la norma la imprima. */
 export function hrefImagen(f, ancla) {
-  return `${BASE}/art/${f.articulo}#${ancla || f.ancla}`;
+  const base = f.hito ? hrefCierre(f.hito) : `${BASE}/art/${f.articulo}`;
+  return `${base}#${ancla || f.ancla}`;
 }
 
 /** Tabla por id, para pintarla donde el texto la ancló. */
@@ -118,6 +129,32 @@ export const BASE = '/NOM-001-SEDE-2012';
 
 export const articles = corpus.articles;
 export const chapters = corpus.chapters;
+
+/**
+ * La región de cierre: lo que el documento imprime DESPUÉS del último
+ * artículo --el Capítulo 10 con sus notas, los Títulos 6 a 8 y los Apéndices
+ * A, B y C--. Hasta que tuvo estructura, todo eso caía dentro de 924-24,
+ * «Tarimas y tapetes aislantes». Ver `parse_cierre` en build_corpus.py.
+ */
+export const cierre = corpus.cierre || [];
+export const apendices = cierre.filter((h) => h.kind === 'apendice');
+export const capitulo10 = cierre.find((h) => h.id === 'capitulo-10');
+export const titulosFinales = cierre.filter((h) => h.kind === 'titulo');
+
+/** Cómo se anuncia un hito del cierre. */
+export function rotuloCierre(h) {
+  const n = h.letra || h.num;
+  return h.kind === 'apendice' ? `Apéndice ${n}`
+       : h.kind === 'titulo' ? `Título ${n}`
+       : `Capítulo ${n}`;
+}
+
+/** Dónde se publica cada hito del cierre. */
+export function hrefCierre(h) {
+  if (h.kind === 'apendice') return `${BASE}/apendices/${h.letra}/`;
+  if (h.id === 'capitulo-10') return `${BASE}/tablas/generales/`;
+  return `${BASE}/cierre/#${h.id}`;
+}
 export const byNum = new Map(articles.map((a) => [a.num, a]));
 
 /** Artículo al que pertenece un id tipo "250-32(a)" o "art:250". */
@@ -156,6 +193,7 @@ export function hrefFor(id) {
     // del artículo, no en el índice de tablas.
     const im = figuraPorId.get(t);
     if (im) return hrefImagen(im.figura, im.ancla);
+    if (tb && tb.apendice) return `${BASE}/apendices/${tb.apendice}/#${tablaSlug(t)}`;
     return `${BASE}/tablas#${tablaSlug(t)}`;
   }
   const art = articleOf(id);

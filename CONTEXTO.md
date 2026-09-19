@@ -368,45 +368,76 @@ que un archivo puesto ahí existiría en local y desaparecería en CI.
 
 ## Pendientes
 
-Uno, y es grande: **los Apéndices no tienen estructura**. Ver más abajo.
+Las **19 tablas de los Apéndices** están reconstruidas pero sin contrastar
+celda por celda, así que salen con la insignia «Sin contrastar contra el PDF».
+Hasta que se contrasten, esa insignia es lo único honesto que se puede decir de
+ellas. La estructura ya está hecha; ver más abajo.
 
-## Los Apéndices: las últimas 26 páginas no tienen estructura
+## La región de cierre: las últimas 38 páginas
 
-El corpus tiene 151 artículos y 10 capítulos, y ahí se acaba lo que el parser
-conoce. Pero el documento sigue 26 páginas más:
+El corpus tenía 151 artículos y 10 capítulos, y ahí se acababa lo que el parser
+conocía. Pero el documento sigue 38 páginas más:
 
 | Dónde | Qué es |
 |---|---|
-| pág. 754 | `BIBLIOGRAFIA` (el título 7 de la norma) |
-| pág. 755-764 | `APENDICE A (Informativo)`: las tablas de ampacidad `B.310-15(B)(2)(x)` y sus cuatro figuras |
+| pág. 742-754 | `CAPITULO 10`: las tablas generales, sus Notas de las Tablas y la prosa de las 11(A) a la 12(B) |
+| pág. 754 | `TITULO 6` VIGILANCIA y `TITULO 7` BIBLIOGRAFIA |
+| pág. 755 | `TITULO 8` CONCORDANCIA CON NORMAS INTERNACIONALES Y NORMAS MEXICANAS |
+| pág. 755-764 | `APENDICE A (Informativo)`: las tablas de ampacidad `B.310.15(B)(2)(x)` y sus cuatro figuras |
 | pág. 765-772 | `APENDICE B`: el listado de normas NOM/NMX/IEC/UL con las secciones que las citan |
-| pág. 773-780 | `APENDICE C (Informativo)` |
+| pág. 773-780 | `APENDICE C (Informativo)`: las tablas de ocupación en tubo conduit |
 
-Como el 924 es el último artículo, sus límites llegan hasta el final del
-documento y **todo eso cae dentro de `924-24`**, que se titula «Tarimas y
-tapetes aislantes». Las consecuencias, medidas:
+Como el 924 es el último artículo, sus límites llegaban hasta el final del
+documento y **todo eso caía dentro de `924-24`**, que se titula «Tarimas y
+tapetes aislantes». Lo que se midió antes de arreglarlo:
 
-- Un solo párrafo, `924-24` seq 25, tiene **35 389 caracteres**: es una tabla
+- Un solo párrafo, `924-24` seq 25, tenía **35 389 caracteres**: era una tabla
   de ampacidad entera aplanada a prosa corrida.
-- Los nueve hijos `924-24(1)` a `924-24(9)` **no son incisos del 924-24**: son
-  las notas al pie de la Tabla 1 del Capítulo 10 («Véase el apéndice C para el
-  número máximo de conductores…»).
-- **Ninguna tabla de las páginas 755-780 está reconstruida.** Las 226 llegan
-  hasta la pág. 754. Las ~12 de los Apéndices se publican como párrafo.
+- Los nueve hijos `924-24(1)` a `924-24(9)` **no eran incisos del 924-24**: son
+  las Notas de las Tablas del Capítulo 10 («Véase el apéndice C para el número
+  máximo de conductores…»).
+- **Ninguna tabla de las páginas 755-780 estaba reconstruida.** Las 226
+  llegaban hasta la pág. 754.
 
-La cobertura del 100 % no lo delata, y no es un defecto de la métrica: cuenta
-si las palabras de cada renglón aparecen en el corpus, y aparecen. Lo que no
+La cobertura del 100 % no lo delataba, y no es un defecto de la métrica: cuenta
+si las palabras de cada renglón aparecen en el corpus, y aparecían. Lo que no
 dice es que estén en el nodo que les toca.
 
-Arreglarlo tiene dos mitades de costo muy distinto:
+Hoy la región se parsea aparte, en `parse_cierre`, porque su forma no es la del
+articulado: no hay secciones numeradas sino una sucesión de encabezados,
+párrafos, listas, tablas y figuras. Vive en `corpus['cierre']` como siete
+hitos, cada uno con sus `bloques` en el orden del documento, y `check_corpus`
+exige **los siete por nombre**: perder el Apéndice C y ganar un Título
+repetido daría el mismo conteo.
 
-1. **La estructura** (cerrar el 924 donde de verdad acaba, detectar los tres
-   apéndices, darles su sitio en el corpus, el sitio, la búsqueda y los
-   checks). Es trabajo acotado y sin sorpresas.
-2. **Las ~12 tablas de los Apéndices**, que hay que reconstruir y luego
-   contrastar celda por celda contra el PDF, como se hizo con las 226. Eso es
-   lo caro, y es la política del proyecto: sin contrastar no se marcan
-   verificadas (§1).
+Dónde se publica cada uno:
+
+| Hito | Página del sitio |
+|---|---|
+| Capítulo 10 | `/tablas/generales/`, con sus tablas intercaladas |
+| Títulos 6, 7 y 8 | `/cierre/` |
+| Apéndices A, B y C | `/apendices/` y `/apendices/<letra>/` |
+
+Tres cosas que costaron y conviene no volver a romper:
+
+- **El límite de un apéndice cae a media página.** El Apéndice B empieza en la
+  765 a `y=679`, y la última tabla del A está impresa ARRIBA en esa misma
+  página. Marcar el apéndice por número de página la mandaba al equivocado;
+  `apendice_de(page, y)` mira las dos cosas.
+- **La zona de la Tabla B2.2 se tragaba el encabezado del Apéndice C.** Termina
+  en `y=567.1` de la página 773 y el `APENDICE C (Informativo)` está en
+  `y=566`. `RE_KEEP` ahora protege también `APENDICE`, `CAPITULO` y `TITULO`,
+  igual que ya protegía `ARTICULO`.
+- **`RE_KEEP` rescataba «F. DEF. CARGA 50»** de dentro de su propia tabla,
+  porque su rama `[A-M]. Xxx` —pensada para «A. Generalidades»— calzaba con la
+  abreviatura. Ahora exige minúsculas detrás.
+
+Las tres tablas que acompañan a las Figuras `B.310.15(B)(2)(3)` a `(5)` se dan
+de alta a mano: la norma las imprime sin «Tabla N» delante, así que no hay
+título que detectar. Llevan 16 columnas porque sus dos mitades reparten el
+ancho distinto —tres columnas de ampacidad arriba y cinco de factores de
+temperatura abajo—, y 16 es el único número que deja cada valor en su sitio sin
+inventar ni descartar ninguno.
 
 ## Trampas del entorno
 

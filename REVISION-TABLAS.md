@@ -1,8 +1,8 @@
 # Revisión de tablas — NOM-001-SEDE-2012
 
-Registro de la revisión de las tablas contra el PDF del DOF. **No queda ninguna
-pendiente**: las tablas se reconstruyen automáticamente desde el PDF y ese proceso no
-es exacto, así que se contrastaron todas celda por celda contra el documento original.
+Lista de trabajo para contrastar las tablas reconstruidas contra el PDF del DOF.
+Ordenada por **impacto por duda**: cuánto se apoya la norma en cada tabla, por lo
+insegura que quedó su reconstrucción. Empezar por arriba es lo que más corrige por hora.
 
 ¿Encontraste una diferencia con el DOF? Se reporta en
 [/observaciones](https://dflores296.github.io/NOM-001-SEDE-2012/observaciones/).
@@ -11,7 +11,55 @@ es exacto, así que se contrastaron todas celda por celda contra el documento or
 > REVISION-TABLAS.md`. No editar a mano: los cambios se pierden en la próxima
 > regeneración.
 
-**226 de 226 tablas ya se contrastaron celda por celda contra el PDF**; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+Columnas: **usos** cuántas veces se apoya la norma en esa tabla · **cal.** calidad
+estimada de la separación en celdas (1.00 = ninguna celda con varios valores juntos)
+· **rejilla** de dónde salieron las columnas: `dibujada` son las líneas del PDF,
+`huecos` son los espacios entre palabras, que es mucho menos fiable y no recupera
+celdas combinadas.
+
+**229 de 245 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+
+## 1 · Prioridad alta (0)
+
+Muy usadas y con la reconstrucción insegura: la calidad las señala. Un error aquí se propaga a muchos cálculos.
+
+Ninguna: ya están todas contrastadas contra el PDF.
+
+## 2 · Dudosas (7)
+
+Bajo el umbral de confianza (calidad < 0.80), pero poco citadas. Menos urgentes.
+
+| | Tabla | Título | Pág. PDF | Usos | Cal. | Rejilla | Tamaño |
+|---|---|---|---|---|---|---|---|
+| [ ] | `B.310.15(B)(2)(6)` | Ampacidades de tres conductores aislados, de 0 a 2000 volts nominales… | 758, 759 | 0 | 0.43 | dibujada | 10×8 |
+| [ ] | `B.310.15(B)(2)(1)` | Ampacidades de dos o tres conductores aislados, de 0 a 2000 volts nomi… | 756, 757 | 0 | 0.43 | dibujada | 9×7 |
+| [ ] | `B.310.15(B)(2)(5)` | Ampacidad de conductores sencillos aislados, de 0 a 2000 volts nominal… | 758 | 0 | 0.46 | **huecos** | 8×8 |
+| [ ] | `B.310.15(B)(2)(3)` | Ampacidades de cables multiconductores con no más de tres conductores… | 757, 758 | 0 | 0.47 | **huecos** | 9×10 |
+| [ ] | `B.310.15(B)(2)(10)` | Ampacidades de tres conductores sencillos aislados, de 0 a 2000 volts… | 761 | 0 | 0.56 | **huecos** | 11×10 |
+| [ ] | `B.310.15(B)(2)(8)` | Ampacidades de dos o tres conductores aislados, de 0 a 2000 volts nomi… | 760 | 0 | 0.57 | **huecos** | 10×10 |
+| [ ] | `B.310.15(B)(2)(9)` | Ampacidades de tres ternas de conductores sencillos aislados, de 0 a 2… | 760, 761 | 0 | 0.57 | **huecos** | 10×10 |
+
+## 3 · Verificación de control (0)
+
+Salieron limpias y son muy usadas. Conviene mirarlas justamente por eso: una tabla equivocada que *parece* correcta es más peligrosa que una marcada como dudosa. Basta comprobar dos o tres renglones de cada una.
+
+Ninguna: ya están todas contrastadas contra el PDF.
+
+## 4 · Sin señales (9)
+
+Ninguna heurística las marcó —ni calidad baja, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
+
+| | Tabla | Título | Pág. PDF | Usos | Cal. | Rejilla | Tamaño |
+|---|---|---|---|---|---|---|---|
+| [ ] | `B.310.15(B)(2)(7)` | Ampacidades de tres conductores sencillos aislados, de 0 a 2000 volts… | 759, 760 | 0 | 0.95 | **huecos** | 27×20 |
+| [ ] | `B.310.15(B)(2)(11)` | Factores de ajuste para más de tres conductores portadores de corrient… | 761, 762 | 0 | 1.00 | dibujada | 6×2 |
+| [ ] | `B1.1` | LISTA DE NORMAS OFICIALES Y NORMAS MEXICANAS | 765, 766 | 1 | 1.00 | dibujada | 10×3 |
+| [ ] | `B1.2` | LISTADO DE NORMAS DE PRODUCTOS ELECTRICOS | 766, 767, 768, 769 | 1 | 0.94 | dibujada | 112×3 |
+| [ ] | `B2.1` | LISTADO DE NORMAS INTERNACIONALES | 769, 770 | 0 | 1.00 | dibujada | 21×3 |
+| [ ] | `B2.2` | LISTADO DE NORMAS EXTRANJERAS | 770, 771, 772, 773 | 0 | 0.94 | dibujada | 79×3 |
+| [ ] | `C-1` | Número máximo de conductores o alambres para artefactos en tubería met… | 773, 774, 775, 776, 777 | 0 | 1.00 | **huecos** | 168×12 |
+| [ ] | `C-1(a)` | Número máximo de conductores compactos en tubería metálica eléctrica (… | 777, 778 | 0 | 1.00 | **huecos** | 61×12 |
+| [ ] | `C-2` | Número máximo de conductores o alambres para artefactos en tuberías el… | 778, 779, 780 | 0 | 0.83 | dibujada | 144×9 |
 
 ## Cómo se corrige una tabla
 
@@ -69,35 +117,6 @@ Dos cosas que conviene saber antes de empezar:
 Cada tabla del sitio trae un enlace «¿Ves un error? Repórtalo» que abre un issue con
 el número y la página ya rellenados.
 
-## Lo que la revisión dejó anotado
+## Lo que falta
 
-Cuatro tablas traen valores mal impresos **en el PDF de origen**, no en la
-reconstrucción. Se comprobó con las coordenadas del texto y con el render de la
-página, y se dejaron tal como los imprime el DOF: corregirlos sería editar la norma,
-no transcribirla.
-
-- **505-9(d)(1)** — la columna de temperatura superficial máxima dice `≤4`, `≤3`,
-  `≤2`, `≤1`, `≤1`, `≤85`. Por las clases T1–T6 deberían ser 450, 300, 200, 135,
-  100 y 85 °C.
-- **922-12(a)(2)** — en la columna de flecha 2.5 m, las filas de 6 600 y 23 000 volts
-  dicen `96` y `105` donde el patrón pide `960` y `1 050` milímetros.
-- **220-42** — el último tramo de «Hoteles y moteles» dice `A partir de 1 00000`
-  donde debería decir `A partir de 100 000`. Aquí **los dígitos son los correctos**
-  (son seis: 1-0-0-0-0-0) y lo que está fuera de lugar es el separador de miles. Se
-  confirma por el renglón inmediato anterior, `De 20 001 a 100 000`: el tramo
-  siguiente arranca justo donde termina ése. En la capa de texto de la página 47 son
-  dos palabras, `1` en x≈335.1 y `00000` en x≈342.6, mientras el renglón de arriba
-  trae `100` en x≈338.9 y `000` en x≈356.4 — o sea que el espacio existe en el PDF y
-  no lo introdujo la extracción.
-- **430-250** — la fila de 10 hp dice `44` en la columna de 575 volts, donde debería
-  decir `11`. Este no es un truncamiento ni un separador fuera de lugar, sino un
-  dígito cambiado, y **rompe la monotonía de la columna**: 7½ hp da 9 A y 15 hp da
-  17 A, así que 10 hp no puede dar 44. El cociente con la columna de 460 V lo confirma
-  (14 × 460/575 = 11.2), igual que la NEC Table 430.250, que publica 11. Está en el
-  PDF, no en la transcripción: las coordenadas del texto ponen el `44` en x≈290,
-  exactamente donde caen el `9` de 7½ hp y el `17` de 15 hp.
-
-El PDF tampoco es un documento nativo: es una impresión de Chrome de
-`dof.gob.mx/normasOficiales/4951/SENER/SENER.html` hecha el 19/11/2019. De ese HTML
-las tablas saldrían como `<table><tr><td>` sin inferir nada, y sería la forma de
-verificar de raíz lo que aquí se contrastó a ojo.
+- Las tablas que siguen listadas arriba, secciones 1 a 4.

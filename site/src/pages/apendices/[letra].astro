@@ -1,0 +1,91 @@
+---
+import Base from '../../layouts/Base.astro';
+import Bloques from '../../components/Bloques.astro';
+import { apendices, tablas, rotuloTabla, tablaSlug, backlinks } from '../../lib/nom.js';
+
+export function getStaticPaths() {
+  return apendices.map((h) => ({ params: { letra: h.letra }, props: { h } }));
+}
+
+const { h } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const tabs = tablas.filter((t) => t.apendice === h.letra);
+const bl = backlinks(h.id);
+
+const i = apendices.findIndex((x) => x.letra === h.letra);
+const prev = i > 0 ? apendices[i - 1] : null;
+const next = i < apendices.length - 1 ? apendices[i + 1] : null;
+---
+
+<Base
+  title={`Apéndice ${h.letra} — NOM-001-SEDE-2012`}
+  desc={`Apéndice ${h.letra} de la NOM-001-SEDE-2012${h.titulo ? ': ' + h.titulo : ''}. ${tabs.length} tablas.`}
+>
+  <div class="wrap cols">
+    <aside class="side">
+      <h3>Apéndices</h3>
+      {apendices.map((x) => (
+        <a href={`${base}/apendices/${x.letra}/`} class={x.letra === h.letra ? 'on' : ''}>
+          <span class="mono">{x.letra}</span> {x.titulo || 'Listados de normas'}
+        </a>
+      ))}
+    </aside>
+
+    <main>
+      <div class="art-head">
+        <div class="crumb">
+          <a href={`${base}/apendices/`}>Apéndices de la norma</a>
+        </div>
+        <h1><span class="art-num">Apéndice {h.letra}</span>{h.titulo && <> — {h.titulo}</>}</h1>
+        <div class="meta">
+          {tabs.length} tabla{tabs.length === 1 ? '' : 's'} · página {h.page} del PDF
+        </div>
+      </div>
+
+      {/* La norma lo dice de sí mismo en su primer párrafo, pero ahí se lee
+          como una frase más. Es lo primero que un lector necesita saber de un
+          apéndice: que no puede invocarse como exigencia. */}
+      {h.informativo && (
+        <p class="tabla-info">
+          <b>No es parte de los requerimientos de la NOM.</b> La norma lo incluye
+          únicamente con propósitos informativos, así que no se puede invocar como
+          exigencia en una verificación.
+        </p>
+      )}
+
+      <section class="sec">
+        <Bloques hito={h} origen={`${base}/apendices/${h.letra}/`} />
+      </section>
+
+      {bl.length > 0 && (
+        <details class="backlinks">
+          <summary>Citado por {bl.length} {bl.length === 1 ? 'requisito' : 'requisitos'}</summary>
+          <ul>
+            {bl.map((b) => (
+              <li>
+                <a href={b.href} class="mono">{b.id}</a>
+                {b.titulo && <span> — {b.titulo}</span>}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+
+      <nav class="pager">
+        {prev && (
+          <a href={`${base}/apendices/${prev.letra}/`}>← <b class="mono">Apéndice {prev.letra}</b></a>
+        )}
+        {next && (
+          <a class="nx" href={`${base}/apendices/${next.letra}/`}><b class="mono">Apéndice {next.letra}</b> →</a>
+        )}
+      </nav>
+    </main>
+
+    <aside class="toc">
+      <h3>En este apéndice</h3>
+      {tabs.map((t) => (
+        <a href={`#${tablaSlug(t.id)}`}><span class="mono">{rotuloTabla(t)}</span></a>
+      ))}
+    </aside>
+  </div>
+</Base>
