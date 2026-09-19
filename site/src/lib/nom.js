@@ -99,6 +99,34 @@ export const figurasPorArticulo = (() => {
   return m;
 })();
 
+/**
+ * Forma canónica de una cita a una tabla o figura del Apéndice A.
+ *
+ * El DOF las escribe de ocho formas y todas son la misma: el separador puede
+ * ser punto o guion, el inciso puede ir en minúscula, puede colarse un espacio
+ * («B.310. 15») y en cuatro citas falta el «(B)». Encima son dos espacios de
+ * nombres: la tabla se titula con punto y el rótulo dibujado dentro del PNG de
+ * la figura usa guion. Es la misma función que `clave_apendice` en
+ * build_graph.py; si cambia una, cambia la otra.
+ */
+const claveApendice = (s) =>
+  String(s)
+    .replace(/\s+/g, '')
+    .toUpperCase()
+    .replace(/\u2011/g, '-')
+    .replace(/-/g, '.')
+    .replace(/^B\.310\.15\(2\)/, 'B.310.15(B)(2)');
+
+const apTablas = new Map(
+  tablas.filter((t) => t.id.startsWith('B.310')).map((t) => [claveApendice(t.id), t.id])
+);
+
+const apFiguras = new Map(
+  [...figuraPorId.keys()]
+    .filter((k) => k.toUpperCase().startsWith('B.310'))
+    .map((k) => [claveApendice(k), k])
+);
+
 /** Tablas que la norma imprime como imagen, por su número. */
 const tablaImagenIds = new Set(
   figuras.filter((f) => f.kind === 'tabla').flatMap((f) => (f.rotulos || []).map((r) => r.id))
@@ -196,6 +224,10 @@ export function hrefFor(id) {
     if (tb && tb.apendice) return `${BASE}/apendices/${tb.apendice}/#${tablaSlug(t)}`;
     return `${BASE}/tablas#${tablaSlug(t)}`;
   }
+  // Los hitos del cierre son destino desde que el cuerpo los cita: «véase el
+  // apéndice B» son 34 citas, y sin esta rama caían en la portada.
+  const hito = cierre.find((h) => h.id === id);
+  if (hito) return hrefCierre(hito);
   const art = articleOf(id);
   // los incisos viven dentro del ancla de su sección
   return art ? `${BASE}/art/${art}#${id.split('(')[0]}` : `${BASE}/`;
@@ -211,6 +243,8 @@ export function labelFor(id) {
     const [, num, letra] = id.split(':');
     return `Parte ${letra} · Art. ${num}`;
   }
+  const hito = cierre.find((h) => h.id === id);
+  if (hito) return rotuloCierre(hito);
   return id;
 }
 
@@ -230,6 +264,17 @@ const GUION = '[-\\u2011]';
 // "550-18" y el "(b)" caía fuera, al lado del enlace pero sin formar parte.
 const INCISOS = '(?:\\s*\\([a-z0-9]{1,3}\\))*';
 const SECCION = `\\d{3}${GUION}\\d{1,3}${INCISOS}`;
+
+// El número de una tabla o figura del Apéndice A, en cualquiera de las ocho
+// formas con que el DOF lo escribe. Ver `claveApendice`.
+const AP_NUM = 'B[.-]?\\s?310[.-]?\\s?15(?:\\s*\\([A-Za-z0-9]{1,3}\\))+';
+
+// Dos «Apéndice B» del cuerpo no son el Apéndice B de esta norma y se quedan
+// sin enlazar: las «ampacidades del Apéndice B» que cita 310-15(a)(3) están
+// en el Apéndice A --sus tablas se llaman B.310.15(B)(2)(x) porque vienen del
+// Anexo B del NEC-- y el «Apéndice B» del Título 8 es el de la
+// NOM-008-SCFI-2002. Misma lista que RE_AP_AJENA en build_graph.py.
+const AP_AJENA = /ampacidades del Apéndice B|Apéndice B y el apartado Signo decimal/g;
 
 // Una tabla suelta del Capítulo 10: "8", "11(a)", "12(B)". La norma no
 // siempre respeta su propia mayúscula al citarla: 240-4(g) cita "Tablas
@@ -251,6 +296,15 @@ const LINKER = new RegExp(
     // la SECCIÓN 551-46, que no es donde está la figura --la norma la imprime
     // en 551-47(a)--. Pasaba en 12 de las 51 citas a figuras.
     `Figuras?\\s+${SECCION}`,
+    // Las tablas y las figuras del Apéndice A. Tienen que ganarle a la
+    // referencia desnuda por la misma razón que la rama de figura: dentro de
+    // «B.310-15(b)(2)(11)» hay un «310-15» que es una sección de verdad, y
+    // ahí es donde acababa el lector.
+    `Tablas?\\s+${AP_NUM}`,
+    `Figuras?\\s+${AP_NUM}`,
+    // «véase el apéndice B» son 34 citas, y el «B2» de dos de ellas es la
+    // mitad del listado de normas extranjeras, no una tabla.
+    /[Aa]p\S*ndices?\s+[ABC]\d?(?![A-Za-z])/.source,
     /Art\S*culos?\s+\d{3}(?:\s*(?:,|y|o|ó|a)\s*\d{3})*/.source,
     /Cap\S*tulo\s+\d{1,2}/.source,
     `\\b${SECCION}`,
@@ -312,15 +366,52 @@ export function linkify(text) {
   if (!text) return '';
   let out = '';
   let last = 0;
+  // Los dos «Apéndice B» que no son de esta norma. Ver AP_AJENA.
+  const ajenas = [...String(text).matchAll(AP_AJENA)].map((m) => [
+    m.index,
+    m.index + m[0].length,
+  ]);
+  const ajena = (i) => ajenas.some(([a, b]) => a <= i && i < b);
   for (const m of String(text).matchAll(LINKER)) {
     const raw = m[0];
     const start = m.index;
     out += esc(String(text).slice(last, start));
     last = start + raw.length;
 
+    // --- Tabla o Figura del Apéndice A. Se resuelven por clave canónica:
+    //     la cita y el rótulo capturado casi nunca se escriben igual.
+    let mm = new RegExp(`^(Tabla|Figura)s?\\s+(${AP_NUM})`).exec(raw);
+    if (mm) {
+      const clave = claveApendice(mm[2]);
+      if (mm[1] === 'Tabla') {
+        const tid = apTablas.get(clave);
+        out += tid
+          ? `<a class="xref" href="${hrefFor('tabla:' + tid)}">${esc(raw)}</a>`
+          : esc(raw);
+        continue;
+      }
+      // La Figura B.310.15(B)(2)(1) no existe: el DOF no la imprime, aunque
+      // el texto la cite cuatro veces. Sin figura capturada no se inventa
+      // destino, igual que en la rama de figura del cuerpo.
+      const fid = apFiguras.get(clave);
+      const im = fid ? figuraPorId.get(fid) : null;
+      out += im
+        ? `<a class="xref" href="${hrefImagen(im.figura, im.ancla)}">${esc(raw)}</a>`
+        : esc(raw);
+      continue;
+    }
+    // --- Apéndice A, B o C
+    mm = /^[Aa]p\S*ndices?\s+([ABC])/.exec(raw);
+    if (mm) {
+      const hito = ajena(start) ? null : apendices.find((h) => h.letra === mm[1]);
+      out += hito
+        ? `<a class="xref" href="${hrefCierre(hito)}">${esc(raw)}</a>`
+        : esc(raw);
+      continue;
+    }
     // --- Tabla NNN-N(x)(y): se enlaza a la TABLA reconstruida, no a la
     //     sección del mismo número, que es un requisito distinto.
-    let mm = new RegExp(`^Tablas?\\s+(${SECCION})`).exec(raw);
+    mm = new RegExp(`^Tablas?\\s+(${SECCION})`).exec(raw);
     if (mm) {
       const tid = idDeCita(mm[1]);
       // de la cita más específica a la más general: "310-15(b)(16)" puede

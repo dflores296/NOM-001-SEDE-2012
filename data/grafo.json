@@ -1,8 +1,8 @@
 {
  "meta": {
-  "aristas": 4484,
-  "nodos_con_salida": 2923,
-  "nodos_con_entrada": 1849,
+  "aristas": 4529,
+  "nodos_con_salida": 2937,
+  "nodos_con_entrada": 1861,
   "referencias_rotas": 0
  },
  "edges": [
@@ -425,6 +425,11 @@
    "from": "210-6(d)(3)",
    "to": "422-14",
    "type": "seccion"
+  },
+  {
+   "from": "210-8",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "210-8",
@@ -3438,6 +3443,11 @@
   },
   {
    "from": "250-191",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "250-191",
    "to": "art:250",
    "type": "articulo"
   },
@@ -4160,6 +4170,16 @@
    "from": "310-15(b)(2)",
    "to": "tabla:310-15(b)(2)(b)",
    "type": "tabla"
+  },
+  {
+   "from": "310-15(b)(3)(a)",
+   "to": "tabla:B.310.15(B)(2)(11)",
+   "type": "tabla"
+  },
+  {
+   "from": "310-15(b)(3)(a)",
+   "to": "apendice-A",
+   "type": "apendice"
   },
   {
    "from": "310-15(b)(3)(a)",
@@ -7403,12 +7423,12 @@
   },
   {
    "from": "392-80(a)(1)c.",
-   "to": "310-15(c)",
-   "type": "seccion"
+   "to": "tabla:B.310.15(B)(2)(3)",
+   "type": "tabla"
   },
   {
    "from": "392-80(a)(1)c.",
-   "to": "310-15",
+   "to": "310-15(c)",
    "type": "seccion"
   },
   {
@@ -7698,6 +7718,16 @@
   },
   {
    "from": "400-5(a)",
+   "to": "tabla:B.310.15(B)(2)(11)",
+   "type": "tabla"
+  },
+  {
+   "from": "400-5(a)",
+   "to": "apendice-A",
+   "type": "apendice"
+  },
+  {
+   "from": "400-5(a)",
    "to": "tabla:400-5(a)(1)",
    "type": "tabla"
   },
@@ -7715,11 +7745,6 @@
    "from": "400-5(a)",
    "to": "tabla:400-5(a)(3)",
    "type": "tabla"
-  },
-  {
-   "from": "400-5(a)",
-   "to": "310-15",
-   "type": "seccion"
   },
   {
    "from": "400-5(a)",
@@ -11118,6 +11143,11 @@
   },
   {
    "from": "500-4(b)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "500-4(b)",
    "to": "cap:5",
    "type": "capitulo"
   },
@@ -11977,6 +12007,16 @@
    "type": "articulo"
   },
   {
+   "from": "505-4(a)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "505-4(b)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
    "from": "505-4(b)",
    "to": "cap:5",
    "type": "capitulo"
@@ -12290,6 +12330,11 @@
    "from": "506-2(2)",
    "to": "506-5",
    "type": "seccion"
+  },
+  {
+   "from": "506-4(b)",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "506-4(b)",
@@ -12813,6 +12858,11 @@
   },
   {
    "from": "515-16",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "515-16",
    "to": "501-30",
    "type": "seccion"
   },
@@ -12825,6 +12875,11 @@
    "from": "515-16",
    "to": "art:250",
    "type": "articulo"
+  },
+  {
+   "from": "516-1",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "516-3(c)(1)",
@@ -13068,6 +13123,11 @@
   },
   {
    "from": "517-30(b)(4)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "517-30(b)(4)",
    "to": "517-30",
    "type": "seccion"
   },
@@ -13182,6 +13242,16 @@
    "type": "seccion"
   },
   {
+   "from": "517-40(c)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "517-41(b)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
    "from": "517-41(b)",
    "to": "figura:517-41(a)",
    "type": "figura"
@@ -13255,6 +13325,11 @@
    "from": "517-60",
    "to": "517-20",
    "type": "seccion"
+  },
+  {
+   "from": "517-60(a)(1)",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "517-61(a)(1)",
@@ -13883,6 +13958,11 @@
   },
   {
    "from": "530-1",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "530-1",
    "to": "520-1",
    "type": "seccion"
   },
@@ -14443,6 +14523,11 @@
   },
   {
    "from": "551-46(c)(1)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "551-46(c)(1)",
    "to": "figura:551-46(c)",
    "type": "figura"
   },
@@ -14708,6 +14793,11 @@
   },
   {
    "from": "552-10(b)(2)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "552-10(b)(2)",
    "to": "tabla:310-104(a)",
    "type": "tabla"
   },
@@ -14715,6 +14805,11 @@
    "from": "552-10(c)(1)",
    "to": "art:364",
    "type": "articulo"
+  },
+  {
+   "from": "552-10(e)(2)",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "552-10(e)(3)",
@@ -15597,6 +15692,11 @@
    "type": "seccion"
   },
   {
+   "from": "620-11",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
    "from": "620-11(b)",
    "to": "tabla:400-4",
    "type": "tabla"
@@ -15697,6 +15797,16 @@
    "type": "seccion"
   },
   {
+   "from": "620-23(c)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "620-24(c)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
    "from": "620-25(a)",
    "to": "620-22",
    "type": "seccion"
@@ -15770,6 +15880,11 @@
    "from": "620-51",
    "to": "620-24",
    "type": "seccion"
+  },
+  {
+   "from": "620-51(a)",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "620-51(a)",
@@ -15880,6 +15995,11 @@
    "from": "620-91(c)",
    "to": "620-51",
    "type": "seccion"
+  },
+  {
+   "from": "625-1",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "625-2",
@@ -16027,6 +16147,16 @@
    "type": "seccion"
   },
   {
+   "from": "626-24(b)(1)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "626-24(b)(2)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
    "from": "626-24(b)(2)",
    "to": "626-24(b)(1)",
    "type": "seccion"
@@ -16052,9 +16182,24 @@
    "type": "seccion"
   },
   {
+   "from": "626-25(b)(4)a.",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "626-25(b)(4)b.",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
    "from": "626-25(b)(4)b.",
    "to": "626-24(b)(2)",
    "type": "seccion"
+  },
+  {
+   "from": "626-25(b)(5)",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "626-25(b)(5)",
@@ -16092,6 +16237,11 @@
    "type": "parte"
   },
   {
+   "from": "626-31(c)(2)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
    "from": "626-32",
    "to": "626-32(a)",
    "type": "seccion"
@@ -16105,6 +16255,11 @@
    "from": "626-32(c)",
    "to": "250-138(a)",
    "type": "seccion"
+  },
+  {
+   "from": "626-32(c)(2)",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "630-11(a)",
@@ -16223,6 +16378,11 @@
   },
   {
    "from": "640-3(j)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "640-3(j)",
    "to": "art:760",
    "type": "articulo"
   },
@@ -16328,6 +16488,11 @@
   },
   {
    "from": "640-9(b)",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "640-9(b)",
    "to": "art:725",
    "type": "articulo"
   },
@@ -16390,6 +16555,11 @@
    "from": "640-23(a)",
    "to": "cap:10",
    "type": "capitulo"
+  },
+  {
+   "from": "640-25",
+   "to": "apendice-B",
+   "type": "apendice"
   },
   {
    "from": "640-41",
@@ -21748,6 +21918,11 @@
   },
   {
    "from": "921-25",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "921-25",
    "to": "art:250",
    "type": "articulo"
   },
@@ -22363,6 +22538,11 @@
   },
   {
    "from": "capitulo-10",
+   "to": "apendice-C",
+   "type": "apendice"
+  },
+  {
+   "from": "capitulo-10",
    "to": "tabla:1",
    "type": "tabla"
   },
@@ -22408,6 +22588,11 @@
   },
   {
    "from": "titulo-8",
+   "to": "apendice-B",
+   "type": "apendice"
+  },
+  {
+   "from": "titulo-8",
    "to": "tabla:13",
    "type": "tabla"
   },
@@ -22415,6 +22600,46 @@
    "from": "titulo-8",
    "to": "tabla:21",
    "type": "tabla"
+  },
+  {
+   "from": "apendice-A",
+   "to": "tabla:B.310.15(B)(2)(1)",
+   "type": "tabla"
+  },
+  {
+   "from": "apendice-A",
+   "to": "tabla:B.310.15(B)(2)(11)",
+   "type": "tabla"
+  },
+  {
+   "from": "apendice-A",
+   "to": "tabla:B.310.15(B)(2)(6)",
+   "type": "tabla"
+  },
+  {
+   "from": "apendice-A",
+   "to": "tabla:B.310.15(B)(2)(5)",
+   "type": "tabla"
+  },
+  {
+   "from": "apendice-A",
+   "to": "figura:B.310-15(B)(2)(3)",
+   "type": "figura"
+  },
+  {
+   "from": "apendice-A",
+   "to": "figura:B.310-15(B)(2)(2)",
+   "type": "figura"
+  },
+  {
+   "from": "apendice-A",
+   "to": "figura:B.310-15(B)(2)(4)",
+   "type": "figura"
+  },
+  {
+   "from": "apendice-A",
+   "to": "figura:B.310-15(B)(2)(5)",
+   "type": "figura"
   },
   {
    "from": "apendice-A",
@@ -22627,7 +22852,8 @@
    "422-14"
   ],
   "210-8": [
-   "215-9"
+   "215-9",
+   "apendice-B"
   ],
   "210-8(a)(3)": [
    "426-28",
@@ -23999,6 +24225,7 @@
    "250-122"
   ],
   "250-191": [
+   "apendice-B",
    "art:250",
    "parte:250:C"
   ],
@@ -24270,12 +24497,14 @@
   "310-15(b)(3)(a)": [
    "300-3",
    "366-23(a)",
+   "apendice-A",
    "art:210",
    "art:215",
    "art:220",
    "art:230",
    "tabla:310-15",
-   "tabla:310-15(b)(3)(a)"
+   "tabla:310-15(b)(3)(a)",
+   "tabla:B.310.15(B)(2)(11)"
   ],
   "310-15(b)(3)(a)(1)": [
    "392-80"
@@ -25758,8 +25987,8 @@
    "310-15"
   ],
   "392-80(a)(1)c.": [
-   "310-15",
-   "310-15(c)"
+   "310-15(c)",
+   "tabla:B.310.15(B)(2)(3)"
   ],
   "392-80(a)(2)": [
    "310-15(a)(2)",
@@ -25896,11 +26125,12 @@
   ],
   "400-5(a)": [
    "250-140",
-   "310-15",
+   "apendice-A",
    "tabla:310-15(b)(2)(a)",
    "tabla:400-5(a)(1)",
    "tabla:400-5(a)(2)",
-   "tabla:400-5(a)(3)"
+   "tabla:400-5(a)(3)",
+   "tabla:B.310.15(B)(2)(11)"
   ],
   "400-5(c)": [
    "310-15(c)"
@@ -27481,6 +27711,7 @@
    "art:516"
   ],
   "500-4(b)": [
+   "apendice-B",
    "cap:5"
   ],
   "500-7(i)": [
@@ -27892,7 +28123,11 @@
   "505-3": [
    "art:504"
   ],
+  "505-4(a)": [
+   "apendice-B"
+  ],
   "505-4(b)": [
+   "apendice-B",
    "cap:5"
   ],
   "505-5(a)": [
@@ -28050,6 +28285,7 @@
    "506-5"
   ],
   "506-4(b)": [
+   "apendice-B",
    "cap:5"
   ],
   "506-6": [
@@ -28284,7 +28520,11 @@
   "515-16": [
    "501-30",
    "505-25",
+   "apendice-B",
    "art:250"
+  ],
+  "516-1": [
+   "apendice-B"
   ],
   "516-3(c)(1)": [
    "figura:516-3(c)(1)"
@@ -28403,7 +28643,8 @@
    "517-33"
   ],
   "517-30(b)(4)": [
-   "517-30"
+   "517-30",
+   "apendice-B"
   ],
   "517-30(b)(5)": [
    "517-32",
@@ -28455,7 +28696,11 @@
    "517-30",
    "517-35"
   ],
+  "517-40(c)": [
+   "apendice-B"
+  ],
   "517-41(b)": [
+   "apendice-B",
    "figura:517-41(a)",
    "figura:517-41(b)"
   ],
@@ -28487,6 +28732,9 @@
   ],
   "517-60": [
    "517-20"
+  ],
+  "517-60(a)(1)": [
+   "apendice-B"
   ],
   "517-61(a)(1)": [
    "517-160",
@@ -28776,7 +29024,8 @@
    "590-4(d)"
   ],
   "530-1": [
-   "520-1"
+   "520-1",
+   "apendice-B"
   ],
   "530-11": [
    "art:640",
@@ -29061,6 +29310,7 @@
   ],
   "551-46(c)(1)": [
    "551-42(a)",
+   "apendice-B",
    "figura:551-46(c)"
   ],
   "551-46(c)(2)": [
@@ -29177,10 +29427,14 @@
    "552-2"
   ],
   "552-10(b)(2)": [
+   "apendice-B",
    "tabla:310-104(a)"
   ],
   "552-10(c)(1)": [
    "art:364"
+  ],
+  "552-10(e)(2)": [
+   "apendice-B"
   ],
   "552-10(e)(3)": [
    "430-32(b)"
@@ -29608,6 +29862,9 @@
   "620-5(a)": [
    "110-26(a)"
   ],
+  "620-11": [
+   "apendice-B"
+  ],
   "620-11(b)": [
    "tabla:400-4"
   ],
@@ -29654,6 +29911,12 @@
   "620-21(c)(1)": [
    "356-2(2)"
   ],
+  "620-23(c)": [
+   "apendice-B"
+  ],
+  "620-24(c)": [
+   "apendice-B"
+  ],
   "620-25(a)": [
    "620-1",
    "620-22",
@@ -29686,7 +29949,8 @@
   "620-51(a)": [
    "422-16(a)",
    "430-109(c)",
-   "620-51(c)(4)"
+   "620-51(c)(4)",
+   "apendice-B"
   ],
   "620-51(c)(1)": [
    "620-51(a)",
@@ -29736,6 +30000,9 @@
   ],
   "620-91(c)": [
    "620-51"
+  ],
+  "625-1": [
+   "apendice-B"
   ],
   "625-2": [
    "625-26"
@@ -29804,8 +30071,12 @@
   "626-11(c)": [
    "626-11(a)"
   ],
+  "626-24(b)(1)": [
+   "apendice-B"
+  ],
   "626-24(b)(2)": [
-   "626-24(b)(1)"
+   "626-24(b)(1)",
+   "apendice-B"
   ],
   "626-24(d)": [
    "626-24"
@@ -29819,11 +30090,16 @@
   "626-25(b)(4)": [
    "250-138(a)"
   ],
+  "626-25(b)(4)a.": [
+   "apendice-B"
+  ],
   "626-25(b)(4)b.": [
-   "626-24(b)(2)"
+   "626-24(b)(2)",
+   "apendice-B"
   ],
   "626-25(b)(5)": [
-   "626-25(a)(2)"
+   "626-25(a)(2)",
+   "apendice-B"
   ],
   "626-26": [
    "626-27"
@@ -29839,6 +30115,9 @@
    "art:626",
    "parte:626:C"
   ],
+  "626-31(c)(2)": [
+   "apendice-B"
+  ],
   "626-32": [
    "626-32(a)"
   ],
@@ -29847,6 +30126,9 @@
   ],
   "626-32(c)": [
    "250-138(a)"
+  ],
+  "626-32(c)(2)": [
+   "apendice-B"
   ],
   "630-11(a)": [
    "tabla:630-11(a)"
@@ -29908,6 +30190,7 @@
    "art:680"
   ],
   "640-3(j)": [
+   "apendice-B",
    "art:760"
   ],
   "640-3(k)": [
@@ -29951,6 +30234,7 @@
    "art:725"
   ],
   "640-9(b)": [
+   "apendice-B",
    "art:480",
    "art:725"
   ],
@@ -29976,6 +30260,9 @@
   "640-23(a)": [
    "cap:10",
    "tabla:1"
+  ],
+  "640-25": [
+   "apendice-B"
   ],
   "640-41": [
    "400-10",
@@ -32429,6 +32716,7 @@
    "921-10"
   ],
   "921-25": [
+   "apendice-B",
    "art:250"
   ],
   "921-25(c)": [
@@ -32739,6 +33027,7 @@
   ],
   "capitulo-10": [
    "310-15(b)(3)",
+   "apendice-C",
    "cap:10",
    "tabla:1",
    "tabla:11(A)",
@@ -32749,11 +33038,20 @@
    "tabla:8"
   ],
   "titulo-8": [
+   "apendice-B",
    "tabla:13",
    "tabla:21"
   ],
   "apendice-A": [
-   "310-60"
+   "310-60",
+   "figura:B.310-15(B)(2)(2)",
+   "figura:B.310-15(B)(2)(3)",
+   "figura:B.310-15(B)(2)(4)",
+   "figura:B.310-15(B)(2)(5)",
+   "tabla:B.310.15(B)(2)(1)",
+   "tabla:B.310.15(B)(2)(11)",
+   "tabla:B.310.15(B)(2)(5)",
+   "tabla:B.310.15(B)(2)(6)"
   ],
   "apendice-B": [
    "505-5"
@@ -32817,7 +33115,6 @@
    "392-80(a)(2)d.",
    "394-23",
    "398-17",
-   "400-5(a)",
    "400-5(c)",
    "402-5",
    "430-6",
@@ -33366,6 +33663,41 @@
   ],
   "422-14": [
    "210-6(d)(3)"
+  ],
+  "apendice-B": [
+   "210-8",
+   "250-191",
+   "500-4(b)",
+   "505-4(a)",
+   "505-4(b)",
+   "506-4(b)",
+   "515-16",
+   "516-1",
+   "517-30(b)(4)",
+   "517-40(c)",
+   "517-41(b)",
+   "517-60(a)(1)",
+   "530-1",
+   "551-46(c)(1)",
+   "552-10(b)(2)",
+   "552-10(e)(2)",
+   "620-11",
+   "620-23(c)",
+   "620-24(c)",
+   "620-51(a)",
+   "625-1",
+   "626-24(b)(1)",
+   "626-24(b)(2)",
+   "626-25(b)(4)a.",
+   "626-25(b)(4)b.",
+   "626-25(b)(5)",
+   "626-31(c)(2)",
+   "626-32(c)(2)",
+   "640-25",
+   "640-3(j)",
+   "640-9(b)",
+   "921-25",
+   "titulo-8"
   ],
   "215-9": [
    "210-8"
@@ -35699,6 +36031,15 @@
   "tabla:310-15(b)(2)(b)": [
    "310-15(b)(2)"
   ],
+  "tabla:B.310.15(B)(2)(11)": [
+   "310-15(b)(3)(a)",
+   "400-5(a)",
+   "apendice-A"
+  ],
+  "apendice-A": [
+   "310-15(b)(3)(a)",
+   "400-5(a)"
+  ],
   "tabla:310-15(b)(3)(a)": [
    "310-15(b)(3)(a)",
    "334-80"
@@ -36644,6 +36985,9 @@
   ],
   "tabla:392-60(a)": [
    "392-60(b)(2)"
+  ],
+  "tabla:B.310.15(B)(2)(3)": [
+   "392-80(a)(1)c."
   ],
   "394-23": [
    "394-10"
@@ -39793,6 +40137,9 @@
   "924-8": [
    "924-19(b)"
   ],
+  "apendice-C": [
+   "capitulo-10"
+  ],
   "tabla:4": [
    "capitulo-10"
   ],
@@ -39816,12 +40163,33 @@
   ],
   "tabla:21": [
    "titulo-8"
+  ],
+  "tabla:B.310.15(B)(2)(1)": [
+   "apendice-A"
+  ],
+  "tabla:B.310.15(B)(2)(6)": [
+   "apendice-A"
+  ],
+  "tabla:B.310.15(B)(2)(5)": [
+   "apendice-A"
+  ],
+  "figura:B.310-15(B)(2)(3)": [
+   "apendice-A"
+  ],
+  "figura:B.310-15(B)(2)(2)": [
+   "apendice-A"
+  ],
+  "figura:B.310-15(B)(2)(4)": [
+   "apendice-A"
+  ],
+  "figura:B.310-15(B)(2)(5)": [
+   "apendice-A"
   ]
  },
  "mas_citados": [
   {
    "id": "310-15",
-   "citas": 76,
+   "citas": 75,
    "titulo": "Ampacidad para conductores con tensión de 0-2000 volts",
    "articulo": 310
   },
@@ -39860,6 +40228,12 @@
    "citas": 37,
    "titulo": "Alambrado en ductos no utilizados para manejo de aire, ductos construidos para ventilación ambiental y otros",
    "articulo": 300
+  },
+  {
+   "id": "apendice-B",
+   "citas": 33,
+   "titulo": "Apéndice B",
+   "articulo": null
   },
   {
    "id": "250-122",
@@ -39992,12 +40366,6 @@
    "citas": 19,
    "titulo": "Sistemas de alarma contra incendios",
    "articulo": 760
-  },
-  {
-   "id": "300-6",
-   "citas": 18,
-   "titulo": "Protección contra la corrosión y el deterioro",
-   "articulo": 300
   }
  ],
  "rotas": [],

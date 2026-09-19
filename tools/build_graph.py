@@ -43,6 +43,51 @@ RE_TBL_REF = re.compile(
     r'Tabla\s+(\d{3}-\d{1,3}(?:\s*\.?\s*\([a-z0-9]{1,3}\))*'
     r'|\d{1,2}[A-Z]?(?:\([A-Z]\))?(?![\d-]))')
 
+# --- Apéndice A: sus tablas y figuras no se citan como las demás
+#
+# El cuerpo las nombra de ocho formas distintas y todas son la misma cosa: el
+# separador puede ser punto o guion («B.310.15», «B.310-15», «B-310-15»), el
+# inciso puede ir en minúscula, puede colarse un espacio («B.310. 15») y en
+# cuatro citas el DOF se come el «(B)» y escribe «B.310.15(2)(11)».
+#
+# Encima son dos espacios de nombres: el título de la tabla usa el punto y el
+# rótulo que la figura lleva DIBUJADO dentro del PNG usa el guion. Una clave
+# canónica reduce las ocho formas y los dos espacios de nombres a lo mismo, y
+# se escribe una sola vez aquí y otra en linkify.
+AP_NUM = r'B[.\-]?\s?310[.\-]?\s?15(?:\s*\([A-Za-z0-9]{1,3}\))+'
+RE_AP_TBL = re.compile(r'Tablas?\s+(' + AP_NUM + r')')
+RE_AP_FIG = re.compile(r'Figuras?\s+(' + AP_NUM + r')')
+# «Apéndice B», «apéndices B», «Apéndice B2». El B2 es la mitad del listado de
+# normas extranjeras, no una tabla: el destino es el apéndice.
+RE_AP_HITO = re.compile(r'[Aa]p[eé]ndices?\s+([ABC])\d?(?![A-Za-z])')
+
+# Dos «Apéndice B» del cuerpo NO son el Apéndice B de esta norma, y se
+# reconocen por lo que los rodea, no por la cita. Van con su frase entera
+# porque enlazarlos mandaría al lector al sitio equivocado con toda confianza:
+#
+# - 310-15(a)(3) dice «las Tablas de ampacidad del Artículo 310 y las
+#   ampacidades del Apéndice B». Las ampacidades de este documento están en el
+#   Apéndice A: se llaman «B.310.15(B)(2)(x)» y su prosa empieza «B.
+#   Información de aplicación para los cálculos de la ampacidad» porque vienen
+#   del Anexo B del NEC. Dos NOTAS del mismo artículo lo citan bien —«Véase el
+#   apéndice A, Tabla B.310-15(b)(2)(11)»—, así que el apéndice que toca está
+#   claro; lo que no está claro es que el DOF quisiera decir eso aquí.
+# - El Título 8 cita «el último párrafo del Apéndice B y el apartado Signo
+#   decimal de la Tabla 21 de la NOM-008-SCFI-2002». Ese apéndice es de OTRA
+#   norma.
+RE_AP_AJENA = re.compile(
+    r'ampacidades del Apéndice B'
+    r'|Apéndice B y el apartado Signo decimal')
+
+
+def clave_apendice(s):
+    """Forma canónica de una cita del Apéndice A."""
+    s = re.sub(r'\s+', '', s).upper().replace('\u2011', '-').replace('-', '.')
+    if s.startswith('B.310.15(2)'):
+        s = 'B.310.15(B)' + s[len('B.310.15'):]
+    return s
+
+
 # El DOF numera mal el título de una tabla y la deja inalcanzable desde el texto
 # que la cita. Es el mismo defecto que escondía la 408-56 y la 685-3, solo que
 # aquí el título sí se detecta: lo que no cuadra es el número.
@@ -192,7 +237,21 @@ def main():
                     for r in f.get('rotulos', []):
                         if r['id'] not in figura_ids:
                             figura_ids.append(r['id'])
+    # Las cuatro del Apéndice A no cuelgan de ningún inciso: viven en los
+    # bloques del cierre, y sin esto sus 12 citas se daban por rotas.
+    for h in corpus.get('cierre', []):
+        for b in h['bloques']:
+            for r in b.get('rotulos', []):
+                if r['id'] not in figura_ids:
+                    figura_ids.append(r['id'])
     figura_ids = set(figura_ids)
+
+    # Las tablas y las figuras del Apéndice A, por su clave canónica.
+    tabs = json.load(open(os.path.join(out, 'tablas.json')))
+    ap_tablas = {clave_apendice(t['id']): t['id'] for t in tabs
+                 if t['id'].startswith('B.310')}
+    ap_figuras = {clave_apendice(f): f for f in figura_ids
+                  if f.upper().startswith('B.310')}
 
     def resolver_figura(fid):
         """De la cita más específica a la más general, como en el sitio.
@@ -223,6 +282,31 @@ def main():
                 for h in corpus.get('cierre', [])]
 
     for src, txt in fuentes:
+
+        # --- Apéndice A y sus tablas y figuras. Va primero porque sus citas
+        #     llevan dentro un número que parece de sección y no lo es:
+        #     «Tabla B.310-15(b)(2)(11)» mandaba el backlink a la SECCIÓN
+        #     310-15, que es otra cosa. El tramo citado se marca como
+        #     consumido para que el buscador de secciones lo salte.
+        consumido = []
+        for m in RE_AP_TBL.finditer(txt):
+            consumido.append(m.span())
+            tid = ap_tablas.get(clave_apendice(m.group(1)))
+            if tid:
+                add(src, 'tabla:' + tid, 'tabla')
+        for m in RE_AP_FIG.finditer(txt):
+            consumido.append(m.span())
+            # La Figura B.310.15(B)(2)(1) no existe: el DOF no la imprime (ver
+            # HUECOS_DEL_DOF en check_corpus). Sus cuatro citas se quedan sin
+            # enlace antes que apuntar a otra figura.
+            fid = ap_figuras.get(clave_apendice(m.group(1)))
+            if fid:
+                add(src, 'figura:' + fid, 'figura')
+        ajenas = [m.span() for m in RE_AP_AJENA.finditer(txt)]
+        for m in RE_AP_HITO.finditer(txt):
+            if any(a <= m.start() < b for a, b in ajenas):
+                continue
+            add(src, 'apendice-%s' % m.group(1), 'apendice')
 
         # --- Figuras (antes que las tablas y las secciones: una
         #     figura tiene número de sección y no es una sección)
@@ -256,6 +340,8 @@ def main():
         for m in RE_SEC_REF.finditer(txt):
             num, sec, sub = int(m.group(1)), m.group(2), m.group(3)
             if num not in art_nums:
+                continue
+            if any(a <= m.start() < b for a, b in consumido):
                 continue
             full = '%d-%s%s' % (num, sec, sub)
             if full in tablas or ('%d-%s' % (num, sec)) in tablas:
