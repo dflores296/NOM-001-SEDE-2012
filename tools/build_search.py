@@ -13,6 +13,13 @@ Se indexa a nivel de SECCIÓN y no de inciso a propósito: 2 900 documentos
 caben holgadamente en memoria y buscar "GFCI" debe llevar a 210-8 completo,
 no a siete fragmentos sueltos del mismo requisito.
 
+Las figuras se indexan con `kind: "fig"`, una por NÚMERO de figura y no por
+imagen (el PDF imprime la 516-3(c)(1) y la (c)(2) en un solo dibujo). Antes no
+existían en la búsqueda: buscar "autotransformador" no llevaba a la Figura
+450-4 aunque sea justo lo que dibuja. Con ellas entra su texto transcrito, que
+es la única forma de encontrar lo que la norma publica dentro de un mapa de
+bits --la Excepción de 922-12(a)(2), por ejemplo--.
+
 Las 225 tablas se indexan aparte, con `kind: "tabla"`: antes no aparecían en
 absoluto en la búsqueda —"ampacidad conductores cobre" no encontraba la
 310-15(b)(16) aunque sea la tabla más citada de la norma—, porque
@@ -107,6 +114,34 @@ def main():
             'text': flat_text_tabla(t),
         })
 
+    # Una figura por cada número que lleva impreso, no por imagen: quien busca
+    # la 516-3(c)(2) no tiene por qué saber que comparte dibujo con la (c)(1).
+    # Una fórmula no tiene número y entra por el inciso donde se imprime.
+    figs = [(a['num'], n['id'], f)
+            for a in corpus['articles'] for s_ in a['sections']
+            for n in walk(s_) for f in n.get('figures', [])]
+    n_figs = 0
+    for art, nodo, f in figs:
+        comun = {
+            'kind': 'fig',
+            'art': art,
+            'artTitle': titulo_articulo.get(art, ''),
+        }
+        cuerpo = list(f.get('transcripcion') or [])
+        if f.get('nota'):
+            cuerpo.append(f['nota'])
+        for r in f.get('rotulos') or []:
+            docs.append(dict(comun, id='figura:' + r['ancla'], ancla=r['ancla'],
+                             fid=r['rotulo'], num=r['id'], title=r['titulo'] or '',
+                             text=' '.join([r['titulo'] or ''] + cuerpo).strip()))
+            n_figs += 1
+        if not f.get('rotulos'):
+            docs.append(dict(comun, id='figura:' + f['ancla'], ancla=f['ancla'],
+                             fid='Fórmula de %s' % nodo, num=nodo,
+                             title=f.get('titulo') or '',
+                             text=' '.join([f.get('titulo') or ''] + cuerpo).strip()))
+            n_figs += 1
+
     # MiniSearch usa el campo `id` como clave del documento. Los ids de
     # sección, los términos del glosario y las tablas (con su prefijo
     # `tabla:`) ya son únicos entre sí; se verifica porque un duplicado
@@ -120,7 +155,8 @@ def main():
     out = os.path.join(dst, 'search.json')
     json.dump(docs, open(out, 'w'), ensure_ascii=False, separators=(',', ':'))
     size = os.path.getsize(out)
-    print('Documentos indexables: %d (%d tablas)' % (len(docs), len(tablas)))
+    print('Documentos indexables: %d (%d tablas, %d figuras)'
+          % (len(docs), len(tablas), n_figs))
     print('search.json          : %.1f KB' % (size / 1024))
 
 

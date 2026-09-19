@@ -35,7 +35,7 @@ def tabla(val, grafo):
         ('Incisos', miles(val['incisos'])),
         ('Notas / Excepciones', f"{miles(val['notas'])} / {miles(val['excepciones'])}"),
         ('Definiciones', miles(val['definiciones'])),
-        ('Figuras', miles(val['figuras'])),
+        ('Figuras / Fórmulas', f"{miles(val['figuras'])} / {miles(val['formulas'])}"),
         ('Tablas', miles(len(grafo['uso_tablas']))),
         ('Referencias enlazadas', miles(len(grafo['edges']))),
         ('Referencias rotas', miles(len(grafo['rotas']))),

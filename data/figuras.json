@@ -1,0 +1,674 @@
+{
+ "fig-87.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "210-52(c)(1)",
+    "titulo": "Determinación del espacio de pared de la cubierta."
+   }
+  ],
+  "sha": "9f84a0aa439d3f02"
+ },
+ "fig-96.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "220-1",
+    "titulo": "Métodos de cálculo para circuitos derivados, alimentadores y acometidas"
+   }
+  ],
+  "sha": "e8ae2bc053a7455a"
+ },
+ "fig-131.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "230-1",
+    "titulo": "Acometidas"
+   }
+  ],
+  "sha": "c7e051715528ce9e"
+ },
+ "fig-174.png": {
+  "kind": "tabla",
+  "rotulos": [
+   {
+    "id": "240-92(b)",
+    "titulo": "Corriente nominal de cortocircuito de conductores de derivación"
+   }
+  ],
+  "nota": "La norma la imprime como imagen, no como rejilla, y por eso no está entre las 226 tablas reconstruidas. Su contenido va transcrito.",
+  "transcripcion": [
+   "Se considera que los conductores de derivación están protegidos bajo condiciones de cortocircuito cuando no se excede su límite de temperatura de cortocircuito. El calentamiento del conductor en condiciones de cortocircuito está determinado por (1) o (2):",
+   "(1) Fórmula de cortocircuito para conductores de cobre: (I²/A²) t = 0.0297 log₁₀ [(T₂ + 234) / (T₁ + 234)]",
+   "(2) Fórmula de cortocircuito para conductores de aluminio: (I²/A²) t = 0.0125 log₁₀ [(T₂ + 228) / (T₁ + 228)]",
+   "Donde:",
+   "I = corriente de cortocircuito en amperes",
+   "A = área del conductor en circular mil",
+   "t = tiempo del cortocircuito en segundos (para tiempos iguales o menores a 10 segundos)",
+   "T₁ = temperatura inicial del conductor en grados Celsius",
+   "T₂ = temperatura final del conductor en grados Celsius",
+   "Conductor de cobre con aislamiento de papel, hule, tela barnizada, T₂ = 200",
+   "Conductor de cobre con aislamiento termoplástico, T₂ = 150",
+   "Conductor de cobre con aislamiento de polietileno de cadena cruzada, T₂ = 250",
+   "Conductor de cobre con aislamiento de hule propileno etileno, T₂ = 250",
+   "Conductor de aluminio con aislamiento de papel, hule, tela barnizada, T₂ = 200",
+   "Conductor de aluminio con aislamiento de polietileno de cadena cruzada, T₂ = 250",
+   "Conductor de aluminio con aislamiento de hule propileno etileno, T₂ = 250"
+  ],
+  "sha": "183aacec3e5ebab4"
+ },
+ "fig-179.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "250-1",
+    "titulo": "Puesta a tierra y unión"
+   }
+  ],
+  "sha": "9d85f93232e69ba8"
+ },
+ "fig-229.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "250-126",
+    "titulo": ""
+   }
+  ],
+  "nota": "La norma la imprime sin título; la NOTA que la sigue en el cuerpo la describe.",
+  "sha": "8babdc8af4222999"
+ },
+ "fig-282.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Ampacidad corregida por temperatura ambiente",
+  "transcripcion": [
+   "I' = I √[ (Tc − T'a) / (Tc − Ta) ]",
+   "Donde:",
+   "I' = Ampacidad corregida por temperatura ambiente",
+   "I = Ampacidad en tablas",
+   "Tc = Temperatura del conductor (°C)",
+   "T'a = Temperatura ambiente nueva (°C)",
+   "Ta = Temperatura ambiente usadas en tablas (°C)"
+  ],
+  "sha": "e5f9c4566bcf2c95"
+ },
+ "fig-289.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Ampacidad calculada bajo supervisión de ingeniería",
+  "transcripcion": [
+   "I = √[ (Tc − Ta) / (Rcc (1 + Yc) Rca) ] × 10³ amperes",
+   "Donde:",
+   "Tc = Temperatura del conductor (°C)",
+   "Ta = Temperatura ambiente (°C)",
+   "Rcc = Resistencia de corriente continua del conductor a la temperatura Tc",
+   "Yc = Componente de la resistencia de corriente alterna debida al efecto superficial y efecto de proximidad",
+   "Rca = Resistencia térmica efectiva entre el conductor y el medio ambiente que lo rodea"
+  ],
+  "sha": "f84c3f1b495ddda7"
+ },
+ "fig-298.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Ampacidad corregida por temperatura ambiente y por supervisión de ingeniería",
+  "nota": "Además de las dos ecuaciones, la imagen contiene el inciso d) Supervisión de Ingeniería completo: es texto normativo que en el PDF no existe como texto.",
+  "transcripcion": [
+   "I' = I √[ (Tc − T'a) / (Tc − Ta) ]",
+   "Donde:",
+   "I' = Ampacidad corregida por temperatura ambiente",
+   "I = Ampacidad en tablas para Tc y Ta",
+   "Tc = Temperatura del conductor (°C)",
+   "T'a = Temperatura ambiente nueva (°C)",
+   "Ta = Temperatura ambiente usadas en la tabla (°C)",
+   "d) Supervisión de Ingeniería. Bajo la supervisión de ingeniería, se permitirá calcular la ampacidad de los conductores usando la siguiente ecuación general:",
+   "I = √[ (Tc − (Ta + ΔTd)) / (Rcc (1 + Yc) Rca) ] × 10³ amperes",
+   "Donde:",
+   "Tc = Temperatura del conductor (°C)",
+   "Ta = Temperatura ambiente (°C)",
+   "ΔTd = Incremento de la temperatura por pérdidas dieléctricas",
+   "Rcc = Resistencia de corriente continua del conductor a la temperatura Tc",
+   "Yc = Componente de la resistencia de corriente alterna debida al efecto superficial y efecto de proximidad",
+   "Rca = Resistencia térmica efectiva entre el conductor y el ambiente que lo rodea"
+  ],
+  "sha": "ec1d3796363cc930"
+ },
+ "fig-301.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "310-60",
+    "titulo": "Dimensiones de instalación de cables para uso con las Tablas 310-60c)(77) a 310-60c)(86)."
+   }
+  ],
+  "sha": "86a9e70b792171e2"
+ },
+ "fig-535.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "406-10(b)(4)",
+    "titulo": ""
+   }
+  ],
+  "nota": "La norma la imprime sin título; la NOTA que la sigue en el cuerpo la describe.",
+  "sha": "99c15e5d14fcff09"
+ },
+ "fig-550.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "410-2",
+    "titulo": "Espacio de almacenamiento del armario."
+   }
+  ],
+  "sha": "fa3f403dacf71f73"
+ },
+ "fig-615.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "430-1",
+    "titulo": "Contenido del Artículo 430."
+   }
+  ],
+  "sha": "55d6da1c4f4da5bd"
+ },
+ "fig-694.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "450-4",
+    "titulo": "Autotransformador"
+   }
+  ],
+  "sha": "b0114d7d47c54140"
+ },
+ "fig-786.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Temperatura superficial de un equipo intrínsecamente seguro",
+  "transcripcion": [
+   "T = P₀ R_t + T_amb"
+  ],
+  "sha": "dfcc0bbac1744b45"
+ },
+ "fig-803.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "505-9(c)(2)",
+    "titulo": "Marcado del equipo de zona"
+   }
+  ],
+  "transcripcion": [
+   "Clase 1 Zona 0  AEX  ia  IIC  T6",
+   "Clasificación de área: Clase 1 Zona 0",
+   "Símbolo para equipo construido bajo norma: AEX",
+   "Designación de tipo de protección: ia",
+   "Grupo de clasificación de gas (no se requiere para técnicas de protección indicadas en 505-6, Nota 2): IIC",
+   "Clasificación de temperatura: T6"
+  ],
+  "sha": "b42a938edb91daf0"
+ },
+ "fig-852.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "514-3",
+    "titulo": "Diagrama de áreas peligrosas (clasificadas) adyacentes a los surtidores de gas natural y gas L.P. (dispensarios) como se detalla en la tabla 514-3(b)(1)"
+   }
+  ],
+  "sha": "e0c911eec8d4aa6b"
+ },
+ "fig-861.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "515-3",
+    "titulo": "Terminal marítima para manipulación de líquidos inflamables."
+   }
+  ],
+  "sha": "0ddebef021553707"
+ },
+ "fig-868.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "516-3(c)(1)",
+    "titulo": "Clasificación eléctrica de las áreas para rociado abierto."
+   },
+   {
+    "id": "516-3(c)(2)",
+    "titulo": "Areas Clase I, División 2; Clase I, Zona 2 o Clase II, División 2 adyacentes a un recinto o una cabina del rociado cerrados por arriba, abiertos por la cara o abiertos por el frente"
+   }
+  ],
+  "sha": "51ba74f1049875b4"
+ },
+ "fig-871.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "516-3(c)(4)",
+    "titulo": "Areas Clase I, División 2; Clase I, Zona 2 o Clase II, División 2 adyacentes a un recinto o una cabina de rociado encerrados"
+   },
+   {
+    "id": "516-3(c)(5)",
+    "titulo": "Clasificación eléctrica de las áreas para procesos abiertos sin contención de vapor ni ventilación"
+   }
+  ],
+  "sha": "980c535836fee24d"
+ },
+ "fig-900.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "517-30(a)",
+    "titulo": "Requisito mínimo de tres desconectadores de transferencia automáticos para hospitales y establecimientos para la atención médica de pacientes ambulatorios, con una demanda máxima superior a 150 kilovoltamperes de la carga conectada a los dos sistemas el de emergencia y el de equipos"
+   },
+   {
+    "id": "517-30(b)",
+    "titulo": "Requisito mínimo de un desconectador de transferencia para hospitales y establecimientos para la atención médica de pacientes ambulatorios, con una demanda máxima de hasta 150 kilovoltamperes de la carga conectada al sistema eléctrico esencial"
+   }
+  ],
+  "sha": "62e88a50cfb8e618"
+ },
+ "fig-911.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "517-41(a)",
+    "titulo": "Arreglo de dos desconectadores de transferencia para áreas de atención limitada."
+   }
+  ],
+  "sha": "fe1b30a0faf02911"
+ },
+ "fig-914.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "517-41(b)",
+    "titulo": "Arreglo de un desconectador de transferencia para áreas de atención limitada."
+   }
+  ],
+  "sha": "36185820d938063e"
+ },
+ "fig-980.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "550-10(c)",
+    "titulo": "Configuraciones de contacto y clavija de 220Y/127 volts, 50 amperes, 3 fases, 4 hilos, con conductor puesto a tierra, para uso con cordones de alimentación en casas móviles y sus estacionamientos."
+   }
+  ],
+  "sha": "b382ea657ef24ab8"
+ },
+ "fig-985.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Número de circuitos derivados de 15 A (ó 20 A) para el alumbrado general",
+  "transcripcion": [
+   "(33 × longitud × ancho) / (120 × 15 (ó 20)) = No. de circuitos de 15 A (ó 20 A)"
+  ],
+  "sha": "deb05709977cdc91"
+ },
+ "fig-996.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Ejemplo de cálculo de la carga por fase de una casa móvil",
+  "sha": "ca8e478ed544f6a4"
+ },
+ "fig-1013.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "551-46(c)",
+    "titulo": "Configuraciones para contactos y clavijas de conexión del tipo puesta a tierra utilizadas con los cordones de alimentación de los vehículos de recreo y sus estacionamientos"
+   }
+  ],
+  "sha": "de5895315c710887"
+ },
+ "fig-1036.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "552-44(c)",
+    "titulo": "Configuraciones para contactos y clavijas del tipo con puesta a tierra"
+   }
+  ],
+  "sha": "85dc9f2ae237bab9"
+ },
+ "fig-1039.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Número de circuitos derivados de 15 A (ó 20 A) para el alumbrado general",
+  "transcripcion": [
+   "(33 × longitud × ancho) / (120 × 15 (ó 20)) = No. de circuitos de 15 A (ó 20 A)"
+  ],
+  "sha": "c7da7d420331d8bb"
+ },
+ "fig-1040.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Carga de alumbrado",
+  "transcripcion": [
+   "33 × longitud × ancho = Carga de alumbrado (voltamperes de alumbrado)"
+  ],
+  "sha": "03983ade9ef7175d"
+ },
+ "fig-1041.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Voltamperes de aparatos pequeños",
+  "transcripcion": [
+   "Número de circuitos × 1500 = voltamperes de aparatos pequeños"
+  ],
+  "sha": "184380416d514ff1"
+ },
+ "fig-1098.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "620-2",
+    "titulo": "Sistema de Control"
+   }
+  ],
+  "informativa": true,
+  "nota": "El pie de la figura dice «Esta figura es únicamente informativa».",
+  "sha": "537c232d65ee5406"
+ },
+ "fig-1103.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "620-13",
+    "titulo": "Diagrama unifilar"
+   }
+  ],
+  "sha": "95c338f58b8ec2e1"
+ },
+ "fig-1128.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Ventilación monofásica en metros cúbicos por minuto",
+  "transcripcion": [
+   "Ventilación monofásica en metros cúbicos por minuto = (volts)(amperes) / 1718"
+  ],
+  "sha": "03ae14692f274b06"
+ },
+ "fig-1129.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Ventilación trifásica en metros cúbicos por minuto",
+  "transcripcion": [
+   "Ventilación trifásica en metros cúbicos por minuto = 1.732 (volts)(amperes) / 1718"
+  ],
+  "sha": "5e3f3b08918eb83f"
+ },
+ "fig-1142.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Corriente eficaz de una soldadora",
+  "transcripcion": [
+   "I_eff = √[ I₁² X + I₂² (1 − X) ]"
+  ],
+  "sha": "c1794c830d4ba851"
+ },
+ "fig-1191.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "680-8",
+    "titulo": "Distancias desde las estructuras de la alberca"
+   }
+  ],
+  "sha": "58206777cf9df1ec"
+ },
+ "fig-1224.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "690-1(a)",
+    "titulo": "Identificación de los componentes de un sistema solar fotovoltaico"
+   }
+  ],
+  "sha": "642ad2d6bcea2490"
+ },
+ "fig-1225.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "690-1(b)",
+    "titulo": "Identificación de los Componentes de un Sistema Solar Fotovoltaico en Configuraciones Comunes del Sistema"
+   }
+  ],
+  "sha": "80ace2e5930bc7b2"
+ },
+ "fig-1262.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "694-1",
+    "titulo": "Identificación de componentes de un sistema eólicos pequeños - sistema interactivo."
+   },
+   {
+    "id": "694-1",
+    "titulo": "No. 2 Identificación de componentes de un sistema eólicos pequeños - sistema autónomo."
+   }
+  ],
+  "nota": "El DOF rotula las dos figuras «Figura 694-1»: la segunda como «Figura 694-1.- No. 2». El cuerpo cita «Figura 694-1» una sola vez. Se reproducen tal como se imprimen.",
+  "sha": "35d239e307c76254"
+ },
+ "fig-1321.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "725-121",
+    "titulo": "Circuitos Clase 2 y Clase 3"
+   }
+  ],
+  "sha": "21e80492dfe00cc3"
+ },
+ "fig-1330.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "725-154(g)",
+    "titulo": "Jerarquía de la sustitución de cables"
+   }
+  ],
+  "sha": "1ea8a3c73744c096"
+ },
+ "fig-1351.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "760-154(d)",
+    "titulo": "Jerarquía de la sustitución de los cables"
+   }
+  ],
+  "sha": "1e367104046435ef"
+ },
+ "fig-1370.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "770-154",
+    "titulo": "Jerarquía de la sustitución de cables"
+   }
+  ],
+  "sha": "c44f093fa16d7dfb"
+ },
+ "fig-1393.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "800-154",
+    "titulo": "Jerarquía de sustituciones de cables."
+   }
+  ],
+  "sha": "dde14433e9bb99da"
+ },
+ "fig-1420.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "820-154",
+    "titulo": "Jerarquía de sustitución de cables"
+   }
+  ],
+  "sha": "1e60d165df5b04a2"
+ },
+ "fig-1469.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "922-2",
+    "titulo": ""
+   }
+  ],
+  "nota": "La norma la imprime sin título, como «Figura.- 922-2.».",
+  "sha": "3c1890410f7eaf78"
+ },
+ "fig-1476.png": {
+  "kind": "formula",
+  "rotulos": [],
+  "titulo": "Separación entre conductores del mismo circuito con tensión mayor que 50 kV",
+  "nota": "La imagen contiene una Excepción completa: es texto normativo que en el PDF no existe como texto.",
+  "transcripcion": [
+   "Excepción: Para conductores del mismo circuito con tensión mayor que 50 kilovolts aplica la Tabla 922-12(a)(2)",
+   "Ecuación 1. Para conductores de tamaño menor que 33.6 mm² (2 AWG): S = 7.62 kV + 7 √(8.5 f − 5080)",
+   "Ecuación 2. Para conductores de tamaño mayor o igual que 33.6 mm² (2 AWG): S = 7.62 kV + 8 √(2.12 f)"
+  ],
+  "sha": "9158e6ebb90b9d37"
+ },
+ "fig-1481.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "922-14",
+    "titulo": ""
+   }
+  ],
+  "nota": "La norma la imprime sin título, como «Figura.- 922-14».",
+  "sha": "8e92da764cda2c02"
+ },
+ "fig-1488.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "922-20(d)",
+    "titulo": "Localización de crucetas y espacios para trabajar"
+   }
+  ],
+  "sha": "c6e6acf9e3d55bbc"
+ },
+ "fig-1501.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "922-54",
+    "titulo": ""
+   }
+  ],
+  "nota": "La norma la imprime sin título, como «Figura.- 922-54».",
+  "sha": "7b06852089fa0c78"
+ },
+ "fig-1508.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "922-82",
+    "titulo": "Cálculo de cargas mecánicas"
+   }
+  ],
+  "sha": "3b7a0a44e4da8458"
+ },
+ "fig-1521.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "923-3(f)(2)",
+    "titulo": ""
+   }
+  ],
+  "nota": "La norma la imprime sin título, como «Figura.- 923-3(f)(2)».",
+  "sha": "b286914353896e2b"
+ },
+ "fig-1532.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "923-10(a)(3)",
+    "titulo": "Zonificación recomendada de instalaciones en banqueta"
+   },
+   {
+    "id": "923-10(c)",
+    "titulo": "Banco de ductos a lo largo de autopistas"
+   }
+  ],
+  "sha": "91b07bc9283ae4de"
+ },
+ "fig-1539.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "923-16",
+    "titulo": "Características del vehículo para determinar la carga dinámica"
+   }
+  ],
+  "sha": "0cd30577c7a4a7e3"
+ },
+ "fig-1592.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "B.310-15(B)(2)(2)",
+    "titulo": "Dimensiones de la instalación de cables para usarlas con las Tablas B.310-15(B)(2)(5) hasta la Tabla B.310-15(B)(2)(10)"
+   }
+  ],
+  "transcripcion": [
+   "A₂ = [ √(0.5 N / E) × (A₁) ] o A₁, el que sea menor",
+   "Donde:",
+   "A₁ = Ampacidad, según las Tablas: 310.15(B)(16), 310.15(B)(18), B.310.15(B)(2)(1), B.310.15(B)(2)(6) y B.310.15(B)(2)(7), multiplicada por el factor adecuado según la Tabla B.310.15(B)(2)(11).",
+   "N = número total de conductores utilizados para obtener el factor de multiplicación de la Tabla B.310.15(B)(2)(11).",
+   "E = número de conductores portadores de corriente simultáneos en la canalización o cable.",
+   "A₂ = Límite de la ampacidad para los conductores portadores de corriente en la canalización o cable."
+  ],
+  "sha": "0e7b7afdade0dafb"
+ },
+ "fig-1595.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "B.310-15(B)(2)(3)",
+    "titulo": ""
+   }
+  ],
+  "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
+  "sha": "e9fd35451322712c"
+ },
+ "fig-1598.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "B.310-15(B)(2)(4)",
+    "titulo": ""
+   }
+  ],
+  "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
+  "sha": "0cf5bf977c33685a"
+ },
+ "fig-1601.png": {
+  "kind": "figura",
+  "rotulos": [
+   {
+    "id": "B.310-15(B)(2)(5)",
+    "titulo": ""
+   }
+  ],
+  "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
+  "sha": "81c2ea1eb3e3f739"
+ }
+}

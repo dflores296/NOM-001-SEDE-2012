@@ -15,6 +15,7 @@ detiene en el build y no en producción.
 | `data/tablas_revisadas.json` | La versión contrastada a mano de cada tabla, que se aplica encima de la reconstrucción |
 | `data/tablas_por_revisar.json` | Tablas cuya reconstrucción conviene contrastar (vacío: ya se revisaron todas) |
 | `data/tablas_regiones.json` | Zonas de página que ocupan las tablas, que el corpus salta |
+| `data/figuras.json` | La leyenda de cada imagen, capturada a mano, sellada con la huella del PNG |
 | `data/indice.json` | Índice plano `id → {título, artículo, página}` |
 | `data/validacion.json` | Métricas de cobertura del parseo |
 
@@ -63,6 +64,33 @@ En integración continua corre con `--check`, que no escribe nada y **falla el
 build** si la tabla del README no coincide con los datos. Antes de esto las
 cifras estaban transcritas y se despegaron: el README llegó a publicar 8 326
 incisos donde había 8 315, y 225 tablas donde había 226.
+
+## Las figuras se capturan a mano
+
+El PDF no entrega el rótulo de una figura como texto: en 45 de las 59 imágenes
+va dibujado dentro del propio mapa de bits, así que no hay detector que pueda
+leerlo. `data/figuras.json` lo guarda capturado a mano y `build_corpus.py` lo
+cuelga de cada figura del corpus (`aplicar_figuras`), de donde salen el número,
+el ancla, el índice de `/figuras` y los documentos de la búsqueda.
+
+Cada entrada trae la **huella del PNG** que describe. `build_corpus.py` la
+comprueba y aborta antes de escribir nada; `check_corpus.py` la vuelve a
+comprobar por su cuenta, y además exige que toda figura esté capturada, que
+cada archivo exista y que no sobre ningún PNG en `site/public/img/` —ese
+directorio se versiona y el pipeline lo reescribe sin limpiarlo, así que una
+imagen que dejara de extraerse se quedaría publicada sin que nadie la cite—.
+
+Los campos de una entrada:
+
+| Campo | Para qué |
+|---|---|
+| `kind` | `figura`, `formula` o `tabla` (la 240-92(b), que el DOF imprime como imagen) |
+| `rotulos` | Los números que la imagen lleva impresos, con su título. Puede haber más de uno |
+| `titulo` | Lo que es, cuando no lleva número (las fórmulas) |
+| `informativa` | La norma dice de ella que no es exigible (solo la 620-2) |
+| `nota` | Lo que hay que saber de cómo la imprime el DOF |
+| `transcripcion` | El texto que la imagen encierra y el PDF no tiene como texto |
+| `sha` | Huella del PNG: la captura describe ESA imagen |
 
 ## Cómo se protege la captura verificada
 

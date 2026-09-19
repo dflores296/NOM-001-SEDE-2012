@@ -4404,7 +4404,19 @@
              "w": 303,
              "h": 360,
              "page": 40,
-             "seq": 56
+             "seq": 56,
+             "pw": 404,
+             "ph": 480,
+             "kind": "figura",
+             "rotulos": [
+              {
+               "id": "210-52(c)(1)",
+               "titulo": "Determinación del espacio de pared de la cubierta.",
+               "rotulo": "Figura 210-52(c)(1)",
+               "ancla": "figura-210-52-c-1"
+              }
+             ],
+             "ancla": "figura-210-52-c-1"
             }
            ]
           },
@@ -5327,7 +5339,19 @@
        "w": 382,
        "h": 298,
        "page": 44,
-       "seq": 1
+       "seq": 1,
+       "pw": 509,
+       "ph": 397,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "220-1",
+         "titulo": "Métodos de cálculo para circuitos derivados, alimentadores y acometidas",
+         "rotulo": "Figura 220-1",
+         "ancla": "figura-220-1"
+        }
+       ],
+       "ancla": "figura-220-1"
       }
      ]
     },
@@ -8351,7 +8375,19 @@
        "w": 421,
        "h": 268,
        "page": 61,
-       "seq": 0
+       "seq": 0,
+       "pw": 561,
+       "ph": 358,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "230-1",
+         "titulo": "Acometidas",
+         "rotulo": "Figura 230-1",
+         "ancla": "figura-230-1"
+        }
+       ],
+       "ancla": "figura-230-1"
       }
      ]
     },
@@ -13374,7 +13410,38 @@
          "w": 440,
          "h": 299,
          "page": 82,
-         "seq": 14
+         "seq": 14,
+         "pw": 587,
+         "ph": 399,
+         "kind": "tabla",
+         "nota": "La norma la imprime como imagen, no como rejilla, y por eso no está entre las 226 tablas reconstruidas. Su contenido va transcrito.",
+         "transcripcion": [
+          "Se considera que los conductores de derivación están protegidos bajo condiciones de cortocircuito cuando no se excede su límite de temperatura de cortocircuito. El calentamiento del conductor en condiciones de cortocircuito está determinado por (1) o (2):",
+          "(1) Fórmula de cortocircuito para conductores de cobre: (I²/A²) t = 0.0297 log₁₀ [(T₂ + 234) / (T₁ + 234)]",
+          "(2) Fórmula de cortocircuito para conductores de aluminio: (I²/A²) t = 0.0125 log₁₀ [(T₂ + 228) / (T₁ + 228)]",
+          "Donde:",
+          "I = corriente de cortocircuito en amperes",
+          "A = área del conductor en circular mil",
+          "t = tiempo del cortocircuito en segundos (para tiempos iguales o menores a 10 segundos)",
+          "T₁ = temperatura inicial del conductor en grados Celsius",
+          "T₂ = temperatura final del conductor en grados Celsius",
+          "Conductor de cobre con aislamiento de papel, hule, tela barnizada, T₂ = 200",
+          "Conductor de cobre con aislamiento termoplástico, T₂ = 150",
+          "Conductor de cobre con aislamiento de polietileno de cadena cruzada, T₂ = 250",
+          "Conductor de cobre con aislamiento de hule propileno etileno, T₂ = 250",
+          "Conductor de aluminio con aislamiento de papel, hule, tela barnizada, T₂ = 200",
+          "Conductor de aluminio con aislamiento de polietileno de cadena cruzada, T₂ = 250",
+          "Conductor de aluminio con aislamiento de hule propileno etileno, T₂ = 250"
+         ],
+         "rotulos": [
+          {
+           "id": "240-92(b)",
+           "titulo": "Corriente nominal de cortocircuito de conductores de derivación",
+           "rotulo": "Tabla 240-92(b)",
+           "ancla": "tabla-240-92-b"
+          }
+         ],
+         "ancla": "tabla-240-92-b"
         }
        ]
       },
@@ -13895,7 +13962,19 @@
          "w": 224,
          "h": 286,
          "page": 84,
-         "seq": 1
+         "seq": 1,
+         "pw": 298,
+         "ph": 381,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "250-1",
+           "titulo": "Puesta a tierra y unión",
+           "rotulo": "Figura 250-1",
+           "ancla": "figura-250-1"
+          }
+         ],
+         "ancla": "figura-250-1"
         }
        ]
       }
@@ -18886,7 +18965,20 @@
          "w": 83,
          "h": 83,
          "page": 108,
-         "seq": 84
+         "seq": 84,
+         "pw": 111,
+         "ph": 111,
+         "kind": "figura",
+         "nota": "La norma la imprime sin título; la NOTA que la sigue en el cuerpo la describe.",
+         "rotulos": [
+          {
+           "id": "250-126",
+           "titulo": "",
+           "rotulo": "Figura 250-126",
+           "ancla": "figura-250-126"
+          }
+         ],
+         "ancla": "figura-250-126"
         }
        ],
        "parrafos": [
@@ -23662,7 +23754,22 @@
            "w": 268,
            "h": 137,
            "page": 134,
-           "seq": 21
+           "seq": 21,
+           "pw": 358,
+           "ph": 183,
+           "kind": "formula",
+           "titulo": "Ampacidad corregida por temperatura ambiente",
+           "transcripcion": [
+            "I' = I √[ (Tc − T'a) / (Tc − Ta) ]",
+            "Donde:",
+            "I' = Ampacidad corregida por temperatura ambiente",
+            "I = Ampacidad en tablas",
+            "Tc = Temperatura del conductor (°C)",
+            "T'a = Temperatura ambiente nueva (°C)",
+            "Ta = Temperatura ambiente usadas en tablas (°C)"
+           ],
+           "rotulos": [],
+           "ancla": "formula-310-15-b-2"
           }
          ],
          "tables": [
@@ -23987,7 +24094,22 @@
          "w": 382,
          "h": 153,
          "page": 137,
-         "seq": 35
+         "seq": 35,
+         "pw": 510,
+         "ph": 212,
+         "kind": "formula",
+         "titulo": "Ampacidad calculada bajo supervisión de ingeniería",
+         "transcripcion": [
+          "I = √[ (Tc − Ta) / (Rcc (1 + Yc) Rca) ] × 10³ amperes",
+          "Donde:",
+          "Tc = Temperatura del conductor (°C)",
+          "Ta = Temperatura ambiente (°C)",
+          "Rcc = Resistencia de corriente continua del conductor a la temperatura Tc",
+          "Yc = Componente de la resistencia de corriente alterna debida al efecto superficial y efecto de proximidad",
+          "Rca = Resistencia térmica efectiva entre el conductor y el medio ambiente que lo rodea"
+         ],
+         "rotulos": [],
+         "ancla": "formula-310-15-c"
         }
        ]
       },
@@ -24167,7 +24289,32 @@
            "w": 442,
            "h": 355,
            "page": 141,
-           "seq": 52
+           "seq": 52,
+           "pw": 607,
+           "ph": 488,
+           "kind": "formula",
+           "titulo": "Ampacidad corregida por temperatura ambiente y por supervisión de ingeniería",
+           "nota": "Además de las dos ecuaciones, la imagen contiene el inciso d) Supervisión de Ingeniería completo: es texto normativo que en el PDF no existe como texto.",
+           "transcripcion": [
+            "I' = I √[ (Tc − T'a) / (Tc − Ta) ]",
+            "Donde:",
+            "I' = Ampacidad corregida por temperatura ambiente",
+            "I = Ampacidad en tablas para Tc y Ta",
+            "Tc = Temperatura del conductor (°C)",
+            "T'a = Temperatura ambiente nueva (°C)",
+            "Ta = Temperatura ambiente usadas en la tabla (°C)",
+            "d) Supervisión de Ingeniería. Bajo la supervisión de ingeniería, se permitirá calcular la ampacidad de los conductores usando la siguiente ecuación general:",
+            "I = √[ (Tc − (Ta + ΔTd)) / (Rcc (1 + Yc) Rca) ] × 10³ amperes",
+            "Donde:",
+            "Tc = Temperatura del conductor (°C)",
+            "Ta = Temperatura ambiente (°C)",
+            "ΔTd = Incremento de la temperatura por pérdidas dieléctricas",
+            "Rcc = Resistencia de corriente continua del conductor a la temperatura Tc",
+            "Yc = Componente de la resistencia de corriente alterna debida al efecto superficial y efecto de proximidad",
+            "Rca = Resistencia térmica efectiva entre el conductor y el ambiente que lo rodea"
+           ],
+           "rotulos": [],
+           "ancla": "formula-310-60-c-4"
           },
           {
            "src": "fig-301.png",
@@ -24175,7 +24322,19 @@
            "h": 556,
            "page": 142,
            "seq": 55,
-           "caption": "Figura 310-60.- Dimensiones de instalación de cables para uso con las Tablas 310-60c)(77) a 310-60c)(86)."
+           "caption": "Figura 310-60.- Dimensiones de instalación de cables para uso con las Tablas 310-60c)(77) a 310-60c)(86).",
+           "pw": 581,
+           "ph": 742,
+           "kind": "figura",
+           "rotulos": [
+            {
+             "id": "310-60",
+             "titulo": "Dimensiones de instalación de cables para uso con las Tablas 310-60c)(77) a 310-60c)(86).",
+             "rotulo": "Figura 310-60",
+             "ancla": "figura-310-60"
+            }
+           ],
+           "ancla": "figura-310-60"
           }
          ],
          "tables": [
@@ -46947,7 +47106,20 @@
            "w": 96,
            "h": 87,
            "page": 258,
-           "seq": 14
+           "seq": 14,
+           "pw": 128,
+           "ph": 116,
+           "kind": "figura",
+           "nota": "La norma la imprime sin título; la NOTA que la sigue en el cuerpo la describe.",
+           "rotulos": [
+            {
+             "id": "406-10(b)(4)",
+             "titulo": "",
+             "rotulo": "Figura 406-10(b)(4)",
+             "ancla": "figura-406-10-b-4"
+            }
+           ],
+           "ancla": "figura-406-10-b-4"
           }
          ]
         }
@@ -48284,7 +48456,19 @@
        "h": 361,
        "page": 265,
        "seq": 0,
-       "caption": "Figura 410-2.- Espacio de almacenamiento del armario."
+       "caption": "Figura 410-2.- Espacio de almacenamiento del armario.",
+       "pw": 308,
+       "ph": 481,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "410-2",
+         "titulo": "Espacio de almacenamiento del armario.",
+         "rotulo": "Figura 410-2",
+         "ancla": "figura-410-2"
+        }
+       ],
+       "ancla": "figura-410-2"
       }
      ]
     },
@@ -55932,7 +56116,19 @@
        "h": 371,
        "page": 297,
        "seq": 2,
-       "caption": "Figura 430-1.- Contenido del Artículo 430."
+       "caption": "Figura 430-1.- Contenido del Artículo 430.",
+       "pw": 524,
+       "ph": 495,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "430-1",
+         "titulo": "Contenido del Artículo 430.",
+         "rotulo": "Figura 430-1",
+         "ancla": "figura-430-1"
+        }
+       ],
+       "ancla": "figura-430-1"
       }
      ]
     },
@@ -62354,7 +62550,19 @@
          "h": 136,
          "page": 336,
          "seq": 20,
-         "caption": "Figura 450-4.- Autotransformador"
+         "caption": "Figura 450-4.- Autotransformador",
+         "pw": 345,
+         "ph": 182,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "450-4",
+           "titulo": "Autotransformador",
+           "rotulo": "Figura 450-4",
+           "ancla": "figura-450-4"
+          }
+         ],
+         "ancla": "figura-450-4"
         }
        ]
       },
@@ -71905,7 +72113,16 @@
            "w": 90,
            "h": 21,
            "page": 381,
-           "seq": 9
+           "seq": 9,
+           "pw": 120,
+           "ph": 28,
+           "kind": "formula",
+           "titulo": "Temperatura superficial de un equipo intrínsecamente seguro",
+           "transcripcion": [
+            "T = P₀ R_t + T_amb"
+           ],
+           "rotulos": [],
+           "ancla": "formula-504-10-b-2"
           }
          ],
          "parrafos": [
@@ -73358,7 +73575,27 @@
          "w": 436,
          "h": 155,
          "page": 389,
-         "seq": 47
+         "seq": 47,
+         "pw": 581,
+         "ph": 207,
+         "kind": "figura",
+         "transcripcion": [
+          "Clase 1 Zona 0  AEX  ia  IIC  T6",
+          "Clasificación de área: Clase 1 Zona 0",
+          "Símbolo para equipo construido bajo norma: AEX",
+          "Designación de tipo de protección: ia",
+          "Grupo de clasificación de gas (no se requiere para técnicas de protección indicadas en 505-6, Nota 2): IIC",
+          "Clasificación de temperatura: T6"
+         ],
+         "rotulos": [
+          {
+           "id": "505-9(c)(2)",
+           "titulo": "Marcado del equipo de zona",
+           "rotulo": "Figura 505-9(c)(2)",
+           "ancla": "figura-505-9-c-2"
+          }
+         ],
+         "ancla": "figura-505-9-c-2"
         }
        ],
        "parrafos": [
@@ -77387,7 +77624,19 @@
            "h": 374,
            "page": 413,
            "seq": 5,
-           "caption": "Figura 514-3.- Diagrama de áreas peligrosas (clasificadas) adyacentes a los surtidores de gas natural y gas L.P. (dispensarios) como se detalla en la tabla 514-3(b)(1)"
+           "caption": "Figura 514-3.- Diagrama de áreas peligrosas (clasificadas) adyacentes a los surtidores de gas natural y gas L.P. (dispensarios) como se detalla en la tabla 514-3(b)(1)",
+           "pw": 497,
+           "ph": 499,
+           "kind": "figura",
+           "rotulos": [
+            {
+             "id": "514-3",
+             "titulo": "Diagrama de áreas peligrosas (clasificadas) adyacentes a los surtidores de gas natural y gas L.P. (dispensarios) como se detalla en la tabla 514-3(b)(1)",
+             "rotulo": "Figura 514-3",
+             "ancla": "figura-514-3"
+            }
+           ],
+           "ancla": "figura-514-3"
           }
          ]
         }
@@ -77749,7 +77998,19 @@
          "h": 272,
          "page": 417,
          "seq": 4,
-         "caption": "Figura 515-3.- Terminal marítima para manipulación de líquidos inflamables."
+         "caption": "Figura 515-3.- Terminal marítima para manipulación de líquidos inflamables.",
+         "pw": 528,
+         "ph": 363,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "515-3",
+           "titulo": "Terminal marítima para manipulación de líquidos inflamables.",
+           "rotulo": "Figura 515-3",
+           "ancla": "figura-515-3"
+          }
+         ],
+         "ancla": "figura-515-3"
         }
        ]
       },
@@ -78100,14 +78361,50 @@
            "w": 430,
            "h": 657,
            "page": 420,
-           "seq": 2
+           "seq": 2,
+           "pw": 573,
+           "ph": 876,
+           "kind": "figura",
+           "rotulos": [
+            {
+             "id": "516-3(c)(1)",
+             "titulo": "Clasificación eléctrica de las áreas para rociado abierto.",
+             "rotulo": "Figura 516-3(c)(1)",
+             "ancla": "figura-516-3-c-1"
+            },
+            {
+             "id": "516-3(c)(2)",
+             "titulo": "Areas Clase I, División 2; Clase I, Zona 2 o Clase II, División 2 adyacentes a un recinto o una cabina del rociado cerrados por arriba, abiertos por la cara o abiertos por el frente",
+             "rotulo": "Figura 516-3(c)(2)",
+             "ancla": "figura-516-3-c-2"
+            }
+           ],
+           "ancla": "figura-516-3-c-1"
           },
           {
            "src": "fig-871.png",
            "w": 434,
            "h": 666,
            "page": 421,
-           "seq": 4
+           "seq": 4,
+           "pw": 579,
+           "ph": 888,
+           "kind": "figura",
+           "rotulos": [
+            {
+             "id": "516-3(c)(4)",
+             "titulo": "Areas Clase I, División 2; Clase I, Zona 2 o Clase II, División 2 adyacentes a un recinto o una cabina de rociado encerrados",
+             "rotulo": "Figura 516-3(c)(4)",
+             "ancla": "figura-516-3-c-4"
+            },
+            {
+             "id": "516-3(c)(5)",
+             "titulo": "Clasificación eléctrica de las áreas para procesos abiertos sin contención de vapor ni ventilación",
+             "rotulo": "Figura 516-3(c)(5)",
+             "ancla": "figura-516-3-c-5"
+            }
+           ],
+           "ancla": "figura-516-3-c-4"
           }
          ]
         }
@@ -79819,7 +80116,25 @@
            "w": 436,
            "h": 668,
            "page": 435,
-           "seq": 18
+           "seq": 18,
+           "pw": 594,
+           "ph": 908,
+           "kind": "figura",
+           "rotulos": [
+            {
+             "id": "517-30(a)",
+             "titulo": "Requisito mínimo de tres desconectadores de transferencia automáticos para hospitales y establecimientos para la atención médica de pacientes ambulatorios, con una demanda máxima superior a 150 kilovoltamperes de la carga conectada a los dos sistemas el de emergencia y el de equipos",
+             "rotulo": "Figura 517-30(a)",
+             "ancla": "figura-517-30-a"
+            },
+            {
+             "id": "517-30(b)",
+             "titulo": "Requisito mínimo de un desconectador de transferencia para hospitales y establecimientos para la atención médica de pacientes ambulatorios, con una demanda máxima de hasta 150 kilovoltamperes de la carga conectada al sistema eléctrico esencial",
+             "rotulo": "Figura 517-30(b)",
+             "ancla": "figura-517-30-b"
+            }
+           ],
+           "ancla": "figura-517-30-a"
           }
          ]
         }
@@ -80956,14 +81271,38 @@
          "w": 442,
          "h": 325,
          "page": 440,
-         "seq": 30
+         "seq": 30,
+         "pw": 589,
+         "ph": 433,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "517-41(a)",
+           "titulo": "Arreglo de dos desconectadores de transferencia para áreas de atención limitada.",
+           "rotulo": "Figura 517-41(a)",
+           "ancla": "figura-517-41-a"
+          }
+         ],
+         "ancla": "figura-517-41-a"
         },
         {
          "src": "fig-914.png",
          "w": 422,
          "h": 320,
          "page": 441,
-         "seq": 32
+         "seq": 32,
+         "pw": 563,
+         "ph": 427,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "517-41(b)",
+           "titulo": "Arreglo de un desconectador de transferencia para áreas de atención limitada.",
+           "rotulo": "Figura 517-41(b)",
+           "ancla": "figura-517-41-b"
+          }
+         ],
+         "ancla": "figura-517-41-b"
         }
        ]
       },
@@ -87983,7 +88322,19 @@
          "h": 118,
          "page": 473,
          "seq": 3,
-         "caption": "Figura 550-10 (c).- Configuraciones de contacto y clavija de 220Y/127 volts, 50 amperes, 3 fases, 4 hilos, con conductor puesto a tierra, para uso con cordones de alimentación en casas móviles y sus estacionamientos."
+         "caption": "Figura 550-10 (c).- Configuraciones de contacto y clavija de 220Y/127 volts, 50 amperes, 3 fases, 4 hilos, con conductor puesto a tierra, para uso con cordones de alimentación en casas móviles y sus estacionamientos.",
+         "pw": 356,
+         "ph": 158,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "550-10(c)",
+           "titulo": "Configuraciones de contacto y clavija de 220Y/127 volts, 50 amperes, 3 fases, 4 hilos, con conductor puesto a tierra, para uso con cordones de alimentación en casas móviles y sus estacionamientos.",
+           "rotulo": "Figura 550-10(c)",
+           "ancla": "figura-550-10-c"
+          }
+         ],
+         "ancla": "figura-550-10-c"
         }
        ],
        "parrafos": [
@@ -88229,7 +88580,16 @@
          "w": 232,
          "h": 25,
          "page": 475,
-         "seq": 12
+         "seq": 12,
+         "pw": 309,
+         "ph": 33,
+         "kind": "formula",
+         "titulo": "Número de circuitos derivados de 15 A (ó 20 A) para el alumbrado general",
+         "transcripcion": [
+          "(33 × longitud × ancho) / (120 × 15 (ó 20)) = No. de circuitos de 15 A (ó 20 A)"
+         ],
+         "rotulos": [],
+         "ancla": "formula-550-12-a"
         }
        ]
       },
@@ -89317,7 +89677,13 @@
            "w": 441,
            "h": 341,
            "page": 480,
-           "seq": 22
+           "seq": 22,
+           "pw": 600,
+           "ph": 464,
+           "kind": "formula",
+           "titulo": "Ejemplo de cálculo de la carga por fase de una casa móvil",
+           "rotulos": [],
+           "ancla": "formula-550-18-b-6"
           }
          ]
         }
@@ -90884,7 +91250,19 @@
          "w": 424,
          "h": 350,
          "page": 488,
-         "seq": 20
+         "seq": 20,
+         "pw": 565,
+         "ph": 467,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "551-46(c)",
+           "titulo": "Configuraciones para contactos y clavijas de conexión del tipo puesta a tierra utilizadas con los cordones de alimentación de los vehículos de recreo y sus estacionamientos",
+           "rotulo": "Figura 551-46(c)",
+           "ancla": "figura-551-46-c"
+          }
+         ],
+         "ancla": "figura-551-46-c"
         }
        ]
       },
@@ -93029,7 +93407,19 @@
            "w": 384,
            "h": 126,
            "page": 499,
-           "seq": 15
+           "seq": 15,
+           "pw": 512,
+           "ph": 168,
+           "kind": "figura",
+           "rotulos": [
+            {
+             "id": "552-44(c)",
+             "titulo": "Configuraciones para contactos y clavijas del tipo con puesta a tierra",
+             "rotulo": "Figura 552-44(c)",
+             "ancla": "figura-552-44-c"
+            }
+           ],
+           "ancla": "figura-552-44-c"
           }
          ]
         }
@@ -93166,7 +93556,16 @@
            "w": 231,
            "h": 24,
            "page": 500,
-           "seq": 20
+           "seq": 20,
+           "pw": 308,
+           "ph": 32,
+           "kind": "formula",
+           "titulo": "Número de circuitos derivados de 15 A (ó 20 A) para el alumbrado general",
+           "transcripcion": [
+            "(33 × longitud × ancho) / (120 × 15 (ó 20)) = No. de circuitos de 15 A (ó 20 A)"
+           ],
+           "rotulos": [],
+           "ancla": "formula-552-46-b-1"
           }
          ],
          "parrafos": [
@@ -93282,14 +93681,32 @@
          "w": 306,
          "h": 12,
          "page": 500,
-         "seq": 24
+         "seq": 24,
+         "pw": 408,
+         "ph": 16,
+         "kind": "formula",
+         "titulo": "Carga de alumbrado",
+         "transcripcion": [
+          "33 × longitud × ancho = Carga de alumbrado (voltamperes de alumbrado)"
+         ],
+         "rotulos": [],
+         "ancla": "formula-552-47-a"
         },
         {
          "src": "fig-1041.png",
          "w": 257,
          "h": 12,
          "page": 500,
-         "seq": 26
+         "seq": 26,
+         "pw": 342,
+         "ph": 16,
+         "kind": "formula",
+         "titulo": "Voltamperes de aparatos pequeños",
+         "transcripcion": [
+          "Número de circuitos × 1500 = voltamperes de aparatos pequeños"
+         ],
+         "rotulos": [],
+         "ancla": "formula-552-47-a-2"
         }
        ],
        "parrafos": [
@@ -99299,7 +99716,21 @@
        "w": 424,
        "h": 266,
        "page": 528,
-       "seq": 2
+       "seq": 2,
+       "pw": 565,
+       "ph": 354,
+       "kind": "figura",
+       "informativa": true,
+       "nota": "El pie de la figura dice «Esta figura es únicamente informativa».",
+       "rotulos": [
+        {
+         "id": "620-2",
+         "titulo": "Sistema de Control",
+         "rotulo": "Figura 620-2",
+         "ancla": "figura-620-2"
+        }
+       ],
+       "ancla": "figura-620-2"
       }
      ]
     },
@@ -99561,7 +99992,19 @@
          "w": 405,
          "h": 375,
          "page": 530,
-         "seq": 9
+         "seq": 9,
+         "pw": 551,
+         "ph": 510,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "620-13",
+           "titulo": "Diagrama unifilar",
+           "rotulo": "Figura 620-13",
+           "ancla": "figura-620-13"
+          }
+         ],
+         "ancla": "figura-620-13"
         }
        ]
       },
@@ -101549,7 +101992,16 @@
              "w": 282,
              "h": 22,
              "page": 542,
-             "seq": 7
+             "seq": 7,
+             "pw": 376,
+             "ph": 30,
+             "kind": "formula",
+             "titulo": "Ventilación monofásica en metros cúbicos por minuto",
+             "transcripcion": [
+              "Ventilación monofásica en metros cúbicos por minuto = (volts)(amperes) / 1718"
+             ],
+             "rotulos": [],
+             "ancla": "formula-625-29-d-2-1"
             }
            ]
           },
@@ -101568,7 +102020,16 @@
              "w": 247,
              "h": 19,
              "page": 542,
-             "seq": 9
+             "seq": 9,
+             "pw": 329,
+             "ph": 25,
+             "kind": "formula",
+             "titulo": "Ventilación trifásica en metros cúbicos por minuto",
+             "transcripcion": [
+              "Ventilación trifásica en metros cúbicos por minuto = 1.732 (volts)(amperes) / 1718"
+             ],
+             "rotulos": [],
+             "ancla": "formula-625-29-d-2-2"
             }
            ],
            "tables": [
@@ -102669,7 +103130,16 @@
          "w": 97,
          "h": 15,
          "page": 548,
-         "seq": 5
+         "seq": 5,
+         "pw": 129,
+         "ph": 20,
+         "kind": "formula",
+         "titulo": "Corriente eficaz de una soldadora",
+         "transcripcion": [
+          "I_eff = √[ I₁² X + I₂² (1 − X) ]"
+         ],
+         "rotulos": [],
+         "ancla": "formula-630-12-b"
         }
        ]
       }
@@ -108021,7 +108491,19 @@
        "h": 197,
        "page": 572,
        "seq": 5,
-       "caption": "Figura 680-8.- Distancias desde las estructuras de la alberca"
+       "caption": "Figura 680-8.- Distancias desde las estructuras de la alberca",
+       "pw": 434,
+       "ph": 263,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "680-8",
+         "titulo": "Distancias desde las estructuras de la alberca",
+         "rotulo": "Figura 680-8",
+         "ancla": "figura-680-8"
+        }
+       ],
+       "ancla": "figura-680-8"
       }
      ],
      "tables": [
@@ -111757,14 +112239,38 @@
        "h": 380,
        "page": 588,
        "seq": 0,
-       "caption": "Figura 690-1(a).- Identificación de los componentes de un sistema solar fotovoltaico"
+       "caption": "Figura 690-1(a).- Identificación de los componentes de un sistema solar fotovoltaico",
+       "pw": 602,
+       "ph": 522,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "690-1(a)",
+         "titulo": "Identificación de los componentes de un sistema solar fotovoltaico",
+         "rotulo": "Figura 690-1(a)",
+         "ancla": "figura-690-1-a"
+        }
+       ],
+       "ancla": "figura-690-1-a"
       },
       {
        "src": "fig-1225.png",
        "w": 426,
        "h": 197,
        "page": 588,
-       "seq": 2
+       "seq": 2,
+       "pw": 568,
+       "ph": 263,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "690-1(b)",
+         "titulo": "Identificación de los Componentes de un Sistema Solar Fotovoltaico en Configuraciones Comunes del Sistema",
+         "rotulo": "Figura 690-1(b)",
+         "ancla": "figura-690-1-b"
+        }
+       ],
+       "ancla": "figura-690-1-b"
       }
      ]
     },
@@ -115063,7 +115569,26 @@
        "w": 441,
        "h": 346,
        "page": 606,
-       "seq": 1
+       "seq": 1,
+       "pw": 594,
+       "ph": 466,
+       "kind": "figura",
+       "nota": "El DOF rotula las dos figuras «Figura 694-1»: la segunda como «Figura 694-1.- No. 2». El cuerpo cita «Figura 694-1» una sola vez. Se reproducen tal como se imprimen.",
+       "rotulos": [
+        {
+         "id": "694-1",
+         "titulo": "Identificación de componentes de un sistema eólicos pequeños - sistema interactivo.",
+         "rotulo": "Figura 694-1",
+         "ancla": "figura-694-1"
+        },
+        {
+         "id": "694-1",
+         "titulo": "No. 2 Identificación de componentes de un sistema eólicos pequeños - sistema autónomo.",
+         "rotulo": "Figura 694-1",
+         "ancla": "figura-694-1-2"
+        }
+       ],
+       "ancla": "figura-694-1"
       }
      ]
     },
@@ -121087,7 +121612,19 @@
            "w": 351,
            "h": 244,
            "page": 635,
-           "seq": 12
+           "seq": 12,
+           "pw": 468,
+           "ph": 325,
+           "kind": "figura",
+           "rotulos": [
+            {
+             "id": "725-121",
+             "titulo": "Circuitos Clase 2 y Clase 3",
+             "rotulo": "Figura 725-121",
+             "ancla": "figura-725-121"
+            }
+           ],
+           "ancla": "figura-725-121"
           }
          ],
          "parrafos": [
@@ -121867,7 +122404,19 @@
          "w": 326,
          "h": 333,
          "page": 639,
-         "seq": 26
+         "seq": 26,
+         "pw": 434,
+         "ph": 444,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "725-154(g)",
+           "titulo": "Jerarquía de la sustitución de cables",
+           "rotulo": "Figura 725-154(g)",
+           "ancla": "figura-725-154-g"
+          }
+         ],
+         "ancla": "figura-725-154-g"
         }
        ]
       },
@@ -123770,7 +124319,19 @@
          "w": 293,
          "h": 292,
          "page": 649,
-         "seq": 38
+         "seq": 38,
+         "pw": 391,
+         "ph": 390,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "760-154(d)",
+           "titulo": "Jerarquía de la sustitución de los cables",
+           "rotulo": "Figura 760-154(d)",
+           "ancla": "figura-760-154-d"
+          }
+         ],
+         "ancla": "figura-760-154-d"
         }
        ]
       },
@@ -125941,7 +126502,19 @@
          "w": 335,
          "h": 252,
          "page": 658,
-         "seq": 24
+         "seq": 24,
+         "pw": 446,
+         "ph": 336,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "770-154",
+           "titulo": "Jerarquía de la sustitución de cables",
+           "rotulo": "Figura 770-154",
+           "ancla": "figura-770-154"
+          }
+         ],
+         "ancla": "figura-770-154"
         }
        ]
       },
@@ -128460,7 +129033,19 @@
        "w": 266,
        "h": 328,
        "page": 669,
-       "seq": 38
+       "seq": 38,
+       "pw": 355,
+       "ph": 437,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "800-154",
+         "titulo": "Jerarquía de sustituciones de cables.",
+         "rotulo": "Figura 800-154",
+         "ancla": "figura-800-154"
+        }
+       ],
+       "ancla": "figura-800-154"
       }
      ]
     },
@@ -131504,7 +132089,19 @@
        "w": 281,
        "h": 256,
        "page": 682,
-       "seq": 30
+       "seq": 30,
+       "pw": 374,
+       "ph": 341,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "820-154",
+         "titulo": "Jerarquía de sustitución de cables",
+         "rotulo": "Figura 820-154",
+         "ancla": "figura-820-154"
+        }
+       ],
+       "ancla": "figura-820-154"
       }
      ]
     },
@@ -136166,7 +136763,20 @@
        "w": 296,
        "h": 237,
        "page": 706,
-       "seq": 0
+       "seq": 0,
+       "pw": 395,
+       "ph": 316,
+       "kind": "figura",
+       "nota": "La norma la imprime sin título, como «Figura.- 922-2.».",
+       "rotulos": [
+        {
+         "id": "922-2",
+         "titulo": "",
+         "rotulo": "Figura 922-2",
+         "ancla": "figura-922-2"
+        }
+       ],
+       "ancla": "figura-922-2"
       }
      ]
     },
@@ -136645,7 +137255,19 @@
            "w": 439,
            "h": 82,
            "page": 709,
-           "seq": 7
+           "seq": 7,
+           "pw": 603,
+           "ph": 113,
+           "kind": "formula",
+           "titulo": "Separación entre conductores del mismo circuito con tensión mayor que 50 kV",
+           "nota": "La imagen contiene una Excepción completa: es texto normativo que en el PDF no existe como texto.",
+           "transcripcion": [
+            "Excepción: Para conductores del mismo circuito con tensión mayor que 50 kilovolts aplica la Tabla 922-12(a)(2)",
+            "Ecuación 1. Para conductores de tamaño menor que 33.6 mm² (2 AWG): S = 7.62 kV + 7 √(8.5 f − 5080)",
+            "Ecuación 2. Para conductores de tamaño mayor o igual que 33.6 mm² (2 AWG): S = 7.62 kV + 8 √(2.12 f)"
+           ],
+           "rotulos": [],
+           "ancla": "formula-922-12-a-2"
           }
          ],
          "parrafos": [
@@ -136822,7 +137444,20 @@
        "w": 336,
        "h": 207,
        "page": 711,
-       "seq": 23
+       "seq": 23,
+       "pw": 448,
+       "ph": 276,
+       "kind": "figura",
+       "nota": "La norma la imprime sin título, como «Figura.- 922-14».",
+       "rotulos": [
+        {
+         "id": "922-14",
+         "titulo": "",
+         "rotulo": "Figura 922-14",
+         "ancla": "figura-922-14"
+        }
+       ],
+       "ancla": "figura-922-14"
       }
      ]
     },
@@ -137263,7 +137898,19 @@
          "w": 347,
          "h": 214,
          "page": 714,
-         "seq": 35
+         "seq": 35,
+         "pw": 463,
+         "ph": 286,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "922-20(d)",
+           "titulo": "Localización de crucetas y espacios para trabajar",
+           "rotulo": "Figura 922-20(d)",
+           "ancla": "figura-922-20-d"
+          }
+         ],
+         "ancla": "figura-922-20-d"
         }
        ]
       }
@@ -137979,7 +138626,20 @@
          "w": 184,
          "h": 260,
          "page": 720,
-         "seq": 57
+         "seq": 57,
+         "pw": 245,
+         "ph": 347,
+         "kind": "figura",
+         "nota": "La norma la imprime sin título, como «Figura.- 922-54».",
+         "rotulos": [
+          {
+           "id": "922-54",
+           "titulo": "",
+           "rotulo": "Figura 922-54",
+           "ancla": "figura-922-54"
+          }
+         ],
+         "ancla": "figura-922-54"
         }
        ]
       }
@@ -138176,7 +138836,19 @@
        "w": 440,
        "h": 324,
        "page": 723,
-       "seq": 65
+       "seq": 65,
+       "pw": 587,
+       "ph": 432,
+       "kind": "figura",
+       "rotulos": [
+        {
+         "id": "922-82",
+         "titulo": "Cálculo de cargas mecánicas",
+         "rotulo": "Figura 922-82",
+         "ancla": "figura-922-82"
+        }
+       ],
+       "ancla": "figura-922-82"
       }
      ]
     },
@@ -139272,7 +139944,20 @@
              "w": 409,
              "h": 216,
              "page": 729,
-             "seq": 10
+             "seq": 10,
+             "pw": 545,
+             "ph": 288,
+             "kind": "figura",
+             "nota": "La norma la imprime sin título, como «Figura.- 923-3(f)(2)».",
+             "rotulos": [
+              {
+               "id": "923-3(f)(2)",
+               "titulo": "",
+               "rotulo": "Figura 923-3(f)(2)",
+               "ancla": "figura-923-3-f-2"
+              }
+             ],
+             "ancla": "figura-923-3-f-2"
             }
            ]
           }
@@ -140327,7 +141012,25 @@
            "w": 442,
            "h": 524,
            "page": 734,
-           "seq": 20
+           "seq": 20,
+           "pw": 589,
+           "ph": 699,
+           "kind": "figura",
+           "rotulos": [
+            {
+             "id": "923-10(a)(3)",
+             "titulo": "Zonificación recomendada de instalaciones en banqueta",
+             "rotulo": "Figura 923-10(a)(3)",
+             "ancla": "figura-923-10-a-3"
+            },
+            {
+             "id": "923-10(c)",
+             "titulo": "Banco de ductos a lo largo de autopistas",
+             "rotulo": "Figura 923-10(c)",
+             "ancla": "figura-923-10-c"
+            }
+           ],
+           "ancla": "figura-923-10-a-3"
           }
          ]
         }
@@ -140841,7 +141544,19 @@
          "w": 381,
          "h": 378,
          "page": 737,
-         "seq": 29
+         "seq": 29,
+         "pw": 508,
+         "ph": 504,
+         "kind": "figura",
+         "rotulos": [
+          {
+           "id": "923-16",
+           "titulo": "Características del vehículo para determinar la carga dinámica",
+           "rotulo": "Figura 923-16",
+           "ancla": "figura-923-16"
+          }
+         ],
+         "ancla": "figura-923-16"
         }
        ]
       }
@@ -141982,28 +142697,87 @@
        "w": 438,
        "h": 559,
        "page": 762,
-       "seq": 15
+       "seq": 15,
+       "pw": 602,
+       "ph": 768,
+       "kind": "figura",
+       "transcripcion": [
+        "A₂ = [ √(0.5 N / E) × (A₁) ] o A₁, el que sea menor",
+        "Donde:",
+        "A₁ = Ampacidad, según las Tablas: 310.15(B)(16), 310.15(B)(18), B.310.15(B)(2)(1), B.310.15(B)(2)(6) y B.310.15(B)(2)(7), multiplicada por el factor adecuado según la Tabla B.310.15(B)(2)(11).",
+        "N = número total de conductores utilizados para obtener el factor de multiplicación de la Tabla B.310.15(B)(2)(11).",
+        "E = número de conductores portadores de corriente simultáneos en la canalización o cable.",
+        "A₂ = Límite de la ampacidad para los conductores portadores de corriente en la canalización o cable."
+       ],
+       "rotulos": [
+        {
+         "id": "B.310-15(B)(2)(2)",
+         "titulo": "Dimensiones de la instalación de cables para usarlas con las Tablas B.310-15(B)(2)(5) hasta la Tabla B.310-15(B)(2)(10)",
+         "rotulo": "Figura B.310-15(B)(2)(2)",
+         "ancla": "figura-b-310-15-b-2-2"
+        }
+       ],
+       "ancla": "figura-b-310-15-b-2-2"
       },
       {
        "src": "fig-1595.png",
        "w": 281,
        "h": 351,
        "page": 763,
-       "seq": 17
+       "seq": 17,
+       "pw": 374,
+       "ph": 468,
+       "kind": "figura",
+       "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
+       "rotulos": [
+        {
+         "id": "B.310-15(B)(2)(3)",
+         "titulo": "",
+         "rotulo": "Figura B.310-15(B)(2)(3)",
+         "ancla": "figura-b-310-15-b-2-3"
+        }
+       ],
+       "ancla": "figura-b-310-15-b-2-3"
       },
       {
        "src": "fig-1598.png",
        "w": 341,
        "h": 392,
        "page": 764,
-       "seq": 20
+       "seq": 20,
+       "pw": 454,
+       "ph": 522,
+       "kind": "figura",
+       "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
+       "rotulos": [
+        {
+         "id": "B.310-15(B)(2)(4)",
+         "titulo": "",
+         "rotulo": "Figura B.310-15(B)(2)(4)",
+         "ancla": "figura-b-310-15-b-2-4"
+        }
+       ],
+       "ancla": "figura-b-310-15-b-2-4"
       },
       {
        "src": "fig-1601.png",
        "w": 361,
        "h": 454,
        "page": 765,
-       "seq": 23
+       "seq": 23,
+       "pw": 481,
+       "ph": 606,
+       "kind": "figura",
+       "nota": "Sin título impreso; la NOTA que la sigue en el cuerpo la describe.",
+       "rotulos": [
+        {
+         "id": "B.310-15(B)(2)(5)",
+         "titulo": "",
+         "rotulo": "Figura B.310-15(B)(2)(5)",
+         "ancla": "figura-b-310-15-b-2-5"
+        }
+       ],
+       "ancla": "figura-b-310-15-b-2-5"
       }
      ]
     }

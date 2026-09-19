@@ -4,7 +4,7 @@ Estado del proyecto para retomarlo desde otra sesión o cuenta. El README explic
 **qué es** el proyecto y cómo está construido; esto explica **dónde va**, qué hay
 que entender antes de tocarlo y qué queda pendiente.
 
-Última actualización: 18 de septiembre de 2026.
+Última actualización: 19 de septiembre de 2026.
 
 ## Dónde estamos
 
@@ -23,6 +23,7 @@ sobre el PDF deja el árbol idéntico a lo commiteado, byte a byte.
 | Cobertura | 100 % (31 858 de 31 859 renglones) |
 | Ids retirados con destino | 143 de 143 |
 | Tablas | 226, todas contrastadas a mano y congeladas |
+| Figuras | 51 números en 45 imágenes, más 13 fórmulas; leyendas capturadas a mano |
 
 Para verificar el estado en cualquier momento:
 
@@ -74,6 +75,41 @@ La huella nueva aparece en el diff. Eso es la señal de revisión, no un trámit
 
 `pymupdf` está fijado a `1.28.2` en el workflow por la misma razón: una versión
 que extrajera un título distinto abortaría la publicación.
+
+### 1b. El rótulo de una figura tampoco sale del PDF
+
+De las 59 imágenes, **45 llevan su leyenda dibujada dentro del PNG**: «Figura
+230-1.- Acometidas» es parte del mapa de bits. Solo 9 la tienen en la capa de
+texto, y de esas 9 sale todo lo que el parser podía saber. Las demás están
+capturadas a mano en `data/figuras.json`, con la misma política que las tablas:
+
+- **La captura manda.** No hay reconstrucción de la que echar mano, así que una
+  figura nueva sin capturar **aborta el build** en `aplicar_figuras`.
+- **Cada entrada sella la huella del PNG** que describe. Si la extracción
+  cambiara, la leyenda dejaría de estar respaldada: `build_corpus.py` aborta
+  antes de escribir y `check_corpus.py` lo vuelve a comprobar por su cuenta.
+- **`check_corpus.py` cuida el directorio de imágenes**: que cada `src` exista y
+  que no sobre ningún PNG. `site/public/img/` se versiona y el pipeline lo
+  reescribe sin limpiarlo, así que un huérfano se publicaría para siempre.
+
+Dos cosas que hay que tener presentes al tocarlo:
+
+- **Una imagen puede traer más de una figura.** La 516-3(c)(1) y la (c)(2)
+  comparten dibujo, igual que la 517-30(a) y la (b), la 923-10(a)(3) y la (c), y
+  las dos del 694. Por eso `rotulos` es una lista: tratarlo como un campo dejaba
+  tres figuras citadas por el texto sin existir en ninguna parte.
+- **La figura no vive donde la citan.** La norma la imprime donde cabe en la
+  página: la «Figura 551-46(c)» está en 551-47(a), la 760-154(d) en 760-176(b),
+  la 922-54 en 922-55(b). Por eso el ancla se calcula desde el rótulo capturado
+  y no desde el nodo, y por eso `linkify` tiene una rama propia para «Figura»:
+  sin ella enlazaba el número desnudo y mandaba al lector a la sección homónima,
+  que en 12 de las 51 citas no es donde está la figura.
+
+Y una tercera, de contenido: **15 imágenes encierran texto que el PDF no tiene
+como texto** —la Excepción entera de 922-12(a)(2), el inciso d) de 310-60(c)(4),
+la Tabla 240-92(b) completa—. Va en `transcripcion` y de ahí sale a la búsqueda
+y al `<details>` de la figura. La cobertura del 100 % no puede verlo: cuenta
+renglones de la capa de texto, y esto nunca estuvo ahí.
 
 ### 2. La sangría del PDF es una señal, y se usa
 
@@ -199,7 +235,41 @@ detectar: se dan de alta a mano y se declaran `sin_numero`, sin inventarles uno.
 Cuando algo no cuadre, **mira cómo lo imprime el PDF antes de sospechar del
 parser**.
 
-## Qué se hizo en esta ronda
+## Qué se hizo en la ronda de las figuras
+
+Las figuras eran el único contenido de la norma sin número, sin ancla, sin
+índice y sin búsqueda: se publicaban con `alt="Figura de la página 84 del PDF"`.
+
+- **Las 59 imágenes capturadas a mano** en `data/figuras.json`: 51 números de
+  figura, 13 fórmulas y una tabla. Ver §1b.
+- **Ancla por figura**, índice en `/figuras` agrupado por capítulo, documentos
+  `kind: "fig"` en la búsqueda y bloque de Figuras en el índice lateral del
+  artículo.
+- **`linkify` conoce «Figura»**: las 76 citas del texto y de las celdas de tabla
+  aterrizan en la figura. Antes, 12 caían en una sección que no la contiene.
+- **`Figura.astro`**: el bloque `<figure>` estaba duplicado palabra por palabra
+  en `Sub.astro` y en `art/[num].astro`.
+- **La Tabla 240-92(b) existe.** `TABLAS_AUSENTES` decía «No hay tabla con ese
+  número» y sí la hay, en la página 82: el DOF la imprime como imagen. Se
+  transcribió, se le dio ancla en el espacio de nombres de las tablas y su cita
+  dejó de estar en la lista blanca del grafo.
+- **El `width`/`height` sale de los píxeles del PNG** y no del rectángulo en
+  puntos donde el PDF coloca la imagen: la del 310-15(c) se publicaba estirada
+  un 3.6 %.
+
+**Redes de seguridad nuevas**
+
+| Detector | Qué caza | Dónde |
+|---|---|---|
+| Piso de figuras en `MIN` | Que una regresión deje artículos sin su diagrama | `check_corpus.py` |
+| Huella del PNG | Que la imagen cambie y la leyenda deje de describirla | `check_corpus.py`, `build_corpus.py` |
+| Captura obligatoria | Una figura nueva publicada sin rótulo | `build_corpus.py` |
+| Archivo ausente / huérfano | Una imagen rota, o un PNG publicado que nadie cita | `check_corpus.py` |
+| Anclas repetidas | Dos figuras que se disputan el mismo enlace | `check_corpus.py` |
+
+Las cinco están probadas: al romper cada cosa a propósito, el build falla.
+
+## Qué se hizo en la ronda anterior
 
 Once merges (23 commits) sobre `4af7f0b`. Lo sustantivo:
 
@@ -282,7 +352,22 @@ que un archivo puesto ahí existiría en local y desaparecería en CI.
 
 ## Pendientes
 
-Ninguno. Si aparece algo, va aquí.
+De la ronda de figuras, tres cosas que quedaron fuera a propósito:
+
+- **`fig-996.png` (550-18(b)(6)) sin transcribir.** Es un ejemplo de cálculo
+  numérico de media página; las 15 transcritas son las que encierran texto
+  normativo o definiciones de variables.
+- **Miniaturas para `/figuras`.** El índice va en texto, como el de tablas.
+  Poner las 59 imágenes a tamaño completo son 4.1 MB; con miniaturas generadas
+  desde `pymupdf` bajaría a unos 600 KB, a cambio de más binarios versionados.
+- **Backlinks de figura en el grafo.** Hoy una figura no sabe quién la cita; la
+  «Figura 551-46(c)» tiene 7 citas y no se ven. Sería un destino `figura:` en
+  `build_graph.py`, análogo a `tabla:`.
+
+Y una que no es de figuras: **el Anexo B cuelga del Artículo 924.** Las tablas y
+figuras `B.310-15(B)(2)(x)` están dentro de `924-24`, que se titula «Tarimas y
+tapetes aislantes». El contenido está publicado y no se pierde, pero su lugar en
+el árbol no es el que le toca.
 
 ## Trampas del entorno
 

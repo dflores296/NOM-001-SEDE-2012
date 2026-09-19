@@ -19,7 +19,7 @@ veces y como "ARTÍCULO" (con acento) 2 veces -- artículos 250 y 555. Todo
 emparejamiento normaliza acentos pero CONSERVA mayúsculas, que es lo que
 distingue el encabezado "ARTICULO 250" de la referencia en prosa "el Artículo 250".
 """
-import itertools, json, os, re, sys, unicodedata
+import hashlib, itertools, json, os, re, struct, sys, unicodedata
 from collections import OrderedDict
 
 # ------------------------------------------------------------------ utilidades
@@ -949,6 +949,110 @@ def walk(node):
 
 # ------------------------------------------------------------------ main
 
+# --------------------------------------------------------------------- figuras
+#
+# Las figuras son el único contenido de la norma cuyo rótulo el PDF no entrega
+# como texto: 45 de las 59 imágenes lo llevan rasterizado dentro del PNG
+# ("Figura 230-1.- Acometidas" es parte del dibujo), así que ningún detector
+# puede leerlo. Se capturan a mano en `data/figuras.json`, con la misma
+# política que las tablas: la captura manda y se sella con una huella.
+#
+# La huella aquí es del PNG, no del texto: lo que la captura describe es ESA
+# imagen. Si la extracción cambiara —otra versión de pymupdf, otro recorte—,
+# la leyenda dejaría de estar respaldada y hay que volver a mirarla.
+
+def _png_size(ruta):
+    """Ancho y alto reales del PNG, en píxeles.
+
+    El `w`/`h` que trae la figura es el rectángulo donde el PDF la coloca, en
+    puntos, y no siempre guarda la proporción del archivo: la del 310-15(c) se
+    publicaba estirada un 3.6%. Para el `width`/`height` del HTML manda el
+    archivo.
+    """
+    with open(ruta, 'rb') as f:
+        f.read(16)
+        return struct.unpack('>II', f.read(8))
+
+
+def slug_figura(fid, prefijo='figura'):
+    """Ancla estable de una figura: "516-3(c)(1)" -> "figura-516-3-c-1"."""
+    return prefijo + '-' + re.sub(r'[^\w-]+', '-', fid).strip('-').lower()
+
+
+def aplicar_figuras(articles, img_dir, ruta):
+    """Cuelga de cada figura del corpus su rótulo capturado a mano.
+
+    Una imagen puede llevar MÁS DE UNA figura: el PDF imprime la 516-3(c)(1) y
+    la 516-3(c)(2) en un solo mapa de bits, y lo mismo pasa con la 517-30(a) y
+    la (b), la 923-10(a)(3) y la (c), y las dos del 694. Por eso el rótulo es
+    una lista y no un campo: sin ella, tres figuras citadas por el texto no
+    existirían en ninguna parte.
+
+    Aborta si falta una captura o si la huella no coincide. Una figura nueva
+    exige capturarla; no hay reconstrucción de la que echar mano.
+    """
+    captura = json.load(open(ruta))
+    vistas, usadas, fallos = set(), set(), []
+
+    figuras = [(n['id'], f) for a in articles for s in a['sections']
+               for n in walk(s) for f in n.get('figures', [])]
+    for nodo, f in figuras:
+        src = f['src']
+        vistas.add(src)
+        e = captura.get(src)
+        if e is None:
+            fallos.append('%s: sin capturar en %s' % (src, ruta))
+            continue
+        ruta_png = os.path.join(img_dir, src)
+        sha = hashlib.sha256(open(ruta_png, 'rb').read()).hexdigest()[:16]
+        if sha != e.get('sha'):
+            fallos.append('%s: la imagen cambió (huella %s, capturada %s)'
+                          % (src, sha, e.get('sha')))
+            continue
+        f['pw'], f['ph'] = _png_size(ruta_png)
+        f['kind'] = e['kind']
+        for campo in ('titulo', 'informativa', 'nota', 'transcripcion'):
+            if e.get(campo):
+                f[campo] = e[campo]
+        rots = []
+        for r in e['rotulos']:
+            # Dos figuras pueden compartir número -las dos del 694 se llaman
+            # "Figura 694-1"- y dos anclas iguales en una página no son ancla.
+            # La 240-92(b) es una TABLA que el DOF imprime como imagen: su
+            # ancla va en el espacio de nombres de las tablas para que la cita
+            # "Tabla 240-92(b)" pueda aterrizar en ella.
+            ancla = base = slug_figura(
+                r['id'], 'tabla' if e['kind'] == 'tabla' else 'figura')
+            i = 2
+            while ancla in usadas:
+                ancla, i = '%s-%d' % (base, i), i + 1
+            usadas.add(ancla)
+            rots.append({'id': r['id'], 'titulo': r['titulo'],
+                         'rotulo': ('Tabla %s' if e['kind'] == 'tabla' else 'Figura %s') % r['id'],
+                         'ancla': ancla})
+        f['rotulos'] = rots
+        # Una fórmula no tiene número, pero sí tiene que poder enlazarse: se
+        # ancla al inciso donde la norma la imprime.
+        if rots:
+            f['ancla'] = rots[0]['ancla']
+        else:
+            ancla = base = slug_figura(nodo, 'formula')
+            i = 2
+            while ancla in usadas:
+                ancla, i = '%s-%d' % (base, i), i + 1
+            usadas.add(ancla)
+            f['ancla'] = ancla
+
+    figuras = [f for _, f in figuras]
+    sobran = sorted(set(captura) - vistas)
+    if sobran:
+        fallos.append('%d captura(s) sin figura que las use: %s'
+                      % (len(sobran), ', '.join(sobran)))
+    if fallos:
+        sys.exit('FIGURAS: no se escribe nada.\n  - ' + '\n  - '.join(fallos))
+    return figuras
+
+
 def main():
     pdf = sys.argv[1] if len(sys.argv) > 1 else 'NOM-001-SEDE-2012.pdf'
     out = sys.argv[2] if len(sys.argv) > 2 else 'data'
@@ -1029,6 +1133,10 @@ def main():
             art['alcance'] = alcance_100
         articles.append(art)
 
+    # El rótulo de una figura no sale del PDF: se captura a mano y se aplica
+    # aquí, antes de escribir nada. Ver `aplicar_figuras`.
+    figuras = aplicar_figuras(articles, img_dir, os.path.join(out, 'figuras.json'))
+
     corpus = {
         'meta': {
             'norma': 'NOM-001-SEDE-2012',
@@ -1054,8 +1162,9 @@ def main():
     # -------------------------------------------------------------- validación
     n_sec = sum(len(a['sections']) for a in articles)
     n_sub = sum(len(list(walk(s))) - 1 for a in articles for s in a['sections'])
-    n_figs = sum(len(x.get('figures', [])) for a in articles
-                 for s in a['sections'] for x in walk(s))
+    n_figs = sum(1 for f in figuras if f['kind'] == 'figura')
+    n_form = sum(1 for f in figuras if f['kind'] == 'formula')
+    n_rotulos = sum(len(f['rotulos']) for f in figuras)
     n_notes = sum(len(x.get('notes', [])) for a in articles
                   for s in a['sections'] for x in walk(s))
     n_exc = sum(len(x.get('exceptions', [])) for a in articles
@@ -1128,6 +1237,9 @@ def main():
         'excepciones': n_exc,
         'definiciones': len(definitions),
         'figuras': n_figs,
+        'formulas': n_form,
+        'imagenes': len(figuras),
+        'figuras_numeradas': n_rotulos,
         'referencias_distintas': len(set(r for a in articles for r in a['refs'])),
         'lineas_contenido': lines_total,
         'lineas_no_capturadas': lines_lost,
@@ -1146,9 +1258,9 @@ def main():
     print('Notas          : %d' % n_notes)
     print('Excepciones    : %d' % n_exc)
     print('Definiciones   : %d' % len(definitions))
-    print('Figuras        : %d en %s' % (
-        sum(len(x.get('figures', [])) for a in articles
-            for s2 in a['sections'] for x in walk(s2)), img_dir))
+    print('Figuras        : %d con %d número(s) de figura' % (n_figs, n_rotulos))
+    print('Fórmulas       : %d (imágenes en total: %d en %s)'
+          % (n_form, len(figuras), img_dir))
     print('Referencias    : %d distintas' % val['referencias_distintas'])
     print('Cobertura      : %.2f%% (%d de %d líneas de contenido)'
           % (val['cobertura_pct'], lines_total - lines_lost, lines_total))

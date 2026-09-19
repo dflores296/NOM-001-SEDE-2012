@@ -8,7 +8,7 @@ degrada, para que un cambio en los patrones no llegue al sitio publicado.
 Los umbrales son deliberadamente cercanos a los valores actuales: la norma no
 cambia, así que cualquier variación significa que el parser se rompió.
 """
-import json, os, re, sys
+import hashlib, json, os, re, sys
 from collections import Counter
 
 # La captura manual de las tablas es la fuente de verdad; esto la protege.
@@ -20,6 +20,11 @@ MIN = {
     'incisos': 7000,
     'definiciones': 185,
     'cobertura_pct': 99.5,
+    # Las figuras se contaban y no se comprobaban nunca: una regresión que
+    # dejara 12 de 59 salía en verde y publicaba artículos sin su diagrama.
+    'imagenes': 59,
+    'figuras': 45,
+    'figuras_numeradas': 51,
 }
 
 # Tablas: umbrales aparte, porque su reconstrucción es aproximada por
@@ -136,6 +141,83 @@ def titulos_sospechosos(tabs):
         elif RE_COLGADO.search(ti):
             colg.append(t['id'])
     return dup, colg
+
+
+
+def revisar_figuras(corpus, d, img_dir):
+    """Comprueba que lo publicado y la captura de figuras sigan casando.
+
+    Tres formas de romperse, las tres invisibles hasta ahora:
+
+    - **La imagen cambió**: la captura describe un PNG concreto y se sella con
+      su huella. Otra versión de pymupdf, otro recorte, y la leyenda publicada
+      ya no describe lo que se ve.
+    - **Falta el archivo**: el corpus apunta a un `src` que no está en disco y
+      el sitio publica una imagen rota.
+    - **Sobra un archivo**: `site/public/img/` se versiona y el pipeline lo
+      reescribe sin limpiarlo, así que un PNG que dejara de extraerse se
+      quedaría publicado para siempre sin que nadie lo cite.
+
+    Y una cuarta, de forma: dos figuras con el mismo ancla no son ancla.
+    """
+    fails = []
+    ruta = os.path.join(d, 'figuras.json')
+    if not os.path.exists(ruta):
+        return ['no existe %s: las figuras se publicarían sin rótulo' % ruta]
+    captura = json.load(open(ruta, encoding='utf-8'))
+
+    figs = [f for a in corpus['articles'] for s in a['sections']
+            for n in walk(s) for f in n.get('figures', [])]
+
+    sin_captura = sorted({f['src'] for f in figs if f['src'] not in captura})
+    if sin_captura:
+        fails.append('%d figura(s) sin capturar en figuras.json (hay que '
+                     'mirarlas y darles su rótulo): %s'
+                     % (len(sin_captura), ', '.join(sin_captura[:6])))
+
+    faltan, movidas = [], []
+    for src, e in sorted(captura.items()):
+        ruta_png = os.path.join(img_dir, src)
+        if not os.path.exists(ruta_png):
+            faltan.append(src)
+            continue
+        sha = hashlib.sha256(open(ruta_png, 'rb').read()).hexdigest()[:16]
+        if sha != e.get('sha'):
+            movidas.append('%s (%s != %s)' % (src, sha, e.get('sha')))
+    if faltan:
+        fails.append('%d imagen(es) capturadas que no están en %s: %s'
+                     % (len(faltan), img_dir, ', '.join(faltan[:6])))
+    if movidas:
+        fails.append('%d imagen(es) cambiaron respecto a su huella; la leyenda '
+                     'capturada ya no las describe, hay que volver a mirarlas: %s'
+                     % (len(movidas), ', '.join(movidas[:4])))
+
+    if os.path.isdir(img_dir):
+        usadas = {f['src'] for f in figs}
+        huerfanos = sorted(x for x in os.listdir(img_dir)
+                           if x.endswith('.png') and x not in usadas)
+        if huerfanos:
+            fails.append('%d PNG en %s que ninguna figura usa; el directorio se '
+                         'versiona y el pipeline no lo limpia, así que se '
+                         'publicarían igual: %s'
+                         % (len(huerfanos), img_dir, ', '.join(huerfanos[:6])))
+
+    # El ancla de la figura es la de su primer rótulo, así que solo se cuentan
+    # los rótulos; una imagen sin rótulo -una fórmula- aporta la suya.
+    anclas = Counter()
+    for f in figs:
+        if f.get('rotulos'):
+            for r in f['rotulos']:
+                anclas[r['ancla']] += 1
+        else:
+            anclas[f.get('ancla')] += 1
+    repes = [a for a, c in anclas.items() if c > 1 and a is not None]
+    if repes:
+        fails.append('anclas de figura repetidas: %s' % repes[:6])
+    if None in anclas:
+        fails.append('%d figura(s) sin ancla: no se puede enlazar a ellas'
+                     % anclas[None])
+    return fails
 
 
 def main():
@@ -300,6 +382,9 @@ def main():
                     % (len(desal), ', '.join('%s (%s)' % (t, '/'.join(c))
                                              for t, c in desal[:6])))
 
+    fails.extend(revisar_figuras(
+        corpus, d, os.environ.get('NOM_IMG_DIR', 'site/public/img')))
+
     dup, colg = titulos_sospechosos(tabs)
     if dup:
         fails.append(
@@ -321,6 +406,9 @@ def main():
            'cobertura %.2f%%, 0 referencias rotas.'
            % (val['articulos'], val['secciones'], val['incisos'],
               val['cobertura_pct']))
+    msg += ('\n  Figuras: %d con %d número(s), %d fórmulas, %d imágenes '
+            'capturadas.' % (val.get('figuras', 0), val.get('figuras_numeradas', 0),
+                             val.get('formulas', 0), val.get('imagenes', 0)))
     if os.path.exists(tpath):
         msg += ('\n  Tablas: %d reconstruidas, %d de alta confianza.'
                 % (len(tabs), fiables))
