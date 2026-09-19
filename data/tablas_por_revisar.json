@@ -11,38 +11,6 @@
   "title": "Ampacidades de tres conductores aislados, de 0 a 2000 volts nominales dentro de una cubierta general (cable de tres conductores) en ductos eléctricos subterráneos (un cable por conducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C y los ductos eléctricos dispuestos como en la Figura B.310.15(B)(2)(2), temperatura del conductor"
  },
  {
-  "id": "B.310.15(B)(2)(1)",
-  "quality": 0.431,
-  "cols": 7,
-  "rows": 9,
-  "pages": [
-   756,
-   757
-  ],
-  "title": "Ampacidades de dos o tres conductores aislados, de 0 a 2000 volts nominales con un recubrimiento general (cable multiconductor) en una canalización al aire libre, con base en una temperatura ambiente de 30 °C"
- },
- {
-  "id": "B.310.15(B)(2)(5)",
-  "quality": 0.462,
-  "cols": 8,
-  "rows": 8,
-  "pages": [
-   758
-  ],
-  "title": "Ampacidad de conductores sencillos aislados, de 0 a 2000 volts nominales, en ductos eléctricos subterráneos no magnéticos (un conductor por ducto eléctrico), con base en una temperatura ambiente de la tierra de 20 °C y los ductos eléctricos dispuestos como en la Figura B.310.15(B)(2)(2), temperatura del conductor 75 °C"
- },
- {
-  "id": "B.310.15(B)(2)(3)",
-  "quality": 0.475,
-  "cols": 10,
-  "rows": 9,
-  "pages": [
-   757,
-   758
-  ],
-  "title": "Ampacidades de cables multiconductores con no más de tres conductores aislados, de 0 a 2000 volts nominales al aire libre, con base en una temperatura ambiente de 40 °C. (Para cables de los tipos TC, MC, MI, UF y USE)"
- },
- {
   "id": "B.310.15(B)(2)(10)",
   "quality": 0.557,
   "cols": 10,
