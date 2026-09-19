@@ -3,14 +3,20 @@ import Base from '../layouts/Base.astro';
 import { definiciones, linkify, byNum } from '../lib/nom.js';
 import { defSlug } from '../lib/slug.js';
 
-const partes = [
-  { letter: 'A', title: 'Definiciones generales' },
-  { letter: 'B', title: 'Definiciones aplicables a más de 600 volts' },
-];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const alcance = byNum.get(100)?.alcance;
-const countA = definiciones.filter((d) => d.part === 'A').length;
-const countB = definiciones.filter((d) => d.part === 'B').length;
+// La Parte B no es un apéndice del glosario: son términos que solo aplican por
+// encima de 600 volts, y varios existen también en la Parte A con otro alcance.
+// Por eso la distinción se dice aquí y no queda enterrada en el texto de
+// Alcance, que es lo que obligaba a leerlo entero para entender la diferencia.
+const partes = [
+  { letter: 'A', title: 'Definiciones generales', nota: 'Aplican en toda la norma' },
+  { letter: 'B', title: 'Definiciones aplicables a más de 600 volts', nota: 'Solo por encima de 600 V' },
+].map((p) => ({ ...p, items: definiciones.filter((d) => d.part === p.letter) }))
+ .filter((p) => p.items.length > 0);
+
+const art = byNum.get(100);
+const alcance = art?.alcance;
 ---
 
 <Base
@@ -19,44 +25,65 @@ const countB = definiciones.filter((d) => d.part === 'B').length;
 >
   <div class="wrap">
     <div class="hero">
+      <p class="migaja">
+        <a href={`${base}/#cap1`}>Capítulo 1</a> · Artículo 100
+      </p>
       <h1>Glosario</h1>
       <p>
-        Las {definiciones.length} definiciones del <b>Artículo 100</b>. Son las que fijan el
-        significado de los términos en toda la norma, así que conviene leerlas antes de
-        interpretar cualquier requisito.
+        Las {definiciones.length} definiciones del <b>Artículo 100</b>, que es donde la norma
+        fija el significado de sus términos. Conviene leerlas antes de interpretar
+        cualquier requisito.
       </p>
-      {alcance && <p class="alcance" set:html={linkify(alcance)} />}
 
       <div class="cifras">
-        <div class="cifra"><b class="tabular">{definiciones.length}</b><span>Definiciones</span></div>
-        <div class="cifra"><b class="tabular">{countA}</b><span>Parte A · generales</span></div>
-        <div class="cifra"><b class="tabular">{countB}</b><span>Parte B · más de 600 volts</span></div>
+        {partes.map((p) => (
+          <div class="cifra">
+            <b class="tabular">{p.items.length}</b>
+            <span>Parte {p.letter} · {p.nota}</span>
+          </div>
+        ))}
+        <div class="cifra"><b class="tabular">{definiciones.length}</b><span>En total</span></div>
       </div>
     </div>
 
-    {partes.map((p) => {
-      const items = definiciones.filter((d) => d.part === p.letter);
-      if (!items.length) return null;
-      return (
-        <div class="chap">
-          <h2><span>Parte {p.letter}</span>{p.title}</h2>
-          <dl class="defs">
-            {items.map((d) => (
-              <div class="def" id={defSlug(d.term)}>
-                <dt>
-                  {d.term}
-                  <span class="tag">pág. {d.page}</span>
-                </dt>
-                <dd set:html={linkify(d.definition)} />
-              </div>
-            ))}
-          </dl>
+    {/* El Alcance es texto de la norma, no presentación de la página: se cita
+        como tal y a todo lo ancho. Vivía como párrafo del hero, donde la medida
+        de lectura lo dejaba en una columna angosta y altísima. */}
+    {alcance && (
+      <blockquote class="cita-norma">
+        <span class="lb">Artículo 100 · Alcance</span>
+        <p set:html={linkify(alcance)} />
+      </blockquote>
+    )}
+
+    <nav class="cap-nav" aria-label="Ir a una parte">
+      {partes.map((p) => (
+        <a href={`#parte-${p.letter}`}>
+          <b>Parte {p.letter}</b>
+          <span>{p.nota}</span>
+          <em class="tabular">{p.items.length}</em>
+        </a>
+      ))}
+    </nav>
+
+    {partes.map((p) => (
+      <div class="sec" id={`parte-${p.letter}`}>
+        <div class="sec-head">
+          <h2><span class="n">Parte {p.letter}</span>{p.title}</h2>
+          <em class="desc">{p.items.length} definiciones</em>
         </div>
-      );
-    })}
+        <dl class="defs">
+          {p.items.map((d) => (
+            <div class="def" id={defSlug(d.term)}>
+              <dt>
+                {d.term}
+                <span class="tag">pág. {d.page}</span>
+              </dt>
+              <dd set:html={linkify(d.definition)} />
+            </div>
+          ))}
+        </dl>
+      </div>
+    ))}
   </div>
 </Base>
-
-<style>
-  .alcance { margin-top: 0.9rem !important; font-size: 0.92rem; }
-</style>
