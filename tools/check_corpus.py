@@ -13,6 +13,10 @@ from collections import Counter
 
 # La captura manual de las tablas es la fuente de verdad; esto la protege.
 from huella import desalineadas, discrepancias, sin_congelar
+# Las ocho formas con que el DOF cita el Apéndice A se reducen con la misma
+# clave canónica que usa el grafo; escribirla dos veces sería empezar a
+# comprobar otra cosa.
+from build_graph import RE_AP_FIG, RE_AP_TBL, clave_apendice
 
 MIN = {
     'articulos': 151,
@@ -66,6 +70,17 @@ HUECOS_DEL_DOF = {
     # no porque el parser lo perdiera. Errata del DOF del mismo tipo que las de
     # la Tabla 220-42 y la 430-250.
     '240-4(d)': [4, 6],
+}
+
+
+# La única cita del Apéndice A que no lleva a ninguna parte, y por qué.
+FIGURAS_AUSENTES_DEL_DOF = {
+    # El texto la cita cuatro veces --una para explicar cómo modificar la
+    # ampacidad en bancos de ductos-- y el DOF no la imprime: el Apéndice A
+    # trae cuatro imágenes, en las páginas 762 a 765, y son la (2), (3), (4) y
+    # la (5). No es una figura que la extracción perdiera; en esas páginas no
+    # hay ninguna imagen más.
+    'B.310.15(B)(2)(1)': 'el DOF no imprime esta figura (págs. 762-765)',
 }
 
 
@@ -246,6 +261,63 @@ def revisar_figuras(corpus, d, img_dir):
     return fails
 
 
+def textos(corpus):
+    """Todo el texto publicado, para buscar citas sobre él."""
+    for a in corpus['articles']:
+        for sec in a['sections']:
+            for n in walk(sec):
+                yield n.get('text') or ''
+                yield n.get('title') or ''
+                for x in (n.get('notes') or []) + (n.get('exceptions') or []):
+                    yield x.get('text') or ''
+                    for it in x.get('items') or []:
+                        yield it.get('text') or ''
+                for x in n.get('parrafos') or []:
+                    yield x.get('text') or ''
+                for x in n.get('definitions') or []:
+                    yield (x.get('term') or '') + ' ' + (x.get('text') or '')
+    for h in corpus.get('cierre', []):
+        yield h.get('titulo') or ''
+        for b in h['bloques']:
+            yield b.get('text') or ''
+
+
+def citas_del_apendice(corpus, tabs, figuras_ids):
+    """Citas a las tablas y figuras del Apéndice A que no llevan a ningún lado.
+
+    El cuerpo las nombra de ocho formas --punto o guion, inciso en minúscula,
+    un espacio de más, y en cuatro citas sin el «(B)»-- y el sitio las resuelve
+    reduciéndolas a una clave canónica. Si una captura cambiara de rótulo, o
+    `clave_apendice` dejara de reducir una de las formas, esas citas volverían
+    a quedarse mudas sin que nada lo dijera: `build_graph` no lo caza, porque
+    una cita sin destino no llega a ser arista rota, simplemente no existe.
+    """
+    # Los dos espacios de nombres se comprueban por separado, como los resuelve
+    # el sitio: la Tabla B.310.15(B)(2)(1) existe y la Figura B.310.15(B)(2)(1)
+    # no, así que mezclarlos daría por buena justamente la cita que no lleva a
+    # ninguna parte.
+    destinos = {
+        RE_AP_TBL: {clave_apendice(t['id']) for t in tabs
+                    if t['id'].startswith('B.310')},
+        RE_AP_FIG: {clave_apendice(f) for f in figuras_ids
+                    if f.upper().startswith('B.310')},
+    }
+    perdidas = Counter()
+    for txt in textos(corpus):
+        for rex, vivos in destinos.items():
+            for m in rex.finditer(txt):
+                clave = clave_apendice(m.group(1))
+                if clave not in vivos and clave not in FIGURAS_AUSENTES_DEL_DOF:
+                    perdidas[m.group(0)] += 1
+    if not perdidas:
+        return []
+    return ['%d cita(s) al Apéndice A sin destino: %s. Si es otro hueco del '
+            'DOF va en FIGURAS_AUSENTES_DEL_DOF con su página; si no, la '
+            'captura o la clave canónica se movieron'
+            % (sum(perdidas.values()),
+               ', '.join('%r x%d' % (k, v) for k, v in perdidas.most_common(5)))]
+
+
 def main():
     d = sys.argv[1] if len(sys.argv) > 1 else 'data'
     val = json.load(open(os.path.join(d, 'validacion.json')))
@@ -415,6 +487,14 @@ def main():
 
     fails.extend(revisar_figuras(
         corpus, d, os.environ.get('NOM_IMG_DIR', 'site/public/img')))
+
+    rotulos = [r['id']
+               for a in corpus['articles'] for sec in a['sections']
+               for n in walk(sec) for f in n.get('figures', [])
+               for r in f.get('rotulos', [])]
+    rotulos += [r['id'] for h in corpus.get('cierre', []) for b in h['bloques']
+                for r in b.get('rotulos', [])]
+    fails.extend(citas_del_apendice(corpus, tabs, rotulos))
 
     dup, colg = titulos_sospechosos(tabs)
     if dup:
