@@ -31,8 +31,7 @@ const alcance = art?.alcance;
       <h1>Glosario</h1>
       <p>
         Las {definiciones.length} definiciones del <b>Artículo 100</b>, que es donde la norma
-        fija el significado de sus términos. Conviene leerlas antes de interpretar
-        cualquier requisito.
+        fija el significado de sus términos.
       </p>
 
       <div class="cifras">
@@ -78,6 +77,15 @@ const alcance = art?.alcance;
               <dt>
                 {d.term}
                 <span class="tag">pág. {d.page}</span>
+                {/* La referencia lleva la parte, no solo el término: hay
+                    términos que existen en la A y en la B con alcance distinto,
+                    y «Cortacircuito» a secas no diría de cuál se habla. */}
+                <a class="report"
+                   href={`${base}/observaciones/?ref=${
+                     encodeURIComponent(`Definición «${d.term}» (Parte ${p.letter})`)
+                   }&de=${encodeURIComponent(`${base}/glosario/#${defSlug(d.term)}`)}`}
+                   aria-label={`Reportar una observación sobre la definición de ${d.term}`}
+                >Reportar</a>
               </dt>
               <dd set:html={linkify(d.definition)} />
             </div>

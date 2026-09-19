@@ -35,11 +35,7 @@ const verificadas = tablas.filter((t) => t.verificada).length;
   <div class="wrap">
     <div class="hero">
       <h1>Tablas</h1>
-      <p>
-        Las {tablas.length} tablas de la norma, por capítulo. En el PDF se parten entre
-        páginas y pierden su estructura al copiarse; aquí se leen completas y se
-        enlazan directamente.
-      </p>
+      <p>Las {tablas.length} tablas de la norma, por capítulo.</p>
       <div class="cifras">
         <div class="cifra"><b class="tabular">{tablas.length}</b><span>Tablas</span></div>
         <div class="cifra"><b class="tabular">{filas.toLocaleString('es-MX')}</b><span>Filas</span></div>
