@@ -229,10 +229,31 @@ def extract_images(pdf, img_dir):
 #
 # Se exige el dígito en CAPITULO y TITULO a propósito: «Título» es el nombre
 # de una columna de los listados de normas del Apéndice B y no un encabezado.
-RE_KEEP = re.compile(
-    r'^(?:ARTICULO\s+\d{3}|[A-M]\.\s+[0-9A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,}|'
-    r'APENDICE\s+[A-E]\b|CAPITULO\s+\d{1,2}\b|TITULO\s+\d{1,2}\b|'
-    r'\d{3}-\d{1,3}(?:\.\s*[0-9A-ZÁÉÍÓÚÑ]|\s+[A-ZÁÉÍÓÚÑ]))')
+_KEEP_HITOS = (r'ARTICULO\s+\d{3}|[A-M]\.\s+[0-9A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,}|'
+               r'APENDICE\s+[A-E]\b|CAPITULO\s+\d{1,2}\b|TITULO\s+\d{1,2}\b')
+_KEEP_SECCION = r'\d{3}-\d{1,3}(?:\.\s*[0-9A-ZÁÉÍÓÚÑ]|\s+[A-ZÁÉÍÓÚÑ])'
+RE_KEEP = re.compile(r'^(?:%s|%s)' % (_KEEP_HITOS, _KEEP_SECCION))
+
+# En la región de cierre NO hay secciones numeradas, así que ahí la rama de
+# encabezado de sección no puede aplicarse: «505-5 Nota 2» tiene la forma de un
+# encabezado —tres dígitos, guion, espacio y mayúscula— pero es una celda de la
+# columna «Sección» de los listados de normas del Apéndice B. Rescatarla de la
+# zona de su tabla la publicaba como un título en /apendices/B; eran tres,
+# «505-5 Nota 2» dos veces y «505-5 Nota 6», en las Tablas B2.1 y B2.2.
+RE_KEEP_CIERRE = re.compile(r'^(?:%s)' % _KEEP_HITOS)
+
+
+def pagina_del_cierre(pages):
+    """Primera página de la región de cierre, la del «CAPITULO 10».
+
+    Se busca igual que `corte_cierre` en main() y por la misma razón: el
+    documento no la anuncia de otra forma.
+    """
+    for i, txt in enumerate(pages):
+        if i + 1 > 700 and any(unaccent(l).strip().upper().startswith('CAPITULO 10')
+                               for l in txt.splitlines()):
+            return i + 1
+    return 10 ** 6
 
 # Un inciso cualquiera, para rescatarlo de la zona que ocupa una tabla. Ver
 # `rescatable()`: la zona de una tabla se dibuja con holgura y el primer
@@ -278,6 +299,7 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
     doc = pymupdf.open(pdf) if pdf else None
     skip = skip or {}
     texto_tablas = texto_tablas or {}
+    desde_cierre = pagina_del_cierre(pages)
 
     def suyo_de_la_tabla(txt, tid):
         """¿Este renglón es texto que la tabla `tid` capturó de veras?
@@ -379,7 +401,8 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
                     continue
                 limpio = txt.strip()
                 dentro = [tid for a, b, tid in zonas if a <= y <= b]
-                if not dentro or RE_KEEP.match(unaccent(limpio)):
+                guarda = RE_KEEP_CIERRE if pno >= desde_cierre else RE_KEEP
+                if not dentro or guarda.match(unaccent(limpio)):
                     rescatando = None
                 elif any(rescatable(limpio, x0, tid) for tid in dentro):
                     rescatando = next(tid for tid in dentro

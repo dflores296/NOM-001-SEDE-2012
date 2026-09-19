@@ -19,12 +19,12 @@ sobre el PDF deja el árbol idéntico a lo commiteado, byte a byte.
 | Notas / Excepciones | 773 / 986 |
 | Definiciones | 185 |
 | Referencias distintas | 1 685 |
-| Referencias enlazadas / rotas | 4 529 / 0 |
+| Referencias enlazadas / rotas | 4 528 / 0 |
 | Cobertura | 100 % (31 452 de 31 453 renglones) |
 | Ids retirados con destino | 143 de 143 |
-| Tablas | 245; 238 contrastadas a mano y congeladas, 7 del B y el C sin contrastar |
+| Tablas | 245, todas contrastadas a mano y congeladas |
 | Figuras | 51 números en 45 imágenes, más 13 fórmulas; leyendas capturadas a mano |
-| Cierre | 7 hitos (Capítulo 10, Títulos 6 a 8, Apéndices A, B y C), 126 bloques |
+| Cierre | 7 hitos (Capítulo 10, Títulos 6 a 8, Apéndices A, B y C), 123 bloques |
 
 Para verificar el estado en cualquier momento:
 
@@ -50,13 +50,13 @@ eso es el problema a resolver antes que cualquier otra cosa.
 
 ### 1. La captura manual manda sobre la reconstrucción
 
-Las 226 tablas se contrastaron celda por celda contra el PDF. Ese trabajo vive en
-`data/tablas_revisadas.json` y **no es barato de rehacer**. `data/tablas.json` es
+Las 245 tablas de la norma se contrastaron celda por celda contra el PDF. Ese
+trabajo vive en `data/tablas_revisadas.json` y **no es barato de rehacer**. `data/tablas.json` es
 derivado y se regenera en cada publicación.
 
 Tres reglas lo protegen, y las tres rompen el build:
 
-- **Las 226 están congeladas**: cada entrada trae sus propias `rows`, `cols` y
+- **Las 245 están congeladas**: cada entrada trae sus propias `rows`, `cols` y
   `header_rows`. `build_tables.py` ya no decide el contenido de una tabla
   verificada; es una herramienta de arranque para tablas nuevas.
 - **Cada entrada guarda la huella de su contenido** (`sha`, ver `tools/huella.py`).
@@ -235,6 +235,67 @@ detectar: se dan de alta a mano y se declaran `sin_numero`, sin inventarles uno.
 
 Cuando algo no cuadre, **mira cómo lo imprime el PDF antes de sospechar del
 parser**.
+
+## Qué se hizo en la ronda del Apéndice B y el Apéndice C
+
+Con esta ronda **no queda ninguna tabla de la norma sin contrastar**: 245 de
+245. Eran siete, cuatro listados de normas y las tres tablas de ocupación en
+tubo conduit, y ninguna estaba como decía su nota.
+
+**Los cuatro listados del Apéndice B** (221 renglones) se leyeron por la
+rejilla dibujada y no por la posición del texto, porque el nombre de una norma
+se parte de renglón —«SERIE / NMX-J-618/1-ANCE-2010», «ANSI/API RP 14F /
+2008»— y tomar cada línea que empieza en la primera columna por un renglón
+nuevo inventaba 14 filas en la B1.2. Dos defectos: tres de las cuatro
+declaraban cuatro renglones de encabezado cuando tienen uno, así que las tres
+primeras normas de cada listado se publicaban con estilo de encabezado; y la
+B1.2 tenía dos secciones intercambiadas —la NMX-J-549-ANCE-2005 remite a
+«4.1.6, 250-4, …» y salía «250-4, 4.1.6, …»— porque el PDF imprime esos dos
+valores en la misma línea visual con 1.3 puntos de diferencia en la base.
+
+**Las tres tablas de ocupación en tubo conduit** son las que más se consultan
+en obra y estaban peor: la C-2 publicaba 116 celdas con cinco valores dentro
+(«0 0 0 0 1» en una sola celda). Las tres declaraban dos renglones de
+encabezado cuando tienen cuatro, así que los tamaños de tubería —la
+designación métrica y la comercial— se publicaban como datos, y la C-1 y la
+C-1(a) mezclaban el tipo de conductor con el área en la primera columna, de
+modo que sus 12 columnas eran en realidad 13.
+
+Tres reglas que hay que respetar si se vuelven a tocar:
+
+- **El tipo se escribe una vez por grupo**, en un bloque centrado que puede
+  quedar por encima del renglón de datos, por debajo, o las dos cosas. Por eso
+  el grupo lo marcan las horizontales dibujadas y no la posición del texto.
+- **Esas mismas horizontales separan también bandas de calibre** dentro de un
+  mismo tipo, así que una banda sin etiqueta continúa el grupo anterior. Con
+  cualquiera de las dos reglas sola salen grupos inventados.
+- **Dos renglones de la C-1 están impresos corridos 20 puntos a la izquierda**
+  (RFHH-1 y RFHH-2, pág. 777), y repartir por la x junta dos valores en una
+  celda. Como todo renglón trae una entrada por columna contando los guiones,
+  el reparto se hace por orden y la x solo decide si el conteo no cuadra: pasa
+  una vez, en el último renglón de la C-2, donde el DOF corta la tabla con
+  cuatro valores en vez de seis.
+
+**Los tres títulos que no lo eran.** `/apendices/B` publicaba «505-5 Nota 2»,
+«505-5 Nota 2» y «505-5 Nota 6» como encabezados. Son celdas de la columna
+«Sección» de las Tablas B2.1 y B2.2, y se escapaban de su zona por la
+salvaguarda que rescata encabezados de dentro de una tabla (§4): «505-5 Nota
+2» tiene la forma exacta de un encabezado de sección —tres dígitos, guion,
+espacio y mayúscula—. En la región de cierre **no hay secciones numeradas**,
+así que ahí esa rama de `RE_KEEP` no se aplica; las de `APENDICE`, `CAPITULO`,
+`TITULO` y `ARTICULO` sí, que son las que protegen los hitos.
+
+**Redes de seguridad nuevas**
+
+| Detector | Qué caza | Dónde |
+|---|---|---|
+| Encabezado del cierre con forma de sección | Una celda de tabla publicada como título, como los tres del Apéndice B | `check_corpus.py` |
+
+Y la de celda colapsada de la ronda anterior aprendió a eximir columnas
+sueltas y no solo tablas enteras: la columna «Sección» de la B1.2 es una lista
+de referencias por diseño —la NMX-J-604-ANCE-2008 remite a «4.4.2», «110» y
+«240», una por renglón—, pero un colapso en cualquier otra columna de esa
+misma tabla sigue rompiendo el build.
 
 ## Qué se hizo en la ronda del Apéndice A
 
@@ -449,30 +510,11 @@ que un archivo puesto ahí existiría en local y desaparecería en CI.
 
 ## Pendientes
 
-Todo esto está medido, no estimado: son las cuentas de hoy sobre
-`data/tablas.json` y el corpus.
-
-**Las 7 tablas del Apéndice B y del Apéndice C siguen sin contrastar** y salen
-con la insignia «Sin contrastar contra el PDF», que hasta entonces es lo único
-honesto que se puede decir de ellas. No están igual de mal:
-
-| Tabla | Tamaño | Qué se le ve desde aquí |
-|---|---|---|
-| `C-2` | 144×9 | **116 celdas** con una columna entera aplanada dentro |
-| `C-1` | 168×12 | 2 celdas aplanadas, y el encabezado mal: declara 2 renglones cuando son 4, así que los tamaños de tubería (`16 21 27…` / `(½) (¾) (1)…`) se publican como si fueran datos, y la primera columna mezcla el tipo de conductor con los mm² |
-| `C-1(a)` | 61×12 | el mismo encabezado que la C-1 |
-| `B1.2` | 112×3 | 1 celda aplanada |
-| `B1.1`, `B2.1`, `B2.2` | 10×3, 21×3, 79×3 | sin señales, pero nunca contrastadas |
-
-Son las tres tablas de ocupación en tubo conduit —de las más consultadas en
-obra— y el listado de normas, así que la ronda vale la pena; es cara porque
-son 168, 144 y 112 renglones.
-
-**`/apendices/B` publica tres títulos que no lo son**: «505-5 Nota 2», «505-5
-Nota 2» y «505-5 Nota 6». Son celdas de la columna «Sección» de las tablas
-B2.1 y B2.2 que se escaparon de su zona y el parser del cierre promovió a
-encabezado, porque van centradas y empiezan en dígito. Conviene arreglarlo con
-la zona de tabla, no con el detector de títulos.
+Ninguno de contenido: las 245 tablas están contrastadas, las 59 imágenes
+capturadas y el cierre tiene sus siete hitos. Lo que queda es del oficio de
+siempre —si el DOF publica una fe de erratas, si un lector reporta una
+diferencia por /observaciones, si alguna vez hay una edición nueva de la
+norma—, y para eso está el resto de este archivo.
 
 ## La región de cierre: las últimas 38 páginas
 

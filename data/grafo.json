@@ -1,7 +1,7 @@
 {
  "meta": {
-  "aristas": 4529,
-  "nodos_con_salida": 2937,
+  "aristas": 4528,
+  "nodos_con_salida": 2936,
   "nodos_con_entrada": 1861,
   "referencias_rotas": 0
  },
@@ -22645,11 +22645,6 @@
    "from": "apendice-A",
    "to": "310-60",
    "type": "seccion"
-  },
-  {
-   "from": "apendice-B",
-   "to": "505-5",
-   "type": "seccion"
   }
  ],
  "outgoing": {
@@ -33052,9 +33047,6 @@
    "tabla:B.310.15(B)(2)(11)",
    "tabla:B.310.15(B)(2)(5)",
    "tabla:B.310.15(B)(2)(6)"
-  ],
-  "apendice-B": [
-   "505-5"
   ]
  },
  "incoming": {
@@ -38029,8 +38021,7 @@
    "820-93(d)",
    "830-3(a)",
    "830-90(c)",
-   "840-3(a)",
-   "apendice-B"
+   "840-3(a)"
   ],
   "505-6": [
    "505-6"
