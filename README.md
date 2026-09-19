@@ -43,7 +43,7 @@ navegables, backlinks y búsqueda instantánea que funciona sin conexión.
 | Tablas | 226 |
 | Referencias enlazadas | 4 618 |
 | Referencias rotas | 0 |
-| Cobertura del texto | 31 858 de 31 859 renglones (100 %) |
+| Cobertura del texto | 31 856 de 31 857 renglones (100 %) |
 <!-- CIFRAS:FIN -->
 
 ## El identificador canónico

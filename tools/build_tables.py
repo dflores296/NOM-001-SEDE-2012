@@ -1114,29 +1114,81 @@ def main():
         # arranca en el propio título, así que su primera banda cae encima de
         # estos renglones. Se recorren hacia abajo y se para en el primero que
         # no continúa la frase.
-        seguidas = []
-        for blk in doc[cap['page'] - 1].get_text('dict')['blocks']:
-            for ln in blk.get('lines', []):
-                if ln['bbox'][1] > cap['y'] + 6:
-                    seguidas.append((ln['bbox'][1],
-                                     fix_glifos(''.join(sp['text'] for sp in ln['spans'])).strip()))
-        cont, prev = [], cap['y']
-        for y, txt in sorted(seguidas):
+        def renglones_bajo(pno, desde_y):
+            out = []
+            for blk in doc[pno].get_text('dict')['blocks']:
+                for ln in blk.get('lines', []):
+                    if ln['bbox'][1] > desde_y:
+                        out.append((round(ln['bbox'][1], 1),
+                                    fix_glifos(''.join(sp['text'] for sp in ln['spans'])).strip()))
+            return sorted(out)
+
+        def norm(t):
+            return re.sub(r'\s+', ' ', t).strip()
+
+        def sigue_la_frase(txt, hasta_ahora):
+            if txt[0].islower() or txt[0] == '(':
+                return True
+            # El PDF corta el número de referencia a mitad de renglón:
+            # "...según se indica en la Figura 310-" / "60, factor de carga".
+            # Sin esto los títulos de la 310-60(c)(85) y la (86) se quedaban
+            # en "Figura 310-", y el tercer renglón vive en OTRO bloque del
+            # PDF, así que find_captions tampoco lo alcanza.
+            return txt[0].isdigit() and hasta_ahora.rstrip().endswith('-')
+
+        def pegar(base, trozo):
+            # "Figura 310-" + "60, factor..." va sin espacio, como lo imprimen
+            # las tablas hermanas (81), (82) y (84): "Figura 310-60".
+            if base.rstrip().endswith('-') and trozo[:1].isdigit():
+                return base.rstrip() + trozo
+            return base + ' ' + trozo
+
+        # La continuación del título ya la resuelve find_captions con el bloque
+        # de texto del PDF, que agrupa la frase y distingue una línea de título
+        # de una fila de tabla por su altura. Volver a añadirla aquí la
+        # duplicaba, así que solo se pega lo que todavía no está —comparando
+        # NORMALIZADO: el PDF imprime "el montaje  de los ductos" con dos
+        # espacios y el título ya los colapsó a uno, así que la comparación
+        # cruda no lo reconocía y lo pegaba de nuevo: de ahí salían duplicados
+        # los títulos de la 310-60(c)(85) y la (86).
+        titulo, prev, ultimo_y = cap['title'], cap['y'], cap['y']
+        for y, txt in renglones_bajo(cap['page'] - 1, cap['y'] + 6):
             if not txt or RE_PAGE_NOISE.match(txt):
                 continue
-            if y - prev > 20 or not (txt[0].islower() or txt[0] == '('):
+            if y - prev > 20 or not sigue_la_frase(txt, titulo):
                 break
-            cont.append(txt)
-            prev = y
-        # La continuación del título ya la resuelve find_captions con el
-        # bloque de texto del PDF, que agrupa la frase completa y distingue una
-        # línea de título de una fila de tabla por su altura. Volver a
-        # añadirla aquí la duplicaba: el de la Tabla 220-55 salía con la
-        # segunda mitad repetida.
-        cont = [c for c in cont if c not in cap['title']]
-        if cont:
-            cap['title'] = re.sub(
-                r'\s+', ' ', cap['title'] + ' ' + ' '.join(cont)).strip()
+            if norm(txt) not in norm(titulo):
+                titulo = pegar(titulo, txt)
+            prev = ultimo_y = y
+
+        # Un título al pie de una página puede seguir arriba de la siguiente: la
+        # cola del de la Tabla 220-55 —"aplicarse en todos los casos, excepto lo
+        # permitido de otra forma en la Nota 3)."— se imprime en la página 49 y
+        # se quedaba fuera, porque aquí solo se miraba la página del título.
+        alto = doc[cap['page'] - 1].rect.y1
+        cola_y = None
+        if ultimo_y > alto - 60 and cap['page'] < doc.page_count:
+            for y, txt in renglones_bajo(cap['page'], 0):
+                if not txt or RE_PAGE_NOISE.match(txt):
+                    continue
+                if y > 60 or not sigue_la_frase(txt, titulo):
+                    break
+                if norm(txt) not in norm(titulo):
+                    titulo = pegar(titulo, txt)
+                cola_y = y if cola_y is None else min(cola_y, y)
+
+        # Esa cola queda ARRIBA de donde empieza la rejilla, así que no caía en
+        # ninguna región recortada y build_corpus la leía como texto del
+        # artículo: la de la 220-55 se publicaba además como párrafo suelto
+        # debajo de su propia tabla. La región de esa página tiene que subir
+        # hasta incluirla.
+        if cola_y is not None:
+            for reg in regions:
+                if reg['page'] == cap['page'] + 1:
+                    reg['y0'] = min(reg['y0'], cola_y - 4)
+                    break
+
+        cap['title'] = norm(titulo)
 
         pie = []
         porpag = {r['page']: r for r in regions}
