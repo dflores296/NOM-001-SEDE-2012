@@ -321,6 +321,30 @@ def revisar_figuras(corpus, d, img_dir):
     return fails
 
 
+def titulos_del_cierre(corpus):
+    """Encabezados del cierre que en realidad son celdas de una tabla.
+
+    La zona de una tabla se recorta con holgura y RE_KEEP rescata de ella lo
+    que parece un encabezado, para no perder la sección que viene justo
+    debajo. En el cierre eso se vuelve en contra: «505-5 Nota 2» es una celda
+    de la columna «Sección» de los listados del Apéndice B y tiene la forma
+    exacta de un encabezado de sección, así que se publicaba como título en
+    /apendices/B. Eran tres. Aquí no hay secciones numeradas, así que un
+    título con esa forma siempre es una celda escapada.
+    """
+    malos = []
+    for h in corpus.get('cierre', []):
+        for b in h['bloques']:
+            if b['tipo'] not in ('titulo', 'subtitulo'):
+                continue
+            if re.match(r'^\d{3}-\d{1,3}\b', (b.get('text') or '').strip()):
+                malos.append('%s: %r' % (h['id'], b['text'][:40]))
+    if not malos:
+        return []
+    return ['%d encabezado(s) del cierre son celdas de una tabla escapadas de '
+            'su zona: %s' % (len(malos), ', '.join(malos[:6]))]
+
+
 def textos(corpus):
     """Todo el texto publicado, para buscar citas sobre él."""
     for a in corpus['articles']:
@@ -556,6 +580,7 @@ def main():
                 for r in b.get('rotulos', [])]
     fails.extend(citas_del_apendice(corpus, tabs, rotulos))
     fails.extend(celdas_colapsadas(tabs))
+    fails.extend(titulos_del_cierre(corpus))
 
     dup, colg = titulos_sospechosos(tabs)
     if dup:
