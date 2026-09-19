@@ -1,8 +1,9 @@
 ---
 // Inciso anidado (a) → (1) → a.  Se llama a sí mismo para los niveles inferiores.
 import Tabla from './Tabla.astro';
-import { linkify, BASE, tablaPorId } from '../lib/nom.js';
-const { node } = Astro.props;
+import Figura from './Figura.astro';
+import { linkify, tablaPorId } from '../lib/nom.js';
+const { node, origen } = Astro.props;
 // El marcador se decide por el TIPO de inciso, no por su profundidad: la
 // misma "a." puede aparecer a distintos niveles según el artículo.
 const label = node.kind === 'letter' ? `${node.label}.` : `(${node.label})`;
@@ -44,11 +45,7 @@ const anot = [
   {anot.map((n) => (n.k === 'tabla' ? (
     <Tabla t={n.tabla} />
   ) : n.k === 'fig' ? (
-    <figure class="fig">
-      <img src={`${BASE}/img/${n.src}`} alt={n.caption || `Figura de la página ${n.page} del PDF`}
-           width={Math.round(n.w * 4 / 3)} height={Math.round(n.h * 4 / 3)} loading="lazy" />
-      <figcaption>{n.caption || `Página ${n.page} del PDF`}</figcaption>
-    </figure>
+    <Figura f={n} origen={origen} />
   ) : n.k === 'parr' ? (
     <p class="parr" set:html={linkify(n.text)} />
   ) : (
@@ -69,7 +66,7 @@ const anot = [
 
   {node.children?.length > 0 && (
     <ul class="subs">
-      {node.children.map((c) => <Astro.self node={c} />)}
+      {node.children.map((c) => <Astro.self node={c} origen={origen} />)}
     </ul>
   )}
 </li>

@@ -51,9 +51,6 @@ ERRATAS_TABLAS = {
 # listan uno por uno con su cita para que el conteo de referencias rotas pueda
 # quedar en cero sin esconder una tabla que sí exista y se nos escape.
 TABLAS_AUSENTES = {
-    # "los conductores de derivación sean dimensionados de acuerdo con la Tabla
-    # 240-92(b)" (pág. 82). No hay tabla con ese número.
-    '240-92(b)',
     # "este conductor se debe dimensionar de acuerdo con la Tabla 250-30(a)(3)"
     # (pág. 577).
     '250-30(a)(3)',
@@ -240,6 +237,14 @@ def main():
     tpath = os.path.join(out, 'tablas.json')
     tablas = json.load(open(tpath)) if os.path.exists(tpath) else []
     tabla_ids = {t['id'] for t in tablas}
+    # La norma imprime la Tabla 240-92(b) como imagen, no como rejilla, así que
+    # no está entre las 226 reconstruidas y su cita se daba por rota: el
+    # comentario de TABLAS_AUSENTES decía "no hay tabla con ese número" y sí la
+    # hay, en la página 82. Vive capturada como figura de tipo `tabla`, y desde
+    # ahí es un destino tan bueno como cualquier otro.
+    tabla_ids |= {r['id'] for a in articles for s_ in a['sections']
+                  for n in walk(s_) for f in n.get('figures', [])
+                  if f.get('kind') == 'tabla' for r in f.get('rotulos', [])}
 
     def destino_vivo(dst):
         """¿La arista lleva a algo que existe?

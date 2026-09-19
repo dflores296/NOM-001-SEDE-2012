@@ -1,0 +1,132 @@
+---
+import Base from '../layouts/Base.astro';
+import { figuras, chapters, byNum, hrefImagen, rotuloImagen, subtituloImagen,
+         validacion } from '../lib/nom.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// El índice se hace por NÚMERO de figura, no por imagen: el PDF imprime la
+// 516-3(c)(1) y la 516-3(c)(2) en un solo dibujo, y quien busca la segunda no
+// tiene por qué saberlo. Son 51 números repartidos en 45 imágenes.
+const numeradas = figuras.flatMap((f) =>
+  (f.rotulos || []).map((r) => ({
+    rotulo: r.rotulo,
+    titulo: r.titulo,
+    href: hrefImagen(f, r.ancla),
+    articulo: f.articulo,
+    page: f.page,
+    kind: f.kind,
+    informativa: f.informativa,
+  }))
+);
+
+// Las fórmulas no llevan número y no caben en el índice por capítulo, pero son
+// contenido que la norma publica como imagen igual que las figuras: si no
+// aparecen aquí, no aparecen en ninguna parte.
+const formulas = figuras
+  .filter((f) => !f.rotulos?.length)
+  .map((f) => ({
+    rotulo: rotuloImagen(f),
+    titulo: subtituloImagen(f),
+    href: hrefImagen(f),
+    articulo: f.articulo,
+    nodo: f.nodo,
+    page: f.page,
+  }))
+  .sort((a, b) => a.page - b.page);
+
+const porCapitulo = chapters
+  .map((c) => ({
+    c,
+    fs: numeradas
+      .filter((f) => byNum.get(f.articulo)?.chapter === c.num)
+      .sort((a, b) => a.page - b.page),
+  }))
+  .filter((g) => g.fs.length > 0);
+
+const transcritas = figuras.filter((f) => f.transcripcion?.length).length;
+---
+
+<Base
+  title="Figuras — NOM-001-SEDE-2012"
+  desc={`Índice de las ${numeradas.length} figuras de la NOM-001-SEDE-2012, por capítulo.`}
+>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Figuras</h1>
+      <p>
+        Las figuras de la norma, por capítulo. El DOF no imprime su rótulo como
+        texto —en 45 de las 59 imágenes va dibujado dentro del propio mapa de
+        bits—, así que cada leyenda se transcribió a mano mirando la imagen.
+      </p>
+      <div class="cifras">
+        <div class="cifra"><b class="tabular">{numeradas.length}</b><span>Figuras numeradas</span></div>
+        <div class="cifra"><b class="tabular">{formulas.length}</b><span>Fórmulas</span></div>
+        <div class="cifra"><b class="tabular">{validacion.imagenes}</b><span>Imágenes en total</span></div>
+        <div class="cifra"><b class="tabular">{transcritas}</b><span>Con su texto transcrito</span></div>
+      </div>
+      <p class="aparte">
+        Ante cualquier discrepancia prevalece el texto del DOF. Si encuentras una
+        diferencia, cada figura tiene un enlace para <a href={`${base}/observaciones/`}>reportarla</a>.
+      </p>
+    </div>
+
+    <nav class="cap-nav" aria-label="Ir a un capítulo">
+      {porCapitulo.map(({ c, fs }) => (
+        <a href={`#cap${c.num}`}>
+          <b>Cap. {c.num}</b>
+          <span>{c.title}</span>
+          <em class="tabular">{fs.length}</em>
+        </a>
+      ))}
+      <a href="#formulas">
+        <b>Fórmulas</b>
+        <span>Ecuaciones publicadas como imagen</span>
+        <em class="tabular">{formulas.length}</em>
+      </a>
+    </nav>
+
+    {porCapitulo.map(({ c, fs }) => (
+      <div class="sec" id={`cap${c.num}`}>
+        <div class="sec-head">
+          <h2><span class="n">Capítulo {c.num}</span>{c.title}</h2>
+          <em class="desc">{fs.length} figura{fs.length === 1 ? '' : 's'}</em>
+        </div>
+        <div class="grid">
+          {fs.map((f) => (
+            <a class="card" href={f.href}>
+              <b>{f.rotulo}</b>
+              <span>{f.titulo || 'La norma la imprime sin título'}</span>
+              <em>
+                Artículo {f.articulo} · página {f.page} del PDF
+                {f.informativa ? ' · informativa' : ''}
+                {f.kind === 'tabla' ? ' · tabla impresa como imagen' : ''}
+              </em>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <div class="sec" id="formulas">
+      <div class="sec-head">
+        <h2><span class="n">Fórmulas</span>Ecuaciones publicadas como imagen</h2>
+        <em class="desc">{formulas.length} fórmulas</em>
+      </div>
+      <p class="aparte">
+        La norma imprime estas ecuaciones como dibujo y no como texto, así que
+        no llevan número de figura y no se pueden copiar del PDF. Van
+        transcritas junto a cada una.
+      </p>
+      <div class="grid">
+        {formulas.map((f) => (
+          <a class="card" href={f.href}>
+            <b class="mono">{f.nodo}</b>
+            <span>{f.titulo}</span>
+            <em>Artículo {f.articulo} · página {f.page} del PDF</em>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>

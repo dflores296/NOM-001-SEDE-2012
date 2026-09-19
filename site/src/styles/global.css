@@ -576,14 +576,45 @@ dl.defs-sec dd { margin: 0; color: var(--text-dim); font-size: 0.94rem; }
 
 /* Fórmulas y figuras. En la norma las ecuaciones están embebidas como imagen,
    no como texto, así que se muestran tal cual vienen del PDF. */
-figure.fig { margin: 0.9rem 0; text-align: center; }
+figure.fig { margin: 1.1rem 0; text-align: center; }
 figure.fig img {
   max-width: 100%; height: auto;
   background: #fff; border: 1px solid var(--border-soft);
   border-radius: var(--radius); padding: 0.5rem;
 }
+/* Ancla de la segunda figura de una imagen compartida: no se ve, solo
+   existe para que la cita del texto pueda aterrizar en ella. */
+figure.fig .ancla-extra { display: block; height: 0; }
 figure.fig figcaption {
-  font-size: 0.74rem; color: var(--text-faint); margin-top: 0.3rem;
+  font-size: 0.8rem; color: var(--text-dim); margin-top: 0.45rem;
+  max-width: 62ch; margin-inline: auto; text-align: left;
+}
+/* El rótulo es lo que la norma imprime dentro del dibujo y aquí se publica
+   como texto; va en el peso del contenido, no en el de un pie de foto. */
+figure.fig .fig-rotulo { margin: 0.15rem 0; }
+figure.fig .fid {
+  font-family: var(--mono); font-size: 0.78rem; font-weight: 600;
+  color: var(--accent); margin-right: 0.4rem;
+}
+figure.fig .fig-nota {
+  margin: 0.4rem 0 0; font-size: 0.74rem; color: var(--text-faint);
+  font-style: italic;
+}
+figure.fig .fig-pie {
+  margin-top: 0.45rem; font-size: 0.72rem; color: var(--text-faint);
+}
+/* El texto que la norma dibuja dentro de la imagen. Cerrado por omisión: es
+   lo mismo que ya se ve arriba, y sirve para buscarlo, copiarlo o leerlo con
+   un lector de pantalla. */
+details.fig-texto { margin: 0.5rem 0 0; }
+details.fig-texto > summary {
+  cursor: pointer; font-size: 0.74rem; color: var(--text-faint);
+  list-style-position: outside;
+}
+details.fig-texto > summary:hover { color: var(--accent); }
+details.fig-texto p {
+  margin: 0.3rem 0; font-size: 0.82rem; color: var(--text);
+  padding-left: 0.9rem; border-left: 2px solid var(--border-soft);
 }
 
 /* Enumeraciones que pertenecen a una nota o excepción, no al articulado. */

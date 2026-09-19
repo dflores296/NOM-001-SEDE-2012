@@ -1,0 +1,81 @@
+---
+// Una imagen de la norma: figura, fórmula, o la única tabla que el DOF imprime
+// como mapa de bits (la 240-92(b)).
+//
+// Antes esto vivía duplicado palabra por palabra en Sub.astro y en
+// art/[num].astro, así que toda mejora había que hacerla dos veces --la trampa
+// que CONTEXTO.md advierte para los dos renderizadores--.
+import { linkify, BASE, rotuloImagen, subtituloImagen } from '../lib/nom.js';
+const { f, origen } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// El `width`/`height` sale de los píxeles del PNG y no del rectángulo en
+// puntos donde el PDF la coloca: no siempre guardan la misma proporción, y la
+// del 310-15(c) se publicaba estirada un 3.6%.
+const w = f.pw || Math.round(f.w * 4 / 3);
+const h = f.ph || Math.round(f.h * 4 / 3);
+
+// El alt describía «Figura de la página 84 del PDF», que no dice nada de lo
+// que se ve. Ahora lleva el rótulo capturado. El texto que la norma dibuja
+// DENTRO de la imagen no va aquí sino en el <details> de abajo: en el alt
+// sería un párrafo corrido sin estructura, y ahí lo alcanzan por igual el
+// lector de pantalla, el buscador del navegador y quien quiera copiarlo.
+const rotulo = rotuloImagen(f);
+const subtitulo = subtituloImagen(f);
+const alt = [rotulo, subtitulo].filter(Boolean).join('. ');
+---
+<figure class="fig" id={f.ancla}>
+  {/* Una imagen puede traer más de una figura --la 516-3(c)(1) y la (c)(2) van
+      en un solo dibujo--, y cada número necesita su propia ancla para que la
+      cita del texto aterrice donde el lector espera. */}
+  {(f.rotulos || []).slice(1).map((r) => <span class="ancla-extra" id={r.ancla} />)}
+
+  <img src={`${BASE}/img/${f.src}`} alt={alt} width={w} height={h} loading="lazy" />
+
+  <figcaption>
+    {(f.rotulos || []).map((r) => (
+      <p class="fig-rotulo">
+        <span class="fid">{r.rotulo}</span>
+        {r.titulo}
+        <a class="anchor" href={`#${r.ancla}`} aria-label={`Enlace a la ${r.rotulo}`}>#</a>
+      </p>
+    ))}
+
+    {f.rotulos?.length === 0 && (
+      <p class="fig-rotulo">
+        <span class="fid">{f.kind === 'formula' ? 'Fórmula' : 'Imagen'}</span>
+        {f.titulo}
+        <a class="anchor" href={`#${f.ancla}`} aria-label="Enlace a esta fórmula">#</a>
+      </p>
+    )}
+
+    {f.informativa && (
+      <span
+        class="tag-info"
+        title="La norma señala que esta figura no es parte de sus requerimientos y especificaciones; se incluye únicamente con propósitos informativos."
+      >Informativa</span>
+    )}
+
+    {/* El texto que la norma imprime DENTRO del dibujo. No está en la capa de
+        texto del PDF, así que sin transcribirlo no se puede buscar, ni copiar,
+        ni leer con un lector de pantalla: la Excepción de 922-12(a)(2) y el
+        inciso d) de 310-60(c)(4) solo existían como píxeles. */}
+    {f.transcripcion?.length > 0 && (
+      <details class="fig-texto">
+        <summary>Texto de la imagen, transcrito</summary>
+        {f.transcripcion.map((t) => <p set:html={linkify(t)} />)}
+      </details>
+    )}
+
+    {f.nota && <p class="fig-nota">{f.nota}</p>}
+
+    <div class="fig-pie">
+      Página {f.page} del PDF ·{' '}
+      <a
+        href={`${base}/observaciones/?ref=${encodeURIComponent(rotulo)}&de=${
+          encodeURIComponent(origen ? `${origen}#${f.ancla}` : '')
+        }`}
+      >¿Ves un error? Repórtalo</a>
+    </div>
+  </figcaption>
+</figure>

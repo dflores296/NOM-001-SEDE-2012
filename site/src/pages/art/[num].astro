@@ -2,8 +2,10 @@
 import Base from '../../layouts/Base.astro';
 import Sub from '../../components/Sub.astro';
 import Tabla from '../../components/Tabla.astro';
+import Figura from '../../components/Figura.astro';
 import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug,
-         tablaPorId, rotuloTabla, hrefArticulo, BASE } from '../../lib/nom.js';
+         tablaPorId, rotuloTabla, hrefArticulo, figurasPorArticulo,
+         rotuloImagen } from '../../lib/nom.js';
 
 // El Artículo 100 no genera página. Son las 185 definiciones, que ya viven en
 // el glosario; lo que salía aquí era un cartel pidiendo ir allá. astro.config
@@ -50,6 +52,15 @@ a.sections.forEach(marca);
 // Red de seguridad: si alguna tabla no encontró su sitio en el texto, se
 // publica al final del artículo en vez de desaparecer.
 const sueltas = tabs.filter((t) => !ancladas.has(t.id));
+
+// Las figuras del artículo, para el índice lateral. Una imagen puede traer
+// más de un número, y cada uno va por su cuenta: quien busca la 516-3(c)(2)
+// no tiene por qué saber que comparte dibujo con la (c)(1).
+const figs = (figurasPorArticulo.get(a.num) || []).flatMap((f) =>
+  f.rotulos?.length
+    ? f.rotulos.map((r) => ({ ancla: r.ancla, rotulo: r.rotulo }))
+    : [{ ancla: f.ancla, rotulo: rotuloImagen(f) }]
+);
 
 ---
 
@@ -127,12 +138,7 @@ const sueltas = tabs.filter((t) => !ancladas.has(t.id));
               ].sort((a, b) => (a.seq ?? 0) - (b.seq ?? 0)).map((n) => (n.k === 'tabla' ? (
                 <Tabla t={n.tabla} origen={`${base}/art/${a.num}/`} />
               ) : n.k === 'fig' ? (
-                <figure class="fig">
-                  <img src={`${BASE}/img/${n.src}`}
-                       alt={n.caption || `Figura de la página ${n.page} del PDF`}
-                       width={Math.round(n.w * 4 / 3)} height={Math.round(n.h * 4 / 3)} loading="lazy" />
-                  <figcaption>{n.caption || `Página ${n.page} del PDF`}</figcaption>
-                </figure>
+                <Figura f={n} origen={`${base}/art/${a.num}/`} />
               ) : n.k === 'parr' ? (
                 <p class="parr" set:html={linkify(n.text)} />
               ) : (
@@ -154,7 +160,7 @@ const sueltas = tabs.filter((t) => !ancladas.has(t.id));
 
               {s.children?.length > 0 && (
                 <ul class="subs">
-                  {s.children.map((c) => <Sub node={c} />)}
+                  {s.children.map((c) => <Sub node={c} origen={`${base}/art/${a.num}/`} />)}
                 </ul>
               )}
 
@@ -201,6 +207,14 @@ const sueltas = tabs.filter((t) => !ancladas.has(t.id));
           <h3>Tablas ({tabs.length})</h3>
           {tabs.map((t) => (
             <a href={`#${tablaSlug(t.id)}`}><span class="mono">{rotuloTabla(t)}</span></a>
+          ))}
+        </>
+      )}
+      {figs.length > 0 && (
+        <>
+          <h3>Figuras ({figs.length})</h3>
+          {figs.map((f) => (
+            <a href={`#${f.ancla}`}><span class="mono">{f.rotulo}</span></a>
           ))}
         </>
       )}

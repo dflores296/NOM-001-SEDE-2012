@@ -40,6 +40,77 @@ export const tablasPorArticulo = (() => {
 
 const tablaIds = new Set(tablas.map((t) => t.id));
 
+/**
+ * Todas las imágenes de la norma, con el artículo y el inciso donde se
+ * imprimen. Son de tres clases (`kind`): `figura`, `formula` y `tabla` --esta
+ * última es la 240-92(b), que el DOF publica como mapa de bits y por eso no
+ * está entre las 226 reconstruidas--.
+ *
+ * El rótulo no sale del PDF: 45 de las 59 lo llevan rasterizado dentro del
+ * PNG, así que se captura a mano en data/figuras.json y build_corpus lo cuelga
+ * aquí. Ver `aplicar_figuras`.
+ */
+export const figuras = (() => {
+  const out = [];
+  const walk = (n, art) => {
+    for (const f of n.figures || []) out.push({ ...f, articulo: art, nodo: n.id });
+    for (const c of n.children || []) walk(c, art);
+  };
+  for (const a of corpus.articles) for (const s of a.sections) walk(s, a.num);
+  return out;
+})();
+
+/**
+ * Figura por su número. Una imagen puede traer más de una --el PDF imprime la
+ * 516-3(c)(1) y la (c)(2) en un solo dibujo--, así que cada rótulo entra por su
+ * cuenta y apunta a la imagen que lo contiene.
+ *
+ * Las dos del 694 comparten número porque el DOF las rotula igual; gana la
+ * primera, que es la que el cuerpo cita.
+ */
+export const figuraPorId = (() => {
+  const m = new Map();
+  for (const f of figuras) {
+    for (const r of f.rotulos || []) {
+      if (!m.has(r.id)) m.set(r.id, { ...r, figura: f });
+    }
+  }
+  return m;
+})();
+
+/** Figuras de un artículo, en el orden en que aparecen en el documento. */
+export const figurasPorArticulo = (() => {
+  const m = new Map();
+  for (const f of figuras) {
+    if (!m.has(f.articulo)) m.set(f.articulo, []);
+    m.get(f.articulo).push(f);
+  }
+  for (const list of m.values()) list.sort((a, b) => a.page - b.page);
+  return m;
+})();
+
+/** Tablas que la norma imprime como imagen, por su número. */
+const tablaImagenIds = new Set(
+  figuras.filter((f) => f.kind === 'tabla').flatMap((f) => (f.rotulos || []).map((r) => r.id))
+);
+
+/** Cómo se anuncia una imagen: su rótulo, o lo que es cuando no tiene número. */
+export function rotuloImagen(f) {
+  if (f.rotulos?.length) return f.rotulos.map((r) => r.rotulo).join(' y ');
+  return f.kind === 'formula' ? `Fórmula de ${f.nodo}` : `Imagen de ${f.nodo}`;
+}
+
+/** Lo que va después del rótulo. */
+export function subtituloImagen(f) {
+  if (f.rotulos?.length) return f.rotulos.map((r) => r.titulo).filter(Boolean).join(' · ');
+  return f.titulo || '';
+}
+
+/** URL navegable de una imagen, dentro de la página de su artículo. */
+export function hrefImagen(f, ancla) {
+  return `${BASE}/art/${f.articulo}#${ancla || f.ancla}`;
+}
+
 /** Tabla por id, para pintarla donde el texto la ancló. */
 export const tablaPorId = new Map(tablas.map((t) => [t.id, t]));
 
@@ -77,6 +148,10 @@ export function hrefFor(id) {
     const t = id.slice(6);
     const tb = tablas.find((x) => x.id === t);
     if (tb && tb.article) return `${BASE}/art/${tb.article}#${tablaSlug(t)}`;
+    // La 240-92(b) la imprime el DOF como imagen y su ancla vive en la página
+    // del artículo, no en el índice de tablas.
+    const im = figuraPorId.get(t);
+    if (im) return hrefImagen(im.figura, im.ancla);
     return `${BASE}/tablas#${tablaSlug(t)}`;
   }
   const art = articleOf(id);
@@ -128,6 +203,11 @@ const LINKER = new RegExp(
     // coma/y/o, para que la segunda en adelante también quede enlazada y
     // no solo la que trae pegado el "Tabla" delante.
     `Tablas?\\s+${TABLA_SUELTA}(?:\\s*(?:,|y|o)\\s*${TABLA_SUELTA})*(?![\\d-])`,
+    // "Figura 551-46(c)". Tiene que ganarle a la rama de referencia desnuda:
+    // sin ella, el enlazador veía el "551-46" de dentro y mandaba al lector a
+    // la SECCIÓN 551-46, que no es donde está la figura --la norma la imprime
+    // en 551-47(a)--. Pasaba en 12 de las 51 citas a figuras.
+    `Figuras?\\s+${SECCION}`,
     /Art\S*culos?\s+\d{3}(?:\s*(?:,|y|o|ó|a)\s*\d{3})*/.source,
     /Cap\S*tulo\s+\d{1,2}/.source,
     `\\b${SECCION}`,
@@ -169,6 +249,19 @@ function resolverCita(full) {
 }
 
 /**
+ * Resuelve "Figura 516-3(c)(1)" a la imagen que la contiene, de la cita más
+ * específica a la más general: la norma cita "Figura 310-60" y la figura puede
+ * estar capturada con sufijo de inciso, o al revés.
+ */
+function resolverFigura(full) {
+  for (let cand = idDeCita(full); ; cand = cand.replace(/\([^()]*\)$/, '')) {
+    const hit = figuraPorId.get(cand);
+    if (hit) return hit;
+    if (!/\(/.test(cand)) return null;
+  }
+}
+
+/**
  * Convierte las citas internas del texto en enlaces navegables.
  * Devuelve HTML ya escapado, apto para set:html.
  */
@@ -191,7 +284,9 @@ export function linkify(text) {
       // aparecer citada así aunque la tabla se llame "310-15"
       let hit = null;
       for (let cand = tid; cand; cand = cand.replace(/\([^()]*\)$/, '')) {
-        if (tablaIds.has(cand)) { hit = cand; break; }
+        // `tablaImagenIds` trae la 240-92(b), que el DOF imprime como mapa de
+        // bits: su cita se quedaba sin enlazar porque no está en tablas.json.
+        if (tablaIds.has(cand) || tablaImagenIds.has(cand)) { hit = cand; break; }
         if (!/\(/.test(cand)) break;
       }
       if (hit) {
@@ -203,6 +298,22 @@ export function linkify(text) {
         out += `<a class="xref" href="${hrefArticulo(art[1])}">${esc(raw)}</a>`;
         continue;
       }
+      out += esc(raw);
+      continue;
+    }
+    // --- Figura NNN-N(x): se enlaza al ancla de la figura, en la página del
+    //     artículo donde la norma la imprime, que no siempre es la sección de
+    //     su mismo número.
+    mm = new RegExp(`^Figuras?\\s+(${SECCION})`).exec(raw);
+    if (mm) {
+      const hit = resolverFigura(mm[1]);
+      if (hit) {
+        out += `<a class="xref" href="${hrefImagen(hit.figura, hit.ancla)}">${esc(raw)}</a>`;
+        continue;
+      }
+      // Sin figura que la respalde no se inventa un destino: enlazar el número
+      // desnudo llevaría a una sección homónima, que es justo el engaño que
+      // esta rama viene a quitar.
       out += esc(raw);
       continue;
     }
