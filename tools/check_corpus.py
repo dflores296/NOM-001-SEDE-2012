@@ -84,6 +84,53 @@ FIGURAS_AUSENTES_DEL_DOF = {
 }
 
 
+# Una celda con tres o más números sueltos dentro es casi siempre una columna
+# entera aplanada, que es como se publicaban las tablas de ampacidad del
+# Apéndice A antes de contrastarlas. Estas son las que de verdad imprime así el
+# DOF, contrastadas contra el PDF.
+CELDAS_APILADAS = {
+    # La Tabla 400-4 pone en una sola celda los espesores que corresponden a
+    # los tramos de calibre de la celda de al lado: "8 - 2 | 1 - 4/0 | 250"
+    # frente a "1.52 2.03 2.41". Son tres renglones 64, 67 y 117.
+    '400-4',
+}
+
+# Un número, con su decimal y su llamada al pie, tres veces o más seguidas y
+# nada más. No admite coma ni guion a propósito: "2 501-9 000" es un rango y
+# "500, 501, 502 503" es una lista de artículos, y las dos son celdas legítimas
+# de tablas ya contrastadas.
+RE_CELDA_COLAPSADA = re.compile(r'\d[\d.]*\*{0,2}(?:\s+\d[\d.]*\*{0,2}){2,}')
+
+
+def celdas_colapsadas(tabs):
+    """Tablas verificadas con una columna entera metida en una celda.
+
+    Es el defecto que tenían las nueve tablas del Apéndice A: la rejilla
+    dibujada del PDF solo traza una línea cada grupo de calibres, el
+    reconstructor le creyó a la rejilla antes que a las palabras y cada celda
+    acabó con "14 12 10 8" dentro. La cobertura no lo ve --el texto está
+    publicado-- y la calidad tampoco lo delata siempre: la (2)(7) salía con
+    0.95 y tenía seis celdas así.
+
+    Solo mira las verificadas: una tabla sin contrastar ya lo avisa con su
+    insignia, y hoy la C-2 tiene 116 celdas de estas esperando su ronda.
+    """
+    malas = []
+    for t in tabs:
+        if not t.get('verificada') or t['id'] in CELDAS_APILADAS:
+            continue
+        hits = [c.get('t') for fila in t['rows'] for c in fila
+                if RE_CELDA_COLAPSADA.fullmatch((c.get('t') or '').strip())]
+        if hits:
+            malas.append('%s (%d: %s)' % (t['id'], len(hits), hits[0][:30]))
+    if not malas:
+        return []
+    return ['%d tabla(s) verificadas tienen una columna aplanada dentro de una '
+            'celda: %s. Si el DOF de verdad la imprime así, va en '
+            'CELDAS_APILADAS con sus renglones'
+            % (len(malas), ', '.join(malas[:6]))]
+
+
 def walk(n):
     yield n
     for c in n.get('children', []):
@@ -495,6 +542,7 @@ def main():
     rotulos += [r['id'] for h in corpus.get('cierre', []) for b in h['bloques']
                 for r in b.get('rotulos', [])]
     fails.extend(citas_del_apendice(corpus, tabs, rotulos))
+    fails.extend(celdas_colapsadas(tabs))
 
     dup, colg = titulos_sospechosos(tabs)
     if dup:

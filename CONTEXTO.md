@@ -15,15 +15,16 @@ sobre el PDF deja el árbol idéntico a lo commiteado, byte a byte.
 |---|---|
 | Artículos | 151 |
 | Secciones | 2 897 |
-| Incisos | 8 315 |
-| Notas / Excepciones | 777 / 987 |
+| Incisos | 8 306 |
+| Notas / Excepciones | 773 / 986 |
 | Definiciones | 185 |
-| Referencias distintas | 1 850 |
-| Referencias rotas | 0 |
-| Cobertura | 100 % (31 858 de 31 859 renglones) |
+| Referencias distintas | 1 685 |
+| Referencias enlazadas / rotas | 4 529 / 0 |
+| Cobertura | 100 % (31 452 de 31 453 renglones) |
 | Ids retirados con destino | 143 de 143 |
-| Tablas | 226, todas contrastadas a mano y congeladas |
+| Tablas | 245; 238 contrastadas a mano y congeladas, 7 del B y el C sin contrastar |
 | Figuras | 51 números en 45 imágenes, más 13 fórmulas; leyendas capturadas a mano |
+| Cierre | 7 hitos (Capítulo 10, Títulos 6 a 8, Apéndices A, B y C), 126 bloques |
 
 Para verificar el estado en cualquier momento:
 
@@ -235,6 +236,86 @@ detectar: se dan de alta a mano y se declaran `sin_numero`, sin inventarles uno.
 Cuando algo no cuadre, **mira cómo lo imprime el PDF antes de sospechar del
 parser**.
 
+## Qué se hizo en la ronda del Apéndice A
+
+Las nueve tablas de ampacidad del Apéndice A estaban reconstruidas pero
+inservibles: publicaban columnas enteras aplanadas dentro de una celda —la
+`B.310.15(B)(2)(1)` salía con cinco renglones de datos y celdas como «2.08
+3.31 5.261 8.367», «14 12 10 8»—. Hoy las nueve están contrastadas celda por
+celda y congeladas, y el apéndice ya no tiene ninguna tabla con la insignia
+«Sin contrastar». Son 238 de 245.
+
+**Por qué salían así.** No es el texto del PDF: en la página 757 esos valores
+están en 24 renglones perfectamente separados por coordenada. Es la rejilla
+DIBUJADA, que solo traza una línea cada grupo de calibres —los cuatro que
+comparten el guion de «no aplica» van juntos—, y el reconstructor le creyó a
+la rejilla antes que a las palabras.
+
+**Las columnas RHO se imprimen escalonadas, y de dos maneras.** Tres de las
+nueve tablas —la `(2)(5)`, la `(2)(6)` y la `(2)(7)`— reparten tres columnas
+RHO (60, 90 y 120) en cada uno de sus seis grupos de ductos. Cuando no le
+caben en el ancho, el DOF parte el grupo: dos valores en el renglón y el
+tercero abajo. En la `(2)(5)` ese tercero va abajo y ENTRE los
+otros dos; en la `(2)(6)` va abajo y A LA IZQUIERDA del primero, y encima solo
+a partir del calibre 33.62 mm² —los tres primeros caben enteros—. Repartir por
+`x`, que es lo que sirve en la `(2)(5)`, manda el valor a otra columna en la
+`(2)(6)`. Lo que vale para las dos formas es **leer cada grupo en orden de
+lectura y agrupar de tres en tres**.
+
+Que el valor escalonado es el de RHO 120 —y no el de RHO 90, que queda a su
+derecha— no se supone: la ampacidad baja cuando sube la resistividad del
+terreno, así que dentro de cada grupo tiene que cumplirse
+`RHO 60 > RHO 90 > RHO 120`. Se comprueba antes de escribir cada captura —264 grupos
+entre las tres tablas RHO—, y en las dos escalonadas el otro orden no lo
+cumpliría en ninguno.
+
+**Un valor que parece errata y se deja.** En la `(2)(8)`, el 2 AWG de aluminio
+da 110 A para dos cables y 107 A para uno, cuando dos cables siempre dan menos.
+Está así impreso en la página 760. La captura reproduce lo que publicó el DOF;
+corregirlo sería inventar norma.
+
+### Las citas a los Apéndices, que eran 45 enlaces muertos
+
+El cuerpo cita los Apéndices 42 veces y ninguna era enlace. Lo caro no era
+enlazar sino reconocer la cita:
+
+- **Ocho formas para el mismo número.** «B.310.15(B)(2)(6)»,
+  «B.310-15(b)(2)(11)», «B-310-15(B)(2)(3)», «B.310. 15(B)(2)(1)» con un
+  espacio de más, «B.310.15(2)(11)» sin el «(B)»…
+- **Dos espacios de nombres.** El título de la tabla usa el punto y el rótulo
+  que la figura lleva dibujado DENTRO del PNG usa el guion, así que la cita
+  «Figura B.310.15(B)(2)(2)» y el rótulo capturado «Figura B.310-15(B)(2)(2)»
+  no se parecen.
+
+Los dos se resuelven con una clave canónica, escrita dos veces —`clave_apendice`
+en `build_graph.py` y `claveApendice` en `nom.js`— y cada una dice dónde está
+la otra. **Si tocas una, toca la otra**: el grafo y el enlazador tienen que
+resolver lo mismo o el sitio enseñará backlinks que no coinciden con sus
+enlaces.
+
+La rama va ANTES que la de referencia desnuda, por lo mismo que la de figura:
+dentro de «B.310-15(b)(2)(11)» hay un «310-15» que sí es una sección.
+
+**Tres destinos que NO se inventan**, cada uno documentado en el código:
+
+| Cita | Por qué no se enlaza |
+|---|---|
+| `Figura B.310.15(B)(2)(1)` (4 citas) | El DOF no la imprime: el Apéndice A trae cuatro imágenes, páginas 762 a 765, y son la (2), (3), (4) y la (5) |
+| «las ampacidades del Apéndice B» (310-15(a)(3)) | Las ampacidades de este documento están en el Apéndice A; sus tablas se llaman `B.310.15(B)(2)(x)` porque vienen del Anexo B del NEC |
+| «el último párrafo del Apéndice B» (Título 8) | Es el Apéndice B de la NOM-008-SCFI-2002, otra norma |
+
+**Redes de seguridad nuevas**
+
+| Detector | Qué caza | Dónde |
+|---|---|---|
+| Celda colapsada | Que una tabla verificada vuelva a publicar una columna dentro de una celda | `check_corpus.py` |
+| Citas del Apéndice sin destino | Que una captura cambie de rótulo, o que la clave canónica deje de reducir una de las ocho formas | `check_corpus.py` |
+
+Las dos están probadas rompiendo cosas a propósito. La de celda colapsada
+lleva una lista blanca de una entrada: la **Tabla 400-4**, donde el DOF sí
+imprime tres espesores apilados en una celda, frente a los tres tramos de
+calibre de la celda de al lado.
+
 ## Qué se hizo en la ronda de las figuras
 
 Las figuras eran el único contenido de la norma sin número, sin ancla, sin
@@ -368,10 +449,30 @@ que un archivo puesto ahí existiría en local y desaparecería en CI.
 
 ## Pendientes
 
-Las **19 tablas de los Apéndices** están reconstruidas pero sin contrastar
-celda por celda, así que salen con la insignia «Sin contrastar contra el PDF».
-Hasta que se contrasten, esa insignia es lo único honesto que se puede decir de
-ellas. La estructura ya está hecha; ver más abajo.
+Todo esto está medido, no estimado: son las cuentas de hoy sobre
+`data/tablas.json` y el corpus.
+
+**Las 7 tablas del Apéndice B y del Apéndice C siguen sin contrastar** y salen
+con la insignia «Sin contrastar contra el PDF», que hasta entonces es lo único
+honesto que se puede decir de ellas. No están igual de mal:
+
+| Tabla | Tamaño | Qué se le ve desde aquí |
+|---|---|---|
+| `C-2` | 144×9 | **116 celdas** con una columna entera aplanada dentro |
+| `C-1` | 168×12 | 2 celdas aplanadas, y el encabezado mal: declara 2 renglones cuando son 4, así que los tamaños de tubería (`16 21 27…` / `(½) (¾) (1)…`) se publican como si fueran datos, y la primera columna mezcla el tipo de conductor con los mm² |
+| `C-1(a)` | 61×12 | el mismo encabezado que la C-1 |
+| `B1.2` | 112×3 | 1 celda aplanada |
+| `B1.1`, `B2.1`, `B2.2` | 10×3, 21×3, 79×3 | sin señales, pero nunca contrastadas |
+
+Son las tres tablas de ocupación en tubo conduit —de las más consultadas en
+obra— y el listado de normas, así que la ronda vale la pena; es cara porque
+son 168, 144 y 112 renglones.
+
+**`/apendices/B` publica tres títulos que no lo son**: «505-5 Nota 2», «505-5
+Nota 2» y «505-5 Nota 6». Son celdas de la columna «Sección» de las tablas
+B2.1 y B2.2 que se escaparon de su zona y el parser del cierre promovió a
+encabezado, porque van centradas y empiezan en dígito. Conviene arreglarlo con
+la zona de tabla, no con el detector de títulos.
 
 ## La región de cierre: las últimas 38 páginas
 
