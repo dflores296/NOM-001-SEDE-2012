@@ -645,6 +645,10 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
 }
 
 .obs-form { display: grid; gap: 1rem; margin: 0.8rem 0 1.5rem; }
+/* `display: grid` le gana al `display: none` que trae el atributo hidden, así
+   que al enviar el formulario se quedaba visible debajo del panel de gracias.
+   Hay que decírselo explícitamente. */
+.obs-form[hidden] { display: none; }
 .obs-form label { display: grid; gap: 0.3rem; }
 .obs-form label > span { font-weight: 600; font-size: 0.93rem; }
 .obs-form label em { font-weight: 400; color: var(--text-faint); font-style: normal; }
@@ -752,3 +756,32 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
   letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 0.35rem;
 }
 .cita-norma p { margin: 0; font-size: 0.92rem; }
+
+/* El señuelo anti-bots: fuera de la vista y fuera del foco, pero presente en el
+   formulario. No se usa `display:none` a secas para que los bots que lo ignoran
+   por estilo sí lo encuentren en el DOM. */
+.obs-senuelo {
+  position: absolute; left: -9999px; width: 1px; height: 1px;
+  overflow: hidden; margin: 0;
+}
+
+.obs-error {
+  background: var(--warn-bg); border: 1px solid var(--warn-br);
+  border-radius: var(--radius); padding: 0.6rem 0.8rem; margin: 0;
+  font-size: 0.9rem;
+}
+
+.obs-exito {
+  background: var(--accent-soft); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 0.9rem 1rem; margin: 0.8rem 0 1.5rem;
+}
+.obs-exito p { margin: 0.35rem 0; }
+.obs-exito button {
+  font: inherit; font-size: 0.92rem; cursor: pointer; margin-top: 0.4rem;
+  background: var(--panel); color: var(--text);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.4rem 0.8rem;
+}
+.obs-exito button:hover { border-color: var(--accent); color: var(--accent); }
+
+.obs-form button:disabled { opacity: 0.6; cursor: progress; }

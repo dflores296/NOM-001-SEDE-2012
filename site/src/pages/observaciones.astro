@@ -6,14 +6,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // ---------------------------------------------------------------------------
 // A DÓNDE SE MANDAN LAS OBSERVACIONES
 //
-// El sitio es estático y no tiene servidor que reciba el formulario, así que
-// el envío va a un servicio externo. Pegar aquí el endpoint de Formspree
-// (https://formspree.io) — se ve como 'https://formspree.io/f/xxxxxxxx'.
+// El sitio es estático y no tiene servidor que reciba el formulario, así que el
+// envío va a Formspree. Toda la atadura con ese servicio es esta cadena:
+// cambiar de proveedor es cambiarla. No es un secreto —viaja en el HTML
+// publicado, porque es a donde el navegador manda el POST—.
 //
-// Mientras esté vacío, la página NO muestra un formulario roto: avisa que el
-// canal todavía no está abierto y deja el resto de la información visible.
+// Vacía, la página NO muestra un formulario que no envía: avisa que el canal
+// está cerrado y deja el resto de la información visible.
 // ---------------------------------------------------------------------------
-const ENDPOINT = '';
+const ENDPOINT = 'https://formspree.io/f/xzezzqgb';
+
+const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new';
 ---
 
 <Base title="Observaciones — NOM-001-SEDE-2012"
@@ -37,60 +40,86 @@ const ENDPOINT = '';
 
     <div class="obs-tip">
       <b>No hace falta que expliques dónde estaba.</b> Si llegaste aquí desde el
-      botón <span class="obs-chip">Reportar</span> de un artículo o una tabla, la
-      referencia exacta ya viene cargada abajo.
+      botón <span class="obs-chip">Reportar</span> de un artículo, una tabla o una
+      definición, la referencia exacta ya viene cargada abajo.
     </div>
 
     <h2>Reportar</h2>
 
     {ENDPOINT ? (
-      <form class="obs-form" action={ENDPOINT} method="POST">
-        <label>
-          <span>Dónde lo viste</span>
-          <input type="text" name="referencia" id="ref"
-                 placeholder="Por ejemplo: 250-32(a)(1), o Tabla 430-250" />
-          <small>Si venías de un artículo o una tabla, ya viene lleno. Si no, escríbelo como puedas: con eso basta.</small>
-        </label>
+      <>
+        <form class="obs-form" id="obs-form" action={ENDPOINT} method="POST">
+          <label>
+            <span>Dónde lo viste</span>
+            <input type="text" name="referencia" id="ref"
+                   placeholder="Por ejemplo: 250-32(a)(1), o Tabla 430-250" />
+            <small>Si venías de un artículo, una tabla o una definición, ya viene lleno. Si no, escríbelo como puedas: con eso basta.</small>
+          </label>
 
-        <label>
-          <span>Qué tipo de observación es</span>
-          <select name="tipo">
-            <option>Diferencia con el DOF</option>
-            <option>Falta algo</option>
-            <option>No se ve bien</option>
-            <option>Sugerencia</option>
-            <option>Otra cosa</option>
-          </select>
-        </label>
+          <label>
+            <span>Qué tipo de observación es</span>
+            <select name="tipo">
+              <option>Diferencia con el DOF</option>
+              <option>Falta algo</option>
+              <option>No se ve bien</option>
+              <option>Sugerencia</option>
+              <option>Otra cosa</option>
+            </select>
+          </label>
 
-        <label>
-          <span>Qué viste <em>(obligatorio)</em></span>
-          <textarea name="observacion" rows="4" required
-                    placeholder="Qué dice la guía y qué esperabas encontrar."></textarea>
-        </label>
+          <label>
+            <span>Qué viste <em>(obligatorio)</em></span>
+            <textarea name="observacion" rows="4" required
+                      placeholder="Qué dice la guía y qué esperabas encontrar."></textarea>
+          </label>
 
-        <label>
-          <span>Qué dice el PDF del DOF <em>(si lo tienes a la mano)</em></span>
-          <textarea name="dice_el_dof" rows="2"
-                    placeholder="El texto o el valor tal como aparece en el documento oficial."></textarea>
-        </label>
+          <label>
+            <span>Qué dice el PDF del DOF <em>(si lo tienes a la mano)</em></span>
+            <textarea name="dice_el_dof" rows="2"
+                      placeholder="El texto o el valor tal como aparece en el documento oficial."></textarea>
+          </label>
 
-        <label>
-          <span>Tu correo <em>(opcional)</em></span>
-          <input type="email" name="email" placeholder="Solo para avisarte en qué quedó." />
-        </label>
+          <label>
+            <span>Tu correo <em>(opcional)</em></span>
+            <input type="email" name="email" placeholder="Solo para avisarte en qué quedó." />
+          </label>
 
-        <input type="hidden" name="url" id="origen" />
-        <button type="submit">Enviar observación</button>
-        <p class="obs-nota">No se pide registro ni cuenta de nada.</p>
-      </form>
+          <input type="hidden" name="url" id="origen" />
+          {/* El asunto del correo lo arma el script con la referencia, para que
+              la bandeja no se llene de mensajes con el mismo título. */}
+          <input type="hidden" name="_subject" id="asunto" value="Observación en la guía NOM-001-SEDE-2012" />
+          {/* Señuelo: los bots llenan todo lo que encuentran, las personas no
+              ven este campo. Formspree descarta el envío si viene con algo. */}
+          <p class="obs-senuelo" aria-hidden="true">
+            <label>No llenar
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </label>
+          </p>
+
+          <button type="submit" id="enviar">Enviar observación</button>
+          <p class="obs-nota">No se pide registro ni cuenta de nada.</p>
+          <p class="obs-error" id="obs-error" hidden role="alert">
+            No se pudo enviar. Revisa tu conexión y vuelve a intentar; si sigue
+            fallando, puedes reportarlo en
+            <a href={REPO_ISSUES} rel="noopener" target="_blank">el repositorio del proyecto</a>.
+          </p>
+        </form>
+
+        <div class="obs-exito" id="obs-exito" hidden role="status">
+          <p><b>Recibido. Gracias.</b></p>
+          <p>
+            Se va a contrastar contra la página del Diario Oficial que
+            corresponde. Si dejaste correo, te avisamos en qué quedó.
+          </p>
+          <p><button type="button" id="otra">Reportar otra cosa</button></p>
+        </div>
+      </>
     ) : (
       <div class="obs-cerrado">
         <p><b>El formulario todavía no está conectado.</b></p>
         <p>
           Mientras tanto, si encontraste una diferencia con el DOF, puedes
-          reportarla en <a href="https://github.com/dflores296/NOM-001-SEDE-2012/issues/new"
-          rel="noopener" target="_blank">el repositorio del proyecto</a>.
+          reportarla en <a href={REPO_ISSUES} rel="noopener" target="_blank">el repositorio del proyecto</a>.
         </p>
       </div>
     )}
@@ -117,15 +146,70 @@ const ENDPOINT = '';
 </Base>
 
 <script>
-  // La referencia viaja en la URL (?ref=250-32(a)(1)&de=/art/250#250-32) porque
+  // La referencia viaja en la URL (?ref=250-32(a)(1)&de=/art/250/#250-32) porque
   // el sitio es estático: no hay servidor que la inyecte al generar la página.
   const p = new URLSearchParams(location.search);
-  const ref = document.getElementById('ref');
+  const ref = document.getElementById('ref') as HTMLInputElement | null;
+  const asunto = document.getElementById('asunto') as HTMLInputElement | null;
+
   if (ref && p.get('ref')) {
-    ref.value = p.get('ref');
+    ref.value = p.get('ref')!;
     ref.setAttribute('readonly', '');
     ref.classList.add('fijo');
   }
-  const origen = document.getElementById('origen');
+  if (asunto && ref) {
+    const poner = () => {
+      asunto.value = ref.value
+        ? `Observación: ${ref.value}`
+        : 'Observación en la guía NOM-001-SEDE-2012';
+    };
+    poner();
+    ref.addEventListener('input', poner);
+  }
+
+  const origen = document.getElementById('origen') as HTMLInputElement | null;
   if (origen) origen.value = p.get('de') || document.referrer || '';
+
+  // Enviar sin salir del sitio. Sin esto Formspree se lleva al lector a una
+  // página suya de agradecimiento, que se ve ajena. Si este script no corre, el
+  // formulario envía a la manera tradicional y acaba allá: funciona igual, solo
+  // se ve prestado. Degradación, no rotura.
+  const form = document.getElementById('obs-form') as HTMLFormElement | null;
+  const exito = document.getElementById('obs-exito');
+  const error = document.getElementById('obs-error');
+  const boton = document.getElementById('enviar') as HTMLButtonElement | null;
+
+  if (form && exito && error && boton) {
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      error.hidden = true;
+      boton.disabled = true;
+      const etiqueta = boton.textContent;
+      boton.textContent = 'Enviando…';
+      try {
+        const r = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (!r.ok) throw new Error(String(r.status));
+        form.hidden = true;
+        exito.hidden = false;
+        exito.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      } catch {
+        error.hidden = false;
+      } finally {
+        boton.disabled = false;
+        boton.textContent = etiqueta;
+      }
+    });
+
+    document.getElementById('otra')?.addEventListener('click', () => {
+      form.reset();
+      if (ref && p.get('ref')) ref.value = p.get('ref')!;
+      exito.hidden = true;
+      form.hidden = false;
+      form.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
+  }
 </script>
