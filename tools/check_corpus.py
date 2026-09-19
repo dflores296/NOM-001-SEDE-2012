@@ -102,6 +102,42 @@ def huecos_de_numeracion(nodo):
     return falta
 
 
+# El titulo de una tabla se arma pegando los renglones del PDF, y ahi se cuela
+# lo que nadie ve leyendo celdas: el de la 220-55 salia con su cola repetida
+# cuatro veces, y tres de la familia 310-60 se quedaban a media frase. Lo
+# encontro un lector de casualidad, con 226 titulos publicados. Estas dos
+# comprobaciones lo vuelven trabajo del build.
+
+# Un titulo completo no termina en preposicion, articulo, conjuncion ni guion.
+# La coma NO cuenta: el de la Tabla 610-14(a) acaba en coma en el propio DOF
+# —"...regimen de trabajo de corta duracion,"— y reproducirlo es lo correcto.
+RE_COLGADO = re.compile(
+    r'(?:\b(?:de|del|la|el|los|las|en|con|para|y|o|a|al|por|que|se|su|un|una'
+    r'|seg[uú]n|sobre|entre|hasta|desde)|[-–—:])$', re.I)
+
+
+def cola_repetida(t, minimo=25):
+    """El sufijo mas largo que aparece mas de una vez en el titulo."""
+    for n in range(len(t) // 2, minimo, -1):
+        if t.count(t[-n:]) > 1:
+            return t[-n:]
+    return None
+
+
+def titulos_sospechosos(tabs):
+    """(duplicados, colgados) entre los titulos publicados."""
+    dup, colg = [], []
+    for t in tabs:
+        ti = (t.get('title') or '').strip()
+        if not ti:
+            continue
+        if cola_repetida(ti):
+            dup.append(t['id'])
+        elif RE_COLGADO.search(ti):
+            colg.append(t['id'])
+    return dup, colg
+
+
 def main():
     d = sys.argv[1] if len(sys.argv) > 1 else 'data'
     val = json.load(open(os.path.join(d, 'validacion.json')))
@@ -263,6 +299,17 @@ def main():
                     '(¿falta regenerar tablas.json?): %s'
                     % (len(desal), ', '.join('%s (%s)' % (t, '/'.join(c))
                                              for t, c in desal[:6])))
+
+    dup, colg = titulos_sospechosos(tabs)
+    if dup:
+        fails.append(
+            '%d tabla(s) repiten un trozo al final de su título (el pegado de '
+            'renglones lo duplicó): %s' % (len(dup), ', '.join(dup[:6])))
+    if colg:
+        fails.append(
+            '%d tabla(s) tienen el título cortado a media frase; contrástalo '
+            'contra el PDF y, si el DOF lo imprime así, no lo toques: %s'
+            % (len(colg), ', '.join(colg[:6])))
 
     if fails:
         print('VERIFICACIÓN FALLIDA')

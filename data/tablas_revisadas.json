@@ -12150,7 +12150,7 @@
  },
  "220-55": {
   "verificada": "2026-08-12",
-  "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3). aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3). aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3). aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3).",
+  "title": "Factores de demanda y cargas para estufas eléctricas domésticas, hornos de pared, parrillas eléctricas montadas en la superficie del mueble de cocina y otros aparatos de cocción de más de 1.75 kilowatts (kW). (La columna C debe aplicarse en todos los casos, excepto lo permitido de otra forma en la Nota 3).",
   "cols": 4,
   "header_rows": 2,
   "rows": [
@@ -12607,13 +12607,13 @@
    },
    {
     "page": 49,
-    "y0": 39.21,
+    "y0": 25.1,
     "y1": 692.0,
     "id": "220-55",
     "article": 220
    }
   ],
-  "sha": "0d85ec41fcfa72b2"
+  "sha": "2201ef560ddfc653"
  },
  "310-15(b)(17)": {
   "verificada": "2026-08-12",
@@ -24849,7 +24849,8 @@
    ]
   ],
   "notes": [],
-  "sha": "2b2cc09a9755a81d"
+  "sha": "28736c428d07795a",
+  "title": "Ampacidad de tres conductores de cobre, aislados, alambrados dentro de una cubierta general (cable de tres conductores), enterrados directamente en la tierra, con base en una temperatura ambiente de la tierra de 20 °C, el montaje de los ductos eléctricos según se indica en la Figura 310-60, factor de carga del 100 por ciento, resistencia térmica (RHO) de 90, temperaturas del conductor de 90 °C y 105 °C"
  },
  "310-60(c)(84)": {
   "verificada": "2026-08-12",
@@ -26107,7 +26108,7 @@
    ]
   ],
   "notes": [],
-  "sha": "a83593f2aae33d06"
+  "sha": "040f845ae721bd69"
  },
  "310-60(c)(86)": {
   "verificada": "2026-08-12",
@@ -26736,7 +26737,7 @@
    ]
   ],
   "notes": [],
-  "sha": "7d2f9436e2dc2a6b"
+  "sha": "d8e14dc317ed2107"
  },
  "392-22(a)(5)": {
   "verificada": "2026-08-12",
@@ -53327,7 +53328,8 @@
     }
    ]
   ],
-  "sha": "14ff255724f00cc0"
+  "sha": "97b783d6168c24f8",
+  "title": "Tipos y tamaño o designación de conductores para alimentadores monofásicos, de 3 hilos de 120/240 volts para viviendas. Tipos de conductores RHH, RHW, RHW-2, THHN, THHW, THHW-LS, THW, THW-LS, THW-2, THWN, THWN-2, XHHW, XHHW-2, SE, USE, USE-2"
  },
  "310-60(c)(4)": {
   "verificada": "2026-08-12",
