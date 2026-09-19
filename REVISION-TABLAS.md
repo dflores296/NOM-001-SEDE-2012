@@ -17,7 +17,7 @@ estimada de la separación en celdas (1.00 = ninguna celda con varios valores ju
 `huecos` son los espacios entre palabras, que es mucho menos fiable y no recupera
 celdas combinadas.
 
-**238 de 245 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
+**242 de 245 tablas ya se contrastaron celda por celda contra el PDF** y salen de esta lista; quedan registradas en `data/tablas_revisadas.json`, que se aplica encima de la reconstrucción automática.
 
 ## 1 · Prioridad alta (0)
 
@@ -37,16 +37,12 @@ Salieron limpias y son muy usadas. Conviene mirarlas justamente por eso: una tab
 
 Ninguna: ya están todas contrastadas contra el PDF.
 
-## 4 · Sin señales (7)
+## 4 · Sin señales (3)
 
 Ninguna heurística las marcó —ni calidad baja, ni uso suficiente para "verificación de control"— pero eso no es lo mismo que fieles: nunca se han contrastado contra el PDF. Ordenadas por página para revisarlas de corrido.
 
 | | Tabla | Título | Pág. PDF | Usos | Cal. | Rejilla | Tamaño |
 |---|---|---|---|---|---|---|---|
-| [ ] | `B1.1` | LISTA DE NORMAS OFICIALES Y NORMAS MEXICANAS | 765, 766 | 1 | 1.00 | dibujada | 10×3 |
-| [ ] | `B1.2` | LISTADO DE NORMAS DE PRODUCTOS ELECTRICOS | 766, 767, 768, 769 | 1 | 0.94 | dibujada | 112×3 |
-| [ ] | `B2.1` | LISTADO DE NORMAS INTERNACIONALES | 769, 770 | 0 | 1.00 | dibujada | 21×3 |
-| [ ] | `B2.2` | LISTADO DE NORMAS EXTRANJERAS | 770, 771, 772, 773 | 0 | 0.94 | dibujada | 79×3 |
 | [ ] | `C-1` | Número máximo de conductores o alambres para artefactos en tubería met… | 773, 774, 775, 776, 777 | 0 | 1.00 | **huecos** | 168×12 |
 | [ ] | `C-1(a)` | Número máximo de conductores compactos en tubería metálica eléctrica (… | 777, 778 | 0 | 1.00 | **huecos** | 61×12 |
 | [ ] | `C-2` | Número máximo de conductores o alambres para artefactos en tuberías el… | 778, 779, 780 | 0 | 0.83 | dibujada | 144×9 |

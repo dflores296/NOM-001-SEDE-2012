@@ -81529,7 +81529,7 @@
   ],
   "page": 765,
   "cols": 3,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -81661,7 +81661,8 @@
     "id": "B1.1",
     "article": null
    }
-  ]
+  ],
+  "verificada": "2026-09-19"
  },
  {
   "id": "B1.2",
@@ -81677,7 +81678,7 @@
   ],
   "page": 766,
   "cols": 3,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -82546,7 +82547,7 @@
      "t": "Sistema de protección contra tormentas eléctricas – Especificaciones, materiales y métodos de medición"
     },
     {
-     "t": "250‑4, 4.1.6, 205‑106, 620-37, 800"
+     "t": "4.1.6, 250‑4, 205‑106, 620-37, 800"
     }
    ],
    [
@@ -82915,7 +82916,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.94,
+  "quality": 1.0,
   "regions": [
    {
     "page": 766,
@@ -82945,7 +82946,8 @@
     "id": "B1.2",
     "article": null
    }
-  ]
+  ],
+  "verificada": "2026-09-19"
  },
  {
   "id": "B2.1",
@@ -83212,7 +83214,8 @@
     "id": "B2.1",
     "article": null
    }
-  ]
+  ],
+  "verificada": "2026-09-19"
  },
  {
   "id": "B2.2",
@@ -83228,7 +83231,7 @@
   ],
   "page": 770,
   "cols": 3,
-  "header_rows": 4,
+  "header_rows": 1,
   "intro": "",
   "rows": [
    [
@@ -84103,7 +84106,7 @@
   ],
   "grid": "rejilla",
   "notes": [],
-  "quality": 0.945,
+  "quality": 1.0,
   "regions": [
    {
     "page": 770,
@@ -84133,7 +84136,8 @@
     "id": "B2.2",
     "article": null
    }
-  ]
+  ],
+  "verificada": "2026-09-19"
  },
  {
   "id": "C-1",

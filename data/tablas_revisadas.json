@@ -76726,5 +76726,2479 @@
    "NOTA: El límite de las ampacidades para el número de conductores portadores de corriente de 10 hasta 85 se basa en la siguiente fórmula. Para más de 85 conductores, se requieren cálculos especiales que están más allá del alcance de esta tabla:"
   ],
   "sha": "68199de412937542"
+ },
+ "B1.1": {
+  "verificada": "2026-09-19",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "NORMA"
+    },
+    {
+     "t": "Título"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "NOM-022-STPS-2008"
+    },
+    {
+     "t": "Electricidad estática en los centros de trabajo-Condiciones de seguridad e higiene"
+    },
+    {
+     "t": "500-4 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NOM-029-STPS-2005"
+    },
+    {
+     "t": "Mantenimiento de las instalaciones eléctricas en los centros de trabajo- Condiciones de seguridad"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "NOM-010-SECRE-2002"
+    },
+    {
+     "t": "Gas natural comprimido para uso automotor. Requisitos mínimos de seguridad para estaciones de servicio"
+    },
+    {
+     "t": "514-2(b)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-163-ANCE-2004"
+    },
+    {
+     "t": "Artefactos eléctricos-Configuraciones"
+    },
+    {
+     "t": "550-5 550-23 555-3"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-472-ANCE-2008"
+    },
+    {
+     "t": "Conductores-Determinación de la cantidad de gas ácido halogenado generado durante la combustión controlada de materiales poliméricos tomados de cables eléctricos-Método de prueba"
+    },
+    {
+     "t": "725-71(a)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-498-ANCE-2011"
+    },
+    {
+     "t": "Conductores-Determinación de la resistencia a la propagación de la flama en conductores eléctricos que se colocan en charola vertical-Método de prueba"
+    },
+    {
+     "t": "725-71(b)"
+    }
+   ],
+   [
+    {
+     "t": "NRF-011-CFE-2004"
+    },
+    {
+     "t": "Sistema de tierras para plantas y subestaciones eléctricas"
+    },
+    {
+     "t": "921-25, 250-191"
+    }
+   ],
+   [
+    {
+     "t": "NOM-007-ENER-2004"
+    },
+    {
+     "t": "Eficiencia energética en sistemas de alumbrado en edificios no residenciales"
+    },
+    {
+     "t": "220-3"
+    }
+   ],
+   [
+    {
+     "t": "NOM-053-SCFI-2000"
+    },
+    {
+     "t": "Elevadores eléctricos de tracción para pasajeros y carga-Especificaciones de seguridad y métodos de prueba para equipos nuevos"
+    },
+    {
+     "t": "620-2"
+    }
+   ]
+  ],
+  "sha": "03738464d8964d85"
+ },
+ "B1.2": {
+  "verificada": "2026-09-19",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "NORMA"
+    },
+    {
+     "t": "TITULO"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "NOM-003-SCFI-2000"
+    },
+    {
+     "t": "Productos eléctricos especificaciones de seguridad"
+    },
+    {
+     "t": ""
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-005-ANCE-2005"
+    },
+    {
+     "t": "Interruptores de uso general para instalaciones eléctricas fijas – Especificaciones generales y métodos de prueba"
+    },
+    {
+     "t": "404-9 210-24 240"
+    }
+   ],
+   [
+    {
+     "t": "NOM-058-SCFI-2007"
+    },
+    {
+     "t": "Productos eléctricos-Balastros para lámparas de descarga eléctrica en gas- Especificaciones de seguridad"
+    },
+    {
+     "t": "300-3 (c) (2) 410"
+    }
+   ],
+   [
+    {
+     "t": "NOM-063-SCFI-2001"
+    },
+    {
+     "t": "Productos eléctricos - Conductores-Requisitos de seguridad"
+    },
+    {
+     "t": "310"
+    }
+   ],
+   [
+    {
+     "t": "NOM-064-SCFI-2000"
+    },
+    {
+     "t": "Productos eléctricos - Luminarios para uso en interiores y exteriores-especificaciones de seguridad y métodos de prueba"
+    },
+    {
+     "t": "410"
+    }
+   ],
+   [
+    {
+     "t": "NOM-021-ENER/SCFI-2008"
+    },
+    {
+     "t": "Eficiencia energética, requisitos de seguridad al usuario en acondicionadores de aire tipo cuarto. Límites, métodos de prueba y etiquetado"
+    },
+    {
+     "t": "440"
+    }
+   ],
+   [
+    {
+     "t": "NOM-011-ENER-2006"
+    },
+    {
+     "t": "Eficiencia energética en acondicionadores de aire tipo central, paquete o dividido. Límite, métodos de prueba y etiquetado"
+    },
+    {
+     "t": "440"
+    }
+   ],
+   [
+    {
+     "t": "NOM-014-ENER-2004"
+    },
+    {
+     "t": "Eficiencia energética de motores eléctricos de corriente alterna, monofásicos, de inducción, tipo jaula de ardilla, enfriados con aire, en potencia nominal de 0.180 kW a 1.500 kW. Límites, método de prueba y marcado"
+    },
+    {
+     "t": "430"
+    }
+   ],
+   [
+    {
+     "t": "NOM-016-ENER-2010"
+    },
+    {
+     "t": "Eficiencia energética de motores de corriente alterna, trifásicos, de inducción, tipo jaula de ardilla, en potencia nominal de 0.746 a 373 kW. Límites, método de prueba y marcado"
+    },
+    {
+     "t": "430"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-002-ANCE-2001"
+    },
+    {
+     "t": "Conductores – Alambres de cobre duro para usos eléctricos-Especificaciones"
+    },
+    {
+     "t": "310"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-008-ANCE-2001"
+    },
+    {
+     "t": "Conductores – Alambres de cobre estañado suave o recocido para usos eléctricos- Especificaciones"
+    },
+    {
+     "t": "310"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-009/248-1-ANCE-2006"
+    },
+    {
+     "t": "Fusibles para baja tensión – Parte 1: Requisitos generales"
+    },
+    {
+     "t": "240"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-009/248-4-ANCE-2006"
+    },
+    {
+     "t": "Fusible para baja tensión – Parte 4: Fusibles clase CC"
+    },
+    {
+     "t": "240-4 (d)(1)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-009/248-8-ANCE-2006"
+    },
+    {
+     "t": "Fusible para baja tensión – Parte 8: Fusibles clase J"
+    },
+    {
+     "t": "240-4 (d)(1)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-009/248-15-ANCE-2006"
+    },
+    {
+     "t": "Fusible para baja tensión – Parte 15: Fusibles clase T"
+    },
+    {
+     "t": "240-4 (d)(1)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-009/248-7-ANCE-2000"
+    },
+    {
+     "t": "Fusibles para baja tensión – Parte 7: Fusibles renovables clase H"
+    },
+    {
+     "t": "240-60 (d)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-009/248-11-ANCE-2006"
+    },
+    {
+     "t": "Fusibles para baja tensión – Parte 11: Fusibles tipo tapón"
+    },
+    {
+     "t": "240 e"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-010-ANCE-2011"
+    },
+    {
+     "t": "Conductores – Conductores con aislamiento termoplástico para instalaciones hasta 600 V – Especificaciones"
+    },
+    {
+     "t": "310-104"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-012-ANCE-2008"
+    },
+    {
+     "t": "Conductores – Cable de cobre con cableado concéntrico para usos eléctricos – Especificaciones"
+    },
+    {
+     "t": "315"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-017-ANCE-2006"
+    },
+    {
+     "t": "Accesorios para cables y tubos – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "342, 358, 360, 348, 350, 356"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-023/1-ANCE-2007"
+    },
+    {
+     "t": "Cajas registro metálicas y sus accesorios – Parte 1: Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "110-28 314-40"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-024-ANCE-2005"
+    },
+    {
+     "t": "Artefactos eléctricos – Portalámparas roscados tipo Edison – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "422-40 422-48 (b)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-028-ANCE-2001"
+    },
+    {
+     "t": "Conductores – Cables concéntricos tipo espiral para acometida aérea a baja tensión, hasta 600 V – Especificaciones"
+    },
+    {
+     "t": "230 D"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-032-ANCE-2009"
+    },
+    {
+     "t": "Conductores de aluminio – Cable de aluminio de aleación 1350 con cableado concéntrico, para usos eléctricos – Especificaciones"
+    },
+    {
+     "t": "810"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-036-ANCE-2001"
+    },
+    {
+     "t": "Conductores – Alambre de cobre suave para usos eléctricos – Especificaciones"
+    },
+    {
+     "t": "310"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-038/11-ANCE-2007"
+    },
+    {
+     "t": "Equipos de soldadura eléctrica por arco – Parte 11: Portaelectrodos"
+    },
+    {
+     "t": "630"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-058-ANCE-2007"
+    },
+    {
+     "t": "Conductores – Cable de aluminio con cableado concéntrico y alma de acero (ACSR) – Especificaciones"
+    },
+    {
+     "t": "230"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-059-ANCE-2004"
+    },
+    {
+     "t": "Conductores – Cable de cobre con cableado concéntrico compacto, para usos eléctricos – Especificaciones"
+    },
+    {
+     "t": "315"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-075/1-ANCE-1994"
+    },
+    {
+     "t": "Aparatos eléctricos – Máquinas rotatorias – Parte 1: Motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias desde 0,062 a 373 kW – Especificaciones"
+    },
+    {
+     "t": "430"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-075/2-ANCE-1994"
+    },
+    {
+     "t": "Aparatos eléctricos – Máquinas rotatorias – Parte 2: Motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias grandes – Especificaciones"
+    },
+    {
+     "t": "430"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-075/3-ANCE-1994"
+    },
+    {
+     "t": "Aparatos eléctricos – Máquinas rotatorias – Parte 3: Métodos de prueba para motores de inducción de corriente alterna del tipo de rotor en cortocircuito, en potencias desde 0,062 kW"
+    },
+    {
+     "t": "430"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-093-ANCE-2009"
+    },
+    {
+     "t": "Conductores – Determinación de la resistencia a la propagación de incendio en conductores eléctricos – Métodos de prueba"
+    },
+    {
+     "t": "Tabla 310-104 (a)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-102-ANCE-2005"
+    },
+    {
+     "t": "Conductores – Cordones flexibles tipo SPT con aislamiento termoplástico a base de policloruro de vinilo para instalaciones hasta 300 V – Especificaciones"
+    },
+    {
+     "t": "400-5 a)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-116-ANCE-2005"
+    },
+    {
+     "t": "Transformadores de distribución tipo poste y tipo subestación – Especificaciones"
+    },
+    {
+     "t": "450"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-118/1-ANCE-2000"
+    },
+    {
+     "t": "Productos eléctricos - Tableros de alumbrado y distribución en baja tensión - Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "480"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-118/2-ANCE-2007"
+    },
+    {
+     "t": "Tableros – Tableros de distribución de baja tensión – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "480"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-142/1-ANCE-2011"
+    },
+    {
+     "t": "Conductores – Cables de energía con pantalla metálica, aislados con polietileno de cadena cruzada o a base de etileno-propileno para tensiones de 5 kV a 35 kV – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "250-190 504-30 b)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-148-ANCE-2001"
+    },
+    {
+     "t": "Electroductos - Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "368"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-149/2-ANCE-2008"
+    },
+    {
+     "t": "Fusibles para media y alta tensión – Parte 2: Cortacircuitos fusible de expulsión – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "490-21(b)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-150/1-ANCE-2008"
+    },
+    {
+     "t": "Coordinación de aislamiento – Parte 1: Definiciones, principios y reglas"
+    },
+    {
+     "t": "922-11"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-150/2-ANCE-2004"
+    },
+    {
+     "t": "Coordinación de aislamiento – Parte 2: Guía de aplicación"
+    },
+    {
+     "t": "922-11"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-192-ANCE-2009"
+    },
+    {
+     "t": "Conductores – Resistencia a la propagación de la flama en conductores eléctricos – Métodos de prueba"
+    },
+    {
+     "t": "Tabla 310-104(a)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-203/1-ANCE-2005"
+    },
+    {
+     "t": "Capacitores – Parte 1: Capacitores de potencia en conexión paralelo – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "460"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-203/2-ANCE-2006"
+    },
+    {
+     "t": "Capacitores – Parte 2: Bancos de capacitores de potencia en conexión paralelo – Especificaciones y guía para la instalación y operación"
+    },
+    {
+     "t": "460"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-203/3-ANCE-2008"
+    },
+    {
+     "t": "Capacitores – Parte 3: Fusibles de media y alta tensión para la protección externa de bancos de capacitores y unidades capacitivas de potencia en conexión paralelo – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "460-8 460-25"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-203/4-ANCE-2010"
+    },
+    {
+     "t": "Capacitores – Parte 4: Guía para realizar la pruebas de envejecimiento de ciclo de sobre tensión"
+    },
+    {
+     "t": "460"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-234-ANCE-2008"
+    },
+    {
+     "t": "Aisladores – Boquillas de extra alta, alta y media tensión para corriente alterna – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "922"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-235/1-ANCE-2008"
+    },
+    {
+     "t": "Envolventes – Envolventes para uso en equipo eléctrico – Parte 1: Consideraciones no ambientales – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "314-40 c)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-235/2-ANCE-2000"
+    },
+    {
+     "t": "Envolventes - Envolventes (gabinetes) para uso en equipo eléctrico - Parte 2: requerimientos específicos - Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "314-40 c)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-266-ANCE-1999"
+    },
+    {
+     "t": "Productos eléctricos – Interruptores – Interruptores automáticos en caja moldeada – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "110-22 230"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-281/601-ANCE-2011"
+    },
+    {
+     "t": "Vocabulario electrotécnico – Parte 601: Generación, transmisión y distribución de energía eléctrica – Generalidades"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-285-ANCE-2005"
+    },
+    {
+     "t": "Transformadores de distribución tipo pedestal monobásico y trifásico para distribución subterránea."
+    },
+    {
+     "t": "450"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-297-ANCE-2005"
+    },
+    {
+     "t": "Conductores – Conductores flexibles de cobre para usos eléctricos y electrónicos – Especificaciones"
+    },
+    {
+     "t": "400-5 a)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-298-ANCE-2007"
+    },
+    {
+     "t": "Conductores – Conductores tipo dúplex (TWD) con aislamiento termoplástico para instalaciones hasta 600 V – Especificaciones"
+    },
+    {
+     "t": "396-2"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-300-ANCE-"
+    },
+    {
+     "t": "Conductores-Cables control- Especificaciones"
+    },
+    {
+     "t": "392"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-321-ANCE-2005"
+    },
+    {
+     "t": "Apartarrayos de óxidos metálicos sin explosores, para sistemas de corriente alterna – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "922"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-321/5-ANCE-2008"
+    },
+    {
+     "t": "Apartarrayos – Parte 5: Recomendaciones para selección y aplicación"
+    },
+    {
+     "t": "922"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-412-ANCE-2008"
+    },
+    {
+     "t": "Clavijas y receptáculos - Especificaciones y métodos de prueba generales"
+    },
+    {
+     "t": "517-2"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-412/1-ANCE-2004"
+    },
+    {
+     "t": "Clavijas y contactos para uso doméstico y similar – Parte 1: requisitos generales"
+    },
+    {
+     "t": "406-6"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-412/2-3-ANCE-2009"
+    },
+    {
+     "t": "Conectores – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "200-10 406"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-412/2-6-ANCE-2009"
+    },
+    {
+     "t": "Artefactos grado hospital – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "517-2 517-19"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-429-ANCE-2009"
+    },
+    {
+     "t": "Conductores – Alambres, cables y cordones con aislamiento de PVC 80 ºC, 9 ºC y 105 ºC, para equipos electrónicos – Especificaciones."
+    },
+    {
+     "t": "400-5(a)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-436-ANCE-2007"
+    },
+    {
+     "t": "Conductores – Cordones y cables flexibles – Especificaciones"
+    },
+    {
+     "t": "400-5"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-508-ANCE-2010"
+    },
+    {
+     "t": "Artefactos eléctricos – Requisitos de seguridad – Especificaciones y métodos de prueba."
+    },
+    {
+     "t": "404 406"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-511-ANCE-2011"
+    },
+    {
+     "t": "Soportes para conductores eléctricos – Sistemas de soportes metálicos tipo charola – Especificaciones y métodos de prueba."
+    },
+    {
+     "t": "392-12 392-100"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-515-ANCE-2003"
+    },
+    {
+     "t": "Equipos de control y distribución – Requisitos generales de seguridad – Especificaciones y métodos de prueba."
+    },
+    {
+     "t": "408 409"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-519-ANCE-2011"
+    },
+    {
+     "t": "Conectadores – Conectadores sellados – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "110-14"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-520-ANCE-2006"
+    },
+    {
+     "t": "Interruptores de circuito por falla a tierra – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "406-4 (d) 406-6 409-21 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-529-ANCE-2006"
+    },
+    {
+     "t": "Grados de protección proporcionados por los envolventes (código IP)"
+    },
+    {
+     "t": "110-28"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-534-ANCE-2008"
+    },
+    {
+     "t": "Tubos metálicos rígidos de acero tipo pesado y sus accesorios para la protección de conductores – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "344"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-535-ANCE-2008"
+    },
+    {
+     "t": "Tubos metálicos rígidos de acero tipo semipesado y sus accesorios para la protección de conductores – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "342"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-536-ANCE-2008"
+    },
+    {
+     "t": "Tubos metálicos rígidos de acero tipo ligero y sus accesorios para la protección de conductores – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "358"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-538/1-ANCE-2005"
+    },
+    {
+     "t": "Productos de distribución y de control de baja tensión – Parte 1: Reglas generales"
+    },
+    {
+     "t": "230, 240, 408, 520-27"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-538/2-ANCE-2005"
+    },
+    {
+     "t": "Productos de distribución y de control de baja tensión – Parte 2: Interruptores automáticos"
+    },
+    {
+     "t": "230, 240, 408, 520-27"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-542-ANCE-2006"
+    },
+    {
+     "t": "Tubo corrugado (flexible) no metálico para la protección de conductores eléctricos – Especificaciones y Métodos de prueba"
+    },
+    {
+     "t": "360"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-543-ANCE-2008"
+    },
+    {
+     "t": "Conectadores – Conectadores para instalaciones eléctricas utilización hasta 34,5 kV – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "110-14 210-10 250-70"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-548-ANCE-2008"
+    },
+    {
+     "t": "Conectadores – Conectadores tipo empalme para instalaciones eléctricas utilización – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "110-14 210-10 250-70"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-549-ANCE-2005"
+    },
+    {
+     "t": "Sistema de protección contra tormentas eléctricas – Especificaciones, materiales y métodos de medición"
+    },
+    {
+     "t": "4.1.6, 250‑4, 205‑106, 620-37, 800"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-550/1-1-ANCE-2008"
+    },
+    {
+     "t": "Compatibilidad electromagnética (EMC) Parte 1-1: Generalidades Aplicación e interpretación de definiciones y términos básicos"
+    },
+    {
+     "t": "200, 250, 517, 650, 668"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-554-ANCE-2004"
+    },
+    {
+     "t": "Roscas para tubo (conduit) y sus accesorios – Especificaciones y método de prueba."
+    },
+    {
+     "t": "342, 344, 500-8"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-569-ANCE-2005"
+    },
+    {
+     "t": "Accesorios eléctricos - Interruptores automáticos para protección contra sobrecorriente en instalaciones domésticas y similares - Interruptores automáticos para operación con c.a."
+    },
+    {
+     "t": "406-6"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-570/1-ANCE-2006"
+    },
+    {
+     "t": "Sistema de canalizaciones y ductos para instalaciones eléctricas – Parte 1: Requisitos generales"
+    },
+    {
+     "t": "376-100 388-100"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-570/2-ANCE-2006"
+    },
+    {
+     "t": "Sistema de canalizaciones y ductos para instalaciones eléctricas – Parte 2: Requisitos particulares – Sección 1: Sistemas de canalizaciones y ductos diseñados para montarse en techos"
+    },
+    {
+     "t": "376-100 388-100"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-575-ANCE-2006"
+    },
+    {
+     "t": "Interruptores automáticos operados con corriente diferencial residual sin protección integrada contra sobrecorrientes para instalaciones domésticas y usos similares (IDS) Parte 1: Reglas generales"
+    },
+    {
+     "t": "406-6"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-576-ANCE-2005"
+    },
+    {
+     "t": "Tubos rígidos de aluminio para la protección de conductores eléctricos y sus accesorios – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "344"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-580/1-ANCE-2006"
+    },
+    {
+     "t": "Ensambles de tableros de baja tensión – Parte 1: Ensambles con pruebas tipo y ensambles con pruebas tipo parciales"
+    },
+    {
+     "t": "480"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-589-ANCE-2010"
+    },
+    {
+     "t": "Métodos de medición para instalaciones eléctricas"
+    },
+    {
+     "t": "4.2.12, 110-26, 250-12, 312-6, 680"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-590-ANCE-2009"
+    },
+    {
+     "t": "Conectadores – Equipo para puesta tierra"
+    },
+    {
+     "t": "250-70"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-592/1-ANCE-2008"
+    },
+    {
+     "t": "Sistemas de gestión de energía - Esquemas de funcionamiento - Parte 1: Directrices y requisitos generales"
+    },
+    {
+     "t": "Capítulo 9"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-592/2-ANCE-2008"
+    },
+    {
+     "t": "Sistemas de gestión de energía – Esquemas de funcionamiento – Parte 1: Definiciones"
+    },
+    {
+     "t": "Capítulo 9"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-593/1-ANCE-2008"
+    },
+    {
+     "t": "Sistemas de interconexión de subestaciones eléctricas - Parte 1: Introducción y visión de conjunto"
+    },
+    {
+     "t": "924"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-593/2-ANCE-2008"
+    },
+    {
+     "t": "Sistemas de interconexión de subestaciones eléctricas – Parte 2: Definiciones"
+    },
+    {
+     "t": "924"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-593/3-ANCE-2008"
+    },
+    {
+     "t": "Sistemas de interconexión de subestaciones eléctricas – Parte 3: Requisitos generales"
+    },
+    {
+     "t": "924"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-594-ANCE-2008"
+    },
+    {
+     "t": "Relevadores de protección y control en la operación de sistemas eléctricos - Guía de aplicación"
+    },
+    {
+     "t": "250-170 250-174 250-176 250-188"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-603-ANCE-2008"
+    },
+    {
+     "t": "Guía de aplicación del sistema de protección contra tormentas eléctricas"
+    },
+    {
+     "t": "4.1.6, 250-4, 205- 106, 620-37, 800"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-604-ANCE-2008"
+    },
+    {
+     "t": "Instalaciones eléctricas- Métodos de diagnóstico y reacondicionamiento de instalaciones eléctricas en operación – Especificaciones"
+    },
+    {
+     "t": "4.4.2 110 240"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-609/826-ANCE-2009"
+    },
+    {
+     "t": "Vocabulario electrotécnico - Parte 826: Instalaciones eléctricas (Utilización)"
+    },
+    {
+     "t": "100"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-616-ANCE-2009"
+    },
+    {
+     "t": "Guía de aplicación de filtros y capacitores con conexión en paralelo para la corrección de distorsión armónica"
+    },
+    {
+     "t": "460"
+    }
+   ],
+   [
+    {
+     "t": "SERIE NMX-J-618/1-ANCE-2010"
+    },
+    {
+     "t": "Evaluación de la seguridad en módulos fotovoltaicos (FV) – Parte 1: Requisitos generales para construcción"
+    },
+    {
+     "t": "690"
+    }
+   ],
+   [
+    {
+     "t": "SERIE NMX-J-643/1-ANCE-2011"
+    },
+    {
+     "t": "Dispositivos fotovoltaicos – Parte 1: Medición de la característica corriente-Tensión de los dispositivos fotovoltaicos"
+    },
+    {
+     "t": "690"
+    }
+   ],
+   [
+    {
+     "t": "NMXJ-620/1-ANCE-2009"
+    },
+    {
+     "t": "Interruptores automáticos operados con corriente residual con protección integrada contra sobrecorrientes para instalaciones domésticas y usos similares (IDCS) Parte 1: Reglas generales"
+    },
+    {
+     "t": "406-6"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-623-ANCE-2009"
+    },
+    {
+     "t": "Sistemas de canalizaciones para cables - Cinchos de sujeción para cables para instalaciones eléctricas"
+    },
+    {
+     "t": "320-30, 330-30"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-627-ANCE-2009"
+    },
+    {
+     "t": "Envolventes – Grados de protección proporcionados por la envolventes de equipos eléctricos en contra de impactos mecánicos (Código IK)"
+    },
+    {
+     "t": "376-12 378-12 (1)"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-631-ANCE-2011"
+    },
+    {
+     "t": "Canalizaciones eléctricas - Ductos metálicos, canales auxiliares y accesorios asociados – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "366"
+    }
+   ],
+   [
+    {
+     "t": "NMX-J-643/1-ANCE-2011"
+    },
+    {
+     "t": "Dispositivos fotovoltaicos- Parte 1: Medición de la característica corriente –Tensión de los dispositivos fotovoltaicos"
+    },
+    {
+     "t": "690"
+    }
+   ],
+   [
+    {
+     "t": "NMX-E-242/1-ANCE-CNCP-2005"
+    },
+    {
+     "t": "Industria del plástico – Tubo de polietileno de alta densidad (PEAD) para instalaciones eléctricas subterráneas (Conduit) – Especificaciones y métodos de prueba – Parte 1: Pared corrugada"
+    },
+    {
+     "t": "353"
+    }
+   ],
+   [
+    {
+     "t": "NMX-E-242/2-ANCE-CNCP-2005"
+    },
+    {
+     "t": "Industria del plástico – Tubo de polietileno de alta densidad (PEAD) para instalaciones eléctricas subterráneas – Especificaciones y métodos de prueba – Parte 2: Pared lisa"
+    },
+    {
+     "t": "353"
+    }
+   ],
+   [
+    {
+     "t": "NMX-E-252-ANCE-CNCP-2008"
+    },
+    {
+     "t": "Industrial del plástico – Tubos (Conduit) y conexiones poli(cloruro de vinilo) (PVC) sin plastificante tipo 1 (cédula 40) y tipo 2 (cédula 80) para instalaciones eléctricas – Especificaciones y métodos de prueba"
+    },
+    {
+     "t": "352"
+    }
+   ],
+   [
+    {
+     "t": "NMX-I-118/02 NYCE"
+    },
+    {
+     "t": "Telecomunicaciones-Cables-Parte 02-Cable Coaxial para acometida en sistemas de televisión por cable (STVC)"
+    },
+    {
+     "t": "250, 324, 800"
+    }
+   ],
+   [
+    {
+     "t": "NMX-I-236/01 NYCE"
+    },
+    {
+     "t": "Telecomunicaciones-Cables-Cables de fibras ópticas para uso interior- Especificaciones y métodos de prueba-Parte 01: Características básicas"
+    },
+    {
+     "t": "250, 324, 800"
+    }
+   ],
+   [
+    {
+     "t": "NMX-I-237 NYCE"
+    },
+    {
+     "t": "Telecomunicaciones-Cables-Cables de fibras ópticas para uso interior- Especificaciones y métodos de prueba."
+    },
+    {
+     "t": "250, 324, 800"
+    }
+   ]
+  ],
+  "sha": "153f3ce2080c594d"
+ },
+ "B2.1": {
+  "verificada": "2026-09-19",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "NORMA"
+    },
+    {
+     "t": "Título"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "ISO 965-1: 1998"
+    },
+    {
+     "t": "ISO general-purpose metric screw threads - Tolerances - Part 1: Principles and basic data"
+    },
+    {
+     "t": "500-4"
+    }
+   ],
+   [
+    {
+     "t": "ISO 965-3: 1998"
+    },
+    {
+     "t": "ISO general purpose metric screw threads - Tolerances - Part 3: Deviations for constructional screw threads"
+    },
+    {
+     "t": "500-4"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-0 (2011-06)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 0: Equipment - General requirements"
+    },
+    {
+     "t": "505-4"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-1 (2007-04)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 1: Equipment protection by flameproof enclosures \"d\""
+    },
+    {
+     "t": "505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-2 (2007-02)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 2: Equipment protection by pressurized enclosures \"p\""
+    },
+    {
+     "t": "505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079- 13 (2010-10)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 13: Equipment protection by pressurized room \"p\""
+    },
+    {
+     "t": "505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-15 (2010-01)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 15: Equipment protection by type of protection \"n\""
+    },
+    {
+     "t": "505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-6 (2007-03)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 6: Equipment protection by oil immersion \"o\""
+    },
+    {
+     "t": "505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-7 (2006-07)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 7: Equipment protection by increased safety \"e\""
+    },
+    {
+     "t": "505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-18 (2009-05)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 18: Equipment protection by encapsulation \"m\""
+    },
+    {
+     "t": "505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-5 (2007-03)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 5: Equipment protection by powder filling \"q\""
+    },
+    {
+     "t": "505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-10-1 (2008-12)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 10-1: Classification of areas - Explosive gas atmospheres"
+    },
+    {
+     "t": "505-5 Nota 2 505-9 (a) 505-10"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-10-2 (2008-12)"
+    },
+    {
+     "t": "Explosive atmospheres - Part 10-2: Classification of areas - Combustible dust atmospheres"
+    },
+    {
+     "t": "505-5 Nota 2 505-9 (a) 505-10"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-16 (1990-05)"
+    },
+    {
+     "t": "Electrical apparatus for explosive gas atmospheres. Part 16: Artificial ventilation for the protection of analyzer (s) houses"
+    },
+    {
+     "t": "505-5 Nota 6"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60079-20-1 (2010-01)"
+    },
+    {
+     "t": "Electrical apparatus for explosive gas atmospheres-Part 20: Data for Flammable gases and vapors, relating to use of electrical apparatus"
+    },
+    {
+     "t": "505-7 505-8"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60598-2-22 (2008-04)"
+    },
+    {
+     "t": "Luminaires - Part 2-22: Particular requirements - Luminaires for emergency lighting"
+    },
+    {
+     "t": "517-40 700-12"
+    }
+   ],
+   [
+    {
+     "t": "IEC 61400-1 ed3.0 (2005-08)"
+    },
+    {
+     "t": "Wind turbines Part 1: Design requirements"
+    },
+    {
+     "t": "694"
+    }
+   ],
+   [
+    {
+     "t": "ISO 30061 (2007)"
+    },
+    {
+     "t": "Emergency lighting"
+    },
+    {
+     "t": "700-16 924"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60287-2-1 (2006-05)"
+    },
+    {
+     "t": "Electric cables – Calculation of the current rating – Part 2-1: Thermal resistance – Calculation of thermal resistance"
+    },
+    {
+     "t": "B.310.15(B)(2)"
+    }
+   ],
+   [
+    {
+     "t": "IEC 60287-3-1 (1999-05)"
+    },
+    {
+     "t": "Electric cables – Calculation of the current rating – Part 3-1: Sections on operating conditions – Reference operating conditions and selection of cable type"
+    },
+    {
+     "t": "TABLA B.310.15(B)(2)(1)"
+    }
+   ]
+  ],
+  "sha": "fb5f3198655f9d88"
+ },
+ "B2.2": {
+  "verificada": "2026-09-19",
+  "cols": 3,
+  "header_rows": 1,
+  "rows": [
+   [
+    {
+     "t": "NORMA"
+    },
+    {
+     "t": "Título"
+    },
+    {
+     "t": "Sección"
+    }
+   ],
+   [
+    {
+     "t": "C2-2012"
+    },
+    {
+     "t": "National Electrical Safety Code (NESC)"
+    },
+    {
+     "t": "110-31(b)(1) 225-18 225-19 500-5(b)(3) 551-79 nota 830-10"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 20-2010"
+    },
+    {
+     "t": "Standard for the Installation of Stationary Pumps for Fire Protection"
+    },
+    {
+     "t": "240-3 (a) 517-30(a)"
+    }
+   ],
+   [
+    {
+     "t": "IEEE 142-2007"
+    },
+    {
+     "t": "Recommended practice for grounded of industrial and commercial power systems"
+    },
+    {
+     "t": "250-27 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 30-2012"
+    },
+    {
+     "t": "Flammable and Combustible Liquids Code"
+    },
+    {
+     "t": "500-3(c) 500-7(b) 505-5 513-1 515-1, 515-2 Tabla 515-2 515-16"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 32-2011"
+    },
+    {
+     "t": "Standard for Dry Cleaning Plants"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 33-2011"
+    },
+    {
+     "t": "Standard for Spray Application Using Flammable or Combustible Materials"
+    },
+    {
+     "t": "500-3 (c) 516-1"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 34-2011"
+    },
+    {
+     "t": "Standard for Dipping, Coating and Printing Processes Using Flammable or Combustible Liquids"
+    },
+    {
+     "t": "500-3 (c) 516-1"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 35-2011"
+    },
+    {
+     "t": "Standard for the Manufacture of Organic Coatings"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 36-2009"
+    },
+    {
+     "t": "Standard for Solvent Extraction Plants"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 45-2011"
+    },
+    {
+     "t": "Standard on Fire Protection for Laboratories using Chemicals"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 50A-1999"
+    },
+    {
+     "t": "Standard for Gaseous Hydrogen Systems at Consumer Sites"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 50B-1999"
+    },
+    {
+     "t": "Standard for Liquefied Hydrogen Systems at Consumer Sites"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 58-2011"
+    },
+    {
+     "t": "Liquefied Petroleum Gas Code"
+    },
+    {
+     "t": "500-3 (c) 500-7(b)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 59-2012"
+    },
+    {
+     "t": "Utility LP-Gas Plant Code"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 77-2007"
+    },
+    {
+     "t": "Recommended Practice on Static Electricity"
+    },
+    {
+     "t": "500-3 (c) 505-5 NOTA 3"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 496-2008"
+    },
+    {
+     "t": "Standard for Purged Pressurized Enclosure for Electrical Equipment"
+    },
+    {
+     "t": "500-4(d) 501-3(a) 501-5(a)(2) 501-5(b)(2) 505-4(b)"
+    }
+   ],
+   [
+    {
+     "t": "UL 886-1994"
+    },
+    {
+     "t": "Outlet Boxes and Fittings for Use in (Classified) Locations"
+    },
+    {
+     "t": "501-5(e)(2) NOTA 2"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 497-2008"
+    },
+    {
+     "t": "Recommended Practice for the Classification of Flammable Liquids, Gases, or Vapors and of Hazardous (Classified) Locations for Electrical Installations in Chemical Process Areas"
+    },
+    {
+     "t": "500-3 (c) 500-5(a)(4) 500-5(e) 505-8 800-31"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 499-2008"
+    },
+    {
+     "t": "Recommended Practice for the Classification of Combustible Dusts and of Hazardous Locations for Electrical Installations in Chemical Process Areas"
+    },
+    {
+     "t": "500-3 (c) 500-5(b)(3) 500-5(e) 500-5(f)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 780-2011"
+    },
+    {
+     "t": "Standard for the Installation of Lightning Protection Systems"
+    },
+    {
+     "t": "500-3 (c) 505-5"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 820-2012"
+    },
+    {
+     "t": "Standard for Fire Protection in Wastewater Treatment and Collection Facilities"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "API RP 500-1 2002"
+    },
+    {
+     "t": "Recommended Practice for Classification of Locations for Electrical Installations at Petroleum Facilities Classified as Class I, Division 1 and Division 2"
+    },
+    {
+     "t": "500-3 (c) 505-5 Nota 4 505-10(c)"
+    }
+   ],
+   [
+    {
+     "t": "API 2003-1998"
+    },
+    {
+     "t": "Protection Against Ignitions Arising Out of Static Lightning and Stray Currents"
+    },
+    {
+     "t": "500-3 (c) 505-5 Nota 3"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/API RP 14F 2008"
+    },
+    {
+     "t": "Design, Installation, and Maintenance of Electrical Systems for Fixed and Floating Offshore Petroleum Facilities for Unclassified and Class 1, Division 1 and Division 2 Locations"
+    },
+    {
+     "t": "500-3 (c) 505-5 Nota 5"
+    }
+   ],
+   [
+    {
+     "t": "UL 1203-2006"
+    },
+    {
+     "t": "Standard for Explosion-Proof and Dust-Ignition-Proof Electrical Equipment for Use in Hazardous (Classified) Locations"
+    },
+    {
+     "t": "500-4 (a) 500-4 (b) 502-1"
+    }
+   ],
+   [
+    {
+     "t": "UL 1604-2004"
+    },
+    {
+     "t": "Standard for Electrical Equipment For Use In Class I and II, Division 2, And Class III Hazardous (Classified) Locations"
+    },
+    {
+     "t": "500-4(c) 500-4(f)(2)"
+    }
+   ],
+   [
+    {
+     "t": "UL 913-2006"
+    },
+    {
+     "t": "Standard for Intrinsically Safe Apparatus and Associated Apparatus for Use in Class I, II, III, Division 1, Hazardous (Classified) Locations"
+    },
+    {
+     "t": "500-4(e) 505-4(c)"
+    }
+   ],
+   [
+    {
+     "t": "UL 698A-2008"
+    },
+    {
+     "t": "Standard for Industrial Control Panels Relating to Hazardous (Classified) Locations"
+    },
+    {
+     "t": "500-4(g)"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ASHRAE 15- 2010"
+    },
+    {
+     "t": "Safety Standard for Mechanical Refrigeration"
+    },
+    {
+     "t": "500-5(a)(4)"
+    }
+   ],
+   [
+    {
+     "t": "ANSI CGA G2.1-1999"
+    },
+    {
+     "t": "Safety Requirements for the Storage and Handling of Anhydrous Ammonia."
+    },
+    {
+     "t": "500-5(a)(4)"
+    }
+   ],
+   [
+    {
+     "t": "ASTM D 3175-11"
+    },
+    {
+     "t": "Standard Test Method for Volatile Material in the Analysis Sample for Coal and Coke"
+    },
+    {
+     "t": "500-5(b)(2)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 505-2011"
+    },
+    {
+     "t": "Fire Safety Standard for Powered Industrial Trucks Including Type Designations, Areas of Use, Conversions, Maintenance, and Operation"
+    },
+    {
+     "t": "503-1 625-1"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA RP12.06.01-2003"
+    },
+    {
+     "t": "Recommended Practice for Wiring Methods for Hazardous (Classified) Locations Instrumentation Part 1: Intrinsic Safety"
+    },
+    {
+     "t": "504-1 504-50"
+    }
+   ],
+   [
+    {
+     "t": "UL 913-2006"
+    },
+    {
+     "t": "Standard for Safety, Intrinsically Safe Apparatus and Associated Apparatus for Use in Class I, II, and III, Division 1, Hazardous (Classified) Locations"
+    },
+    {
+     "t": "504-2"
+    }
+   ],
+   [
+    {
+     "t": "UL 2279-1996"
+    },
+    {
+     "t": "Electrical Equipment for use In Class I, Zone 0, 1 and 2 Hazardous (Classified) Locations"
+    },
+    {
+     "t": "505-4"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA-60079-0-(12.00.01)-2009"
+    },
+    {
+     "t": "Electrical Apparatus for Use in Class I, Zones 0, 1 & 2 Hazardous (Classified) Locations: General Requirements (IEC 60079-0 Mod)"
+    },
+    {
+     "t": "505-4"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA-S12.10-1988"
+    },
+    {
+     "t": "Area Classification in Hazardous (Classified) Dust Locations"
+    },
+    {
+     "t": "500-3 (c)"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA 12.12.01-2011"
+    },
+    {
+     "t": "Non incendive Electrical Equipment for Use in Class I & II, Division 2 & Class III, Divisions I & 2 Hazardous"
+    },
+    {
+     "t": "500-4(c) 500-4(f)(1) 500-4(f)(2) 500-4(h)"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA-60079-7 (12.16.01)-2008"
+    },
+    {
+     "t": "Electrical Apparatus for Use in Class I, Zone 1 Hazardous (Classified) Locations: Type of Protection-Increased Safety \"e\" (IEC 60079-7 Mod)"
+    },
+    {
+     "t": "505-4(f)"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA-60079-1-(12.22.01)-2009"
+    },
+    {
+     "t": "Electrical Apparatus for use in Class I, Zone 1 and 2 Hazardous (Classified) Locations, Type of Protection -Flameproof \"d\""
+    },
+    {
+     "t": "505-4(a)"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA-60079-18- (12.23.01)-2009"
+    },
+    {
+     "t": "Electrical Apparatus for Use in Class I, Zone 1 Hazardous (Classified) Locations Type of Protection-Encapsulation \"m\" (IEC 60079-18 Mod)"
+    },
+    {
+     "t": "505-4(g)"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA-60079-5-(12.00.04)-2009"
+    },
+    {
+     "t": "Explosive atmospheres - Part 5: Equipment Protection by Powder Filling \"q\" (IEC 60079-5 Mod)"
+    },
+    {
+     "t": "505-4(h)"
+    }
+   ],
+   [
+    {
+     "t": "ANSI/ISA-60079-6-(12.00.05)-2009"
+    },
+    {
+     "t": "Explosive atmospheres - Part 6: Equipment Protection by Oil Immersion \"o\" (IEC 60079-6 Mod)"
+    },
+    {
+     "t": "505-4(e)"
+    }
+   ],
+   [
+    {
+     "t": "API RP 505 1998"
+    },
+    {
+     "t": "Recommended Practice for Classification of Locations for Electrical Installations at Petroleum Facilities Classified as Class I, Zone 0, and Zone 2"
+    },
+    {
+     "t": "505-5 Nota 2 505-9 505-10"
+    }
+   ],
+   [
+    {
+     "t": "ISA S12.24.01-1998"
+    },
+    {
+     "t": "Recommended Practice for Classification of Locations for Electrical Installations Classified as Class I, Zone 0, Zone 1, or Zone 2"
+    },
+    {
+     "t": "505-5 505-9(a) 505-10(c)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 88A -2011"
+    },
+    {
+     "t": "Standard for Parking Structures"
+    },
+    {
+     "t": "511-2"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 88B -1997"
+    },
+    {
+     "t": "Standard for Repair Garages"
+    },
+    {
+     "t": "511-2"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 409-2011"
+    },
+    {
+     "t": "Standard on Aircraft hangars"
+    },
+    {
+     "t": "513-1"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 30A-2012"
+    },
+    {
+     "t": "Code for Motor Fuel Dispensing Facilities and Repair Garages"
+    },
+    {
+     "t": "514-5(c) 555-10"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 91-2010"
+    },
+    {
+     "t": "Standard for Exhaust Systems for Air Conveying of Vapors, Gases, Mists, and Noncombustible Particulate Solids"
+    },
+    {
+     "t": "516-1"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 99-2012"
+    },
+    {
+     "t": "Health Care Facilities Code Handbook"
+    },
+    {
+     "t": "517-2, 517-20 (c), 517- 25, 517-30(a), 517- 30(b)(4), 517- 30(b)(6), 517- 30(e), 517-31, 517-32(c)(2), 517- 32(g), 517-33(a) (9), 517-34, 517-34(b)(3), 517- 34(b)(9), 517- 35(a), 517-40(a) Excepción (c) 517-40(c) 517-41(a) 517-41(b)(2) 517-41(e) 517-42 517-42(c)(2) 517- 42(g) 517-43(b)(3) 517- 44(a) 517-44(b) Excepción 2 517- 45(a) 517-45(b) 517-45(c) 517- 60(a)(1) 517-61(a)(1) 517- 61(a)(3) 517-64(f) 517-160(a)(2) 517-160 (a) (4) (2) 517-160 (a) 6 NOTAS 1 y 2, 517-160 (c) (1) a., b., c., d., e., f., g., h., i. y j 700-1 701-1"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 101-2012"
+    },
+    {
+     "t": "Life Safety Code"
+    },
+    {
+     "t": "517-1 517-2 517-10(b)(2) 517- 32(a) 517-32(b) 517-32(c )(1) 517- 40 (a) Excepción (c) 571-41(b) 517- 42(a) 517-42(b) 517-42(c)(1) 540- 10 700-9 700-12"
+    }
+   ],
+   [
+    {
+     "t": "ASHRAE"
+    },
+    {
+     "t": "Handbook of fundamentals (Indicado en el Capítulo 24)"
+    },
+    {
+     "t": "517-34 517-43-(b)(1)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 40-2011"
+    },
+    {
+     "t": "Standard for the Storage and Handling of Cellulose Nitrate Motion Picture Film"
+    },
+    {
+     "t": "530-1 540-1"
+    }
+   ],
+   [
+    {
+     "t": "ASAE EP 473-1997"
+    },
+    {
+     "t": "Equipotential Planes in Animal Containment Areas, American Society of Agricultural Engineers"
+    },
+    {
+     "t": "547-9"
+    }
+   ],
+   [
+    {
+     "t": "SAE J1128-2011"
+    },
+    {
+     "t": "Low-Tension Primary Cable"
+    },
+    {
+     "t": "551-10 552-10(b)"
+    }
+   ],
+   [
+    {
+     "t": "SAE J1127-2010"
+    },
+    {
+     "t": "Low Voltage Battery Cable"
+    },
+    {
+     "t": "551-10 552-10(b)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 1192-2011"
+    },
+    {
+     "t": "Standard on Recreational Vehicles"
+    },
+    {
+     "t": "551-30(d)"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 302-2010"
+    },
+    {
+     "t": "Fire Protection Standard for Pleasure and Commercial Motor Craft"
+    },
+    {
+     "t": "555-2 555-3"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 303-2011"
+    },
+    {
+     "t": "Fire Protection Standard for Marinas and Boatyards"
+    },
+    {
+     "t": "555-3 555-7 555-10"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 110-2010"
+    },
+    {
+     "t": "Standard for Emergency and Standby Power Systems"
+    },
+    {
+     "t": "700-1 700-7 701-1 701-8"
+    }
+   ],
+   [
+    {
+     "t": "IEEE 446-1995"
+    },
+    {
+     "t": "Recommended Practice for Emergency and Standby Power Systems for Industrial and Commercial Applications"
+    },
+    {
+     "t": "701-1"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 70E-2012"
+    },
+    {
+     "t": "Handbook for Electrical Safety in the Workplace"
+    },
+    {
+     "t": "710-1"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 72-2010"
+    },
+    {
+     "t": "National Fire Alarm and Signaling Code"
+    },
+    {
+     "t": "760-1"
+    }
+   ],
+   [
+    {
+     "t": "TIA/EIA 568-A-1995"
+    },
+    {
+     "t": "Commercial Building Telecommunications, Wiring Standard"
+    },
+    {
+     "t": "725-7 760-8 770-8 800-6 830-7"
+    }
+   ],
+   [
+    {
+     "t": "TIA/EIA 569 -2004"
+    },
+    {
+     "t": "Commercial Building Standard for Telecommunications Pathways and Spaces"
+    },
+    {
+     "t": "725-7 760-8 770-8 800-6 830-7"
+    }
+   ],
+   [
+    {
+     "t": "TIA/EIA 570-2004"
+    },
+    {
+     "t": "Residential and Light Commercial Telecommunications Wiring Standard"
+    },
+    {
+     "t": "725-7 760-8 770-8 800-6 830-7"
+    }
+   ],
+   [
+    {
+     "t": "UL 1666-2007"
+    },
+    {
+     "t": "Test for Flame Propagation Height of Electrical and Optical-Fiber Cable Installed Vertically in Shafts"
+    },
+    {
+     "t": "760-31(d) 760-31(e) 760-71(e) 800-51 (b) 770-51(b) 820-51(b) 830-5(a)"
+    }
+   ],
+   [
+    {
+     "t": "UL 2024 -2011"
+    },
+    {
+     "t": "Standard for Signaling, Optical Fiber and Communications Raceways and Cable Routing Assemblies"
+    },
+    {
+     "t": "770-6 800-4"
+    }
+   ],
+   [
+    {
+     "t": "UL 1459-1995"
+    },
+    {
+     "t": "Standard for Safety, Telephone Equipment"
+    },
+    {
+     "t": "800-4"
+    }
+   ],
+   [
+    {
+     "t": "UL 1863-2004"
+    },
+    {
+     "t": "Standard for Safety, Communications Circuit Accessories"
+    },
+    {
+     "t": "800-4"
+    }
+   ],
+   [
+    {
+     "t": "UL 497A-2001"
+    },
+    {
+     "t": "Standard for Secondary Protectors for Communications Circuits"
+    },
+    {
+     "t": "800-32"
+    }
+   ],
+   [
+    {
+     "t": "NFPA 86-2011"
+    },
+    {
+     "t": "Standard for Ovens and Furnaces"
+    },
+    {
+     "t": "516-2 (e)"
+    }
+   ],
+   [
+    {
+     "t": "NEMA 250-2008"
+    },
+    {
+     "t": "Enclosures for Electrical Equipment (1 000 volts Maximum)"
+    },
+    {
+     "t": "500-4 (c)"
+    }
+   ],
+   [
+    {
+     "t": "SAE J554-1987"
+    },
+    {
+     "t": "Electric Fuses (Cartridge Type)"
+    },
+    {
+     "t": "551-10(e)2"
+    }
+   ],
+   [
+    {
+     "t": "SAE J1284-1988"
+    },
+    {
+     "t": "Blade Type Electric Fuses"
+    },
+    {
+     "t": "551-10(e)2"
+    }
+   ],
+   [
+    {
+     "t": "UL 275-1993"
+    },
+    {
+     "t": "Automotive Glass-Tube Fuses"
+    },
+    {
+     "t": "551-10(e)2"
+    }
+   ],
+   [
+    {
+     "t": "NEMA WD6-2002"
+    },
+    {
+     "t": "Wiring Devices-Dimensional Requirements"
+    },
+    {
+     "t": "551-46(c) 552-44"
+    }
+   ]
+  ],
+  "sha": "17d1cf323f873af5"
  }
 }
