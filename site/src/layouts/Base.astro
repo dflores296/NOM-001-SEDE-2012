@@ -13,6 +13,9 @@ const PESTANAS = [
   { href: '/figuras/', txt: 'Figuras', activa: ruta.startsWith('/figuras') },
   { href: '/apendices/', txt: 'Apéndices', activa: ruta.startsWith('/apendices') || ruta.startsWith('/cierre') },
   { href: '/glosario/', txt: 'Glosario', activa: ruta.startsWith('/glosario') },
+  // El mapa 3D solo se dibuja en una pantalla grande con mouse: en el
+  // teléfono la pestaña no aparece (.solo-escritorio).
+  { href: '/mapa/', txt: 'Mapa', activa: ruta.startsWith('/mapa'), escritorio: true },
   { href: '/observaciones/', txt: 'Observaciones', activa: ruta.startsWith('/observaciones') },
 ];
 // En la portada el buscador grande de la banda hace las veces del de la
@@ -62,7 +65,8 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
 
         <nav class="tabs" aria-label="Secciones de la guía">
           {PESTANAS.map((p) => (
-            <a href={`${base}${p.href}`} aria-current={p.activa ? 'page' : undefined}>{p.txt}</a>
+            <a href={`${base}${p.href}`} aria-current={p.activa ? 'page' : undefined}
+               class={p.escritorio ? 'solo-escritorio' : undefined}>{p.txt}</a>
           ))}
         </nav>
 
@@ -129,7 +133,9 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
         </div>
         <div class="pie-col">
           <h4>Consulta</h4>
-          {PESTANAS.filter((p) => p.href !== '/observaciones/').map((p) => <a href={`${base}${p.href}`}>{p.txt}</a>)}
+          {PESTANAS.filter((p) => p.href !== '/observaciones/').map((p) => (
+            <a href={`${base}${p.href}`} class={p.escritorio ? 'solo-escritorio' : undefined}>{p.txt}</a>
+          ))}
           <a href={`${base}/tablas/generales/`}>Tablas generales</a>
           <a href={`${base}/cierre/`}>Títulos de cierre</a>
         </div>
