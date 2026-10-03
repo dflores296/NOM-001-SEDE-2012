@@ -5,8 +5,8 @@
   "start_url": "/NOM-001-SEDE-2012/",
   "scope": "/NOM-001-SEDE-2012/",
   "display": "standalone",
-  "background_color": "#fbfaf8",
-  "theme_color": "#8a4b1f",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "lang": "es-MX",
   "icons": [
     { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }

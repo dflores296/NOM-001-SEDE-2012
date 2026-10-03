@@ -1,175 +1,95 @@
 /* ============================================================== TEMAS
-   Seis paletas. `claro` es la base: define TODOS los tokens, y las demás
-   solo redefinen los que cambian, así ningún color queda sin valor.
+   Dos temas, claro y oscuro, que son el MISMO sitio con la luz prendida o
+   apagada: cambian los colores y nada más. Tipografía, radios, espaciado y
+   estructura son iguales en los dos.
 
-   Sobre los oscuros: un acento muy saturado sobre fondo oscuro cansa la
-   vista, porque el ojo pelea contra el contraste de color además del de
-   luminancia. Por eso `oscuro` y `noche` bajan la saturación del acento en
-   lugar de solo aclararlo, y `carbon` conserva el café cálido original para
-   quien lo prefiera.
+   - Claro: tomado de Mintlify. Lienzo blanco, texto casi negro, grises
+     neutros sin tinte y un solo acento que solo marca lo que se puede pulsar
+     o lo que está activo. Elevación susurrada: bordes de 1px, casi sin sombra.
+   - Oscuro: la escala de grises de Supabase. Lienzo #121212 —no negro puro—,
+     superficies que se separan por el borde y no por la sombra.
 
-   Cada paleta declara además su `color-scheme`, que es lo que hace que las
-   barras de desplazamiento y los controles del navegador acompañen al tema
-   en vez de salir siempre en claro.
+   El acento es un solo color en dos tonos, uno por fondo. El par actual sale
+   de la familia de verdes de Supabase y es PROVISIONAL: #006239 da 7.5:1 sobre
+   blanco y #3ecf8e 9.4:1 sobre #121212. Para cambiarlo basta con --accent en
+   los dos temas; --accent-soft se deriva de él.
+
+   `claro` define TODOS los tokens; `oscuro` se repite dos veces, para quien lo
+   elige con el interruptor y para quien no eligió y tiene el sistema en
+   oscuro (así funciona también sin JavaScript).
    ------------------------------------------------------------------- */
 :root,
 :root[data-theme="claro"] {
   color-scheme: light;
-  --bg: #fbfaf8;
-  --bg-soft: #f2efea;
+  --bg: #ffffff;
+  --bg-soft: #f2f2f2;
   --panel: #ffffff;
-  --border: #e0dbd2;
-  --rejilla: #bdb4a5;
-  --border-soft: #ece8e1;
-  --text: #23201c;
-  --text-dim: #6a6359;
-  --text-faint: #918a7e;
-  --accent: #8a4b1f;
-  --accent-soft: #f6ece2;
-  --warn-bg: #fdf5e6;
+  --border: #dddddd;
+  --rejilla: #c8c8c8;
+  --border-soft: #f2f2f2;
+  --text: #08090a;
+  --text-dim: #525252;
+  --text-faint: #6b6b6b;
+  --accent: #006239;
+  --warn-bg: #fdf6e7;
   --warn-br: #e6cfa3;
+  --ok: #2e7d32;
+  --shadow: 0 2px 4px rgba(8, 9, 10, 0.05);
 
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --radius: 6px;
+  --sans: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* 4px en controles, etiquetas y cajas; 8px en tarjetas. Esquinas casi
+     rectas: nada de píldoras. */
+  --radius: 4px;
+  --radius-lg: 8px;
   --maxw: 1180px;
   /* Margen lateral de la página. Crece con la ventana para que el contenido
      no quede pegado al borde en pantallas anchas. */
   --gut: clamp(1.1rem, 1.5vw, 2.4rem);
 }
 
-/* Papel cálido, contraste suave: para lecturas largas con luz de día. */
-:root[data-theme="sepia"] {
-  color-scheme: light;
-  --bg: #f5efe2;
-  --bg-soft: #ece4d3;
-  --panel: #fbf7ee;
-  --border: #d9cdb6;
-  --rejilla: #bcab8b;
-  --border-soft: #e5dcc9;
-  --text: #3b3428;
-  --text-dim: #6d6353;
-  --text-faint: #948872;
-  --accent: #8a5a2b;
-  --accent-soft: #ebdfc9;
-  --warn-bg: #f6ead0;
-  --warn-br: #d8bf8e;
-}
-
-/* La paleta de `noche` a plena luz: gris azulado y acento de pizarra, sin
-   nada de café. El acento se oscurece hasta 6.5:1 sobre el panel blanco,
-   porque el mismo azul grisáceo que descansa la vista en oscuro no llega a
-   contraste legible sobre fondo claro. */
-:root[data-theme="alba"] {
-  color-scheme: light;
-  --bg: #f6f8fa;
-  --bg-soft: #eaeef2;
-  --panel: #ffffff;
-  --border: #d0d9e0;
-  --rejilla: #a8b8c4;
-  --border-soft: #e3e9ee;
-  --text: #1a2126;
-  --text-dim: #566670;
-  --text-faint: #83919b;
-  --accent: #2f6079;
-  --accent-soft: #e2edf3;
-  --warn-bg: #fdf6e6;
-  --warn-br: #ded0ab;
-}
-
-/* Guinda del IPN sobre papel claro: mismo patrón que `sepia`/`alba` -tinte
-   propio en vez de solo cambiar el acento-, pero con la calidez recortada
-   hacia el guinda en vez del café. */
-:root[data-theme="guinda"] {
-  color-scheme: light;
-  --bg: #faf6f7;
-  --bg-soft: #f3e6e9;
-  --panel: #ffffff;
-  --border: #ddc2ca;
-  --rejilla: #b98a96;
-  --border-soft: #eedde1;
-  --text: #241318;
-  --text-dim: #6b4750;
-  --text-faint: #93707a;
-  --accent: #7a1638;
-  --accent-soft: #f4dde3;
-  --warn-bg: #fdf2e7;
-  --warn-br: #e6bc95;
-}
-
-/* Gris neutro con acento desaturado: el oscuro de uso diario. */
 :root[data-theme="oscuro"] {
   color-scheme: dark;
-  --bg: #1a1b1d;
-  --bg-soft: #232427;
-  --panel: #1f2023;
-  --border: #35373b;
-  --rejilla: #4e5158;
-  --border-soft: #2a2c2f;
-  --text: #dfe1e4;
-  --text-dim: #a2a6ac;
-  --text-faint: #7b7f86;
-  --accent: #b8a184;
-  --accent-soft: #2a2723;
-  --warn-bg: #2a2620;
-  --warn-br: #4a4335;
+  --bg: #121212;
+  --bg-soft: #242424;
+  --panel: #121212;
+  --border: #2e2e2e;
+  --rejilla: #393939;
+  --border-soft: #242424;
+  --text: #fafafa;
+  --text-dim: #b4b4b4;
+  --text-faint: #898989;
+  --accent: #3ecf8e;
+  --warn-bg: #221f17;
+  --warn-br: #4a4130;
+  --ok: #7bc47f;
+  --shadow: none;
 }
 
-/* Casi negro, para pantallas OLED y ambientes sin luz. */
-:root[data-theme="noche"] {
-  color-scheme: dark;
-  --bg: #0c0d0e;
-  --bg-soft: #151618;
-  --panel: #121314;
-  --border: #26282b;
-  --rejilla: #3c4045;
-  --border-soft: #1c1e20;
-  --text: #ccd0d4;
-  --text-dim: #8d9298;
-  --text-faint: #676c72;
-  --accent: #9db4c0;
-  --accent-soft: #1a1f22;
-  --warn-bg: #1c1a15;
-  --warn-br: #3a3529;
-}
-
-/* El café cálido original, para quien lo prefiera. */
-:root[data-theme="carbon"] {
-  color-scheme: dark;
-  --bg: #171614;
-  --bg-soft: #1f1e1b;
-  --panel: #1c1b18;
-  --border: #34322d;
-  --rejilla: #4c4941;
-  --border-soft: #292824;
-  --text: #e8e4dd;
-  --text-dim: #a8a196;
-  --text-faint: #7d766b;
-  --accent: #e0a06a;
-  --accent-soft: #2b241d;
-  --warn-bg: #2a2418;
-  --warn-br: #4d4128;
-}
-
-/* Sin elección explícita se sigue al sistema; en oscuro, el neutro. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --bg: #1a1b1d;
-    --bg-soft: #232427;
-    --panel: #1f2023;
-    --border: #35373b;
-    --rejilla: #4e5158;
-    --border-soft: #2a2c2f;
-    --text: #dfe1e4;
-    --text-dim: #a2a6ac;
-    --text-faint: #7b7f86;
-    --accent: #b8a184;
-    --accent-soft: #2a2723;
-    --warn-bg: #2a2620;
-    --warn-br: #4a4335;
+    --bg: #121212;
+    --bg-soft: #242424;
+    --panel: #121212;
+    --border: #2e2e2e;
+    --rejilla: #393939;
+    --border-soft: #242424;
+    --text: #fafafa;
+    --text-dim: #b4b4b4;
+    --text-faint: #898989;
+    --accent: #3ecf8e;
+    --warn-bg: #221f17;
+    --warn-br: #4a4130;
+    --ok: #7bc47f;
+    --shadow: none;
   }
 }
+
+/* El fondo tenue del acento —resaltado de búsqueda, referencias cruzadas,
+   fila bajo el cursor— es el acento diluido sobre el panel, así que acompaña
+   solo a cualquier cambio de acento o de tema. */
+:root { --accent-soft: color-mix(in srgb, var(--accent) 9%, var(--panel)); }
 
 * { box-sizing: border-box; }
 
@@ -207,6 +127,10 @@ body {
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.6;
+  /* Inter con los ajustes de Mintlify: la «a» de un solo piso (cv11) y los
+     dígitos abiertos (ss01), y el espaciado apenas cerrado. */
+  font-feature-settings: "cv11", "ss01";
+  letter-spacing: -0.01em;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -214,6 +138,15 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 code, .mono { font-family: var(--mono); }
+
+/* El cierre de espaciado es para Inter. Una monoespaciada se mide por celdas
+   iguales y apretarla junta los caracteres de un identificador como
+   250-32(a)(1), así que todo lo que va en --mono vuelve al espaciado normal. */
+code, .mono, .rid, .art-num, .sid, .lbl, a.xref, .tid, .stat b, .cifra b,
+.chap h2 span, .card b, .def .tag, .fid, .obs-chip, .obs-form input.fijo,
+.cap-nav b, .sec-head h2 span.n, .aviso-ancla b, ol.rev li::before {
+  letter-spacing: normal;
+}
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
 
@@ -245,21 +178,32 @@ nav.links { margin-left: auto; display: flex; align-items: center; gap: 1rem; fo
 nav.links a { color: var(--text-dim); }
 nav.links a:hover, nav.links a[aria-current] { color: var(--accent); }
 
-/* selector de tema */
-.theme-pick {
-  appearance: none;
-  background: var(--panel); color: var(--text-dim);
+/* Interruptor claro/oscuro. Un solo botón con dos posiciones: el sol a la
+   izquierda, la luna a la derecha y la perilla encima del tema activo. Con
+   las mismas esquinas de 4px que el resto de los controles, no en píldora. */
+.theme-switch {
+  position: relative; flex: none;
+  display: inline-flex; align-items: center; justify-content: space-between;
+  width: 52px; height: 28px; padding: 0 6px;
+  background: var(--bg-soft); color: var(--text-faint);
   border: 1px solid var(--border); border-radius: var(--radius);
-  font-family: inherit; font-size: 0.82rem;
-  padding: 0.26rem 1.5rem 0.26rem 0.5rem; cursor: pointer;
-  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
-                    linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position: calc(100% - 13px) 52%, calc(100% - 9px) 52%;
-  background-size: 4px 4px, 4px 4px;
-  background-repeat: no-repeat;
+  cursor: pointer;
 }
-.theme-pick:hover { color: var(--accent); border-color: var(--accent); }
-.theme-pick:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.theme-switch svg { position: relative; z-index: 1; width: 14px; height: 14px; }
+.theme-switch .perilla {
+  position: absolute; top: 2px; left: 2px;
+  width: 22px; height: 22px; border-radius: 3px;
+  background: var(--panel); border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 160ms ease;
+}
+.theme-switch[aria-checked="true"] .perilla { transform: translateX(24px); }
+.theme-switch .sol { color: var(--text); }
+.theme-switch[aria-checked="true"] .sol { color: var(--text-faint); }
+.theme-switch[aria-checked="true"] .luna { color: var(--text); }
+.theme-switch:hover { border-color: var(--text-faint); }
+.theme-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .theme-switch .perilla { transition: none; } }
 
 /* ---------------------------------------------------------------- buscador */
 .search-wrap { position: relative; flex: 1; max-width: 460px; }
@@ -273,8 +217,8 @@ nav.links a:hover, nav.links a[aria-current] { color: var(--accent); }
 .results {
   position: absolute; top: calc(100% + 6px); left: 0; right: 0;
   background: var(--panel); border: 1px solid var(--border);
-  border-radius: var(--radius); max-height: 62vh; overflow-y: auto;
-  box-shadow: 0 10px 34px rgba(0,0,0,0.16); display: none;
+  border-radius: var(--radius-lg); max-height: 62vh; overflow-y: auto;
+  box-shadow: var(--shadow); display: none;
 }
 .results.open { display: block; }
 .results a { display: block; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--border-soft); color: var(--text); }
@@ -304,7 +248,16 @@ nav.links a:hover, nav.links a[aria-current] { color: var(--accent); }
   }
   .search-wrap { order: 3; flex-basis: 100%; max-width: none; }
   .brand small { display: none; }
-  nav.links { gap: 0.9rem; }
+  /* El interruptor se queda en el renglón de la marca, a la derecha, y los
+     enlaces pasan a uno propio que se desliza de lado: seis enlaces no caben
+     en un teléfono, y antes empujaban la página entera a lo ancho y dejaban
+     el selector de tema fuera de la pantalla. */
+  .theme-switch { order: 1; margin-left: auto; }
+  nav.links {
+    order: 2; flex-basis: 100%; margin-left: 0; gap: 0.9rem;
+    overflow-x: auto; white-space: nowrap; scrollbar-width: none;
+  }
+  nav.links::-webkit-scrollbar { display: none; }
 }
 
 /* ---------------------------------------------------------------- layout */
@@ -511,7 +464,7 @@ p.tabla-intro {
 .chap h2 { font-size: 1rem; margin: 0 0 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border-soft); }
 .chap h2 span { font-family: var(--mono); color: var(--accent); margin-right: 0.5rem; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 0.4rem; }
-.card { display: block; padding: 0.5rem 0.65rem; border: 1px solid var(--border-soft); border-radius: var(--radius); background: var(--panel); color: var(--text); }
+.card { display: block; padding: 0.5rem 0.65rem; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); background: var(--panel); color: var(--text); }
 .card:hover { border-color: var(--accent); text-decoration: none; }
 .card b { font-family: var(--mono); color: var(--accent); font-size: 0.84rem; }
 .card span { display: block; font-size: 0.86rem; line-height: 1.35; }
@@ -519,7 +472,7 @@ p.tabla-intro {
 
 /* ---------------------------------------------------------------- glosario */
 .defs { display: grid; gap: 0.8rem; }
-.def { padding: 0.7rem 0.9rem; border: 1px solid var(--border-soft); border-radius: var(--radius); background: var(--panel); scroll-margin-top: 70px; }
+.def { padding: 0.7rem 0.9rem; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); background: var(--panel); scroll-margin-top: 70px; }
 .def dt { font-weight: 650; margin-bottom: 0.2rem; }
 .def dd { margin: 0; font-size: 0.92rem; color: var(--text-dim); }
 .def .tag { font-size: 0.68rem; font-family: var(--mono); color: var(--text-faint); border: 1px solid var(--border); border-radius: 3px; padding: 0 0.25rem; margin-left: 0.4rem; }
@@ -543,7 +496,7 @@ ol.rev li {
   counter-increment: r;
   display: grid; grid-template-columns: auto 1fr; gap: 0.1rem 0.6rem;
   padding: 0.6rem 0.7rem 0.6rem 2.4rem; position: relative;
-  border: 1px solid var(--border-soft); border-radius: var(--radius);
+  border: 1px solid var(--border-soft); border-radius: var(--radius-lg);
   margin-bottom: 0.4rem; background: var(--panel);
 }
 ol.rev li::before {
@@ -657,12 +610,9 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
    resto de la procedencia, porque es un dato sobre de dónde sale la tabla. */
 .tag-ok {
   font-weight: 600;
-  color: var(--ok, #2e7d32);
+  color: var(--ok);
   cursor: help;
 }
-:root:not([data-theme='light']) .tag-ok { color: var(--ok, #7bc47f); }
-:root[data-theme='dark'] .tag-ok { color: var(--ok, #7bc47f); }
-:root[data-theme='light'] .tag-ok { color: var(--ok, #2e7d32); }
 .tabla-info {
   margin: 0 0 0.5rem; padding: 0.45rem 0.7rem;
   font-size: 0.82rem; color: var(--text-dim);
@@ -717,11 +667,14 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
 }
 .obs-form button {
   font: inherit; font-weight: 600; cursor: pointer;
-  background: var(--accent); color: var(--panel);
-  border: 1px solid var(--accent); border-radius: var(--radius);
+  background: var(--text); color: var(--panel);
+  border: 1px solid var(--text); border-radius: var(--radius);
   padding: 0.6rem 1.1rem; justify-self: start;
+  box-shadow: var(--shadow);
 }
-.obs-form button:hover { filter: brightness(1.1); }
+/* El único botón relleno del sitio va en tinta, no en el acento: el acento
+   marca enlaces y estados activos, y un relleno grande le quita ese papel. */
+.obs-form button:hover { background: color-mix(in srgb, var(--text) 85%, var(--panel)); }
 .obs-nota { color: var(--text-faint); font-size: 0.85rem; margin: 0; }
 
 .obs-cerrado {
@@ -760,7 +713,7 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
   display: grid; grid-template-columns: auto 1fr auto; align-items: baseline;
   gap: 0.45rem; text-decoration: none; color: inherit;
   background: var(--panel); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-lg); padding: 0.45rem 0.65rem;
 }
 .cap-nav a:hover { border-color: var(--accent); background: var(--accent-soft); }
 .cap-nav b { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); font-weight: 600; }
