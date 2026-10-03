@@ -6,8 +6,15 @@ import { defSlug } from '../lib/slug.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const nSec = articles.reduce((n, a) => n + a.sections.length, 0);
-const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8);
-const maxCitas = top.length ? top[0].citas : 1;
+// Los más citados, separados por lo que son. El grafo los da mezclados
+// —secciones, artículos completos, capítulos y apéndices— y juntos no se
+// pueden comparar: «Artículo 250» suma lo que se cita de todo un artículo y
+// «310-15» es una sola sección. La gráfica lleva solo secciones; los
+// artículos que se citan completos van aparte, en una línea.
+const ES_SECCION = /^\d{3}-\d+$/;
+const topSec = grafo.mas_citados.filter((r) => ES_SECCION.test(r.id)).slice(0, 10);
+const maxSec = topSec.length ? topSec[0].citas : 1;
+const topArt = grafo.mas_citados.filter((r) => r.id.startsWith('art:')).slice(0, 5);
 // Las tablas del Capítulo 10 no cuelgan de ningún artículo y se publican
 // juntas en /tablas.
 const cap10 = tablas.filter((t) => t.article == null && !t.apendice);
@@ -132,25 +139,49 @@ const EXPLORA = [
       </div>
     </div>
 
-    <!-- ------------------------------------------------------------ ranking -->
+    <!-- ------------------------------------------------------------ ranking
+         Barras horizontales sobre una escala común que arranca en cero, con
+         el valor y su unidad escritos al final de cada una: no hay que adivinar
+         qué es «75». -->
     <div class="sec">
       <div class="sec-head">
-        <h2><span class="n">Más citados</span>Los requisitos a los que más remite la norma</h2>
-        <span class="desc">Calculado sobre el grafo de referencias</span>
+        <h2><span class="n">Más citados</span>Las secciones a las que más remite la norma</h2>
+        <span class="desc">Citas desde otras partes de la norma</span>
       </div>
-      <ol class="rank">
-        {top.map((r, i) => (
-          <li>
-            <a href={`${base}/art/${r.articulo}#${r.id.replace('art:', '')}`}>
-              <span class="rank-i tabular">{i + 1}</span>
-              <span class="rank-id">{r.id.startsWith('art:') ? `Artículo ${r.id.slice(4)}` : r.id}</span>
-              <span class="rank-t">{r.titulo}</span>
-              <span class="rank-bar"><i style={`width:${Math.round((r.citas / maxCitas) * 100)}%`}></i></span>
-              <span class="rank-n tabular">{r.citas}</span>
-            </a>
-          </li>
-        ))}
+      <ol class="citas">
+        {topSec.map((r) => {
+          const art = byNum.get(r.articulo);
+          return (
+            <li>
+              <a href={`${base}/art/${r.articulo}#${r.id}`}
+                 title={`${r.citas} lugares de la norma remiten a la ${r.id}`}>
+                <span class="ci-txt">
+                  <span class="ci-id">{r.id}</span>
+                  <span class="ci-t">{r.titulo}</span>
+                  <span class="ci-art">Artículo {r.articulo}{art ? ` · ${art.title}` : ''}</span>
+                </span>
+                <span class="ci-barra">
+                  <i style={`--p:${((r.citas / maxSec) * 100).toFixed(1)}`}></i>
+                  <b>{r.citas} <small>citas</small></b>
+                </span>
+              </a>
+            </li>
+          );
+        })}
       </ol>
+      {topArt.length > 0 && (
+        <p class="citas-art">
+          <span>Artículos que se citan completos:</span>
+          {topArt.map((r) => {
+            const n = r.id.slice(4);
+            return (
+              <a href={n === '100' ? `${base}/glosario/` : `${base}/art/${n}/`} title={r.titulo}>
+                <b>{n}</b> {r.citas} citas
+              </a>
+            );
+          })}
+        </p>
+      )}
     </div>
 
     <!-- ------------------------------------------------------------- índice -->
@@ -326,27 +357,49 @@ const EXPLORA = [
   .exp:hover .exp-t::after { color: var(--accent); }
   .exp-d { font-size: 0.9375rem; line-height: 1.55; color: var(--text-dim); }
 
-  /* --------------------------------------------------------------- ranking
-     Los "más citados" sí tienen un orden real -numérico, por peso de citas-
-     así que van en una lista ordenada con su magnitud, no en tarjetas. */
-  ol.rank {
+  /* --------------------------------------------------------------- ranking */
+  ol.citas {
     list-style: none; margin: 0; padding: 0.35rem;
     border: 1px solid var(--card-border); border-radius: var(--radius-xl); background: var(--panel);
   }
-  ol.rank li + li { border-top: 1px solid var(--border-soft); }
-  ol.rank a {
-    display: grid;
-    grid-template-columns: 1.6rem 7rem 1fr 7rem 2.6rem;
-    align-items: center; gap: 0.9rem;
-    padding: 0.7rem 0.8rem; border-radius: var(--radius-lg); color: var(--text);
+  ol.citas li + li { border-top: 1px solid var(--border-soft); }
+  ol.citas a {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem; align-items: center;
+    padding: 0.75rem 1rem; border-radius: var(--radius-lg); color: var(--text);
   }
-  ol.rank a:hover { background: var(--bg-soft); text-decoration: none; }
-  .rank-i { font-family: var(--mono); color: var(--text-faint); font-size: 0.8rem; }
-  .rank-id { font-family: var(--mono); color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: normal; }
-  .rank-t { font-size: 0.9375rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .rank-bar { height: 6px; background: var(--bg-soft); border-radius: 3px; overflow: hidden; }
-  .rank-bar i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
-  .rank-n { font-family: var(--mono); font-size: 0.82rem; color: var(--text-dim); text-align: right; }
+  ol.citas a:hover { background: var(--bg-soft); text-decoration: none; }
+  ol.citas a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .ci-txt { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+  .ci-id { font-family: var(--mono); font-size: 0.8125rem; font-weight: 600; color: var(--accent); letter-spacing: normal; }
+  .ci-t { font-size: 0.9375rem; font-weight: 500; line-height: 1.4; }
+  .ci-art { font-size: 0.8125rem; color: var(--text-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* La barra parte de una línea base común —el filete izquierdo, que fila
+     tras fila forma el eje— y termina redondeada. Su largo es proporcional
+     a la más citada; el 80 % deja sitio al número. */
+  .ci-barra {
+    display: flex; align-items: center; gap: 0.6rem;
+    align-self: stretch; border-left: 1px solid var(--rejilla);
+  }
+  .ci-barra i {
+    display: block; flex: none; height: 12px; width: calc(var(--p) * 0.8%);
+    background: var(--accent); border-radius: 0 4px 4px 0;
+  }
+  .ci-barra b { font-size: 0.875rem; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ci-barra b small { font-size: inherit; font-weight: 400; color: var(--text-faint); }
+
+  .citas-art {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+    margin: 1rem 0 0; font-size: 0.8125rem; color: var(--text-faint);
+  }
+  .citas-art span { margin-right: 0.25rem; }
+  .citas-art a {
+    padding: 0.2rem 0.6rem; border: 1px solid var(--border); border-radius: 999px;
+    color: var(--text-dim); white-space: nowrap;
+  }
+  .citas-art a b { font-family: var(--mono); font-weight: 600; color: var(--accent); letter-spacing: normal; margin-right: 0.2rem; }
+  .citas-art a:hover { border-color: var(--accent); text-decoration: none; }
 
   /* ------------------------------------------------------------- capítulos
      Un capítulo por tarjeta, con sus artículos listados adentro. */
@@ -375,19 +428,9 @@ const EXPLORA = [
     .portada { padding: 3rem var(--gut) 7rem; }
     .sec-head .desc { display: none; }
 
-    /* El título es lo que se busca leer aquí; en desktop se trunca porque
-       la barra y el número lo compensan, pero en una columna angosta
-       truncarlo también lo deja ilegible. Baja a una segunda línea en vez
-       de cortarse. */
-    ol.rank a {
-      grid-template-columns: 1.3rem 1fr auto;
-      grid-template-areas: "i id n" "i t t";
-      row-gap: 0.2rem;
-    }
-    .rank-i { grid-area: i; }
-    .rank-id { grid-area: id; }
-    .rank-n { grid-area: n; }
-    .rank-t { grid-area: t; white-space: normal; }
-    .rank-bar { display: none; }
+    /* En el teléfono el texto va arriba y la barra debajo, a todo lo ancho. */
+    ol.citas a { grid-template-columns: 1fr; gap: 0.5rem; padding: 0.8rem 0.75rem; }
+    .ci-art { white-space: normal; }
+    .ci-barra { padding: 0.15rem 0; }
   }
 </style>
