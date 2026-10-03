@@ -66,7 +66,7 @@ const EXPLORA = [
   <section class="portada">
     <div class="portada-in">
       <p class="portada-ey"><i></i>Instalaciones Eléctricas (utilización) · DOF, 29 de noviembre de 2012</p>
-      <h1>La NOM-001-SEDE-2012, <span class="h1-mint">sin hojear 780&nbsp;páginas</span></h1>
+      <h1>NOM-001-SEDE-2012</h1>
       <p class="portada-sub">
         Cada artículo en su página, {grafo.meta.aristas.toLocaleString('es-MX')} referencias cruzadas
         que se siguen con un clic y una búsqueda que funciona sin señal, en obra.
@@ -255,11 +255,13 @@ const EXPLORA = [
   }
   .portada-ey i { display: inline-block; width: 6px; height: 6px; margin-right: 0.5rem; vertical-align: 2px; border-radius: 50%; background: var(--mint); }
   .portada h1 {
-    margin: 0; font-size: clamp(2.25rem, 5.4vw, 3.6rem); font-weight: 600;
-    line-height: 1.08; letter-spacing: -0.025em; text-wrap: balance;
+    margin: 0; font-size: clamp(1.6rem, 8vw, 3.6rem); font-weight: 600;
+    line-height: 1.08; letter-spacing: -0.025em;
+    /* Es un solo nombre: partido en el guion, «NOM-001-» y «SEDE-2012»
+       quedaban en dos renglones. El tamaño baja con la pantalla para que
+       quepa entero en un teléfono. */
+    white-space: nowrap;
   }
-  /* El titular a dos tonos de Harness: la segunda frase en menta. */
-  .h1-mint { color: var(--mint); }
   .portada-sub {
     margin: 1.2rem auto 0; max-width: 58ch; font-size: 1.125rem; line-height: 1.6;
     color: var(--hero-dim); text-wrap: pretty;

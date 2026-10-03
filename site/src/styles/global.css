@@ -45,8 +45,8 @@
   --hero-text: #ffffff;
   --hero-dim: #c8cad0;
   --hero-ey: #a6e5f2;
-  /* Phosphor Mint: solo para destacar. Una tarjeta por pantalla y la línea
-     de color del titular de la portada; nunca junto al azul. */
+  /* Phosphor Mint: solo para destacar. Una tarjeta por pantalla y el punto
+     de la etiqueta de la portada; nunca junto al azul. */
   --mint: #70dcd3;
   --on-mint: #070707;
 
