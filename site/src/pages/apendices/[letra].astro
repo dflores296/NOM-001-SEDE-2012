@@ -23,7 +23,7 @@ const next = i < apendices.length - 1 ? apendices[i + 1] : null;
 >
   <div class="wrap cols">
     <aside class="side">
-      <h3>Apéndices</h3>
+      <h3>Apéndices de la norma</h3>
       {apendices.map((x) => (
         <a href={`${base}/apendices/${x.letra}/`} class={x.letra === h.letra ? 'on' : ''}>
           <span class="mono">{x.letra}</span> {x.titulo || 'Listados de normas'}
@@ -36,9 +36,11 @@ const next = i < apendices.length - 1 ? apendices[i + 1] : null;
         <div class="crumb">
           <a href={`${base}/apendices/`}>Apéndices de la norma</a>
         </div>
-        <h1><span class="art-num">Apéndice {h.letra}</span>{h.titulo && <> — {h.titulo}</>}</h1>
+        <h1><span class="art-num">Apéndice {h.letra}</span>{h.titulo || 'Listados de normas'}</h1>
         <div class="meta">
-          {tabs.length} tabla{tabs.length === 1 ? '' : 's'} · página {h.page} del PDF
+          <span><b>{tabs.length}</b> tabla{tabs.length === 1 ? '' : 's'}</span>
+          <span>Página <b>{h.page}</b> del PDF</span>
+          {h.informativo && <span>Informativo</span>}
         </div>
       </div>
 
@@ -73,10 +75,10 @@ const next = i < apendices.length - 1 ? apendices[i + 1] : null;
 
       <nav class="pager">
         {prev && (
-          <a href={`${base}/apendices/${prev.letra}/`}>← <b class="mono">Apéndice {prev.letra}</b></a>
+          <a href={`${base}/apendices/${prev.letra}/`}><small>← Anterior</small><b class="mono">{prev.letra}</b>{prev.titulo || 'Listados de normas'}</a>
         )}
         {next && (
-          <a class="nx" href={`${base}/apendices/${next.letra}/`}><b class="mono">Apéndice {next.letra}</b> →</a>
+          <a class="nx" href={`${base}/apendices/${next.letra}/`}><small>Siguiente →</small><b class="mono">{next.letra}</b>{next.titulo || 'Listados de normas'}</a>
         )}
       </nav>
     </main>

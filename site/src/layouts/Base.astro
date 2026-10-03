@@ -3,6 +3,18 @@ import '@fontsource-variable/inter';
 import '../styles/global.css';
 const { title, desc = 'Guía interactiva de la NOM-001-SEDE-2012, Instalaciones Eléctricas (utilización).' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Pestaña activa. Los artículos cuelgan del Índice y el cierre de los
+// Apéndices, que es de donde se llega a ellos.
+const ruta = Astro.url.pathname.replace(base, '').replace(/\/+$/, '') || '/';
+const PESTANAS = [
+  { href: '/', txt: 'Índice', activa: ruta === '/' || ruta.startsWith('/art') },
+  { href: '/tablas/', txt: 'Tablas', activa: ruta.startsWith('/tablas') },
+  { href: '/figuras/', txt: 'Figuras', activa: ruta.startsWith('/figuras') },
+  { href: '/apendices/', txt: 'Apéndices', activa: ruta.startsWith('/apendices') || ruta.startsWith('/cierre') },
+  { href: '/glosario/', txt: 'Glosario', activa: ruta.startsWith('/glosario') },
+];
+const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
 ---
 <!doctype html>
 <html lang="es">
@@ -40,59 +52,90 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </head>
   <body>
     <header class="top">
-      <div class="wrap">
+      <div class="barra">
         <a class="brand" href={`${base}/`}>
-          NOM-001-SEDE-2012
-          <small>Instalaciones Eléctricas · La técnica al servicio de la patria</small>
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><path d="M36 8 L18 36 h12 l-4 20 20-30 H34 z" /></svg>
+          </span>
+          <span class="brand-txt">
+            NOM-001-SEDE-2012
+            <small>Instalaciones Eléctricas · La técnica al servicio de la patria</small>
+          </span>
         </a>
 
         <div class="search-wrap">
+          <svg class="lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
           <input
             id="q"
+            data-buscar
             type="search"
-            placeholder="Buscar:  250-32,  ampacidad,  falla a tierra…"
+            placeholder="Buscar en la norma…"
             autocomplete="off"
             spellcheck="false"
             aria-label="Buscar en la norma"
           />
-          <div class="results" id="res" role="listbox"></div>
+          <kbd aria-hidden="true">/</kbd>
+          <div class="results" role="listbox"></div>
         </div>
 
-        <nav class="links">
-          <a href={`${base}/`}>Índice</a>
-          <a href={`${base}/tablas/`}>Tablas</a>
-          <a href={`${base}/figuras/`}>Figuras</a>
-          <a href={`${base}/apendices/`}>Apéndices</a>
-          <a href={`${base}/glosario/`}>Glosario</a>
-          <a href={`${base}/observaciones/`}>Observaciones</a>
-        </nav>
-
-        <button id="tema" class="theme-switch" type="button" role="switch"
-                aria-checked="false" aria-label="Tema oscuro" title="Tema oscuro">
-          <span class="perilla" aria-hidden="true"></span>
-          <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" />
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-          </svg>
-          <svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        </button>
+        <div class="acciones">
+          <a class="btn-ghost" href={`${base}/observaciones/`}>Observaciones</a>
+          <button id="tema" class="theme-switch" type="button" role="switch"
+                  aria-checked="false" aria-label="Tema oscuro" title="Tema oscuro">
+            <span class="perilla" aria-hidden="true"></span>
+            <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+            <svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+        </div>
       </div>
+
+      <nav class="tabs" aria-label="Secciones de la guía">
+        {PESTANAS.map((p) => (
+          <a href={`${base}${p.href}`} aria-current={p.activa ? 'page' : undefined}>{p.txt}</a>
+        ))}
+      </nav>
     </header>
 
     <slot />
 
     <footer class="bot">
+      <div class="wrap pie">
+        <div class="pie-marca">
+          <a class="brand" href={`${base}/`}>
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="M36 8 L18 36 h12 l-4 20 20-30 H34 z" /></svg>
+            </span>
+            <span class="brand-txt">NOM-001-SEDE-2012</span>
+          </a>
+          <p>
+            Reproducción del texto publicado en el <b>Diario Oficial de la Federación</b> el 29 de
+            noviembre de 2012, con fines de consulta. <b>No es una edición oficial.</b> Ante cualquier
+            discrepancia prevalece el texto publicado en el DOF.
+          </p>
+        </div>
+        <div class="pie-col">
+          <h4>Consulta</h4>
+          {PESTANAS.map((p) => <a href={`${base}${p.href}`}>{p.txt}</a>)}
+          <a href={`${base}/tablas/generales/`}>Tablas generales</a>
+          <a href={`${base}/cierre/`}>Títulos de cierre</a>
+        </div>
+        <div class="pie-col">
+          <h4>Proyecto</h4>
+          <a href={`${base}/observaciones/`}>Reportar una observación</a>
+          <a href={REPO}>Código en GitHub</a>
+          <a href={`${REPO}/issues`}>Issues</a>
+        </div>
+      </div>
       <div class="wrap">
-        <p>
-          Reproducción del texto publicado en el <b>Diario Oficial de la Federación</b> el 29 de
-          noviembre de 2012, con fines de consulta. <b>No es una edición oficial.</b> Ante cualquier
-          discrepancia prevalece el texto publicado en el DOF.
-        </p>
-        <p>
+        <p class="pie-legal">
           Los textos reglamentarios no son objeto de protección por derecho de autor conforme al
           artículo 14 de la Ley Federal del Derecho de Autor. El código de este proyecto es libre.
         </p>
@@ -104,8 +147,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       import { defSlug } from '../lib/slug.js';
 
       const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-      const input = document.getElementById('q');
-      const box = document.getElementById('res');
       let mini = null;
       let allDocs = null;
       // normCodigo(idDeInciso) -> { doc: seccionQueLoContiene, id: idDeInciso }.
@@ -116,7 +157,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       // saltar directo a esa ancla exacta en vez de solo al principio de
       // la sección.
       let incisoPorCn = null;
-      let sel = -1;
 
       // MiniSearch no toca acentos por defecto: "electrica" no encontraba
       // "eléctricas" -acento Y plural a la vez agotan de sobra el margen de
@@ -352,94 +392,168 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
            </a>`;
       }
 
-      function render(list, q) {
-        if (!list.length) {
-          box.innerHTML = `<div class="empty">Sin resultados para “${q}”.</div>`;
-          box.classList.add('open');
-          return;
+      // Consulta completa: primero las coincidencias de código, que para
+      // "310-15b16" o "310-15a" son la respuesta exacta que MiniSearch por sí
+      // solo no encuentra (ver coincidenciasCodigo), y luego el difuso. Se
+      // deduplica por id porque una coincidencia exacta también puede salir
+      // por la vía normal.
+      async function buscar(q) {
+        await load();
+        const vistos = new Set();
+        const combinados = [];
+        for (const r of [...coincidenciasCodigo(q), ...mini.search(q)]) {
+          if (vistos.has(r.id)) continue;
+          vistos.add(r.id);
+          combinados.push(r);
         }
-        // Agrupado por tipo: mezclados, una tabla y una sección con el mismo
-        // término se confundían en una sola lista plana. Cada grupo conserva
-        // el orden por relevancia que ya trae de MiniSearch, y los GRUPOS
-        // también se ordenan por su mejor resultado -no por una categoría
-        // fija-: para "acometida" la definición del glosario le gana por
-        // mucho a cualquier sección (88 de score contra 29), y un orden fijo
-        // "Secciones primero" la mandaría al fondo aunque sea la más
-        // relevante con diferencia.
-        const porTipo = { sec: [], tabla: [], def: [], fig: [], cierre: [] };
-        for (const r of list) porTipo[r.kind]?.push(r);
-        box.innerHTML = Object.keys(porTipo)
-          .filter((k) => porTipo[k].length)
-          .sort((a, b) => porTipo[b][0].score - porTipo[a][0].score)
-          .map((k) => `
-            <div class="rgroup">
-              <div class="rghead">${ETIQUETA[k]}</div>
-              ${porTipo[k].map((r) => itemHtml(r, q)).join('')}
-            </div>
-          `)
-          .join('');
-        box.classList.add('open');
-        sel = -1;
+        return combinados.slice(0, 25);
       }
 
-      let t;
-      input?.addEventListener('input', () => {
-        clearTimeout(t);
-        t = setTimeout(async () => {
-          const q = input.value.trim();
-          if (q.length < 2) {
-            box.classList.remove('open');
+      // Un campo de búsqueda con su lista de resultados. Hay uno en el
+      // encabezado de todas las páginas y otro, grande, en la portada; los dos
+      // comparten índice, pero cada uno lleva su propia lista y su selección.
+      function conectar(input, box) {
+        let sel = -1;
+        let t;
+
+        function render(list, q) {
+          if (!list.length) {
+            box.innerHTML = `<div class="empty">Sin resultados para “${escapeHtml(q)}”.</div>`;
+            box.classList.add('open');
             return;
           }
-          await load();
-          // Las coincidencias de código van primero: para "310-15b16" o
-          // "310-15a" son la respuesta exacta que MiniSearch por sí solo no
-          // encuentra (ver coincidenciasCodigo). Se deduplica por id porque
-          // una coincidencia exacta también puede salir por la vía normal.
-          const vistos = new Set();
-          const combinados = [];
-          for (const r of [...coincidenciasCodigo(q), ...mini.search(q)]) {
-            if (vistos.has(r.id)) continue;
-            vistos.add(r.id);
-            combinados.push(r);
-          }
-          render(combinados.slice(0, 25), q);
-        }, 110);
-      });
-
-      input?.addEventListener('focus', load);
-
-      input?.addEventListener('keydown', (e) => {
-        const items = [...box.querySelectorAll('a')];
-        if (!items.length) return;
-        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-          e.preventDefault();
-          items[sel]?.classList.remove('sel');
-          sel = e.key === 'ArrowDown'
-            ? Math.min(sel + 1, items.length - 1)
-            : Math.max(sel - 1, 0);
-          items[sel].classList.add('sel');
-          items[sel].scrollIntoView({ block: 'nearest' });
-        } else if (e.key === 'Enter' && sel >= 0) {
-          e.preventDefault();
-          location.href = items[sel].href;
-        } else if (e.key === 'Escape') {
-          box.classList.remove('open');
-          input.blur();
+          // Agrupado por tipo: mezclados, una tabla y una sección con el mismo
+          // término se confundían en una sola lista plana. Cada grupo conserva
+          // el orden por relevancia que ya trae de MiniSearch, y los GRUPOS
+          // también se ordenan por su mejor resultado -no por una categoría
+          // fija-: para "acometida" la definición del glosario le gana por
+          // mucho a cualquier sección (88 de score contra 29), y un orden fijo
+          // "Secciones primero" la mandaría al fondo aunque sea la más
+          // relevante con diferencia.
+          const porTipo = { sec: [], tabla: [], def: [], fig: [], cierre: [] };
+          for (const r of list) porTipo[r.kind]?.push(r);
+          box.innerHTML = Object.keys(porTipo)
+            .filter((k) => porTipo[k].length)
+            .sort((a, b) => porTipo[b][0].score - porTipo[a][0].score)
+            .map((k) => `
+              <div class="rgroup">
+                <div class="rghead">${ETIQUETA[k]}</div>
+                ${porTipo[k].map((r) => itemHtml(r, q)).join('')}
+              </div>
+            `)
+            .join('');
+          box.classList.add('open');
+          sel = -1;
         }
-      });
+
+        input.addEventListener('input', () => {
+          clearTimeout(t);
+          t = setTimeout(async () => {
+            const q = input.value.trim();
+            if (q.length < 2) {
+              box.classList.remove('open');
+              return;
+            }
+            render(await buscar(q), q);
+          }, 110);
+        });
+
+        input.addEventListener('focus', load);
+
+        // Ir al resultado elegido o, si no se eligió ninguno, al primero: es lo
+        // que se espera al pulsar Enter o el botón de la portada.
+        async function ir() {
+          const items = [...box.querySelectorAll('a')];
+          if (items.length) { location.href = (items[sel] || items[0]).href; return; }
+          const q = input.value.trim();
+          if (q.length < 2) return;
+          const list = await buscar(q);
+          if (list.length) location.href = href(list[0]);
+          else render(list, q);
+        }
+
+        input.addEventListener('keydown', (e) => {
+          const items = [...box.querySelectorAll('a')];
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            ir();
+          } else if (e.key === 'Escape') {
+            box.classList.remove('open');
+            input.blur();
+          } else if (items.length && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+            e.preventDefault();
+            items[sel]?.classList.remove('sel');
+            sel = e.key === 'ArrowDown'
+              ? Math.min(sel + 1, items.length - 1)
+              : Math.max(sel - 1, 0);
+            items[sel].classList.add('sel');
+            items[sel].scrollIntoView({ block: 'nearest' });
+          }
+        });
+
+        return { ir };
+      }
+
+      for (const input of document.querySelectorAll('input[data-buscar]')) {
+        const wrap = input.closest('.search-wrap');
+        const api = conectar(input, wrap.querySelector('.results'));
+        wrap.closest('form')?.addEventListener('submit', (e) => { e.preventDefault(); api.ir(); });
+      }
 
       document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-wrap')) box.classList.remove('open');
-      });
-
-      // "/" enfoca el buscador desde cualquier parte
-      document.addEventListener('keydown', (e) => {
-        if (e.key === '/' && document.activeElement !== input) {
-          e.preventDefault();
-          input?.focus();
+        const dentro = e.target.closest('.search-wrap');
+        for (const b of document.querySelectorAll('.results.open')) {
+          if (!dentro || !dentro.contains(b)) b.classList.remove('open');
         }
       });
+
+      // "/" enfoca el buscador desde cualquier parte; en la portada, el grande.
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== '/' || e.target.closest?.('input, textarea, select')) return;
+        e.preventDefault();
+        (document.querySelector('.hero-buscar input[data-buscar]') ||
+         document.getElementById('q'))?.focus();
+      });
+
+      // ------------------------------------------- índice de esta página
+      //
+      // Resalta en el índice lateral la sección que se está leyendo: la última
+      // cuyo encabezado ya pasó por debajo de la cabecera fija. Se mide en cada
+      // cuadro de desplazamiento y no una sola vez, porque las imágenes y las
+      // tablas cargan tarde y mueven todo lo que viene después.
+      const toc = document.querySelector('.toc');
+      if (toc) {
+        const enlaces = [...toc.querySelectorAll('a[href^="#"]')]
+          .map((a) => ({ a, el: document.getElementById(decodeURIComponent(a.hash.slice(1))) }))
+          .filter((x) => x.el);
+        let actual = null;
+        let pendiente = false;
+        const marcar = () => {
+          pendiente = false;
+          const tope = (parseFloat(getComputedStyle(document.documentElement)
+            .getPropertyValue('--ancla')) || 128) + 8;
+          let hit = null;
+          for (const x of enlaces) {
+            if (x.el.getBoundingClientRect().top <= tope) hit = x;
+            else if (hit) break;
+          }
+          if (hit === actual) return;
+          actual?.a.classList.remove('on');
+          actual = hit;
+          if (!hit) return;
+          hit.a.classList.add('on');
+          // El índice tiene su propio desplazamiento: se mueve él, no la página.
+          const r = hit.a.getBoundingClientRect();
+          const c = toc.getBoundingClientRect();
+          if (r.top < c.top + 40 || r.bottom > c.bottom - 40) {
+            toc.scrollTop += r.top - c.top - c.height / 3;
+          }
+        };
+        addEventListener('scroll', () => {
+          if (!pendiente) { pendiente = true; requestAnimationFrame(marcar); }
+        }, { passive: true });
+        marcar();
+      }
 
       // ---------------------------------------------------------- tema
       //
