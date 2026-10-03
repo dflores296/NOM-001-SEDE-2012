@@ -378,7 +378,14 @@ const GRUPOS = [
     const idDe = (x) => (typeof x === 'object' ? x.id : x);
 
     // -------------------------------------------------------------- mapa
-    const visible = (n) => !ocultos.has(n.g);
+    // El punto central del hilo se ve siempre, aunque su capítulo esté
+    // oculto: sin él, el hilo se queda sin eje.
+    const visible = (n) => !n || n.id === centro || !ocultos.has(n.g);
+    // Un extremo de línea puede venir como el punto mismo o, en el hilo,
+    // como su identificador: sin resolverlo, ocultar un capítulo dejaba sus
+    // líneas a la vista aunque sus puntos desaparecieran.
+    const punto = (x) => (typeof x === 'object' ? x : porId.get(x));
+    const lineaVisible = (l) => visible(punto(l.source)) && visible(punto(l.target));
     const G = ForceGraph3D({ controlType: 'orbit' })(lienzo)
       .backgroundColor('#0d0e12')
       .showNavInfo(false)
@@ -415,7 +422,7 @@ const GRUPOS = [
         .nodeLabel((n) => `<b style="font-family:var(--mono)">${esc(rotuloLargo(n))}</b>`
           + (titulo(n) ? ` · ${esc(titulo(n))}` : '')
           + `<br><span style="color:#aeaeb7">La citan ${(entran.get(n.id) || []).length} · cita a ${(salen.get(n.id) || []).length} · clic para seguir sus hilos</span>`)
-        .linkVisibility((l) => !l.e && visible(l.source) && visible(l.target))
+        .linkVisibility((l) => !l.e && lineaVisible(l))
         .linkColor((l) => (lineas.has(l) ? '#ffffff' : foco ? '#1c1e25' : color[l.source.g] || '#9a9ca8'))
         .linkWidth((l) => (lineas.has(l) ? 0.6 : 0))
         .linkDirectionalParticles((l) => (lineas.has(l) ? 3 : 0));
@@ -517,7 +524,7 @@ const GRUPOS = [
         .nodeLabel((n) => `<b style="font-family:var(--mono)">${esc(rotuloLargo(n))}</b>`
           + (titulo(n) ? ` · ${esc(titulo(n))}` : '')
           + (n.id !== centro ? '<br><span style="color:#aeaeb7">Clic para seguir desde aquí</span>' : ''))
-        .linkVisibility((l) => visible(l.source) && visible(l.target))
+        .linkVisibility(lineaVisible)
         .linkColor(() => '#c8cad0')
         .linkWidth(0.35)
         .linkDirectionalParticles(2);
