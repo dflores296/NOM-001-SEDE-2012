@@ -11,8 +11,6 @@ const maxCitas = top.length ? top[0].citas : 1;
 // Las tablas del Capítulo 10 no cuelgan de ningún artículo y se publican
 // juntas en /tablas.
 const cap10 = tablas.filter((t) => t.article == null && !t.apendice);
-const verificadas = tablas.filter((t) => t.verificada).length;
-const todoVerificado = verificadas === tablas.length;
 const formulas = figuras.filter((f) => !f.rotulos?.length).length;
 
 // ------------------------------------------------- la tarjeta de la portada
@@ -68,8 +66,8 @@ const EXPLORA = [
       <p class="portada-ey"><i></i>Instalaciones Eléctricas (utilización) · DOF, 29 de noviembre de 2012</p>
       <h1>NOM-001-SEDE-2012</h1>
       <p class="portada-sub">
-        Cada artículo en su página, {grafo.meta.aristas.toLocaleString('es-MX')} referencias cruzadas
-        que se siguen con un clic y una búsqueda que funciona sin señal, en obra.
+        {articles.length} artículos, {nSec.toLocaleString('es-MX')} secciones y{' '}
+        {grafo.meta.aristas.toLocaleString('es-MX')} referencias cruzadas, cada una a un clic.
       </p>
 
       <form class="hero-buscar" role="search">
@@ -119,46 +117,6 @@ const EXPLORA = [
         </div>
       </article>
     )}
-
-    <!-- ------------------------------------------------------------- cifras -->
-    <div class="cifras">
-      <div class="cifra"><b>{articles.length}</b><span>Artículos</span></div>
-      <div class="cifra"><b>{nSec.toLocaleString('es-MX')}</b><span>Secciones</span></div>
-      <div class="cifra"><b>{grafo.meta.aristas.toLocaleString('es-MX')}</b><span>Referencias enlazadas</span></div>
-      <div class="cifra"><b>{definiciones.length}</b><span>Definiciones</span></div>
-      <div class="cifra"><b>{tablas.length}</b><span>Tablas reconstruidas</span></div>
-      <div class="cifra"><b>{validacion.figuras_numeradas}</b><span>Figuras</span></div>
-    </div>
-
-    {/* Mientras las tablas se reconstruían a ciegas, este aviso pedía
-        desconfiar de todas. Ya no: las {tablas.length} se contrastaron celda
-        por celda contra el PDF. La franja de estado se queda para decir qué
-        se revisó y qué sigue siendo responsabilidad del lector. Si alguna
-        tabla volviera a quedar sin contrastar, el punto de la ficha se pone
-        en ámbar en vez de callarlo. */}
-    <div class="estado">
-      <span class:list={['chip', { warn: !todoVerificado }]}>
-        <span class="dot"></span>Tablas verificadas <b class="tabular">{verificadas}/{tablas.length}</b>
-      </span>
-      <span class="chip"><span class="dot"></span>Cobertura de texto <b class="tabular">{validacion.cobertura_pct}%</b></span>
-      <span class="chip"><span class="dot"></span>Referencias rotas <b class="tabular">{grafo.meta.referencias_rotas}</b></span>
-    </div>
-    <div class="nota aviso-dof">
-      <span class="lb">No es una edición oficial</span>
-      {todoVerificado ? (
-        <span>
-          Reproducción con fines de consulta: ante cualquier duda prevalece el DOF. Si ves una
-          diferencia, <a href={`${base}/observaciones/`}>repórtala</a>; el proyecto mejora con quien lo
-          usa en obra.
-        </span>
-      ) : (
-        <span>
-          El resto sale de la reconstrucción automática, que no es exacta. Contrasta con el
-          original antes de usar un valor y <a href={`${base}/observaciones/`}>repórtanos</a>
-          cualquier diferencia.
-        </span>
-      )}
-    </div>
 
     <!-- ------------------------------------------------------------ explora -->
     <div class="sec">
@@ -263,8 +221,8 @@ const EXPLORA = [
     white-space: nowrap;
   }
   .portada-sub {
-    margin: 1.2rem auto 0; max-width: 58ch; font-size: 1.125rem; line-height: 1.6;
-    color: var(--hero-dim); text-wrap: pretty;
+    margin: 1.2rem auto 0; max-width: 66ch; font-size: 1.125rem; line-height: 1.6;
+    color: var(--hero-dim); text-wrap: balance;
   }
 
   /* El buscador grande: campo blanco con el botón redondo y oscuro adentro,
@@ -344,18 +302,6 @@ const EXPLORA = [
     .muestra-barra { padding: 0.65rem 1.25rem; }
     .muestra-pag { display: none; }
   }
-
-  /* ----------------------------------------------------------------- estado */
-  .cifras { margin-top: 2.5rem; }
-  .estado {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 1.5rem;
-    padding: 1rem 0 0; font-size: 0.8125rem; color: var(--text-dim);
-  }
-  .chip { display: inline-flex; align-items: center; gap: 0.45rem; }
-  .chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
-  .chip.warn .dot { background: var(--warn-br); }
-  .chip b { font-family: var(--mono); color: var(--text); font-weight: 600; letter-spacing: normal; }
-  .aviso-dof { margin-top: 1rem; font-size: 0.875rem; }
 
   /* ---------------------------------------------------------------- explora
      Tarjetas con un lavado del acento, la etiqueta arriba en versalitas y el
