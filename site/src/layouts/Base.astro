@@ -13,7 +13,12 @@ const PESTANAS = [
   { href: '/figuras/', txt: 'Figuras', activa: ruta.startsWith('/figuras') },
   { href: '/apendices/', txt: 'Apéndices', activa: ruta.startsWith('/apendices') || ruta.startsWith('/cierre') },
   { href: '/glosario/', txt: 'Glosario', activa: ruta.startsWith('/glosario') },
+  { href: '/observaciones/', txt: 'Observaciones', activa: ruta.startsWith('/observaciones') },
 ];
+// En la portada el buscador grande de la banda hace las veces del de la
+// cabecera: el de arriba nace oculto y aparece cuando el grande sale de la
+// vista, para que no haya dos a la vez.
+const portada = ruta === '/';
 const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
 ---
 <!doctype html>
@@ -53,34 +58,44 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
   <body>
     <header class="top">
       <div class="barra">
-        <a class="brand" href={`${base}/`}>
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 64 64"><path d="M36 8 L18 36 h12 l-4 20 20-30 H34 z" /></svg>
-          </span>
-          <span class="brand-txt">
-            NOM-001-SEDE-2012
-            <small>Instalaciones Eléctricas · La técnica al servicio de la patria</small>
-          </span>
-        </a>
+        <a class="brand" href={`${base}/`}>NOM-001-SEDE-2012</a>
 
-        <div class="search-wrap">
-          <svg class="lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-          <input
-            id="q"
-            data-buscar
-            type="search"
-            placeholder="Buscar en la norma…"
-            autocomplete="off"
-            spellcheck="false"
-            aria-label="Buscar en la norma"
-          />
-          <kbd aria-hidden="true">/</kbd>
-          <div class="results" role="listbox"></div>
-        </div>
+        <nav class="tabs" aria-label="Secciones de la guía">
+          {PESTANAS.map((p) => (
+            <a href={`${base}${p.href}`} aria-current={p.activa ? 'page' : undefined}>{p.txt}</a>
+          ))}
+        </nav>
 
         <div class="acciones">
-          <a class="btn-ghost" href={`${base}/observaciones/`}>Observaciones</a>
+          <div class:list={['search-wrap', 'search-top', { oculto: portada }]}>
+            <svg class="lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+            <input
+              id="q"
+              data-buscar
+              type="search"
+              placeholder="Buscar en la norma…"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Buscar en la norma"
+              tabindex={portada ? -1 : undefined}
+            />
+            <kbd aria-hidden="true">/</kbd>
+            <div class="results" role="listbox"></div>
+          </div>
+
+          {/* El repositorio, con sus estrellas. El número lo pide el navegador
+              a la API de GitHub y se guarda unas horas; sin red, el botón
+              sigue ahí sin el número. */}
+          <a class="gh" href={REPO} aria-label="Repositorio en GitHub">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span class="gh-txt">GitHub</span>
+            <span class="gh-n" hidden>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 .25a.75.75 0 01.67.42l1.88 3.8 4.2.61a.75.75 0 01.41 1.28l-3.04 2.96.72 4.18a.75.75 0 01-1.09.79L8 12.31l-3.75 1.98a.75.75 0 01-1.09-.79l.72-4.18L.84 6.36a.75.75 0 01.41-1.28l4.2-.61L7.33.67A.75.75 0 018 .25z"/></svg>
+              <b></b>
+            </span>
+          </a>
+
           <button id="tema" class="theme-switch" type="button" role="switch"
                   aria-checked="false" aria-label="Tema oscuro" title="Tema oscuro">
             <span class="perilla" aria-hidden="true"></span>
@@ -96,12 +111,6 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
           </button>
         </div>
       </div>
-
-      <nav class="tabs" aria-label="Secciones de la guía">
-        {PESTANAS.map((p) => (
-          <a href={`${base}${p.href}`} aria-current={p.activa ? 'page' : undefined}>{p.txt}</a>
-        ))}
-      </nav>
     </header>
 
     <slot />
@@ -109,12 +118,8 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
     <footer class="bot">
       <div class="wrap pie">
         <div class="pie-marca">
-          <a class="brand" href={`${base}/`}>
-            <span class="brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><path d="M36 8 L18 36 h12 l-4 20 20-30 H34 z" /></svg>
-            </span>
-            <span class="brand-txt">NOM-001-SEDE-2012</span>
-          </a>
+          <a class="brand" href={`${base}/`}>NOM-001-SEDE-2012</a>
+          <span class="pie-lema">Instalaciones Eléctricas · La técnica al servicio de la patria</span>
           <p>
             Reproducción del texto publicado en el <b>Diario Oficial de la Federación</b> el 29 de
             noviembre de 2012, con fines de consulta. <b>No es una edición oficial.</b> Ante cualquier
@@ -123,7 +128,7 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
         </div>
         <div class="pie-col">
           <h4>Consulta</h4>
-          {PESTANAS.map((p) => <a href={`${base}${p.href}`}>{p.txt}</a>)}
+          {PESTANAS.filter((p) => p.href !== '/observaciones/').map((p) => <a href={`${base}${p.href}`}>{p.txt}</a>)}
           <a href={`${base}/tablas/generales/`}>Tablas generales</a>
           <a href={`${base}/cierre/`}>Títulos de cierre</a>
         </div>
@@ -507,13 +512,69 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
         }
       });
 
-      // "/" enfoca el buscador desde cualquier parte; en la portada, el grande.
+      // "/" enfoca el buscador desde cualquier parte: el de la cabecera si se
+      // está viendo, y si no —la portada, arriba— el grande de la banda.
       document.addEventListener('keydown', (e) => {
         if (e.key !== '/' || e.target.closest?.('input, textarea, select')) return;
         e.preventDefault();
-        (document.querySelector('.hero-buscar input[data-buscar]') ||
-         document.getElementById('q'))?.focus();
+        const arriba = document.querySelector('.search-top:not(.oculto) input');
+        (arriba || document.querySelector('.hero-buscar input[data-buscar]'))?.focus();
       });
+
+      // ------------------------------------- el buscador de la cabecera
+      //
+      // En la portada nace oculto: el grande de la banda hace su trabajo. En
+      // cuanto el grande pasa por debajo de la cabecera, el de arriba aparece;
+      // al volver a subir, se esconde otra vez.
+      const buscTop = document.querySelector(".search-top.oculto");
+      const grande = document.querySelector('.hero-buscar');
+      if (buscTop && grande && 'IntersectionObserver' in window) {
+        const cab = document.querySelector('header.top');
+        const campo = buscTop.querySelector('input');
+        new IntersectionObserver(([e]) => {
+          const visible = !e.isIntersecting;
+          buscTop.classList.toggle('oculto', !visible);
+          if (visible) campo.removeAttribute('tabindex');
+          else {
+            campo.setAttribute('tabindex', '-1');
+            buscTop.querySelector(".results")?.classList.remove('open');
+          }
+        }, { rootMargin: `-${cab.offsetHeight}px 0px 0px 0px` }).observe(grande);
+      } else if (buscTop) {
+        buscTop.classList.remove("oculto");
+      }
+
+      // --------------------------------------------- estrellas de GitHub
+      //
+      // Se piden a la API pública y se guardan seis horas en el navegador: la
+      // API sin sesión deja 60 consultas por hora, y no hace falta gastarlas
+      // en cada página. Si no hay red o la API no responde, el botón queda
+      // sin número.
+      const ghN = document.querySelector('.gh-n');
+      if (ghN) {
+        const pintar = (n) => {
+          if (typeof n !== 'number') return;
+          ghN.querySelector('b').textContent = n >= 1000
+            ? (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'k'
+            : String(n);
+          ghN.hidden = false;
+          ghN.closest('.gh').setAttribute('aria-label', `Repositorio en GitHub, ${n} estrellas`);
+        };
+        let cache = null;
+        try { cache = JSON.parse(localStorage.getItem('nom-gh') || 'null'); } catch (e) {}
+        if (cache) pintar(cache.n);
+        if (!cache || Date.now() - cache.t > 6 * 3600e3) {
+          fetch('https://api.github.com/repos/dflores296/NOM-001-SEDE-2012',
+                { headers: { Accept: 'application/vnd.github+json' } })
+            .then((r) => (r.ok ? r.json() : null))
+            .then((d) => {
+              if (!d || typeof d.stargazers_count !== 'number') return;
+              pintar(d.stargazers_count);
+              try { localStorage.setItem('nom-gh', JSON.stringify({ n: d.stargazers_count, t: Date.now() })); } catch (e) {}
+            })
+            .catch(() => {});
+        }
+      }
 
       // ------------------------------------------- índice de esta página
       //
