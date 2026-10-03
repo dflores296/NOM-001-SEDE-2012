@@ -1,18 +1,18 @@
 /* ============================================================== TEMAS
    Dos temas, claro y oscuro, que son el MISMO sitio con la luz prendida o
    apagada: cambian los colores y nada más. Tipografía, radios, espaciado y
-   estructura son iguales en los dos.
+   estructura son iguales en los dos, y vienen de Mintlify.
 
-   - Claro: tomado de Mintlify. Lienzo blanco, texto casi negro, grises
-     neutros sin tinte y un solo acento que solo marca lo que se puede pulsar
-     o lo que está activo. Elevación susurrada: bordes de 1px, casi sin sombra.
-   - Oscuro: la escala de grises de Supabase. Lienzo #121212 —no negro puro—,
-     superficies que se separan por el borde y no por la sombra.
-
-   El acento es un solo color en dos tonos, uno por fondo. El par actual sale
-   de la familia de verdes de Supabase y es PROVISIONAL: #006239 da 7.5:1 sobre
-   blanco y #3ecf8e 9.4:1 sobre #121212. Para cambiarlo basta con --accent en
-   los dos temas; --accent-soft se deriva de él.
+   La paleta es la de Harness, que es solo oscura:
+   - Oscuro: completa. Lienzo #070707, tarjetas en #0d0e12, paneles anidados
+     en #141418, texto blanco, enlaces y estados en Signal Blue #0092e4, la
+     navegación activa en Current Blue #00ade4 y los bordes de tarjeta en
+     claro (#d9dae5), que es su firma: el borde define la tarjeta por
+     luminosidad, sin sombra.
+   - Claro: la estructura de Mintlify con el acento de Harness. El Signal
+     Blue no llega a 4.5:1 sobre blanco (3.4), así que aquí va el Deep Signal
+     apenas oscurecido, #0569be: 5.6:1 sobre blanco y 4.9:1 sobre su fondo
+     tenue, que es donde viven las referencias cruzadas.
 
    `claro` define TODOS los tokens; `oscuro` se repite dos veces, para quien lo
    elige con el interruptor y para quien no eligió y tiene el sistema en
@@ -25,22 +25,30 @@
   --bg-soft: #f2f2f2;
   --panel: #ffffff;
   --border: #dddddd;
+  --card-border: #dddddd;
   --rejilla: #c8c8c8;
   --border-soft: #f2f2f2;
   --text: #08090a;
   --text-dim: #525252;
   --text-faint: #6b6b6b;
-  --accent: #006239;
+  --accent: #0569be;
+  --activo: #0569be;
   --warn-bg: #fdf6e7;
   --warn-br: #e6cfa3;
   --warn-ink: #8a5a00;
   --ok: #2e7d32;
   --shadow: 0 2px 4px rgba(8, 9, 10, 0.05);
-  /* La banda de la portada es la única superficie de color del sitio, como
-     el cielo de Mintlify: el acento llevado casi a negro. */
-  --hero-bg: color-mix(in srgb, var(--accent) 58%, #000);
+  /* La banda de la portada, en los dos temas: el fondo degradado sobre el
+     que Harness monta sus imágenes, de azul noche a la placa de carbón. Es
+     la única superficie de color del sitio. */
+  --hero-bg: linear-gradient(180deg, #163052 0%, #0d0e12 100%);
   --hero-text: #ffffff;
-  --hero-dim: rgba(255, 255, 255, 0.74);
+  --hero-dim: #c8cad0;
+  --hero-ey: #a6e5f2;
+  /* Phosphor Mint: solo para destacar. Una tarjeta por pantalla y la línea
+     de color del titular de la portada; nunca junto al azul. */
+  --mint: #70dcd3;
+  --on-mint: #070707;
 
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --sans: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -62,47 +70,45 @@
 
 :root[data-theme="oscuro"] {
   color-scheme: dark;
-  --bg: #121212;
-  --bg-soft: #242424;
-  --panel: #121212;
-  --border: #2e2e2e;
-  --rejilla: #393939;
-  --border-soft: #242424;
-  --text: #fafafa;
-  --text-dim: #b4b4b4;
-  --text-faint: #898989;
-  --accent: #3ecf8e;
-  --warn-bg: #221f17;
+  --bg: #070707;
+  --bg-soft: #141418;
+  --panel: #0d0e12;
+  --border: #2e3038;
+  --card-border: #d9dae5;
+  --rejilla: #2e3038;
+  --border-soft: #22222a;
+  --text: #ffffff;
+  --text-dim: #c8cad0;
+  --text-faint: #aeaeb7;
+  --accent: #0092e4;
+  --activo: #00ade4;
+  --warn-bg: #1c1912;
   --warn-br: #4a4130;
   --warn-ink: #e0b450;
-  --ok: #7bc47f;
+  --ok: #75ae4c;
   --shadow: none;
-  --hero-bg: color-mix(in srgb, var(--accent) 9%, #121212);
-  --hero-text: #fafafa;
-  --hero-dim: #b4b4b4;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --bg: #121212;
-    --bg-soft: #242424;
-    --panel: #121212;
-    --border: #2e2e2e;
-    --rejilla: #393939;
-    --border-soft: #242424;
-    --text: #fafafa;
-    --text-dim: #b4b4b4;
-    --text-faint: #898989;
-    --accent: #3ecf8e;
-    --warn-bg: #221f17;
+    --bg: #070707;
+    --bg-soft: #141418;
+    --panel: #0d0e12;
+    --border: #2e3038;
+    --card-border: #d9dae5;
+    --rejilla: #2e3038;
+    --border-soft: #22222a;
+    --text: #ffffff;
+    --text-dim: #c8cad0;
+    --text-faint: #aeaeb7;
+    --accent: #0092e4;
+    --activo: #00ade4;
+    --warn-bg: #1c1912;
     --warn-br: #4a4130;
     --warn-ink: #e0b450;
-    --ok: #7bc47f;
+    --ok: #75ae4c;
     --shadow: none;
-    --hero-bg: color-mix(in srgb, var(--accent) 9%, #121212);
-    --hero-text: #fafafa;
-    --hero-dim: #b4b4b4;
   }
 }
 
@@ -227,7 +233,7 @@ nav.tabs a {
   border-bottom: 2px solid transparent;
 }
 nav.tabs a:hover { color: var(--text); text-decoration: none; }
-nav.tabs a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+nav.tabs a[aria-current="page"] { color: var(--activo); border-bottom-color: var(--activo); font-weight: 600; }
 
 /* Interruptor claro/oscuro. Un solo botón con dos posiciones: el sol a la
    izquierda, la luna a la derecha y la perilla encima del tema activo. Con
@@ -358,8 +364,8 @@ nav.tabs a[aria-current="page"] { color: var(--accent); border-bottom-color: var
 }
 .side a .mono { flex: none; min-width: 1.9rem; color: var(--text-faint); font-size: 0.8rem; }
 .side a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
-.side a.on { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
-.side a.on .mono { color: var(--accent); }
+.side a.on { color: var(--activo); background: var(--accent-soft); font-weight: 600; }
+.side a.on .mono { color: var(--activo); }
 
 /* Índice de la página: una línea vertical y, sobre ella, la sección que se
    está leyendo marcada en el acento. */
@@ -375,7 +381,7 @@ nav.tabs a[aria-current="page"] { color: var(--accent); border-bottom-color: var
 }
 .toc a .mono { color: inherit; font-size: 0.78rem; }
 .toc a:hover { color: var(--text); text-decoration: none; }
-.toc a.on { color: var(--accent); border-left: 2px solid var(--accent); padding-left: calc(0.85rem - 1px); font-weight: 500; }
+.toc a.on { color: var(--activo); border-left: 2px solid var(--activo); padding-left: calc(0.85rem - 1px); font-weight: 500; }
 
 main { padding: 1.8rem 0 5rem; min-width: 0; }
 
@@ -406,11 +412,11 @@ main { padding: 1.8rem 0 5rem; min-width: 0; }
 /* Las partes del artículo, como tarjetas de salto bajo la cabecera. */
 .partes { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.6rem; margin: 1.5rem 0 0; }
 .partes a {
-  display: block; padding: 0.7rem 0.9rem; border: 1px solid var(--border);
-  border-radius: var(--radius-lg); color: var(--text); font-size: 0.875rem; line-height: 1.35;
+  display: block; padding: 0.7rem 0.9rem; border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg); background: var(--panel); color: var(--text); font-size: 0.875rem; line-height: 1.35;
 }
 .partes a b { display: block; font-size: 0.72rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
-.partes a:hover { border-color: var(--text-faint); text-decoration: none; }
+.partes a:hover { border-color: var(--accent); text-decoration: none; }
 /* En el teléfono las partes no se apilan —diez tarjetas empujaban el texto
    del artículo a varias pantallas de distancia—: van en una fila que se
    desliza de lado. */
@@ -614,7 +620,7 @@ p.tabla-intro {
   display: grid; gap: 0.75rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-.cifra { padding: 1rem 1.15rem; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--panel); }
+.cifra { padding: 1rem 1.15rem; border: 1px solid var(--card-border); border-radius: var(--radius-xl); background: var(--panel); }
 .cifra b {
   display: block; font-family: var(--sans); font-size: 1.75rem; font-weight: 600;
   color: var(--text); line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
@@ -633,11 +639,11 @@ p.tabla-intro {
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
 .card {
   display: flex; flex-direction: column; gap: 0.2rem;
-  padding: 1rem 1.15rem; border: 1px solid var(--border); border-radius: var(--radius-xl);
+  padding: 1rem 1.15rem; border: 1px solid var(--card-border); border-radius: var(--radius-xl);
   background: var(--panel); color: var(--text);
   transition: border-color 120ms ease, box-shadow 120ms ease;
 }
-.card:hover { border-color: var(--text-faint); box-shadow: var(--shadow); text-decoration: none; }
+.card:hover { border-color: var(--accent); box-shadow: var(--shadow); text-decoration: none; }
 .card b { font-family: var(--mono); color: var(--accent); font-size: 0.8125rem; font-weight: 600; }
 .card span { display: block; font-size: 0.9375rem; font-weight: 500; line-height: 1.4; }
 .card em { font-style: normal; font-size: 0.75rem; color: var(--text-faint); margin-top: auto; padding-top: 0.35rem; }
@@ -645,7 +651,7 @@ p.tabla-intro {
 /* ---------------------------------------------------------------- glosario */
 .defs { display: grid; gap: 0.75rem; }
 .def {
-  padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: var(--radius-xl);
+  padding: 1rem 1.25rem; border: 1px solid var(--card-border); border-radius: var(--radius-xl);
   background: var(--panel); scroll-margin-top: var(--ancla);
 }
 .def:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
@@ -673,10 +679,10 @@ footer.bot {
 /* Anterior / siguiente, en dos tarjetas al pie del artículo. */
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 3.5rem; }
 .pager a {
-  display: block; padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: var(--radius-xl);
-  color: var(--text); font-size: 0.9375rem; font-weight: 500; line-height: 1.4;
+  display: block; padding: 1rem 1.2rem; border: 1px solid var(--card-border); border-radius: var(--radius-xl);
+  background: var(--panel); color: var(--text); font-size: 0.9375rem; font-weight: 500; line-height: 1.4;
 }
-.pager a:hover { border-color: var(--text-faint); text-decoration: none; }
+.pager a:hover { border-color: var(--accent); text-decoration: none; }
 .pager a small { display: block; margin-bottom: 0.25rem; font-size: 0.75rem; font-weight: 500; color: var(--text-faint); }
 .pager a .mono { color: var(--accent); font-size: 0.875rem; margin-right: 0.35rem; }
 .pager .nx { grid-column: 2; text-align: right; }
@@ -912,10 +918,10 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
   flex: 1 1 13rem;
   display: grid; grid-template-columns: auto 1fr auto; align-items: baseline;
   gap: 0.5rem; text-decoration: none; color: inherit;
-  background: var(--panel); border: 1px solid var(--border);
+  background: var(--panel); border: 1px solid var(--card-border);
   border-radius: var(--radius-lg); padding: 0.6rem 0.85rem;
 }
-.cap-nav a:hover { border-color: var(--text-faint); }
+.cap-nav a:hover { border-color: var(--accent); }
 .cap-nav b { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
 .cap-nav span {
   font-size: 0.875rem; color: var(--text);
