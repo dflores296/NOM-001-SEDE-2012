@@ -33,8 +33,14 @@
   --accent: #006239;
   --warn-bg: #fdf6e7;
   --warn-br: #e6cfa3;
+  --warn-ink: #8a5a00;
   --ok: #2e7d32;
   --shadow: 0 2px 4px rgba(8, 9, 10, 0.05);
+  /* La banda de la portada es la única superficie de color del sitio, como
+     el cielo de Mintlify: el acento llevado casi a negro. */
+  --hero-bg: color-mix(in srgb, var(--accent) 58%, #000);
+  --hero-text: #ffffff;
+  --hero-dim: rgba(255, 255, 255, 0.74);
 
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --sans: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -42,6 +48,12 @@
      rectas: nada de píldoras. */
   --radius: 4px;
   --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  /* Lo que mide la cabecera fija: barra de 64px más la fila de pestañas.
+     Es el margen con que aterriza un ancla y la altura a la que se pegan
+     los índices laterales. */
+  --ancla: 128px;
   --maxw: 1180px;
   /* Margen lateral de la página. Crece con la ventana para que el contenido
      no quede pegado al borde en pantallas anchas. */
@@ -62,8 +74,12 @@
   --accent: #3ecf8e;
   --warn-bg: #221f17;
   --warn-br: #4a4130;
+  --warn-ink: #e0b450;
   --ok: #7bc47f;
   --shadow: none;
+  --hero-bg: color-mix(in srgb, var(--accent) 9%, #121212);
+  --hero-text: #fafafa;
+  --hero-dim: #b4b4b4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -81,8 +97,12 @@
     --accent: #3ecf8e;
     --warn-bg: #221f17;
     --warn-br: #4a4130;
+    --warn-ink: #e0b450;
     --ok: #7bc47f;
     --shadow: none;
+    --hero-bg: color-mix(in srgb, var(--accent) 9%, #121212);
+    --hero-text: #fafafa;
+    --hero-dim: #b4b4b4;
   }
 }
 
@@ -142,9 +162,9 @@ code, .mono { font-family: var(--mono); }
 /* El cierre de espaciado es para Inter. Una monoespaciada se mide por celdas
    iguales y apretarla junta los caracteres de un identificador como
    250-32(a)(1), así que todo lo que va en --mono vuelve al espaciado normal. */
-code, .mono, .rid, .art-num, .sid, .lbl, a.xref, .tid, .stat b, .cifra b,
+code, .mono, .rid, .art-num, .sid, .lbl, a.xref, .tid,
 .chap h2 span, .card b, .def .tag, .fid, .obs-chip, .obs-form input.fijo,
-.cap-nav b, .sec-head h2 span.n, .aviso-ancla b, ol.rev li::before {
+.aviso-ancla b, ol.rev li::before {
   letter-spacing: normal;
 }
 
@@ -160,23 +180,54 @@ code, .mono, .rid, .art-num, .sid, .lbl, a.xref, .tid, .stat b, .cifra b,
 .wrap.cols { max-width: none; }
 header.top .wrap { max-width: none; }
 
-/* ---------------------------------------------------------------- cabecera */
+/* ---------------------------------------------------------------- cabecera
+   Dos pisos, como la de Mintlify: la barra con la marca, el buscador y las
+   acciones, y debajo las pestañas de las secciones de la guía. Blanca y
+   pegada arriba, con un filete de 1px en lugar de sombra.
+   ------------------------------------------------------------------- */
 header.top {
   position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
-header.top .wrap {
-  display: flex; align-items: center; gap: 1rem;
-  height: 56px;
+header.top .barra {
+  display: flex; align-items: center; gap: 1.5rem;
+  height: 64px; padding: 0 var(--gut);
 }
 
-.brand { font-weight: 650; letter-spacing: -0.01em; color: var(--text); white-space: nowrap; }
-.brand small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--text-faint); letter-spacing: 0.02em; }
-nav.links { margin-left: auto; display: flex; align-items: center; gap: 1rem; font-size: 0.88rem; }
-nav.links a { color: var(--text-dim); }
-nav.links a:hover, nav.links a[aria-current] { color: var(--accent); }
+.brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--text); white-space: nowrap; }
+.brand:hover { text-decoration: none; }
+.brand-mark {
+  display: grid; place-items: center; flex: none;
+  width: 30px; height: 30px; border-radius: var(--radius-lg);
+  background: var(--text); color: var(--panel);
+}
+.brand-mark svg { width: 18px; height: 18px; fill: currentColor; }
+.brand-txt { font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; line-height: 1.15; }
+.brand-txt small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--text-faint); letter-spacing: 0; }
+
+.acciones { margin-left: auto; display: flex; align-items: center; gap: 0.75rem; }
+/* Botón fantasma: sin borde ni relleno, y un lavado gris al pasar el cursor. */
+.btn-ghost {
+  color: var(--text); font-size: 0.875rem; font-weight: 500;
+  padding: 0.4rem 0.7rem; border-radius: var(--radius);
+}
+.btn-ghost:hover { background: var(--bg-soft); text-decoration: none; }
+
+/* Pestañas: texto gris y una raya de 2px en el acento bajo la activa. */
+nav.tabs {
+  display: flex; gap: 1.6rem; height: 44px; padding: 0 var(--gut);
+  overflow-x: auto; scrollbar-width: none;
+}
+nav.tabs::-webkit-scrollbar { display: none; }
+nav.tabs a {
+  display: flex; align-items: center; white-space: nowrap;
+  font-size: 0.875rem; font-weight: 500; color: var(--text-dim);
+  border-bottom: 2px solid transparent;
+}
+nav.tabs a:hover { color: var(--text); text-decoration: none; }
+nav.tabs a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
 
 /* Interruptor claro/oscuro. Un solo botón con dos posiciones: el sol a la
    izquierda, la luna a la derecha y la perilla encima del tema activo. Con
@@ -205,113 +256,224 @@ nav.links a:hover, nav.links a[aria-current] { color: var(--accent); }
 .theme-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .theme-switch .perilla { transition: none; } }
 
-/* ---------------------------------------------------------------- buscador */
-.search-wrap { position: relative; flex: 1; max-width: 460px; }
+/* ---------------------------------------------------------------- buscador
+   Campo gris con la lupa adentro y la tecla «/» que lo enfoca, como el
+   buscador de un sitio de documentación. */
+.search-wrap { position: relative; flex: 1; max-width: 420px; }
+.search-wrap .lupa {
+  position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px; color: var(--text-faint); pointer-events: none;
+}
 .search-wrap input {
-  width: 100%; padding: 0.44rem 0.7rem;
-  background: var(--panel); color: var(--text);
+  width: 100%; height: 38px; padding: 0 2.4rem 0 2.2rem;
+  background: var(--bg-soft); color: var(--text);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  font-size: 0.875rem; font-family: inherit; letter-spacing: inherit;
+}
+.search-wrap input::placeholder { color: var(--text-faint); }
+.search-wrap input:hover { border-color: var(--text-faint); }
+.search-wrap input:focus { outline: none; border-color: var(--accent); background: var(--panel); }
+.search-wrap kbd {
+  position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 0.72rem; color: var(--text-faint);
   border: 1px solid var(--border); border-radius: var(--radius);
-  font-size: 0.9rem; font-family: inherit;
+  padding: 0 0.35rem; background: var(--panel); pointer-events: none;
 }
-.search-wrap input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.search-wrap input:focus ~ kbd { display: none; }
 .results {
-  position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 60;
   background: var(--panel); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); max-height: 62vh; overflow-y: auto;
-  box-shadow: var(--shadow); display: none;
+  border-radius: var(--radius-xl); max-height: 62vh; overflow-y: auto;
+  box-shadow: 0 12px 32px rgba(8, 9, 10, 0.08); display: none;
+  text-align: left;
 }
+:root[data-theme="oscuro"] .results { box-shadow: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .results { box-shadow: none; } }
 .results.open { display: block; }
-.results a { display: block; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--border-soft); color: var(--text); }
+.results a { display: block; padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border-soft); color: var(--text); }
 .results a:last-child { border-bottom: 0; }
 .results a:hover, .results a.sel { background: var(--accent-soft); text-decoration: none; }
-.results .rid { font-family: var(--mono); font-size: 0.76rem; color: var(--accent); }
-.results .rti { font-size: 0.86rem; }
-.results .rsn { font-size: 0.76rem; color: var(--text-faint); }
-.results .rsnip { display: block; margin-top: 0.2rem; font-size: 0.78rem; color: var(--text-dim); line-height: 1.35; }
+.results .rid { font-family: var(--mono); font-size: 0.76rem; color: var(--accent); margin-right: 0.35rem; }
+.results .rti { font-size: 0.875rem; font-weight: 500; }
+.results .rsn { display: block; font-size: 0.75rem; color: var(--text-faint); }
+.results .rsnip { display: block; margin-top: 0.25rem; font-size: 0.8rem; color: var(--text-dim); line-height: 1.4; }
 .results mark { background: var(--accent-soft); color: var(--text); border-radius: 2px; padding: 0 0.1em; font-weight: 650; }
-.results .empty { padding: 0.8rem; color: var(--text-faint); font-size: 0.86rem; }
+.results .empty { padding: 0.9rem; color: var(--text-faint); font-size: 0.875rem; }
 
 .results .rgroup + .rgroup { border-top: 1px solid var(--border); }
 .results .rghead {
-  padding: 0.35rem 0.7rem; font-size: 0.66rem; font-weight: 650;
-  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint);
+  padding: 0.45rem 0.9rem; font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent);
   background: var(--bg-soft);
 }
 
-/* En móvil el buscador no cabe junto a la marca y el menú; pasa a un segundo
-   renglón a lo ancho en vez de quedar aplastado. Va después de las reglas de
-   .brand y .search-wrap: con igual especificidad, gana la última. */
-@media (max-width: 680px) {
-  header.top .wrap {
-    height: auto; flex-wrap: wrap;
-    padding-top: 0.5rem; padding-bottom: 0.5rem; row-gap: 0.5rem;
-  }
+/* En móvil la barra se queda con la marca y las acciones, el buscador baja a
+   un renglón propio y las pestañas se deslizan de lado. */
+@media (max-width: 760px) {
+  header.top .barra { height: auto; flex-wrap: wrap; row-gap: 0.6rem; padding-top: 0.65rem; padding-bottom: 0.65rem; }
   .search-wrap { order: 3; flex-basis: 100%; max-width: none; }
-  .brand small { display: none; }
-  /* El interruptor se queda en el renglón de la marca, a la derecha, y los
-     enlaces pasan a uno propio que se desliza de lado: seis enlaces no caben
-     en un teléfono, y antes empujaban la página entera a lo ancho y dejaban
-     el selector de tema fuera de la pantalla. */
-  .theme-switch { order: 1; margin-left: auto; }
-  nav.links {
-    order: 2; flex-basis: 100%; margin-left: 0; gap: 0.9rem;
-    overflow-x: auto; white-space: nowrap; scrollbar-width: none;
-  }
-  nav.links::-webkit-scrollbar { display: none; }
+  .brand-txt small { display: none; }
+  .btn-ghost { display: none; }
+  .search-wrap kbd { display: none; }
+  :root { --ancla: 170px; }
 }
 
-/* ---------------------------------------------------------------- layout */
-/* Los índices conservan su ancho y todo el espacio sobrante se lo queda la
-   columna central, que es la que lleva las tablas. */
-.cols { display: grid; grid-template-columns: 250px minmax(0,1fr) 210px; gap: 2rem; align-items: start; }
+/* ---------------------------------------------------------------- layout
+   Tres columnas de sitio de documentación. Los índices conservan su ancho y
+   todo el espacio sobrante se lo queda la columna central, que es la que
+   lleva las tablas.
+   ------------------------------------------------------------------- */
+.cols { display: grid; grid-template-columns: 264px minmax(0,1fr) 232px; gap: 3rem; align-items: start; }
 @media (max-width: 1020px) { .cols { grid-template-columns: 1fr; } .side, .toc { display: none; } }
 
-.side, .toc { position: sticky; top: 72px; max-height: calc(100vh - 90px); overflow-y: auto; font-size: 0.85rem; }
-.side h3, .toc h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-faint); margin: 1.2rem 0 0.4rem; }
-.side a, .toc a { display: block; padding: 0.16rem 0; color: var(--text-dim); }
-.side a:hover, .toc a:hover { color: var(--accent); }
-.side a.on { color: var(--accent); font-weight: 600; }
+.side, .toc {
+  position: sticky; top: var(--ancla); max-height: calc(100vh - var(--ancla));
+  overflow-y: auto; padding: 1.8rem 0 2rem; font-size: 0.875rem;
+}
+.side { padding-right: 0.5rem; }
 
-main { padding: 1.6rem 0 5rem; min-width: 0; }
+/* Barra lateral: un grupo por capítulo, plegable. El del artículo abierto
+   viene desplegado. */
+.side details { margin: 0 0 0.15rem; }
+.side summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: baseline; gap: 0.5rem;
+  padding: 0.4rem 0.6rem; border-radius: var(--radius-lg);
+  font-weight: 600; font-size: 0.8125rem; color: var(--text); line-height: 1.35;
+}
+.side summary::-webkit-details-marker { display: none; }
+.side summary::after {
+  content: ""; margin-left: auto; align-self: center; flex: none;
+  width: 6px; height: 6px; border-right: 1.5px solid var(--text-faint); border-bottom: 1.5px solid var(--text-faint);
+  transform: rotate(-45deg); transition: transform 120ms ease;
+}
+.side details[open] > summary::after { transform: rotate(45deg); }
+.side summary:hover { background: var(--bg-soft); }
+.side summary .n { flex: none; font-family: var(--mono); font-weight: 500; color: var(--text-faint); letter-spacing: normal; }
+.side .grupo { margin: 0.15rem 0 0.7rem 0.95rem; padding-left: 0.4rem; border-left: 1px solid var(--border); }
+.side h3 { font-size: 0.8125rem; font-weight: 600; color: var(--text); margin: 0 0 0.4rem; padding: 0 0.6rem; }
+.side a {
+  display: flex; gap: 0.5rem; padding: 0.3rem 0.6rem; border-radius: var(--radius-lg);
+  color: var(--text-dim); line-height: 1.35;
+}
+.side a .mono { flex: none; min-width: 1.9rem; color: var(--text-faint); font-size: 0.8rem; }
+.side a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
+.side a.on { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.side a.on .mono { color: var(--accent); }
 
-/* ---------------------------------------------------------------- artículo */
-.art-head { border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.4rem; }
-.crumb { font-size: 0.78rem; color: var(--text-faint); margin-bottom: 0.35rem; }
-.art-head h1 { margin: 0 0 0.3rem; font-size: 1.7rem; line-height: 1.2; letter-spacing: -0.02em; }
-.art-num { font-family: var(--mono); color: var(--accent); }
-.meta { font-size: 0.8rem; color: var(--text-faint); }
+/* Índice de la página: una línea vertical y, sobre ella, la sección que se
+   está leyendo marcada en el acento. */
+.toc h3 {
+  font-size: 0.75rem; font-weight: 600; color: var(--text);
+  margin: 1.4rem 0 0.5rem;
+}
+.toc h3:first-child { margin-top: 0; }
+.toc a {
+  display: block; padding: 0.22rem 0 0.22rem 0.85rem;
+  border-left: 1px solid var(--border); color: var(--text-faint); line-height: 1.4;
+  font-size: 0.8125rem;
+}
+.toc a .mono { color: inherit; font-size: 0.78rem; }
+.toc a:hover { color: var(--text); text-decoration: none; }
+.toc a.on { color: var(--accent); border-left: 2px solid var(--accent); padding-left: calc(0.85rem - 1px); font-weight: 500; }
 
-.part-head {
-  margin: 2.2rem 0 0.9rem; padding: 0.4rem 0.7rem;
-  background: var(--bg-soft); border-left: 3px solid var(--accent);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  font-size: 0.9rem; font-weight: 600;
+main { padding: 1.8rem 0 5rem; min-width: 0; }
+
+/* ---------------------------------------------------------------- artículo
+   Cabecera de página de documentación: la etiqueta del capítulo en el
+   acento, el título grande y una línea de datos debajo.
+   ------------------------------------------------------------------- */
+.art-head { padding-bottom: 1.6rem; margin-bottom: 2.2rem; border-bottom: 1px solid var(--border-soft); }
+.eyebrow, .crumb {
+  display: block; margin: 0 0 0.6rem;
+  font-size: 0.8125rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.crumb a { color: inherit; }
+.art-head h1 { margin: 0 0 0.9rem; font-size: 2.25rem; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; }
+.art-head .art-num {
+  display: block; margin-bottom: 0.35rem;
+  font-family: var(--mono); font-size: 1rem; font-weight: 500; color: var(--text-faint); letter-spacing: normal;
+}
+.meta { display: flex; flex-wrap: wrap; gap: 0.4rem; font-size: 0.8125rem; color: var(--text-dim); }
+.meta span {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.15rem 0.55rem; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--panel);
+}
+.meta span b { font-weight: 600; color: var(--text); }
+
+/* Las partes del artículo, como tarjetas de salto bajo la cabecera. */
+.partes { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.6rem; margin: 1.5rem 0 0; }
+.partes a {
+  display: block; padding: 0.7rem 0.9rem; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); color: var(--text); font-size: 0.875rem; line-height: 1.35;
+}
+.partes a b { display: block; font-size: 0.72rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+.partes a:hover { border-color: var(--text-faint); text-decoration: none; }
+/* En el teléfono las partes no se apilan —diez tarjetas empujaban el texto
+   del artículo a varias pantallas de distancia—: van en una fila que se
+   desliza de lado. */
+@media (max-width: 760px) {
+  .partes {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-right: calc(-1 * var(--gut)); padding-right: var(--gut); scrollbar-width: none;
+  }
+  .partes::-webkit-scrollbar { display: none; }
+  .partes a { flex: 0 0 72%; scroll-snap-align: start; }
 }
 
-section.sec { margin: 0 0 1.7rem; scroll-margin-top: 70px; }
-section.sec > h2 { margin: 0 0 0.4rem; font-size: 1.02rem; line-height: 1.35; }
+.part-head { margin: 3.4rem 0 1.5rem; padding-top: 1.8rem; border-top: 1px solid var(--border); scroll-margin-top: var(--ancla); }
+.art-head + .part-head { margin-top: 0; padding-top: 0; border-top: 0; }
+.part-head .eyebrow { margin-bottom: 0.3rem; }
+.part-head h2 { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.015em; }
+
+section.sec { margin: 0 0 2.4rem; scroll-margin-top: var(--ancla); }
+section.sec > h2 { margin: 0 0 0.6rem; font-size: 1.125rem; font-weight: 600; line-height: 1.45; letter-spacing: -0.01em; }
 section.sec > h2 .sid {
-  font-family: var(--mono); color: var(--accent);
-  margin-right: 0.45rem; font-weight: 600;
+  font-family: var(--mono); font-size: 0.85em; color: var(--accent);
+  margin-right: 0.55rem; font-weight: 600;
+  padding: 0.05rem 0.4rem; border-radius: var(--radius); background: var(--accent-soft);
 }
 .anchor { color: var(--text-faint); opacity: 0; font-weight: 400; margin-left: 0.35rem; }
 section.sec:hover .anchor { opacity: 1; }
 .sec p { margin: 0.4rem 0; }
 
 
-ul.subs { list-style: none; margin: 0.5rem 0 0; padding: 0 0 0 1rem; border-left: 1px solid var(--border-soft); }
-ul.subs ul.subs { margin-top: 0.35rem; }
-li.sub { margin: 0.5rem 0; }
-li.sub > .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); margin-right: 0.35rem; }
+ul.subs { list-style: none; margin: 0.6rem 0 0; padding: 0 0 0 1.1rem; border-left: 1px solid var(--border); }
+ul.subs ul.subs { margin-top: 0.4rem; }
+li.sub { margin: 0.6rem 0; scroll-margin-top: var(--ancla); }
+li.sub > .lbl { font-family: var(--mono); font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-right: 0.35rem; }
 li.sub > .st { font-weight: 600; }
 
+/* Notas y excepciones, como los avisos de un sitio de documentación: caja
+   redondeada con su icono a la izquierda. La nota va en gris neutro; la
+   excepción en ámbar, porque cambia lo que la regla exige y no conviene que
+   pase de largo. El icono es una máscara pintada con currentColor, así que
+   sigue al tema sin una imagen por cada uno. */
 .nota, .exc {
-  margin: 0.6rem 0; padding: 0.5rem 0.75rem;
-  border-radius: var(--radius); font-size: 0.9rem;
-  background: var(--bg-soft); border-left: 3px solid var(--border);
+  position: relative;
+  margin: 0.9rem 0; padding: 0.8rem 1rem 0.8rem 2.7rem;
+  border-radius: var(--radius-xl); font-size: 0.9375rem; line-height: 1.6;
+  background: var(--bg-soft); border: 1px solid var(--border);
 }
-.exc { background: var(--warn-bg); border-left-color: var(--warn-br); }
-.nota .lb, .exc .lb { font-weight: 650; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); margin-right: 0.35rem; }
+.nota::before, .exc::before {
+  content: ""; position: absolute; left: 0.95rem; top: 1.02rem;
+  width: 16px; height: 16px; background: currentColor;
+  -webkit-mask: var(--icono) center / contain no-repeat; mask: var(--icono) center / contain no-repeat;
+}
+.nota { color: var(--text); --icono: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5M12 7.5v.5'/%3E%3C/svg%3E"); }
+.nota::before { color: var(--text-dim); }
+.exc {
+  background: var(--warn-bg); border-color: var(--warn-br);
+  --icono: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.3 3.9 2.4 17.6A2 2 0 0 0 4.1 20.6h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z'/%3E%3Cpath d='M12 9.5v4M12 17v.5'/%3E%3C/svg%3E");
+}
+.exc::before { color: var(--warn-ink); }
+.nota .lb, .exc .lb {
+  font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-dim); margin-right: 0.4rem;
+}
+.exc .lb { color: var(--warn-ink); }
 
 /* Prosa del inciso que en el documento va DESPUÉS de una nota o excepción.
    Es cuerpo, no anotación: se pinta como el resto del texto y sin caja. Lo
@@ -324,17 +486,17 @@ li.anot-parr { list-style: none; margin-left: -1rem; }
 
 /* referencias cruzadas dentro del texto */
 a.xref {
-  font-family: var(--mono); font-size: 0.92em;
-  background: var(--accent-soft); padding: 0 0.22em; border-radius: 3px;
+  font-family: var(--mono); font-size: 0.9em; font-weight: 500;
+  background: var(--accent-soft); padding: 0.05em 0.3em; border-radius: var(--radius);
   white-space: nowrap;
 }
+a.xref:hover { text-decoration: none; background: color-mix(in srgb, var(--accent) 18%, var(--panel)); }
 
 /* ---------------------------------------------------------------- tablas */
-figure.tabla { margin: 2rem 0; scroll-margin-top: 70px; }
+figure.tabla { margin: 2rem 0; scroll-margin-top: var(--ancla); }
 figure.tabla figcaption {
-  font-size: 0.9rem; font-weight: 600; line-height: 1.4;
-  margin-bottom: 0.5rem; padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--border);
+  font-size: 0.9375rem; font-weight: 600; line-height: 1.45;
+  margin-bottom: 0.75rem;
 }
 figure.tabla .tid {
   font-family: var(--mono); color: var(--accent); margin-right: 0.4rem;
@@ -351,7 +513,7 @@ figure.tabla:hover .anchor { opacity: 1; }
 .tabla-scroll {
   overflow-x: auto;
   border: 1px solid var(--rejilla);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   background: var(--panel);
   -webkit-overflow-scrolling: touch;
 }
@@ -392,13 +554,13 @@ p.tabla-intro {
   font-size: 0.82rem; color: var(--text-dim);
   background: var(--bg-soft);
   border: 1px solid var(--rejilla);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
 }
 .tabla-scroll tbody tr:hover { background: var(--accent-soft); }
 
 .tabla-aviso {
   background: var(--warn-bg); border: 1px solid var(--warn-br);
-  border-radius: var(--radius); padding: 0.5rem 0.7rem;
+  border-radius: var(--radius-xl); padding: 0.5rem 0.7rem;
   font-size: 0.82rem; color: var(--text-dim); margin: 0 0 0.5rem;
 }
 .tabla-notas { font-size: 0.82rem; color: var(--text-dim); margin-top: 0.5rem; }
@@ -409,80 +571,116 @@ p.tabla-intro {
    enlace profundo anterior al arreglo de anidamiento apunta a un id retirado. */
 .aviso-ancla {
   background: var(--warn-bg); border: 1px solid var(--warn-br);
-  border-radius: var(--radius); padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-xl); padding: 0.55rem 0.75rem;
   font-size: 0.84rem; color: var(--text-dim); margin: 0.9rem 0;
 }
 .aviso-ancla b { font-family: var(--mono); color: var(--text); }
 
 /* backlinks */
-.backlinks { margin-top: 0.7rem; font-size: 0.82rem; }
-.backlinks summary { cursor: pointer; color: var(--text-faint); }
-.backlinks summary:hover { color: var(--accent); }
-.backlinks ul { margin: 0.45rem 0 0; padding-left: 1.1rem; }
-.backlinks li { margin: 0.15rem 0; }
+.backlinks { margin-top: 0.8rem; font-size: 0.8125rem; }
+.backlinks summary {
+  display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
+  color: var(--text-dim); padding: 0.2rem 0.6rem; border: 1px solid var(--border); border-radius: var(--radius);
+}
+.backlinks summary::-webkit-details-marker { display: none; }
+.backlinks summary::before {
+  content: ""; width: 5px; height: 5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg); transition: transform 120ms ease;
+}
+.backlinks[open] summary::before { transform: rotate(45deg); }
+.backlinks summary:hover { color: var(--text); border-color: var(--text-faint); }
+.backlinks ul { margin: 0.6rem 0 0; padding: 0.6rem 0.9rem 0.6rem 1.8rem; border-left: 1px solid var(--border); }
+.backlinks li { margin: 0.2rem 0; }
 
-/* ---------------------------------------------------------------- inicio */
-.hero { padding: 2.2rem 0 1.4rem; border-bottom: 1px solid var(--border); margin-bottom: 1.6rem; }
-.hero h1 { margin: 0 0 0.5rem; font-size: 2rem; letter-spacing: -0.025em; }
-.hero p { margin: 0; color: var(--text-dim); max-width: 62ch; }
-.stats { display: flex; flex-wrap: wrap; gap: 1.6rem; margin-top: 1.3rem; }
-.stat b { display: block; font-size: 1.35rem; font-family: var(--mono); color: var(--accent); }
-.stat span { font-size: 0.76rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+/* ---------------------------------------------------------- cabecera de página
+   Las páginas de índice —Tablas, Figuras, Glosario, Apéndices— abren con el
+   título grande y su descripción, y debajo las cifras en tarjetas. La
+   portada tiene la suya propia, con la banda de color.
+   ------------------------------------------------------------------- */
+.hero { padding: 3rem 0 0.5rem; margin-bottom: 1.5rem; }
+.hero h1 { margin: 0 0 0.8rem; font-size: 2.5rem; font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; }
+.hero > p { margin: 0; font-size: 1.125rem; line-height: 1.6; color: var(--text-dim); max-width: 64ch; text-wrap: pretty; }
+.hero > p.migaja { font-size: 0.8125rem; }
+.hero > p.aparte { font-size: 0.875rem; color: var(--text-faint); margin-top: 1rem; }
+.aparte { font-size: 0.875rem; color: var(--text-faint); max-width: 80ch; margin: 1rem 0 0; }
 
 .tabular { font-variant-numeric: tabular-nums; }
 
-/* Franja de cifras: una sola fila con reglas verticales, como el renglón de
-   cabecera de una hoja de datos, en vez de bloques sueltos con aire entre
-   ellos. auto-fit + minmax reparte el ancho entre los que quepa: 5 en la
-   portada, 3 en /revision, sin tocar la regla. */
+/* Cifras: una tarjeta por dato, con el número grande en Inter y su rótulo
+   en versalitas debajo. auto-fit + minmax reparte el ancho entre las que
+   quepan, sin tocar la regla en cada página. */
 .cifras {
-  margin-top: 1.4rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  display: grid;
+  margin-top: 1.8rem;
+  display: grid; gap: 0.75rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-.cifra { padding: 0.8rem 1rem; border-left: 1px solid var(--border-soft); }
-.cifra:first-child { border-left: none; }
+.cifra { padding: 1rem 1.15rem; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--panel); }
 .cifra b {
-  display: block; font-family: var(--mono); font-size: 1.4rem; font-weight: 600;
-  color: var(--text); line-height: 1.1;
+  display: block; font-family: var(--sans); font-size: 1.75rem; font-weight: 600;
+  color: var(--text); line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
 }
 .cifra span {
-  display: block; margin-top: 0.25rem; font-size: 0.68rem; color: var(--text-faint);
+  display: block; margin-top: 0.4rem; font-size: 0.7rem; font-weight: 500; color: var(--text-faint);
   text-transform: uppercase; letter-spacing: 0.06em;
 }
-@media (max-width: 720px) {
-  .cifras { grid-template-columns: repeat(2, 1fr); }
-  /* nth-child(odd), no nth-child(3): con cualquier cantidad de fichas, son
-     las impares las que arrancan fila en un grid de 2 columnas. Fijo en la
-     3 se quedaba corto en la portada -la 5ª ficha conservaba el borde. */
-  .cifra:nth-child(odd) { border-left: none; }
-}
+@media (max-width: 720px) { .cifras { grid-template-columns: repeat(2, 1fr); } }
 
 .chap { margin: 1.8rem 0; }
-.chap h2 { font-size: 1rem; margin: 0 0 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border-soft); }
-.chap h2 span { font-family: var(--mono); color: var(--accent); margin-right: 0.5rem; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 0.4rem; }
-.card { display: block; padding: 0.5rem 0.65rem; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); background: var(--panel); color: var(--text); }
-.card:hover { border-color: var(--accent); text-decoration: none; }
-.card b { font-family: var(--mono); color: var(--accent); font-size: 0.84rem; }
-.card span { display: block; font-size: 0.86rem; line-height: 1.35; }
-.card em { font-style: normal; font-size: 0.72rem; color: var(--text-faint); }
+
+/* Tarjetas: filete de 1px, esquinas de 16px y nada de sombra hasta que se
+   pasa el cursor. El identificador va en la monoespaciada y el acento; el
+   título, en el peso del texto. */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
+.card {
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding: 1rem 1.15rem; border: 1px solid var(--border); border-radius: var(--radius-xl);
+  background: var(--panel); color: var(--text);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+.card:hover { border-color: var(--text-faint); box-shadow: var(--shadow); text-decoration: none; }
+.card b { font-family: var(--mono); color: var(--accent); font-size: 0.8125rem; font-weight: 600; }
+.card span { display: block; font-size: 0.9375rem; font-weight: 500; line-height: 1.4; }
+.card em { font-style: normal; font-size: 0.75rem; color: var(--text-faint); margin-top: auto; padding-top: 0.35rem; }
 
 /* ---------------------------------------------------------------- glosario */
-.defs { display: grid; gap: 0.8rem; }
-.def { padding: 0.7rem 0.9rem; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); background: var(--panel); scroll-margin-top: 70px; }
-.def dt { font-weight: 650; margin-bottom: 0.2rem; }
-.def dd { margin: 0; font-size: 0.92rem; color: var(--text-dim); }
-.def .tag { font-size: 0.68rem; font-family: var(--mono); color: var(--text-faint); border: 1px solid var(--border); border-radius: 3px; padding: 0 0.25rem; margin-left: 0.4rem; }
+.defs { display: grid; gap: 0.75rem; }
+.def {
+  padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: var(--radius-xl);
+  background: var(--panel); scroll-margin-top: var(--ancla);
+}
+.def:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.def dt { font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+.def dd { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: var(--text-dim); }
+.def .tag { font-size: 0.7rem; font-weight: 500; font-family: var(--mono); color: var(--text-faint); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.05rem 0.3rem; margin-left: 0.5rem; vertical-align: 1px; }
 
-footer.bot { border-top: 1px solid var(--border); padding: 1.6rem 0 2.6rem; font-size: 0.8rem; color: var(--text-faint); }
-footer.bot a { color: var(--text-dim); }
+/* ---------------------------------------------------------------- pie */
+footer.bot {
+  margin-top: 3rem; border-top: 1px solid var(--border);
+  padding: 3rem 0 2rem; font-size: 0.875rem; color: var(--text-dim);
+}
+.pie { display: grid; grid-template-columns: minmax(0, 2fr) 1fr 1fr; gap: 3rem; }
+.pie-marca p { margin: 1rem 0 0; max-width: 52ch; line-height: 1.6; }
+.pie-col h4 { margin: 0.3rem 0 0.8rem; font-size: 0.8125rem; font-weight: 600; color: var(--text); }
+.pie-col a { display: block; padding: 0.2rem 0; color: var(--text-dim); }
+.pie-col a:hover { color: var(--text); text-decoration: none; }
+.pie-legal {
+  margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-soft);
+  /* Dentro de .wrap: el filete mide lo que mide el texto, no el margen. */
+  font-size: 0.75rem; color: var(--text-faint);
+}
+@media (max-width: 760px) { .pie { grid-template-columns: 1fr 1fr; gap: 2rem; } .pie-marca { grid-column: 1 / -1; } }
 
-.pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border); font-size: 0.86rem; }
-.pager a { max-width: 46%; }
-.pager .nx { text-align: right; margin-left: auto; }
+/* Anterior / siguiente, en dos tarjetas al pie del artículo. */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 3.5rem; }
+.pager a {
+  display: block; padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: var(--radius-xl);
+  color: var(--text); font-size: 0.9375rem; font-weight: 500; line-height: 1.4;
+}
+.pager a:hover { border-color: var(--text-faint); text-decoration: none; }
+.pager a small { display: block; margin-bottom: 0.25rem; font-size: 0.75rem; font-weight: 500; color: var(--text-faint); }
+.pager a .mono { color: var(--accent); font-size: 0.875rem; margin-right: 0.35rem; }
+.pager .nx { grid-column: 2; text-align: right; }
+@media (max-width: 620px) { .pager { grid-template-columns: 1fr; } .pager .nx { grid-column: 1; } }
 
 /* ------------------------------------------------------ lista de revisión */
 .rev-nota { color: var(--text-dim); font-size: 0.88rem; margin: -0.2rem 0 0.9rem; }
@@ -614,11 +812,11 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
   cursor: help;
 }
 .tabla-info {
-  margin: 0 0 0.5rem; padding: 0.45rem 0.7rem;
-  font-size: 0.82rem; color: var(--text-dim);
+  margin: 0 0 0.9rem; padding: 0.75rem 1rem;
+  font-size: 0.875rem; color: var(--text-dim);
   background: var(--bg-soft);
-  border-left: 3px solid var(--border);
-  border-radius: 0 var(--radius) var(--radius) 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
 }
 
 /* --------------------------------------------------------------------------
@@ -626,15 +824,16 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
    Sustituyó a /revision, que era la lista de trabajo de la revisión de tablas
    y quedó vacía al terminarse.
    -------------------------------------------------------------------------- */
-.obs { max-width: 46rem; }
-.obs h2 { margin: 2rem 0 0.6rem; font-size: 1.05rem; }
-.obs-intro { color: var(--text-dim); }
+.obs { max-width: 46rem; padding-top: 3rem; }
+.obs > h1 { margin: 0 0 0.8rem; font-size: 2.5rem; font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; }
+.obs h2 { margin: 2.4rem 0 0.7rem; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+.obs-intro { color: var(--text-dim); font-size: 1.125rem; line-height: 1.6; margin-top: 0; }
 .obs-tipos { padding-left: 1.1rem; }
 .obs-tipos li { margin: 0.4rem 0; }
 
 .obs-tip {
   background: var(--accent-soft); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 0.7rem 0.9rem; margin: 1rem 0;
+  border-radius: var(--radius-xl); padding: 0.7rem 0.9rem; margin: 1rem 0;
   font-size: 0.93rem;
 }
 .obs-chip {
@@ -679,7 +878,7 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
 
 .obs-cerrado {
   background: var(--warn-bg); border: 1px solid var(--warn-br);
-  border-radius: var(--radius); padding: 0.8rem 1rem; margin: 0.8rem 0 1.5rem;
+  border-radius: var(--radius-xl); padding: 0.8rem 1rem; margin: 0.8rem 0 1.5rem;
 }
 .obs-cerrado p { margin: 0.3rem 0; }
 
@@ -705,40 +904,48 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
 /* Flex y no rejilla: con columnas de ancho fijo, dos elementos se quedaban en
    13rem y truncaban su texto con media fila vacía al lado. Así crecen para
    llenar el renglón cuando son pocos y siguen partiéndose cuando son diez. */
+/* Atajos a cada capítulo, como una fila de tarjetas chicas. */
 .cap-nav {
-  display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 0.5rem;
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2rem 0 0.5rem;
 }
 .cap-nav a {
   flex: 1 1 13rem;
   display: grid; grid-template-columns: auto 1fr auto; align-items: baseline;
-  gap: 0.45rem; text-decoration: none; color: inherit;
+  gap: 0.5rem; text-decoration: none; color: inherit;
   background: var(--panel); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-lg); padding: 0.6rem 0.85rem;
 }
-.cap-nav a:hover { border-color: var(--accent); background: var(--accent-soft); }
-.cap-nav b { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+.cap-nav a:hover { border-color: var(--text-faint); }
+.cap-nav b { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
 .cap-nav span {
-  font-size: 0.86rem; color: var(--text-dim);
+  font-size: 0.875rem; color: var(--text);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.cap-nav em { font-style: normal; font-size: 0.8rem; color: var(--text-faint); }
+.cap-nav em { font-style: normal; font-size: 0.8125rem; color: var(--text-faint); font-variant-numeric: tabular-nums; }
 
-.migaja { font-size: 0.85rem; color: var(--text-faint); margin: 0 0 0.3rem; }
-.migaja a { color: var(--text-dim); }
+.migaja {
+  font-size: 0.8125rem; font-weight: 600; color: var(--accent); margin: 0 0 0.6rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.migaja a { color: inherit; }
 
 /* --------------------------------------------------------------------------
    Encabezado de sección con su conteo a la derecha. Lo comparten la portada
    (capítulos y "más citados") y el índice de tablas, así que vive aquí y no
    con alcance de componente, que fue como nació.
    -------------------------------------------------------------------------- */
-.sec { margin: 2rem 0; }
+.sec { margin: 3.5rem 0; }
 .sec-head {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
-  padding-bottom: 0.35rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--border-soft);
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+  padding-bottom: 0.8rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--border-soft);
 }
-.sec-head h2 { font-size: 1rem; margin: 0; }
-.sec-head h2 span.n { font-family: var(--mono); color: var(--accent); margin-right: 0.5rem; }
-.sec-head .desc { font-size: 0.78rem; color: var(--text-faint); white-space: nowrap; }
+.sec-head h2 { font-size: 1.375rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.015em; margin: 0; }
+.sec-head h2 span.n {
+  display: block; margin-bottom: 0.3rem;
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.sec-head .desc { font-size: 0.8125rem; font-style: normal; color: var(--text-faint); white-space: nowrap; }
 
 /* Cuando el bloque de cifras cierra el hero, su borde inferior y el del hero
    caen uno sobre otro y se ve una línea doble. Le pasa a cualquier página que
@@ -750,8 +957,8 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
    así que va a todo lo ancho y no con la medida corta del hero. */
 .cita-norma {
   margin: 0 0 1.6rem; padding: 0.8rem 1rem;
-  background: var(--bg-soft); border-left: 3px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
 }
 .cita-norma .lb {
   display: block; font-weight: 650; font-size: 0.78rem; text-transform: uppercase;
@@ -769,13 +976,13 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
 
 .obs-error {
   background: var(--warn-bg); border: 1px solid var(--warn-br);
-  border-radius: var(--radius); padding: 0.6rem 0.8rem; margin: 0;
+  border-radius: var(--radius-xl); padding: 0.6rem 0.8rem; margin: 0;
   font-size: 0.9rem;
 }
 
 .obs-exito {
   background: var(--accent-soft); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 0.9rem 1rem; margin: 0.8rem 0 1.5rem;
+  border-radius: var(--radius-xl); padding: 0.9rem 1rem; margin: 0.8rem 0 1.5rem;
 }
 .obs-exito p { margin: 0.35rem 0; }
 .obs-exito button {

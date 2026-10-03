@@ -70,15 +70,27 @@ const figs = (figurasPorArticulo.get(a.num) || []).flatMap((f) =>
 >
   <div class="wrap cols">
     <!-- ------------------------------------------------ navegación lateral -->
-    <aside class="side">
-      <h3>Capítulo {a.chapter}</h3>
-      {articles
-        .filter((x) => x.chapter === a.chapter)
-        .map((x) => (
-          <a href={hrefArticulo(x.num)} class={x.num === a.num ? 'on' : ''}>
-            <span class="mono">{x.num}</span> {x.title}
-          </a>
-        ))}
+    <aside class="side" aria-label="Artículos de la norma">
+      {/* La norma entera, un grupo por capítulo. Solo el del artículo abierto
+          viene desplegado: los otros nueve están a un clic sin empujar la
+          lista hacia abajo. */}
+      {chapters.map((c) => {
+        const arts = articles.filter((x) => x.chapter === c.num);
+        if (!arts.length) return null;
+        return (
+          <details open={c.num === a.chapter}>
+            <summary><span class="n">{c.num}</span>{c.title}</summary>
+            <div class="grupo">
+              {arts.map((x) => (
+                <a href={hrefArticulo(x.num)} class={x.num === a.num ? 'on' : ''}
+                   aria-current={x.num === a.num ? 'page' : undefined}>
+                  <span class="mono">{x.num}</span> {x.title}
+                </a>
+              ))}
+            </div>
+          </details>
+        );
+      })}
     </aside>
 
     <!-- ------------------------------------------------------------ cuerpo -->
@@ -87,17 +99,32 @@ const figs = (figurasPorArticulo.get(a.num) || []).flatMap((f) =>
         <div class="crumb">
           <a href={`${base}/#cap${a.chapter}`}>Capítulo {a.chapter} · {chap?.title}</a>
         </div>
-        <h1><span class="art-num">Artículo {a.num}</span> — {a.title}</h1>
+        <h1><span class="art-num">Artículo {a.num}</span>{a.title}</h1>
         <div class="meta">
-          {a.sections.length} secciones · {a.parts.length} partes · página {a.page} del PDF
+          <span><b>{a.sections.length}</b> secciones</span>
+          {a.parts.length > 0 && <span><b>{a.parts.length}</b> partes</span>}
+          {tabs.length > 0 && <span><b>{tabs.length}</b> {tabs.length === 1 ? 'tabla' : 'tablas'}</span>}
+          {figs.length > 0 && <span><b>{figs.length}</b> {figs.length === 1 ? 'figura' : 'figuras'}</span>}
+          <span>Página <b>{a.page}</b> del PDF</span>
         </div>
+
+        {/* Con dos partes o más, un salto directo a cada una: el 250 tiene
+            diez y la Parte J queda a metros de la cabecera. */}
+        {a.parts.length > 1 && (
+          <nav class="partes" aria-label="Partes del artículo">
+            {a.parts.map((pt) => (
+              <a href={`#parte-${pt.letter}`}><b>Parte {pt.letter}</b>{pt.title}</a>
+            ))}
+          </nav>
+        )}
       </div>
 
       {groups.map((g) => (
         <>
           {g.part && (
             <div class="part-head" id={`parte-${g.part}`}>
-              Parte {g.part} — {partTitle(g.part)}
+              <span class="eyebrow">Parte {g.part}</span>
+              <h2>{partTitle(g.part)}</h2>
             </div>
           )}
           {g.secs.map((s) => (
@@ -188,17 +215,17 @@ const figs = (figurasPorArticulo.get(a.num) || []).flatMap((f) =>
 
       <nav class="pager">
         {prev && (
-          <a href={hrefArticulo(prev.num)}>← <b class="mono">{prev.num}</b> {prev.title}</a>
+          <a href={hrefArticulo(prev.num)}><small>← Anterior</small><b class="mono">{prev.num}</b>{prev.title}</a>
         )}
         {next && (
-          <a class="nx" href={hrefArticulo(next.num)}><b class="mono">{next.num}</b> {next.title} →</a>
+          <a class="nx" href={hrefArticulo(next.num)}><small>Siguiente →</small><b class="mono">{next.num}</b>{next.title}</a>
         )}
       </nav>
     </main>
 
     <!-- ------------------------------------------- índice de este artículo -->
     <aside class="toc">
-      <h3>En este artículo</h3>
+      <h3>En esta página</h3>
       {a.sections.map((s) => (
         <a href={`#${s.id}`}><span class="mono">{s.id}</span> {s.title}</a>
       ))}
