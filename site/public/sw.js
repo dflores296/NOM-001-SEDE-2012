@@ -47,6 +47,10 @@ self.addEventListener('fetch', (e) => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
   if (url.origin !== location.origin) return;
+  // El video de fondo de la portada no se guarda: el navegador lo pide por
+  // partes (Range) y servir esas partes desde caché lo rompe en Safari. Sin
+  // red, la portada muestra su imagen fija.
+  if (url.pathname.includes('/video/')) return;
 
   e.respondWith(
     caches.match(request).then((hit) => {
