@@ -6,8 +6,30 @@ import { defSlug } from '../lib/slug.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const nSec = articles.reduce((n, a) => n + a.sections.length, 0);
-const top = grafo.mas_citados.filter((r) => !r.id.startsWith('cap:')).slice(0, 8);
-const maxCitas = top.length ? top[0].citas : 1;
+// Las secciones más citadas y, para cada una, de qué capítulo vienen sus
+// citas. El grafo las da mezcladas con artículos completos, capítulos y
+// apéndices, que no se comparan con una sección: aquí solo van secciones.
+// La barra que había antes repetía el número de al lado; la huella por
+// capítulo dice algo que el número no dice, quién depende de esa sección.
+const ES_SECCION = /^\d{3}-\d+$/;
+const CAPS = chapters.map((c) => c.num);
+const capDe = (id) => {
+  const m = /^(\d{3})/.exec(id);
+  if (m) return byNum.get(Number(m[1]))?.chapter ?? null;
+  return id === 'capitulo-10' ? 10 : null;
+};
+const nivel = (n) => (n === 0 ? 0 : n <= 2 ? 1 : n <= 5 ? 2 : n <= 10 ? 3 : 4);
+const masCitadas = grafo.mas_citados
+  .filter((r) => ES_SECCION.test(r.id))
+  .slice(0, 8)
+  .map((r) => {
+    const porCap = Object.fromEntries(CAPS.map((c) => [c, 0]));
+    for (const de of grafo.incoming[r.id] || []) {
+      const c = capDe(de);
+      if (c != null && c in porCap) porCap[c]++;
+    }
+    return { ...r, porCap };
+  });
 // Las tablas del Capítulo 10 no cuelgan de ningún artículo y se publican
 // juntas en /tablas.
 const cap10 = tablas.filter((t) => t.article == null && !t.apendice);
@@ -132,25 +154,51 @@ const EXPLORA = [
       </div>
     </div>
 
-    <!-- ------------------------------------------------------------ ranking -->
+    <!-- ------------------------------------------------------------ ranking
+         Huella por capítulo: una casilla por capítulo con cuántas citas
+         llegan de él. Cada casilla lleva su número; el color solo lo
+         refuerza. -->
     <div class="sec">
       <div class="sec-head">
-        <h2><span class="n">Más citados</span>Los requisitos a los que más remite la norma</h2>
-        <span class="desc">Calculado sobre el grafo de referencias</span>
+        <h2><span class="n">Más citados</span>Las secciones a las que más remite la norma, y desde dónde</h2>
+        <span class="desc">Citas por capítulo</span>
       </div>
-      <ol class="rank">
-        {top.map((r, i) => (
+      <ol class="huella">
+        <li class="h-cab" aria-hidden="true">
+          <span></span>
+          <span class="h-cab-t">Capítulo que la cita →</span>
+          <span class="h-fila">
+            {chapters.map((c) => <span class="h-num" title={`Capítulo ${c.num} · ${c.title}`}>{c.num}</span>)}
+          </span>
+          <span class="h-cab-t h-der">Total</span>
+        </li>
+        {masCitadas.map((r) => (
           <li>
-            <a href={`${base}/art/${r.articulo}#${r.id.replace('art:', '')}`}>
-              <span class="rank-i tabular">{i + 1}</span>
-              <span class="rank-id">{r.id.startsWith('art:') ? `Artículo ${r.id.slice(4)}` : r.id}</span>
-              <span class="rank-t">{r.titulo}</span>
-              <span class="rank-bar"><i style={`width:${Math.round((r.citas / maxCitas) * 100)}%`}></i></span>
-              <span class="rank-n tabular">{r.citas}</span>
+            <a href={`${base}/art/${r.articulo}#${r.id}`}
+               aria-label={`${r.id}, ${r.titulo}: ${r.citas} citas`}>
+              <span class="h-id">{r.id}</span>
+              <span class="h-t">{r.titulo}</span>
+              <span class="h-fila">
+                {chapters.map((c) => {
+                  const n = r.porCap[c.num];
+                  return (
+                    <span class={`h-c n${nivel(n)}`} title={`Capítulo ${c.num} · ${c.title}: ${n} ${n === 1 ? 'cita' : 'citas'}`}>
+                      {n > 0 ? n : ''}
+                    </span>
+                  );
+                })}
+              </span>
+              <span class="h-tot">{r.citas}</span>
             </a>
           </li>
         ))}
       </ol>
+      <div class="h-ley" aria-hidden="true">
+        <span>Citas desde ese capítulo:</span>
+        {[[0, '0'], [1, '1–2'], [2, '3–5'], [3, '6–10'], [4, '11 o más']].map(([n, t]) => (
+          <><span class={`h-c n${n}`}></span><span class="h-ley-t">{t}</span></>
+        ))}
+      </div>
     </div>
 
     <!-- ------------------------------------------------------------- índice -->
@@ -327,26 +375,45 @@ const EXPLORA = [
   .exp-d { font-size: 0.9375rem; line-height: 1.55; color: var(--text-dim); }
 
   /* --------------------------------------------------------------- ranking
-     Los "más citados" sí tienen un orden real -numérico, por peso de citas-
-     así que van en una lista ordenada con su magnitud, no en tarjetas. */
-  ol.rank {
+     Huella por capítulo. Escala de un solo tono, del lavado al acento lleno,
+     en cinco escalones; el número va dentro de cada casilla. */
+  ol.huella {
     list-style: none; margin: 0; padding: 0.35rem;
     border: 1px solid var(--card-border); border-radius: var(--radius-xl); background: var(--panel);
   }
-  ol.rank li + li { border-top: 1px solid var(--border-soft); }
-  ol.rank a {
-    display: grid;
-    grid-template-columns: 1.6rem 7rem 1fr 7rem 2.6rem;
+  ol.huella > li + li { border-top: 1px solid var(--border-soft); }
+  ol.huella a, .h-cab {
+    display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) auto 2.5rem;
     align-items: center; gap: 0.9rem;
-    padding: 0.7rem 0.8rem; border-radius: var(--radius-lg); color: var(--text);
+    padding: 0.55rem 0.8rem; border-radius: var(--radius-lg); color: var(--text);
   }
-  ol.rank a:hover { background: var(--bg-soft); text-decoration: none; }
-  .rank-i { font-family: var(--mono); color: var(--text-faint); font-size: 0.8rem; }
-  .rank-id { font-family: var(--mono); color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: normal; }
-  .rank-t { font-size: 0.9375rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .rank-bar { height: 6px; background: var(--bg-soft); border-radius: 3px; overflow: hidden; }
-  .rank-bar i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
-  .rank-n { font-family: var(--mono); font-size: 0.82rem; color: var(--text-dim); text-align: right; }
+  .h-cab { padding-top: 0.35rem; padding-bottom: 0.35rem; }
+  ol.huella a:hover { background: var(--bg-soft); text-decoration: none; }
+  ol.huella a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .h-id { font-family: var(--mono); color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: normal; }
+  .h-t { font-size: 0.9375rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .h-cab-t { font-size: 0.6875rem; font-weight: 500; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .h-der { text-align: right; }
+  .h-fila { display: grid; grid-template-columns: repeat(10, 1.85rem); gap: 3px; }
+  .h-num { font-size: 0.6875rem; font-weight: 500; color: var(--text-faint); text-align: center; }
+  .h-c {
+    height: 1.5rem; border-radius: var(--radius); display: grid; place-items: center;
+    font-size: 0.6875rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text);
+    letter-spacing: normal;
+  }
+  .n0 { box-shadow: inset 0 0 0 1px var(--border-soft); }
+  .n1 { background: color-mix(in oklab, var(--accent) 14%, var(--panel)); }
+  .n2 { background: color-mix(in oklab, var(--accent) 32%, var(--panel)); }
+  .n3 { background: color-mix(in oklab, var(--accent) 58%, var(--panel)); }
+  .n4 { background: var(--accent); color: var(--on-accent); }
+  .h-tot { text-align: right; font-size: 0.9375rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .h-ley {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.5rem;
+    margin-top: 0.8rem; font-size: 0.8125rem; color: var(--text-faint);
+  }
+  .h-ley > span:first-child { margin-right: 0.3rem; }
+  .h-ley .h-c { width: 1.25rem; height: 0.9rem; }
+  .h-ley-t { margin-right: 0.35rem; }
 
   /* ------------------------------------------------------------- capítulos
      Un capítulo por tarjeta, con sus artículos listados adentro. */
@@ -375,19 +442,19 @@ const EXPLORA = [
     .portada { padding: 3rem var(--gut) 7rem; }
     .sec-head .desc { display: none; }
 
-    /* El título es lo que se busca leer aquí; en desktop se trunca porque
-       la barra y el número lo compensan, pero en una columna angosta
-       truncarlo también lo deja ilegible. Baja a una segunda línea en vez
-       de cortarse. */
-    ol.rank a {
-      grid-template-columns: 1.3rem 1fr auto;
-      grid-template-areas: "i id n" "i t t";
-      row-gap: 0.2rem;
+    /* En el teléfono cada fila son dos renglones: arriba el identificador,
+       el título recortado y el total; abajo la huella, a todo lo ancho. */
+    ol.huella a {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas: "id t tot" "f f f";
+      column-gap: 0.6rem; row-gap: 0.4rem; padding: 0.6rem 0.6rem;
     }
-    .rank-i { grid-area: i; }
-    .rank-id { grid-area: id; }
-    .rank-n { grid-area: n; }
-    .rank-t { grid-area: t; white-space: normal; }
-    .rank-bar { display: none; }
+    .h-id { grid-area: id; }
+    .h-tot { grid-area: tot; }
+    .h-t { grid-area: t; font-size: 0.875rem; }
+    ol.huella a .h-fila { grid-area: f; }
+    .h-fila { grid-template-columns: repeat(10, minmax(0, 1fr)); }
+    .h-cab { grid-template-columns: 1fr; }
+    .h-cab > span:not(.h-fila) { display: none; }
   }
 </style>
