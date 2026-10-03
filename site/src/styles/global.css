@@ -230,6 +230,11 @@ nav.tabs a[aria-current="page"] { color: var(--activo); border-bottom-color: var
 
 .acciones { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; }
 
+/* Lo que solo tiene sentido con pantalla grande y mouse, como el mapa 3D. */
+@media (max-width: 1023px), (pointer: coarse) {
+  .solo-escritorio { display: none !important; }
+}
+
 /* El buscador de la cabecera. En la portada nace plegado (.oculto) y se
    despliega cuando el buscador grande de la banda sale de la vista. */
 .search-top {

@@ -10,6 +10,11 @@ export default defineConfig({
   trailingSlash: 'ignore',
   build: { format: 'directory' },
 
+  // La librería del mapa 3D (/mapa) pesa ~1.4 MB sin comprimir. Va en su
+  // propio archivo y solo la descarga /mapa en una computadora, así que el
+  // aviso de Vite por tamaño de archivo no aplica.
+  vite: { build: { chunkSizeWarningLimit: 1600 } },
+
   // El Artículo 100 son las 185 definiciones y se consultan en el glosario.
   // Su página de artículo no existe, pero la ruta sí tiene que seguir
   // llevando a alguna parte: la cita el propio PDF y la usan los enlaces
