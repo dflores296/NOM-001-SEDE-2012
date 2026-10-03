@@ -267,9 +267,9 @@ const EXPLORA = [
   .portada-fondo {
     position: absolute; inset: 0; z-index: 0; pointer-events: none;
     background: var(--poster) center / cover no-repeat;
-    mix-blend-mode: screen; opacity: 0.6;
-    -webkit-mask-image: radial-gradient(ellipse 34% 58% at 50% 42%, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.35) 55%, #000 100%);
-            mask-image: radial-gradient(ellipse 34% 58% at 50% 42%, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.35) 55%, #000 100%);
+    mix-blend-mode: screen; opacity: 0.45;
+    -webkit-mask-image: radial-gradient(ellipse 34% 58% at 50% 42%, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 55%, #000 100%);
+            mask-image: radial-gradient(ellipse 34% 58% at 50% 42%, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 55%, #000 100%);
   }
   /* :global porque el video lo crea el script y no lleva la marca de
      alcance de Astro: sin esto se quedaba en su tamaño natural, centrado, y

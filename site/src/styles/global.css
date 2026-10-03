@@ -40,10 +40,11 @@
   --warn-ink: #8a5a00;
   --ok: #2e7d32;
   --shadow: 0 2px 4px rgba(8, 9, 10, 0.05);
-  /* La banda de la portada, en los dos temas: el fondo degradado sobre el
-     que Harness monta sus imágenes, de azul noche a la placa de carbón. Es
-     la única superficie de color del sitio. */
-  --hero-bg: linear-gradient(180deg, #163052 0%, #0d0e12 100%);
+  /* La banda de la portada, en los dos temas: casi negra, con apenas un
+     resplandor azul noche arriba. Antes era un degradado azul franco y,
+     con los puntos de la red encima, parecía una alberca; oscuro deja que
+     el título y el buscador manden y que la red se lea como fondo. */
+  --hero-bg: radial-gradient(ellipse 90% 80% at 50% -10%, #122036 0%, #0b0d12 55%, #070707 100%);
   --hero-text: #ffffff;
   --hero-dim: #c8cad0;
   --hero-ey: #a6e5f2;
