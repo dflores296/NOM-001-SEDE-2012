@@ -271,7 +271,10 @@ const EXPLORA = [
     -webkit-mask-image: radial-gradient(ellipse 34% 58% at 50% 42%, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.35) 55%, #000 100%);
             mask-image: radial-gradient(ellipse 34% 58% at 50% 42%, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.35) 55%, #000 100%);
   }
-  .portada-fondo video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  /* :global porque el video lo crea el script y no lleva la marca de
+     alcance de Astro: sin esto se quedaba en su tamaño natural, centrado, y
+     a los lados se asomaba la imagen fija. */
+  .portada-fondo :global(video) { display: block; width: 100%; height: 100%; object-fit: cover; }
   .portada-in { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
   .portada-ey {
     display: block; margin: 0 0 1.4rem; line-height: 1.6;
