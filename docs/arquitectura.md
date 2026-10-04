@@ -49,8 +49,10 @@ los identificadores que una ronda de cambios retiró al destino donde vive hoy s
 contenido, y su salida se versiona ya construida.
 
 Todo eso, más la compilación, la revisión de enlaces (`check_enlaces.py`:
-que cada enlace interno lleve a una página y un ancla que existan) y la
-huella del sitio, lo corre en orden `bash tools/verificar.sh`.
+que cada enlace interno lleve a una página y un ancla que existan), la
+huella del sitio y las pruebas en navegador (`site/pruebas/navegador.mjs`:
+buscador, tema, índice lateral, mapa), lo corre en orden
+`bash tools/verificar.sh`.
 
 El sitio queda en `site/dist/`, archivos estáticos sin servidor detrás. Se
 publica en GitHub Pages con cada push a `main` (`.github/workflows/deploy.yml`),
