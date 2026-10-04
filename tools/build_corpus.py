@@ -93,10 +93,25 @@ def sec_re(num):
 
 # ------------------------------------------------------------------ carga
 
+# El DOF escribe seis códigos con un guion de no separación (U+2011) en vez
+# del guion normal. Uno es el encabezado «520‑81. Puesta a tierra.»: sin
+# normalizarlo el parser no lo reconocía como sección y su texto quedaba
+# pegado al final de la 520-73; los otros cinco son citas que el grafo no
+# veía. Solo se cambia el guion entre dos dígitos: las otras veces que el PDF
+# usa ese carácter va dentro de una palabra.
+RE_GUION_NO_SEPARABLE = re.compile(r'(?<=\d)\u2011(?=\d)')
+
+
+def limpiar_texto(s):
+    """El texto tal como sale del PDF, con los glifos rotos corregidos y el
+    guion de los códigos normalizado."""
+    return RE_GUION_NO_SEPARABLE.sub('-', fix_glifos(s))
+
+
 def load_pages(pdf):
     import pymupdf
     doc = pymupdf.open(pdf)
-    return [fix_glifos(doc[i].get_text()) for i in range(doc.page_count)]
+    return [limpiar_texto(doc[i].get_text()) for i in range(doc.page_count)]
 
 
 # Marcador de imagen dentro del flujo de líneas. Las fórmulas de la norma están
@@ -355,7 +370,7 @@ def build_linemap(pages, pdf=None, skip=None, images=None, marcas=None,
         if doc is not None:
             for blk in doc[pno - 1].get_text('dict')['blocks']:
                 for ln in blk.get('lines', []):
-                    txt = fix_glifos(''.join(sp['text'] for sp in ln['spans']))
+                    txt = limpiar_texto(''.join(sp['text'] for sp in ln['spans']))
                     items.append((ln['bbox'][1], txt, round(ln['bbox'][0], 1)))
         else:
             items = [(0, t, 0.0) for t in pages[pno - 1].split('\n')]
