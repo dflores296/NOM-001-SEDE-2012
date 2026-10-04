@@ -38,6 +38,9 @@ python3 tools/check_corpus.py data/
 paso 'Compilar el sitio'
 (cd site && npm run build)
 
+paso 'Verificar los enlaces internos'
+python3 tools/check_enlaces.py
+
 # Lo último: que el contenido publicado sea el mismo que el sellado en
 # tools/huella_sitio.txt. Ver tools/huella_sitio.py.
 paso 'Comparar contra la huella del sitio'

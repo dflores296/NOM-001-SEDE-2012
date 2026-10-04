@@ -35,7 +35,7 @@ git status --porcelain                      # debe quedar vacío
 
 `verificar.sh` es lo mismo que corre la publicación: regenera todo desde el
 PDF en orden, corre `build_cifras.py --check` y `check_corpus.py`, compila el
-sitio y compara el contenido publicado contra `tools/huella_sitio.txt` (ver
+sitio, revisa que ningún enlace interno esté roto (`check_enlaces.py`) y compara el contenido publicado contra `tools/huella_sitio.txt` (ver
 «La huella del sitio» en `docs/arquitectura.md`).
 
 `tools/build_redirects.py` **no** va en esa lista: no deriva del PDF sino de la

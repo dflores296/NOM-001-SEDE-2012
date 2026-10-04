@@ -48,8 +48,9 @@ y arrastraba al texto lo que la tabla ya se había llevado: las notas al pie de 
 los identificadores que una ronda de cambios retiró al destino donde vive hoy su
 contenido, y su salida se versiona ya construida.
 
-Todo eso, más la compilación y la huella del sitio, lo corre en orden
-`bash tools/verificar.sh`.
+Todo eso, más la compilación, la revisión de enlaces (`check_enlaces.py`:
+que cada enlace interno lleve a una página y un ancla que existan) y la
+huella del sitio, lo corre en orden `bash tools/verificar.sh`.
 
 El sitio queda en `site/dist/`, archivos estáticos sin servidor detrás. Se
 publica en GitHub Pages con cada push a `main` (`.github/workflows/deploy.yml`),
