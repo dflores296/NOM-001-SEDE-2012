@@ -1,0 +1,175 @@
+/* Globales y no con alcance: el panel, las sugerencias y el recorrido los
+   arma el script, y lo creado así no lleva la marca de alcance de Astro.
+   Todo va bajo prefijos propios (.mapa, .mp-, .chip-cap). */
+.mapa { padding: 0.8rem var(--gut) 1rem; }
+.mapa-movil { display: none; padding-top: 1.5rem; padding-bottom: 2rem; }
+.mapa-movil h1 { margin: 0 0 1rem; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em; }
+@media (max-width: 1023px), (pointer: coarse) {
+  .mapa { display: none; }
+  .mapa-movil { display: block; }
+}
+
+/* ------------------------------------------------------------------ visor
+   Siempre oscuro, en los dos temas: los ocho tonos de la paleta solo pasan
+   contraste contra fondo oscuro. Ocupa todo el alto bajo la cabecera; el
+   título y los controles flotan sobre él. */
+.mapa-visor {
+  position: relative; height: calc(100vh - 64px - 1.8rem); min-height: 600px;
+  border-radius: var(--radius-xl); overflow: hidden;
+  background: #0d0e12; border: 1px solid #2e3038; color: #ffffff;
+}
+.mapa-visor:fullscreen { height: 100vh; border-radius: 0; border: 0; }
+.mapa-lienzo { position: absolute; inset: 0; }
+/* Con el panel abierto el lienzo se recorta, para que el hilo se encuadre
+   en el espacio que queda y no debajo del panel. */
+.mapa.con-panel .mapa-lienzo { right: 360px; }
+.mapa-estado {
+  position: absolute; inset: 0; margin: 0; display: grid; place-items: center;
+  font-size: 0.9375rem; color: #aeaeb7; pointer-events: none;
+}
+.mapa-estado[hidden] { display: none; }
+
+/* --------------------------------------------------------- barra de arriba */
+.mapa-sup {
+  position: absolute; top: 14px; left: 14px; right: 14px; z-index: 4;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+  pointer-events: none;
+}
+.mapa-sup > * { pointer-events: auto; }
+.mapa-izq { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.mapa-tit { margin: 0 0 0.1rem; font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; color: #ffffff; }
+.mapa-tit span {
+  margin-right: 0.4rem; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #00ade4; vertical-align: 1px;
+}
+.mapa-busca { position: relative; width: 360px; }
+.mapa-busca > svg {
+  position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px; color: #aeaeb7; pointer-events: none;
+}
+.mapa-busca input {
+  width: 100%; height: 40px; padding: 0 0.9rem 0 2.3rem; font: inherit; font-size: 0.875rem; letter-spacing: inherit;
+  color: #ffffff; background: rgba(13, 14, 18, 0.9); border: 1px solid #2e3038; border-radius: 999px;
+}
+.mapa-busca input::placeholder { color: #aeaeb7; }
+.mapa-busca input:focus { outline: none; border-color: #0092e4; }
+.mapa-sug {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; margin: 0; padding: 0.3rem; list-style: none;
+  background: rgba(13, 14, 18, 0.97); border: 1px solid #2e3038; border-radius: var(--radius-xl);
+  max-height: 340px; overflow-y: auto;
+}
+.mapa-sug[hidden] { display: none; }
+.mapa-sug li {
+  display: flex; gap: 0.55rem; align-items: baseline; padding: 0.45rem 0.6rem;
+  border-radius: var(--radius-lg); cursor: pointer; font-size: 0.8125rem; color: #c8cad0;
+}
+.mapa-sug li[aria-selected="true"], .mapa-sug li:hover { background: #1c1e25; color: #ffffff; }
+.mapa-sug li i { width: 8px; height: 8px; border-radius: 50%; flex: none; align-self: center; }
+.mapa-sug li b { font-family: var(--mono); font-weight: 600; color: #ffffff; flex: none; letter-spacing: normal; }
+.mapa-sug li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mapa-sug li em { margin-left: auto; font-style: normal; color: #aeaeb7; flex: none; font-variant-numeric: tabular-nums; }
+.mapa-msg { margin: 0; font-size: 0.8125rem; color: #e0b450; }
+.mapa-msg:empty { display: none; }
+
+.mapa-recorrido { display: flex; align-items: center; gap: 0.4rem; max-width: 640px; }
+.mapa-recorrido[hidden] { display: none; }
+.mapa-recorrido ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem; margin: 0; padding: 0; list-style: none; }
+.mapa-recorrido li { display: flex; align-items: center; gap: 0.25rem; color: #60606c; }
+.mapa-recorrido li + li::before { content: "›"; color: #60606c; }
+.mapa-recorrido li button {
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 600; letter-spacing: normal;
+  padding: 0.15rem 0.5rem; border-radius: 999px; cursor: pointer;
+  color: #c8cad0; background: rgba(13, 14, 18, 0.85); border: 1px solid #2e3038;
+}
+.mapa-recorrido li button:hover { color: #ffffff; border-color: #aeaeb7; }
+.mapa-recorrido li button[aria-current="step"] { color: #070707; background: #ffffff; border-color: #ffffff; }
+.mapa-atras, .mapa-btn {
+  height: 32px; min-width: 32px; padding: 0 0.75rem; display: inline-grid; place-items: center;
+  font: inherit; font-size: 0.8125rem; font-weight: 500; color: #ffffff; cursor: pointer;
+  background: rgba(13, 14, 18, 0.88); border: 1px solid #2e3038; border-radius: 999px;
+}
+.mapa-atras { padding: 0; height: 26px; min-width: 26px; font-size: 0.875rem; }
+.mapa-atras:disabled { opacity: 0.35; cursor: default; }
+.mapa-full { padding: 0; width: 32px; }
+.mapa-btn svg { width: 16px; height: 16px; }
+.mapa-full .ico-salir { display: none; }
+.mapa-visor:fullscreen .mapa-full .ico-entrar { display: none; }
+.mapa-visor:fullscreen .mapa-full .ico-salir { display: block; }
+.mapa-atras:hover:not(:disabled), .mapa-btn:hover { border-color: #aeaeb7; }
+.mapa-btn[hidden] { display: none; }
+
+.mapa-der { display: flex; align-items: center; gap: 0.5rem; }
+.mapa-hilo-ctl { display: flex; gap: 0.5rem; }
+.mapa-hilo-ctl[hidden] { display: none; }
+.seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: rgba(13, 14, 18, 0.9); border: 1px solid #2e3038; }
+.seg button {
+  height: 26px; padding: 0 0.7rem; border: 0; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.75rem; font-weight: 500; color: #c8cad0; background: transparent;
+}
+.seg button:hover { color: #ffffff; }
+.seg button[aria-pressed="true"] { color: #070707; background: #ffffff; }
+
+/* ------------------------------------------------------------- abajo */
+.mapa-guia, .mapa-inicio {
+  position: absolute; left: 50%; bottom: 58px; transform: translateX(-50%); z-index: 3; margin: 0;
+  padding: 0.4rem 1rem; border-radius: 999px; white-space: nowrap; pointer-events: none;
+  background: rgba(13, 14, 18, 0.85); border: 1px solid #2e3038;
+}
+.mapa-guia { display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; color: #aeaeb7; }
+.mapa-guia b { font-family: var(--mono); color: #ffffff; letter-spacing: normal; }
+.mapa-inicio { font-size: 0.8125rem; color: #c8cad0; }
+.mapa-guia[hidden], .mapa-inicio[hidden] { display: none; }
+.mapa.con-panel .mapa-guia { left: calc(50% - 180px); }
+
+.mapa-ley {
+  position: absolute; left: 14px; bottom: 14px; right: 14px; z-index: 2;
+  display: flex; flex-wrap: nowrap; gap: 0.35rem; overflow-x: auto; scrollbar-width: none;
+}
+.mapa-ley::-webkit-scrollbar { display: none; }
+.chip-cap {
+  display: inline-flex; align-items: center; gap: 0.4rem; height: 28px; padding: 0 0.7rem; flex: none;
+  font: inherit; font-size: 0.75rem; color: #c8cad0; cursor: pointer; white-space: nowrap;
+  background: rgba(13, 14, 18, 0.85); border: 1px solid #2e3038; border-radius: 999px;
+}
+.chip-cap i { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.chip-cap[aria-pressed="false"] { opacity: 0.45; text-decoration: line-through; }
+.chip-cap:hover { border-color: #aeaeb7; color: #ffffff; }
+.mapa.con-panel .mapa-ley { right: 362px; }
+
+/* Panel del punto central, a la derecha. */
+.mapa-panel {
+  position: absolute; top: 64px; right: 12px; bottom: 12px; width: 336px; z-index: 3;
+  display: flex; flex-direction: column; gap: 0.35rem; overflow-y: auto;
+  padding: 1.1rem 1.2rem 1.2rem; border-radius: var(--radius-xl);
+  background: rgba(13, 14, 18, 0.93); border: 1px solid #d9dae5;
+  backdrop-filter: blur(6px); color: #ffffff; scrollbar-width: thin;
+}
+.mapa-panel[hidden] { display: none; }
+.mp-id { font-family: var(--mono); font-size: 0.875rem; font-weight: 600; letter-spacing: normal; }
+.mp-t { margin: 0; font-size: 1.0625rem; font-weight: 600; line-height: 1.35; }
+.mp-art { margin: 0; font-size: 0.8125rem; color: #aeaeb7; }
+.mp-ir { font-size: 0.875rem; font-weight: 600; color: #0092e4; margin: 0.2rem 0 0.4rem; }
+.mp-grupo h3 {
+  margin: 0.7rem 0 0.35rem; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: #aeaeb7;
+}
+.mp-grupo h3 b { color: #ffffff; }
+.mp-grupo ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+.mp-grupo li button {
+  width: 100%; display: flex; gap: 0.5rem; align-items: baseline; text-align: left;
+  padding: 0.3rem 0.45rem; border: 0; border-radius: var(--radius); cursor: pointer;
+  font: inherit; font-size: 0.8125rem; color: #c8cad0; background: transparent;
+}
+.mp-grupo li button:hover { background: #1c1e25; color: #ffffff; }
+.mp-grupo li button i { width: 7px; height: 7px; border-radius: 50%; flex: none; align-self: center; }
+.mp-grupo li button b { font-family: var(--mono); font-weight: 600; color: #ffffff; letter-spacing: normal; flex: none; }
+.mp-grupo li button span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mp-vacio { font-size: 0.8125rem; color: #aeaeb7; padding: 0.2rem 0.45rem; }
+
+/* La etiqueta que la librería pone junto al cursor. */
+.mapa-visor .float-tooltip-kap,
+.mapa-visor .scene-tooltip {
+  padding: 0.45rem 0.65rem !important; border-radius: var(--radius-lg) !important;
+  background: rgba(13, 14, 18, 0.94) !important; border: 1px solid #2e3038;
+  font: 500 0.8125rem/1.4 var(--sans) !important; color: #ffffff !important; max-width: 320px;
+}

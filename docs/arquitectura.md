@@ -50,8 +50,9 @@ contenido, y su salida se versiona ya construida.
 
 Todo eso, más la compilación, la revisión de enlaces (`check_enlaces.py`:
 que cada enlace interno lleve a una página y un ancla que existan), la
-huella del sitio y las pruebas en navegador (`site/pruebas/navegador.mjs`:
-buscador, tema, índice lateral, mapa), lo corre en orden
+huella del sitio y las pruebas (`site/pruebas/`: en navegador, el buscador,
+el tema, el índice lateral y el mapa; sin navegador, la geometría del hilo
+del mapa y sus sugerencias), lo corre en orden
 `bash tools/verificar.sh`.
 
 El sitio queda en `site/dist/`, archivos estáticos sin servidor detrás. Se
