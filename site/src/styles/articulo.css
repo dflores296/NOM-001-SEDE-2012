@@ -1,0 +1,273 @@
+/* ---------------------------------------------------------------- layout
+   Tres columnas de sitio de documentación. Los índices conservan su ancho y
+   todo el espacio sobrante se lo queda la columna central, que es la que
+   lleva las tablas.
+   ------------------------------------------------------------------- */
+.cols { display: grid; grid-template-columns: 264px minmax(0,1fr) 232px; gap: 3rem; align-items: start; }
+@media (max-width: 1020px) { .cols { grid-template-columns: 1fr; } .side, .toc { display: none; } }
+
+.side, .toc {
+  position: sticky; top: var(--ancla); max-height: calc(100vh - var(--ancla));
+  overflow-y: auto; padding: 1.8rem 0 2rem; font-size: 0.875rem;
+}
+.side { padding-right: 0.5rem; }
+
+/* Barra lateral: un grupo por capítulo, plegable. El del artículo abierto
+   viene desplegado. */
+.side details { margin: 0 0 0.15rem; }
+.side summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: baseline; gap: 0.5rem;
+  padding: 0.4rem 0.6rem; border-radius: var(--radius-lg);
+  font-weight: 600; font-size: 0.8125rem; color: var(--text); line-height: 1.35;
+}
+.side summary::-webkit-details-marker { display: none; }
+.side summary::after {
+  content: ""; margin-left: auto; align-self: center; flex: none;
+  width: 6px; height: 6px; border-right: 1.5px solid var(--text-faint); border-bottom: 1.5px solid var(--text-faint);
+  transform: rotate(-45deg); transition: transform 120ms ease;
+}
+.side details[open] > summary::after { transform: rotate(45deg); }
+.side summary:hover { background: var(--bg-soft); }
+.side summary .n { flex: none; font-family: var(--mono); font-weight: 500; color: var(--text-faint); letter-spacing: normal; }
+.side .grupo { margin: 0.15rem 0 0.7rem 0.95rem; padding-left: 0.4rem; border-left: 1px solid var(--border); }
+.side h3 { font-size: 0.8125rem; font-weight: 600; color: var(--text); margin: 0 0 0.4rem; padding: 0 0.6rem; }
+.side a {
+  display: flex; gap: 0.5rem; padding: 0.3rem 0.6rem; border-radius: var(--radius-lg);
+  color: var(--text-dim); line-height: 1.35;
+}
+.side a .mono { flex: none; min-width: 1.9rem; color: var(--text-faint); font-size: 0.8rem; }
+.side a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
+.side a.on { color: var(--activo); background: var(--accent-soft); font-weight: 600; }
+.side a.on .mono { color: var(--activo); }
+
+/* Índice de la página: una línea vertical y, sobre ella, la sección que se
+   está leyendo marcada en el acento. */
+.toc h3 {
+  font-size: 0.75rem; font-weight: 600; color: var(--text);
+  margin: 1.4rem 0 0.5rem;
+}
+.toc h3:first-child { margin-top: 0; }
+.toc a {
+  display: block; padding: 0.22rem 0 0.22rem 0.85rem;
+  border-left: 1px solid var(--border); color: var(--text-faint); line-height: 1.4;
+  font-size: 0.8125rem;
+}
+.toc a .mono { color: inherit; font-size: 0.78rem; }
+.toc a:hover { color: var(--text); text-decoration: none; }
+.toc a.on { color: var(--activo); border-left: 2px solid var(--activo); padding-left: calc(0.85rem - 1px); font-weight: 500; }
+
+main { padding: 1.8rem 0 5rem; min-width: 0; }
+
+/* ---------------------------------------------------------------- artículo
+   Cabecera de página de documentación: la etiqueta del capítulo en el
+   acento, el título grande y una línea de datos debajo.
+   ------------------------------------------------------------------- */
+.art-head { padding-bottom: 1.6rem; margin-bottom: 2.2rem; border-bottom: 1px solid var(--border-soft); }
+.eyebrow, .crumb {
+  display: block; margin: 0 0 0.6rem;
+  font-size: 0.8125rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.crumb a { color: inherit; }
+.art-head h1 { margin: 0 0 0.9rem; font-size: 2.25rem; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; }
+.art-head .art-num {
+  display: block; margin-bottom: 0.35rem;
+  font-family: var(--mono); font-size: 1rem; font-weight: 500; color: var(--text-faint); letter-spacing: normal;
+}
+.meta { display: flex; flex-wrap: wrap; gap: 0.4rem; font-size: 0.8125rem; color: var(--text-dim); }
+.meta span {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.15rem 0.55rem; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--panel);
+}
+.meta span b { font-weight: 600; color: var(--text); }
+
+/* Las partes del artículo, como tarjetas de salto bajo la cabecera. */
+.partes { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.6rem; margin: 1.5rem 0 0; }
+.partes a {
+  display: block; padding: 0.7rem 0.9rem; border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg); background: var(--panel); color: var(--text); font-size: 0.875rem; line-height: 1.35;
+}
+.partes a b { display: block; font-size: 0.72rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+.partes a:hover { border-color: var(--accent); text-decoration: none; }
+/* En el teléfono las partes no se apilan —diez tarjetas empujaban el texto
+   del artículo a varias pantallas de distancia—: van en una fila que se
+   desliza de lado. */
+@media (max-width: 760px) {
+  .partes {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-right: calc(-1 * var(--gut)); padding-right: var(--gut); scrollbar-width: none;
+  }
+  .partes::-webkit-scrollbar { display: none; }
+  .partes a { flex: 0 0 72%; scroll-snap-align: start; }
+}
+
+.part-head { margin: 3.4rem 0 1.5rem; padding-top: 1.8rem; border-top: 1px solid var(--border); scroll-margin-top: var(--ancla); }
+.art-head + .part-head { margin-top: 0; padding-top: 0; border-top: 0; }
+.part-head .eyebrow { margin-bottom: 0.3rem; }
+.part-head h2 { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.015em; }
+
+section.sec { margin: 0 0 2.4rem; scroll-margin-top: var(--ancla); }
+section.sec > h2 { margin: 0 0 0.6rem; font-size: 1.125rem; font-weight: 600; line-height: 1.45; letter-spacing: -0.01em; }
+section.sec > h2 .sid {
+  font-family: var(--mono); font-size: 0.85em; color: var(--accent);
+  margin-right: 0.55rem; font-weight: 600;
+  padding: 0.05rem 0.4rem; border-radius: var(--radius); background: var(--accent-soft);
+}
+.anchor { color: var(--text-faint); opacity: 0; font-weight: 400; margin-left: 0.35rem; }
+section.sec:hover .anchor { opacity: 1; }
+.sec p { margin: 0.4rem 0; }
+
+
+ul.subs { list-style: none; margin: 0.6rem 0 0; padding: 0 0 0 1.1rem; border-left: 1px solid var(--border); }
+ul.subs ul.subs { margin-top: 0.4rem; }
+li.sub { margin: 0.6rem 0; scroll-margin-top: var(--ancla); }
+li.sub > .lbl { font-family: var(--mono); font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-right: 0.35rem; }
+li.sub > .st { font-weight: 600; }
+
+/* Notas y excepciones, como los avisos de un sitio de documentación: caja
+   redondeada con su icono a la izquierda. La nota va en gris neutro; la
+   excepción en ámbar, porque cambia lo que la regla exige y no conviene que
+   pase de largo. El icono es una máscara pintada con currentColor, así que
+   sigue al tema sin una imagen por cada uno. */
+.nota, .exc {
+  position: relative;
+  margin: 0.9rem 0; padding: 0.8rem 1rem 0.8rem 2.7rem;
+  border-radius: var(--radius-xl); font-size: 0.9375rem; line-height: 1.6;
+  background: var(--bg-soft); border: 1px solid var(--border);
+}
+.nota::before, .exc::before {
+  content: ""; position: absolute; left: 0.95rem; top: 1.02rem;
+  width: 16px; height: 16px; background: currentColor;
+  -webkit-mask: var(--icono) center / contain no-repeat; mask: var(--icono) center / contain no-repeat;
+}
+.nota { color: var(--text); --icono: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5M12 7.5v.5'/%3E%3C/svg%3E"); }
+.nota::before { color: var(--text-dim); }
+.exc {
+  background: var(--warn-bg); border-color: var(--warn-br);
+  --icono: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.3 3.9 2.4 17.6A2 2 0 0 0 4.1 20.6h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z'/%3E%3Cpath d='M12 9.5v4M12 17v.5'/%3E%3C/svg%3E");
+}
+.exc::before { color: var(--warn-ink); }
+.nota .lb, .exc .lb {
+  font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-dim); margin-right: 0.4rem;
+}
+.exc .lb { color: var(--warn-ink); }
+
+/* Prosa del inciso que en el documento va DESPUÉS de una nota o excepción.
+   Es cuerpo, no anotación: se pinta como el resto del texto y sin caja. Lo
+   que la distingue es su posición, no su rango. */
+.parr { margin: 0.6rem 0; }
+
+/* Un párrafo intercalado en la lista de una anotación: es prosa de la
+   anotación, no un elemento numerado, así que va sin viñeta ni sangría. */
+li.anot-parr { list-style: none; margin-left: -1rem; }
+
+/* referencias cruzadas dentro del texto */
+a.xref {
+  font-family: var(--mono); font-size: 0.9em; font-weight: 500;
+  background: var(--accent-soft); padding: 0.05em 0.3em; border-radius: var(--radius);
+  white-space: nowrap;
+}
+a.xref:hover { text-decoration: none; background: color-mix(in srgb, var(--accent) 18%, var(--panel)); }
+
+/* ---------------------------------------------------------------- tablas */
+figure.tabla { margin: 2rem 0; scroll-margin-top: var(--ancla); }
+figure.tabla figcaption {
+  font-size: 0.9375rem; font-weight: 600; line-height: 1.45;
+  margin-bottom: 0.75rem;
+}
+figure.tabla .tid {
+  font-family: var(--mono); color: var(--accent); margin-right: 0.4rem;
+}
+figure.tabla:hover .anchor { opacity: 1; }
+
+/* La caja se ciñe a lo que mida la tabla y se centra en la columna. Con el
+   marco a todo lo ancho, la tabla del 922-17(c) —dos columnas— quedaba
+   flotando en medio de un recuadro vacío. */
+.tabla-caja { width: fit-content; max-width: 100%; margin: 0 auto; }
+
+/* La tabla desborda dentro de SU contenedor, nunca la página: en la norma hay
+   tablas de 14 columnas que en un teléfono no caben de ninguna forma. */
+.tabla-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--rejilla);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  -webkit-overflow-scrolling: touch;
+}
+/* Ancho por contenido, no por contenedor. Estirar una tabla de tres columnas
+   a todo lo ancho separa el rótulo de su dato con un vacío que hay que cruzar
+   con la vista; midiendo por contenido, cada columna ocupa lo que ocupa y la
+   fila se lee de un tirón. Las anchas siguen desbordando en su propio
+   contenedor, que para eso está el scroll. */
+.tabla-scroll table {
+  border-collapse: collapse;
+  width: auto; max-width: 100%; margin: 0 auto;
+  font-size: 0.84rem;
+}
+/* Todo centrado, como en el PDF del DOF: son tablas de valores, y un número
+   centrado bajo su encabezado centrado se lee en vertical sin perder la
+   columna. Es además lo que hace que una celda fusionada se vea repartida
+   sobre las columnas que cubre. */
+.tabla-scroll th, .tabla-scroll td {
+  border: 1px solid var(--rejilla);
+  padding: 0.34rem 0.6rem; text-align: center; vertical-align: middle;
+  white-space: nowrap;
+}
+.tabla-scroll thead th {
+  background: var(--bg-soft); font-weight: 650;
+  white-space: normal;
+}
+/* Los textos largos —«Tres de algodón, uno exterior retardante de la flama»—
+   no caben en una línea a ningún ancho razonable, así que estos sí envuelven,
+   con un tope para que no se estiren hasta ocupar media pantalla. */
+.tabla-scroll td.larga { white-space: normal; min-width: 11rem; max-width: 24rem; }
+
+/* La frase que en el PDF va fusionada a todo lo ancho, encima del encabezado.
+   Se presenta pegada a la tabla para que se lea como parte de ella. */
+/* `p.tabla-intro` y no `.tabla-intro`: `.sec p` es más específico que una
+   clase sola y le ganaba los márgenes, así que el bloque no se centraba. */
+p.tabla-intro {
+  margin: 0 auto 0.6rem; padding: 0.5rem 0.7rem; max-width: 46rem;
+  font-size: 0.82rem; color: var(--text-dim);
+  background: var(--bg-soft);
+  border: 1px solid var(--rejilla);
+  border-radius: var(--radius-lg);
+}
+.tabla-scroll tbody tr:hover { background: var(--accent-soft); }
+
+.tabla-aviso {
+  background: var(--warn-bg); border: 1px solid var(--warn-br);
+  border-radius: var(--radius-xl); padding: 0.5rem 0.7rem;
+  font-size: 0.82rem; color: var(--text-dim); margin: 0 0 0.5rem;
+}
+.tabla-notas { font-size: 0.82rem; color: var(--text-dim); margin-top: 0.5rem; }
+.tabla-notas p { margin: 0.25rem 0; }
+.tabla-pie { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.4rem; }
+
+/* Aviso de ancla que cambió de identificador. Lo inserta Base.astro cuando un
+   enlace profundo anterior al arreglo de anidamiento apunta a un id retirado. */
+.aviso-ancla {
+  background: var(--warn-bg); border: 1px solid var(--warn-br);
+  border-radius: var(--radius-xl); padding: 0.55rem 0.75rem;
+  font-size: 0.84rem; color: var(--text-dim); margin: 0.9rem 0;
+}
+.aviso-ancla b { font-family: var(--mono); color: var(--text); }
+
+/* backlinks */
+.backlinks { margin-top: 0.8rem; font-size: 0.8125rem; }
+.backlinks summary {
+  display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
+  color: var(--text-dim); padding: 0.2rem 0.6rem; border: 1px solid var(--border); border-radius: var(--radius);
+}
+.backlinks summary::-webkit-details-marker { display: none; }
+.backlinks summary::before {
+  content: ""; width: 5px; height: 5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg); transition: transform 120ms ease;
+}
+.backlinks[open] summary::before { transform: rotate(45deg); }
+.backlinks summary:hover { color: var(--text); border-color: var(--text-faint); }
+.backlinks ul { margin: 0.6rem 0 0; padding: 0.6rem 0.9rem 0.6rem 1.8rem; border-left: 1px solid var(--border); }
+.backlinks li { margin: 0.2rem 0; }

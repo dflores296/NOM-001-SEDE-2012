@@ -1,0 +1,50 @@
+/* ---------------------------------------------------------------- buscador
+   Campo gris con la lupa adentro y la tecla «/» que lo enfoca, como el
+   buscador de un sitio de documentación. */
+.search-wrap { position: relative; }
+.search-wrap .lupa {
+  position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px; color: var(--text-faint); pointer-events: none;
+}
+.search-wrap input {
+  width: 100%; height: 38px; padding: 0 2.4rem 0 2.2rem;
+  background: var(--bg-soft); color: var(--text);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  font-size: 0.875rem; font-family: inherit; letter-spacing: inherit;
+}
+.search-wrap input::placeholder { color: var(--text-faint); }
+.search-wrap input:hover { border-color: var(--text-faint); }
+.search-wrap input:focus { outline: none; border-color: var(--accent); background: var(--panel); }
+.search-wrap kbd {
+  position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 0.72rem; color: var(--text-faint);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0 0.35rem; background: var(--panel); pointer-events: none;
+}
+.search-wrap input:focus ~ kbd { display: none; }
+.results {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 60;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); max-height: 62vh; overflow-y: auto;
+  box-shadow: 0 12px 32px rgba(8, 9, 10, 0.08); display: none;
+  text-align: left;
+}
+:root[data-theme="oscuro"] .results { box-shadow: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .results { box-shadow: none; } }
+.results.open { display: block; }
+.results a { display: block; padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border-soft); color: var(--text); }
+.results a:last-child { border-bottom: 0; }
+.results a:hover, .results a.sel { background: var(--accent-soft); text-decoration: none; }
+.results .rid { font-family: var(--mono); font-size: 0.76rem; color: var(--accent); margin-right: 0.35rem; }
+.results .rti { font-size: 0.875rem; font-weight: 500; }
+.results .rsn { display: block; font-size: 0.75rem; color: var(--text-faint); }
+.results .rsnip { display: block; margin-top: 0.25rem; font-size: 0.8rem; color: var(--text-dim); line-height: 1.4; }
+.results mark { background: var(--accent-soft); color: var(--text); border-radius: 2px; padding: 0 0.1em; font-weight: 650; }
+.results .empty { padding: 0.9rem; color: var(--text-faint); font-size: 0.875rem; }
+
+.results .rgroup + .rgroup { border-top: 1px solid var(--border); }
+.results .rghead {
+  padding: 0.45rem 0.9rem; font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent);
+  background: var(--bg-soft);
+}

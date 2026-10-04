@@ -1,0 +1,123 @@
+/* ============================================================== TEMAS
+   Dos temas, claro y oscuro, que son el MISMO sitio con la luz prendida o
+   apagada: cambian los colores y nada más. Tipografía, radios, espaciado y
+   estructura son iguales en los dos, y vienen de Mintlify.
+
+   La paleta es la de Harness, que es solo oscura:
+   - Oscuro: completa. Lienzo #070707, tarjetas en #0d0e12, paneles anidados
+     en #141418, texto blanco, enlaces y estados en Signal Blue #0092e4, la
+     navegación activa en Current Blue #00ade4 y los bordes de tarjeta en
+     claro (#d9dae5), que es su firma: el borde define la tarjeta por
+     luminosidad, sin sombra.
+   - Claro: la estructura de Mintlify con el acento de Harness. El Signal
+     Blue no llega a 4.5:1 sobre blanco (3.4), así que aquí va el Deep Signal
+     apenas oscurecido, #0569be: 5.6:1 sobre blanco y 4.9:1 sobre su fondo
+     tenue, que es donde viven las referencias cruzadas.
+
+   `claro` define TODOS los tokens; `oscuro` se repite dos veces, para quien lo
+   elige con el interruptor y para quien no eligió y tiene el sistema en
+   oscuro (así funciona también sin JavaScript).
+   ------------------------------------------------------------------- */
+:root,
+:root[data-theme="claro"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-soft: #f2f2f2;
+  --panel: #ffffff;
+  --border: #dddddd;
+  --card-border: #dddddd;
+  --rejilla: #c8c8c8;
+  --border-soft: #f2f2f2;
+  --text: #08090a;
+  --text-dim: #525252;
+  --text-faint: #6b6b6b;
+  --accent: #0569be;
+  --activo: #0569be;
+  /* Texto sobre un relleno del acento: 5.6:1 en claro. */
+  --on-accent: #ffffff;
+  --warn-bg: #fdf6e7;
+  --warn-br: #e6cfa3;
+  --warn-ink: #8a5a00;
+  --ok: #2e7d32;
+  --shadow: 0 2px 4px rgba(8, 9, 10, 0.05);
+  /* La banda de la portada, en los dos temas: casi negra, con apenas un
+     resplandor azul noche arriba. Antes era un degradado azul franco y,
+     con los puntos de la red encima, parecía una alberca; oscuro deja que
+     el título y el buscador manden y que la red se lea como fondo. */
+  --hero-bg: radial-gradient(ellipse 90% 80% at 50% -10%, #122036 0%, #0b0d12 55%, #070707 100%);
+  --hero-text: #ffffff;
+  --hero-dim: #c8cad0;
+  --hero-ey: #a6e5f2;
+  /* Phosphor Mint: solo para destacar. Una tarjeta por pantalla y el punto
+     de la etiqueta de la portada; nunca junto al azul. */
+  --mint: #70dcd3;
+  --on-mint: #070707;
+
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --sans: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* 4px en controles, etiquetas y cajas; 8px en tarjetas. Esquinas casi
+     rectas: nada de píldoras. */
+  --radius: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  /* Lo que mide la cabecera fija —un renglón de 64px— más un respiro. Es el
+     margen con que aterriza un ancla y la altura a la que se pegan los
+     índices laterales. */
+  --ancla: 80px;
+  --maxw: 1180px;
+  /* Margen lateral de la página. Crece con la ventana para que el contenido
+     no quede pegado al borde en pantallas anchas. */
+  --gut: clamp(1.1rem, 1.5vw, 2.4rem);
+}
+
+:root[data-theme="oscuro"] {
+  color-scheme: dark;
+  --bg: #070707;
+  --bg-soft: #141418;
+  --panel: #0d0e12;
+  --border: #2e3038;
+  --card-border: #d9dae5;
+  --rejilla: #2e3038;
+  --border-soft: #22222a;
+  --text: #ffffff;
+  --text-dim: #c8cad0;
+  --text-faint: #aeaeb7;
+  --accent: #0092e4;
+  --activo: #00ade4;
+  --on-accent: #070707;
+  --warn-bg: #1c1912;
+  --warn-br: #4a4130;
+  --warn-ink: #e0b450;
+  --ok: #75ae4c;
+  --shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #070707;
+    --bg-soft: #141418;
+    --panel: #0d0e12;
+    --border: #2e3038;
+    --card-border: #d9dae5;
+    --rejilla: #2e3038;
+    --border-soft: #22222a;
+    --text: #ffffff;
+    --text-dim: #c8cad0;
+    --text-faint: #aeaeb7;
+    --accent: #0092e4;
+    --activo: #00ade4;
+    --on-accent: #070707;
+    --warn-bg: #1c1912;
+    --warn-br: #4a4130;
+    --warn-ink: #e0b450;
+    --ok: #75ae4c;
+    --shadow: none;
+  }
+}
+
+/* El fondo tenue del acento —resaltado de búsqueda, referencias cruzadas,
+   fila bajo el cursor— es el acento diluido sobre el panel, así que acompaña
+   solo a cualquier cambio de acento o de tema. */
+:root { --accent-soft: color-mix(in srgb, var(--accent) 9%, var(--panel)); }
