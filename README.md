@@ -39,13 +39,13 @@ navegables, backlinks y búsqueda instantánea que funciona sin conexión.
 | | |
 |---|---|
 | Artículos | 151 |
-| Secciones | 2 897 |
+| Secciones | 2 898 |
 | Incisos | 8 306 |
 | Notas / Excepciones | 773 / 986 |
 | Definiciones | 185 |
 | Figuras / Fórmulas | 45 / 13 |
 | Tablas | 245 |
-| Referencias enlazadas | 4 528 |
+| Referencias enlazadas | 4 530 |
 | Referencias rotas | 0 |
 | Cobertura del texto | 31 452 de 31 453 renglones (100 %) |
 <!-- CIFRAS:FIN -->

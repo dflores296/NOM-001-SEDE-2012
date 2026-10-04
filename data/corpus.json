@@ -71393,7 +71393,7 @@
            "notes": [
             {
              "label": "NOTA",
-             "text": "Véase 503‑30(b) para los requisitos de puesta a tierra cuando se utiliza tubo conduit flexible.",
+             "text": "Véase 503-30(b) para los requisitos de puesta a tierra cuando se utiliza tubo conduit flexible.",
              "seq": 1
             }
            ],
@@ -71923,6 +71923,7 @@
     "503-140",
     "503-155",
     "503-155(a)",
+    "503-30(b)",
     "503-5",
     "504-2",
     "506-9(c)(2)",
@@ -85001,7 +85002,7 @@
      "notes": [
       {
        "label": "NOTA",
-       "text": "Véase 400‑10 para tensión mecánica en terminales.",
+       "text": "Véase 400-10 para tensión mecánica en terminales.",
        "seq": 10
       }
      ],
@@ -85200,7 +85201,17 @@
      "title": "Interruptores requeridos",
      "part": "F",
      "page": 459,
-     "text": "Todas las lámparas y cualquier contacto adyacente a los espejos y sobre la mesa de los tocadores, instalados en los camerinos deben ser controlados por interruptores de pared instalados en el camerino. Cada interruptor que controle contactos adyacentes a los espejos y sobre la mesa del tocador, debe estar provisto con una lámpara piloto localizada afuera del camerino, adyacente a la puerta, que indique cuando están energizados los contactos. No se exige que las otras salidas instaladas en el camerino estén controladas por un interruptor. 520‑81. Puesta a tierra. Todas las canalizaciones metálicas y las cubiertas metálicas de cables deben estar puestas a tierra. Los bastidores y envolventes metálicas de todos los equipos, incluyendo las lámparas de contorno y luminarias portátiles, deben estar puestas a tierra.",
+     "text": "Todas las lámparas y cualquier contacto adyacente a los espejos y sobre la mesa de los tocadores, instalados en los camerinos deben ser controlados por interruptores de pared instalados en el camerino. Cada interruptor que controle contactos adyacentes a los espejos y sobre la mesa del tocador, debe estar provisto con una lámpara piloto localizada afuera del camerino, adyacente a la puerta, que indique cuando están energizados los contactos. No se exige que las otras salidas instaladas en el camerino estén controladas por un interruptor.",
+     "children": [],
+     "notes": [],
+     "exceptions": []
+    },
+    {
+     "id": "520-81",
+     "title": "Puesta a tierra",
+     "part": "G",
+     "page": 459,
+     "text": "Todas las canalizaciones metálicas y las cubiertas metálicas de cables deben estar puestas a tierra. Los bastidores y envolventes metálicas de todos los equipos, incluyendo las lámparas de contorno y luminarias portátiles, deben estar puestas a tierra.",
      "children": [],
      "notes": [],
      "exceptions": []
