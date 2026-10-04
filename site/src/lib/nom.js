@@ -223,7 +223,10 @@ export function hrefFor(id) {
     const im = figuraPorId.get(t);
     if (im) return hrefImagen(im.figura, im.ancla);
     if (tb && tb.apendice) return `${BASE}/apendices/${tb.apendice}/#${tablaSlug(t)}`;
-    return `${BASE}/tablas#${tablaSlug(t)}`;
+    // Las del Capítulo 10 no tienen artículo ni apéndice: viven en su propia
+    // página. Antes caían en /tablas, el índice, donde su ancla no existe, y
+    // la referencia dejaba al lector al principio de la lista.
+    return `${BASE}/tablas/generales/#${tablaSlug(t)}`;
   }
   // Los hitos del cierre son destino desde que el cuerpo los cita: «véase el
   // apéndice B» son 34 citas, y sin esta rama caían en la portada.
@@ -498,9 +501,11 @@ export function linkify(text) {
       out += esc(raw);
       continue;
     }
-    // --- Capítulo N
+    // --- Capítulo N, solo si es de esta norma: el Apéndice B cita el
+    // «Capítulo 24» del manual de ASHRAE, y enlazarlo llevaba a un capítulo
+    // que no existe.
     mm = /^Cap\S*tulo\s+(\d{1,2})$/.exec(raw);
-    if (mm) {
+    if (mm && chapters.some((c) => c.num === +mm[1])) {
       out += `<a class="xref" href="${BASE}/#cap${mm[1]}">${esc(raw)}</a>`;
       continue;
     }
