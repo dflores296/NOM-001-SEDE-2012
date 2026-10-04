@@ -276,7 +276,7 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
               // se descartaba, así que un resultado no decía DÓNDE dentro
               // de la sección apareció lo que buscaste.
               storeFields: ['id', 'title', 'art', 'artTitle', 'kind', 'tid', 'sinNumero',
-                            'text', 'fid', 'ancla', 'cid'],
+                            'apendice', 'text', 'fid', 'ancla', 'cid'],
               processTerm: (term) => sinAcentos(term.toLowerCase()),
               searchOptions: { boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15 },
             });
@@ -306,7 +306,9 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
         if (r.kind === 'def') return `${base}/glosario/#${defSlug(r.id)}`;
         if (r.kind === 'tabla') {
           const slug = tablaSlug(r.tid);
-          return r.art ? `${base}/art/${r.art}#${slug}` : `${base}/tablas#${slug}`;
+          if (r.art) return `${base}/art/${r.art}#${slug}`;
+          if (r.apendice) return `${base}/apendices/${r.apendice}/#${slug}`;
+          return `${base}/tablas/generales/#${slug}`;
         }
         // El ancla de una figura ya viene calculada: una imagen puede traer
         // dos números y cada uno aterriza en el suyo.

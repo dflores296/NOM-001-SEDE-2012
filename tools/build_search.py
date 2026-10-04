@@ -106,7 +106,13 @@ def main():
             'sinNumero': bool(t.get('sin_numero')),
             'title': t.get('title') or '',
             'art': t.get('article'),
-            'artTitle': titulo_articulo.get(t.get('article'), 'Capítulo 10'),
+            # Una tabla sin artículo es de un apéndice o, si tampoco tiene
+            # apéndice, del Capítulo 10. El buscador lo necesita para armar
+            # el enlace y el rótulo: antes las 19 de los apéndices salían
+            # rotuladas «Capítulo 10» y enlazadas a donde no estaban.
+            'apendice': t.get('apendice'),
+            'artTitle': ('Apéndice ' + t['apendice'] if t.get('apendice')
+                         else titulo_articulo.get(t.get('article'), 'Capítulo 10')),
             'text': flat_text_tabla(t),
         })
 
