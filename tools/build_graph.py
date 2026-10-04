@@ -178,18 +178,13 @@ def uso_de_tablas(tablas, texto, sec_ids):
     return uso
 
 
-def main():
-    out = sys.argv[1] if len(sys.argv) > 1 else 'data'
-    corpus = json.load(open(os.path.join(out, 'corpus.json')))
-    articles = corpus['articles']
-    art_nums = {a['num'] for a in articles}
-    art_title = {a['num']: a['title'] for a in articles}
-    chapters = {c['num']: c['title'] for c in corpus['chapters']}
-
-    # ------------------------------------------------------------- índice plano
+def indice_plano(corpus):
+    """id -> {kind, id, title, article, chapter, page} de todo lo que se puede
+    enlazar: artículos, secciones, incisos y los hitos del cierre. Devuelve
+    también el conjunto de ids de sección e inciso."""
     index = {}
     sec_ids = set()
-    for a in articles:
+    for a in corpus['articles']:
         index['art:%d' % a['num']] = {
             'kind': 'articulo', 'id': str(a['num']), 'title': a['title'],
             'article': a['num'], 'chapter': a['chapter'], 'page': a['page'],
@@ -220,13 +215,17 @@ def main():
                       + (' — ' + h['titulo'] if h['titulo'] else '')),
             'article': None, 'chapter': None, 'page': h['page'],
         }
+    return index, sec_ids
 
-    # Los números de figura que la norma imprime, con la imagen donde viven.
-    # Una imagen puede traer más de uno (la 516-3(c)(1) y la (c)(2) comparten
-    # dibujo), y dos pueden compartir número (las dos del 694): gana la
-    # primera, que es la que el cuerpo cita.
+
+def numeros_de_figura(corpus):
+    """Los números de figura que la norma imprime.
+
+    Una imagen puede traer más de uno (la 516-3(c)(1) y la (c)(2) comparten
+    dibujo), y dos pueden compartir número (las dos del 694): gana la
+    primera, que es la que el cuerpo cita."""
     figura_ids = []
-    for a in articles:
+    for a in corpus['articles']:
         for s_ in a['sections']:
             for n in walk(s_):
                 for f in n.get('figures', []):
@@ -240,134 +239,151 @@ def main():
             for r in b.get('rotulos', []):
                 if r['id'] not in figura_ids:
                     figura_ids.append(r['id'])
-    figura_ids = set(figura_ids)
+    return set(figura_ids)
 
-    # Las tablas y las figuras del Apéndice A, por su clave canónica.
-    tabs = json.load(open(os.path.join(out, 'tablas.json')))
-    ap_tablas = {clave_apendice(t['id']): t['id'] for t in tabs
-                 if t['id'].startswith('B.310')}
-    ap_figuras = {clave_apendice(f): f for f in figura_ids
-                  if f.upper().startswith('B.310')}
 
-    def resolver_figura(fid):
-        """De la cita más específica a la más general, como en el sitio.
+def resolver_figura(fid, figura_ids):
+    """De la cita más específica a la más general, como en el sitio.
 
-        La norma cita «Figura 310-60» y la figura puede estar rotulada con
-        sufijo de inciso, o al revés.
-        """
-        while True:
-            if fid in figura_ids:
-                return fid
-            if '(' not in fid:
-                return None
-            fid = re.sub(r'\([^()]*\)$', '', fid)
+    La norma cita «Figura 310-60» y la figura puede estar rotulada con
+    sufijo de inciso, o al revés.
+    """
+    while True:
+        if fid in figura_ids:
+            return fid
+        if '(' not in fid:
+            return None
+        fid = re.sub(r'\([^()]*\)$', '', fid)
 
-    # ------------------------------------------------------------- aristas
-    edges = []          # (origen, destino, tipo)
+
+def fuentes(corpus):
+    """(id, texto) de todo lo que puede citar: cada sección e inciso, y cada
+    hito del cierre con el texto de sus bloques."""
+    out = [(n['id'], node_text(n))
+           for a in corpus['articles'] for s in a['sections'] for n in walk(s)]
+    out += [(h['id'], ' '.join(b.get('text') or '' for b in h['bloques']))
+            for h in corpus.get('cierre', [])]
+    return out
+
+
+def citas(txt, ctx):
+    """Las citas de un texto, como (destino, tipo), en el orden en que se
+    buscan. El orden importa: cada familia de patrones marca lo que ya
+    reconoció para que la siguiente no lo vuelva a tomar por otra cosa.
+
+    ctx lleva lo que se consulta: art_nums, chapters, sec_ids, figura_ids,
+    ap_tablas y ap_figuras."""
+    out = []
+    add = lambda dst, kind: out.append((dst, kind))
+
+    # --- Apéndice A y sus tablas y figuras. Va primero porque sus citas
+    #     llevan dentro un número que parece de sección y no lo es:
+    #     «Tabla B.310-15(b)(2)(11)» mandaba el backlink a la SECCIÓN
+    #     310-15, que es otra cosa. El tramo citado se marca como
+    #     consumido para que el buscador de secciones lo salte.
+    consumido = []
+    for m in RE_AP_TBL.finditer(txt):
+        consumido.append(m.span())
+        tid = ctx['ap_tablas'].get(clave_apendice(m.group(1)))
+        if tid:
+            add('tabla:' + tid, 'tabla')
+    for m in RE_AP_FIG.finditer(txt):
+        consumido.append(m.span())
+        # La Figura B.310.15(B)(2)(1) no existe: el DOF no la imprime (ver
+        # HUECOS_DEL_DOF en check_corpus). Sus cuatro citas se quedan sin
+        # enlace antes que apuntar a otra figura.
+        fid = ctx['ap_figuras'].get(clave_apendice(m.group(1)))
+        if fid:
+            add('figura:' + fid, 'figura')
+    ajenas = [m.span() for m in RE_AP_AJENA.finditer(txt)]
+    for m in RE_AP_HITO.finditer(txt):
+        if any(a <= m.start() < b for a, b in ajenas):
+            continue
+        add('apendice-%s' % m.group(1), 'apendice')
+
+    # --- Figuras (antes que las tablas y las secciones: una
+    #     figura tiene número de sección y no es una sección)
+    figuras = set()
+    for m in RE_FIG_REF.finditer(txt):
+        crudo = m.group(1)
+        fid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
+        destino = resolver_figura(fid, ctx['figura_ids'])
+        if destino is None:
+            continue
+        figuras.add(fid)
+        figuras.add(crudo.split('(')[0].strip().rstrip('.'))
+        add('figura:' + destino, 'figura')
+
+    # --- Tablas (primero: consumen su propio patrón)
+    tablas = set()
+    for m in RE_TBL_REF.finditer(txt):
+        crudo = m.group(1)
+        tid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
+        tid = ERRATAS_TABLAS.get(tid, tid)
+        tablas.add(tid)
+        if tid != crudo:
+            # «Tabla 312-6 (a)»: el buscador de secciones de más
+            # abajo solo alcanza a ver «312-6», así que hay que
+            # marcarlo como ya consumido o añadiría, además de la
+            # arista a la tabla, otra a la sección del mismo número.
+            tablas.add(crudo.split('(')[0].strip().rstrip('.'))
+        add('tabla:' + tid, 'tabla')
+
+    # --- Secciones e incisos
+    art_nums, sec_ids = ctx['art_nums'], ctx['sec_ids']
+    for m in RE_SEC_REF.finditer(txt):
+        num, sec, sub = int(m.group(1)), m.group(2), m.group(3)
+        if num not in art_nums:
+            continue
+        if any(a <= m.start() < b for a, b in consumido):
+            continue
+        full = '%d-%s%s' % (num, sec, sub)
+        if full in tablas or ('%d-%s' % (num, sec)) in tablas:
+            continue
+        if full in figuras or ('%d-%s' % (num, sec)) in figuras:
+            continue
+        # resolver al nodo más específico que exista
+        target = full if full in sec_ids else '%d-%s' % (num, sec)
+        if target in sec_ids:
+            add(target, 'seccion')
+        elif num in art_nums:
+            add('art:%d' % num, 'articulo')
+
+    # --- Artículos completos ("Artículos 500, 502 y 503")
+    for m in RE_ART_REF.finditer(txt):
+        for g in re.findall(r'\d{3}', m.group(1)):
+            if int(g) in art_nums:
+                add('art:%d' % int(g), 'articulo')
+
+    # --- Parte X del Artículo N
+    for m in RE_PART_REF.finditer(txt):
+        if int(m.group(2)) in art_nums:
+            add('parte:%s:%s' % (m.group(2), m.group(1)), 'parte')
+
+    # --- Capítulos
+    for m in RE_CAP_REF.finditer(txt):
+        if int(m.group(1)) in ctx['chapters']:
+            add('cap:%s' % m.group(1), 'capitulo')
+    return out
+
+
+def aristas(corpus, ctx):
+    """Una arista por cada cita distinta (origen, destino, tipo), en orden de
+    documento. Una sección que se cita a sí misma no cuenta."""
+    edges = []
     seen = set()
+    for src, txt in fuentes(corpus):
+        for dst, kind in citas(txt, ctx):
+            k = (src, dst, kind)
+            if k not in seen and src != dst:
+                seen.add(k)
+                edges.append({'from': src, 'to': dst, 'type': kind})
+    return edges
 
-    def add(src, dst, kind):
-        k = (src, dst, kind)
-        if k not in seen and src != dst:
-            seen.add(k)
-            edges.append({'from': src, 'to': dst, 'type': kind})
 
-    fuentes = [(n['id'], node_text(n))
-               for a in articles for s in a['sections'] for n in walk(s)]
-    fuentes += [(h['id'], ' '.join(b.get('text') or '' for b in h['bloques']))
-                for h in corpus.get('cierre', [])]
-
-    for src, txt in fuentes:
-
-        # --- Apéndice A y sus tablas y figuras. Va primero porque sus citas
-        #     llevan dentro un número que parece de sección y no lo es:
-        #     «Tabla B.310-15(b)(2)(11)» mandaba el backlink a la SECCIÓN
-        #     310-15, que es otra cosa. El tramo citado se marca como
-        #     consumido para que el buscador de secciones lo salte.
-        consumido = []
-        for m in RE_AP_TBL.finditer(txt):
-            consumido.append(m.span())
-            tid = ap_tablas.get(clave_apendice(m.group(1)))
-            if tid:
-                add(src, 'tabla:' + tid, 'tabla')
-        for m in RE_AP_FIG.finditer(txt):
-            consumido.append(m.span())
-            # La Figura B.310.15(B)(2)(1) no existe: el DOF no la imprime (ver
-            # HUECOS_DEL_DOF en check_corpus). Sus cuatro citas se quedan sin
-            # enlace antes que apuntar a otra figura.
-            fid = ap_figuras.get(clave_apendice(m.group(1)))
-            if fid:
-                add(src, 'figura:' + fid, 'figura')
-        ajenas = [m.span() for m in RE_AP_AJENA.finditer(txt)]
-        for m in RE_AP_HITO.finditer(txt):
-            if any(a <= m.start() < b for a, b in ajenas):
-                continue
-            add(src, 'apendice-%s' % m.group(1), 'apendice')
-
-        # --- Figuras (antes que las tablas y las secciones: una
-        #     figura tiene número de sección y no es una sección)
-        figuras = set()
-        for m in RE_FIG_REF.finditer(txt):
-            crudo = m.group(1)
-            fid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
-            destino = resolver_figura(fid)
-            if destino is None:
-                continue
-            figuras.add(fid)
-            figuras.add(crudo.split('(')[0].strip().rstrip('.'))
-            add(src, 'figura:' + destino, 'figura')
-
-        # --- Tablas (primero: consumen su propio patrón)
-        tablas = set()
-        for m in RE_TBL_REF.finditer(txt):
-            crudo = m.group(1)
-            tid = re.sub(r'\.(?=\()', '', re.sub(r'\s+', '', crudo))
-            tid = ERRATAS_TABLAS.get(tid, tid)
-            tablas.add(tid)
-            if tid != crudo:
-                # «Tabla 312-6 (a)»: el buscador de secciones de más
-                # abajo solo alcanza a ver «312-6», así que hay que
-                # marcarlo como ya consumido o añadiría, además de la
-                # arista a la tabla, otra a la sección del mismo número.
-                tablas.add(crudo.split('(')[0].strip().rstrip('.'))
-            add(src, 'tabla:' + tid, 'tabla')
-
-        # --- Secciones e incisos
-        for m in RE_SEC_REF.finditer(txt):
-            num, sec, sub = int(m.group(1)), m.group(2), m.group(3)
-            if num not in art_nums:
-                continue
-            if any(a <= m.start() < b for a, b in consumido):
-                continue
-            full = '%d-%s%s' % (num, sec, sub)
-            if full in tablas or ('%d-%s' % (num, sec)) in tablas:
-                continue
-            if full in figuras or ('%d-%s' % (num, sec)) in figuras:
-                continue
-            # resolver al nodo más específico que exista
-            target = full if full in sec_ids else '%d-%s' % (num, sec)
-            if target in sec_ids:
-                add(src, target, 'seccion')
-            elif num in art_nums:
-                add(src, 'art:%d' % num, 'articulo')
-
-        # --- Artículos completos ("Artículos 500, 502 y 503")
-        for m in RE_ART_REF.finditer(txt):
-            for g in re.findall(r'\d{3}', m.group(1)):
-                if int(g) in art_nums:
-                    add(src, 'art:%d' % int(g), 'articulo')
-
-        # --- Parte X del Artículo N
-        for m in RE_PART_REF.finditer(txt):
-            if int(m.group(2)) in art_nums:
-                add(src, 'parte:%s:%s' % (m.group(2), m.group(1)), 'parte')
-
-        # --- Capítulos
-        for m in RE_CAP_REF.finditer(txt):
-            if int(m.group(1)) in chapters:
-                add(src, 'cap:%s' % m.group(1), 'capitulo')
-
-    # ------------------------------------------------------------- backlinks
+def backlinks(edges):
+    """Quién cita a quién, en los dos sentidos. Devuelve (salientes, entrantes,
+    entrantes acumulados en la sección)."""
     outgoing = defaultdict(list)
     incoming = defaultdict(list)
     for e in edges:
@@ -388,49 +404,79 @@ def main():
         root = tgt if ':' in tgt else tgt.split('(')[0]
         for s in srcs:
             incoming_roll[root].add(s)
+    return outgoing, incoming, incoming_roll
 
-    tpath = os.path.join(out, 'tablas.json')
-    tablas = json.load(open(tpath)) if os.path.exists(tpath) else []
+
+def ids_de_tablas(tablas, corpus):
+    """Los ids de todas las tablas de la norma, incluidas las que se
+    imprimen como imagen.
+
+    La norma imprime la Tabla 240-92(b) como imagen, no como rejilla, así que
+    no está entre las 226 reconstruidas y su cita se daba por rota: el
+    comentario de TABLAS_AUSENTES decía "no hay tabla con ese número" y sí la
+    hay, en la página 82. Vive capturada como figura de tipo `tabla`, y desde
+    ahí es un destino tan bueno como cualquier otro."""
     tabla_ids = {t['id'] for t in tablas}
-    # La norma imprime la Tabla 240-92(b) como imagen, no como rejilla, así que
-    # no está entre las 226 reconstruidas y su cita se daba por rota: el
-    # comentario de TABLAS_AUSENTES decía "no hay tabla con ese número" y sí la
-    # hay, en la página 82. Vive capturada como figura de tipo `tabla`, y desde
-    # ahí es un destino tan bueno como cualquier otro.
-    tabla_ids |= {r['id'] for a in articles for s_ in a['sections']
+    tabla_ids |= {r['id'] for a in corpus['articles'] for s_ in a['sections']
                   for n in walk(s_) for f in n.get('figures', [])
                   if f.get('kind') == 'tabla' for r in f.get('rotulos', [])}
+    return tabla_ids
 
-    def destino_vivo(dst):
-        """¿La arista lleva a algo que existe?
 
-        Los destinos `tabla:` quedaban fuera de esta cuenta: se daban por
-        buenos sin comprobar nada, así que una referencia a una tabla
-        inexistente nunca contaba como rota y el enlace moría en un ancla
-        vacía de /tablas. Es justo lo que habría cazado solo que la 408-56 se
-        publicara como párrafo y no como tabla, en vez de encontrarlo a mano.
+def destino_vivo(dst, index, tabla_ids, figura_ids):
+    """¿La arista lleva a algo que existe?
 
-        Al encenderlo salieron 20 destinos muertos, de cinco clases:
+    Los destinos `tabla:` quedaban fuera de esta cuenta: se daban por
+    buenos sin comprobar nada, así que una referencia a una tabla
+    inexistente nunca contaba como rota y el enlace moría en un ancla
+    vacía de /tablas. Es justo lo que habría cazado solo que la 408-56 se
+    publicara como párrafo y no como tabla, en vez de encontrarlo a mano.
 
-        -  6  citas partidas por el corte de línea, que el patrón degradaba a
-               una tabla de dos dígitos del Capítulo 10 («Tabla 230-» -> «23»).
-        -  5  la forma «Tabla 312-6 (a)», con espacio antes del paréntesis.
-        -  1  la Tabla 830-15, que de verdad faltaba: el DOF titula su
-               encabezado en versalitas y el detector de títulos no lo veía.
-        -  1  la 300-1(c), que el DOF imprime titulada 300-16(c) (ERRATAS_TABLAS).
-        -  7  referencias que no son a una tabla de esta norma (TABLAS_AUSENTES).
-        """
-        if dst.startswith('tabla:'):
-            tid = dst[len('tabla:'):]
-            return tid in tabla_ids or tid in TABLAS_AUSENTES
-        if dst.startswith('figura:'):
-            return dst[len('figura:'):] in figura_ids
-        if dst.startswith(('cap:', 'parte:')):
-            return True
-        return dst in index
+    Al encenderlo salieron 20 destinos muertos, de cinco clases:
 
-    broken = sorted({e['to'] for e in edges if not destino_vivo(e['to'])})
+    -  6  citas partidas por el corte de línea, que el patrón degradaba a
+           una tabla de dos dígitos del Capítulo 10 («Tabla 230-» -> «23»).
+    -  5  la forma «Tabla 312-6 (a)», con espacio antes del paréntesis.
+    -  1  la Tabla 830-15, que de verdad faltaba: el DOF titula su
+           encabezado en versalitas y el detector de títulos no lo veía.
+    -  1  la 300-1(c), que el DOF imprime titulada 300-16(c) (ERRATAS_TABLAS).
+    -  7  referencias que no son a una tabla de esta norma (TABLAS_AUSENTES).
+    """
+    if dst.startswith('tabla:'):
+        tid = dst[len('tabla:'):]
+        return tid in tabla_ids or tid in TABLAS_AUSENTES
+    if dst.startswith('figura:'):
+        return dst[len('figura:'):] in figura_ids
+    if dst.startswith(('cap:', 'parte:')):
+        return True
+    return dst in index
 
+
+def main():
+    out = sys.argv[1] if len(sys.argv) > 1 else 'data'
+    corpus = json.load(open(os.path.join(out, 'corpus.json')))
+    articles = corpus['articles']
+    tablas = json.load(open(os.path.join(out, 'tablas.json')))
+
+    index, sec_ids = indice_plano(corpus)
+    figura_ids = numeros_de_figura(corpus)
+    # Las tablas y las figuras del Apéndice A, por su clave canónica.
+    ctx = {
+        'art_nums': {a['num'] for a in articles},
+        'chapters': {c['num']: c['title'] for c in corpus['chapters']},
+        'sec_ids': sec_ids,
+        'figura_ids': figura_ids,
+        'ap_tablas': {clave_apendice(t['id']): t['id'] for t in tablas
+                      if t['id'].startswith('B.310')},
+        'ap_figuras': {clave_apendice(f): f for f in figura_ids
+                       if f.upper().startswith('B.310')},
+    }
+    edges = aristas(corpus, ctx)
+    outgoing, incoming, incoming_roll = backlinks(edges)
+
+    tabla_ids = ids_de_tablas(tablas, corpus)
+    broken = sorted({e['to'] for e in edges
+                     if not destino_vivo(e['to'], index, tabla_ids, figura_ids)})
     ranked = sorted(incoming_roll.items(), key=lambda kv: -len(kv[1]))[:30]
 
     texto_norma = ' '.join(

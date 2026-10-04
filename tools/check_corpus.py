@@ -398,14 +398,10 @@ def citas_del_apendice(corpus, tabs, figuras_ids):
                ', '.join('%r x%d' % (k, v) for k, v in perdidas.most_common(5)))]
 
 
-def main():
-    d = sys.argv[1] if len(sys.argv) > 1 else 'data'
-    val = json.load(open(os.path.join(d, 'validacion.json')))
-    corpus = json.load(open(os.path.join(d, 'corpus.json')))
-    grafo = json.load(open(os.path.join(d, 'grafo.json')))
-
+def revisar_cifras(val, grafo):
+    """Las cifras de validacion.json contra sus mínimos, y las referencias
+    rotas del grafo."""
     fails = []
-
     for k, floor in MIN.items():
         got = val.get(k, 0)
         if got < floor:
@@ -428,7 +424,12 @@ def main():
     if val.get('secciones_vacias'):
         fails.append('%d secciones vacías: %s'
                      % (len(val['secciones_vacias']), val['secciones_vacias'][:10]))
+    return fails
 
+
+def revisar_estructura(corpus):
+    """Ids únicos, secciones en orden y numeración sin huecos."""
+    fails = []
     # ids duplicados: romperían la búsqueda y los enlaces profundos
     ids = Counter()
     for a in corpus['articles']:
@@ -458,126 +459,140 @@ def main():
         fails.append('%d hueco(s) de numeración; si el DOF los imprime así, '
                      'anótalos en HUECOS_DEL_DOF con la cita: %s'
                      % (len(saltos), ', '.join(saltos[:8])))
+    return fails
 
-    tpath = os.path.join(d, 'tablas.json')
-    if os.path.exists(tpath):
-        tabs = json.load(open(tpath))
-        if len(tabs) < MIN_TABLAS:
-            fails.append('tablas = %d, se esperaban >= %d' % (len(tabs), MIN_TABLAS))
-        fiables = sum(1 for t in tabs if t['quality'] >= 0.95)
-        if fiables < MIN_TABLAS_FIABLES:
-            fails.append('tablas de alta confianza = %d, se esperaban >= %d'
-                         % (fiables, MIN_TABLAS_FIABLES))
-        sin_grid = [t['id'] for t in tabs if t['cols'] < 2]
-        if len(sin_grid) > 12:
-            fails.append('%d tablas quedaron en una sola columna' % len(sin_grid))
 
-        # Cada fila debe cubrir exactamente las columnas de la tabla, contando
-        # los colspan y los rowspan que bajan de las filas de arriba. Una fila
-        # que se pasa o que deja un hueco desalinea el resto de la tabla en el
-        # navegador, y eso en una tabla de ampacidades es un valor mal leído.
-        malformadas = []
-        for t in tabs:
-            n = t['cols']
-            pend = [0] * n
-            for i, row in enumerate(t['rows']):
-                occ = [p > 0 for p in pend]
-                col = 0
-                for c in row:
-                    while col < n and occ[col]:
-                        col += 1
-                    cs, rs = c.get('cs', 1), c.get('rs', 1)
-                    if col + cs > n:
-                        malformadas.append('%s fila %d' % (t['id'], i))
-                        break
-                    for x in range(col, col + cs):
-                        occ[x] = True
-                        if rs > 1:
-                            pend[x] = rs
-                    col += cs
-                if sum(occ) != n:
+def filas_malformadas(tabs):
+    """Cada fila debe cubrir exactamente las columnas de la tabla, contando
+    los colspan y los rowspan que bajan de las filas de arriba. Una fila
+    que se pasa o que deja un hueco desalinea el resto de la tabla en el
+    navegador, y eso en una tabla de ampacidades es un valor mal leído."""
+    malformadas = []
+    for t in tabs:
+        n = t['cols']
+        pend = [0] * n
+        for i, row in enumerate(t['rows']):
+            occ = [p > 0 for p in pend]
+            col = 0
+            for c in row:
+                while col < n and occ[col]:
+                    col += 1
+                cs, rs = c.get('cs', 1), c.get('rs', 1)
+                if col + cs > n:
                     malformadas.append('%s fila %d' % (t['id'], i))
-                pend = [max(0, p - 1) for p in pend]
-        if malformadas:
-            fails.append('%d filas de tabla mal formadas: %s'
-                         % (len(malformadas), malformadas[:6]))
+                    break
+                for x in range(col, col + cs):
+                    occ[x] = True
+                    if rs > 1:
+                        pend[x] = rs
+                col += cs
+            if sum(occ) != n:
+                malformadas.append('%s fila %d' % (t['id'], i))
+            pend = [max(0, p - 1) for p in pend]
+    return malformadas
 
-        # Una columna sin un solo dato en toda la tabla es un corte inventado,
-        # no una columna del original. Aparecían cuando el reparto elegido era
-        # el que más columnas producía: la 220-56, de dos columnas, llegó a
-        # publicarse con cuatro y dos de ellas vacías.
-        vacias = []
-        for t in tabs:
-            n = t['cols']
-            ocupada = [False] * n
-            for row in t['rows']:
-                col = 0
-                for c in row:
-                    cs = c.get('cs', 1)
-                    if c['t'].strip():
-                        for x in range(col, min(col + cs, n)):
-                            ocupada[x] = True
-                    col += cs
-            faltan = [i for i, o in enumerate(ocupada) if not o]
-            if faltan:
-                vacias.append('%s col %s' % (t['id'], faltan))
-        if vacias:
-            fails.append('%d tablas con columnas vacías: %s'
-                         % (len(vacias), vacias[:6]))
 
-        # La captura manual es la fuente de verdad y aquí se comprueba, aparte
-        # de lo que ya verifica build_tables, que siga intacta. Son dos cosas
-        # distintas: que la tabla verificada traiga sus propias celdas (y no las
-        # herede del reconstructor), y que su contenido publicado siga siendo el
-        # que se selló. Lo de arriba valida la FORMA de las tablas —anchos de
-        # fila, columnas vacías—; esto valida el CONTENIDO, que es lo que costó
-        # contrastar contra el PDF celda por celda.
-        rpath = os.path.join(d, 'tablas_revisadas.json')
-        if os.path.exists(rpath):
-            revs = json.load(open(rpath, encoding='utf-8'))
-            flojas = sin_congelar(revs)
-            if flojas:
-                fails.append(
-                    '%d tabla(s) marcadas verificada sin congelar sus celdas '
-                    '(publicarían lo que produzca el reconstructor, con la '
-                    'insignia puesta): %s'
-                    % (len(flojas), ', '.join('%s (falta %s)' % (t, '/'.join(f))
-                                              for t, f in flojas[:6])))
-            malas = discrepancias(tabs, revs)
-            if malas:
-                fails.append(
-                    '%d tabla(s) verificadas cambiaron respecto a su huella; '
-                    'si es deliberado, acéptalo con build_tables.py --sellar: %s'
-                    % (len(malas), ', '.join(t for t, _, _ in malas[:6])))
-            # La huella certifica tablas.json, que es derivado; una edición de
-            # tablas_revisadas.json sin reconstruir no la movería. Esto compara
-            # los dos archivos directamente y delata esa desincronización.
-            desal = desalineadas(tabs, revs)
-            if desal:
-                fails.append(
-                    '%d tabla(s) revisadas no coinciden con lo publicado '
-                    '(¿falta regenerar tablas.json?): %s'
-                    % (len(desal), ', '.join('%s (%s)' % (t, '/'.join(c))
-                                             for t, c in desal[:6])))
+def columnas_vacias(tabs):
+    """Una columna sin un solo dato en toda la tabla es un corte inventado,
+    no una columna del original. Aparecían cuando el reparto elegido era
+    el que más columnas producía: la 220-56, de dos columnas, llegó a
+    publicarse con cuatro y dos de ellas vacías."""
+    vacias = []
+    for t in tabs:
+        n = t['cols']
+        ocupada = [False] * n
+        for row in t['rows']:
+            col = 0
+            for c in row:
+                cs = c.get('cs', 1)
+                if c['t'].strip():
+                    for x in range(col, min(col + cs, n)):
+                        ocupada[x] = True
+                col += cs
+        faltan = [i for i, o in enumerate(ocupada) if not o]
+        if faltan:
+            vacias.append('%s col %s' % (t['id'], faltan))
+    return vacias
 
-    if val.get('cierre_hitos') != HITOS_CIERRE:
-        fails.append('los hitos de la región de cierre no son los esperados: '
-                     '%s (se esperaban %s)'
-                     % (val.get('cierre_hitos'), HITOS_CIERRE))
 
-    fails.extend(revisar_figuras(
-        corpus, d, os.environ.get('NOM_IMG_DIR', 'site/public/img')))
+def revisar_forma_tablas(tabs):
+    """Cuántas tablas hay, cuántas son fiables y si su rejilla cuadra.
+    Devuelve los fallos y el número de tablas de alta confianza."""
+    fails = []
+    if len(tabs) < MIN_TABLAS:
+        fails.append('tablas = %d, se esperaban >= %d' % (len(tabs), MIN_TABLAS))
+    fiables = sum(1 for t in tabs if t['quality'] >= 0.95)
+    if fiables < MIN_TABLAS_FIABLES:
+        fails.append('tablas de alta confianza = %d, se esperaban >= %d'
+                     % (fiables, MIN_TABLAS_FIABLES))
+    sin_grid = [t['id'] for t in tabs if t['cols'] < 2]
+    if len(sin_grid) > 12:
+        fails.append('%d tablas quedaron en una sola columna' % len(sin_grid))
 
+    malformadas = filas_malformadas(tabs)
+    if malformadas:
+        fails.append('%d filas de tabla mal formadas: %s'
+                     % (len(malformadas), malformadas[:6]))
+    vacias = columnas_vacias(tabs)
+    if vacias:
+        fails.append('%d tablas con columnas vacías: %s'
+                     % (len(vacias), vacias[:6]))
+    return fails, fiables
+
+
+def revisar_captura_manual(tabs, rpath):
+    """La captura manual es la fuente de verdad y aquí se comprueba, aparte
+    de lo que ya verifica build_tables, que siga intacta. Son dos cosas
+    distintas: que la tabla verificada traiga sus propias celdas (y no las
+    herede del reconstructor), y que su contenido publicado siga siendo el
+    que se selló. revisar_forma_tablas valida la FORMA de las tablas —anchos
+    de fila, columnas vacías—; esto valida el CONTENIDO, que es lo que costó
+    contrastar contra el PDF celda por celda."""
+    if not os.path.exists(rpath):
+        return []
+    fails = []
+    revs = json.load(open(rpath, encoding='utf-8'))
+    flojas = sin_congelar(revs)
+    if flojas:
+        fails.append(
+            '%d tabla(s) marcadas verificada sin congelar sus celdas '
+            '(publicarían lo que produzca el reconstructor, con la '
+            'insignia puesta): %s'
+            % (len(flojas), ', '.join('%s (falta %s)' % (t, '/'.join(f))
+                                      for t, f in flojas[:6])))
+    malas = discrepancias(tabs, revs)
+    if malas:
+        fails.append(
+            '%d tabla(s) verificadas cambiaron respecto a su huella; '
+            'si es deliberado, acéptalo con build_tables.py --sellar: %s'
+            % (len(malas), ', '.join(t for t, _, _ in malas[:6])))
+    # La huella certifica tablas.json, que es derivado; una edición de
+    # tablas_revisadas.json sin reconstruir no la movería. Esto compara
+    # los dos archivos directamente y delata esa desincronización.
+    desal = desalineadas(tabs, revs)
+    if desal:
+        fails.append(
+            '%d tabla(s) revisadas no coinciden con lo publicado '
+            '(¿falta regenerar tablas.json?): %s'
+            % (len(desal), ', '.join('%s (%s)' % (t, '/'.join(c))
+                                     for t, c in desal[:6])))
+    return fails
+
+
+def rotulos_de_figura(corpus):
+    """Los números de figura que la norma imprime, en los artículos y en el
+    cierre."""
     rotulos = [r['id']
                for a in corpus['articles'] for sec in a['sections']
                for n in walk(sec) for f in n.get('figures', [])
                for r in f.get('rotulos', [])]
     rotulos += [r['id'] for h in corpus.get('cierre', []) for b in h['bloques']
                 for r in b.get('rotulos', [])]
-    fails.extend(citas_del_apendice(corpus, tabs, rotulos))
-    fails.extend(celdas_colapsadas(tabs))
-    fails.extend(titulos_del_cierre(corpus))
+    return rotulos
 
+
+def revisar_titulos_de_tabla(tabs):
+    fails = []
     dup, colg = titulos_sospechosos(tabs)
     if dup:
         fails.append(
@@ -588,6 +603,33 @@ def main():
             '%d tabla(s) tienen el título cortado a media frase; contrástalo '
             'contra el PDF y, si el DOF lo imprime así, no lo toques: %s'
             % (len(colg), ', '.join(colg[:6])))
+    return fails
+
+
+def main():
+    d = sys.argv[1] if len(sys.argv) > 1 else 'data'
+    val = json.load(open(os.path.join(d, 'validacion.json')))
+    corpus = json.load(open(os.path.join(d, 'corpus.json')))
+    grafo = json.load(open(os.path.join(d, 'grafo.json')))
+    tabs = json.load(open(os.path.join(d, 'tablas.json')))
+
+    fails = []
+    fails += revisar_cifras(val, grafo)
+    fails += revisar_estructura(corpus)
+    fallas_forma, fiables = revisar_forma_tablas(tabs)
+    fails += fallas_forma
+    fails += revisar_captura_manual(tabs, os.path.join(d, 'tablas_revisadas.json'))
+
+    if val.get('cierre_hitos') != HITOS_CIERRE:
+        fails.append('los hitos de la región de cierre no son los esperados: '
+                     '%s (se esperaban %s)'
+                     % (val.get('cierre_hitos'), HITOS_CIERRE))
+
+    fails += revisar_figuras(corpus, d, os.environ.get('NOM_IMG_DIR', 'site/public/img'))
+    fails += citas_del_apendice(corpus, tabs, rotulos_de_figura(corpus))
+    fails += celdas_colapsadas(tabs)
+    fails += titulos_del_cierre(corpus)
+    fails += revisar_titulos_de_tabla(tabs)
 
     if fails:
         print('VERIFICACIÓN FALLIDA')
@@ -605,9 +647,8 @@ def main():
     msg += ('\n  Figuras: %d con %d número(s), %d fórmulas, %d imágenes '
             'capturadas.' % (val.get('figuras', 0), val.get('figuras_numeradas', 0),
                              val.get('formulas', 0), val.get('imagenes', 0)))
-    if os.path.exists(tpath):
-        msg += ('\n  Tablas: %d reconstruidas, %d de alta confianza.'
-                % (len(tabs), fiables))
+    msg += ('\n  Tablas: %d reconstruidas, %d de alta confianza.'
+            % (len(tabs), fiables))
     print(msg)
 
 
