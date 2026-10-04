@@ -32,11 +32,12 @@ captura no cubre. Cada entrada guarda la huella de su contenido y este script
 aborta antes de escribir tablas.json si una tabla verificada salió distinta.
 Para aceptar un cambio deliberado: --sellar. Ver tools/huella.py y el README.
 """
-import json, os, re, sys, unicodedata
+import json, os, re, sys
 from collections import defaultdict, OrderedDict
 
 # La captura manual de las tablas es la fuente de verdad; esto la protege.
 from huella import huella, discrepancias
+from comun import fix_glifos, unaccent
 
 RULE_MAX = 2.5      # grosor máximo de un rect para contarlo como línea
 GAP_MIN = 3.0       # ancho mínimo de un hueco para separar columnas
@@ -45,11 +46,6 @@ CORTE_PESO = 0.10   # cuánto descuenta una palabra partida por fila (best_edges
 CORTE_MIN = 0.25    # cortes por fila que se toleran sin descontar nada
 RALA_PESO = 0.15    # cuánto descuenta una columna casi sin datos
 RALA_MIN = 0.25     # por debajo de esta fracción de filas con dato, es rala
-
-
-def unaccent(s):
-    return ''.join(c for c in unicodedata.normalize('NFD', s)
-                   if unicodedata.category(c) != 'Mn')
 
 
 # Un título de tabla continúa con su nombre en mayúscula ("Tabla 1.- Porcentaje
@@ -742,22 +738,6 @@ def build_grid(words, bands, edges):
 # ---------------------------------------------------------------- títulos
 
 RE_PAGE_NOISE = re.compile(r'^(?:\d{1,2}/\d{1,2}/\d{4}|SENER|www\.dof\.gob\.mx\S*|\d+/780)$')
-
-# La fuente incrustada del PDF tiene el cmap roto para un puñado de glifos:
-# se ven bien al ojo pero PyMuPDF extrae el código Unicode equivocado. Pasa
-# con el símbolo de grados, que sale como el dígito cero kannada ("90೦C" en
-# vez de "90°C") y con la letra griega fase, que sale como la efe cirílica.
-# Mismo arreglo que en build_corpus.py, aplicado en cada punto donde este
-# script saca texto del PDF.
-GLIFOS_ROTOS = {'೦': '°', 'Ф': 'Φ'}
-
-
-def fix_glifos(s):
-    for malo, bueno in GLIFOS_ROTOS.items():
-        if malo in s:
-            s = s.replace(malo, bueno)
-    return s
-
 
 def clean_words(page, ymin=-1):
     """Palabras de la página, sin el encabezado/pie repetido del PDF."""

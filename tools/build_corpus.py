@@ -19,32 +19,12 @@ veces y como "ARTÍCULO" (con acento) 2 veces -- artículos 250 y 555. Todo
 emparejamiento normaliza acentos pero CONSERVA mayúsculas, que es lo que
 distingue el encabezado "ARTICULO 250" de la referencia en prosa "el Artículo 250".
 """
-import hashlib, itertools, json, os, re, struct, sys, unicodedata
+import hashlib, itertools, json, os, re, struct, sys
 from collections import OrderedDict
 
+from comun import fix_glifos, unaccent, walk
+
 # ------------------------------------------------------------------ utilidades
-
-def unaccent(s):
-    """Quita acentos conservando mayúsculas/minúsculas."""
-    return ''.join(c for c in unicodedata.normalize('NFD', s)
-                   if unicodedata.category(c) != 'Mn')
-
-
-# La fuente incrustada del PDF tiene el cmap roto para un puñado de glifos:
-# se ven bien al ojo pero PyMuPDF extrae el código Unicode equivocado. Pasa
-# con el símbolo de grados, que sale como el dígito cero kannada ("165 ೦C"
-# en vez de "165 °C", 24 veces en el documento) y con la letra griega fase,
-# que sale como la efe cirílica ("1Ф - 3 Ф" en vez de "1Φ - 3Φ", en 430-83).
-# Se corrige en la extracción para que ningún camino del parser vuelva a
-# dejarlo pasar.
-GLIFOS_ROTOS = {'೦': '°', 'Ф': 'Φ'}
-
-
-def fix_glifos(s):
-    for malo, bueno in GLIFOS_ROTOS.items():
-        if malo in s:
-            s = s.replace(malo, bueno)
-    return s
 
 NOISE = re.compile(
     r'^[ \t]*(?:\d{1,2}/\d{1,2}/\d{4}|SENER|www\.dof\.gob\.mx\S*|\d+/780)[ \t]*$', re.M)
@@ -1001,12 +981,6 @@ def collect_refs(node, out):
             out.add(m.group(1))
     for ch in node.get('children', []):
         collect_refs(ch, out)
-
-
-def walk(node):
-    yield node
-    for ch in node.get('children', []):
-        yield from walk(ch)
 
 
 # ------------------------------------------------------------------ main

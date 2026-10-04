@@ -11,6 +11,8 @@ cambia, así que cualquier variación significa que el parser se rompió.
 import hashlib, json, os, re, sys
 from collections import Counter
 
+from comun import walk
+
 # La captura manual de las tablas es la fuente de verdad; esto la protege.
 from huella import desalineadas, discrepancias, sin_congelar
 # Las ocho formas con que el DOF cita el Apéndice A se reducen con la misma
@@ -142,12 +144,6 @@ def celdas_colapsadas(tabs):
             'celda: %s. Si el DOF de verdad la imprime así, va en '
             'CELDAS_APILADAS con sus renglones'
             % (len(malas), ', '.join(malas[:6]))]
-
-
-def walk(n):
-    yield n
-    for c in n.get('children', []):
-        yield from walk(c)
 
 
 def huecos_de_numeracion(nodo):

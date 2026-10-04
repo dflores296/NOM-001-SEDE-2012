@@ -156,7 +156,7 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
 
     <script>
       import MiniSearch from 'minisearch';
-      import { defSlug } from '../lib/slug.js';
+      import { defSlug, tablaSlug } from '../lib/slug.js';
 
       const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       let mini = null;
@@ -285,13 +285,6 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
           })();
         }
         return loading;
-      }
-
-      // Misma regla que tablaSlug() en site/src/lib/nom.js: hay que
-      // repetirla aquí porque este script corre en el navegador y no puede
-      // arrastrar el bundle de nom.js (que importa corpus.json entero).
-      function tablaSlug(id) {
-        return 'tabla-' + String(id).replace(/[^\w-]+/g, '-').replace(/-+$/g, '');
       }
 
       // El Artículo 100 no tiene secciones numeradas: sus 185 definiciones

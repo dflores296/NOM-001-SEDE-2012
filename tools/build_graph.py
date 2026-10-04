@@ -17,6 +17,8 @@ original y es lo que permite ver el impacto de un artículo antes de aplicarlo.
 import json, os, re, sys
 from collections import defaultdict
 
+from comun import walk
+
 # 250-32, 250-32(a), 250-32(a)(1)
 RE_SEC_REF = re.compile(r'\b(\d{3})-(\d{1,3})((?:\([a-z0-9]{1,3}\))*)')
 # Tabla 310-15(b)(16) | Tabla 8 | Tabla 11(A)
@@ -130,12 +132,6 @@ RE_ART_REF = re.compile(r'Art\S*culos?\s+((?:\d{3})(?:\s*(?:,|y|o|ó|a)\s*\d{3})
 RE_CAP_REF = re.compile(r'Cap\S*tulo\s+(\d{1,2})')
 # Parte C del Artículo 250
 RE_PART_REF = re.compile(r'Parte\s+([A-M])\s+del\s+Art\S*culo\s+(\d{3})')
-
-
-def walk(node):
-    yield node
-    for ch in node.get('children', []):
-        yield from walk(ch)
 
 
 def node_text(n):

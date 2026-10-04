@@ -4,13 +4,14 @@ import indice from '../../../data/indice.json';
 import definiciones from '../../../data/definiciones.json';
 import tablas from '../../../data/tablas.json';
 import validacion from '../../../data/validacion.json';
+import { tablaSlug } from './slug.js';
 
 export { corpus, grafo, indice, definiciones, tablas, validacion };
 
-/** Ancla segura para una tabla: "310-15(b)(16)" -> "tabla-310-15-b-16". */
-export function tablaSlug(id) {
-  return 'tabla-' + String(id).replace(/[^\w-]+/g, '-').replace(/-+$/g, '');
-}
+// La regla del ancla de una tabla vive en slug.js porque también la usa el
+// buscador del navegador; se reexporta para que las páginas sigan
+// importándola de aquí.
+export { tablaSlug };
 
 /**
  * Cómo se anuncia una tabla. La norma imprime alguna sin "Tabla N" delante
