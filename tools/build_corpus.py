@@ -1239,24 +1239,20 @@ def parse_cierre(lines, pageno, sangria, desde):
     def add(tipo, **kw):
         actual['bloques'].append(dict(tipo=tipo, **kw))
 
-    i = desde
-    while i < len(lines):
+    for i in range(desde, len(lines)):
         ln = lines[i].rstrip()
         x0, crudo = sangria[i], ln.strip()
 
         if ln.startswith(TBL_MARK):
             if actual is not None:
                 add('tabla', id=ln[len(TBL_MARK):].split('|', 1)[1])
-            i += 1
             continue
         if ln.startswith(IMG_MARK):
             if actual is not None:
                 name, w, h = ln[len(IMG_MARK):].rsplit(':', 2)
                 add('figura', src=name, w=int(w), h=int(h), page=pageno[i])
-            i += 1
             continue
         if not crudo:
-            i += 1
             continue
 
         u = unaccent(crudo).upper()
@@ -1272,18 +1268,15 @@ def parse_cierre(lines, pageno, sangria, desde):
             else:
                 nuevo('capitulo', num=10, page=pageno[i], id='capitulo-10')
             esperando = actual
-            i += 1
             continue
 
         if actual is None:
-            i += 1
             continue
 
         # «(Informativo)» va en su propio renglón en el Apéndice B, justo donde
         # iría el nombre, y no es el nombre.
         if actual['kind'] == 'apendice' and re.fullmatch(r'\(Informativo\)', crudo, re.I):
             actual['informativo'] = True
-            i += 1
             continue
 
         # El nombre del hito son las líneas centradas que siguen al encabezado,
@@ -1293,7 +1286,6 @@ def parse_cierre(lines, pageno, sangria, desde):
         if esperando is not None:
             if x0 >= SANGRIA_CENTRADO and not crudo[:1].islower():
                 esperando['titulo'] = (esperando['titulo'] + ' ' + crudo).strip()
-                i += 1
                 continue
             esperando = None
 
@@ -1302,28 +1294,23 @@ def parse_cierre(lines, pageno, sangria, desde):
 
         if x0 >= SANGRIA_CENTRADO and not crudo[:1].islower():
             add('titulo', text=crudo)
-            i += 1
             continue
 
         m = RE_ITEM_CIERRE.match(crudo)
         if m and x0 in SANGRIA_PARRAFO:
             add('item', label=m.group(1), text=m.group(2))
-            i += 1
             continue
 
         prev = actual['bloques'][-1] if actual['bloques'] else None
         continua = x0 == SANGRIA_CONT or (x0 >= SANGRIA_CENTRADO and crudo[:1].islower())
         if continua and prev and prev['tipo'] in ('parrafo', 'item', 'titulo', 'subtitulo'):
             prev['text'] = (prev['text'] + ' ' + crudo).strip()
-            i += 1
             continue
         if x0 == 68.8 and prev and prev['tipo'] == 'item':
             prev['text'] = (prev['text'] + ' ' + crudo).strip()
-            i += 1
             continue
 
         add('subtitulo' if RE_SUBTIT_CIERRE.match(crudo) else 'parrafo', text=crudo)
-        i += 1
     return hitos
 
 
