@@ -1065,27 +1065,24 @@ def sellar(path, tables):
     return n
 
 
-def main():
-    import pymupdf
-    args = [a for a in sys.argv[1:] if not a.startswith('--')]
-    quiere_sellar = '--sellar' in sys.argv[1:]
-    pdf = args[0] if args else 'NOM-001-SEDE-2012.pdf'
-    out = args[1] if len(args) > 1 else 'data'
-    os.makedirs(out, exist_ok=True)
-    doc = pymupdf.open(pdf)
+def numeros_de_articulo(doc):
+    """Los números de artículo de la norma.
 
-    # Los números de artículo se sacan del índice del propio PDF y no de
-    # corpus.json: así este script puede correr ANTES que build_corpus, que a
-    # su vez necesita saber qué zonas de la página ocupa una tabla para no
-    # arrastrar su contenido al texto de la sección.
+    Se sacan del índice del propio PDF y no de corpus.json: así este script
+    puede correr ANTES que build_corpus, que a su vez necesita saber qué zonas
+    de la página ocupa una tabla para no arrastrar su contenido al texto de la
+    sección."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from build_corpus import parse_toc
     pages_txt = [fix_glifos(doc[i].get_text()) for i in range(doc.page_count)]
-    art_nums = sorted(parse_toc(pages_txt)[0])
+    return sorted(parse_toc(pages_txt)[0])
 
-    caps = find_captions(doc)
-    # varias páginas repiten el título al continuar la tabla; se conserva la
-    # primera aparición y las siguientes se tratan como continuación
+
+def titulos_unicos(caps):
+    """Un título por tabla, en orden, y los títulos de cada página.
+
+    Varias páginas repiten el título al continuar la tabla; se conserva la
+    primera aparición y las siguientes se tratan como continuación."""
     seen, ordered = {}, []
     for c in caps:
         if c['id'] in seen:
@@ -1098,322 +1095,388 @@ def main():
     by_page = defaultdict(list)
     for c in caps:
         by_page[c['page']].append(c)
+    return ordered, by_page
 
-    tables = []
-    for cap in ordered:
-        extent = table_extent(doc, cap, by_page)
-        if not extent:
+
+def regiones_de(doc, cap, extent, art):
+    """Las zonas de página que ocupa la tabla, de su título al final de su
+    rejilla. build_corpus las salta para no leer su contenido como texto."""
+    regions = [{'page': pno, 'y0': (cap['y'] - 4 if pno == cap['page'] else bands[0][0] - 2),
+                'y1': bands[-1][1] + 2, 'id': cap['id'], 'article': art}
+               for pno, bands in extent]
+
+    # El título puede quedar al pie de una página y la tabla empezar en la
+    # siguiente. Entonces la zona del título no está en ninguna región y
+    # sus renglones se cuelan en el texto del artículo: las cuatro líneas
+    # del título de la 310-60(c)(78) acabaron dentro de una NOTA del 310.
+    if cap['page'] not in [p for p, _ in extent]:
+        regions.insert(0, {'page': cap['page'], 'y0': cap['y'] - 4,
+                           'y1': doc[cap['page'] - 1].rect.y1,
+                           'id': cap['id'], 'article': art})
+    return regions
+
+
+# --------------------------------------------- el título de varios renglones
+#
+# Un título de tabla de varios renglones: los siguientes empiezan en
+# minúscula o con paréntesis, nunca con mayúscula de frase nueva.
+# No sirve cortar donde empieza la rejilla: la detección de filas
+# arranca en el propio título, así que su primera banda cae encima de
+# estos renglones. Se recorren hacia abajo y se para en el primero que
+# no continúa la frase.
+
+def renglones_bajo(doc, pno, desde_y):
+    out = []
+    for blk in doc[pno].get_text('dict')['blocks']:
+        for ln in blk.get('lines', []):
+            if ln['bbox'][1] > desde_y:
+                out.append((round(ln['bbox'][1], 1),
+                            fix_glifos(''.join(sp['text'] for sp in ln['spans'])).strip()))
+    return sorted(out)
+
+
+def norm(t):
+    return re.sub(r'\s+', ' ', t).strip()
+
+
+def sigue_la_frase(txt, hasta_ahora):
+    if txt[0].islower() or txt[0] == '(':
+        return True
+    # El PDF corta el número de referencia a mitad de renglón:
+    # "...según se indica en la Figura 310-" / "60, factor de carga".
+    # Sin esto los títulos de la 310-60(c)(85) y la (86) se quedaban
+    # en "Figura 310-", y el tercer renglón vive en OTRO bloque del
+    # PDF, así que find_captions tampoco lo alcanza.
+    return txt[0].isdigit() and hasta_ahora.rstrip().endswith('-')
+
+
+def pegar(base, trozo):
+    # "Figura 310-" + "60, factor..." va sin espacio, como lo imprimen
+    # las tablas hermanas (81), (82) y (84): "Figura 310-60".
+    if base.rstrip().endswith('-') and trozo[:1].isdigit():
+        return base.rstrip() + trozo
+    return base + ' ' + trozo
+
+
+def completar_titulo(doc, cap, regions):
+    """Le pega a cap['title'] los renglones que lo continúan, en su página y,
+    si el título queda al pie, arriba de la siguiente; y estira la región de
+    esa página para que la cola del título no se lea como texto."""
+    # La continuación del título ya la resuelve find_captions con el bloque
+    # de texto del PDF, que agrupa la frase y distingue una línea de título
+    # de una fila de tabla por su altura. Volver a añadirla aquí la
+    # duplicaba, así que solo se pega lo que todavía no está —comparando
+    # NORMALIZADO: el PDF imprime "el montaje  de los ductos" con dos
+    # espacios y el título ya los colapsó a uno, así que la comparación
+    # cruda no lo reconocía y lo pegaba de nuevo: de ahí salían duplicados
+    # los títulos de la 310-60(c)(85) y la (86).
+    titulo, prev, ultimo_y = cap['title'], cap['y'], cap['y']
+    for y, txt in renglones_bajo(doc, cap['page'] - 1, cap['y'] + 6):
+        if not txt or RE_PAGE_NOISE.match(txt):
             continue
+        if y - prev > 20 or not sigue_la_frase(txt, titulo):
+            break
+        if norm(txt) not in norm(titulo):
+            titulo = pegar(titulo, txt)
+        prev = ultimo_y = y
 
-        # El modelo de columnas se calcula sobre TODAS las páginas de la tabla
-        # a la vez. Calcularlo por página partiría la misma tabla en rejillas
-        # distintas, porque la página del título suele traer solo el
-        # encabezado y muy pocas filas de datos.
-        # Las columnas se resuelven POR PÁGINA. Un modelo único para toda la
-        # tabla no sirve: las coordenadas son relativas a cada página y la del
-        # título suele traer solo el encabezado, cuyo trazado no coincide con
-        # el del cuerpo. Lo que sí se comparte es el número de columnas.
-        art = None
-        m = re.match(r'^(\d{3})-', cap['id'])
-        if m and int(m.group(1)) in art_nums:
-            art = int(m.group(1))
-
-        regions = [{'page': pno, 'y0': (cap['y'] - 4 if pno == cap['page'] else bands[0][0] - 2),
-                    'y1': bands[-1][1] + 2, 'id': cap['id'], 'article': art}
-                   for pno, bands in extent]
-
-        # Las notas al pie van DEBAJO de la rejilla, fuera del rectángulo que
-        # se recorta. Si se dejan ahí, build_corpus las lee como texto corrido
-        # y acaban pegadas al párrafo anterior: en 310-60(c)(4) la nota del
-        # artículo terminó con nueve "* Consulte 310-60(c)(4)..." seguidos,
-        # uno por cada tabla de las páginas siguientes.
-        # El título puede quedar al pie de una página y la tabla empezar en la
-        # siguiente. Entonces la zona del título no está en ninguna región y
-        # sus renglones se cuelan en el texto del artículo: las cuatro líneas
-        # del título de la 310-60(c)(78) acabaron dentro de una NOTA del 310.
-        if cap['page'] not in [p for p, _ in extent]:
-            regions.insert(0, {'page': cap['page'], 'y0': cap['y'] - 4,
-                               'y1': doc[cap['page'] - 1].rect.y1,
-                               'id': cap['id'], 'article': art})
-
-        # Un título de tabla de varios renglones: los siguientes empiezan en
-        # minúscula o con paréntesis, nunca con mayúscula de frase nueva.
-        # No sirve cortar donde empieza la rejilla: la detección de filas
-        # arranca en el propio título, así que su primera banda cae encima de
-        # estos renglones. Se recorren hacia abajo y se para en el primero que
-        # no continúa la frase.
-        def renglones_bajo(pno, desde_y):
-            out = []
-            for blk in doc[pno].get_text('dict')['blocks']:
-                for ln in blk.get('lines', []):
-                    if ln['bbox'][1] > desde_y:
-                        out.append((round(ln['bbox'][1], 1),
-                                    fix_glifos(''.join(sp['text'] for sp in ln['spans'])).strip()))
-            return sorted(out)
-
-        def norm(t):
-            return re.sub(r'\s+', ' ', t).strip()
-
-        def sigue_la_frase(txt, hasta_ahora):
-            if txt[0].islower() or txt[0] == '(':
-                return True
-            # El PDF corta el número de referencia a mitad de renglón:
-            # "...según se indica en la Figura 310-" / "60, factor de carga".
-            # Sin esto los títulos de la 310-60(c)(85) y la (86) se quedaban
-            # en "Figura 310-", y el tercer renglón vive en OTRO bloque del
-            # PDF, así que find_captions tampoco lo alcanza.
-            return txt[0].isdigit() and hasta_ahora.rstrip().endswith('-')
-
-        def pegar(base, trozo):
-            # "Figura 310-" + "60, factor..." va sin espacio, como lo imprimen
-            # las tablas hermanas (81), (82) y (84): "Figura 310-60".
-            if base.rstrip().endswith('-') and trozo[:1].isdigit():
-                return base.rstrip() + trozo
-            return base + ' ' + trozo
-
-        # La continuación del título ya la resuelve find_captions con el bloque
-        # de texto del PDF, que agrupa la frase y distingue una línea de título
-        # de una fila de tabla por su altura. Volver a añadirla aquí la
-        # duplicaba, así que solo se pega lo que todavía no está —comparando
-        # NORMALIZADO: el PDF imprime "el montaje  de los ductos" con dos
-        # espacios y el título ya los colapsó a uno, así que la comparación
-        # cruda no lo reconocía y lo pegaba de nuevo: de ahí salían duplicados
-        # los títulos de la 310-60(c)(85) y la (86).
-        titulo, prev, ultimo_y = cap['title'], cap['y'], cap['y']
-        for y, txt in renglones_bajo(cap['page'] - 1, cap['y'] + 6):
+    # Un título al pie de una página puede seguir arriba de la siguiente: la
+    # cola del de la Tabla 220-55 —"aplicarse en todos los casos, excepto lo
+    # permitido de otra forma en la Nota 3)."— se imprime en la página 49 y
+    # se quedaba fuera, porque aquí solo se miraba la página del título.
+    alto = doc[cap['page'] - 1].rect.y1
+    cola_y = None
+    if ultimo_y > alto - 60 and cap['page'] < doc.page_count:
+        for y, txt in renglones_bajo(doc, cap['page'], 0):
             if not txt or RE_PAGE_NOISE.match(txt):
                 continue
-            if y - prev > 20 or not sigue_la_frase(txt, titulo):
+            if y > 60 or not sigue_la_frase(txt, titulo):
                 break
             if norm(txt) not in norm(titulo):
                 titulo = pegar(titulo, txt)
-            prev = ultimo_y = y
+            cola_y = y if cola_y is None else min(cola_y, y)
 
-        # Un título al pie de una página puede seguir arriba de la siguiente: la
-        # cola del de la Tabla 220-55 —"aplicarse en todos los casos, excepto lo
-        # permitido de otra forma en la Nota 3)."— se imprime en la página 49 y
-        # se quedaba fuera, porque aquí solo se miraba la página del título.
-        alto = doc[cap['page'] - 1].rect.y1
-        cola_y = None
-        if ultimo_y > alto - 60 and cap['page'] < doc.page_count:
-            for y, txt in renglones_bajo(cap['page'], 0):
-                if not txt or RE_PAGE_NOISE.match(txt):
-                    continue
-                if y > 60 or not sigue_la_frase(txt, titulo):
-                    break
-                if norm(txt) not in norm(titulo):
-                    titulo = pegar(titulo, txt)
-                cola_y = y if cola_y is None else min(cola_y, y)
-
-        # Esa cola queda ARRIBA de donde empieza la rejilla, así que no caía en
-        # ninguna región recortada y build_corpus la leía como texto del
-        # artículo: la de la 220-55 se publicaba además como párrafo suelto
-        # debajo de su propia tabla. La región de esa página tiene que subir
-        # hasta incluirla.
-        if cola_y is not None:
-            for reg in regions:
-                if reg['page'] == cap['page'] + 1:
-                    reg['y0'] = min(reg['y0'], cola_y - 4)
-                    break
-
-        cap['title'] = norm(titulo)
-
-        pie = []
-        porpag = {r['page']: r for r in regions}
-        for pno, bands in extent:
-            texto, y1 = footnotes_below(doc[pno - 1], bands[-1][1])
-            if texto:
-                pie += texto
-                porpag[pno]['y1'] = max(porpag[pno]['y1'], y1)
-        rows, npages, per_page = [], [], []
-        for pno, bands in extent:
-            page = doc[pno - 1]
-            ws = clean_words(page, bands[0][0] - 1)
-            if not ws:
-                continue
-            vert, horz = page_rules(page)
-            edges = best_edges(ws, bands, vert)
-            if len(edges) < 2:
-                continue
-            per_page.append((pno, bands, ws, edges, vert, horz))
-
-        if not per_page:
-            continue
-
-        # Dos modelos por página: la rejilla dibujada, que trae las fusiones, y
-        # la separación por huecos, que es lo único que hay cuando la tabla no
-        # dibuja verticales. Gana la rejilla salvo que separe peor las celdas:
-        # el criterio anterior —a igual calidad, más columnas gana— era el que
-        # inventaba columnas vacías donde el original tenía una celda ancha.
-        def modelo(z):
-            pno, bands, ws, edges, vert, horz = z
-            re_ = rule_edges(vert, bands)
-            cel = build_cells(ws, bands, re_, vert, horz)
-            pla = flat_cells(build_grid(ws, bands, edges))
-            if cel and grid_score(cell_text(cel)) >= grid_score(cell_text(pla)) - 0.02:
-                return cel, len(re_) - 1, 'rejilla'
-            # Sin verticales dibujadas la tabla se quedaba sin fusiones, y un
-            # encabezado que cubre varias columnas salía partido en trozos
-            # sueltos: en la 220-55, "Factor de demanda (%)" aparecía como
-            # "Factor de" y "demanda (%)" en celdas distintas. Las fusiones
-            # también se ven en el texto —una palabra montada sobre la frontera
-            # significa que la celda la cruza—, así que se prueba el mismo
-            # modelo con las fronteras deducidas de las filas de datos.
-            fus = build_cells(ws, bands, edges, vert, horz, solo_cruces=True)
-            if (fus and len(edges) - 1 == max((row_width(r) for r in fus), default=0)
-                    and grid_score(cell_text(fus)) >= grid_score(cell_text(pla)) - 0.02):
-                return fus, len(edges) - 1, 'huecos'
-            return pla, len(edges) - 1, 'huecos'
-
-        modelos = {z[0]: modelo(z) for z in per_page}
-
-        # Todas las páginas de una tabla comparten el mismo trazado, así que
-        # el ancho de la página mejor reconstruida manda sobre las demás.
-        #
-        # Se descarta primero lo que quedó mal separado y de lo que sobrevive
-        # gana la página MÁS ANCHA. Ordenar solo por calidad no sirve: la
-        # página del título trae únicamente el encabezado, no tiene un solo
-        # número que pueda quedar mal repartido y por eso puntúa 1.0 siempre;
-        # si mandara ella, la tabla entera se publicaría con las columnas del
-        # encabezado y las filas de datos se fundirían dentro. Le pasaba a la
-        # 922-41 y a la 110-34(a).
-        # Gana la más ancha, y a igual ancho la mejor separada. Una página mal
-        # extraída no gana por ancha: cuando la separación falla lo que hace es
-        # FUNDIR celdas, así que queda más angosta, no más ancha.
-        puntos = {z[0]: round(grid_score(cell_text(modelos[z[0]][0])), 3)
-                  for z in per_page}
-        best_page = max(per_page, key=lambda z: (modelos[z[0]][1], puntos[z[0]]))
-        ncols = modelos[best_page[0]][1]
-        ref_edges = rule_edges(best_page[4], best_page[1]) \
-            if modelos[best_page[0]][2] == 'rejilla' else best_page[3]
-        origen = modelos[best_page[0]][2]
-
-        for pno, bands, ws, edges, vert, horz in per_page:
-            cel, n, _ = modelos[pno]
-            if n != ncols:
-                # La página va con otro ancho: se reconstruye con las fronteras
-                # de la página de referencia, que en el PDF son las mismas.
-                alt = (build_cells(ws, bands, ref_edges, vert, horz)
-                       if origen == 'rejilla' else flat_cells(build_grid(ws, bands, ref_edges)))
-                if alt and max(row_width(r) for r in alt) == ncols:
-                    cel = alt
-            if cel:
-                rows += cel
-                npages.append(pno)
-        # las de dentro de la rejilla van primero; después las de debajo
-        notes = []
-        if not rows:
-            continue
-
-        # notas al pie: filas de una sola celda que empiezan con * o NOTA
-        body = []
-        for row in rows:
-            filled = [c for c in row if c['t'].strip()]
-            if len(filled) == 1 and RE_NOTE.match(filled[0]['t']):
-                notes.append(filled[0]['t'].strip())
-            else:
-                body.append(row)
-        if not body:
-            continue
-        notes += pie
-
-        ncols = max(row_width(r) for r in body)
-        # una fila más angosta que la tabla se completa por la derecha
-        for idx, (fila, ocupa) in enumerate(layout(body, ncols)):
-            if ocupa < ncols:
-                falta = ncols - ocupa
-                body[idx].append({'t': '', 'cs': falta} if falta > 1 else {'t': ''})
-
-        # Las líneas de la rejilla a veces trazan separadores donde no hay
-        # datos (bordes dobles, subdivisiones del encabezado), lo que deja
-        # columnas enteras vacías. Se eliminan para que la tabla publicada
-        # tenga las columnas que realmente tiene.
-        ocupadas = set()
-        for fila, _ in layout(body, ncols):
-            for c, col, cs in fila:
-                if c['t'].strip():
-                    ocupadas.update(range(col, col + cs))
-        muertas = [i for i in range(ncols) if i not in ocupadas]
-        if muertas and len(muertas) < ncols:
-            body, ncols = drop_columns(body, ncols, muertas)
-
-        # La primera fila fusionada a todo lo ancho no es un encabezado: es la
-        # frase que introduce la tabla ("Para temperaturas ambiente distintas
-        # de 30 °C, multiplique..."). Repartida en celdas quedaba como títulos
-        # de columna sin sentido, así que sube a subtítulo de la tabla.
-        intro = ''
-        while (len(body) > 1 and len(body[0]) == 1
-               and body[0][0].get('cs', 1) == ncols
-               and len(body[0][0]['t'].split()) >= 6):
-            intro = (intro + ' ' + body.pop(0)[0]['t']).strip()
-
-        # el encabezado son las filas iniciales sin ningún número suelto.
-        # Un número puede arrastrar pegada la letra volada que llama a una
-        # nota al pie ("39b" en la 220-12): sigue siendo un dato, y sin
-        # admitirla la primera fila de la tabla —Bancos— se publicaba como
-        # segundo renglón de encabezado, en negritas y con estilo de título.
-        head = 0
-        for r in body[:4]:
-            cells = [c['t'] for c in r if c['t'].strip()]
-            if cells and not any(re.fullmatch(r'[\d.,/\-]+[a-z]?', c.strip()) for c in cells):
-                head += 1
-            else:
+    # Esa cola queda ARRIBA de donde empieza la rejilla, así que no caía en
+    # ninguna región recortada y build_corpus la leía como texto del
+    # artículo: la de la 220-55 se publicaba además como párrafo suelto
+    # debajo de su propia tabla. La región de esa página tiene que subir
+    # hasta incluirla.
+    if cola_y is not None:
+        for reg in regions:
+            if reg['page'] == cap['page'] + 1:
+                reg['y0'] = min(reg['y0'], cola_y - 4)
                 break
 
-        tables.append({
-            'id': cap['id'],
-            'title': cap['title'],
-            'informativa': cap.get('informativa', False),
-            'article': art,
-            # Las tablas de los Apéndices no cuelgan de ningún artículo, como
-            # las del Capítulo 10, pero tampoco son del Capítulo 10: llevan su
-            # letra para poder agruparlas donde toca.
-            'apendice': apendice_de(cap['page'], cap['y']),
-            'pages': npages or [cap['page']],
-            'page': cap['page'],
-            'cols': ncols,
-            'header_rows': head,
-            'intro': intro,
-            # Cada celda es {t: texto, cs: colspan, rs: rowspan}; cs y rs se
-            # omiten cuando valen 1, que es la mayoría.
-            'rows': body,
-            'grid': origen,
-            'notes': notes,
-            # Calidad estimada de la separación en celdas. Se publica junto a
-            # la tabla para poder avisar al lector cuando conviene contrastar
-            # con el PDF, en vez de presentar todo con la misma confianza.
-            'quality': round(grid_score(cell_text(body)), 3),
-            'regions': regions,
-        })
+    cap['title'] = norm(titulo)
 
-    revisadas = apply_revisiones(tables, os.path.join(out, 'tablas_revisadas.json'))
-    # Las dadas de alta a mano se añaden al final; el orden del archivo es el
-    # del documento y de él salen los listados del sitio.
-    tables.sort(key=lambda t: (t['regions'][0]['page'], t['regions'][0]['y0']))
 
-    # La captura manual manda sobre la reconstrucción, y aquí se comprueba que
-    # siga mandando: si una tabla ya verificada sale distinta de como se selló,
-    # se aborta ANTES de escribir tablas.json. Sin esto, un cambio en el
-    # reconstructor movería celdas de tablas contrastadas a ojo y el sitio las
-    # publicaría igual, con su insignia de «Verificada contra el PDF» intacta.
-    rpath = os.path.join(out, 'tablas_revisadas.json')
-    if os.path.exists(rpath):
-        with open(rpath, encoding='utf-8') as fh:
-            revs = json.load(fh)
-        if quiere_sellar:
-            print('Selladas: %d huellas actualizadas' % sellar(rpath, tables))
+# ------------------------------------------------------------ las celdas
+
+def paginas_de_tabla(doc, extent, regions):
+    """Las notas al pie de la tabla y, por cada página con rejilla, lo que
+    hace falta para separarla en celdas."""
+    # Las notas al pie van DEBAJO de la rejilla, fuera del rectángulo que
+    # se recorta. Si se dejan ahí, build_corpus las lee como texto corrido
+    # y acaban pegadas al párrafo anterior: en 310-60(c)(4) la nota del
+    # artículo terminó con nueve "* Consulte 310-60(c)(4)..." seguidos,
+    # uno por cada tabla de las páginas siguientes. Por eso la región de
+    # cada página baja hasta incluirlas.
+    pie = []
+    porpag = {r['page']: r for r in regions}
+    for pno, bands in extent:
+        texto, y1 = footnotes_below(doc[pno - 1], bands[-1][1])
+        if texto:
+            pie += texto
+            porpag[pno]['y1'] = max(porpag[pno]['y1'], y1)
+    per_page = []
+    for pno, bands in extent:
+        page = doc[pno - 1]
+        ws = clean_words(page, bands[0][0] - 1)
+        if not ws:
+            continue
+        vert, horz = page_rules(page)
+        edges = best_edges(ws, bands, vert)
+        if len(edges) < 2:
+            continue
+        per_page.append((pno, bands, ws, edges, vert, horz))
+    return pie, per_page
+
+
+def modelo_de_pagina(z):
+    """Las celdas de una página, su número de columnas y de dónde salieron.
+
+    Dos modelos por página: la rejilla dibujada, que trae las fusiones, y
+    la separación por huecos, que es lo único que hay cuando la tabla no
+    dibuja verticales. Gana la rejilla salvo que separe peor las celdas:
+    el criterio anterior —a igual calidad, más columnas gana— era el que
+    inventaba columnas vacías donde el original tenía una celda ancha."""
+    pno, bands, ws, edges, vert, horz = z
+    re_ = rule_edges(vert, bands)
+    cel = build_cells(ws, bands, re_, vert, horz)
+    pla = flat_cells(build_grid(ws, bands, edges))
+    if cel and grid_score(cell_text(cel)) >= grid_score(cell_text(pla)) - 0.02:
+        return cel, len(re_) - 1, 'rejilla'
+    # Sin verticales dibujadas la tabla se quedaba sin fusiones, y un
+    # encabezado que cubre varias columnas salía partido en trozos
+    # sueltos: en la 220-55, "Factor de demanda (%)" aparecía como
+    # "Factor de" y "demanda (%)" en celdas distintas. Las fusiones
+    # también se ven en el texto —una palabra montada sobre la frontera
+    # significa que la celda la cruza—, así que se prueba el mismo
+    # modelo con las fronteras deducidas de las filas de datos.
+    fus = build_cells(ws, bands, edges, vert, horz, solo_cruces=True)
+    if (fus and len(edges) - 1 == max((row_width(r) for r in fus), default=0)
+            and grid_score(cell_text(fus)) >= grid_score(cell_text(pla)) - 0.02):
+        return fus, len(edges) - 1, 'huecos'
+    return pla, len(edges) - 1, 'huecos'
+
+
+def filas_de_tabla(per_page):
+    """Las filas de todas las páginas de la tabla, con un mismo ancho; las
+    páginas que aportaron filas, y el modelo que mandó ('rejilla' o
+    'huecos').
+
+    Las columnas se resuelven POR PÁGINA. Un modelo único para toda la
+    tabla no sirve: las coordenadas son relativas a cada página y la del
+    título suele traer solo el encabezado, cuyo trazado no coincide con
+    el del cuerpo. Lo que sí se comparte es el número de columnas."""
+    modelos = {z[0]: modelo_de_pagina(z) for z in per_page}
+
+    # Todas las páginas de una tabla comparten el mismo trazado, así que
+    # el ancho de la página mejor reconstruida manda sobre las demás.
+    #
+    # Se descarta primero lo que quedó mal separado y de lo que sobrevive
+    # gana la página MÁS ANCHA. Ordenar solo por calidad no sirve: la
+    # página del título trae únicamente el encabezado, no tiene un solo
+    # número que pueda quedar mal repartido y por eso puntúa 1.0 siempre;
+    # si mandara ella, la tabla entera se publicaría con las columnas del
+    # encabezado y las filas de datos se fundirían dentro. Le pasaba a la
+    # 922-41 y a la 110-34(a).
+    # Gana la más ancha, y a igual ancho la mejor separada. Una página mal
+    # extraída no gana por ancha: cuando la separación falla lo que hace es
+    # FUNDIR celdas, así que queda más angosta, no más ancha.
+    puntos = {z[0]: round(grid_score(cell_text(modelos[z[0]][0])), 3)
+              for z in per_page}
+    best_page = max(per_page, key=lambda z: (modelos[z[0]][1], puntos[z[0]]))
+    ncols = modelos[best_page[0]][1]
+    ref_edges = rule_edges(best_page[4], best_page[1]) \
+        if modelos[best_page[0]][2] == 'rejilla' else best_page[3]
+    origen = modelos[best_page[0]][2]
+
+    rows, npages = [], []
+    for pno, bands, ws, edges, vert, horz in per_page:
+        cel, n, _ = modelos[pno]
+        if n != ncols:
+            # La página va con otro ancho: se reconstruye con las fronteras
+            # de la página de referencia, que en el PDF son las mismas.
+            alt = (build_cells(ws, bands, ref_edges, vert, horz)
+                   if origen == 'rejilla' else flat_cells(build_grid(ws, bands, ref_edges)))
+            if alt and max(row_width(r) for r in alt) == ncols:
+                cel = alt
+        if cel:
+            rows += cel
+            npages.append(pno)
+    return rows, npages, origen
+
+
+def separar_notas(rows):
+    """Las filas del cuerpo y las notas al pie: filas de una sola celda que
+    empiezan con * o NOTA. Las de dentro de la rejilla van primero; después
+    se añaden las de debajo."""
+    notes, body = [], []
+    for row in rows:
+        filled = [c for c in row if c['t'].strip()]
+        if len(filled) == 1 and RE_NOTE.match(filled[0]['t']):
+            notes.append(filled[0]['t'].strip())
         else:
-            malas = discrepancias(tables, revs)
-            if malas:
-                raise SystemExit(
-                    'La reconstrucción cambió %d tabla(s) ya verificada(s):\n%s\n'
-                    'Si el cambio es deliberado, acéptalo con:\n'
-                    '  python3 tools/build_tables.py %s %s --sellar'
-                    % (len(malas),
-                       '\n'.join('  %-16s sellada=%s  ahora=%s' % (t, s or '(sin sellar)', r)
-                                 for t, s, r in malas),
-                       pdf, out))
+            body.append(row)
+    return body, notes
 
+
+def completar_rejilla(body):
+    """Iguala el ancho de las filas y quita las columnas sin un solo dato.
+    Devuelve las filas y el número de columnas."""
+    ncols = max(row_width(r) for r in body)
+    # una fila más angosta que la tabla se completa por la derecha
+    for idx, (fila, ocupa) in enumerate(layout(body, ncols)):
+        if ocupa < ncols:
+            falta = ncols - ocupa
+            body[idx].append({'t': '', 'cs': falta} if falta > 1 else {'t': ''})
+
+    # Las líneas de la rejilla a veces trazan separadores donde no hay
+    # datos (bordes dobles, subdivisiones del encabezado), lo que deja
+    # columnas enteras vacías. Se eliminan para que la tabla publicada
+    # tenga las columnas que realmente tiene.
+    ocupadas = set()
+    for fila, _ in layout(body, ncols):
+        for c, col, cs in fila:
+            if c['t'].strip():
+                ocupadas.update(range(col, col + cs))
+    muertas = [i for i in range(ncols) if i not in ocupadas]
+    if muertas and len(muertas) < ncols:
+        body, ncols = drop_columns(body, ncols, muertas)
+    return body, ncols
+
+
+def frase_de_intro(body, ncols):
+    """Saca de body la frase que introduce la tabla y la devuelve.
+
+    La primera fila fusionada a todo lo ancho no es un encabezado: es la
+    frase que introduce la tabla ("Para temperaturas ambiente distintas
+    de 30 °C, multiplique..."). Repartida en celdas quedaba como títulos
+    de columna sin sentido, así que sube a subtítulo de la tabla."""
+    intro = ''
+    while (len(body) > 1 and len(body[0]) == 1
+           and body[0][0].get('cs', 1) == ncols
+           and len(body[0][0]['t'].split()) >= 6):
+        intro = (intro + ' ' + body.pop(0)[0]['t']).strip()
+    return intro
+
+
+def filas_de_encabezado(body):
+    """Cuántas filas iniciales son encabezado: las que no traen ningún
+    número suelto.
+
+    Un número puede arrastrar pegada la letra volada que llama a una
+    nota al pie ("39b" en la 220-12): sigue siendo un dato, y sin
+    admitirla la primera fila de la tabla —Bancos— se publicaba como
+    segundo renglón de encabezado, en negritas y con estilo de título."""
+    head = 0
+    for r in body[:4]:
+        cells = [c['t'] for c in r if c['t'].strip()]
+        if cells and not any(re.fullmatch(r'[\d.,/\-]+[a-z]?', c.strip()) for c in cells):
+            head += 1
+        else:
+            break
+    return head
+
+
+def reconstruir_tabla(doc, cap, by_page, art_nums):
+    """La tabla de un título, armada desde el PDF, o None si no tiene rejilla
+    que reconstruir."""
+    extent = table_extent(doc, cap, by_page)
+    if not extent:
+        return None
+
+    art = None
+    m = re.match(r'^(\d{3})-', cap['id'])
+    if m and int(m.group(1)) in art_nums:
+        art = int(m.group(1))
+
+    regions = regiones_de(doc, cap, extent, art)
+    completar_titulo(doc, cap, regions)
+    pie, per_page = paginas_de_tabla(doc, extent, regions)
+    if not per_page:
+        return None
+    rows, npages, origen = filas_de_tabla(per_page)
+    if not rows:
+        return None
+    body, notes = separar_notas(rows)
+    if not body:
+        return None
+    notes += pie
+    body, ncols = completar_rejilla(body)
+    intro = frase_de_intro(body, ncols)
+    head = filas_de_encabezado(body)
+
+    return {
+        'id': cap['id'],
+        'title': cap['title'],
+        'informativa': cap.get('informativa', False),
+        'article': art,
+        # Las tablas de los Apéndices no cuelgan de ningún artículo, como
+        # las del Capítulo 10, pero tampoco son del Capítulo 10: llevan su
+        # letra para poder agruparlas donde toca.
+        'apendice': apendice_de(cap['page'], cap['y']),
+        'pages': npages or [cap['page']],
+        'page': cap['page'],
+        'cols': ncols,
+        'header_rows': head,
+        'intro': intro,
+        # Cada celda es {t: texto, cs: colspan, rs: rowspan}; cs y rs se
+        # omiten cuando valen 1, que es la mayoría.
+        'rows': body,
+        'grid': origen,
+        'notes': notes,
+        # Calidad estimada de la separación en celdas. Se publica junto a
+        # la tabla para poder avisar al lector cuando conviene contrastar
+        # con el PDF, en vez de presentar todo con la misma confianza.
+        'quality': round(grid_score(cell_text(body)), 3),
+        'regions': regions,
+    }
+
+
+# ------------------------------------------------------------ al final
+
+def verificar_huellas(tables, out, pdf, quiere_sellar):
+    """La captura manual manda sobre la reconstrucción, y aquí se comprueba
+    que siga mandando: si una tabla ya verificada sale distinta de como se
+    selló, se aborta ANTES de escribir tablas.json. Sin esto, un cambio en el
+    reconstructor movería celdas de tablas contrastadas a ojo y el sitio las
+    publicaría igual, con su insignia de «Verificada contra el PDF» intacta.
+    Con --sellar se aceptan las huellas nuevas."""
+    rpath = os.path.join(out, 'tablas_revisadas.json')
+    if not os.path.exists(rpath):
+        return
+    with open(rpath, encoding='utf-8') as fh:
+        revs = json.load(fh)
+    if quiere_sellar:
+        print('Selladas: %d huellas actualizadas' % sellar(rpath, tables))
+        return
+    malas = discrepancias(tables, revs)
+    if malas:
+        raise SystemExit(
+            'La reconstrucción cambió %d tabla(s) ya verificada(s):\n%s\n'
+            'Si el cambio es deliberado, acéptalo con:\n'
+            '  python3 tools/build_tables.py %s %s --sellar'
+            % (len(malas),
+               '\n'.join('  %-16s sellada=%s  ahora=%s' % (t, s or '(sin sellar)', r)
+                         for t, s, r in malas),
+               pdf, out))
+
+
+def escribir_salidas(tables, out):
+    """Escribe tablas.json, tablas_regiones.json y tablas_por_revisar.json.
+    Devuelve las tablas por revisar."""
     json.dump(tables, open(os.path.join(out, 'tablas.json'), 'w'),
               ensure_ascii=False, indent=1)
 
@@ -1424,7 +1487,6 @@ def main():
     json.dump(regs, open(os.path.join(out, 'tablas_regiones.json'), 'w'),
               ensure_ascii=False, indent=1)
 
-    q = [t['quality'] for t in tables]
     revisar = sorted((t for t in tables
                       if t['quality'] < 0.80 and not t.get('verificada')),
                      key=lambda t: t['quality'])
@@ -1433,7 +1495,11 @@ def main():
                for t in revisar],
               open(os.path.join(out, 'tablas_por_revisar.json'), 'w'),
               ensure_ascii=False, indent=1)
+    return revisar
 
+
+def imprimir_resumen(tables, revisadas, revisar):
+    q = [t['quality'] for t in tables]
     print('Tablas reconstruidas : %d' % len(tables))
     print('  ligadas a artículo : %d' % sum(1 for t in tables if t['article']))
     print('  de los Apéndices   : %d' % sum(1 for t in tables if t.get('apendice')))
@@ -1460,6 +1526,32 @@ def main():
     print('  0.80 - 0.95        : %d' % sum(1 for x in q if 0.80 <= x < 0.95))
     print('  <  0.80 (revisar)  : %d  -> data/tablas_por_revisar.json' % len(revisar))
 
+
+def main():
+    import pymupdf
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    quiere_sellar = '--sellar' in sys.argv[1:]
+    pdf = args[0] if args else 'NOM-001-SEDE-2012.pdf'
+    out = args[1] if len(args) > 1 else 'data'
+    os.makedirs(out, exist_ok=True)
+    doc = pymupdf.open(pdf)
+
+    art_nums = numeros_de_articulo(doc)
+    ordered, by_page = titulos_unicos(find_captions(doc))
+    tables = []
+    for cap in ordered:
+        t = reconstruir_tabla(doc, cap, by_page, art_nums)
+        if t is not None:
+            tables.append(t)
+
+    revisadas = apply_revisiones(tables, os.path.join(out, 'tablas_revisadas.json'))
+    # Las dadas de alta a mano se añaden al final; el orden del archivo es el
+    # del documento y de él salen los listados del sitio.
+    tables.sort(key=lambda t: (t['regions'][0]['page'], t['regions'][0]['y0']))
+
+    verificar_huellas(tables, out, pdf, quiere_sellar)
+    revisar = escribir_salidas(tables, out)
+    imprimir_resumen(tables, revisadas, revisar)
 
 if __name__ == '__main__':
     main()
