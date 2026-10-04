@@ -14,17 +14,13 @@ referencia en prosa ("el Artículo 250").
 
 import json, re, unicodedata, sys
 from collections import OrderedDict, defaultdict
+from comun import unaccent
 
 PDF = sys.argv[1] if len(sys.argv) > 1 else 'NOM-001-SEDE-2012.pdf'
 OUT = sys.argv[2] if len(sys.argv) > 2 else 'INDICE.txt'
 import pymupdf
 _doc = pymupdf.open(PDF)
 PAGES = [_doc[i].get_text() for i in range(_doc.page_count)]
-
-def unaccent(s):
-    """Quita acentos, CONSERVA mayúsculas/minúsculas."""
-    return ''.join(c for c in unicodedata.normalize('NFD', s)
-                   if unicodedata.category(c) != 'Mn')
 
 NOISE = re.compile(r'^\s*(?:19/11/2019|SENER|www\.dof\.gob\.mx\S*|\d+/780)\s*$', re.M)
 def clean(t):

@@ -27,11 +27,7 @@ flat_text() solo recorre el árbol de incisos y las tablas no viven ahí.
 """
 import json, os, re, sys
 
-
-def walk(n):
-    yield n
-    for c in n.get('children', []):
-        yield from walk(c)
+from comun import walk
 
 
 def inciso_ids(sec):
