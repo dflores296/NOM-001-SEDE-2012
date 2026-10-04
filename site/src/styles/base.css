@@ -1,0 +1,69 @@
+/* Reglas generales del sitio. */
+* { box-sizing: border-box; }
+
+/* ------------------------------------------- barras de desplazamiento
+   `color-scheme` ya le dice al navegador de qué color pintar las suyas —sin
+   él, el índice lateral y el menú de temas salían blancos sobre fondo
+   oscuro—, pero cada motor elige un gris distinto. Estas reglas las atan al
+   tema, en la página y dentro de las tablas anchas.
+
+   El pulgar sale del texto tenue y no del borde: el borde se confunde con el
+   fondo en los temas muy oscuros y la barra desaparecía del todo.
+   ------------------------------------------------------------------- */
+* {
+  scrollbar-width: thin;                      /* Firefox */
+  scrollbar-color: color-mix(in srgb, var(--text-faint) 45%, transparent) transparent;
+}
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--text-faint) 45%, transparent);
+  border: 3px solid transparent;              /* aire alrededor del pulgar */
+  background-clip: content-box;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--text-faint) 80%, transparent);
+  background-clip: content-box;
+}
+::-webkit-scrollbar-corner { background: transparent; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  /* Inter con los ajustes de Mintlify: la «a» de un solo piso (cv11) y los
+     dígitos abiertos (ss01), y el espaciado apenas cerrado. */
+  font-feature-settings: "cv11", "ss01";
+  letter-spacing: -0.01em;
+  -webkit-text-size-adjust: 100%;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, .mono { font-family: var(--mono); }
+
+/* El cierre de espaciado es para Inter. Una monoespaciada se mide por celdas
+   iguales y apretarla junta los caracteres de un identificador como
+   250-32(a)(1), así que todo lo que va en --mono vuelve al espaciado normal. */
+code, .mono, .rid, .art-num, .sid, .lbl, a.xref, .tid,
+.chap h2 span, .card b, .def .tag, .fid, .obs-chip, .obs-form input.fijo,
+.aviso-ancla b, ol.rev li::before {
+  letter-spacing: normal;
+}
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
+
+/* La página de artículo ocupa todo el ancho de la ventana en vez de quedarse
+   en una columna centrada. Al alejar el zoom el navegador no encoge la
+   página: entrega MÁS píxeles CSS. Con un ancho máximo fijo esos píxeles de
+   más se iban enteros en dos franjas vacías a los lados, justo cuando se
+   aleja el zoom para poder leer una tabla ancha. Ahora los índices se quedan
+   pegados a los bordes y todo lo que sobra se lo lleva la columna central,
+   que es la que tiene las tablas. */
+.wrap.cols { max-width: none; }
+header.top .wrap { max-width: none; }

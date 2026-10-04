@@ -1,0 +1,136 @@
+/* ------------------------------------------------------ lista de revisión */
+.rev-nota { color: var(--text-dim); font-size: 0.88rem; margin: -0.2rem 0 0.9rem; }
+.rev-vacia {
+  color: var(--text-dim); font-size: 0.92rem; margin: 0;
+  padding: 0.7rem 0.9rem;
+  border: 1px dashed var(--border-soft); border-radius: var(--radius);
+}
+ol.rev { list-style: none; counter-reset: r; margin: 0; padding: 0; }
+ol.rev li {
+  counter-increment: r;
+  display: grid; grid-template-columns: auto 1fr; gap: 0.1rem 0.6rem;
+  padding: 0.6rem 0.7rem 0.6rem 2.4rem; position: relative;
+  border: 1px solid var(--border-soft); border-radius: var(--radius-lg);
+  margin-bottom: 0.4rem; background: var(--panel);
+}
+ol.rev li::before {
+  content: counter(r); position: absolute; left: 0.7rem; top: 0.6rem;
+  font-family: var(--mono); font-size: 0.78rem; color: var(--text-faint);
+}
+ol.rev li > a { grid-column: 1; }
+ol.rev .rev-t { grid-column: 2; font-size: 0.9rem; }
+ol.rev .rev-m { grid-column: 1 / -1; font-size: 0.76rem; color: var(--text-faint); }
+ol.rev .rev-s { grid-column: 1 / -1; font-size: 0.79rem; color: var(--accent); }
+@media (max-width: 620px) {
+  ol.rev li { grid-template-columns: 1fr; }
+  ol.rev .rev-t { grid-column: 1; }
+}
+ul.rev-check { padding-left: 1.1rem; }
+ul.rev-check li { margin: 0.45rem 0; font-size: 0.92rem; }
+ul.rev-check code {
+  background: var(--bg-soft); padding: 0 0.25em; border-radius: 3px; font-size: 0.9em;
+}
+
+/* Definiciones dentro de una sección. En el PDF vienen como un párrafo
+   corrido donde cada término se pierde entre los anteriores. */
+dl.defs-sec { margin: 0.6rem 0 0; padding: 0; }
+dl.defs-sec > div {
+  margin: 0 0 0.55rem; padding: 0 0 0 0.8rem;
+  border-left: 2px solid var(--border);
+}
+dl.defs-sec dt { font-weight: 650; margin-bottom: 0.1rem; }
+dl.defs-sec dd { margin: 0; color: var(--text-dim); font-size: 0.94rem; }
+
+/* Fórmulas y figuras. En la norma las ecuaciones están embebidas como imagen,
+   no como texto, así que se muestran tal cual vienen del PDF. */
+figure.fig { margin: 1.1rem 0; text-align: center; }
+figure.fig img {
+  max-width: 100%; height: auto;
+  background: #fff; border: 1px solid var(--border-soft);
+  border-radius: var(--radius); padding: 0.5rem;
+}
+/* Tarjeta del índice de figuras. Una figura no tiene más asidero que su
+   dibujo: "Jerarquía de sustitución de cables" es el título de cuatro
+   distintas, y el número no dice nada a quien no lo tiene memorizado. La
+   miniatura es lo que hace elegible el índice. Va con alt vacío a propósito:
+   el rótulo y el título que la acompañan ya dicen lo que es, y repetirlo
+   obligaría a oírlo dos veces. */
+/* Caja de alto fijo, con la imagen contenida dentro: las miniaturas van de
+   204x8 (una fórmula de un renglón) a 234x298, y dejándolas a su tamaño cada
+   tarjeta empujaba su texto a una altura distinta. `contain` es lo que impide
+   recortar: una miniatura recortada deja de servir para elegir. */
+.card-fig .miniatura {
+  display: block;
+  width: 100%; height: 150px; object-fit: contain;
+  margin: 0 0 0.6rem;
+  background: #fff; border: 1px solid var(--border-soft);
+  border-radius: var(--radius); padding: 0.35rem;
+}
+
+/* Ancla de la segunda figura de una imagen compartida: no se ve, solo
+   existe para que la cita del texto pueda aterrizar en ella. */
+figure.fig .ancla-extra { display: block; height: 0; }
+figure.fig figcaption {
+  font-size: 0.8rem; color: var(--text-dim); margin-top: 0.45rem;
+  max-width: 62ch; margin-inline: auto; text-align: left;
+}
+/* El rótulo es lo que la norma imprime dentro del dibujo y aquí se publica
+   como texto; va en el peso del contenido, no en el de un pie de foto. */
+figure.fig .fig-rotulo { margin: 0.15rem 0; }
+figure.fig .fid {
+  font-family: var(--mono); font-size: 0.78rem; font-weight: 600;
+  color: var(--accent); margin-right: 0.4rem;
+}
+figure.fig .fig-nota {
+  margin: 0.4rem 0 0; font-size: 0.74rem; color: var(--text-faint);
+  font-style: italic;
+}
+figure.fig .fig-pie {
+  margin-top: 0.45rem; font-size: 0.72rem; color: var(--text-faint);
+}
+/* El texto que la norma dibuja dentro de la imagen. Cerrado por omisión: es
+   lo mismo que ya se ve arriba, y sirve para buscarlo, copiarlo o leerlo con
+   un lector de pantalla. */
+details.fig-texto { margin: 0.5rem 0 0; }
+details.fig-texto > summary {
+  cursor: pointer; font-size: 0.74rem; color: var(--text-faint);
+  list-style-position: outside;
+}
+details.fig-texto > summary:hover { color: var(--accent); }
+details.fig-texto p {
+  margin: 0.3rem 0; font-size: 0.82rem; color: var(--text);
+  padding-left: 0.9rem; border-left: 2px solid var(--border-soft);
+}
+
+/* Enumeraciones que pertenecen a una nota o excepción, no al articulado. */
+ul.anot-items { list-style: none; margin: 0.4rem 0 0; padding-left: 0.9rem; }
+ul.anot-items li { margin: 0.22rem 0; }
+ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); }
+
+/* Tablas que la norma marca como informativas: no son exigibles, y eso pesa
+   distinto que el nombre de la tabla, así que va como distintivo aparte. */
+.tag-info {
+  display: inline-block; vertical-align: 2px;
+  margin-left: 0.4rem; padding: 0.05rem 0.4rem;
+  font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-dim);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: help;
+}
+/* Marca de tabla contrastada a ojo contra el PDF. Va en el pie, junto al
+   resto de la procedencia, porque es un dato sobre de dónde sale la tabla. */
+.tag-ok {
+  font-weight: 600;
+  color: var(--ok);
+  cursor: help;
+}
+.tabla-info {
+  margin: 0 0 0.9rem; padding: 0.75rem 1rem;
+  font-size: 0.875rem; color: var(--text-dim);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}

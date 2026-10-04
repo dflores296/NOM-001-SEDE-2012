@@ -1,0 +1,90 @@
+/* ---------------------------------------------------------- cabecera de página
+   Las páginas de índice —Tablas, Figuras, Glosario, Apéndices— abren con el
+   título grande y su descripción, y debajo las cifras en tarjetas. La
+   portada tiene la suya propia, con la banda de color.
+   ------------------------------------------------------------------- */
+.hero { padding: 3rem 0 0.5rem; margin-bottom: 1.5rem; }
+.hero h1 { margin: 0 0 0.8rem; font-size: 2.5rem; font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; }
+.hero > p { margin: 0; font-size: 1.125rem; line-height: 1.6; color: var(--text-dim); max-width: 64ch; text-wrap: pretty; }
+.hero > p.migaja { font-size: 0.8125rem; }
+.hero > p.aparte { font-size: 0.875rem; color: var(--text-faint); margin-top: 1rem; }
+.aparte { font-size: 0.875rem; color: var(--text-faint); max-width: 80ch; margin: 1rem 0 0; }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Cifras: una tarjeta por dato, con el número grande en Inter y su rótulo
+   en versalitas debajo. auto-fit + minmax reparte el ancho entre las que
+   quepan, sin tocar la regla en cada página. */
+.cifras {
+  margin-top: 1.8rem;
+  display: grid; gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.cifra { padding: 1rem 1.15rem; border: 1px solid var(--card-border); border-radius: var(--radius-xl); background: var(--panel); }
+.cifra b {
+  display: block; font-family: var(--sans); font-size: 1.75rem; font-weight: 600;
+  color: var(--text); line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+}
+.cifra span {
+  display: block; margin-top: 0.4rem; font-size: 0.7rem; font-weight: 500; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+@media (max-width: 720px) { .cifras { grid-template-columns: repeat(2, 1fr); } }
+
+.chap { margin: 1.8rem 0; }
+
+/* Tarjetas: filete de 1px, esquinas de 16px y nada de sombra hasta que se
+   pasa el cursor. El identificador va en la monoespaciada y el acento; el
+   título, en el peso del texto. */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
+.card {
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding: 1rem 1.15rem; border: 1px solid var(--card-border); border-radius: var(--radius-xl);
+  background: var(--panel); color: var(--text);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+.card:hover { border-color: var(--accent); box-shadow: var(--shadow); text-decoration: none; }
+.card b { font-family: var(--mono); color: var(--accent); font-size: 0.8125rem; font-weight: 600; }
+.card span { display: block; font-size: 0.9375rem; font-weight: 500; line-height: 1.4; }
+.card em { font-style: normal; font-size: 0.75rem; color: var(--text-faint); margin-top: auto; padding-top: 0.35rem; }
+
+/* ---------------------------------------------------------------- glosario */
+.defs { display: grid; gap: 0.75rem; }
+.def {
+  padding: 1rem 1.25rem; border: 1px solid var(--card-border); border-radius: var(--radius-xl);
+  background: var(--panel); scroll-margin-top: var(--ancla);
+}
+.def:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.def dt { font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+.def dd { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: var(--text-dim); }
+.def .tag { font-size: 0.7rem; font-weight: 500; font-family: var(--mono); color: var(--text-faint); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.05rem 0.3rem; margin-left: 0.5rem; vertical-align: 1px; }
+
+/* ---------------------------------------------------------------- pie */
+footer.bot {
+  margin-top: 3rem; border-top: 1px solid var(--border);
+  padding: 3rem 0 2rem; font-size: 0.875rem; color: var(--text-dim);
+}
+.pie { display: grid; grid-template-columns: minmax(0, 2fr) 1fr 1fr; gap: 3rem; }
+.pie-marca p { margin: 1rem 0 0; max-width: 52ch; line-height: 1.6; }
+.pie-lema { display: block; margin-top: 0.3rem; font-size: 0.8125rem; color: var(--text-faint); }
+.pie-col h4 { margin: 0.3rem 0 0.8rem; font-size: 0.8125rem; font-weight: 600; color: var(--text); }
+.pie-col a { display: block; padding: 0.2rem 0; color: var(--text-dim); }
+.pie-col a:hover { color: var(--text); text-decoration: none; }
+.pie-legal {
+  margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-soft);
+  /* Dentro de .wrap: el filete mide lo que mide el texto, no el margen. */
+  font-size: 0.75rem; color: var(--text-faint);
+}
+@media (max-width: 760px) { .pie { grid-template-columns: 1fr 1fr; gap: 2rem; } .pie-marca { grid-column: 1 / -1; } }
+
+/* Anterior / siguiente, en dos tarjetas al pie del artículo. */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 3.5rem; }
+.pager a {
+  display: block; padding: 1rem 1.2rem; border: 1px solid var(--card-border); border-radius: var(--radius-xl);
+  background: var(--panel); color: var(--text); font-size: 0.9375rem; font-weight: 500; line-height: 1.4;
+}
+.pager a:hover { border-color: var(--accent); text-decoration: none; }
+.pager a small { display: block; margin-bottom: 0.25rem; font-size: 0.75rem; font-weight: 500; color: var(--text-faint); }
+.pager a .mono { color: var(--accent); font-size: 0.875rem; margin-right: 0.35rem; }
+.pager .nx { grid-column: 2; text-align: right; }
+@media (max-width: 620px) { .pager { grid-template-columns: 1fr; } .pager .nx { grid-column: 1; } }
