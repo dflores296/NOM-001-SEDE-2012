@@ -1314,19 +1314,14 @@ def texto_cierre(hitos):
     return ' '.join(x for x in out if x)
 
 
-def main():
-    pdf = sys.argv[1] if len(sys.argv) > 1 else 'NOM-001-SEDE-2012.pdf'
-    out = sys.argv[2] if len(sys.argv) > 2 else 'data'
-    os.makedirs(out, exist_ok=True)
+def zonas_de_tablas(out):
+    """Zonas ocupadas por tablas, producidas por build_tables, por página; y
+    dónde empieza cada tabla.
 
-    pages = load_pages(pdf)
-
-    # Zonas ocupadas por tablas, producidas por build_tables. Se omiten para
-    # que el contenido de una tabla no reaparezca como párrafo corrido.
-    #
-    # Además se anota DÓNDE empieza cada tabla, para poder devolverla a su
-    # sitio: una tabla pertenece al punto del texto en el que aparece en la
-    # norma, no al final de la sección ni al final de la parte.
+    Las zonas se omiten para que el contenido de una tabla no reaparezca como
+    párrafo corrido. El inicio se anota para poder devolver la tabla a su
+    sitio: una tabla pertenece al punto del texto en el que aparece en la
+    norma, no al final de la sección ni al final de la parte."""
     skip, marcas, vistas = {}, [], set()
     rpath = os.path.join(out, 'tablas_regiones.json')
     if os.path.exists(rpath):
@@ -1335,11 +1330,15 @@ def main():
             if r['id'] not in vistas:      # solo la primera página de la tabla
                 vistas.add(r['id'])
                 marcas.append((r['page'], r['y0'], r.get('article'), r['id']))
+    return skip, marcas
 
-    # Lo que cada tabla capturó de veras: celdas, notas, título y encabezado.
-    # Es contra esto que se decide si un renglón que cae en la zona de una tabla
-    # es suyo o es texto normativo que la zona se está comiendo. Ver
-    # `rescatable()` en build_linemap.
+
+def texto_de_tablas(out):
+    """Lo que cada tabla capturó de veras: celdas, notas, título y encabezado.
+
+    Es contra esto que se decide si un renglón que cae en la zona de una tabla
+    es suyo o es texto normativo que la zona se está comiendo. Ver
+    `rescatable()` en build_linemap."""
     texto_tablas = {}
     tpath = os.path.join(out, 'tablas.json')
     if os.path.exists(tpath):
@@ -1350,15 +1349,12 @@ def main():
                 trozos.extend(c.get('t') for c in fila)
             texto_tablas[t['id']] = re.sub(
                 r'\s+', ' ', unaccent(' '.join(x for x in trozos if x))).lower()
+    return texto_tablas
 
-    img_dir = os.environ.get('NOM_IMG_DIR', 'site/public/img')
-    images = extract_images(pdf, img_dir)
 
-    lines, pageno, sangria = build_linemap(pages, pdf=pdf, skip=skip, images=images,
-                                  marcas=marcas, texto_tablas=texto_tablas)
-    toc, chapters, titulos = parse_toc(pages)
-    starts = find_articles(lines, pageno, toc)
-
+def limites_de_articulos(lines, pageno, starts):
+    """Los artículos en orden, el tramo de líneas de cada uno y la línea donde
+    termina el articulado."""
     # Dónde deja de haber articulado. El último artículo llegaba hasta el final
     # del PDF y se tragaba el Capítulo 10, los Títulos 6 a 8 y los tres
     # Apéndices; ver `parse_cierre`.
@@ -1373,7 +1369,12 @@ def main():
         lo = starts[n]
         hi = starts[order[idx + 1]] if idx + 1 < len(order) else corte_cierre
         bounds[n] = (lo, hi)
+    return order, bounds, corte_cierre
 
+
+def leer_articulos(order, bounds, toc, lines, pageno, sangria):
+    """Cada artículo con sus partes, secciones y referencias; y las
+    definiciones del Artículo 100, que no tiene secciones numeradas."""
     articles, definitions, alcance_100 = [], [], ''
     for n in order:
         lo, hi = bounds[n]
@@ -1401,15 +1402,11 @@ def main():
         if n == 100:
             art['alcance'] = alcance_100
         articles.append(art)
+    return articles, definitions
 
-    cierre = parse_cierre(lines, pageno, sangria, corte_cierre)
 
-    # El rótulo de una figura no sale del PDF: se captura a mano y se aplica
-    # aquí, antes de escribir nada. Ver `aplicar_figuras`.
-    figuras = aplicar_figuras(articles, cierre, img_dir,
-                              os.path.join(out, 'figuras.json'))
-
-    corpus = {
+def armar_corpus(pdf, pages, titulos, chapters, articles, cierre):
+    return {
         'meta': {
             'norma': 'NOM-001-SEDE-2012',
             'nombre': 'Instalaciones Eléctricas (utilización)',
@@ -1427,69 +1424,66 @@ def main():
         'cierre': cierre,
     }
 
-    json.dump(corpus, open(os.path.join(out, 'corpus.json'), 'w'),
-              ensure_ascii=False, indent=1)
-    json.dump(definitions, open(os.path.join(out, 'definiciones.json'), 'w'),
-              ensure_ascii=False, indent=1)
 
-    # -------------------------------------------------------------- validación
-    n_sec = sum(len(a['sections']) for a in articles)
-    n_sub = sum(len(list(walk(s))) - 1 for a in articles for s in a['sections'])
-    n_figs = sum(1 for f in figuras if f['kind'] == 'figura')
-    n_form = sum(1 for f in figuras if f['kind'] == 'formula')
-    n_rotulos = sum(len(f['rotulos']) for f in figuras)
-    n_notes = sum(len(x.get('notes', [])) for a in articles
-                  for s in a['sections'] for x in walk(s))
-    n_exc = sum(len(x.get('exceptions', [])) for a in articles
-                for s in a['sections'] for x in walk(s))
+# -------------------------------------------------------------- validación
+#
+# Cobertura: se mide por LÍNEA de contenido, no por carácter. Una métrica
+# por caracteres castiga los encabezados estructurales (título del
+# artículo, títulos de parte), que sí se conservan pero en otro campo, y
+# da una cifra artificialmente baja. Aquí una línea cuenta como capturada
+# si al menos el 60% de sus palabras aparece en el corpus resultante.
 
-    # Cobertura: se mide por LÍNEA de contenido, no por carácter. Una métrica
-    # por caracteres castiga los encabezados estructurales (título del
-    # artículo, títulos de parte), que sí se conservan pero en otro campo, y
-    # da una cifra artificialmente baja. Aquí una línea cuenta como capturada
-    # si al menos el 60% de sus palabras aparece en el corpus resultante.
+def palabras(s):
+    return re.findall(r'\w+', unaccent(s).lower())
+
+
+def palabras_capturadas(a, definitions):
+    """Todas las palabras que el corpus guardó de un artículo, en cualquiera
+    de sus campos."""
+    got = set(palabras(a['title']))
+    for p in a['parts']:
+        got.update(palabras(p.get('title', '')))
+    if a['num'] == 100:
+        got.update(palabras(a.get('alcance', '')))
+        for d in definitions:
+            got.update(palabras(d['term'] + ' ' + d['definition']))
+    for s in a['sections']:
+        for x in walk(s):
+            got.update(palabras((x.get('title') or '') + ' ' + (x.get('text') or '')))
+            for z in x.get('notes', []) + x.get('exceptions', []):
+                got.update(palabras(z['text']))
+                # Una NOTA o Excepción que anuncia una enumeración cuelga
+                # sus renglones en `items`, no en `text`: sin esto, cada
+                # elemento de la lista contaba como línea "no capturada"
+                # aunque estuviera íntegro en el corpus, solo que en otro
+                # campo. Así se leían como pérdidas reales las 518-4(a),
+                # 310-10(e), 725-121(a)(4)(3) y otras siete secciones.
+                for it in z.get('items', []):
+                    got.update(palabras(it.get('text', '')))
+            # Los párrafos posteriores a una anotación viven en `parrafos`
+            # y no en `text`; sin contarlos, cada uno se leía como línea
+            # perdida aunque esté íntegro en el corpus.
+            for z in x.get('parrafos', []):
+                got.update(palabras(z['text']))
+            for z in x.get('definitions', []):
+                got.update(palabras(z['term'] + ' ' + z['text']))
+    return got
+
+
+def cobertura_del_articulado(order, bounds, lines, articles, definitions):
+    """Líneas de contenido del articulado, cuántas no quedaron en el corpus y
+    hasta 25 ejemplos de ellas."""
     by_num = {a['num']: a for a in articles}
     lines_total = lines_lost = 0
     lost_examples = []
     for n in order:
         lo, hi = bounds[n]
-        a = by_num[n]
-        got = set(re.findall(r'\w+', unaccent(a['title']).lower()))
-        for p in a['parts']:
-            got.update(re.findall(r'\w+', unaccent(p.get('title', '')).lower()))
-        if n == 100:
-            got.update(re.findall(r'\w+', unaccent(a.get('alcance', '')).lower()))
-            for d in definitions:
-                got.update(re.findall(
-                    r'\w+', unaccent(d['term'] + ' ' + d['definition']).lower()))
-        for s in a['sections']:
-            for x in walk(s):
-                got.update(re.findall(r'\w+', unaccent(
-                    (x.get('title') or '') + ' ' + (x.get('text') or '')).lower()))
-                for z in x.get('notes', []) + x.get('exceptions', []):
-                    got.update(re.findall(r'\w+', unaccent(z['text']).lower()))
-                    # Una NOTA o Excepción que anuncia una enumeración cuelga
-                    # sus renglones en `items`, no en `text`: sin esto, cada
-                    # elemento de la lista contaba como línea "no capturada"
-                    # aunque estuviera íntegro en el corpus, solo que en otro
-                    # campo. Así se leían como pérdidas reales las 518-4(a),
-                    # 310-10(e), 725-121(a)(4)(3) y otras siete secciones.
-                    for it in z.get('items', []):
-                        got.update(re.findall(
-                            r'\w+', unaccent(it.get('text', '')).lower()))
-                # Los párrafos posteriores a una anotación viven en `parrafos`
-                # y no en `text`; sin contarlos, cada uno se leía como línea
-                # perdida aunque esté íntegro en el corpus.
-                for z in x.get('parrafos', []):
-                    got.update(re.findall(r'\w+', unaccent(z['text']).lower()))
-                for z in x.get('definitions', []):
-                    got.update(re.findall(
-                        r'\w+', unaccent(z['term'] + ' ' + z['text']).lower()))
+        got = palabras_capturadas(by_num[n], definitions)
         for j in range(lo, hi):
             ln = lines[j].strip()
             if len(ln) < 25 or ln.startswith(IMG_MARK):
                 continue
-            w = re.findall(r'\w+', unaccent(ln).lower())
+            w = palabras(ln)
             if not w:
                 continue
             lines_total += 1
@@ -1497,18 +1491,23 @@ def main():
                 lines_lost += 1
                 if len(lost_examples) < 25:
                     lost_examples.append({'articulo': n, 'linea': ln[:120]})
+    return lines_total, lines_lost, lost_examples
 
-    # La región de cierre se mide igual que el articulado. Sin esto, sacarla de
-    # los límites del 924 la habría dejado fuera de la cuenta: la cobertura
-    # seguiría diciendo 100% sobre 38 páginas menos, que es peor que el
-    # problema que se venía a resolver.
-    got_cierre = set(re.findall(r'\w+', unaccent(texto_cierre(cierre)).lower()))
+
+def cobertura_del_cierre(lines, corte_cierre, cierre, lost_examples):
+    """Lo mismo para la región de cierre; los ejemplos se añaden a la lista.
+
+    La región de cierre se mide igual que el articulado. Sin esto, sacarla de
+    los límites del 924 la habría dejado fuera de la cuenta: la cobertura
+    seguiría diciendo 100% sobre 38 páginas menos, que es peor que el
+    problema que se venía a resolver."""
+    got_cierre = set(palabras(texto_cierre(cierre)))
     cierre_total = cierre_lost = 0
     for j in range(corte_cierre, len(lines)):
         ln = lines[j].strip()
         if len(ln) < 25 or ln.startswith(IMG_MARK) or ln.startswith(TBL_MARK):
             continue
-        w = re.findall(r'\w+', unaccent(ln).lower())
+        w = palabras(ln)
         if not w:
             continue
         cierre_total += 1
@@ -1516,27 +1515,31 @@ def main():
             cierre_lost += 1
             if len(lost_examples) < 25:
                 lost_examples.append({'articulo': 'cierre', 'linea': ln[:120]})
-    lines_total += cierre_total
-    lines_lost += cierre_lost
+    return cierre_total, cierre_lost
 
+
+def validar(articles, definitions, toc, cierre, figuras, cobertura, cierre_total):
+    """Las cifras de validacion.json."""
+    lines_total, lines_lost, lost_examples = cobertura
     empty = [s['id'] for a in articles for s in a['sections']
              if not (s.get('text') or s.get('children') or s.get('definitions'))]
-
-    val = {
+    return {
         'articulos': len(articles),
         'articulos_esperados': len(toc),
-        'secciones': n_sec,
-        'incisos': n_sub,
-        'notas': n_notes,
-        'excepciones': n_exc,
+        'secciones': sum(len(a['sections']) for a in articles),
+        'incisos': sum(len(list(walk(s))) - 1 for a in articles for s in a['sections']),
+        'notas': sum(len(x.get('notes', [])) for a in articles
+                     for s in a['sections'] for x in walk(s)),
+        'excepciones': sum(len(x.get('exceptions', [])) for a in articles
+                           for s in a['sections'] for x in walk(s)),
         'definiciones': len(definitions),
-        'figuras': n_figs,
-        'formulas': n_form,
+        'figuras': sum(1 for f in figuras if f['kind'] == 'figura'),
+        'formulas': sum(1 for f in figuras if f['kind'] == 'formula'),
         'cierre_bloques': sum(len(h['bloques']) for h in cierre),
         'cierre_hitos': [h['id'] for h in cierre],
         'cierre_lineas': cierre_total,
         'imagenes': len(figuras),
-        'figuras_numeradas': n_rotulos,
+        'figuras_numeradas': sum(len(f['rotulos']) for f in figuras),
         'referencias_distintas': len(set(r for a in articles for r in a['refs'])),
         'lineas_contenido': lines_total,
         'lineas_no_capturadas': lines_lost,
@@ -1546,26 +1549,68 @@ def main():
         'articulos_sin_secciones': [a['num'] for a in articles
                                     if not a['sections'] and a['num'] != 100],
     }
-    json.dump(val, open(os.path.join(out, 'validacion.json'), 'w'),
-              ensure_ascii=False, indent=1)
 
+
+def imprimir_resumen(val, img_dir):
     print('Artículos      : %d / %d' % (val['articulos'], val['articulos_esperados']))
-    print('Secciones      : %d' % n_sec)
-    print('Incisos        : %d' % n_sub)
-    print('Notas          : %d' % n_notes)
-    print('Excepciones    : %d' % n_exc)
-    print('Definiciones   : %d' % len(definitions))
-    print('Figuras        : %d con %d número(s) de figura' % (n_figs, n_rotulos))
+    print('Secciones      : %d' % val['secciones'])
+    print('Incisos        : %d' % val['incisos'])
+    print('Notas          : %d' % val['notas'])
+    print('Excepciones    : %d' % val['excepciones'])
+    print('Definiciones   : %d' % val['definiciones'])
+    print('Figuras        : %d con %d número(s) de figura'
+          % (val['figuras'], val['figuras_numeradas']))
     print('Fórmulas       : %d (imágenes en total: %d en %s)'
-          % (n_form, len(figuras), img_dir))
+          % (val['formulas'], val['imagenes'], img_dir))
     print('Referencias    : %d distintas' % val['referencias_distintas'])
     print('Cobertura      : %.2f%% (%d de %d líneas de contenido)'
-          % (val['cobertura_pct'], lines_total - lines_lost, lines_total))
+          % (val['cobertura_pct'], val['lineas_contenido'] - val['lineas_no_capturadas'],
+             val['lineas_contenido']))
     print('Cierre         : %d hitos, %d bloques, %d líneas de contenido'
-          % (len(cierre), sum(len(h['bloques']) for h in cierre), cierre_total))
-    print('Secciones vacías: %d' % len(empty))
+          % (len(val['cierre_hitos']), val['cierre_bloques'], val['cierre_lineas']))
+    print('Secciones vacías: %d' % len(val['secciones_vacias']))
     print('Artículos sin secciones: %s' % val['articulos_sin_secciones'])
 
+
+def main():
+    pdf = sys.argv[1] if len(sys.argv) > 1 else 'NOM-001-SEDE-2012.pdf'
+    out = sys.argv[2] if len(sys.argv) > 2 else 'data'
+    os.makedirs(out, exist_ok=True)
+
+    pages = load_pages(pdf)
+    skip, marcas = zonas_de_tablas(out)
+    texto_tablas = texto_de_tablas(out)
+
+    img_dir = os.environ.get('NOM_IMG_DIR', 'site/public/img')
+    images = extract_images(pdf, img_dir)
+
+    lines, pageno, sangria = build_linemap(pages, pdf=pdf, skip=skip, images=images,
+                                  marcas=marcas, texto_tablas=texto_tablas)
+    toc, chapters, titulos = parse_toc(pages)
+    starts = find_articles(lines, pageno, toc)
+    order, bounds, corte_cierre = limites_de_articulos(lines, pageno, starts)
+
+    articles, definitions = leer_articulos(order, bounds, toc, lines, pageno, sangria)
+    cierre = parse_cierre(lines, pageno, sangria, corte_cierre)
+
+    # El rótulo de una figura no sale del PDF: se captura a mano y se aplica
+    # aquí, antes de escribir nada. Ver `aplicar_figuras`.
+    figuras = aplicar_figuras(articles, cierre, img_dir,
+                              os.path.join(out, 'figuras.json'))
+
+    corpus = armar_corpus(pdf, pages, titulos, chapters, articles, cierre)
+    json.dump(corpus, open(os.path.join(out, 'corpus.json'), 'w'),
+              ensure_ascii=False, indent=1)
+    json.dump(definitions, open(os.path.join(out, 'definiciones.json'), 'w'),
+              ensure_ascii=False, indent=1)
+
+    cobertura = cobertura_del_articulado(order, bounds, lines, articles, definitions)
+    cierre_total, cierre_lost = cobertura_del_cierre(lines, corte_cierre, cierre, cobertura[2])
+    cobertura = (cobertura[0] + cierre_total, cobertura[1] + cierre_lost, cobertura[2])
+    val = validar(articles, definitions, toc, cierre, figuras, cobertura, cierre_total)
+    json.dump(val, open(os.path.join(out, 'validacion.json'), 'w'),
+              ensure_ascii=False, indent=1)
+    imprimir_resumen(val, img_dir)
 
 if __name__ == '__main__':
     main()
