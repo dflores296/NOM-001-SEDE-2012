@@ -5,8 +5,9 @@
 #
 #     bash tools/verificar.sh
 #
-# Requiere las dependencias ya instaladas: pip install -r requirements.txt y
-# npm ci dentro de site/.
+# Requiere las dependencias ya instaladas: pip install -r requirements.txt,
+# npm ci dentro de site/ y el Chromium de Playwright (npx playwright install
+# chromium, también dentro de site/).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -45,3 +46,8 @@ python3 tools/check_enlaces.py
 # tools/huella_sitio.txt. Ver tools/huella_sitio.py.
 paso 'Comparar contra la huella del sitio'
 python3 tools/huella_sitio.py
+
+# La huella cuida el contenido; esto, lo que vive en JavaScript: el buscador,
+# el tema, el índice lateral, el mapa. Ver site/pruebas/navegador.mjs.
+paso 'Pruebas en navegador'
+(cd site && npm run prueba)

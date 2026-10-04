@@ -1,0 +1,263 @@
+// Pruebas en navegador del sitio compilado: lo que la huella del contenido no
+// ve porque vive en JavaScript (buscador, tema, índice lateral, mapa...).
+//
+//     cd site && npm run build && npm run prueba
+//
+// Usa Chromium de Playwright. Cada prueba abre un contexto nuevo, sin service
+// worker, y la API de GitHub se responde aquí mismo: las estrellas no dependen
+// de la red y la prueba tampoco.
+import { chromium } from 'playwright';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { servir, BASE } from './servidor.mjs';
+
+const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+const ESCRITORIO = { viewport: { width: 1440, height: 900 } };
+const TELEFONO = { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true };
+
+const pruebas = [];
+const prueba = (nombre, fn) => pruebas.push({ nombre, fn });
+
+function afirmar(cond, msg) {
+  if (!cond) throw new Error(msg);
+}
+
+/** El archivo de dist/ al que lleva un href del sitio, y su ancla. */
+function destinoDe(href) {
+  const [ruta, ancla = ''] = href.split('#');
+  let f = path.join(DIST, ruta.slice(BASE.length));
+  if (!path.extname(f)) f = path.join(f, 'index.html');
+  return { f, ancla: decodeURIComponent(ancla) };
+}
+
+async function resultados(page, q, caja = '.search-top') {
+  await page.fill(`${caja} input`, '');
+  await page.fill(`${caja} input`, q);
+  await page.waitForSelector(`${caja} .results.open`);
+  await page.waitForTimeout(250);
+  return page.$$eval(`${caja} .results a`, (as) => as.map((a) => ({
+    href: a.getAttribute('href'),
+    rid: a.querySelector('.rid')?.textContent.trim() || '',
+    rsn: a.querySelector('.rsn')?.textContent.trim() || '',
+  })));
+}
+
+// ------------------------------------------------------------------ páginas
+
+const PAGINAS = ['/', '/art/250/', '/art/100/', '/tablas/', '/tablas/generales/', '/figuras/',
+  '/glosario/', '/apendices/', '/apendices/A/', '/cierre/', '/observaciones/', '/mapa/'];
+
+prueba('Las páginas cargan sin errores de JavaScript, en escritorio y en teléfono', async ({ nuevaPagina }) => {
+  for (const vista of [ESCRITORIO, TELEFONO]) {
+    for (const ruta of PAGINAS) {
+      const { page, errores } = await nuevaPagina(vista);
+      const r = await page.goto(ruta, { waitUntil: 'networkidle' });
+      afirmar(r.status() === 200, `${ruta} respondió ${r.status()}`);
+      await page.waitForTimeout(ruta === '/mapa/' ? 2000 : 200);
+      afirmar(!errores.length, `${ruta} (${vista.isMobile ? 'teléfono' : 'escritorio'}): ${errores.join(' | ')}`);
+    }
+  }
+});
+
+// ---------------------------------------------------------------- buscador
+
+prueba('El buscador entiende un código escrito pegado, sin paréntesis', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  // Como se escribe en el teléfono: "310-15b16" es la Tabla 310-15(b)(16) y
+  // "250-32b1" el inciso 250-32(b)(1). Los dos deben salir primero.
+  const [tabla] = await resultados(page, '310-15b16');
+  afirmar(tabla?.href.endsWith('/art/310#tabla-310-15-b-16'), `primero: ${tabla?.href}`);
+  const [inciso] = await resultados(page, '250-32b1');
+  afirmar(inciso?.href.endsWith('/art/250#250-32(b)(1)'), `primero: ${inciso?.href}`);
+});
+
+prueba('Cada resultado del buscador lleva a una página y un ancla que existen', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  const rotos = [];
+  let total = 0;
+  for (const q of ['310-15b16', 'Tabla 430-250', 'tabla 310-16', 'Tabla 1', 'ampacidad', 'acometida',
+    'tablero', 'Tabla 250-122', 'Tabla B-310-15', 'falla a tierra', 'Figura 250-1', 'motores', 'Tabla 9',
+    'Tabla C-1', 'Tabla B1.1']) {
+    for (const { href } of await resultados(page, q)) {
+      total++;
+      const { f, ancla } = destinoDe(href);
+      if (!fs.existsSync(f)) { rotos.push(`${q}: ${href} (no existe la página)`); continue; }
+      if (ancla && !fs.readFileSync(f, 'utf8').includes(`id="${ancla}"`)) rotos.push(`${q}: ${href}`);
+    }
+  }
+  afirmar(total > 200, `solo ${total} resultados revisados`);
+  afirmar(!rotos.length, `${rotos.length} de ${total} rotos: ${rotos.slice(0, 5).join(' · ')}`);
+});
+
+prueba('Una tabla de apéndice se rotula con su apéndice, no como Capítulo 10', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  const rs = await resultados(page, 'Tabla C-1');
+  const c1 = rs.find((r) => r.href.includes('/apendices/C/'));
+  afirmar(c1, 'la Tabla C-1 no lleva al Apéndice C');
+  afirmar(/Apéndice C/.test(c1.rsn), `rótulo: "${c1.rsn}"`);
+});
+
+prueba('Enter lleva al primer resultado', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/glosario/', { waitUntil: 'networkidle' });
+  const [primero] = await resultados(page, '250-32');
+  await Promise.all([page.waitForURL((u) => u.pathname.includes('/art/250')), page.press('.search-top input', 'Enter')]);
+  afirmar(primero.href.includes('/art/250'), `el primer resultado era ${primero.href}`);
+});
+
+prueba('Una búsqueda sin coincidencias lo dice', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  await page.fill('.search-top input', 'zqxjwv');
+  await page.waitForSelector('.search-top .results.open .empty');
+});
+
+prueba('La tecla / lleva al buscador', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  await page.keyboard.press('/');
+  afirmar(await page.evaluate(() => document.activeElement?.matches('input[data-buscar]')),
+    'el foco no quedó en el buscador');
+});
+
+prueba('El buscador de la portada también busca', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/', { waitUntil: 'networkidle' });
+  const rs = await resultados(page, 'acometida', '.hero-buscar');
+  afirmar(rs.length, 'sin resultados');
+});
+
+// --------------------------------------------------------------- cabecera
+
+prueba('En la portada, el buscador de la cabecera aparece al bajar', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/', { waitUntil: 'networkidle' });
+  afirmar(await page.$eval('.search-top', (e) => e.classList.contains('oculto')), 'visible al cargar');
+  await page.mouse.wheel(0, 1400);
+  await page.waitForFunction(() => !document.querySelector('.search-top').classList.contains('oculto'));
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  afirmar(!(await page.$eval('.search-top', (e) => e.classList.contains('oculto'))), 'oculto en un artículo');
+});
+
+prueba('El botón de GitHub muestra las estrellas', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.waitForFunction(() => document.querySelector('.gh-n')?.textContent.trim() === '7');
+});
+
+// ------------------------------------------------------------------- tema
+
+prueba('El interruptor cambia el tema y lo recuerda', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina({ ...ESCRITORIO, colorScheme: 'light' });
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  const tema = () => page.evaluate(() => document.documentElement.dataset.theme || '');
+  const antes = await tema();
+  await page.click('#tema');
+  const despues = await tema();
+  afirmar(despues && despues !== antes, `el tema no cambió (${antes || 'sin tema'} → ${despues || 'sin tema'})`);
+  await page.reload({ waitUntil: 'networkidle' });
+  afirmar((await tema()) === despues, 'no se recordó al recargar');
+});
+
+prueba('Un tema viejo guardado (sepia) se migra a claro', async ({ nuevaPagina }) => {
+  const { page, ctx } = await nuevaPagina(ESCRITORIO);
+  await ctx.addInitScript(() => { try { localStorage.setItem('nom-tema', 'sepia'); } catch (e) {} });
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  const t = await page.evaluate(() => document.documentElement.dataset.theme);
+  afirmar(t === 'claro', `tema: ${t}`);
+});
+
+// ---------------------------------------------------------- índice lateral
+
+prueba('El índice lateral marca la sección que se está leyendo', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/#250-32', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(400);
+  const on = await page.$$eval('.toc a.on', (as) => as.map((a) => a.getAttribute('href')));
+  afirmar(on.some((h) => h.endsWith('#250-32')), `marcado: ${on.join(', ') || 'nada'}`);
+});
+
+prueba('Un identificador retirado avisa dónde quedó su contenido', async ({ nuevaPagina }) => {
+  const mapa = JSON.parse(fs.readFileSync(path.join(DIST, 'ids-retirados.json'), 'utf8'));
+  const [viejo, nuevo] = Object.entries(mapa).find(([v]) => v.startsWith('250-'))
+    || Object.entries(mapa)[0];
+  const art = viejo.slice(0, 3);
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto(`/art/${art}/#${encodeURIComponent(viejo)}`, { waitUntil: 'networkidle' });
+  const aviso = await page.waitForSelector('.aviso-ancla');
+  const txt = await aviso.textContent();
+  afirmar(txt.includes(viejo) && txt.includes(nuevo), `aviso: ${txt}`);
+});
+
+// -------------------------------------------------------------- portada
+
+prueba('El video de la portada solo se carga en escritorio', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/', { waitUntil: 'networkidle' });
+  afirmar(await page.$('.portada-fondo video'), 'sin video en escritorio');
+  const tel = await nuevaPagina(TELEFONO);
+  await tel.page.goto('/', { waitUntil: 'networkidle' });
+  afirmar(!(await tel.page.$('.portada-fondo video')), 'hay video en el teléfono');
+});
+
+// ------------------------------------------------------------------ mapa
+
+prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/mapa/', { waitUntil: 'networkidle' });
+  await page.waitForSelector('.mapa canvas', { timeout: 20000 });
+  await page.fill('.mapa-busca input', '250-122');
+  await page.waitForSelector('#mapa-sug li');
+  await page.press('.mapa-busca input', 'Enter');
+  await page.waitForFunction(() => location.hash === '#250-122');
+  afirmar(await page.$eval('.mapa-recorrido', (e) => !e.hidden), 'el recorrido no apareció');
+});
+
+prueba('En el teléfono, el mapa no carga la librería 3D', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(TELEFONO);
+  const pedidos = [];
+  page.on('request', (r) => pedidos.push(r.url()));
+  await page.goto('/mapa/', { waitUntil: 'networkidle' });
+  afirmar(await page.$eval('.mapa-movil', (e) => getComputedStyle(e).display !== 'none'), 'sin aviso móvil');
+  afirmar(!pedidos.some((u) => /3d-force-graph|mapa\.json/.test(u)), 'pidió la librería 3D o los datos');
+});
+
+// ---------------------------------------------------------------- correr
+
+const { url, cerrar } = await servir(DIST);
+const navegador = await chromium.launch();
+let fallas = 0;
+for (const { nombre, fn } of pruebas) {
+  const abiertos = [];
+  const nuevaPagina = async (opciones = {}) => {
+    const ctx = await navegador.newContext({ ...opciones, baseURL: url + '/', serviceWorkers: 'block' });
+    abiertos.push(ctx);
+    await ctx.route('https://api.github.com/**', (r) => r.fulfill({ json: { stargazers_count: 7 } }));
+    const page = await ctx.newPage();
+    const errores = [];
+    page.on('pageerror', (e) => errores.push(e.message));
+    page.on('console', (m) => { if (m.type() === 'error') errores.push(m.text()); });
+    // Las rutas de las pruebas van relativas al sitio: '/art/250/' -> url + '/art/250/'.
+    const goto = page.goto.bind(page);
+    page.goto = (ruta, o) => goto(ruta.startsWith('http') ? ruta : url + ruta, o);
+    return { page, ctx, errores };
+  };
+  const t0 = Date.now();
+  try {
+    await fn({ nuevaPagina });
+    console.log(`  ✓ ${nombre} (${Date.now() - t0} ms)`);
+  } catch (e) {
+    fallas++;
+    console.log(`  ✗ ${nombre}\n      ${String(e.message).split('\n')[0]}`);
+  } finally {
+    for (const c of abiertos) await c.close();
+  }
+}
+await navegador.close();
+await cerrar();
+console.log(fallas ? `\n${fallas} de ${pruebas.length} pruebas fallaron.` : `\nLas ${pruebas.length} pruebas pasaron.`);
+process.exit(fallas ? 1 : 0);

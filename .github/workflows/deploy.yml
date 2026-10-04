@@ -43,6 +43,11 @@ jobs:
       - run: npm ci
         working-directory: site
 
+      # Para las pruebas en navegador (site/pruebas/navegador.mjs).
+      - name: Instalar Chromium para las pruebas
+        run: npx playwright install --with-deps chromium
+        working-directory: site
+
       # Regenera todo desde el PDF, verifica, compila y compara el contenido
       # contra la huella sellada. Es el mismo script que se corre en local:
       # el orden de los pasos y por qué está explicado ahí.
