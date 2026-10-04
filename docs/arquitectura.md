@@ -48,11 +48,40 @@ y arrastraba al texto lo que la tabla ya se había llevado: las notas al pie de 
 los identificadores que una ronda de cambios retiró al destino donde vive hoy su
 contenido, y su salida se versiona ya construida.
 
+Todo eso, más la compilación y la huella del sitio, lo corre en orden
+`bash tools/verificar.sh`.
+
 El sitio queda en `site/dist/`, archivos estáticos sin servidor detrás. Se
 publica en GitHub Pages con cada push a `main` (`.github/workflows/deploy.yml`),
-que regenera el corpus desde el PDF y corre la verificación antes de desplegar.
+que corre `tools/verificar.sh` antes de desplegar. En las demás ramas corre la
+misma verificación, sin publicar: un cambio se sabe sano antes de llegar a
+`main`.
 Para servirlo en otro lugar —un dominio propio, la red local, una carpeta en
 USB— basta cambiar `site` y `base` en `site/astro.config.mjs`.
+
+## La huella del sitio
+
+`tools/huella_sitio.txt` guarda el SHA-256 de todo el contenido publicado:
+`data/*.json`, `REVISION-TABLAS.md` y cada archivo de `site/dist/` (páginas,
+imágenes, video, índice de búsqueda, datos del mapa). `tools/huella_sitio.py`
+lo compara al final de `verificar.sh` y falla si algo cambió.
+
+Existe porque todo el proceso, del PDF al sitio, es determinista: regenerar y
+compilar da los mismos bytes cada vez. Eso permite reorganizar el código con
+una garantía fuerte: si una reestructuración mueve una sola palabra del texto,
+la clase de una celda o un enlace, la huella lo detiene. `check_corpus.py`
+cuenta y mide (artículos, secciones, cobertura), pero no ve una palabra
+cambiada; la huella de cada tabla (`huella.py`) protege las tablas, pero no el
+texto ni cómo se dibujan.
+
+Del HTML se compara todo menos lo que es código: los `<script>` y `<style>` en
+línea, los enlaces a `/_astro/` y la marca `data-astro-cid-*` de Astro, que
+cambian al reorganizar componentes sin cambiar lo que se lee. Por la misma
+razón quedan fuera `site/dist/_astro/` y `sw.js`.
+
+Un cambio de contenido deliberado —corregir una tabla, arreglar el parser— se
+vuelve a sellar con `python3 tools/huella_sitio.py --escribir`, y el diff de
+`huella_sitio.txt` en ese commit dice qué páginas y qué datos cambiaron.
 
 ## Las cifras del README se generan
 

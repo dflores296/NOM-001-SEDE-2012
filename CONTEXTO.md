@@ -29,14 +29,14 @@ sobre el PDF deja el árbol idéntico a lo commiteado, byte a byte.
 Para verificar el estado en cualquier momento:
 
 ```
-python3 tools/build_tables.py NOM-001-SEDE-2012.pdf data/
-python3 tools/build_corpus.py NOM-001-SEDE-2012.pdf data/
-python3 tools/build_graph.py data/
-python3 tools/build_search.py data/ site/public/data/
-python3 tools/build_revision.py data/ REVISION-TABLAS.md
-python3 tools/check_corpus.py data/        # debe salir con 0
+bash tools/verificar.sh                     # debe salir con 0
 git status --porcelain                      # debe quedar vacío
 ```
+
+`verificar.sh` es lo mismo que corre la publicación: regenera todo desde el
+PDF en orden, corre `build_cifras.py --check` y `check_corpus.py`, compila el
+sitio y compara el contenido publicado contra `tools/huella_sitio.txt` (ver
+«La huella del sitio» en `docs/arquitectura.md`).
 
 `tools/build_redirects.py` **no** va en esa lista: no deriva del PDF sino de la
 historia del repositorio, y su salida (`site/public/ids-retirados.json`) se

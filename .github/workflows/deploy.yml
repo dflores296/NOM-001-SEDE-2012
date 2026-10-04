@@ -1,8 +1,9 @@
-name: Publicar sitio en GitHub Pages
+name: Verificar y publicar el sitio
 
+# Se verifica en cualquier rama, para saber antes de llevar un cambio a main
+# si rompe algo; solo se publica desde main.
 on:
   push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -10,8 +11,11 @@ permissions:
   pages: write
   id-token: write
 
+# Un push nuevo a la misma rama cancela la verificación anterior de esa rama.
+# La publicación lleva su propio grupo, abajo, para que una rama de trabajo
+# nunca cancele una publicación de main.
 concurrency:
-  group: pages
+  group: verificar-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -30,30 +34,6 @@ jobs:
         # local y en las sesiones de Claude Code.
         run: pip install -r requirements.txt
 
-      # El corpus se regenera desde el PDF en cada publicación: así el sitio
-      # nunca se despega de la fuente, y si un cambio en el parser rompe algo,
-      # la validación lo detiene aquí y no en producción.
-      # El orden importa: build_corpus salta las zonas de página que ocupan
-      # las tablas leyendo data/tablas_regiones.json, que produce build_tables.
-      # Corriéndolo después, el corpus se armaba con las regiones de la corrida
-      # ANTERIOR y arrastraba al texto lo que la tabla ya se había llevado: las
-      # notas al pie de la 220-12 se quedaban pegadas a la NOTA del artículo.
-      - name: Regenerar tablas, corpus, grafo e índice de búsqueda
-        run: |
-          python3 tools/build_tables.py NOM-001-SEDE-2012.pdf data/
-          python3 tools/build_corpus.py NOM-001-SEDE-2012.pdf data/
-          python3 tools/build_graph.py data/
-          python3 tools/build_search.py data/ site/public/data/
-          python3 tools/build_revision.py data/ REVISION-TABLAS.md
-
-      # --check no escribe: falla el build si la tabla de cifras del README se
-      # despegó de los datos. Regenerarla es parte del cambio, no del deploy.
-      - name: Verificar las cifras del README
-        run: python3 tools/build_cifras.py data/ README.md --check
-
-      - name: Verificar cobertura del parseo
-        run: python3 tools/check_corpus.py data/
-
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -63,16 +43,24 @@ jobs:
       - run: npm ci
         working-directory: site
 
-      - run: npm run build
-        working-directory: site
+      # Regenera todo desde el PDF, verifica, compila y compara el contenido
+      # contra la huella sellada. Es el mismo script que se corre en local:
+      # el orden de los pasos y por qué está explicado ahí.
+      - name: Regenerar, verificar y compilar
+        run: bash tools/verificar.sh
 
-      - uses: actions/upload-pages-artifact@v3
+      - if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: site/dist
 
   deploy:
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
