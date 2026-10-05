@@ -90,6 +90,157 @@ export async function iniciar(raiz) {
     return s;
   }
 
+  // ------------------------------------------------------------- acomodo
+  // Dos formas de acomodar la red, además de las citas y la repulsión:
+  // - «Por tema»: cada grupo de artículos que se citan entre sí (el campo c
+  //   de mapa.json, ver lib/comunidades.js) jalado a su lugar en un círculo;
+  //   los 8 grandes adentro, los chicos en un anillo de afuera.
+  // - «Por capítulo»: cada capítulo de la leyenda a su lugar en el círculo.
+  // - «En orden»: los artículos en una espiral del 90 al 940, como se leen
+  //   en la norma; las citas se vuelven cuerdas entre partes lejanas. Aquí
+  //   las citas jalan casi nada, para que no deshagan la espiral.
+  // Con cualquiera, el mismo grupo cae siempre en el mismo lugar.
+  const ACOMODOS = ['tema', 'capitulo', 'orden'];
+  let acomodo = 'tema';
+  try {
+    const guardado = localStorage.getItem('mapa-acomodo');
+    if (ACOMODOS.includes(guardado)) acomodo = guardado;
+  } catch {}
+  const artsOrden = [...new Set(datos.nodes.filter((n) => n.k === 'a').map((n) => n.a))].sort(
+    (a, b) => a - b
+  );
+  // Dónde cae en la espiral el artículo de en medio de cada capítulo.
+  const medioDe = new Map();
+  for (const g of new Set(datos.nodes.map((n) => n.g))) {
+    const arts = artsOrden.filter((a) =>
+      datos.nodes.some((n) => n.k === 'a' && n.a === a && n.g === g)
+    );
+    if (arts.length) medioDe.set(g, artsOrden.indexOf(arts[arts.length >> 1]) / artsOrden.length);
+  }
+  const espiral = (t) => {
+    const ang = t * Math.PI * 2 * 2.2 - Math.PI / 2;
+    const r = 160 + t * 760;
+    return [r * Math.cos(ang), -r * Math.sin(ang), 0];
+  };
+  const ordenG = grupos.map((x) => x.g);
+  const nTemas = 1 + Math.max(...datos.nodes.map((n) => n.c ?? 0));
+  const circulo = (i, total, r) => {
+    const t = (2 * Math.PI * i) / total - Math.PI / 2;
+    return [r * Math.cos(t), -r * Math.sin(t), 0];
+  };
+  const anclaDe = (n) => {
+    if (acomodo === 'orden')
+      return espiral(n.a == null ? 1.04 : artsOrden.indexOf(n.a) / artsOrden.length);
+    if (acomodo === 'capitulo') return circulo(ordenG.indexOf(n.g), ordenG.length, 480);
+    if (n.c == null) return [0, 0, 0];
+    return n.c < 8 ? circulo(n.c, 8, 480) : circulo(n.c - 8 + 0.5, nTemas - 8, 880);
+  };
+  // Una fuerza que jala cada punto hacia su lugar, sin depender de d3.
+  const fuerzaAncla = (() => {
+    let nodos = [];
+    const f = (alpha) => {
+      const k = acomodo === 'orden' ? 0.3 : 0.15;
+      for (const n of nodos) {
+        const [x, y, z] = anclaDe(n);
+        n.vx += (x - n.x) * k * alpha;
+        n.vy += (y - n.y) * k * alpha;
+        n.vz += (z - n.z) * 0.05 * alpha;
+      }
+    };
+    f.initialize = (ns) => {
+      nodos = ns;
+    };
+    return f;
+  })();
+
+  // El rótulo de cada grupo, en su centro: los artículos más citados del
+  // tema («Art. 430 · 440 · 110») o el nombre del capítulo. Sin nombres
+  // inventados: un tema se rotula con sus artículos.
+  const rotulosGrupo = new Map();
+  function textoGrupo(clave) {
+    if (acomodo !== 'tema') return nombreGrupo[clave];
+    const arts = datos.nodes
+      .filter((n) => n.k === 'a' && n.c === clave)
+      .sort((a, b) => b.n - a.n)
+      .slice(0, 3)
+      .map((n) => n.a);
+    return `Art. ${arts.join(' · ')}`;
+  }
+  const claveDe = (n) => (acomodo === 'tema' ? n.c : n.g);
+  function armarRotulos() {
+    for (const s of rotulosGrupo.values()) G.scene().remove(s);
+    rotulosGrupo.clear();
+    const claves =
+      acomodo !== 'tema'
+        ? ordenG
+        : [...new Set(datos.nodes.map((n) => n.c))].filter(
+            (c) => c != null && datos.nodes.filter((n) => n.k === 'a' && n.c === c).length >= 4
+          );
+    for (const k of claves) {
+      const s = new SpriteText(textoGrupo(k));
+      s.fontFace = '"Inter Variable", system-ui, sans-serif';
+      s.fontWeight = '600';
+      s.textHeight = 24;
+      s.color = '#ffffff';
+      s.backgroundColor = 'rgba(13,14,18,0.72)';
+      s.padding = 6;
+      s.borderRadius = 4;
+      s.material.depthWrite = false;
+      s.material.depthTest = false;
+      s.renderOrder = 10;
+      G.scene().add(s);
+      rotulosGrupo.set(k, s);
+    }
+    moverRotulos();
+  }
+  // Cada rótulo en el centro de los puntos visibles de su grupo, un poco
+  // arriba; se esconde en el hilo o si su grupo entero está oculto.
+  function moverRotulos() {
+    const suma = new Map();
+    if (modo === 'red') {
+      for (const n of red.nodes) {
+        if (!visible(n) || n.x == null) continue;
+        const k = claveDe(n);
+        const t = suma.get(k) || [0, 0, 0, 0];
+        t[0] += n.x;
+        t[1] += n.y;
+        t[2] += n.z;
+        t[3]++;
+        suma.set(k, t);
+      }
+    }
+    for (const [k, s] of rotulosGrupo) {
+      const t = suma.get(k);
+      s.visible = !!t;
+      if (!t) continue;
+      // En la espiral, el centro de un capítulo cae dentro de su arco: el
+      // rótulo va afuera, a la altura de su artículo de en medio.
+      if (acomodo === 'orden') {
+        const [x, y] = espiral(medioDe.get(k) ?? 1.04);
+        s.position.set(x * 1.1, y * 1.1, 0);
+      } else s.position.set(t[0] / t[3], t[1] / t[3] + 80, t[2] / t[3]);
+    }
+  }
+  G.onEngineTick(moverRotulos);
+
+  function elegirAcomodo(a) {
+    if (a === acomodo) return;
+    acomodo = a;
+    try {
+      localStorage.setItem('mapa-acomodo', a);
+    } catch {}
+    for (const b of raiz.querySelectorAll('[data-acomodo]'))
+      b.setAttribute('aria-pressed', String(b.dataset.acomodo === acomodo));
+    armarRotulos();
+    if (modo !== 'red') return;
+    G.d3Force('link').strength(fuerzaCita);
+    G.cooldownTicks(260);
+    G.d3ReheatSimulation();
+    encuadrar = true;
+  }
+
+  const fuerzaCita = (l) => (l.e ? 0.9 : acomodo === 'orden' ? 0.004 : 0.04);
+
   function pintarRed() {
     G.nodeVal((n) => (n.k === 'a' ? 7 + n.n * 0.5 : n.k === 'h' ? 7 : 0.7 + n.n * 0.45))
       .nodeColor((n) => (!foco || vecinos.has(n.id) ? color[n.g] : apagado[n.g]))
@@ -110,8 +261,9 @@ export async function iniciar(raiz) {
     G.cooldownTicks(220);
     G.d3Force('link')
       .distance((l) => (l.e ? 4 : 60))
-      .strength((l) => (l.e ? 0.9 : 0.04));
+      .strength(fuerzaCita);
     G.d3Force('charge').strength(-22);
+    G.d3Force('ancla', fuerzaAncla);
   }
 
   function resaltar(n) {
@@ -150,6 +302,7 @@ export async function iniciar(raiz) {
       .linkWidth(0.35)
       .linkDirectionalParticles(2);
     // Todo el hilo va en posiciones fijas: no hay nada que simular.
+    G.d3Force('ancla', null);
     G.cooldownTicks(0);
   }
 
@@ -170,6 +323,7 @@ export async function iniciar(raiz) {
     lineas.clear();
     G.graphData(red);
     pintarRed();
+    moverRotulos();
     encuadrar = true;
     actualizarUI();
     if (historial) history.pushState(null, '', location.pathname);
@@ -186,6 +340,7 @@ export async function iniciar(raiz) {
     }
     G.graphData(armarHilo(id, { porId, entran, salen }, { dir, prof }));
     pintarHilo();
+    moverRotulos();
     // Sin simulación, el encuadre va en cuanto el lienzo tenga su tamaño
     // (y otra vez si el lienzo cambia, ver el ResizeObserver).
     requestAnimationFrame(() => requestAnimationFrame(() => G.zoomToFit(600, 60)));
@@ -213,6 +368,7 @@ export async function iniciar(raiz) {
   function actualizarUI() {
     const hilo = modo === 'hilo';
     $('.mapa-hilo-ctl').hidden = !hilo;
+    $('.mapa-acomodo').hidden = hilo;
     $('.mapa-red').hidden = !hilo;
     $('.mapa-guia').hidden = !hilo;
     $('.mapa-inicio').hidden = hilo;
@@ -400,6 +556,7 @@ export async function iniciar(raiz) {
     for (const b of chips) b.setAttribute('aria-pressed', String(!ocultos.has(b.dataset.g)));
     btnTodos.hidden = ocultos.size === 0;
     G.nodeVisibility(G.nodeVisibility()).linkVisibility(G.linkVisibility());
+    moverRotulos();
     if (modo === 'hilo' && centro) llenarPanel(porId.get(centro));
   }
   function alternar(g) {
@@ -418,6 +575,10 @@ export async function iniciar(raiz) {
     });
   }
   btnTodos.addEventListener('click', () => fijarOcultos([]));
+  for (const b of raiz.querySelectorAll('[data-acomodo]')) {
+    b.setAttribute('aria-pressed', String(b.dataset.acomodo === acomodo));
+    b.addEventListener('click', () => elegirAcomodo(b.dataset.acomodo));
+  }
 
   // Centrar: encuadra solo los puntos a la vista, así que con un capítulo
   // aislado en la leyenda se acerca a ese capítulo.
@@ -540,6 +701,7 @@ export async function iniciar(raiz) {
   }).observe(lienzo);
   estado.hidden = true;
 
+  armarRotulos();
   const inicial = desdeHash();
   if (inicial) seguir(inicial.id, { historial: false });
   else verRed({ historial: false });

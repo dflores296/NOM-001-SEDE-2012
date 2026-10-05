@@ -12,6 +12,7 @@
 // de estructura, invisible, que es lo que agrupa el mapa por artículos.
 import { articles, apendices, grafo } from '../lib/nom.js';
 import { nodoDe, seccionPorId } from '../lib/mapa-red.js';
+import { comunidades } from '../lib/comunidades.js';
 
 // Grupo de color: los capítulos 2 a 9 llevan cada uno su color; el 1
 // (disposiciones generales), el 10 (tablas) y los apéndices van juntos en gris.
@@ -83,6 +84,23 @@ export function GET() {
       n: entra.get('capitulo-10') || 0,
     });
   }
+
+  // El grupo de cada artículo para el acomodo «Por tema» (lib/comunidades.js),
+  // con las citas entre artículos distintos. Cada punto lleva el de su
+  // artículo; los hitos del cierre no llevan.
+  const artDe = new Map(nodes.map((n) => [n.id, n.a]));
+  const pares = new Map();
+  for (const [k, w] of refs) {
+    const [de, a] = k.split('>').map((id) => artDe.get(id));
+    if (de == null || a == null || de === a) continue;
+    const par = de < a ? `${de}|${a}` : `${a}|${de}`;
+    pares.set(par, (pares.get(par) || 0) + w);
+  }
+  const grupo = comunidades(
+    articles.map((a) => a.num),
+    pares
+  );
+  for (const n of nodes) if (n.a != null) n.c = grupo.get(n.a);
 
   const hay = new Set(nodes.map((n) => n.id));
   const links = [];
