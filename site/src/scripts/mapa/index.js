@@ -292,12 +292,12 @@ export async function iniciar(raiz) {
     return p;
   }
 
-  function lista(ul, ids, sentido) {
+  function lista(ul, ids, sentido, ocultas) {
     ul.replaceChildren();
     if (!ids.length) {
       const li = document.createElement('li');
       li.className = 'mp-vacio';
-      li.textContent = 'Ninguna';
+      li.textContent = ocultas ? 'Todas son de capítulos ocultos' : 'Ninguna';
       ul.append(li);
       return;
     }
@@ -336,13 +336,22 @@ export async function iniciar(raiz) {
           ? `Capítulo ${n.g !== 'g' ? nombreGrupo[n.g] : 'general'}`
           : 'Cierre de la norma';
     panel.querySelector('.mp-ir').href = href(n);
-    const inn = entran.get(n.id) || [];
-    const out = salen.get(n.id) || [];
+    // Las de los capítulos ocultos en la leyenda no se listan; el conteo
+    // dice cuántas son.
+    const deVisible = (id) => !ocultos.has(porId.get(id)?.g);
+    const todasIn = entran.get(n.id) || [];
+    const todasOut = salen.get(n.id) || [];
+    const inn = todasIn.filter(deVisible);
+    const out = todasOut.filter(deVisible);
+    const ocIn = todasIn.length - inn.length;
+    const ocOut = todasOut.length - out.length;
     panel.querySelector('.mp-n-in').textContent = inn.length;
     panel.querySelector('.mp-n-out').textContent = out.length;
+    panel.querySelector('.mp-oc-in').textContent = ocIn ? ` · ${ocIn} ocultas` : '';
+    panel.querySelector('.mp-oc-out').textContent = ocOut ? ` · ${ocOut} ocultas` : '';
     const y = n.id === llenoCon ? panel.scrollTop : 0;
-    lista(panel.querySelector('.mp-in'), inn, 'entran');
-    lista(panel.querySelector('.mp-out'), out, 'salen');
+    lista(panel.querySelector('.mp-in'), inn, 'entran', ocIn);
+    lista(panel.querySelector('.mp-out'), out, 'salen', ocOut);
     // Al llegar las frases se vuelve a llenar el mismo panel: que no salte
     // arriba si ya se estaba leyendo.
     panel.scrollTop = y;
@@ -379,17 +388,36 @@ export async function iniciar(raiz) {
     btnFull.setAttribute('aria-label', t);
   });
 
-  // Leyenda: muestra u oculta un capítulo, en la red y en el hilo.
-  function alternar(g) {
-    if (ocultos.has(g)) ocultos.delete(g);
-    else ocultos.add(g);
-    raiz
-      .querySelector(`.chip-cap[data-g="${g}"]`)
-      ?.setAttribute('aria-pressed', String(!ocultos.has(g)));
+  // Leyenda: muestra u oculta capítulos, en la red, en el hilo y en el
+  // panel. Clic: uno. Doble clic o clic derecho: solo ese, y otra vez,
+  // todos (el doble clic llega después de dos clics, que se anulan entre sí).
+  const chips = [...raiz.querySelectorAll('.chip-cap')];
+  const todosG = chips.map((b) => b.dataset.g);
+  const btnTodos = $('.chip-todos');
+  function fijarOcultos(gs) {
+    ocultos.clear();
+    for (const g of gs) ocultos.add(g);
+    for (const b of chips) b.setAttribute('aria-pressed', String(!ocultos.has(b.dataset.g)));
+    btnTodos.hidden = ocultos.size === 0;
     G.nodeVisibility(G.nodeVisibility()).linkVisibility(G.linkVisibility());
+    if (modo === 'hilo' && centro) llenarPanel(porId.get(centro));
   }
-  for (const b of raiz.querySelectorAll('.chip-cap'))
+  function alternar(g) {
+    fijarOcultos(ocultos.has(g) ? [...ocultos].filter((x) => x !== g) : [...ocultos, g]);
+  }
+  function soloEste(g) {
+    const yaSolo = !ocultos.has(g) && ocultos.size === todosG.length - 1;
+    fijarOcultos(yaSolo ? [] : todosG.filter((x) => x !== g));
+  }
+  for (const b of chips) {
     b.addEventListener('click', () => alternar(b.dataset.g));
+    b.addEventListener('dblclick', () => soloEste(b.dataset.g));
+    b.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      soloEste(b.dataset.g);
+    });
+  }
+  btnTodos.addEventListener('click', () => fijarOcultos([]));
 
   // ----------------------------------------------- buscador con sugerencias
   const input = $('.mapa-busca input');

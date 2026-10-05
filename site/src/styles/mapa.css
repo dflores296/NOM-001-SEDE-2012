@@ -136,6 +136,13 @@
 .chip-cap i { width: 9px; height: 9px; border-radius: 50%; flex: none; }
 .chip-cap[aria-pressed="false"] { opacity: 0.45; text-decoration: line-through; }
 .chip-cap:hover { border-color: #aeaeb7; color: #ffffff; }
+.chip-cap { -webkit-user-select: none; user-select: none; }
+.chip-todos {
+  height: 28px; padding: 0 0.8rem; font: inherit; font-size: 0.75rem; font-weight: 600; cursor: pointer;
+  color: #070707; background: #ffffff; border: 0; border-radius: 999px;
+}
+.chip-todos:hover { background: #d9dae5; }
+.chip-todos[hidden] { display: none; }
 .mapa.con-panel .mapa-ley { right: 362px; }
 
 /* Panel del punto central, a la derecha. */
@@ -156,6 +163,7 @@
   letter-spacing: 0.06em; color: #aeaeb7;
 }
 .mp-grupo h3 b { color: #ffffff; }
+.mp-grupo h3 span { text-transform: none; letter-spacing: normal; font-weight: 500; }
 .mp-grupo ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
 .mp-grupo li button {
   width: 100%; display: flex; gap: 0.5rem; align-items: baseline; text-align: left;

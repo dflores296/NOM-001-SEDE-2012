@@ -84,12 +84,16 @@ const GRUPOS = [
         Escribe arriba una sección o un tema para empezar, o haz clic en cualquier punto.
       </p>
 
+      {/* Clic: ocultar o mostrar. Doble clic o clic derecho: solo ese
+          capítulo (otra vez: todos), como en las leyendas de gráficas. */}
       <div class="mapa-ley" role="group" aria-label="Capítulos visibles">
         {GRUPOS.map((x) => (
-          <button type="button" class="chip-cap" data-g={x.g} aria-pressed="true" title="Mostrar u ocultar">
+          <button type="button" class="chip-cap" data-g={x.g} aria-pressed="true"
+                  title="Clic: ocultar o mostrar · Doble clic o clic derecho: solo este capítulo">
             <i style={`background:${x.color}`}></i>{x.nombre}
           </button>
         ))}
+        <button type="button" class="chip-todos" hidden>Mostrar todos</button>
       </div>
 
       <aside class="mapa-panel" hidden aria-live="polite">
@@ -98,11 +102,11 @@ const GRUPOS = [
         <p class="mp-art"></p>
         <a class="mp-ir">Abrir en la guía →</a>
         <div class="mp-grupo">
-          <h3>La citan <b class="mp-n-in"></b></h3>
+          <h3>La citan <b class="mp-n-in"></b><span class="mp-oc-in"></span></h3>
           <ul class="mp-in"></ul>
         </div>
         <div class="mp-grupo">
-          <h3>Cita a <b class="mp-n-out"></b></h3>
+          <h3>Cita a <b class="mp-n-out"></b><span class="mp-oc-out"></span></h3>
           <ul class="mp-out"></ul>
         </div>
       </aside>
