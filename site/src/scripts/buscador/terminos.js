@@ -15,9 +15,10 @@ export const sinAcentos = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, 
 // Singular a lo bruto: "ampacidades" → "ampacidad", "motores" → "motor",
 // "electrodos" → "electrodo". Dejarle el plural al difuso no alcanza: con
 // fuzzy:0.15 tiene un solo cambio de margen, así que "electrodos" encuentra
-// "eléctricos" y "ampacidades" no llega a "ampacidad" en los títulos. No hace falta que la raíz sea una palabra correcta, solo que
-// la consulta y el texto caigan en la misma ("luces" queda "luce" en los
-// dos lados). Las palabras cortas y las que llevan cifras no se tocan.
+// "eléctricos" y "ampacidades" no llega a "ampacidad" en los títulos. No
+// hace falta que la raíz sea una palabra correcta, solo que la consulta y
+// el texto caigan en la misma ("luces" queda "luce" en los dos lados). Las
+// palabras cortas y las que llevan cifras no se tocan.
 export function singular(t) {
   if (t.length < 5 || /\d/.test(t)) return t;
   if (/[dlnr]es$/.test(t)) return t.slice(0, -2);
