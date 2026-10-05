@@ -535,6 +535,19 @@ prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagi
     'no recordó el acomodo'
   );
 
+  // Vista 2D y tema claro: cambian sin recargar y sin errores.
+  await page.click('[data-dim="2"]');
+  afirmar((await page.getAttribute('[data-dim="2"]', 'aria-pressed')) === 'true', 'no cambió a 2D');
+  await page.evaluate(() => {
+    document.documentElement.dataset.theme = 'claro';
+  });
+  await page.waitForTimeout(300);
+  afirmar(
+    (await page.$eval('.mapa', (e) => getComputedStyle(e).getPropertyValue('--m-bg').trim())) ===
+      '#f7f7f8',
+    'el mapa no tomó el tema claro'
+  );
+
   await page.fill('.mapa-busca input', '250-122');
   await page.waitForSelector('#mapa-sug li');
   await page.press('.mapa-busca input', 'Enter');

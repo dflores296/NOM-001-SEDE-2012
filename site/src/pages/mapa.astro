@@ -14,8 +14,11 @@ const GRUPOS = [
     g: String(c.num),
     nombre: `${c.num} · ${c.title}`,
     color: ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'][i],
+    // Los mismos tonos, más oscuros, para el mapa en claro: estos pasan 4.6:1
+    // o más contra su fondo y los de arriba no llegaban a 3:1.
+    claro: ['#2c6fc4', '#bd4716', '#127a56', '#8f5e00', '#b33a68', '#006b00', '#6a5bd4', '#c13f3f'][i],
   })),
-  { g: 'g', nombre: '1, 10 y apéndices · General', color: '#9a9ca8' },
+  { g: 'g', nombre: '1, 10 y apéndices · General', color: '#9a9ca8', claro: '#6b6d78' },
 ];
 ---
 
@@ -74,6 +77,10 @@ const GRUPOS = [
                     title="Los artículos en espiral, en el orden de la norma">En orden</button>
           </div>
           <button type="button" class="mapa-btn mapa-red" hidden>Red completa</button>
+          <div class="seg mapa-dim" role="group" aria-label="Vista">
+            <button type="button" data-dim="3" aria-pressed="true" title="En 3D: se puede girar">3D</button>
+            <button type="button" data-dim="2" aria-pressed="false" title="Plana, de frente">2D</button>
+          </div>
           {/* Vuelve a encuadrar lo que está a la vista: la red, el hilo o
               solo los capítulos que se dejaron en la leyenda. */}
           <button type="button" class="mapa-btn mapa-centrar" aria-label="Centrar" title="Centrar lo que está a la vista">
@@ -109,7 +116,7 @@ const GRUPOS = [
         {GRUPOS.map((x) => (
           <button type="button" class="chip-cap" data-g={x.g} aria-pressed="true"
                   title="Clic: ocultar o mostrar · Doble clic o clic derecho: solo este capítulo">
-            <i style={`background:${x.color}`}></i>{x.nombre}
+            <i style={`--c:${x.color};--c-claro:${x.claro}`}></i>{x.nombre}
           </button>
         ))}
         <button type="button" class="chip-todos" hidden>Mostrar todos</button>

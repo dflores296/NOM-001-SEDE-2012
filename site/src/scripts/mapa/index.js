@@ -8,22 +8,29 @@ import { crearSugeridor } from './sugerencias.js';
 export async function iniciar(raiz) {
   const base = raiz.dataset.base;
   const grupos = JSON.parse(raiz.dataset.grupos);
-  const color = Object.fromEntries(grupos.map((x) => [x.g, x.color]));
+  // Los colores dependen del tema del sitio (ver «tema» abajo): en claro,
+  // los tonos oscuros de data-grupos y los colores del fondo y los textos
+  // salen de las variables --m-* de mapa.css.
+  let color = {};
+  let apagado = {};
+  let tinta = {};
   const nombreGrupo = Object.fromEntries(grupos.map((x) => [x.g, x.nombre]));
   const visor = raiz.querySelector('.mapa-visor');
   const lienzo = raiz.querySelector('.mapa-lienzo');
   const estado = raiz.querySelector('.mapa-estado');
   const $ = (s) => raiz.querySelector(s);
 
-  let ForceGraph3D, SpriteText, datos;
+  let ForceGraph3D, SpriteText, THREE, datos;
   try {
-    const [mod, spr, r] = await Promise.all([
+    const [mod, spr, three, r] = await Promise.all([
       import('3d-force-graph'),
       import('three-spritetext'),
+      import('three'),
       fetch(`${base}/mapa.json`),
     ]);
     ForceGraph3D = mod.default;
     SpriteText = spr.default;
+    THREE = three;
     datos = await r.json();
   } catch {
     estado.textContent = 'No se pudo cargar el mapa.';
@@ -44,13 +51,41 @@ export async function iniciar(raiz) {
   const vecinos = new Set();
   const lineas = new Set();
   const ocultos = new Set();
+  // Vista en 3D (se puede girar) o en 2D (plana, de frente: nada queda
+  // tapado detrás de otra cosa). Se recuerda en el navegador.
+  let dims = 3;
+  try {
+    if (localStorage.getItem('mapa-dim') === '2') dims = 2;
+  } catch {}
 
-  const mezcla = (hex, t) => {
+  // Un color mezclado con el fondo: los puntos que no son vecinos del que
+  // está bajo el cursor se apagan así.
+  const mezcla = (hex, t, fondo) => {
     const a = parseInt(hex.slice(1), 16);
-    const f = (c, d) => Math.round(c * t + d * (1 - t));
-    return `rgb(${f((a >> 16) & 255, 13)},${f((a >> 8) & 255, 14)},${f(a & 255, 18)})`;
+    const b = parseInt(fondo.slice(1), 16);
+    const f = (s) => Math.round(((a >> s) & 255) * t + ((b >> s) & 255) * (1 - t));
+    return `rgb(${f(16)},${f(8)},${f(0)})`;
   };
-  const apagado = Object.fromEntries(grupos.map((x) => [x.g, mezcla(x.color, 0.12)]));
+  const esClaro = () => {
+    const t = document.documentElement.dataset.theme;
+    return t ? t === 'claro' : !matchMedia('(prefers-color-scheme: dark)').matches;
+  };
+  function leerColores() {
+    const css = (v) => getComputedStyle(raiz).getPropertyValue(v).trim();
+    const claro = esClaro();
+    color = Object.fromEntries(grupos.map((x) => [x.g, claro ? x.claro : x.color]));
+    tinta = {
+      fondo: css('--m-bg'),
+      capa: `rgba(${css('--m-capa').split(' ').join(',')},0.9)`,
+      texto: css('--m-texto'),
+      texto2: css('--m-texto2'),
+      hover: css('--m-hover'),
+      onBg: css('--m-on-bg'),
+      onTx: css('--m-on-tx'),
+    };
+    apagado = Object.fromEntries(grupos.map((x) => [x.g, mezcla(color[x.g], 0.14, tinta.fondo)]));
+  }
+  leerColores();
   const idDe = (x) => (typeof x === 'object' ? x.id : x);
 
   // -------------------------------------------------------------- mapa
@@ -63,7 +98,8 @@ export async function iniciar(raiz) {
   const punto = (x) => (typeof x === 'object' ? x : porId.get(x));
   const lineaVisible = (l) => visible(punto(l.source)) && visible(punto(l.target));
   const G = ForceGraph3D({ controlType: 'orbit' })(lienzo)
-    .backgroundColor('#0d0e12')
+    .backgroundColor(tinta.fondo)
+    .numDimensions(dims)
     .showNavInfo(false)
     .nodeId('id')
     .nodeRelSize(2.6)
@@ -75,6 +111,58 @@ export async function iniciar(raiz) {
     .warmupTicks(80)
     .cooldownTicks(220);
 
+  if (dims === 2) G.controls().enableRotate = false;
+
+  // Niebla de profundidad: lo lejano se funde con el fondo y se entiende qué
+  // está adelante. Se mide con la distancia de la cámara al centro de la
+  // vista (d) y el radio de lo que se ve (R): lo de enfrente (d − R) queda
+  // nítido, el centro apenas se atenúa (14 %) y lo del fondo (d + R) llega
+  // al 60 %, nunca desaparece. En 2D no hay profundidad que marcar.
+  const niebla = new THREE.Fog(tinta.fondo, 1e7, 2e7);
+  G.scene().fog = niebla;
+  let radio = 500;
+  let cuadros = 0;
+  const ajustarNiebla = () => {
+    const centroVista = G.controls().target;
+    if (cuadros++ % 30 === 0) {
+      let r = 0;
+      for (const n of G.graphData().nodes) {
+        if (n.x == null) continue;
+        r = Math.max(
+          r,
+          Math.hypot(n.x - centroVista.x, n.y - centroVista.y, (n.z || 0) - centroVista.z)
+        );
+      }
+      if (r > 0) radio = r;
+    }
+    const d = G.camera().position.distanceTo(centroVista);
+    const cerca = d - 0.3 * radio;
+    niebla.near = dims === 3 ? Math.max(1, cerca) : 1e7;
+    niebla.far = dims === 3 ? Math.max(2, cerca + 2.17 * radio) : 2e7;
+    requestAnimationFrame(ajustarNiebla);
+  };
+  requestAnimationFrame(ajustarNiebla);
+
+  // ------------------------------------------------------------- tema
+  // Al cambiar el tema del sitio (el interruptor o el del sistema) el mapa
+  // cambia con él, sin recargar.
+  function aplicarTema() {
+    leerColores();
+    G.backgroundColor(tinta.fondo);
+    niebla.color.set(tinta.fondo);
+    armarRotulos();
+    G.nodeColor(G.nodeColor()).linkColor(G.linkColor());
+    if (modo === 'hilo') {
+      G.nodeThreeObject(G.nodeThreeObject());
+      llenarPanel(porId.get(centro));
+    }
+  }
+  new MutationObserver(aplicarTema).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', aplicarTema);
+
   // Etiqueta 3D de un punto del hilo: su identificador, siempre de frente.
   function etiqueta(n) {
     const s = new SpriteText(rotulo(n));
@@ -82,8 +170,9 @@ export async function iniciar(raiz) {
     s.fontFace = '"Inter Variable", system-ui, sans-serif';
     s.fontWeight = '600';
     s.textHeight = esCentro ? 10 : 6.5;
-    s.color = esCentro ? '#070707' : '#ffffff';
-    s.backgroundColor = esCentro ? '#ffffff' : 'rgba(13,14,18,0.78)';
+    s.color = esCentro ? tinta.onTx : tinta.texto;
+    s.backgroundColor = esCentro ? tinta.onBg : tinta.capa;
+    s.material.fog = false;
     s.padding = esCentro ? 3 : 2;
     s.borderRadius = 3;
     s.position.y = Math.cbrt(G.nodeVal()(n)) * G.nodeRelSize() + (esCentro ? 12 : 8);
@@ -144,7 +233,7 @@ export async function iniciar(raiz) {
         const [x, y, z] = anclaDe(n);
         n.vx += (x - n.x) * k * alpha;
         n.vy += (y - n.y) * k * alpha;
-        n.vz += (z - n.z) * 0.05 * alpha;
+        if (dims === 3) n.vz += (z - n.z) * 0.05 * alpha;
       }
     };
     f.initialize = (ns) => {
@@ -181,8 +270,9 @@ export async function iniciar(raiz) {
       s.fontFace = '"Inter Variable", system-ui, sans-serif';
       s.fontWeight = '600';
       s.textHeight = 24;
-      s.color = '#ffffff';
-      s.backgroundColor = 'rgba(13,14,18,0.72)';
+      s.color = tinta.texto;
+      s.backgroundColor = tinta.capa;
+      s.material.fog = false;
       s.padding = 6;
       s.borderRadius = 4;
       s.material.depthWrite = false;
@@ -204,7 +294,7 @@ export async function iniciar(raiz) {
         const t = suma.get(k) || [0, 0, 0, 0];
         t[0] += n.x;
         t[1] += n.y;
-        t[2] += n.z;
+        t[2] += n.z || 0;
         t[3]++;
         suma.set(k, t);
       }
@@ -239,6 +329,7 @@ export async function iniciar(raiz) {
     encuadrar = true;
   }
 
+  const grosor = (l) => (l.w >= 3 ? 0.55 * Math.sqrt(l.w) : 0);
   const fuerzaCita = (l) => (l.e ? 0.9 : acomodo === 'orden' ? 0.004 : 0.04);
 
   function pintarRed() {
@@ -250,13 +341,16 @@ export async function iniciar(raiz) {
         (n) =>
           `<b style="font-family:var(--mono)">${esc(rotuloLargo(n))}</b>` +
           (titulo(n) ? ` · ${esc(titulo(n))}` : '') +
-          `<br><span style="color:#aeaeb7">La citan ${(entran.get(n.id) || []).length} · cita a ${(salen.get(n.id) || []).length} · clic para seguir sus hilos</span>`
+          `<br><span style="color:var(--m-tenue)">La citan ${(entran.get(n.id) || []).length} · cita a ${(salen.get(n.id) || []).length} · clic para seguir sus hilos</span>`
       )
       .linkVisibility((l) => !l.e && lineaVisible(l))
       .linkColor((l) =>
-        lineas.has(l) ? '#ffffff' : foco ? '#1c1e25' : color[l.source.g] || '#9a9ca8'
+        lineas.has(l) ? tinta.texto : foco ? tinta.hover : color[l.source.g] || color.g
       )
-      .linkWidth((l) => (lineas.has(l) ? 0.6 : 0))
+      // Más gruesa entre más citas haya entre los dos puntos, de 3 en
+      // adelante (95 líneas; la más gruesa lleva 13); las demás, la línea
+      // fina de siempre.
+      .linkWidth((l) => (lineas.has(l) ? Math.max(0.8, grosor(l)) : grosor(l)))
       .linkDirectionalParticles((l) => (lineas.has(l) ? 3 : 0));
     G.cooldownTicks(220);
     G.d3Force('link')
@@ -294,12 +388,12 @@ export async function iniciar(raiz) {
           `<b style="font-family:var(--mono)">${esc(rotuloLargo(n))}</b>` +
           (titulo(n) ? ` · ${esc(titulo(n))}` : '') +
           (n.id !== centro
-            ? '<br><span style="color:#aeaeb7">Clic para seguir desde aquí</span>'
+            ? '<br><span style="color:var(--m-tenue)">Clic para seguir desde aquí</span>'
             : '')
       )
       .linkVisibility(lineaVisible)
-      .linkColor(() => '#c8cad0')
-      .linkWidth(0.35)
+      .linkColor(() => tinta.texto2)
+      .linkWidth((l) => Math.max(0.35, grosor(l)))
       .linkDirectionalParticles(2);
     // Todo el hilo va en posiciones fijas: no hay nada que simular.
     G.d3Force('ancla', null);
@@ -353,8 +447,25 @@ export async function iniciar(raiz) {
     lienzo.style.cursor = n && !(modo === 'hilo' && n.id === centro) ? 'pointer' : '';
     if (modo === 'red') resaltar(n);
   });
+  // En la red, la cámara vuela hacia el punto antes de abrir su hilo; en el
+  // hilo, o con «reducir movimiento», se abre de inmediato.
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)');
+  let volando = 0;
   G.onNodeClick((n) => {
-    if (n.id !== centro) seguir(n.id);
+    if (n.id === centro) return;
+    if (modo !== 'red' || quieto.matches) {
+      seguir(n.id);
+      return;
+    }
+    const lejos = Math.hypot(n.x, n.y, n.z || 0);
+    const r = lejos > 1 ? 1 + 140 / lejos : 1;
+    G.cameraPosition(
+      lejos > 1 ? { x: n.x * r, y: n.y * r, z: (n.z || 0) * r } : { x: 0, y: 0, z: 140 },
+      n,
+      650
+    );
+    clearTimeout(volando);
+    volando = setTimeout(() => seguir(n.id), 680);
   });
 
   // ------------------------------------------------------------- interfaz
@@ -575,6 +686,30 @@ export async function iniciar(raiz) {
     });
   }
   btnTodos.addEventListener('click', () => fijarOcultos([]));
+  function elegirDim(n) {
+    if (n === dims) return;
+    dims = n;
+    try {
+      localStorage.setItem('mapa-dim', String(n));
+    } catch {}
+    for (const b of raiz.querySelectorAll('[data-dim]'))
+      b.setAttribute('aria-pressed', String(Number(b.dataset.dim) === dims));
+    G.controls().enableRotate = dims === 3;
+    if (dims === 2) {
+      // De frente, como un plano.
+      const d = G.camera().position.distanceTo(G.controls().target);
+      G.cameraPosition({ x: 0, y: 0, z: d }, { x: 0, y: 0, z: 0 }, 500);
+    }
+    if (modo === 'red') {
+      G.numDimensions(dims);
+      G.cooldownTicks(260);
+      encuadrar = true;
+    } else setTimeout(() => G.zoomToFit(500, 60, visible), 520);
+  }
+  for (const b of raiz.querySelectorAll('[data-dim]')) {
+    b.setAttribute('aria-pressed', String(Number(b.dataset.dim) === dims));
+    b.addEventListener('click', () => elegirDim(Number(b.dataset.dim)));
+  }
   for (const b of raiz.querySelectorAll('[data-acomodo]')) {
     b.setAttribute('aria-pressed', String(b.dataset.acomodo === acomodo));
     b.addEventListener('click', () => elegirAcomodo(b.dataset.acomodo));
