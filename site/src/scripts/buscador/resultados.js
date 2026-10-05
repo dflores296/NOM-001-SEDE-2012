@@ -28,8 +28,7 @@ export function href(r) {
   // El ancla de una figura ya viene calculada: una imagen puede traer
   // dos números y cada uno aterriza en el suyo.
   if (r.kind === 'fig') {
-    return r.art ? `${base}/art/${r.art}#${r.ancla}`
-                 : `${base}/apendices/A/#${r.ancla}`;
+    return r.art ? `${base}/art/${r.art}#${r.ancla}` : `${base}/apendices/A/#${r.ancla}`;
   }
   if (r.kind === 'cierre') {
     if (r.cid.startsWith('apendice-')) return `${base}/apendices/${r.cid.slice(9)}/`;
@@ -40,9 +39,10 @@ export function href(r) {
 }
 
 export function escapeHtml(s) {
-  return s.replace(/[&<>"]/g, (c) => (
-    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
-  ));
+  return s.replace(
+    /[&<>"]/g,
+    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]
+  );
 }
 
 // Construye, por cada palabra de la consulta, un patrón que la
@@ -54,11 +54,13 @@ export function escapeHtml(s) {
 // el recorte del fragmento sale ya de las coordenadas correctas.
 const ACENTOS = { a: 'aàáâã', e: 'eèéêë', i: 'iìíîï', o: 'oòóôõ', u: 'uùúûü', n: 'nñ' };
 function patronConAcentos(palabra) {
-  return [...palabra].map((c) => {
-    const alt = ACENTOS[c.toLowerCase()];
-    if (alt) return `[${alt}${alt.toUpperCase()}]`;
-    return c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }).join('');
+  return [...palabra]
+    .map((c) => {
+      const alt = ACENTOS[c.toLowerCase()];
+      if (alt) return `[${alt}${alt.toUpperCase()}]`;
+      return c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    })
+    .join('');
 }
 
 // Fragmento de contexto alrededor de la primera coincidencia, con la
@@ -90,7 +92,8 @@ function fragmento(texto, q) {
   const altPalabras = palabras.map(patron).join('|');
   const m = mFrase || new RegExp(altPalabras, 'iu').exec(texto);
   if (!m) return '';
-  const ANTES = 40, DESPUES = 90;
+  const ANTES = 40,
+    DESPUES = 90;
   const ini = Math.max(0, m.index - ANTES);
   const fin = Math.min(texto.length, m.index + m[0].length + DESPUES);
   const recorte = escapeHtml(texto.slice(ini, fin));
@@ -99,18 +102,28 @@ function fragmento(texto, q) {
   return (ini > 0 ? '…' : '') + resaltado + (fin < texto.length ? '…' : '');
 }
 
-export const ETIQUETA = { sec: 'Secciones', tabla: 'Tablas', def: 'Definiciones',
-                   fig: 'Figuras', cierre: 'Apéndices y cierre' };
+export const ETIQUETA = {
+  sec: 'Secciones',
+  tabla: 'Tablas',
+  def: 'Definiciones',
+  fig: 'Figuras',
+  cierre: 'Apéndices y cierre',
+};
 
 export function itemHtml(r, q) {
   const esTabla = r.kind === 'tabla';
   // Un término del glosario tiene id === título ("Acometida"): mostrar
   // los dos era repetir la misma palabra dos veces seguidas.
   const rid = esTabla
-    ? (r.sinNumero ? `Tabla del ${r.tid}` : `Tabla ${r.tid}`)
-    : r.kind === 'fig' || r.kind === 'cierre' ? r.fid
-    : (r.kind === 'def' ? '' : r.id);
-  const rsn = r.art ? `Art. ${r.art} · ${r.artTitle || ''}` : (r.artTitle || '');
+    ? r.sinNumero
+      ? `Tabla del ${r.tid}`
+      : `Tabla ${r.tid}`
+    : r.kind === 'fig' || r.kind === 'cierre'
+      ? r.fid
+      : r.kind === 'def'
+        ? ''
+        : r.id;
+  const rsn = r.art ? `Art. ${r.art} · ${r.artTitle || ''}` : r.artTitle || '';
   const frag = fragmento(r.text, q);
   return `<a role="option" href="${href(r)}">
        ${rid ? `<span class="rid">${rid}</span>` : ''}

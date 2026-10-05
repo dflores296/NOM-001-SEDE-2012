@@ -13,8 +13,9 @@ if (toc) {
   let pendiente = false;
   const marcar = () => {
     pendiente = false;
-    const tope = (parseFloat(getComputedStyle(document.documentElement)
-      .getPropertyValue('--ancla')) || 128) + 8;
+    const tope =
+      (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ancla')) || 128) +
+      8;
     let hit = null;
     for (const x of enlaces) {
       if (x.el.getBoundingClientRect().top <= tope) hit = x;
@@ -32,8 +33,15 @@ if (toc) {
       toc.scrollTop += r.top - c.top - c.height / 3;
     }
   };
-  addEventListener('scroll', () => {
-    if (!pendiente) { pendiente = true; requestAnimationFrame(marcar); }
-  }, { passive: true });
+  addEventListener(
+    'scroll',
+    () => {
+      if (!pendiente) {
+        pendiente = true;
+        requestAnimationFrame(marcar);
+      }
+    },
+    { passive: true }
+  );
   marcar();
 }

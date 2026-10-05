@@ -29,12 +29,14 @@ function conectar(input, box) {
     box.innerHTML = Object.keys(porTipo)
       .filter((k) => porTipo[k].length)
       .sort((a, b) => porTipo[b][0].score - porTipo[a][0].score)
-      .map((k) => `
+      .map(
+        (k) => `
         <div class="rgroup">
           <div class="rghead">${ETIQUETA[k]}</div>
           ${porTipo[k].map((r) => itemHtml(r, q)).join('')}
         </div>
-      `)
+      `
+      )
       .join('');
     box.classList.add('open');
     sel = -1;
@@ -51,7 +53,8 @@ function conectar(input, box) {
       // La primera vez el índice tarda: sin este aviso la lista se quedaba
       // cerrada varios segundos y parecía que el buscador no servía.
       if (!listo()) {
-        box.innerHTML = '<div class="cargando" role="status">Preparando el buscador… la primera búsqueda tarda unos segundos.</div>';
+        box.innerHTML =
+          '<div class="cargando" role="status">Preparando el buscador… la primera búsqueda tarda unos segundos.</div>';
         box.classList.add('open');
       }
       const list = await buscar(q);
@@ -66,7 +69,10 @@ function conectar(input, box) {
         const antes = sel;
         render(await buscar(q), q);
         const items = box.querySelectorAll('a');
-        if (antes >= 0 && items[antes]) { sel = antes; items[sel].classList.add('sel'); }
+        if (antes >= 0 && items[antes]) {
+          sel = antes;
+          items[sel].classList.add('sel');
+        }
       }
     }, 110);
   });
@@ -77,7 +83,10 @@ function conectar(input, box) {
   // que se espera al pulsar Enter o el botón de la portada.
   async function ir() {
     const items = [...box.querySelectorAll('a')];
-    if (items.length) { location.href = (items[sel] || items[0]).href; return; }
+    if (items.length) {
+      location.href = (items[sel] || items[0]).href;
+      return;
+    }
     const q = input.value.trim();
     if (q.length < 2) return;
     const list = await buscar(q);
@@ -96,9 +105,7 @@ function conectar(input, box) {
     } else if (items.length && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
       e.preventDefault();
       items[sel]?.classList.remove('sel');
-      sel = e.key === 'ArrowDown'
-        ? Math.min(sel + 1, items.length - 1)
-        : Math.max(sel - 1, 0);
+      sel = e.key === 'ArrowDown' ? Math.min(sel + 1, items.length - 1) : Math.max(sel - 1, 0);
       items[sel].classList.add('sel');
       items[sel].scrollIntoView({ block: 'nearest' });
     }
@@ -110,13 +117,16 @@ function conectar(input, box) {
 for (const input of document.querySelectorAll('input[data-buscar]')) {
   const wrap = input.closest('.search-wrap');
   const api = conectar(input, wrap.querySelector('.results'));
-  wrap.closest('form')?.addEventListener('submit', (e) => { e.preventDefault(); api.ir(); });
+  wrap.closest('form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    api.ir();
+  });
 }
 
 document.addEventListener('click', (e) => {
   const dentro = e.target.closest('.search-wrap');
   for (const b of document.querySelectorAll('.results.open')) {
-    if (!dentro || !dentro.contains(b)) b.classList.remove('open');
+    if (!dentro?.contains(b)) b.classList.remove('open');
   }
 });
 

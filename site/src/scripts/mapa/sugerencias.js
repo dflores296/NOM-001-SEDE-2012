@@ -13,7 +13,9 @@ export function crearSugeridor(nodes) {
 
   function sugerir(q) {
     const qc = codigo(q);
-    const palabras = sinAcentos(q).split(/\s+/).filter((w) => w.length > 1);
+    const palabras = sinAcentos(q)
+      .split(/\s+/)
+      .filter((w) => w.length > 1);
     if (!qc) return [];
     const puntaje = (x) => {
       if (x.cod === qc) return 1e6 + x.n.n;
@@ -21,8 +23,12 @@ export function crearSugeridor(nodes) {
       if (palabras.length && palabras.every((w) => x.txt.includes(w))) return 1e3 + x.n.n;
       return -1;
     };
-    return indice.map((x) => [puntaje(x), x.n]).filter(([p]) => p >= 0)
-      .sort((a, b) => b[0] - a[0]).slice(0, 9).map(([, n]) => n);
+    return indice
+      .map((x) => [puntaje(x), x.n])
+      .filter(([p]) => p >= 0)
+      .sort((a, b) => b[0] - a[0])
+      .slice(0, 9)
+      .map(([, n]) => n);
   }
   return sugerir;
 }

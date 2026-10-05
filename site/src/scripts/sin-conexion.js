@@ -3,7 +3,5 @@
 import { base } from './base.js';
 
 if ('serviceWorker' in navigator) {
-  addEventListener('load', () =>
-    navigator.serviceWorker.register(`${base}/sw.js`).catch(() => {})
-  );
+  addEventListener('load', () => navigator.serviceWorker.register(`${base}/sw.js`).catch(() => {}));
 }

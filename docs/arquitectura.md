@@ -48,7 +48,8 @@ y arrastraba al texto lo que la tabla ya se había llevado: las notas al pie de 
 los identificadores que una ronda de cambios retiró al destino donde vive hoy su
 contenido, y su salida se versiona ya construida.
 
-Todo eso, más el linter de los scripts (`ruff`, ver `ruff.toml`), las
+Todo eso, más el linter de los scripts (`ruff`, ver `ruff.toml`), el linter y
+formateador del JavaScript del sitio (Biome, ver `site/biome.json`), las
 pruebas unitarias del extractor (`tools/pruebas/`: las reglas del lector de
 artículos, las citas del grafo, la huella de las tablas y casos conocidos de
 la norma sobre `data/`), la compilación, la revisión de enlaces (`check_enlaces.py`:

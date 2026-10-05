@@ -33,7 +33,8 @@ function nodoDe(id) {
   }
   if (id.startsWith('tabla:')) {
     const t = tablaPorId.get(id.slice(6));
-    if (t?.article == null) return t && !t.apendice ? 'capitulo-10' : t ? `apendice-${t.apendice}` : null;
+    if (t?.article == null)
+      return t && !t.apendice ? 'capitulo-10' : t ? `apendice-${t.apendice}` : null;
     const m = SEC.exec(id.slice(6));
     return m && seccionPorId.has(m[1]) ? m[1] : `art:${t.article}`;
   }
@@ -65,26 +66,56 @@ export function GET() {
   const usados = new Set();
   for (const k of refs.keys()) {
     const [de, a] = k.split('>');
-    usados.add(de); usados.add(a);
+    usados.add(de);
+    usados.add(a);
     entra.set(a, (entra.get(a) || 0) + 1);
   }
 
   const nodes = [];
   // Todos los artículos: son los centros de los racimos.
   for (const a of articles) {
-    nodes.push({ id: `art:${a.num}`, k: 'a', t: a.title, a: a.num, g: grupoDe(a.chapter), n: entra.get(`art:${a.num}`) || 0 });
+    nodes.push({
+      id: `art:${a.num}`,
+      k: 'a',
+      t: a.title,
+      a: a.num,
+      g: grupoDe(a.chapter),
+      n: entra.get(`art:${a.num}`) || 0,
+    });
   }
   // Las secciones que citan o son citadas; las que no, no aportan al mapa.
   for (const [id, { s, a }] of seccionPorId) {
     if (!usados.has(id)) continue;
-    nodes.push({ id, k: 's', t: s.title || '', a: a.num, g: grupoDe(a.chapter), n: entra.get(id) || 0 });
+    nodes.push({
+      id,
+      k: 's',
+      t: s.title || '',
+      a: a.num,
+      g: grupoDe(a.chapter),
+      n: entra.get(id) || 0,
+    });
   }
   // Los hitos del cierre que aparecen en alguna referencia.
   for (const h of apendices) {
-    if (usados.has(h.id)) nodes.push({ id: h.id, k: 'h', t: `Apéndice ${h.letra}${h.titulo ? ' · ' + h.titulo : ''}`, a: null, g: 'g', n: entra.get(h.id) || 0 });
+    if (usados.has(h.id))
+      nodes.push({
+        id: h.id,
+        k: 'h',
+        t: `Apéndice ${h.letra}${h.titulo ? ` · ${h.titulo}` : ''}`,
+        a: null,
+        g: 'g',
+        n: entra.get(h.id) || 0,
+      });
   }
   if (usados.has('capitulo-10')) {
-    nodes.push({ id: 'capitulo-10', k: 'h', t: 'Capítulo 10 · Tablas generales', a: null, g: 'g', n: entra.get('capitulo-10') || 0 });
+    nodes.push({
+      id: 'capitulo-10',
+      k: 'h',
+      t: 'Capítulo 10 · Tablas generales',
+      a: null,
+      g: 'g',
+      n: entra.get('capitulo-10') || 0,
+    });
   }
 
   const hay = new Set(nodes.map((n) => n.id));
