@@ -108,6 +108,7 @@
 }
 .seg button:hover { color: #ffffff; }
 .seg button[aria-pressed="true"] { color: #070707; background: #ffffff; }
+.mapa-acomodo[hidden] { display: none; }
 
 /* ------------------------------------------------------------- abajo */
 .mapa-guia, .mapa-inicio {

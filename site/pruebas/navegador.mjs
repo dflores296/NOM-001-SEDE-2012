@@ -519,11 +519,31 @@ prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagi
   const { page, errores } = await nuevaPagina(ESCRITORIO);
   await page.goto('/mapa/', { waitUntil: 'networkidle' });
   await page.waitForSelector('.mapa canvas', { timeout: 20000 });
+
+  // En la red se elige el acomodo; empieza «Por tema» y se recuerda.
+  afirmar(
+    (await page.getAttribute('[data-acomodo="tema"]', 'aria-pressed')) === 'true',
+    'no empezó por tema'
+  );
+  await page.click('[data-acomodo="capitulo"]');
+  afirmar(
+    (await page.getAttribute('[data-acomodo="capitulo"]', 'aria-pressed')) === 'true',
+    'no cambió a capítulo'
+  );
+  afirmar(
+    (await page.evaluate(() => localStorage.getItem('mapa-acomodo'))) === 'capitulo',
+    'no recordó el acomodo'
+  );
+
   await page.fill('.mapa-busca input', '250-122');
   await page.waitForSelector('#mapa-sug li');
   await page.press('.mapa-busca input', 'Enter');
   await page.waitForFunction(() => location.hash === '#250-122');
   afirmar(await page.$eval('.mapa-recorrido', (e) => !e.hidden), 'el recorrido no apareció');
+  afirmar(
+    await page.$eval('.mapa-acomodo', (e) => e.hidden),
+    'el acomodo sigue a la vista en el hilo'
+  );
 
   // El panel enseña la cita misma: la frase de la norma con la referencia
   // marcada («…de acuerdo con la Tabla 250-122…»).
