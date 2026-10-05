@@ -23,6 +23,17 @@ const PESTANAS = [
 // vista, para que no haya dos a la vez.
 const portada = ruta === '/';
 const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
+
+// Vista previa al compartir un enlace (WhatsApp, Telegram, Facebook,
+// LinkedIn, X): cada página con su título y su descripción, y todas con la
+// misma imagen (public/ui/og.jpg, ver diseno/og.html). Las apps exigen
+// direcciones completas, con dominio.
+// La página 404 no tiene dirección propia: se sirve en cualquiera que no
+// exista, así que no declara canónica ni og:url. (No confundir con /art/404,
+// que es el Artículo 404 de la norma.)
+const es404 = ruta === '/404';
+const urlCompleta = new URL(Astro.url.pathname, Astro.site).href;
+const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
 ---
 <!doctype html>
 <html lang="es">
@@ -31,6 +42,19 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={desc} />
+    {!es404 && <link rel="canonical" href={urlCompleta} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="NOM-001-SEDE-2012" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    {!es404 && <meta property="og:url" content={urlCompleta} />}
+    <meta property="og:image" content={imagen} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="NOM-001-SEDE-2012, Instalaciones Eléctricas (utilización): guía interactiva" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href={`${base}/favicon.svg`} />
     <link rel="manifest" href={`${base}/manifest.webmanifest`} />
     <meta name="theme-color" content="#ffffff" />

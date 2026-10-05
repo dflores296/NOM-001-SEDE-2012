@@ -466,6 +466,30 @@ prueba(
   }
 );
 
+prueba(
+  'Cada página trae su vista previa para compartir, con dirección completa',
+  async ({ nuevaPagina }) => {
+    const { page } = await nuevaPagina(ESCRITORIO);
+    await page.goto('/art/250/', { waitUntil: 'domcontentloaded' });
+    const og = (k) => page.getAttribute(`meta[property="og:${k}"]`, 'content');
+    afirmar((await og('title')).startsWith('Artículo 250'), `og:title: ${await og('title')}`);
+    afirmar((await og('description')).includes('Puesta a tierra'), 'og:description');
+    afirmar(
+      (await og('url')) === 'https://dflores296.github.io/NOM-001-SEDE-2012/art/250/',
+      `og:url: ${await og('url')}`
+    );
+    const img = await og('image');
+    afirmar(img === 'https://dflores296.github.io/NOM-001-SEDE-2012/ui/og.jpg', `og:image: ${img}`);
+    afirmar(fs.existsSync(path.join(DIST, 'ui', 'og.jpg')), 'no se publicó ui/og.jpg');
+    // La 404 se sirve en cualquier dirección: no declara una propia.
+    await page.goto('/no-existe/', { waitUntil: 'domcontentloaded' });
+    afirmar(
+      !(await page.$('link[rel="canonical"], meta[property="og:url"]')),
+      'la 404 declara dirección propia'
+    );
+  }
+);
+
 prueba('Un identificador retirado avisa dónde quedó su contenido', async ({ nuevaPagina }) => {
   const mapa = JSON.parse(fs.readFileSync(path.join(DIST, 'ids-retirados.json'), 'utf8'));
   const [viejo, nuevo] =

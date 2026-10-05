@@ -1,7 +1,13 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "includes": ["src/**/*.js", "pruebas/**/*.mjs", "public/sw.js", "astro.config.mjs"]
+    "includes": [
+      "src/**/*.js",
+      "pruebas/**/*.mjs",
+      "public/sw.js",
+      "astro.config.mjs",
+      "diseno/**/*.mjs"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
