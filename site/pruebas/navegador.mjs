@@ -228,6 +228,30 @@ prueba('En escritorio no aparecen los botones del índice móvil', async ({ nuev
   afirmar(!(await page.isVisible('.im-abrir')), 'el botón del índice móvil se ve en escritorio');
 });
 
+prueba('En el teléfono, una tabla ancha avisa que se desliza y deja fija su primera columna', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(TELEFONO);
+  await page.goto('/art/310/#tabla-310-15-b-16', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  const t = '#tabla-310-15-b-16';
+  afirmar(/Desliza para ver las \d+ columnas/.test(await page.textContent(`${t} .tabla-desliza`)), 'sin aviso de deslizar');
+  // mm² y AWG (el encabezado «Tamaño o designación» las agrupa) se quedan
+  // en su lugar al deslizar; el resto de la fila se va.
+  const antes = await page.$$eval(`${t} tbody tr:nth-child(3) td`, (tds) => tds.slice(0, 3).map((c) => c.getBoundingClientRect().left));
+  await page.$eval(`${t} .tabla-scroll`, (s) => { s.scrollLeft = 200; });
+  await page.waitForTimeout(200);
+  const despues = await page.$$eval(`${t} tbody tr:nth-child(3) td`, (tds) => tds.slice(0, 3).map((c) => c.getBoundingClientRect().left));
+  afirmar(Math.abs(antes[0] - despues[0]) < 1 && Math.abs(antes[1] - despues[1]) < 1, `las columnas fijas se movieron: ${antes} → ${despues}`);
+  afirmar(despues[2] < antes[2] - 100, 'la tercera columna no se deslizó');
+});
+
+prueba('Una tabla que cabe no lleva aviso ni columnas fijas', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/#tabla-250-122', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  afirmar(!(await page.isVisible('#tabla-250-122 .tabla-desliza')), 'aviso en una tabla que cabe');
+  afirmar(!(await page.$('#tabla-250-122 .fija')), 'columna fija en una tabla que cabe');
+});
+
 prueba('Un identificador retirado avisa dónde quedó su contenido', async ({ nuevaPagina }) => {
   const mapa = JSON.parse(fs.readFileSync(path.join(DIST, 'ids-retirados.json'), 'utf8'));
   const [viejo, nuevo] = Object.entries(mapa).find(([v]) => v.startsWith('250-'))

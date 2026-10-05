@@ -238,6 +238,46 @@ p.tabla-intro {
 }
 .tabla-scroll tbody tr:hover { background: var(--accent-soft); }
 
+/* Tablas que no caben (src/scripts/tablas-anchas.js): aviso arriba, sombra
+   en el borde por donde sigue y primera columna fija al deslizar. */
+.tabla-caja { position: relative; }
+p.tabla-desliza {
+  margin: 0 auto 0.4rem; font-size: 0.78rem; color: var(--text-faint); text-align: right;
+}
+.tabla-caja::before, .tabla-caja::after {
+  content: ''; position: absolute; top: 1px; bottom: 1px; width: 28px; z-index: 3;
+  pointer-events: none; opacity: 0; transition: opacity 150ms ease;
+}
+.tabla-caja::after {
+  right: 1px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  background: linear-gradient(to left, color-mix(in srgb, var(--text) 16%, transparent), transparent);
+}
+.tabla-caja::before {
+  left: 1px; border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  background: linear-gradient(to right, color-mix(in srgb, var(--text) 16%, transparent), transparent);
+}
+.tabla-caja.mas-der::after { opacity: 1; }
+/* Con la primera columna fija, la sombra izquierda la pone ella. */
+.tabla-caja.mas-izq:not(:has(.fija))::before { opacity: 1; }
+/* Con las líneas colapsadas (border-collapse), Chrome no mueve la línea junto
+   con la celda fija y queda una rendija por donde se asoma lo que se desliza
+   debajo. Las tablas con columnas fijas pasan a líneas propias de cada celda
+   (derecha y abajo; arriba la pone la tabla y a la izquierda la primera
+   columna, que así se la lleva al quedarse fija): se ven igual. */
+.tabla-caja.con-fijas table { border-collapse: separate; border-spacing: 0; border-top: 1px solid var(--rejilla); }
+.tabla-caja.con-fijas th, .tabla-caja.con-fijas td { border-width: 0 1px 1px 0; }
+.tabla-caja.con-fijas .fija-ini { border-left-width: 1px; }
+.tabla-scroll .fija { position: sticky; z-index: 2; background: var(--panel); }
+.tabla-scroll thead .fija { background: var(--bg-soft); }
+.tabla-scroll tbody tr:hover .fija { background: var(--accent-soft); }
+.tabla-caja.mas-izq .fija-fin.fija { box-shadow: 6px 0 8px -6px color-mix(in srgb, var(--text) 35%, transparent); }
+/* En el teléfono, un encabezado largo con un ancho mínimo: si no, «TIPOS
+   TBS, SA, SIS, FEP…» queda de una palabra por renglón y el encabezado mide
+   más que la pantalla. */
+@media (max-width: 760px) {
+  .tabla-scroll thead th.th-larga { min-width: 8.5rem; }
+}
+
 .tabla-aviso {
   background: var(--warn-bg); border: 1px solid var(--warn-br);
   border-radius: var(--radius-xl); padding: 0.5rem 0.7rem;
