@@ -385,6 +385,83 @@ def render_definiciones(defs):
 
 # ----------------------------------------------------------------- main
 
+def guardar(ruta, contenido):
+    """Escribe un archivo del export; un dict o una lista van como JSON."""
+    with open(ruta, 'w', encoding='utf-8') as fh:
+        if isinstance(contenido, str):
+            fh.write(contenido)
+        else:
+            json.dump(contenido, fh, ensure_ascii=False, indent=1)
+    return os.path.getsize(ruta)
+
+
+def escribir_bloques(out, por_num, tablas_por_art, quiero, manifiesto, incluidos):
+    """Un markdown por bloque temático de BLOQUES."""
+    for nombre, desc, nums in BLOQUES:
+        completo = list(nums)
+        nums = [n for n in nums if quiero is None or n in quiero]
+        if not nums:
+            continue
+        if nums != completo:
+            # El recorte dejó fuera artículos: el nombre del archivo tiene que
+            # decir lo que trae, o `01-art-110-220-230-240.md` mentiría con
+            # solo el 110 dentro.
+            nombre = '%s-art-%s.md' % (nombre.split('-', 1)[0],
+                                       '-'.join(str(n) for n in nums))
+        partes = [CABECERA.rstrip(), '', '# %s' % desc, '']
+        hechos = []
+        for n in nums:
+            art = por_num.get(n)
+            if art is None:
+                print('aviso: el artículo %s no está en el corpus' % n, file=sys.stderr)
+                continue
+            partes.append(render_articulo(art, tablas_por_art))
+            partes.append('')
+            hechos.append(n)
+            incluidos.add(n)
+        tam = guardar(os.path.join(out, nombre), '\n'.join(partes))
+        manifiesto.append((nombre, desc,
+                           'Artículos %s' % ', '.join(str(n) for n in hechos), tam))
+
+
+def escribir_tablas(out, nombre, desc, sel, manifiesto, ids_tabla):
+    planas = [tabla_plana(t) for t in sel]
+    ids_tabla.update(p['tabla'] for p in planas)
+    tam = guardar(os.path.join(out, nombre), planas)
+    manifiesto.append((nombre, desc,
+                       '%d tablas: %s' % (len(planas), ', '.join(p['tabla'] for p in planas)),
+                       tam))
+
+
+def escribir_grupos_de_tablas(out, tablas, quiero, manifiesto, ids_tabla):
+    """Las tablas planas, un JSON por cada grupo de GRUPOS_TABLAS."""
+    for nombre, desc, filtro in GRUPOS_TABLAS:
+        sel = [t for t in tablas if filtro(t['id'], t.get('article'))]
+        if quiero is not None:
+            sel = [t for t in sel
+                   if t.get('article') is None or t['article'] in quiero]
+        if sel:
+            escribir_tablas(out, nombre, desc, sel, manifiesto, ids_tabla)
+
+
+def escribir_resto_de_tablas(out, tablas, incluidos, manifiesto, ids_tabla):
+    """El resto de las tablas de los artículos incluidos.
+
+    Los grupos de GRUPOS_TABLAS están armados por PARA QUÉ se consulta cada
+    tabla, y eso deja fuera a las que no encajan en ninguno de los cuatro
+    temas: las de los artículos 110, 240, 300, 312, 314, 352, 400 y 402. El
+    markdown sí las cita —«se debe calcular como se indica en la Tabla
+    314-16(a)»— así que el export prometía 19 tablas que no estaban en
+    ningún archivo y mandaba a buscarlas a un sitio donde no había nada."""
+    resto = sorted((t for t in tablas
+                    if t.get('article') in incluidos
+                    and t['id'] not in ids_tabla),
+                   key=lambda t: (t['article'], t['id']))
+    if resto:
+        escribir_tablas(out, RESTO_TABLAS, 'Las demás tablas de los artículos incluidos',
+                        resto, manifiesto, ids_tabla)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -415,98 +492,25 @@ def main():
     quiero = SOLO_MT if args.solo_mt else None
     manifiesto = []
     incluidos = set()
-
-    # --- markdown por bloque temático
-    for nombre, desc, nums in BLOQUES:
-        completo = list(nums)
-        nums = [n for n in nums if quiero is None or n in quiero]
-        if not nums:
-            continue
-        if nums != completo:
-            # El recorte dejó fuera artículos: el nombre del archivo tiene que
-            # decir lo que trae, o `01-art-110-220-230-240.md` mentiría con
-            # solo el 110 dentro.
-            nombre = '%s-art-%s.md' % (nombre.split('-', 1)[0],
-                                       '-'.join(str(n) for n in nums))
-        partes = [CABECERA.rstrip(), '', '# %s' % desc, '']
-        hechos = []
-        for n in nums:
-            art = por_num.get(n)
-            if art is None:
-                print('aviso: el artículo %s no está en el corpus' % n, file=sys.stderr)
-                continue
-            partes.append(render_articulo(art, tablas_por_art))
-            partes.append('')
-            hechos.append(n)
-            incluidos.add(n)
-        ruta = os.path.join(args.out, nombre)
-        with open(ruta, 'w', encoding='utf-8') as fh:
-            fh.write('\n'.join(partes))
-        manifiesto.append((nombre, desc,
-                           'Artículos %s' % ', '.join(str(n) for n in hechos),
-                           os.path.getsize(ruta)))
-
-    # --- tablas planas por grupo
     ids_tabla = set()
-    for nombre, desc, filtro in GRUPOS_TABLAS:
-        sel = [t for t in tablas if filtro(t['id'], t.get('article'))]
-        if quiero is not None:
-            sel = [t for t in sel
-                   if t.get('article') is None or t['article'] in quiero]
-        if not sel:
-            continue
-        planas = [tabla_plana(t) for t in sel]
-        ids_tabla.update(p['tabla'] for p in planas)
-        ruta = os.path.join(args.out, nombre)
-        with open(ruta, 'w', encoding='utf-8') as fh:
-            json.dump(planas, fh, ensure_ascii=False, indent=1)
-        manifiesto.append((nombre, desc,
-                           '%d tablas: %s' % (len(planas),
-                                              ', '.join(p['tabla'] for p in planas)),
-                           os.path.getsize(ruta)))
+    escribir_bloques(args.out, por_num, tablas_por_art, quiero, manifiesto, incluidos)
+    escribir_grupos_de_tablas(args.out, tablas, quiero, manifiesto, ids_tabla)
+    escribir_resto_de_tablas(args.out, tablas, incluidos, manifiesto, ids_tabla)
 
-    # --- el resto de las tablas de los artículos incluidos
-    #
-    # Los cuatro grupos de arriba están armados por PARA QUÉ se consulta cada
-    # tabla, y eso deja fuera a las que no encajan en ninguno de los cuatro
-    # temas: las de los artículos 110, 240, 300, 312, 314, 352, 400 y 402. El
-    # markdown sí las cita —«se debe calcular como se indica en la Tabla
-    # 314-16(a)»— así que el export prometía 19 tablas que no estaban en
-    # ningún archivo y mandaba a buscarlas a un sitio donde no había nada.
-    resto = sorted((t for t in tablas
-                    if t.get('article') in incluidos
-                    and t['id'] not in ids_tabla),
-                   key=lambda t: (t['article'], t['id']))
-    if resto:
-        planas = [tabla_plana(t) for t in resto]
-        ids_tabla.update(p['tabla'] for p in planas)
-        ruta = os.path.join(args.out, RESTO_TABLAS)
-        with open(ruta, 'w', encoding='utf-8') as fh:
-            json.dump(planas, fh, ensure_ascii=False, indent=1)
-        manifiesto.append((RESTO_TABLAS,
-                           'Las demás tablas de los artículos incluidos',
-                           '%d tablas: %s' % (len(planas),
-                                              ', '.join(p['tabla'] for p in planas)),
-                           os.path.getsize(ruta)))
-
-    # --- referencias cruzadas
     nombre = '11-referencias-cruzadas.md'
-    ruta = os.path.join(args.out, nombre)
-    with open(ruta, 'w', encoding='utf-8') as fh:
-        fh.write(render_referencias(grafo, incluidos, ids_tabla))
+    tam = guardar(os.path.join(args.out, nombre),
+                  render_referencias(grafo, incluidos, ids_tabla))
     manifiesto.append((nombre, 'Qué artículo remite a cuál, y quién usa cada tabla',
-                       'Derivado de grafo.json', os.path.getsize(ruta)))
+                       'Derivado de grafo.json', tam))
 
-    # --- definiciones
     if defs:
         nombre = '12-definiciones.md'
-        ruta = os.path.join(args.out, nombre)
-        with open(ruta, 'w', encoding='utf-8') as fh:
-            fh.write(render_definiciones(defs))
+        tam = guardar(os.path.join(args.out, nombre), render_definiciones(defs))
         manifiesto.append((nombre, 'Definiciones del Artículo 100',
-                           '%d términos' % len(defs), os.path.getsize(ruta)))
+                           '%d términos' % len(defs), tam))
 
-    escribir_manifiesto(args, manifiesto, incluidos, ids_tabla)
+    guardar(os.path.join(args.out, '00-manifiesto.md'),
+            manifiesto_md(args.solo_mt, manifiesto, incluidos, ids_tabla))
 
     total = sum(m[3] for m in manifiesto)
     print('%s: %d archivos, %.1f KB en total'
@@ -515,86 +519,94 @@ def main():
         print('  %-42s %7.1f KB' % (nombre, tam / 1024.0))
 
 
-def escribir_manifiesto(args, manifiesto, incluidos, ids_tabla):
-    """El archivo que más rinde: sin él hay que abrir los demás a ciegas."""
-    sal = ['# Manifiesto del export — NOM-001-SEDE-2012', '']
-    sal.append('Destilado de la NOM-001-SEDE-2012 (Instalaciones Eléctricas '
-               '—Utilización), reconstruido desde el PDF publicado en el DOF.')
-    sal.append('')
-    sal.append('**Qué es y qué no.** Todo el texto de estos archivos es '
-               'normativo: se transcribe, no se interpreta. No hay glosas ni '
-               'notas de lectura. Si en algún momento se agregan, van marcadas '
-               'como `> NOTA PROPIA:` y solo así.')
-    sal.append('')
-    sal.append('## Cómo está numerado')
-    sal.append('')
-    sal.append('Los identificadores se conservan **literales, tal como los cita '
-               'la norma**: `923-4(b)(2)`, `310-15(b)(16)`, `250-122`. Se puede '
-               'preguntar por uno directamente y aparece con ese string exacto '
-               'en el archivo que le toca.')
-    sal.append('')
-    sal.append('- Artículo → `923`')
-    sal.append('- Sección → `923-4`')
-    sal.append('- Incisos → `923-4(b)`, `923-4(b)(2)`, anidados por niveles')
-    sal.append('- Tablas → mismo identificador, en los `.json`, campo `tabla`')
-    sal.append('')
-    sal.append('## Qué hay en cada archivo')
-    sal.append('')
-    sal.append('| Archivo | Contenido | Detalle | Tamaño |')
-    sal.append('| --- | --- | --- | --- |')
+# ------------------------------------------------------------- el manifiesto
+#
+# El archivo que más rinde: sin él hay que abrir los demás a ciegas. Casi todo
+# es texto fijo; lo que cambia con el recorte es la tabla de archivos, qué
+# erratas del DOF entraron y el alcance.
+
+MANIFIESTO_INICIO = """\
+# Manifiesto del export — NOM-001-SEDE-2012
+
+Destilado de la NOM-001-SEDE-2012 (Instalaciones Eléctricas —Utilización), \
+reconstruido desde el PDF publicado en el DOF.
+
+**Qué es y qué no.** Todo el texto de estos archivos es normativo: se \
+transcribe, no se interpreta. No hay glosas ni notas de lectura. Si en algún \
+momento se agregan, van marcadas como `> NOTA PROPIA:` y solo así.
+
+## Cómo está numerado
+
+Los identificadores se conservan **literales, tal como los cita la norma**: \
+`923-4(b)(2)`, `310-15(b)(16)`, `250-122`. Se puede preguntar por uno \
+directamente y aparece con ese string exacto en el archivo que le toca.
+
+- Artículo → `923`
+- Sección → `923-4`
+- Incisos → `923-4(b)`, `923-4(b)(2)`, anidados por niveles
+- Tablas → mismo identificador, en los `.json`, campo `tabla`
+
+## Qué hay en cada archivo
+
+| Archivo | Contenido | Detalle | Tamaño |
+| --- | --- | --- | --- |"""
+
+MANIFIESTO_FORMATO = """\
+## Formato de las tablas
+
+Una fila del PDF = un registro plano. Nada de anidar por calibre → material → \
+temperatura: los encabezados de varios niveles se aplanan componiendo el \
+nombre de columna con ` | `, de modo que la ampacidad de cobre a 75 °C de la \
+310-15(b)(16) está en la columna `75 °C | COBRE`. Cada tabla trae \
+`condiciones` (el texto que la precede en el PDF: temperatura ambiente, número \
+de conductores) y `notas`, que **modifican los valores** y no son decorativas.
+
+```json
+{"tabla": "310-15(b)(16)",
+ "titulo": "Ampacidades permisibles en conductores aislados...",
+ "condiciones": "...", "notas": ["..."],
+ "columnas": ["Tamaño o designación | AWG o kcmil", "75 °C | COBRE"],
+ "filas": [{"Tamaño o designación | AWG o kcmil": "1/0",
+            "75 °C | COBRE": "150"}]}
+```
+
+Para que el nombre de columna no midiera 180 caracteres repetidos en cada \
+fila, se podan dos niveles del encabezado. Ninguno se pierde:
+
+- `encabezado_comun` — el nivel que era idéntico en todas las columnas (es \
+título de la tabla, no nombre de columna).
+- `columnas_encabezado_completo` — el encabezado íntegro de cada columna. Ahí \
+vive, por ejemplo, la lista de tipos de aislamiento (`TIPOS RHW, THHW, THW, \
+THWN, XHHW, USE, ZW`) que dice a qué conductores aplica esa columna, y que es \
+dato normativo: si el tipo que se está usando no está en la lista, esa \
+columna no es la suya.
+
+Los valores van como string, tal como los imprime el DOF: hay celdas con \
+rangos (`0 – 3.14`), con separador de miles a la mexicana (`1 050`) y con \
+notas pegadas. Convertir a número aquí sería inventar criterio.
+
+## Erratas del PDF de origen
+
+Cuatro tablas de la norma traen valores mal impresos **en el DOF** y se \
+dejaron tal cual, porque corregirlos sería editar la norma.
+"""
+
+
+def filas_de_archivos(manifiesto):
+    filas = []
     for nombre, desc, detalle, tam in manifiesto:
         if len(detalle) > 160:
             detalle = detalle[:157] + '...'
-        sal.append('| `%s` | %s | %s | %.0f KB |' % (nombre, desc, detalle, tam / 1024.0))
-    sal.append('')
-    sal.append('## Formato de las tablas')
-    sal.append('')
-    sal.append('Una fila del PDF = un registro plano. Nada de anidar por '
-               'calibre → material → temperatura: los encabezados de varios '
-               'niveles se aplanan componiendo el nombre de columna con ` | `, '
-               'de modo que la ampacidad de cobre a 75 °C de la 310-15(b)(16) '
-               'está en la columna `75 °C | COBRE`. Cada tabla trae '
-               '`condiciones` (el texto que la precede en el PDF: temperatura '
-               'ambiente, número de conductores) y `notas`, que **modifican los '
-               'valores** y no son decorativas.')
-    sal.append('')
-    sal.append('```json')
-    sal.append('{"tabla": "310-15(b)(16)",')
-    sal.append(' "titulo": "Ampacidades permisibles en conductores aislados...",')
-    sal.append(' "condiciones": "...", "notas": ["..."],')
-    sal.append(' "columnas": ["Tamaño o designación | AWG o kcmil", "75 °C | COBRE"],')
-    sal.append(' "filas": [{"Tamaño o designación | AWG o kcmil": "1/0",')
-    sal.append('            "75 °C | COBRE": "150"}]}')
-    sal.append('```')
-    sal.append('')
-    sal.append('Para que el nombre de columna no midiera 180 caracteres '
-               'repetidos en cada fila, se podan dos niveles del encabezado. '
-               'Ninguno se pierde:')
-    sal.append('')
-    sal.append('- `encabezado_comun` — el nivel que era idéntico en todas las '
-               'columnas (es título de la tabla, no nombre de columna).')
-    sal.append('- `columnas_encabezado_completo` — el encabezado íntegro de '
-               'cada columna. Ahí vive, por ejemplo, la lista de tipos de '
-               'aislamiento (`TIPOS RHW, THHW, THW, THWN, XHHW, USE, ZW`) que '
-               'dice a qué conductores aplica esa columna, y que es dato '
-               'normativo: si el tipo que se está usando no está en la lista, '
-               'esa columna no es la suya.')
-    sal.append('')
-    sal.append('Los valores van como string, tal como los imprime el DOF: hay '
-               'celdas con rangos (`0 – 3.14`), con separador de miles a la '
-               'mexicana (`1 050`) y con notas pegadas. Convertir a número aquí '
-               'sería inventar criterio.')
-    sal.append('')
-    sal.append('## Erratas del PDF de origen')
-    sal.append('')
-    sal.append('Cuatro tablas de la norma traen valores mal impresos **en el '
-               'DOF** y se dejaron tal cual, porque corregirlos sería editar la '
-               'norma.')
-    sal.append('')
-    # Qué erratas entraron se decide contra las tablas REALMENTE escritas y no
-    # con una lista fija: el recorte cambia con --solo-mt y con los artículos
-    # de BLOQUES, y una lista fija acababa afirmando que la 220-42 venía
-    # incluida en un export que no trae el artículo 220.
+        filas.append('| `%s` | %s | %s | %.0f KB |' % (nombre, desc, detalle, tam / 1024.0))
+    return filas
+
+
+def parrafos_de_erratas(ids_tabla):
+    """Qué erratas entraron se decide contra las tablas REALMENTE escritas y
+    no con una lista fija: el recorte cambia con --solo-mt y con los
+    artículos de BLOQUES, y una lista fija acababa afirmando que la 220-42
+    venía incluida en un export que no trae el artículo 220."""
+    sal = []
     dentro = [(t, d) for t, d in ERRATAS_DEL_DOF.items() if t in ids_tabla]
     fuera = [(t, d) for t, d in ERRATAS_DEL_DOF.items() if t not in ids_tabla]
     if dentro:
@@ -615,28 +627,36 @@ def escribir_manifiesto(args, manifiesto, incluidos, ids_tabla):
         sal.append('')
     sal.append('Las cuatro están en `REVISION-TABLAS.md` del repo con el '
                'detalle de cómo se detectaron.')
-    sal.append('')
-    sal.append('## Alcance de este export')
-    sal.append('')
-    if args.solo_mt:
-        sal.append('Generado con `--solo-mt`: **fuera** los artículos 220 '
+    return sal
+
+
+def parrafos_de_alcance(solo_mt, incluidos):
+    if solo_mt:
+        alcance = ('Generado con `--solo-mt`: **fuera** los artículos 220 '
                    '(cálculo de cargas), 230 (acometidas) y 240 (sobrecorriente '
                    'de circuitos derivados), que son de instalación de usuario. '
                    'Se recuperan regenerando sin la bandera.')
     else:
-        sal.append('Bloque completo. Fuera quedó lo que no toca este tema: '
+        alcance = ('Bloque completo. Fuera quedó lo que no toca este tema: '
                    'lugares peligrosos, anuncios luminosos, albercas, equipo de '
                    'rayos X y demás ambientes especiales.')
-    sal.append('')
-    sal.append('Artículos incluidos: %s.'
-               % ', '.join(str(n) for n in sorted(incluidos)))
-    sal.append('')
-    sal.append('Fuente completa, con el PDF y el buscador: '
-               'https://github.com/dflores296/NOM-001-SEDE-2012')
-    sal.append('')
-    with open(os.path.join(args.out, '00-manifiesto.md'), 'w', encoding='utf-8') as fh:
-        fh.write('\n'.join(sal))
+    return ['## Alcance de este export', '', alcance, '',
+            'Artículos incluidos: %s.' % ', '.join(str(n) for n in sorted(incluidos)),
+            '',
+            'Fuente completa, con el PDF y el buscador: '
+            'https://github.com/dflores296/NOM-001-SEDE-2012',
+            '']
 
+
+def manifiesto_md(solo_mt, manifiesto, incluidos, ids_tabla):
+    sal = MANIFIESTO_INICIO.split('\n')
+    sal += filas_de_archivos(manifiesto)
+    sal.append('')
+    sal += MANIFIESTO_FORMATO.split('\n')
+    sal += parrafos_de_erratas(ids_tabla)
+    sal.append('')
+    sal += parrafos_de_alcance(solo_mt, incluidos)
+    return '\n'.join(sal)
 
 if __name__ == '__main__':
     main()
