@@ -2,12 +2,13 @@
 """
 Fase 3 — Índice de búsqueda para el navegador.
 
-    python3 tools/build_search.py data/ site/public/data/
+    python3 tools/build_search.py data/ site/src/generado/
 
 Emite search.json: un documento por sección, por definición y por tabla, con
-el texto de sus incisos (o celdas) aplanado. Se indexa en el navegador con
-MiniSearch al primer uso, así que el usuario no descarga nada hasta que
-busca algo.
+el texto de sus incisos (o celdas) aplanado. No se publica tal cual: al
+construir el sitio, src/pages/data/indice.json.js arma con él el índice de
+MiniSearch y textos.json.js separa los textos. El usuario no descarga nada
+hasta que busca algo.
 
 Se indexa a nivel de SECCIÓN y no de inciso a propósito: 2 900 documentos
 caben holgadamente en memoria y buscar "GFCI" debe llevar a 210-8 completo,
@@ -192,7 +193,7 @@ def verificar_ids_unicos(docs):
 
 def main():
     src = sys.argv[1] if len(sys.argv) > 1 else 'data'
-    dst = sys.argv[2] if len(sys.argv) > 2 else 'site/public/data'
+    dst = sys.argv[2] if len(sys.argv) > 2 else 'site/src/generado'
     os.makedirs(dst, exist_ok=True)
 
     corpus = json.load(open(os.path.join(src, 'corpus.json')))

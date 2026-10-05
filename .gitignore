@@ -4,8 +4,9 @@ node_modules/
 dist/
 .astro/
 
-# Derivado de data/ por tools/build_search.py; lo regenera el workflow.
-site/public/data/
+# Derivado de data/ por tools/build_search.py; lo regenera el workflow. El
+# sitio arma con él el índice del buscador (src/pages/data/indice.json.js).
+site/src/generado/
 
 # Destilado de data/ por tools/export_para_claude.py, para subir a un Proyecto.
 # Se regenera cuando haga falta; no hay razón para versionar la salida.

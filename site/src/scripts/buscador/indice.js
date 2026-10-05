@@ -1,14 +1,20 @@
 // El índice del buscador: se descarga la primera vez que se enfoca un campo
-// de búsqueda y se arma en el navegador con MiniSearch. buscar() es lo único
-// que necesita el resto: primero las coincidencias exactas de código y luego
-// el difuso.
+// de búsqueda. Llega ya armado (src/pages/data/indice.json.js) y el
+// navegador solo lo carga; el texto de cada documento, que solo sirve para
+// el fragmento bajo cada resultado, llega después, aparte. buscar() es lo
+// único que necesita el resto: primero las coincidencias exactas de código y
+// luego el difuso.
 import MiniSearch from 'minisearch';
 import { base } from '../base.js';
+import { OPCIONES } from './opciones.js';
 import { sinAcentos, termino } from './terminos.js';
 
 let mini = null;
 let allDocs = null;
 let docPorId = null;
+// id -> texto, cuando ya llegó textos.json.
+let textos = null;
+let textosListos = null;
 // normCodigo(idDeInciso) -> { doc: seccionQueLoContiene, id: idDeInciso }.
 // Cada inciso ("310-15(a)", "310-15(b)(16)"...) no tiene documento
 // propio en el índice de MiniSearch -se indexa a nivel de sección
@@ -57,7 +63,7 @@ function coincidenciasCodigo(q) {
   const BASE = 1e6;
 
   const inciso = incisoPorCn.get(qn);
-  if (inciso) out.push({ ...inciso.doc, id: inciso.id, score: BASE });
+  if (inciso) out.push({ ...inciso.doc, id: inciso.id, docId: inciso.doc.id, score: BASE });
 
   for (const d of allDocs) {
     const dn = d._cn;
@@ -79,8 +85,8 @@ let loading = null;
 export function load() {
   if (!loading) {
     loading = (async () => {
-      const r = await fetch(`${base}/data/search.json`);
-      const docs = await r.json();
+      const r = await fetch(`${base}/data/indice.json`);
+      const { docs, indice } = await r.json();
       // Se precalcula UNA vez, no en cada tecleo: el id normalizado
       // (sin '-', '(', ')', '.') que usa coincidenciasCodigo() más
       // abajo para encontrar "310-15(b)(16)" aunque se escriba
@@ -105,35 +111,39 @@ export function load() {
       }
       allDocs = docs;
       docPorId = new Map(docs.map((d) => [d.id, d]));
-      const ms = new MiniSearch({
-        fields: ['id', 'title', 'text'],
-        // 'text' se guarda para poder recortar un fragmento con la
-        // coincidencia resaltada: antes solo se usaba para indexar y
-        // se descartaba, así que un resultado no decía DÓNDE dentro
-        // de la sección apareció lo que buscaste.
-        storeFields: ['id', 'title', 'art', 'artTitle', 'kind', 'tid', 'sinNumero',
-                      'apendice', 'text', 'fid', 'ancla', 'cid', 'usos'],
-        processTerm: termino,
+      mini = MiniSearch.loadJS(indice, {
+        ...OPCIONES,
         searchOptions: {
-          boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15,
+          ...OPCIONES.searchOptions,
           // Entre tablas que coinciden igual, la que la norma cita más va
           // antes: con "puesta a tierra", la 250-122 (24 citas) por delante
           // de la 250-3 (ninguna). El empuje es suave -una tabla citada 24
           // veces vale 2.2 veces lo mismo, no 24- para no tapar secciones.
-          boostDocument: (id, term, f) => (f?.kind === 'tabla' ? 1 + Math.log2(1 + (f.usos || 0)) / 4 : 1),
+          boostDocument: (id) => {
+            const d = docPorId.get(id);
+            return d?.kind === 'tabla' ? 1 + Math.log2(1 + (d.usos || 0)) / 4 : 1;
+          },
         },
       });
-      ms.addAll(docs);
-      mini = ms;
+      // Los textos, por detrás: los resultados no los esperan.
+      textosListos = fetch(`${base}/data/textos.json`)
+        .then((t) => t.json())
+        .then((t) => { textos = t; })
+        .catch(() => {});
     })();
   }
   return loading;
 }
 
-// true cuando el índice ya está armado. La primera búsqueda descarga y
-// arma unos 4 MB de texto, y en un teléfono eso son varios segundos: el
-// campo lo usa para avisar que se está preparando en vez de quedarse mudo.
+// true cuando el índice ya cargó. En un teléfono con mala señal la primera
+// búsqueda todavía tarda unos segundos en descargarlo: el campo lo usa para
+// avisar que se está preparando en vez de quedarse mudo.
 export const listo = () => mini !== null;
+
+// true cuando ya llegaron los textos de los fragmentos; fragmentos() es la
+// promesa, para volver a pintar los resultados cuando lleguen.
+export const conFragmentos = () => textos !== null;
+export const fragmentos = () => textosListos || Promise.resolve();
 
 // Lo que casi siempre se quiere ver al buscar estas palabras, aunque su
 // título largo lo mande lejos en el orden por relevancia: la tabla de
@@ -173,12 +183,19 @@ export async function buscar(q) {
   await load();
   const vistos = new Set();
   const combinados = [];
-  for (const r of [...coincidenciasCodigo(q), ...mini.search(q)]) {
+  // Un resultado de MiniSearch trae solo id y puntaje: el resto del
+  // documento sale de docPorId.
+  const difusos = mini.search(q).map((r) => ({ ...docPorId.get(r.id), ...r }));
+  for (const r of [...coincidenciasCodigo(q), ...difusos]) {
     if (vistos.has(r.id)) continue;
     vistos.add(r.id);
     combinados.push(r);
   }
   destacar(combinados, q);
   const cuenta = {};
-  return combinados.filter((r) => (cuenta[r.kind] = (cuenta[r.kind] || 0) + 1) <= (CUPO[r.kind] ?? 3));
+  return combinados
+    .filter((r) => (cuenta[r.kind] = (cuenta[r.kind] || 0) + 1) <= (CUPO[r.kind] ?? 3))
+    // El texto, si ya llegó, del documento de origen: un inciso exacto
+    // ("310-15(a)") muestra el fragmento de su sección.
+    .map((r) => ({ ...r, text: textos?.[r.docId ?? r.id] }));
 }

@@ -30,7 +30,7 @@ paso 'Regenerar tablas, corpus, grafo e índice de búsqueda'
 python3 tools/build_tables.py NOM-001-SEDE-2012.pdf data/
 python3 tools/build_corpus.py NOM-001-SEDE-2012.pdf data/
 python3 tools/build_graph.py data/
-python3 tools/build_search.py data/ site/public/data/
+python3 tools/build_search.py data/ site/src/generado/
 python3 tools/build_revision.py data/ REVISION-TABLAS.md
 
 # --check no escribe: falla si la tabla de cifras del README se despegó de
