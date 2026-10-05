@@ -50,6 +50,12 @@ const ATAJOS = [
         <a href={`${base}${a.href}`}><b>{a.txt}</b><span>{a.nota}</span></a>
       ))}
     </nav>
+
+    {/* La ilustración es de Flaticon, licencia gratuita con atribución: este
+        es el texto y el enlace que pide, cerca de donde se usa. */}
+    <p class="credito">
+      <a href="https://www.flaticon.es/iconos-gratis/404" title="404 iconos">404 iconos creados por Magnific - Flaticon</a>
+    </p>
   </main>
 </Base>
 
@@ -102,5 +108,7 @@ const ATAJOS = [
   }
   .atajos-404 a:hover { border-color: var(--accent); text-decoration: none; }
   .atajos-404 b { display: block; font-weight: 600; }
+  .credito { margin: 2.4rem 0 0; font-size: 0.75rem; color: var(--text-faint); }
+  .credito a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
   .atajos-404 span { display: block; margin-top: 0.25rem; font-size: 0.85rem; color: var(--text-dim); }
 </style>
