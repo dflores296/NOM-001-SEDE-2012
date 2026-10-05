@@ -594,17 +594,11 @@ inventar ni descartar ninguno.
   Para medir geometría de tablas renderizadas hay que servir `site/dist` por HTTP
   con la ruta base `/NOM-001-SEDE-2012`: con `file://` no cargan los estilos.
 
-## Las skills de diseño
+## Las skills de diseño (retiradas)
 
-`.claude/skills/` trae ocho skills de diseño de terceros (refero-design,
-ui-ux-pro-max y las de nextlevelbuilder), instaladas con `npx skills add` y
-registradas en `skills-lock.json`. Viven en el repo para que Claude Code las
-tenga en cada sesión; no son parte del sitio ni del extractor, y ni el linter
-ni la huella las tocan. `.gitattributes` las marca como código de terceros,
-así que GitHub no las cuenta en los lenguajes del repo y pliega sus diffs.
-
-- Actualizarlas: `npx skills update -p`, y revisar el diff antes de
-  confirmarlo: corren con los permisos del agente.
-- Restaurarlas desde el lock: `npx skills experimental_install` las deja en
-  `.agents/skills/`, idénticas a las del repo; hay que copiarlas a
-  `.claude/skills/`.
+Para el rediseño de octubre se instalaron ocho skills de diseño de terceros en
+`.claude/skills/` (refero-design de referodesign/refero_skill, y ui-ux-pro-max
+y otras seis de nextlevelbuilder/ui-ux-pro-max-skill), con `npx skills add`.
+Terminado el rediseño se quitaron del repo: nada del sitio, del extractor ni
+del CI las usaba, y traían más código que todo `tools/`. Para recuperarlas tal
+como estaban: `git checkout a6fd544 -- .claude/skills skills-lock.json`.

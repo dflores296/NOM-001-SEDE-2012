@@ -1,5 +1,0 @@
-# Las skills de diseño instaladas con `npx skills add` (ver skills-lock.json)
-# son código de terceros que Claude Code lee de aquí, no parte del sitio ni
-# del extractor. Marcadas así, GitHub no las cuenta en los lenguajes del repo
-# —traen más Python que todo tools/— y pliega sus diffs.
-.claude/skills/** linguist-vendored linguist-generated
