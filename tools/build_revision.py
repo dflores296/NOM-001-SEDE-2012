@@ -146,7 +146,9 @@ verificar de raíz lo que aquí se contrastó a ojo.
 
 
 def truncar(titulo, n=70):
-    t = titulo.strip()
+    # Siete tablas no tienen título (la de 922-17(c), por ejemplo): con una
+    # de ellas en la lista de trabajo, el script se caía aquí.
+    t = (titulo or '').strip()
     return t if len(t) <= n else t[:n].rstrip() + '…'
 
 
