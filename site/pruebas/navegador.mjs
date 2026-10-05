@@ -590,6 +590,26 @@ prueba(
     });
     await page.waitForFunction(() => !document.getElementById('ampacidad').hidden);
     afirmar((await page.inputValue('.glos-filtro input')) === '', 'el campo no se limpió');
+
+    // Pasar el dedo de la C a la M deja elegida la M, y el toque con que
+    // termina el arrastre no la vuelve a quitar.
+  await page.$eval('.glos-letras', (e) => e.scrollIntoView({ block: 'center' }));
+    const centro = (l) =>
+      page.$eval(`.glos-letras [data-letra="${l}"]`, (e) => {
+        const r = e.getBoundingClientRect();
+        return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+      });
+    const [c, m] = [await centro('C'), await centro('M')];
+    const cdp = await page.context().newCDPSession(page);
+    const toque = (type, p) =>
+      cdp.send('Input.dispatchTouchEvent', { type, touchPoints: p ? [p] : [] });
+    await toque('touchStart', c);
+    for (let i = 1; i <= 10; i++)
+      await toque('touchMove', { x: c.x + ((m.x - c.x) * i) / 10, y: c.y });
+    await toque('touchEnd');
+    await page.waitForTimeout(100);
+    const elegida = await page.$eval('.glos-letras [aria-pressed="true"]', (b) => b.dataset.letra);
+    afirmar(elegida === 'M', `tras arrastrar quedó ${elegida}`);
     afirmar(errores.length === 0, errores.join(' | '));
   }
 );

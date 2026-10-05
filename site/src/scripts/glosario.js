@@ -9,6 +9,12 @@
 // - un campo que filtra por palabra en el término y en su definición, sin
 //   importar acentos, con las coincidencias marcadas.
 //
+// Las letras se mueven como en el iPhone: la elegida queda en un círculo que
+// se desliza con rebote de una a otra, al tocarlas se hunden y regresan con
+// resorte, y en el teléfono se puede pasar el dedo de lado sobre ellas
+// (como el índice de Contactos) con la letra en grande arriba del dedo. Con
+// «reducir movimiento» activado en el sistema no se anima nada.
+//
 // Se arma con JavaScript sobre el HTML publicado, que no cambia: sin
 // JavaScript el glosario se ve completo como siempre.
 import { sinAcentos, termino } from './buscador/terminos.js';
@@ -95,6 +101,15 @@ if (items.length && partes.length) {
   const cuenta = caja.querySelector('.glos-cuenta span');
   const todas = caja.querySelector('.glos-todas');
   const botones = [...letras.children];
+  // El círculo de la letra elegida y el globo que aparece arriba del dedo.
+  const burbuja = document.createElement('span');
+  burbuja.className = 'glos-burbuja';
+  const globo = document.createElement('span');
+  globo.className = 'glos-globo';
+  burbuja.ariaHidden = globo.ariaHidden = 'true';
+  letras.prepend(burbuja);
+  letras.append(globo);
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)');
   // El conteo de cada parte («167 definiciones») se cambia por «3 de 167»
   // mientras hay filtro, y vuelve a su texto al quitarlo.
   const descs = new Map(partes.map((p) => [p, p.querySelector('.sec-head .desc')]));
@@ -107,7 +122,50 @@ if (items.length && partes.length) {
 
   let letra = '';
 
-  const aplicar = () => {
+  // El círculo se pone sobre la letra elegida, del tamaño del botón. Si no
+  // estaba visible aparece ahí mismo, creciendo, en vez de llegar deslizándose
+  // desde donde se quedó la vez anterior.
+  const moverBurbuja = () => {
+    const b = botones.find((x) => x.dataset.letra === letra);
+    const estaba = burbuja.classList.contains('on');
+    burbuja.classList.toggle('on', !!b);
+    if (!b) return;
+    const d = Math.min(b.offsetWidth, b.offsetHeight);
+    if (!estaba) burbuja.classList.add('sin-viaje');
+    burbuja.style.width = burbuja.style.height = `${d}px`;
+    burbuja.style.translate = `${b.offsetLeft + (b.offsetWidth - d) / 2}px ${
+      b.offsetTop + (b.offsetHeight - d) / 2
+    }px`;
+    if (!estaba) {
+      burbuja.offsetWidth;
+      burbuja.classList.remove('sin-viaje');
+    }
+  };
+  new ResizeObserver(moverBurbuja).observe(letras);
+
+  // Al cambiar de letra, las primeras definiciones entran escalonadas.
+  const entrar = (visibles) => {
+    if (quieto.matches) return;
+    let i = 0;
+    for (const it of items) {
+      if (!visibles.has(it)) continue;
+      it.el.animate(
+        [
+          { opacity: 0, transform: 'translateY(10px) scale(0.98)' },
+          { opacity: 1, transform: 'none' },
+        ],
+        {
+          duration: 340,
+          delay: i * 24,
+          easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+          fill: 'backwards',
+        }
+      );
+      if (++i === 12) break;
+    }
+  };
+
+  const aplicar = (animar = false) => {
     // La misma regla que el buscador: sin acentos, en singular («tierras»
     // encuentra «tierra») y sin las palabras que no dicen nada («a», «de»):
     // en «puesta a tierra» la «a» marcaba cada letra a de la página.
@@ -127,6 +185,8 @@ if (items.length && partes.length) {
 
     const visibles = new Set(conTexto.filter((it) => !letra || it.letra === letra));
     for (const it of items) it.el.hidden = !visibles.has(it);
+    moverBurbuja();
+    if (animar) entrar(visibles);
     for (const p of partes) {
       const total = items.filter((it) => it.parte === p).length;
       const n = items.filter((it) => it.parte === p && visibles.has(it)).length;
@@ -165,13 +225,61 @@ if (items.length && partes.length) {
     }
   };
 
-  campo.addEventListener('input', aplicar);
+  campo.addEventListener('input', () => aplicar());
+  let trasArrastre = false;
   letras.addEventListener('click', (e) => {
+    // El toque con que terminó un arrastre no cuenta como otro toque: la
+    // letra ya quedó elegida al pasar el dedo.
+    if (trasArrastre) {
+      trasArrastre = false;
+      return;
+    }
     const b = e.target.closest('button');
     if (!b || b.disabled) return;
     letra = letra === b.dataset.letra ? '' : b.dataset.letra;
-    aplicar();
+    aplicar(true);
   });
+
+  // Pasar el dedo de lado sobre las letras: cada letra por la que pasa queda
+  // elegida, con un toque de vibración donde el teléfono lo permite. El
+  // movimiento vertical sigue desplazando la página (touch-action en CSS).
+  const mostrarGlobo = (b) => {
+    globo.textContent = b.dataset.letra;
+    globo.style.translate = `${b.offsetLeft + b.offsetWidth / 2}px ${b.offsetTop}px`;
+    globo.classList.add('on');
+  };
+  const letraBajo = (e) =>
+    document.elementFromPoint(e.clientX, e.clientY)?.closest('.glos-letras button:not(:disabled)');
+  let dedo = null;
+  letras.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'touch') return;
+    const b = letraBajo(e);
+    dedo = { id: e.pointerId, inicio: b, movio: false };
+    if (b) mostrarGlobo(b);
+  });
+  letras.addEventListener('pointermove', (e) => {
+    if (!dedo || e.pointerId !== dedo.id) return;
+    const b = letraBajo(e);
+    if (!b) return;
+    mostrarGlobo(b);
+    if (b === dedo.inicio && !dedo.movio) return;
+    if (b.dataset.letra === letra) return;
+    dedo.movio = true;
+    letra = b.dataset.letra;
+    aplicar(true);
+    navigator.vibrate?.(4);
+  });
+  const soltar = (e) => {
+    if (!dedo || e.pointerId !== dedo.id) return;
+    // Si el navegador no manda ese clic, el aviso no debe tragarse el
+    // siguiente toque de verdad.
+    trasArrastre = dedo.movio && e.type === 'pointerup';
+    if (trasArrastre) setTimeout(() => (trasArrastre = false), 400);
+    dedo = null;
+    globo.classList.remove('on');
+  };
+  letras.addEventListener('pointerup', soltar);
+  letras.addEventListener('pointercancel', soltar);
   const limpiar = () => {
     campo.value = '';
     letra = '';
