@@ -1,0 +1,112 @@
+/* --------------------------------------------------------------------------
+   Al imprimir (o guardar como PDF). Antes salía la página tal cual: la
+   cabecera con el buscador y el interruptor de tema, los botones flotantes,
+   «Reportar» junto a cada sección y, con el tema oscuro, letra casi blanca
+   sobre papel blanco. Aquí queda solo el texto de la norma:
+
+   - siempre con los colores del tema claro, en tinta casi negra;
+   - sin la navegación del sitio (cabecera, índices laterales, paginador,
+     botones, filtros, «Citado por…», enlaces para reportar);
+   - a todo lo ancho de la hoja, con las tablas completas —sin la caja que
+     se desliza— y sus encabezados repetidos en cada hoja;
+   - sin cortar un título de lo que le sigue ni una fila de tabla, una nota
+     o una definición a la mitad.
+
+   Va al final: a igual especificidad gana la regla que va después.
+   -------------------------------------------------------------------------- */
+@media print {
+  @page { margin: 1.6cm 1.4cm; }
+  @page horizontal { size: landscape; }
+
+  /* Los colores del tema claro, elija el lector el que elija. */
+  :root, :root[data-theme] {
+    color-scheme: light;
+    --bg: #ffffff !important;
+    --bg-soft: #f2f2f2 !important;
+    --panel: #ffffff !important;
+    --border: #cccccc !important;
+    --card-border: #cccccc !important;
+    --rejilla: #999999 !important;
+    --border-soft: #e6e6e6 !important;
+    --text: #000000 !important;
+    --text-dim: #262626 !important;
+    --text-faint: #4d4d4d !important;
+    --accent: #0569be !important;
+    --activo: #0569be !important;
+    --on-accent: #ffffff !important;
+    --warn-bg: #ffffff !important;
+    --warn-br: #b58a3c !important;
+    --warn-ink: #6b4500 !important;
+    --ok: #2e7d32 !important;
+    --shadow: none !important;
+    /* La banda oscura de la portada no se imprime: su texto pasa a tinta. */
+    --hero-text: #000000 !important;
+    --hero-dim: #262626 !important;
+    --hero-ey: #0569be !important;
+    --ancla: 0px !important;
+  }
+  html, body { background: #fff !important; color: #000; }
+  body { font-size: 10.5pt; }
+
+  /* Lo que solo sirve en pantalla. */
+  .saltar, header.top, .side, .toc, .pager, .partes, .cap-nav,
+  .indice-movil, .im-hoja, .report, .anchor, .backlinks, details.fig-texto,
+  .glos-filtro, .tabla-desliza, .portada-fondo, .hero-buscar, .atajos,
+  .tabla-pie a[href*="/observaciones/"], .obs-btn,
+  form[role="search"], .results, button {
+    display: none !important;
+  }
+
+  /* Del pie solo queda el aviso de que no es una edición oficial. */
+  footer.bot { border: 0; margin: 2rem 0 0; padding: 0.8rem 0 0; border-top: 1px solid var(--border); background: none; }
+  footer.bot .pie { display: block; padding: 0; }
+  footer.bot .brand, footer.bot .pie-lema, footer.bot .pie-col, footer.bot .pie-legal { display: none; }
+  footer.bot .pie-marca p { margin: 0; max-width: none; font-size: 8.5pt; color: var(--text-faint); }
+
+  /* Una sola columna a todo lo ancho de la hoja. */
+  .wrap { max-width: none; padding: 0; margin: 0; }
+  .cols { display: block; }
+  main { padding: 0 !important; }
+  .hero, .portada { padding: 0 0 1rem !important; margin: 0 !important; background: none !important; color: var(--text); min-height: 0 !important; }
+
+  a { color: inherit; text-decoration: none; }
+  a.xref, .xref { background: none !important; color: var(--accent); }
+
+  /* Sin sombras ni fondos de adorno: en papel solo ensucian. */
+  *, *::before, *::after { box-shadow: none !important; text-shadow: none !important; }
+  ::highlight(glosario) { background: none; text-decoration: none; }
+
+  /* Tablas completas: sin la caja que se desliza, sin columnas fijas ni
+     sombras de borde. Si una no cabe en el ancho de la hoja, sus celdas
+     envuelven y la letra baja un punto antes de que algo quede fuera. */
+  .tabla-caja { width: auto; max-width: none; }
+  .tabla-caja::before, .tabla-caja::after { display: none !important; }
+  .tabla-scroll { overflow: visible !important; border-radius: 0; }
+  .tabla-scroll table { font-size: 8.5pt; max-width: 100%; }
+  .tabla-scroll th, .tabla-scroll td { padding: 0.2rem 0.25rem; white-space: normal; }
+  .tabla-scroll td.larga, .tabla-scroll thead th.th-larga { min-width: 0; max-width: none; }
+  .tabla-scroll .fija { position: static !important; left: auto !important; }
+  .tabla-scroll tbody tr:hover { background: none; }
+  /* Las cuatro que ni así caben a lo ancho de una hoja vertical (14 y 16
+     columnas de texto) van solas en una hoja horizontal. La lista es fija
+     porque la norma no cambia; la prueba «Al imprimir, ninguna tabla se
+     sale de la hoja» avisa si alguna otra llegara a no caber. */
+  #tabla-400-4, #tabla-770-154-a, #tabla-800-154-a, #tabla-9 { page: horizontal; }
+  thead { display: table-header-group; }
+  tr, img, svg { break-inside: avoid; }
+
+  /* Un título no se queda solo al pie de una hoja, ni el rótulo de una
+     tabla separado de ella. */
+  h1, h2, h3, h4, figcaption, .sec-head, .part-head, section.sec > h2, p.tabla-intro { break-after: avoid; }
+  figure.tabla figcaption + *, p.tabla-intro + .tabla-caja { break-before: avoid; }
+  /* Solo las piezas cortas van enteras: una excepción de media hoja que no
+     cabe se iría completa a la siguiente y dejaría un hueco. */
+  .def, .nota, .fig, .cifra, .card { break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+
+  /* Las rejillas no se reparten bien entre hojas en Chrome: las
+     definiciones del glosario van en bloque, una tras otra. */
+  .defs { display: block; }
+  /* Y sin recuadro: en papel se leen como un diccionario, más juntas. */
+  .defs > .def { margin: 0 0 0.7rem; padding: 0; border: 0; border-radius: 0; }
+}
