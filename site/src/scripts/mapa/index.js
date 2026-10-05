@@ -203,6 +203,12 @@ export async function iniciar(raiz) {
   });
 
   // ------------------------------------------------------------- interfaz
+  // La guía y el aviso de inicio van justo encima de la leyenda, que ocupa
+  // una o dos líneas según el ancho (mapa.css).
+  const ley = $('.mapa-ley');
+  new ResizeObserver(() => raiz.style.setProperty('--ley-alto', `${ley.offsetHeight}px`)).observe(
+    ley
+  );
   const panel = $('.mapa-panel');
   function actualizarUI() {
     const hilo = modo === 'hilo';
@@ -244,7 +250,49 @@ export async function iniciar(raiz) {
     $('.mapa-atras').disabled = recorrido.length < 2;
   }
 
-  function lista(ul, ids) {
+  // La frase de cada cita (mapa-citas.json). Pesa más que la red, así que
+  // se pide la primera vez que se abre el panel y, al llegar, se vuelve a
+  // llenar el panel que esté abierto.
+  let citas = null;
+  let pidiendoCitas = false;
+  function cargarCitas() {
+    if (citas || pidiendoCitas) return;
+    pidiendoCitas = true;
+    fetch(`${base}/mapa-citas.json`)
+      .then((r) => r.json())
+      .then((c) => {
+        citas = c;
+        if (modo === 'hilo' && centro) llenarPanel(porId.get(centro));
+      })
+      .catch(() => {
+        pidiendoCitas = false;
+      });
+  }
+
+  // La cita tal como la dice la norma: la frase, con la referencia marcada,
+  // de qué inciso sale si no es la sección misma y cuántas citas más hay
+  // entre los dos puntos.
+  function frase(de, a) {
+    const c = citas?.[`${de}>${a}`];
+    if (!c) return null;
+    const [inciso, texto, i, j, mas] = c;
+    const p = document.createElement('p');
+    p.className = 'mp-cita';
+    const m = document.createElement('mark');
+    m.textContent = texto.slice(i, j);
+    p.append(texto.slice(0, i), m, texto.slice(j));
+    const pie = [];
+    if (inciso !== de) pie.push(`en ${inciso}`);
+    if (mas) pie.push(`y ${mas} ${mas === 1 ? 'cita más' : 'citas más'}`);
+    if (pie.length) {
+      const s = document.createElement('small');
+      s.textContent = pie.join(' · ');
+      p.append(s);
+    }
+    return p;
+  }
+
+  function lista(ul, ids, sentido) {
     ul.replaceChildren();
     if (!ids.length) {
       const li = document.createElement('li');
@@ -270,10 +318,13 @@ export async function iniciar(raiz) {
       b.append(i, id, t);
       b.addEventListener('click', () => seguir(n.id));
       li.append(b);
+      const f = sentido === 'entran' ? frase(n.id, centro) : frase(centro, n.id);
+      if (f) li.append(f);
       ul.append(li);
     }
   }
 
+  let llenoCon = null;
   function llenarPanel(n) {
     panel.querySelector('.mp-id').textContent = rotuloLargo(n);
     panel.querySelector('.mp-id').style.color = color[n.g];
@@ -289,9 +340,14 @@ export async function iniciar(raiz) {
     const out = salen.get(n.id) || [];
     panel.querySelector('.mp-n-in').textContent = inn.length;
     panel.querySelector('.mp-n-out').textContent = out.length;
-    lista(panel.querySelector('.mp-in'), inn);
-    lista(panel.querySelector('.mp-out'), out);
-    panel.scrollTop = 0;
+    const y = n.id === llenoCon ? panel.scrollTop : 0;
+    lista(panel.querySelector('.mp-in'), inn, 'entran');
+    lista(panel.querySelector('.mp-out'), out, 'salen');
+    // Al llegar las frases se vuelve a llenar el mismo panel: que no salte
+    // arriba si ya se estaba leyendo.
+    panel.scrollTop = y;
+    llenoCon = n.id;
+    cargarCitas();
   }
 
   for (const b of raiz.querySelectorAll('[data-dir]')) {

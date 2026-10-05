@@ -10,46 +10,12 @@
 // la contiene; las citas a un artículo completo o a una de sus partes, al
 // nodo del artículo. Cada sección se ata además a su artículo con un enlace
 // de estructura, invisible, que es lo que agrupa el mapa por artículos.
-import { articles, apendices, grafo, tablaPorId, figuraPorId } from '../lib/nom.js';
+import { articles, apendices, grafo } from '../lib/nom.js';
+import { nodoDe, seccionPorId } from '../lib/mapa-red.js';
 
 // Grupo de color: los capítulos 2 a 9 llevan cada uno su color; el 1
 // (disposiciones generales), el 10 (tablas) y los apéndices van juntos en gris.
 const grupoDe = (cap) => (cap >= 2 && cap <= 9 ? String(cap) : 'g');
-
-const artPorNum = new Map(articles.map((a) => [a.num, a]));
-const seccionPorId = new Map();
-for (const a of articles) for (const s of a.sections) seccionPorId.set(s.id, { s, a });
-
-const SEC = /^(\d{3}-\d+)/;
-
-// A qué nodo del mapa va a dar un identificador del grafo, o null si no tiene
-// lugar en él (las citas a un capítulo entero, por ejemplo).
-function nodoDe(id) {
-  if (!id) return null;
-  if (id.startsWith('art:')) return artPorNum.has(Number(id.slice(4))) ? id : null;
-  if (id.startsWith('parte:')) {
-    const n = Number(id.split(':')[1]);
-    return artPorNum.has(n) ? `art:${n}` : null;
-  }
-  if (id.startsWith('tabla:')) {
-    const t = tablaPorId.get(id.slice(6));
-    if (t?.article == null)
-      return t && !t.apendice ? 'capitulo-10' : t ? `apendice-${t.apendice}` : null;
-    const m = SEC.exec(id.slice(6));
-    return m && seccionPorId.has(m[1]) ? m[1] : `art:${t.article}`;
-  }
-  if (id.startsWith('figura:')) {
-    // La figura vive donde la imprime la norma, que no siempre es la
-    // sección de su número: la «Figura 551-46(c)» no está en la 551-46.
-    const f = figuraPorId.get(id.slice(7))?.figura;
-    const m = SEC.exec(f?.nodo || '') || SEC.exec(id.slice(7));
-    if (m && seccionPorId.has(m[1])) return m[1];
-    return f?.articulo ? `art:${f.articulo}` : null;
-  }
-  if (id.startsWith('apendice-') || id === 'capitulo-10') return id;
-  const m = SEC.exec(id);
-  return m && seccionPorId.has(m[1]) ? m[1] : null;
-}
 
 export function GET() {
   // Referencias únicas entre nodos, sin las que un nodo se hace a sí mismo.

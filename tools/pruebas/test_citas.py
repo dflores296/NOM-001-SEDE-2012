@@ -3,7 +3,7 @@
 De aquí salen los «Citado por» de cada sección y los enlaces del sitio."""
 import pytest
 
-from build_graph import citas
+from build_graph import citas, frase
 
 
 @pytest.mark.parametrize('texto, esperado', [
@@ -31,3 +31,23 @@ def test_una_tabla_del_apendice_no_se_confunde_con_la_seccion_310_15(ctx):
 def test_la_figura_que_el_dof_no_imprime_no_se_enlaza_a_otra(ctx):
     # La Figura B.310.15(B)(2)(1) no existe en el PDF: mejor sin enlace.
     assert citas('la Figura B.310.15(B)(2)(1)', ctx) == []
+
+
+def test_la_frase_de_una_cita_es_la_suya_y_marca_la_referencia():
+    # El título va en otra parte del nodo: no se pega a la frase.
+    partes = ['Alcance', 'Primera idea. Debe ser conforme a 250-122 en todo caso. Otra.']
+    txt = ' '.join(partes)
+    ini = txt.index('250-122')
+    texto, (i, j) = frase(partes, (ini, ini + len('250-122')))
+    assert texto == 'Debe ser conforme a 250-122 en todo caso.'
+    assert texto[i:j] == '250-122'
+
+
+def test_una_frase_larga_se_recorta_alrededor_de_la_cita():
+    largo = ' '.join(['palabra'] * 60)
+    partes = [largo + ' según la Tabla 310-15(b)(16) ' + largo + '.']
+    ini = partes[0].index('Tabla')
+    texto, (i, j) = frase(partes, (ini, ini + len('Tabla 310-15(b)(16)')))
+    assert texto.startswith('…') and texto.endswith('…')
+    assert texto[i:j] == 'Tabla 310-15(b)(16)'
+    assert len(texto) < 260

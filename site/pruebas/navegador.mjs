@@ -524,6 +524,19 @@ prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagi
   await page.press('.mapa-busca input', 'Enter');
   await page.waitForFunction(() => location.hash === '#250-122');
   afirmar(await page.$eval('.mapa-recorrido', (e) => !e.hidden), 'el recorrido no apareció');
+
+  // El panel enseña la cita misma: la frase de la norma con la referencia
+  // marcada («…de acuerdo con la Tabla 250-122…»).
+  await page.waitForSelector('.mp-in .mp-cita mark');
+  const marca = await page.textContent('.mp-in .mp-cita mark');
+  afirmar(/250-122/.test(marca), `la cita marca «${marca}»`);
+
+  // Todos los capítulos de la leyenda a la vista, sin deslizar de lado: con
+  // un mouse de rueda no hay forma de llegar a los que se salen.
+  afirmar(
+    await page.$eval('.mapa-ley', (e) => e.scrollWidth <= e.clientWidth),
+    'la leyenda se sale de lado'
+  );
 });
 
 prueba('En el teléfono, el mapa no carga la librería 3D', async ({ nuevaPagina }) => {

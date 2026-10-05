@@ -136,11 +136,7 @@ RE_PART_REF = re.compile(r'Parte\s+([A-M])\s+del\s+Art\S*culo\s+(\d{3})')
 
 def node_text(n):
     """Todo el texto propio de un nodo (sin descendientes)."""
-    parts = [n.get('title') or '', n.get('text') or '']
-    parts += [z['text'] for z in n.get('notes', [])]
-    parts += [z['text'] for z in n.get('exceptions', [])]
-    parts += [z['text'] for z in n.get('parrafos', [])]
-    return ' '.join(parts)
+    return ' '.join(partes_de(n))
 
 
 def uso_de_tablas(tablas, texto, sec_ids):
@@ -256,25 +252,42 @@ def resolver_figura(fid, figura_ids):
         fid = re.sub(r'\([^()]*\)$', '', fid)
 
 
+def partes_de(n):
+    """Los textos propios de un nodo por separado: título, texto, notas,
+    excepciones y párrafos. node_text() los junta con un espacio."""
+    parts = [n.get('title') or '', n.get('text') or '']
+    parts += [z['text'] for z in n.get('notes', [])]
+    parts += [z['text'] for z in n.get('exceptions', [])]
+    parts += [z['text'] for z in n.get('parrafos', [])]
+    return parts
+
+
 def fuentes(corpus):
-    """(id, texto) de todo lo que puede citar: cada sección e inciso, y cada
-    hito del cierre con el texto de sus bloques."""
-    out = [(n['id'], node_text(n))
+    """(id, partes) de todo lo que puede citar: cada sección e inciso, y cada
+    hito del cierre con el texto de sus bloques. Las citas se buscan en las
+    partes juntas, como siempre; separadas sirven para recortar la frase de
+    cada cita sin que se le pegue el título o la nota de al lado."""
+    out = [(n['id'], partes_de(n))
            for a in corpus['articles'] for s in a['sections'] for n in walk(s)]
-    out += [(h['id'], ' '.join(b.get('text') or '' for b in h['bloques']))
+    out += [(h['id'], [b.get('text') or '' for b in h['bloques']])
             for h in corpus.get('cierre', [])]
     return out
 
 
 def citas(txt, ctx):
-    """Las citas de un texto, como (destino, tipo), en el orden en que se
-    buscan. El orden importa: cada familia de patrones marca lo que ya
+    """Las citas de un texto, como (destino, tipo). Ver citas_en()."""
+    return [(dst, kind) for dst, kind, _ in citas_en(txt, ctx)]
+
+
+def citas_en(txt, ctx):
+    """Las citas de un texto, como (destino, tipo, tramo), en el orden en que
+    se buscan; el tramo es dónde aparece la cita en el texto. El orden importa: cada familia de patrones marca lo que ya
     reconoció para que la siguiente no lo vuelva a tomar por otra cosa.
 
     ctx lleva lo que se consulta: art_nums, chapters, sec_ids, figura_ids,
     ap_tablas y ap_figuras."""
     out = []
-    add = lambda dst, kind: out.append((dst, kind))
+    add = lambda dst, kind, m: out.append((dst, kind, m.span()))
 
     # --- Apéndice A y sus tablas y figuras. Va primero porque sus citas
     #     llevan dentro un número que parece de sección y no lo es:
@@ -286,7 +299,7 @@ def citas(txt, ctx):
         consumido.append(m.span())
         tid = ctx['ap_tablas'].get(clave_apendice(m.group(1)))
         if tid:
-            add('tabla:' + tid, 'tabla')
+            add('tabla:' + tid, 'tabla', m)
     for m in RE_AP_FIG.finditer(txt):
         consumido.append(m.span())
         # La Figura B.310.15(B)(2)(1) no existe: el DOF no la imprime (ver
@@ -294,12 +307,12 @@ def citas(txt, ctx):
         # enlace antes que apuntar a otra figura.
         fid = ctx['ap_figuras'].get(clave_apendice(m.group(1)))
         if fid:
-            add('figura:' + fid, 'figura')
+            add('figura:' + fid, 'figura', m)
     ajenas = [m.span() for m in RE_AP_AJENA.finditer(txt)]
     for m in RE_AP_HITO.finditer(txt):
         if any(a <= m.start() < b for a, b in ajenas):
             continue
-        add('apendice-%s' % m.group(1), 'apendice')
+        add('apendice-%s' % m.group(1), 'apendice', m)
 
     # --- Figuras (antes que las tablas y las secciones: una
     #     figura tiene número de sección y no es una sección)
@@ -312,7 +325,7 @@ def citas(txt, ctx):
             continue
         figuras.add(fid)
         figuras.add(crudo.split('(')[0].strip().rstrip('.'))
-        add('figura:' + destino, 'figura')
+        add('figura:' + destino, 'figura', m)
 
     # --- Tablas (primero: consumen su propio patrón)
     tablas = set()
@@ -327,7 +340,7 @@ def citas(txt, ctx):
             # marcarlo como ya consumido o añadiría, además de la
             # arista a la tabla, otra a la sección del mismo número.
             tablas.add(crudo.split('(')[0].strip().rstrip('.'))
-        add('tabla:' + tid, 'tabla')
+        add('tabla:' + tid, 'tabla', m)
 
     # --- Secciones e incisos
     art_nums, sec_ids = ctx['art_nums'], ctx['sec_ids']
@@ -345,39 +358,77 @@ def citas(txt, ctx):
         # resolver al nodo más específico que exista
         target = full if full in sec_ids else '%d-%s' % (num, sec)
         if target in sec_ids:
-            add(target, 'seccion')
+            add(target, 'seccion', m)
         elif num in art_nums:
-            add('art:%d' % num, 'articulo')
+            add('art:%d' % num, 'articulo', m)
 
     # --- Artículos completos ("Artículos 500, 502 y 503")
     for m in RE_ART_REF.finditer(txt):
         for g in re.findall(r'\d{3}', m.group(1)):
             if int(g) in art_nums:
-                add('art:%d' % int(g), 'articulo')
+                add('art:%d' % int(g), 'articulo', m)
 
     # --- Parte X del Artículo N
     for m in RE_PART_REF.finditer(txt):
         if int(m.group(2)) in art_nums:
-            add('parte:%s:%s' % (m.group(2), m.group(1)), 'parte')
+            add('parte:%s:%s' % (m.group(2), m.group(1)), 'parte', m)
 
     # --- Capítulos
     for m in RE_CAP_REF.finditer(txt):
         if int(m.group(1)) in ctx['chapters']:
-            add('cap:%s' % m.group(1), 'capitulo')
+            add('cap:%s' % m.group(1), 'capitulo', m)
     return out
+
+
+def frase(partes, tramo, ancho=110):
+    """La frase de la norma donde aparece una cita, para enseñarla tal cual
+    (el mapa la muestra junto a cada «La citan» y «Cita a»). Devuelve
+    (texto, [inicio, fin] de la cita dentro de él).
+
+    El tramo es sobre las partes unidas con un espacio, como las lee
+    citas_en(); la frase se recorta dentro de su parte, de punto a punto, y
+    si es muy larga se deja `ancho` caracteres a cada lado de la cita,
+    cortando en un espacio y con «…»."""
+    ini, fin = tramo
+    base = 0
+    for p in partes:
+        if base <= ini <= base + len(p):
+            break
+        base += len(p) + 1
+    i, f = ini - base, min(fin - base, len(p))
+    # De punto a punto: «. » antes de la cita y el primer punto después.
+    a = max(p.rfind('. ', 0, i), p.rfind('; ', 0, i))
+    a = a + 2 if a >= 0 else 0
+    b = p.find('. ', f)
+    b = b + 1 if b >= 0 else len(p)
+    pre, post = '', ''
+    if i - a > ancho:
+        a = p.find(' ', i - ancho) + 1
+        pre = '…'
+    if b - f > ancho:
+        b = p.rfind(' ', f, f + ancho)
+        b = b if b > f else f + ancho
+        post = '…'
+    texto = pre + p[a:b].strip() + post
+    corrido = len(pre) + (len(p[a:b]) - len(p[a:b].lstrip()))
+    return texto, [i - a + corrido, f - a + corrido]
 
 
 def aristas(corpus, ctx):
     """Una arista por cada cita distinta (origen, destino, tipo), en orden de
-    documento. Una sección que se cita a sí misma no cuenta."""
+    documento. Una sección que se cita a sí misma no cuenta. Cada arista
+    lleva la frase de su primera aparición."""
     edges = []
     seen = set()
-    for src, txt in fuentes(corpus):
-        for dst, kind in citas(txt, ctx):
+    for src, partes in fuentes(corpus):
+        txt = ' '.join(partes)
+        for dst, kind, tramo in citas_en(txt, ctx):
             k = (src, dst, kind)
             if k not in seen and src != dst:
                 seen.add(k)
-                edges.append({'from': src, 'to': dst, 'type': kind})
+                texto, marca = frase(partes, tramo)
+                edges.append({'from': src, 'to': dst, 'type': kind,
+                              'frase': texto, 'marca': marca})
     return edges
 
 
