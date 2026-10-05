@@ -1,0 +1,4 @@
+# Herramientas de verificación (tools/verificar.sh), aparte de las de
+# extracción de requirements.txt. Fijadas por la misma razón: que la
+# verificación de hoy sea la de mañana.
+ruff==0.16.10

@@ -28,11 +28,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Instalar dependencias de extracción
+      - name: Instalar dependencias de extracción y verificación
         # La versión va fijada en requirements.txt, que explica por qué. No
         # instalar aquí un paquete suelto: se despegaría de lo que corre en
         # local y en las sesiones de Claude Code.
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt -r requirements-dev.txt
 
       - uses: actions/setup-node@v4
         with:
