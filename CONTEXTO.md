@@ -593,3 +593,18 @@ inventar ni descartar ninguno.
 - **Chromium está preinstalado** en `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`.
   Para medir geometría de tablas renderizadas hay que servir `site/dist` por HTTP
   con la ruta base `/NOM-001-SEDE-2012`: con `file://` no cargan los estilos.
+
+## Las skills de diseño
+
+`.claude/skills/` trae ocho skills de diseño de terceros (refero-design,
+ui-ux-pro-max y las de nextlevelbuilder), instaladas con `npx skills add` y
+registradas en `skills-lock.json`. Viven en el repo para que Claude Code las
+tenga en cada sesión; no son parte del sitio ni del extractor, y ni el linter
+ni la huella las tocan. `.gitattributes` las marca como código de terceros,
+así que GitHub no las cuenta en los lenguajes del repo y pliega sus diffs.
+
+- Actualizarlas: `npx skills update -p`, y revisar el diff antes de
+  confirmarlo: corren con los permisos del agente.
+- Restaurarlas desde el lock: `npx skills experimental_install` las deja en
+  `.agents/skills/`, idénticas a las del repo; hay que copiarlas a
+  `.claude/skills/`.
