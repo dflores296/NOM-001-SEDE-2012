@@ -134,3 +134,12 @@ ul.anot-items .lbl { font-family: var(--mono); font-size: 0.8rem; color: var(--a
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
 }
+
+/* Los subtítulos de los bloques de cierre se ven igual sea cual sea su nivel
+   (h2 en el Apéndice A, h3 donde cuelgan de un título). */
+/* `section.sec > .cierre-subtit` para ganarle a `section.sec > h2`, que es el
+   de los títulos de sección del articulado. */
+.cierre-subtit, section.sec > .cierre-subtit {
+  font-size: 1.17em; font-weight: 700; margin: 1em 0;
+  line-height: inherit; letter-spacing: inherit;
+}

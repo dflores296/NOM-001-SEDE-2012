@@ -61,6 +61,57 @@ prueba('Las páginas cargan sin errores de JavaScript, en escritorio y en teléf
   }
 });
 
+// ----------------------------------------------------------- accesibilidad
+
+prueba('Cada página tiene un solo contenido principal y el primer Tab ofrece saltar a él', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  for (const ruta of PAGINAS) {
+    await page.goto(ruta, { waitUntil: 'networkidle' });
+    const n = await page.$$eval('main#contenido', (ms) => ms.length);
+    afirmar(n === 1 && (await page.$$eval('main', (ms) => ms.length)) === 1, `${ruta}: ${n} main#contenido`);
+  }
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  await page.keyboard.press('Tab');
+  afirmar(await page.evaluate(() => document.activeElement?.matches('a.saltar')), 'el primer Tab no llega a «Saltar al contenido»');
+  afirmar(await page.isVisible('a.saltar'), 'el enlace no se ve al recibir el foco');
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(() => document.activeElement?.id === 'contenido');
+});
+
+prueba('Los encabezados no se saltan niveles', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  for (const ruta of PAGINAS) {
+    await page.goto(ruta, { waitUntil: 'networkidle' });
+    const saltos = await page.$$eval('h1, h2, h3, h4, h5, h6', (hs) => {
+      const out = [];
+      let prev = 0;
+      for (const h of hs) {
+        if (h.closest('[hidden], dialog, aside, .side, .toc')) continue;
+        const n = +h.tagName[1];
+        if (prev && n > prev + 1) out.push(`${h.tagName} «${h.textContent.trim().slice(0, 30)}» tras h${prev}`);
+        prev = n;
+      }
+      return out;
+    });
+    afirmar(!saltos.length, `${ruta}: ${saltos.join(' · ')}`);
+  }
+});
+
+prueba('Una tabla que se desliza se puede recorrer con el teclado', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(TELEFONO);
+  await page.goto('/art/430/#tabla-430-250', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  const caja = '#tabla-430-250 .tabla-scroll';
+  afirmar(await page.$eval(caja, (s) => s.tabIndex === 0 && s.getAttribute('role') === 'region'
+    && s.getAttribute('aria-label') === 'Tabla 430-250'), 'la caja no es una región enfocable con nombre');
+  await page.focus(caja);
+  await page.keyboard.press('ArrowRight');
+  await page.keyboard.press('ArrowRight');
+  // El desplazamiento con flechas puede ser animado: se espera a que avance.
+  await page.waitForFunction((c) => document.querySelector(c).scrollLeft > 0, caja, { timeout: 3000 })
+    .catch(() => { throw new Error('las flechas no la desplazan'); });
+});
+
 // ---------------------------------------------------------------- buscador
 
 prueba('El buscador entiende un código escrito pegado, sin paréntesis', async ({ nuevaPagina }) => {

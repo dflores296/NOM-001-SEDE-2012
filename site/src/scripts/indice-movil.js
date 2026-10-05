@@ -12,8 +12,9 @@ const enlaces = toc ? toc.querySelectorAll('a[href^="#"]') : [];
 if (enlaces.length > 1) {
   const titulo = toc.querySelector('h3')?.textContent.trim() || 'En esta página';
 
-  const barra = document.createElement('div');
+  const barra = document.createElement('nav');
   barra.className = 'indice-movil';
+  barra.setAttribute('aria-label', 'Índice de la página');
   barra.innerHTML = `
     <button type="button" class="im-arriba" aria-label="Volver arriba" title="Volver arriba" hidden>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

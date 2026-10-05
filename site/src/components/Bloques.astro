@@ -9,6 +9,11 @@ import { linkify, tablaPorId } from '../lib/nom.js';
 
 const { hito, origen } = Astro.props;
 
+// Un subtítulo cuelga del título del bloque si lo hay; si no (Apéndice A),
+// del de la página, así que es h2: un h3 directo bajo el h1 se saltaba un
+// nivel para quien navega por encabezados.
+const Sub = hito.bloques.some((b) => b.tipo === 'titulo') ? 'h3' : 'h2';
+
 // Los items sueltos se agrupan para que la lista numerada salga como lista y
 // no como nueve párrafos: las Notas de las Tablas del Capítulo 10 son una
 // enumeración de nueve puntos, y sin agruparlas se leían corridas.
@@ -34,7 +39,7 @@ for (const b of hito.bloques) {
   ) : b.tipo === 'titulo' ? (
     <h2 class="cierre-tit">{b.text}</h2>
   ) : b.tipo === 'subtitulo' ? (
-    <h3 class="cierre-subtit" set:html={linkify(b.text)} />
+    <Sub class="cierre-subtit" set:html={linkify(b.text)} />
   ) : (
     <p set:html={linkify(b.text)} />
   )

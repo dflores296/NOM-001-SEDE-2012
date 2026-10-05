@@ -76,6 +76,8 @@ for (const scroll of document.querySelectorAll('.tabla-scroll')) {
   caja.before(aviso);
 
   const fijas = columnasFijas(table);
+  const titulo = caja.closest('figure')?.querySelector('figcaption .tid')?.textContent.trim();
+  const nombre = titulo ? `Tabla ${titulo.replace(/^Tabla\s+/, '')}` : 'Tabla';
   let desborda = false;
 
   // Al cambiar el ancho: si desborda y dónde se queda cada celda fija (la
@@ -83,6 +85,17 @@ for (const scroll of document.querySelectorAll('.tabla-scroll')) {
   const medir = () => {
     desborda = scroll.scrollWidth > scroll.clientWidth + 1;
     aviso.hidden = !desborda;
+    // Una caja que se desliza tiene que poder recibir el foco: con el
+    // teclado, las flechas la recorren de lado. Solo las que desbordan.
+    if (desborda) {
+      scroll.tabIndex = 0;
+      scroll.setAttribute('role', 'region');
+      scroll.setAttribute('aria-label', nombre);
+    } else {
+      scroll.removeAttribute('tabindex');
+      scroll.removeAttribute('role');
+      scroll.removeAttribute('aria-label');
+    }
     for (const c of fijas) { c.classList.remove('fija'); c.style.left = ''; }
     // Las líneas cambian de modelo con columnas fijas (articulo.css), y eso
     // mueve los anchos un píxel: se mide ya con el modelo que va a quedar.

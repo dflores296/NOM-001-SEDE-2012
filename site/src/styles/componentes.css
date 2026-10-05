@@ -66,8 +66,10 @@ footer.bot {
 }
 .pie { display: grid; grid-template-columns: minmax(0, 2fr) 1fr 1fr; gap: 3rem; }
 .pie-marca p { margin: 1rem 0 0; max-width: 52ch; line-height: 1.6; }
+/* Un enlace dentro de un párrafo se distingue por algo más que el color. */
+.pie-marca p a, .aparte a, .hero p a, .tabla-pie a { text-decoration: underline; text-underline-offset: 2px; }
 .pie-lema { display: block; margin-top: 0.3rem; font-size: 0.8125rem; color: var(--text-faint); }
-.pie-col h4 { margin: 0.3rem 0 0.8rem; font-size: 0.8125rem; font-weight: 600; color: var(--text); }
+.pie-col h2 { margin: 0.3rem 0 0.8rem; font-size: 0.8125rem; font-weight: 600; color: var(--text); }
 .pie-col a { display: block; padding: 0.2rem 0; color: var(--text-dim); }
 .pie-col a:hover { color: var(--text); text-decoration: none; }
 .pie-legal {

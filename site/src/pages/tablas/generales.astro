@@ -16,7 +16,7 @@ const cap10 = tablas.filter((t) => t.article == null && !t.apendice);
   title="Capítulo 10, Tablas generales — NOM-001-SEDE-2012"
   desc={`Las ${cap10.length} tablas generales del Capítulo 10 de la NOM-001-SEDE-2012.`}
 >
-  <div class="wrap">
+  <main id="contenido" tabindex="-1" class="wrap">
     <div class="hero">
       <p class="migaja"><a href={`${base}/tablas/`}>Tablas</a> · Capítulo 10</p>
       <h1>Tablas generales</h1>
@@ -34,5 +34,5 @@ const cap10 = tablas.filter((t) => t.article == null && !t.apendice);
     <div class="chap">
       <Bloques hito={capitulo10} origen={`${base}/tablas/generales/`} />
     </div>
-  </div>
+  </main>
 </Base>

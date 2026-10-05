@@ -94,7 +94,7 @@ const figs = (figurasPorArticulo.get(a.num) || []).flatMap((f) =>
     </aside>
 
     <!-- ------------------------------------------------------------ cuerpo -->
-    <main>
+    <main id="contenido" tabindex="-1">
       <div class="art-head">
         <div class="crumb">
           <a href={`${base}/#cap${a.chapter}`}>Capítulo {a.chapter} · {chap?.title}</a>
@@ -224,7 +224,7 @@ const figs = (figurasPorArticulo.get(a.num) || []).flatMap((f) =>
     </main>
 
     <!-- ------------------------------------------- índice de este artículo -->
-    <aside class="toc">
+    <aside class="toc" aria-label="En esta página">
       <h3>En esta página</h3>
       {a.sections.map((s) => (
         <a href={`#${s.id}`}><span class="mono">{s.id}</span> {s.title}</a>
