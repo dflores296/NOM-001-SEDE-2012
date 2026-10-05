@@ -20,13 +20,17 @@ const ATAJOS = [
 
 <Base title="Página no encontrada — NOM-001-SEDE-2012" desc="Esta dirección no existe en la guía.">
   <main id="contenido" tabindex="-1" class="wrap pag-404">
-    <div class="hero">
-      <p class="migaja">Error 404</p>
-      <h1>Esta página no existe</h1>
-      <p>
-        La dirección que abriste no lleva a ninguna página de la guía: puede ser un enlace viejo
-        o mal escrito. Busca lo que necesitabas o empieza por una de las páginas de abajo.
-      </p>
+    <div class="hero hero-404">
+      <div>
+        <p class="migaja">Error 404</p>
+        <h1>Esta página no existe</h1>
+        <p>
+          La dirección que abriste no lleva a ninguna página de la guía: puede ser un enlace viejo
+          o mal escrito. Busca lo que necesitabas o empieza por una de las páginas de abajo.
+        </p>
+      </div>
+      {/* Decorativa: el título ya dice lo que pasó. */}
+      <img class="ilustracion" src={`${base}/ui/404.png`} alt="" width="512" height="512" />
     </div>
 
     <p class="sugerencia" hidden></p>
@@ -71,6 +75,14 @@ const ATAJOS = [
 
 <style>
   .pag-404 { padding-bottom: 5rem; }
+  .hero-404 { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2.5rem; align-items: center; }
+  .hero-404 > div > p { margin: 0; font-size: 1.125rem; line-height: 1.6; color: var(--text-dim); max-width: 64ch; }
+  .hero-404 > div > p.migaja { font-size: 0.8125rem; }
+  .ilustracion { width: 220px; height: auto; }
+  @media (max-width: 760px) {
+    .hero-404 { grid-template-columns: 1fr; gap: 1rem; }
+    .ilustracion { order: -1; width: 128px; }
+  }
   .sugerencia {
     margin: 0 0 1.2rem; padding: 0.8rem 1rem; max-width: 600px;
     border: 1px solid var(--card-border); border-radius: var(--radius-xl);
