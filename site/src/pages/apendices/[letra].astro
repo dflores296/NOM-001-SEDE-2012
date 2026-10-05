@@ -22,7 +22,7 @@ const next = i < apendices.length - 1 ? apendices[i + 1] : null;
   desc={`Apéndice ${h.letra} de la NOM-001-SEDE-2012${h.titulo ? ': ' + h.titulo : ''}. ${tabs.length} tablas.`}
 >
   <div class="wrap cols">
-    <aside class="side">
+    <aside class="side" aria-label="Apéndices de la norma">
       <h3>Apéndices de la norma</h3>
       {apendices.map((x) => (
         <a href={`${base}/apendices/${x.letra}/`} class={x.letra === h.letra ? 'on' : ''}>
@@ -31,7 +31,7 @@ const next = i < apendices.length - 1 ? apendices[i + 1] : null;
       ))}
     </aside>
 
-    <main>
+    <main id="contenido" tabindex="-1">
       <div class="art-head">
         <div class="crumb">
           <a href={`${base}/apendices/`}>Apéndices de la norma</a>
@@ -83,7 +83,7 @@ const next = i < apendices.length - 1 ? apendices[i + 1] : null;
       </nav>
     </main>
 
-    <aside class="toc">
+    <aside class="toc" aria-label="En este apéndice">
       <h3>En este apéndice</h3>
       {tabs.map((t) => (
         <a href={`#${tablaSlug(t.id)}`}><span class="mono">{rotuloTabla(t)}</span></a>

@@ -59,6 +59,9 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
     </script>
   </head>
   <body>
+    {/* Para quien navega con teclado o lector de pantalla: el primer Tab
+        ofrece brincarse la cabecera y llegar directo al contenido. */}
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
     <header class="top">
       <div class="barra">
         <a class="brand" href={`${base}/`}>NOM-001-SEDE-2012</a>
@@ -132,7 +135,7 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
           </p>
         </div>
         <div class="pie-col">
-          <h4>Consulta</h4>
+          <h2>Consulta</h2>
           {PESTANAS.filter((p) => p.href !== '/observaciones/').map((p) => (
             <a href={`${base}${p.href}`} class={p.escritorio ? 'solo-escritorio' : undefined}>{p.txt}</a>
           ))}
@@ -140,7 +143,7 @@ const REPO = 'https://github.com/dflores296/NOM-001-SEDE-2012';
           <a href={`${base}/cierre/`}>Títulos de cierre</a>
         </div>
         <div class="pie-col">
-          <h4>Proyecto</h4>
+          <h2>Proyecto</h2>
           <a href={`${base}/observaciones/`}>Reportar una observación</a>
           <a href={REPO}>Código en GitHub</a>
           <a href={`${REPO}/issues`}>Issues</a>

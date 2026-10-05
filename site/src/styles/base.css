@@ -67,3 +67,12 @@ code, .mono, .rid, .art-num, .sid, .lbl, a.xref, .tid,
    que es la que tiene las tablas. */
 .wrap.cols { max-width: none; }
 header.top .wrap { max-width: none; }
+
+/* «Saltar al contenido»: fuera de la vista hasta que recibe el foco. */
+.saltar {
+  position: absolute; left: 16px; top: -100px; z-index: 100;
+  padding: 0.6rem 0.9rem; border: 2px solid var(--accent); border-radius: var(--radius);
+  background: var(--panel); color: var(--text); font-weight: 600;
+}
+.saltar:focus { top: 12px; }
+#contenido:focus { outline: none; }

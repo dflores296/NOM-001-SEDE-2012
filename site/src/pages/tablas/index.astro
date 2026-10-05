@@ -36,7 +36,7 @@ const verificadas = tablas.filter((t) => t.verificada).length;
   title="Tablas — NOM-001-SEDE-2012"
   desc={`Índice de las ${tablas.length} tablas de la NOM-001-SEDE-2012, por capítulo.`}
 >
-  <div class="wrap">
+  <main id="contenido" tabindex="-1" class="wrap">
     <div class="hero">
       <h1>Tablas</h1>
       <p>Las {tablas.length} tablas de la norma, por capítulo.</p>
@@ -110,5 +110,5 @@ const verificadas = tablas.filter((t) => t.verificada).length;
         ))}
       </div>
     </div>
-  </div>
+  </main>
 </Base>

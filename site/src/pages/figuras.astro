@@ -53,7 +53,7 @@ const transcritas = figuras.filter((f) => f.transcripcion?.length).length;
   title="Figuras — NOM-001-SEDE-2012"
   desc={`Índice de las ${numeradas.length} figuras de la NOM-001-SEDE-2012, por capítulo.`}
 >
-  <div class="wrap">
+  <main id="contenido" tabindex="-1" class="wrap">
     <div class="hero">
       <h1>Figuras</h1>
       <p>
@@ -134,5 +134,5 @@ const transcritas = figuras.filter((f) => f.transcripcion?.length).length;
         ))}
       </div>
     </div>
-  </div>
+  </main>
 </Base>
