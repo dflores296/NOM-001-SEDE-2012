@@ -541,6 +541,59 @@ prueba('En el teléfono, el mapa no carga la librería 3D', async ({ nuevaPagina
   );
 });
 
+prueba(
+  'Glosario: la letra y el texto filtran, y un enlace quita el filtro',
+  async ({ nuevaPagina }) => {
+    const { page, errores } = await nuevaPagina(TELEFONO);
+    await page.goto('/glosario/', { waitUntil: 'networkidle' });
+    const visibles = () =>
+      page.$$eval('.def', (ds) =>
+        ds.filter((d) => !d.hidden).map((d) => d.querySelector('dt').firstChild.data.trim())
+      );
+    const cuenta = () => page.textContent('.glos-cuenta span');
+    afirmar((await visibles()).length === 185, 'no empieza con las 185');
+
+    // Letra: solo términos que empiezan con ella; las letras sin términos, apagadas.
+    await page.click('.glos-letras button[data-letra="A"]');
+    const conA = await visibles();
+    afirmar(conA.length === 23 && conA.every((t) => /^[AÁ]/.test(t)), `con A: ${conA.length}`);
+    afirmar(/^23 de 185/.test(await cuenta()), `cuenta: ${await cuenta()}`);
+    afirmar(await page.$eval('.glos-letras [data-letra="K"]', (b) => b.disabled), 'K activa');
+    afirmar(
+      await page.$eval('#parte-B', (s) => s.hidden),
+      'la Parte B sin términos con A sigue visible'
+    );
+
+    // Texto sin acentos: «proteccion» encuentra «protección», junto con la letra.
+    await page.fill('.glos-filtro input', 'proteccion');
+    const ambos = await visibles();
+    afirmar(ambos.length > 0 && ambos.length < 23, `A + proteccion: ${ambos.length}`);
+    await page.click('.glos-letras button[data-letra="A"]');
+    const soloTexto = await page.$$eval('.def:not([hidden])', (ds) =>
+      ds.map((d) =>
+        d.textContent
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+      )
+    );
+    afirmar(
+      soloTexto.length > ambos.length && soloTexto.every((t) => t.includes('proteccion')),
+      `proteccion: ${soloTexto.length}`
+    );
+
+    // Un ancla a una definición escondida quita el filtro.
+    await page.fill('.glos-filtro input', 'zzz');
+    afirmar((await cuenta()) === 'Ninguna definición coincide.', `vacío: ${await cuenta()}`);
+    await page.evaluate(() => {
+      location.hash = 'ampacidad';
+    });
+    await page.waitForFunction(() => !document.getElementById('ampacidad').hidden);
+    afirmar((await page.inputValue('.glos-filtro input')) === '', 'el campo no se limpió');
+    afirmar(errores.length === 0, errores.join(' | '));
+  }
+);
+
 // ---------------------------------------------------------------- correr
 
 const { url, cerrar } = await servir(DIST);
