@@ -1,0 +1,12 @@
+# Linter de los scripts de tools/ (python3 -m ruff check tools/). Solo lo que
+# es un error de verdad —un nombre sin definir, un import que sobra, un error
+# de sintaxis—, no estilo: el código se lee como está escrito y un cambio de
+# forma en el extractor es un riesgo sin ganancia.
+#
+# Fuera quedó bugbear (B): su regla de variables de ciclo sin usar marca el
+# `kind` de LectorDeArticulo.inciso, que sí se usa después del ciclo.
+target-version = "py311"
+extend-exclude = [".claude", "site"]
+
+[lint]
+select = ["F", "E9"]

@@ -12,7 +12,7 @@ CONSERVA mayúsculas: eso distingue un encabezado ("ARTICULO 250") de una
 referencia en prosa ("el Artículo 250").
 """
 
-import json, re, unicodedata, sys
+import re, unicodedata, sys
 from collections import OrderedDict, defaultdict
 from comun import unaccent
 

@@ -5,13 +5,18 @@
 #
 #     bash tools/verificar.sh
 #
-# Requiere las dependencias ya instaladas: pip install -r requirements.txt,
-# npm ci dentro de site/ y el Chromium de Playwright (npx playwright install
-# chromium, también dentro de site/).
+# Requiere las dependencias ya instaladas: pip install -r requirements.txt
+# -r requirements-dev.txt, npm ci dentro de site/ y el Chromium de Playwright
+# (npx playwright install chromium, también dentro de site/).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 paso() { printf '\n== %s\n' "$1"; }
+
+# Primero lo más rápido: un nombre sin definir o un import que sobra en los
+# scripts se ve aquí en un segundo, antes de regenerar nada. Ver ruff.toml.
+paso 'Revisar el código de tools/'
+python3 -m ruff check tools/
 
 # El corpus se regenera desde el PDF en cada publicación: así el sitio nunca
 # se despega de la fuente, y si un cambio en el parser rompe algo, la
