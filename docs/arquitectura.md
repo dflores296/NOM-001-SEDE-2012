@@ -30,7 +30,7 @@ python3 tools/extract_index.py  NOM-001-SEDE-2012.pdf INDICE.txt
 python3 tools/build_tables.py   NOM-001-SEDE-2012.pdf data/   # antes que el corpus
 python3 tools/build_corpus.py   NOM-001-SEDE-2012.pdf data/
 python3 tools/build_graph.py    data/
-python3 tools/build_search.py   data/ site/public/data/
+python3 tools/build_search.py   data/ site/src/generado/
 python3 tools/build_revision.py data/ REVISION-TABLAS.md
 python3 tools/build_cifras.py   data/ README.md
 python3 tools/check_corpus.py   data/     # falla si el parseo se degrada

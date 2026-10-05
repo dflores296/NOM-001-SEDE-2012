@@ -504,9 +504,10 @@ python3 tools/build_redirects.py /tmp/antes.json data/corpus.json \
         site/public/ids-retirados.json
 ```
 
-Va en `site/public/` y no en `site/public/data/` **a propósito**: ese directorio
-está en `.gitignore` porque `build_search.py` lo regenera en cada publicación, así
-que un archivo puesto ahí existiría en local y desaparecería en CI.
+Va en `site/public/`, versionado, **a propósito**: lo que genera el pipeline
+(`site/src/generado/`, de `build_search.py`) está en `.gitignore` y se regenera
+en cada publicación, así que un archivo puesto ahí existiría en local y
+desaparecería en CI.
 
 ## Pendientes
 

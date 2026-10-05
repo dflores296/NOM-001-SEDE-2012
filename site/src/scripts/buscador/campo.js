@@ -1,6 +1,6 @@
 // Los campos de búsqueda de la página: el de la cabecera, en todas, y el
 // grande de la portada. Cada uno con su lista de resultados y su teclado.
-import { buscar, listo, load } from './indice.js';
+import { buscar, conFragmentos, fragmentos, listo, load } from './indice.js';
 import { ETIQUETA, escapeHtml, href, itemHtml } from './resultados.js';
 
 // Un campo de búsqueda con su lista de resultados. Hay uno en el
@@ -55,7 +55,19 @@ function conectar(input, box) {
         box.classList.add('open');
       }
       const list = await buscar(q);
-      if (input.value.trim() === q) render(list, q);
+      if (input.value.trim() !== q) return;
+      render(list, q);
+      // Con señal lenta los fragmentos llegan después que los resultados:
+      // cuando llegan, se vuelve a pintar la misma lista, ya con ellos, y
+      // sin perder el resultado que se tenía seleccionado con las flechas.
+      if (!conFragmentos()) {
+        await fragmentos();
+        if (input.value.trim() !== q || !box.classList.contains('open')) return;
+        const antes = sel;
+        render(await buscar(q), q);
+        const items = box.querySelectorAll('a');
+        if (antes >= 0 && items[antes]) { sel = antes; items[sel].classList.add('sel'); }
+      }
     }, 110);
   });
 

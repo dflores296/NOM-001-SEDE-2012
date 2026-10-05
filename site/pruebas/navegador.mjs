@@ -173,7 +173,7 @@ prueba('Con «ampacidad» la Tabla 310-15(b)(16) encabeza las tablas', async ({ 
 prueba('Mientras se arma el índice, el buscador avisa que se está preparando', async ({ nuevaPagina }) => {
   const { page } = await nuevaPagina(TELEFONO);
   // Como en un teléfono con mala señal: el índice tarda en llegar.
-  await page.route('**/data/search.json', async (ruta) => {
+  await page.route('**/data/indice.json', async (ruta) => {
     await new Promise((r) => setTimeout(r, 1500));
     await ruta.continue();
   });
@@ -182,6 +182,20 @@ prueba('Mientras se arma el índice, el buscador avisa que se está preparando',
   await page.waitForSelector('.hero-buscar .results.open .cargando');
   await page.waitForSelector('.hero-buscar .results.open a', { timeout: 15000 });
   afirmar(!(await page.$('.hero-buscar .results .cargando')), 'el aviso se quedó con los resultados');
+});
+
+prueba('Con señal lenta, los resultados salen antes que los fragmentos y estos llegan después', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(TELEFONO);
+  // Los textos de los fragmentos tardan: los resultados no deben esperarlos.
+  await page.route('**/data/textos.json', async (ruta) => {
+    await new Promise((r) => setTimeout(r, 2000));
+    await ruta.continue();
+  });
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.fill('.hero-buscar input', 'puesta a tierra');
+  await page.waitForSelector('.hero-buscar .results.open a', { timeout: 15000 });
+  afirmar(!(await page.$('.hero-buscar .results .rsnip')), 'los fragmentos llegaron antes que los textos');
+  await page.waitForSelector('.hero-buscar .results .rsnip mark', { timeout: 15000 });
 });
 
 prueba('Una búsqueda sin coincidencias lo dice', async ({ nuevaPagina }) => {
