@@ -34,7 +34,8 @@ function destinoDe(href) {
 async function resultados(page, q, caja = '.search-top') {
   await page.fill(`${caja} input`, '');
   await page.fill(`${caja} input`, q);
-  await page.waitForSelector(`${caja} .results.open`);
+  // La primera vez se abre con el aviso de que el índice se está armando.
+  await page.waitForSelector(`${caja} .results.open:not(:has(.cargando))`);
   await page.waitForTimeout(250);
   return page.$$eval(`${caja} .results a`, (as) => as.map((a) => ({
     href: a.getAttribute('href'),
@@ -107,6 +108,29 @@ prueba('Enter lleva al primer resultado', async ({ nuevaPagina }) => {
   const [primero] = await resultados(page, '250-32');
   await Promise.all([page.waitForURL((u) => u.pathname.includes('/art/250')), page.press('.search-top input', 'Enter')]);
   afirmar(primero.href.includes('/art/250'), `el primer resultado era ${primero.href}`);
+});
+
+prueba('Con «ampacidad» la Tabla 310-15(b)(16) encabeza las tablas', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  for (const q of ['ampacidad', 'ampacidades']) {
+    const tablas = (await resultados(page, q)).filter((r) => r.rid.startsWith('Tabla'));
+    afirmar(tablas[0]?.rid === 'Tabla 310-15(b)(16)', `${q}: ${tablas.map((r) => r.rid).join(', ')}`);
+  }
+});
+
+prueba('Mientras se arma el índice, el buscador avisa que se está preparando', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(TELEFONO);
+  // Como en un teléfono con mala señal: el índice tarda en llegar.
+  await page.route('**/data/search.json', async (ruta) => {
+    await new Promise((r) => setTimeout(r, 1500));
+    await ruta.continue();
+  });
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.fill('.hero-buscar input', 'acometida');
+  await page.waitForSelector('.hero-buscar .results.open .cargando');
+  await page.waitForSelector('.hero-buscar .results.open a', { timeout: 15000 });
+  afirmar(!(await page.$('.hero-buscar .results .cargando')), 'el aviso se quedó con los resultados');
 });
 
 prueba('Una búsqueda sin coincidencias lo dice', async ({ nuevaPagina }) => {

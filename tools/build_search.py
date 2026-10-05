@@ -23,7 +23,9 @@ bits --la Excepción de 922-12(a)(2), por ejemplo--.
 Las 225 tablas se indexan aparte, con `kind: "tabla"`: antes no aparecían en
 absoluto en la búsqueda —"ampacidad conductores cobre" no encontraba la
 310-15(b)(16) aunque sea la tabla más citada de la norma—, porque
-flat_text() solo recorre el árbol de incisos y las tablas no viven ahí.
+flat_text() solo recorre el árbol de incisos y las tablas no viven ahí. Cada
+tabla lleva `usos`, las veces que la norma la cita (de grafo.json, así que
+build_graph va antes), para que el buscador suba un poco las más citadas.
 """
 import json, os, re, sys
 
@@ -91,7 +93,7 @@ def docs_de_definiciones(defs):
     } for d in defs]
 
 
-def docs_de_tablas(tablas, titulo_articulo):
+def docs_de_tablas(tablas, titulo_articulo, uso):
     docs = []
     for t in tablas:
         # Prefijo para no chocar con ids de sección o de glosario: una tabla
@@ -112,6 +114,11 @@ def docs_de_tablas(tablas, titulo_articulo):
             'artTitle': ('Apéndice ' + t['apendice'] if t.get('apendice')
                          else titulo_articulo.get(t.get('article'), 'Capítulo 10')),
             'text': flat_text_tabla(t),
+            # Cuántas veces la cita el texto de la norma (uso_tablas de
+            # grafo.json). El buscador sube un poco las más citadas: con el
+            # mismo término, la 250-122 importa más que una tabla que nadie
+            # cita.
+            'usos': uso.get(t['id'], {}).get('usos', 0),
         })
     return docs
 
@@ -191,12 +198,13 @@ def main():
     corpus = json.load(open(os.path.join(src, 'corpus.json')))
     defs = json.load(open(os.path.join(src, 'definiciones.json')))
     tablas = json.load(open(os.path.join(src, 'tablas.json')))
+    uso = json.load(open(os.path.join(src, 'grafo.json')))['uso_tablas']
     titulo_articulo = {a['num']: a['title'] for a in corpus['articles']}
 
     figuras = docs_de_figuras(corpus, titulo_articulo)
     cierre = docs_del_cierre(corpus)
     docs = (docs_de_secciones(corpus) + docs_de_definiciones(defs)
-            + docs_de_tablas(tablas, titulo_articulo) + figuras + cierre)
+            + docs_de_tablas(tablas, titulo_articulo, uso) + figuras + cierre)
     verificar_ids_unicos(docs)
 
     out = os.path.join(dst, 'search.json')

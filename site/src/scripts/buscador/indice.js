@@ -4,9 +4,11 @@
 // el difuso.
 import MiniSearch from 'minisearch';
 import { base } from '../base.js';
+import { sinAcentos, termino } from './terminos.js';
 
 let mini = null;
 let allDocs = null;
+let docPorId = null;
 // normCodigo(idDeInciso) -> { doc: seccionQueLoContiene, id: idDeInciso }.
 // Cada inciso ("310-15(a)", "310-15(b)(16)"...) no tiene documento
 // propio en el índice de MiniSearch -se indexa a nivel de sección
@@ -15,19 +17,6 @@ let allDocs = null;
 // saltar directo a esa ancla exacta en vez de solo al principio de
 // la sección.
 let incisoPorCn = null;
-
-// MiniSearch no toca acentos por defecto: "electrica" no encontraba
-// "eléctricas" -acento Y plural a la vez agotan de sobra el margen de
-// fuzzy:0.15-, y en una norma llena de "eléctrico/a", "protección",
-// "sección", "tensión" eso pierde resultados reales con la forma en
-// que la gente escribe desde el celular. Normaliza con la MISMA regla
-// que unaccent() en tools/build_corpus.py (NFD + quitar las marcas
-// combinantes, así que "ñ" cae en "n" igual que ahí). Vive a nivel de
-// módulo porque la usan tanto el índice (processTerm) como el
-// resaltado de fragmentos más abajo.
-const sinAcentos = (s) => Array.from(s.normalize('NFD'))
-  .filter((c) => { const cp = c.codePointAt(0); return cp < 0x0300 || cp > 0x036f; })
-  .join('');
 
 // MiniSearch corta cada id en tokens por cada '-', '(', ')' y '.', así
 // que "310-15(b)(16)" queda como CUATRO piezas sueltas: "310" "15" "b"
@@ -115,6 +104,7 @@ export function load() {
         }
       }
       allDocs = docs;
+      docPorId = new Map(docs.map((d) => [d.id, d]));
       const ms = new MiniSearch({
         fields: ['id', 'title', 'text'],
         // 'text' se guarda para poder recortar un fragmento con la
@@ -122,9 +112,16 @@ export function load() {
         // se descartaba, así que un resultado no decía DÓNDE dentro
         // de la sección apareció lo que buscaste.
         storeFields: ['id', 'title', 'art', 'artTitle', 'kind', 'tid', 'sinNumero',
-                      'apendice', 'text', 'fid', 'ancla', 'cid'],
-        processTerm: (term) => sinAcentos(term.toLowerCase()),
-        searchOptions: { boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15 },
+                      'apendice', 'text', 'fid', 'ancla', 'cid', 'usos'],
+        processTerm: termino,
+        searchOptions: {
+          boost: { id: 6, title: 3 }, prefix: true, fuzzy: 0.15,
+          // Entre tablas que coinciden igual, la que la norma cita más va
+          // antes: con "puesta a tierra", la 250-122 (24 citas) por delante
+          // de la 250-3 (ninguna). El empuje es suave -una tabla citada 24
+          // veces vale 2.2 veces lo mismo, no 24- para no tapar secciones.
+          boostDocument: (id, term, f) => (f?.kind === 'tabla' ? 1 + Math.log2(1 + (f.usos || 0)) / 4 : 1),
+        },
       });
       ms.addAll(docs);
       mini = ms;
@@ -132,6 +129,40 @@ export function load() {
   }
   return loading;
 }
+
+// true cuando el índice ya está armado. La primera búsqueda descarga y
+// arma unos 4 MB de texto, y en un teléfono eso son varios segundos: el
+// campo lo usa para avisar que se está preparando en vez de quedarse mudo.
+export const listo = () => mini !== null;
+
+// Lo que casi siempre se quiere ver al buscar estas palabras, aunque su
+// título largo lo mande lejos en el orden por relevancia: la tabla de
+// ampacidades de todos los días. No es un sinónimo -no dice que dos
+// términos sean lo mismo-, solo sube una tabla que ya coincide. Va
+// primero dentro de su tipo.
+const DESTACADAS = {
+  ampacidad: ['tabla:310-15(b)(16)'],
+};
+
+function destacar(lista, consulta) {
+  const ids = consulta.split(/\s+/).flatMap((w) => DESTACADAS[termino(w)] || []);
+  for (const id of new Set(ids)) {
+    const doc = docPorId.get(id);
+    if (!doc) continue;
+    const i = lista.findIndex((r) => r.id === id);
+    const propio = i >= 0 ? lista.splice(i, 1)[0] : { ...doc, score: 0 };
+    const j = lista.findIndex((r) => r.kind === propio.kind);
+    if (j < 0) { lista.push(propio); continue; }
+    propio.score = Math.max(propio.score, lista[j].score);
+    lista.splice(j, 0, propio);
+  }
+}
+
+// Cuántos resultados de cada tipo. Antes eran los primeros 25 de todos
+// juntos, y como las secciones y las definiciones suelen puntuar más que
+// las tablas -títulos cortos contra títulos de tres renglones-, una
+// búsqueda como "ampacidad" llenaba la lista sin mostrar ni una tabla.
+const CUPO = { sec: 10, tabla: 6, def: 5, fig: 3, cierre: 3 };
 
 // Consulta completa: primero las coincidencias de código, que para
 // "310-15b16" o "310-15a" son la respuesta exacta que MiniSearch por sí
@@ -147,5 +178,7 @@ export async function buscar(q) {
     vistos.add(r.id);
     combinados.push(r);
   }
-  return combinados.slice(0, 25);
+  destacar(combinados, q);
+  const cuenta = {};
+  return combinados.filter((r) => (cuenta[r.kind] = (cuenta[r.kind] || 0) + 1) <= (CUPO[r.kind] ?? 3));
 }

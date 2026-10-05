@@ -1,6 +1,6 @@
 // Los campos de búsqueda de la página: el de la cabecera, en todas, y el
 // grande de la portada. Cada uno con su lista de resultados y su teclado.
-import { buscar, load } from './indice.js';
+import { buscar, listo, load } from './indice.js';
 import { ETIQUETA, escapeHtml, href, itemHtml } from './resultados.js';
 
 // Un campo de búsqueda con su lista de resultados. Hay uno en el
@@ -48,7 +48,14 @@ function conectar(input, box) {
         box.classList.remove('open');
         return;
       }
-      render(await buscar(q), q);
+      // La primera vez el índice tarda: sin este aviso la lista se quedaba
+      // cerrada varios segundos y parecía que el buscador no servía.
+      if (!listo()) {
+        box.innerHTML = '<div class="cargando" role="status">Preparando el buscador… la primera búsqueda tarda unos segundos.</div>';
+        box.classList.add('open');
+      }
+      const list = await buscar(q);
+      if (input.value.trim() === q) render(list, q);
     }, 110);
   });
 

@@ -2,6 +2,7 @@
 // texto con lo buscado resaltado.
 import { defSlug, tablaSlug } from '../../lib/slug.js';
 import { base } from '../base.js';
+import { sinAcentos, termino } from './terminos.js';
 
 // El Artículo 100 no tiene secciones numeradas: sus 185 definiciones
 // viven en el glosario. Sin este desvío, buscar "ampacidad" llevaba a
@@ -66,11 +67,17 @@ function patronConAcentos(palabra) {
 // palabra resaltada. Antes un resultado solo mostraba id + título: si
 // el término aparecía en medio de un párrafo largo, no había forma de
 // saber si de verdad decía lo que buscabas sin abrir la sección.
+//
+// Cada palabra se busca por su raíz, la misma con la que la compara el
+// índice (terminos.js), y se resalta completa: buscar "ampacidades"
+// encuentra el texto por "ampacidad", y así también se marca.
 function fragmento(texto, q) {
   if (!texto) return '';
   const todas = q.split(/\s+/).filter(Boolean);
   if (!todas.length) return '';
-  const palabras = todas.filter((w) => w.length > 1);
+  const raiz = (w) => termino(w) ?? sinAcentos(w.toLowerCase());
+  const patron = (w) => `${patronConAcentos(raiz(w))}[\\p{L}\\p{N}]*`;
+  const palabras = todas.filter((w) => w.length > 1 && termino(w) !== null);
   if (!palabras.length) return '';
 
   // Para "puesta a tierra" queremos la FRASE completa resaltada de
@@ -79,18 +86,18 @@ function fragmento(texto, q) {
   // como frase (todas las palabras, unidas por \s+ tal como se
   // escribieron) y solo si no aparece así, literalmente, en el texto
   // se cae al resaltado palabra por palabra de antes.
-  const fraseSrc = todas.map(patronConAcentos).join('\\s+');
-  const mFrase = todas.length > 1 ? new RegExp(fraseSrc, 'i').exec(texto) : null;
+  const fraseSrc = todas.map(patron).join('\\s+');
+  const mFrase = todas.length > 1 ? new RegExp(fraseSrc, 'iu').exec(texto) : null;
 
-  const altPalabras = palabras.map(patronConAcentos).join('|');
-  const m = mFrase || new RegExp(altPalabras, 'i').exec(texto);
+  const altPalabras = palabras.map(patron).join('|');
+  const m = mFrase || new RegExp(altPalabras, 'iu').exec(texto);
   if (!m) return '';
   const ANTES = 40, DESPUES = 90;
   const ini = Math.max(0, m.index - ANTES);
   const fin = Math.min(texto.length, m.index + m[0].length + DESPUES);
   const recorte = escapeHtml(texto.slice(ini, fin));
-  const patron = mFrase ? fraseSrc : altPalabras;
-  const resaltado = recorte.replace(new RegExp(patron, 'gi'), '<mark>$&</mark>');
+  const elegido = mFrase ? fraseSrc : altPalabras;
+  const resaltado = recorte.replace(new RegExp(elegido, 'giu'), '<mark>$&</mark>');
   return (ini > 0 ? '…' : '') + resaltado + (fin < texto.length ? '…' : '');
 }
 
