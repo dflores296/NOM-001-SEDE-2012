@@ -40,7 +40,15 @@
 .results .rsn { display: block; font-size: 0.75rem; color: var(--text-faint); }
 .results .rsnip { display: block; margin-top: 0.25rem; font-size: 0.8rem; color: var(--text-dim); line-height: 1.4; }
 .results mark { background: var(--accent-soft); color: var(--text); border-radius: 2px; padding: 0 0.1em; font-weight: 650; }
-.results .empty { padding: 0.9rem; color: var(--text-faint); font-size: 0.875rem; }
+.results .empty, .results .cargando { padding: 0.9rem; color: var(--text-faint); font-size: 0.875rem; }
+/* Mientras se arma el índice: un punto que late junto al aviso. */
+.results .cargando::before {
+  content: ''; display: inline-block; width: 0.5rem; height: 0.5rem; margin-right: 0.5rem;
+  border-radius: 50%; background: var(--accent); vertical-align: 0.05em;
+  animation: latir 1s ease-in-out infinite alternate;
+}
+@keyframes latir { from { opacity: 0.25; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .results .cargando::before { animation: none; } }
 
 .results .rgroup + .rgroup { border-top: 1px solid var(--border); }
 .results .rghead {
