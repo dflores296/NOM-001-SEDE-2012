@@ -111,7 +111,7 @@
 
 /* ------------------------------------------------------------- abajo */
 .mapa-guia, .mapa-inicio {
-  position: absolute; left: 50%; bottom: 58px; transform: translateX(-50%); z-index: 3; margin: 0;
+  position: absolute; left: 50%; bottom: calc(var(--ley-alto, 28px) + 30px); transform: translateX(-50%); z-index: 3; margin: 0;
   padding: 0.4rem 1rem; border-radius: 999px; white-space: nowrap; pointer-events: none;
   background: rgba(13, 14, 18, 0.85); border: 1px solid #2e3038;
 }
@@ -121,11 +121,13 @@
 .mapa-guia[hidden], .mapa-inicio[hidden] { display: none; }
 .mapa.con-panel .mapa-guia { left: calc(50% - 180px); }
 
+/* Los capítulos van en una o dos líneas, todos a la vista. Antes era una
+   sola fila que se deslizaba de lado, y con un mouse de rueda no había forma
+   de llegar a los de la derecha. */
 .mapa-ley {
   position: absolute; left: 14px; bottom: 14px; right: 14px; z-index: 2;
-  display: flex; flex-wrap: nowrap; gap: 0.35rem; overflow-x: auto; scrollbar-width: none;
+  display: flex; flex-wrap: wrap; align-content: flex-end; gap: 0.35rem;
 }
-.mapa-ley::-webkit-scrollbar { display: none; }
 .chip-cap {
   display: inline-flex; align-items: center; gap: 0.4rem; height: 28px; padding: 0 0.7rem; flex: none;
   font: inherit; font-size: 0.75rem; color: #c8cad0; cursor: pointer; white-space: nowrap;
@@ -165,6 +167,13 @@
 .mp-grupo li button b { font-family: var(--mono); font-weight: 600; color: #ffffff; letter-spacing: normal; flex: none; }
 .mp-grupo li button span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .mp-vacio { font-size: 0.8125rem; color: #aeaeb7; padding: 0.2rem 0.45rem; }
+/* La frase de la norma donde está la cita, bajo cada entrada. */
+.mp-cita {
+  margin: 0 0 0.45rem 1.4rem; padding: 0.1rem 0 0.1rem 0.6rem; border-left: 2px solid #2e3038;
+  font-size: 0.78rem; line-height: 1.5; color: #aeaeb7;
+}
+.mp-cita mark { background: none; color: #ffffff; font-weight: 600; }
+.mp-cita small { display: block; margin-top: 0.15rem; font-family: var(--mono); font-size: 0.7rem; color: #8a8c96; letter-spacing: normal; }
 
 /* La etiqueta que la librería pone junto al cursor. */
 .mapa-visor .float-tooltip-kap,
