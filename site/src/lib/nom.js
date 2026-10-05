@@ -136,7 +136,10 @@ const tablaImagenIds = new Set(
 /** Cómo se anuncia una imagen: su rótulo, o lo que es cuando no tiene número. */
 export function rotuloImagen(f) {
   if (f.rotulos?.length) return f.rotulos.map((r) => r.rotulo).join(' y ');
-  return f.kind === 'formula' ? `Fórmula de ${f.nodo}` : `Imagen de ${f.nodo}`;
+  const tipo = f.kind === 'formula' ? 'Fórmula' : 'Imagen';
+  // Figura.astro la recibe directo del nodo, sin `nodo`: ahí el alt decía
+  // «Fórmula de undefined». Sin sección conocida, basta el tipo.
+  return f.nodo ? `${tipo} de ${f.nodo}` : tipo;
 }
 
 /** Lo que va después del rótulo. */
