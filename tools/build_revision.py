@@ -169,20 +169,9 @@ def tabla_md(items):
     return cab + '\n'.join(fila(t, c) for t, c in items)
 
 
-def main():
-    data_dir = Path(sys.argv[1] if len(sys.argv) > 1 else 'data')
-    out_path = Path(sys.argv[2] if len(sys.argv) > 2 else 'REVISION-TABLAS.md')
-
-    tablas = json.loads((data_dir / 'tablas.json').read_text(encoding='utf-8'))
-    grafo = json.loads((data_dir / 'grafo.json').read_text(encoding='utf-8'))
-
-    # Cuánto se apoya la norma en cada tabla, medido sobre el texto por
-    # build_graph. Contar aristas del grafo se quedaba corto: una cita desnuda
-    # como "250-122" se resuelve antes a la sección del mismo número.
-    uso = grafo.get('uso_tablas', {})
-
-    # Las contrastadas a ojo contra el PDF ya no son lista de trabajo.
-    verificadas = [t for t in tablas if t.get('verificada')]
+def pendientes(tablas, uso):
+    """(tabla, usos, prioridad) de cada tabla que no se ha contrastado a ojo
+    contra el PDF."""
     info = []
     for t in tablas:
         if t.get('verificada'):
@@ -193,7 +182,12 @@ def main():
         riesgo = 1 - q
         prio = c * riesgo + riesgo + (3 if t['cols'] < 2 else 0)
         info.append((t, c, prio))
+    return info
 
+
+def clasificar(info):
+    """Las cuatro listas de trabajo: prioridad alta, dudosas, verificación de
+    control y sin señales."""
     criticas = sorted(
         (x for x in info if x[2] >= 1.0), key=lambda x: -x[2]
     )
@@ -214,8 +208,11 @@ def main():
         (x for x in info if x[0]['id'] not in marcadas),
         key=lambda x: (x[0]['pages'][0], x[0]['id']),
     )
+    return criticas, dudosas, confianza, sin_senales
 
-    secciones = [
+
+def secciones_md(criticas, dudosas, confianza, sin_senales):
+    return [
         (
             f'## 1 · Prioridad alta ({len(criticas)})',
             'Muy usadas y con la reconstrucción insegura: la calidad las '
@@ -246,7 +243,9 @@ def main():
         ),
     ]
 
-    terminado = not info
+
+def componer(tablas, verificadas, secciones, terminado):
+    """El texto completo de REVISION-TABLAS.md."""
     intro = INTRO_TERMINADO if terminado else INTRO_PENDIENTE
     out = [CABECERA.format(intro=intro, sitio=SITIO).rstrip()]
     if not terminado:
@@ -268,14 +267,34 @@ def main():
 
     out.append(PIE.strip())
     out.append((CIERRE_PENDIENTE if not terminado else CIERRE_TERMINADO).strip())
+    return '\n\n'.join(out).rstrip() + '\n'
 
-    out_path.write_text('\n\n'.join(out).rstrip() + '\n', encoding='utf-8')
+
+def main():
+    data_dir = Path(sys.argv[1] if len(sys.argv) > 1 else 'data')
+    out_path = Path(sys.argv[2] if len(sys.argv) > 2 else 'REVISION-TABLAS.md')
+
+    tablas = json.loads((data_dir / 'tablas.json').read_text(encoding='utf-8'))
+    grafo = json.loads((data_dir / 'grafo.json').read_text(encoding='utf-8'))
+
+    # Cuánto se apoya la norma en cada tabla, medido sobre el texto por
+    # build_graph. Contar aristas del grafo se quedaba corto: una cita desnuda
+    # como "250-122" se resuelve antes a la sección del mismo número.
+    uso = grafo.get('uso_tablas', {})
+
+    # Las contrastadas a ojo contra el PDF ya no son lista de trabajo.
+    verificadas = [t for t in tablas if t.get('verificada')]
+    info = pendientes(tablas, uso)
+    criticas, dudosas, confianza, sin_senales = clasificar(info)
+    secciones = secciones_md(criticas, dudosas, confianza, sin_senales)
+
+    out_path.write_text(componer(tablas, verificadas, secciones, terminado=not info),
+                        encoding='utf-8')
     print(
         f'{out_path}: {len(criticas)} prioridad alta, {len(dudosas)} dudosas, '
         f'{len(confianza)} verificación de control, {len(sin_senales)} sin '
         f'señales, {len(verificadas)} verificadas, {len(tablas)} tablas en total.'
     )
-
 
 if __name__ == '__main__':
     main()

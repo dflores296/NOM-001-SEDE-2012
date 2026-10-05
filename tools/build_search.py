@@ -64,16 +64,7 @@ def flat_text_tabla(t):
     return re.sub(r'\s+', ' ', ' '.join(x for x in out if x)).strip()
 
 
-def main():
-    src = sys.argv[1] if len(sys.argv) > 1 else 'data'
-    dst = sys.argv[2] if len(sys.argv) > 2 else 'site/public/data'
-    os.makedirs(dst, exist_ok=True)
-
-    corpus = json.load(open(os.path.join(src, 'corpus.json')))
-    defs = json.load(open(os.path.join(src, 'definiciones.json')))
-    tablas = json.load(open(os.path.join(src, 'tablas.json')))
-    titulo_articulo = {a['num']: a['title'] for a in corpus['articles']}
-
+def docs_de_secciones(corpus):
     docs = []
     for a in corpus['articles']:
         for s in a['sections']:
@@ -86,15 +77,22 @@ def main():
                 'text': flat_text(s),
                 'incisos': inciso_ids(s),
             })
-    for d in defs:
-        docs.append({
-            'id': d['term'],
-            'kind': 'def',
-            'title': d['term'],
-            'art': 100,
-            'artTitle': 'Definiciones',
-            'text': d['definition'],
-        })
+    return docs
+
+
+def docs_de_definiciones(defs):
+    return [{
+        'id': d['term'],
+        'kind': 'def',
+        'title': d['term'],
+        'art': 100,
+        'artTitle': 'Definiciones',
+        'text': d['definition'],
+    } for d in defs]
+
+
+def docs_de_tablas(tablas, titulo_articulo):
+    docs = []
     for t in tablas:
         # Prefijo para no chocar con ids de sección o de glosario: una tabla
         # de artículo puede llevar el mismo id que el inciso donde vive (la
@@ -115,16 +113,20 @@ def main():
                          else titulo_articulo.get(t.get('article'), 'Capítulo 10')),
             'text': flat_text_tabla(t),
         })
+    return docs
 
-    # Una figura por cada número que lleva impreso, no por imagen: quien busca
-    # la 516-3(c)(2) no tiene por qué saber que comparte dibujo con la (c)(1).
-    # Una fórmula no tiene número y entra por el inciso donde se imprime.
+
+def docs_de_figuras(corpus, titulo_articulo):
+    """Una figura por cada número que lleva impreso, no por imagen: quien
+    busca la 516-3(c)(2) no tiene por qué saber que comparte dibujo con la
+    (c)(1). Una fórmula no tiene número y entra por el inciso donde se
+    imprime."""
     figs = [(a['num'], n['id'], f)
             for a in corpus['articles'] for s_ in a['sections']
             for n in walk(s_) for f in n.get('figures', [])]
     figs += [(None, h['id'], b) for h in corpus.get('cierre', [])
              for b in h['bloques'] if b['tipo'] == 'figura']
-    n_figs = 0
+    docs = []
     for art, nodo, f in figs:
         comun = {
             'kind': 'fig',
@@ -138,20 +140,21 @@ def main():
             docs.append(dict(comun, id='figura:' + r['ancla'], ancla=r['ancla'],
                              fid=r['rotulo'], num=r['id'], title=r['titulo'] or '',
                              text=' '.join([r['titulo'] or ''] + cuerpo).strip()))
-            n_figs += 1
         if not f.get('rotulos'):
             docs.append(dict(comun, id='figura:' + f['ancla'], ancla=f['ancla'],
                              fid='Fórmula de %s' % nodo, num=nodo,
                              title=f.get('titulo') or '',
                              text=' '.join([f.get('titulo') or ''] + cuerpo).strip()))
-            n_figs += 1
+    return docs
 
-    # La región de cierre: Capítulo 10, Títulos 6 a 8 y los tres Apéndices.
-    # Hasta que tuvo estructura, su texto vivía revuelto dentro de 924-24 y
-    # buscar «bibliografía» o «vigilancia» no llevaba a ninguna parte.
+
+def docs_del_cierre(corpus):
+    """La región de cierre: Capítulo 10, Títulos 6 a 8 y los tres Apéndices.
+    Hasta que tuvo estructura, su texto vivía revuelto dentro de 924-24 y
+    buscar «bibliografía» o «vigilancia» no llevaba a ninguna parte."""
     ROTULO = {'capitulo': 'Capítulo %s', 'titulo': 'Título %s',
               'apendice': 'Apéndice %s'}
-    n_cierre = 0
+    docs = []
     for h in corpus.get('cierre', []):
         rotulo = ROTULO[h['kind']] % (h.get('letra') or h.get('num'))
         docs.append({
@@ -165,25 +168,43 @@ def main():
             'text': re.sub(r'\s+', ' ', ' '.join(
                 [h['titulo'] or ''] + [b.get('text') or '' for b in h['bloques']])).strip(),
         })
-        n_cierre += 1
+    return docs
 
-    # MiniSearch usa el campo `id` como clave del documento. Los ids de
-    # sección, los términos del glosario y las tablas (con su prefijo
-    # `tabla:`) ya son únicos entre sí; se verifica porque un duplicado
-    # silencioso haría desaparecer resultados de la búsqueda.
+
+def verificar_ids_unicos(docs):
+    """MiniSearch usa el campo `id` como clave del documento. Los ids de
+    sección, los términos del glosario y las tablas (con su prefijo
+    `tabla:`) ya son únicos entre sí; se verifica porque un duplicado
+    silencioso haría desaparecer resultados de la búsqueda."""
     seen = {}
     for d in docs:
         if d['id'] in seen:
             raise SystemExit('id duplicado en el índice de búsqueda: %r' % d['id'])
         seen[d['id']] = True
 
+
+def main():
+    src = sys.argv[1] if len(sys.argv) > 1 else 'data'
+    dst = sys.argv[2] if len(sys.argv) > 2 else 'site/public/data'
+    os.makedirs(dst, exist_ok=True)
+
+    corpus = json.load(open(os.path.join(src, 'corpus.json')))
+    defs = json.load(open(os.path.join(src, 'definiciones.json')))
+    tablas = json.load(open(os.path.join(src, 'tablas.json')))
+    titulo_articulo = {a['num']: a['title'] for a in corpus['articles']}
+
+    figuras = docs_de_figuras(corpus, titulo_articulo)
+    cierre = docs_del_cierre(corpus)
+    docs = (docs_de_secciones(corpus) + docs_de_definiciones(defs)
+            + docs_de_tablas(tablas, titulo_articulo) + figuras + cierre)
+    verificar_ids_unicos(docs)
+
     out = os.path.join(dst, 'search.json')
     json.dump(docs, open(out, 'w'), ensure_ascii=False, separators=(',', ':'))
     size = os.path.getsize(out)
     print('Documentos indexables: %d (%d tablas, %d figuras, %d del cierre)'
-          % (len(docs), len(tablas), n_figs, n_cierre))
+          % (len(docs), len(tablas), len(figuras), len(cierre)))
     print('search.json          : %.1f KB' % (size / 1024))
-
 
 if __name__ == '__main__':
     main()
