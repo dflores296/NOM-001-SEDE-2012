@@ -10,3 +10,4 @@
 @import './contenido.css';     /* el contenido de la norma: definiciones, fórmulas, figuras, tablas informativas */
 @import './observaciones.css'; /* la página de observaciones y el botón de reportar */
 @import './indices.css';       /* los índices: tablas por capítulo, encabezados de sección, texto citado */
+@import './impresion.css';    /* al imprimir: solo el texto de la norma, en tinta y a todo lo ancho */
