@@ -28,9 +28,8 @@ CABECERA = """# Revisión de tablas — NOM-001-SEDE-2012
 > regeneración.
 """
 
-# Mientras quedaban tablas por contrastar, este archivo era la lista de trabajo.
-# Terminada la revisión sigue siendo útil, pero como registro: qué se revisó y
-# contra qué. La priorización se conserva y vuelve a encenderse sola si una
+# Con todas las tablas contrastadas, este archivo es un registro: qué se revisó
+# y contra qué. La priorización se conserva y vuelve a encenderse sola si una
 # tabla nueva o reprocesada se queda sin marca de `verificada`.
 INTRO_PENDIENTE = """Lista de trabajo para contrastar las tablas reconstruidas contra el PDF del DOF.
 Ordenada por **impacto por duda**: cuánto se apoya la norma en cada tabla, por lo
@@ -284,7 +283,7 @@ def main():
     # como "250-122" se resuelve antes a la sección del mismo número.
     uso = grafo.get('uso_tablas', {})
 
-    # Las contrastadas a ojo contra el PDF ya no son lista de trabajo.
+    # Las contrastadas a ojo contra el PDF no son lista de trabajo.
     verificadas = [t for t in tablas if t.get('verificada')]
     info = pendientes(tablas, uso)
     criticas, dudosas, confianza, sin_senales = clasificar(info)

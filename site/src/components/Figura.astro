@@ -2,9 +2,9 @@
 // Una imagen de la norma: figura, fórmula, o la única tabla que el DOF imprime
 // como mapa de bits (la 240-92(b)).
 //
-// Antes esto vivía duplicado palabra por palabra en Sub.astro y en
-// art/[num].astro, así que toda mejora había que hacerla dos veces --la trampa
-// que CONTEXTO.md advierte para los dos renderizadores--.
+// Sub.astro y art/[num].astro la usan los dos: vive en un solo lugar para que
+// una mejora no haya que hacerla dos veces (la trampa de los dos
+// renderizadores que advierte CONTEXTO.md).
 import { linkify, BASE, rotuloImagen, subtituloImagen, backlinks } from '../lib/nom.js';
 const { f, origen } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');

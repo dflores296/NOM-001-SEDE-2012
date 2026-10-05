@@ -195,8 +195,7 @@ export function articleOf(id) {
 
 /**
  * URL de un artículo. El 100 no tiene secciones numeradas —son las 185
- * definiciones— y su página quedaba vacía, con un cartel que mandaba al
- * glosario. Se manda directo y se acabó el rebote.
+ * definiciones— y no tiene página propia: va directo al glosario.
  */
 export function hrefArticulo(num) {
   return +num === 100 ? `${BASE}/glosario/` : `${BASE}/art/${num}`;
@@ -224,8 +223,7 @@ export function hrefFor(id) {
     if (im) return hrefImagen(im.figura, im.ancla);
     if (tb && tb.apendice) return `${BASE}/apendices/${tb.apendice}/#${tablaSlug(t)}`;
     // Las del Capítulo 10 no tienen artículo ni apéndice: viven en su propia
-    // página. Antes caían en /tablas, el índice, donde su ancla no existe, y
-    // la referencia dejaba al lector al principio de la lista.
+    // página, no en /tablas, que es solo el índice y no tiene su ancla.
     return `${BASE}/tablas/generales/#${tablaSlug(t)}`;
   }
   // Los hitos del cierre son destino desde que el cuerpo los cita: «véase el

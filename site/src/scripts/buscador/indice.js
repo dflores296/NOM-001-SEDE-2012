@@ -168,10 +168,10 @@ function destacar(lista, consulta) {
   }
 }
 
-// Cuántos resultados de cada tipo. Antes eran los primeros 25 de todos
-// juntos, y como las secciones y las definiciones suelen puntuar más que
-// las tablas -títulos cortos contra títulos de tres renglones-, una
-// búsqueda como "ampacidad" llenaba la lista sin mostrar ni una tabla.
+// Cuántos resultados de cada tipo. Con un tope para todos juntos, las
+// secciones y las definiciones, que suelen puntuar más que las tablas
+// -títulos cortos contra títulos de tres renglones-, llenarían la lista:
+// "ampacidad" no mostraría ni una tabla.
 const CUPO = { sec: 10, tabla: 6, def: 5, fig: 3, cierre: 3 };
 
 // Consulta completa: primero las coincidencias de código, que para

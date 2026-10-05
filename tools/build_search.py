@@ -109,8 +109,8 @@ def docs_de_tablas(tablas, titulo_articulo, uso):
             'art': t.get('article'),
             # Una tabla sin artículo es de un apéndice o, si tampoco tiene
             # apéndice, del Capítulo 10. El buscador lo necesita para armar
-            # el enlace y el rótulo: antes las 19 de los apéndices salían
-            # rotuladas «Capítulo 10» y enlazadas a donde no estaban.
+            # el enlace y el rótulo: sin él, las 19 de los apéndices saldrían
+            # rotuladas «Capítulo 10» y enlazadas a donde no están.
             'apendice': t.get('apendice'),
             'artTitle': ('Apéndice ' + t['apendice'] if t.get('apendice')
                          else titulo_articulo.get(t.get('article'), 'Capítulo 10')),
