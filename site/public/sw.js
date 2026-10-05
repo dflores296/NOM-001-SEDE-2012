@@ -3,9 +3,8 @@
 // Cada tipo de archivo se sirve con su propia estrategia:
 //
 // - Páginas y datos (.json): primero la red. Así lo publicado se ve en la
-//   primera visita y no en la segunda. Antes se servía primero la copia
-//   guardada y la nueva se bajaba por detrás, así que después de cada
-//   publicación había que recargar para ver el cambio. Si la red no
+//   primera visita y no en la segunda: con la copia guardada primero, después
+//   de cada publicación habría que recargar para ver el cambio. Si la red no
 //   contesta en ESPERA ms y hay copia, se sirve la copia y la red termina
 //   de actualizarla por detrás: con señal mala en obra la página no se
 //   queda en blanco esperando.

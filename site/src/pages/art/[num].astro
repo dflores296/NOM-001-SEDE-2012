@@ -7,9 +7,9 @@ import { articles, chapters, linkify, backlinks, tablasPorArticulo, tablaSlug,
          tablaPorId, rotuloTabla, hrefArticulo, figurasPorArticulo,
          rotuloImagen } from '../../lib/nom.js';
 
-// El Artículo 100 no genera página. Son las 185 definiciones, que ya viven en
-// el glosario; lo que salía aquí era un cartel pidiendo ir allá. astro.config
-// redirige /art/100 para que los enlaces viejos sigan llegando a su sitio.
+// El Artículo 100 no genera página: son las 185 definiciones, que viven en el
+// glosario. astro.config redirige /art/100 para que los enlaces que apunten
+// ahí lleguen a su sitio.
 export function getStaticPaths() {
   return articles
     .filter((a) => a.num !== 100)
@@ -38,9 +38,9 @@ const bl = Object.fromEntries(a.sections.map((s) => [s.id, backlinks(s.id)]));
 
 // Cada tabla se pinta en el punto del texto donde la norma la imprime: al
 // parsear el PDF se dejó una marca en esa posición y el nodo que la recogió
-// —la sección o el inciso— la lleva en `tables`. Antes se colocaban al final
-// de la parte, y las 32 tablas del Artículo 310 caían juntas entre la Parte B
-// y la C, cortando la lectura justo donde no toca.
+// —la sección o el inciso— la lleva en `tables`. Ponerlas al final de la parte
+// juntaría las 32 tablas del Artículo 310 entre la Parte B y la C, lejos del
+// texto que las usa.
 const tabs = tablasPorArticulo.get(a.num) || [];
 const ancladas = new Set();
 const marca = (n) => {

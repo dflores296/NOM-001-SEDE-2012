@@ -32,8 +32,8 @@ MIN = {
     'figuras': 45,
     'figuras_numeradas': 51,
     # La región de cierre: 7 hitos (Capítulo 10, Títulos 6 a 8, Apéndices A a
-    # C) y sus bloques. Antes no existía y sus 38 páginas caían dentro de
-    # 924-24 sin que ninguna cifra lo delatara.
+    # C) y sus bloques. Sin estas cifras, sus 38 páginas podrían caer dentro
+    # de 924-24 sin que nada lo delatara.
     'cierre_bloques': 120,
     'cierre_lineas': 165,
 }

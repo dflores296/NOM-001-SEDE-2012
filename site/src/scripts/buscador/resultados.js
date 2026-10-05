@@ -4,10 +4,9 @@ import { defSlug, tablaSlug } from '../../lib/slug.js';
 import { base } from '../base.js';
 import { sinAcentos, termino } from './terminos.js';
 
-// El Artículo 100 no tiene secciones numeradas: sus 185 definiciones
-// viven en el glosario. Sin este desvío, buscar "ampacidad" llevaba a
-// una página de artículo vacía cuyo único contenido era un cartel
-// pidiendo ir al glosario. Una tabla se ancla dentro de su artículo; las
+// El Artículo 100 no tiene secciones numeradas ni página propia: sus 185
+// definiciones viven en el glosario, y ahí lleva una definición
+// ("ampacidad"). Una tabla se ancla dentro de su artículo; las
 // que no cuelgan de ninguno (r.art viene null) viven en su apéndice o, las
 // del Capítulo 10, en /tablas/generales.
 //
@@ -15,10 +14,9 @@ import { sinAcentos, termino } from './terminos.js';
 // sección son planos, tipo "310-15"); solo los trae cuando
 // coincidenciasCodigo() lo sobreescribió con el id de un INCISO
 // concreto ("310-15(a)"), que también tiene su propia ancla en el
-// HTML (ver id={node.id} en Sub.astro). Por eso ya no se recorta en
-// el primer '(': antes ese recorte no cambiaba nada porque nunca
-// había paréntesis que cortar, pero ahora sí los hay y hay que
-// conservarlos para aterrizar en el inciso exacto.
+// HTML (ver id={node.id} en Sub.astro). Por eso el id se usa entero,
+// sin recortar en el primer '(': los paréntesis son los que llevan al
+// inciso exacto.
 export function href(r) {
   if (r.kind === 'def') return `${base}/glosario/#${defSlug(r.id)}`;
   if (r.kind === 'tabla') {
@@ -64,9 +62,9 @@ function patronConAcentos(palabra) {
 }
 
 // Fragmento de contexto alrededor de la primera coincidencia, con la
-// palabra resaltada. Antes un resultado solo mostraba id + título: si
-// el término aparecía en medio de un párrafo largo, no había forma de
-// saber si de verdad decía lo que buscabas sin abrir la sección.
+// palabra resaltada: con solo id y título, si el término aparece en medio
+// de un párrafo largo no hay forma de saber si de verdad dice lo que
+// buscabas sin abrir la sección.
 //
 // Cada palabra se busca por su raíz, la misma con la que la compara el
 // índice (terminos.js), y se resalta completa: buscar "ampacidades"
@@ -85,7 +83,7 @@ function fragmento(texto, q) {
   // sueltas con un hueco sin marcar entre ellas. Se intenta primero
   // como frase (todas las palabras, unidas por \s+ tal como se
   // escribieron) y solo si no aparece así, literalmente, en el texto
-  // se cae al resaltado palabra por palabra de antes.
+  // se cae al resaltado palabra por palabra.
   const fraseSrc = todas.map(patron).join('\\s+');
   const mFrase = todas.length > 1 ? new RegExp(fraseSrc, 'iu').exec(texto) : null;
 

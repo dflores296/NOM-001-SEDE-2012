@@ -1,8 +1,8 @@
 // El índice del buscador, armado al construir el sitio y no en el teléfono.
 //
-// Armarlo en el navegador era lo que más tardaba la primera búsqueda: con un
-// teléfono promedio, unos 4 de los 5 s en 4G rápido. Aquí se arma una vez y
-// el navegador solo lo carga. Va sin el texto de las secciones, que solo
+// Armarlo en el navegador es lo que más tarda: en un teléfono promedio con 4G
+// rápido, unos 4 s de la primera búsqueda. Aquí se arma una vez y el
+// navegador solo lo carga. Va sin el texto de las secciones, que solo
 // sirve para el fragmento bajo cada resultado y llega aparte, por detrás
 // (textos.json.js).
 //

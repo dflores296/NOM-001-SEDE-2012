@@ -9,8 +9,8 @@ const nSec = articles.reduce((n, a) => n + a.sections.length, 0);
 // Las secciones más citadas y, para cada una, de qué capítulo vienen sus
 // citas. El grafo las da mezcladas con artículos completos, capítulos y
 // apéndices, que no se comparan con una sección: aquí solo van secciones.
-// La barra que había antes repetía el número de al lado; la huella por
-// capítulo dice algo que el número no dice, quién depende de esa sección.
+// La huella por capítulo dice algo que el número de citas no dice: quién
+// depende de esa sección.
 const ES_SECCION = /^\d{3}-\d+$/;
 const CAPS = chapters.map((c) => c.num);
 const capDe = (id) => {
