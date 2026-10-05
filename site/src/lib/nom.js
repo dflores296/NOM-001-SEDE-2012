@@ -141,7 +141,11 @@ export function rotuloImagen(f) {
 
 /** Lo que va después del rótulo. */
 export function subtituloImagen(f) {
-  if (f.rotulos?.length) return f.rotulos.map((r) => r.titulo).filter(Boolean).join(' · ');
+  if (f.rotulos?.length)
+    return f.rotulos
+      .map((r) => r.titulo)
+      .filter(Boolean)
+      .join(' · ');
   return f.titulo || '';
 }
 
@@ -173,9 +177,11 @@ export const titulosFinales = cierre.filter((h) => h.kind === 'titulo');
 /** Cómo se anuncia un hito del cierre. */
 export function rotuloCierre(h) {
   const n = h.letra || h.num;
-  return h.kind === 'apendice' ? `Apéndice ${n}`
-       : h.kind === 'titulo' ? `Título ${n}`
-       : `Capítulo ${n}`;
+  return h.kind === 'apendice'
+    ? `Apéndice ${n}`
+    : h.kind === 'titulo'
+      ? `Título ${n}`
+      : `Capítulo ${n}`;
 }
 
 /** Dónde se publica cada hito del cierre. */
@@ -216,12 +222,12 @@ export function hrefFor(id) {
   if (id.startsWith('tabla:')) {
     const t = id.slice(6);
     const tb = tablas.find((x) => x.id === t);
-    if (tb && tb.article) return `${BASE}/art/${tb.article}#${tablaSlug(t)}`;
+    if (tb?.article) return `${BASE}/art/${tb.article}#${tablaSlug(t)}`;
     // La 240-92(b) la imprime el DOF como imagen y su ancla vive en la página
     // del artículo, no en el índice de tablas.
     const im = figuraPorId.get(t);
     if (im) return hrefImagen(im.figura, im.ancla);
-    if (tb && tb.apendice) return `${BASE}/apendices/${tb.apendice}/#${tablaSlug(t)}`;
+    if (tb?.apendice) return `${BASE}/apendices/${tb.apendice}/#${tablaSlug(t)}`;
     // Las del Capítulo 10 no tienen artículo ni apéndice: viven en su propia
     // página, no en /tablas, que es solo el índice y no tiene su ancla.
     return `${BASE}/tablas/generales/#${tablaSlug(t)}`;
@@ -341,8 +347,9 @@ const seccionIds = (() => {
  */
 function resolverCita(full) {
   for (let cand = idDeCita(full); ; cand = cand.replace(/\([^()]*\)$/, '')) {
-    if (seccionIds.has(cand)) return { href: `${BASE}/art/${articleOf(cand)}#${cand.split('(')[0]}` };
-    if (tablaIds.has(cand)) return { href: hrefFor('tabla:' + cand) };
+    if (seccionIds.has(cand))
+      return { href: `${BASE}/art/${articleOf(cand)}#${cand.split('(')[0]}` };
+    if (tablaIds.has(cand)) return { href: hrefFor(`tabla:${cand}`) };
     if (!/\(/.test(cand)) return null;
   }
 }
@@ -369,10 +376,7 @@ export function linkify(text) {
   let out = '';
   let last = 0;
   // Los dos «Apéndice B» que no son de esta norma. Ver AP_AJENA.
-  const ajenas = [...String(text).matchAll(AP_AJENA)].map((m) => [
-    m.index,
-    m.index + m[0].length,
-  ]);
+  const ajenas = [...String(text).matchAll(AP_AJENA)].map((m) => [m.index, m.index + m[0].length]);
   const ajena = (i) => ajenas.some(([a, b]) => a <= i && i < b);
   for (const m of String(text).matchAll(LINKER)) {
     const raw = m[0];
@@ -387,9 +391,7 @@ export function linkify(text) {
       const clave = claveApendice(mm[2]);
       if (mm[1] === 'Tabla') {
         const tid = apTablas.get(clave);
-        out += tid
-          ? `<a class="xref" href="${hrefFor('tabla:' + tid)}">${esc(raw)}</a>`
-          : esc(raw);
+        out += tid ? `<a class="xref" href="${hrefFor(`tabla:${tid}`)}">${esc(raw)}</a>` : esc(raw);
         continue;
       }
       // La Figura B.310.15(B)(2)(1) no existe: el DOF no la imprime, aunque
@@ -406,9 +408,7 @@ export function linkify(text) {
     mm = /^[Aa]p\S*ndices?\s+([ABC])/.exec(raw);
     if (mm) {
       const hito = ajena(start) ? null : apendices.find((h) => h.letra === mm[1]);
-      out += hito
-        ? `<a class="xref" href="${hrefCierre(hito)}">${esc(raw)}</a>`
-        : esc(raw);
+      out += hito ? `<a class="xref" href="${hrefCierre(hito)}">${esc(raw)}</a>` : esc(raw);
       continue;
     }
     // --- Tabla NNN-N(x)(y): se enlaza a la TABLA reconstruida, no a la
@@ -422,11 +422,14 @@ export function linkify(text) {
       for (let cand = tid; cand; cand = cand.replace(/\([^()]*\)$/, '')) {
         // `tablaImagenIds` trae la 240-92(b), que el DOF imprime como mapa de
         // bits: su cita se quedaba sin enlazar porque no está en tablas.json.
-        if (tablaIds.has(cand) || tablaImagenIds.has(cand)) { hit = cand; break; }
+        if (tablaIds.has(cand) || tablaImagenIds.has(cand)) {
+          hit = cand;
+          break;
+        }
         if (!/\(/.test(cand)) break;
       }
       if (hit) {
-        out += `<a class="xref" href="${hrefFor('tabla:' + hit)}">${esc(raw)}</a>`;
+        out += `<a class="xref" href="${hrefFor(`tabla:${hit}`)}">${esc(raw)}</a>`;
         continue;
       }
       const art = /^(\d{3})/.exec(tid);
@@ -456,9 +459,9 @@ export function linkify(text) {
     // --- Tabla(s) suelta(s) del Capítulo 10 ("Tabla 8", "Tablas 11(a) y
     //     11(b)"): cada cita de la lista se enlaza por su cuenta, no solo la
     //     que trae pegado el "Tabla" delante.
-    mm = new RegExp(
-      `^(Tablas?\\s+)(${TABLA_SUELTA}(?:\\s*(?:,|y|o)\\s*${TABLA_SUELTA})*)$`
-    ).exec(raw);
+    mm = new RegExp(`^(Tablas?\\s+)(${TABLA_SUELTA}(?:\\s*(?:,|y|o)\\s*${TABLA_SUELTA})*)$`).exec(
+      raw
+    );
     if (mm) {
       const [, head, list] = mm;
       let piece = '';
@@ -469,7 +472,7 @@ export function linkify(text) {
         const upper = cand.toUpperCase();
         const tid = tablaIds.has(cand) ? cand : tablaIds.has(upper) ? upper : null;
         piece += tid
-          ? `<a class="xref" href="${hrefFor('tabla:' + tid)}">${esc(cand)}</a>`
+          ? `<a class="xref" href="${hrefFor(`tabla:${tid}`)}">${esc(cand)}</a>`
           : esc(cand);
         p = im.index + cand.length;
       }
@@ -481,7 +484,7 @@ export function linkify(text) {
     if (/^Art\S*culos?/.test(raw)) {
       const nums = raw.match(/\d{3}/g) || [];
       if (nums.length && nums.every((n) => knownArticle(+n))) {
-        let head = raw.slice(0, raw.indexOf(nums[0]));
+        const head = raw.slice(0, raw.indexOf(nums[0]));
         let rest = raw.slice(head.length);
         for (const n of nums) rest = rest.replace(n, ` ${n} `);
         out +=
@@ -489,9 +492,7 @@ export function linkify(text) {
           rest
             .split(' ')
             .map((p) =>
-              /^\d{3}$/.test(p)
-                ? `<a class="xref" href="${hrefArticulo(p)}">${p}</a>`
-                : esc(p)
+              /^\d{3}$/.test(p) ? `<a class="xref" href="${hrefArticulo(p)}">${p}</a>` : esc(p)
             )
             .join('');
         continue;

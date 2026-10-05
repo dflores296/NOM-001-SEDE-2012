@@ -34,7 +34,10 @@ let incisoPorCn = null;
 // cualquier otra sección del artículo 310. normCodigo() quita TODOS
 // los separadores para poder comparar códigos completos entre sí sin
 // que importe cómo se hayan escrito.
-const normCodigo = (s) => sinAcentos(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+const normCodigo = (s) =>
+  sinAcentos(s)
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '');
 
 // Solo se activa para algo con pinta de código de artículo-sección
 // (varios dígitos seguidos), para no interferir con búsquedas de
@@ -69,7 +72,13 @@ function coincidenciasCodigo(q) {
     const dn = d._cn;
     if (!dn) continue;
     if (dn === qn) out.push({ ...d, score: BASE });
-    else if (!inciso && dn.length >= 4 && dn.length < qn.length && qn.startsWith(dn) && qn.length - dn.length <= 3) {
+    else if (
+      !inciso &&
+      dn.length >= 4 &&
+      dn.length < qn.length &&
+      qn.startsWith(dn) &&
+      qn.length - dn.length <= 3
+    ) {
       out.push({ ...d, score: BASE - 200 - (qn.length - dn.length) });
     }
   }
@@ -94,9 +103,7 @@ export function load() {
       incisoPorCn = new Map();
       for (const d of docs) {
         if (d.kind === 'sec' || d.kind === 'tabla' || d.kind === 'fig') {
-          d._cn = normCodigo(
-            d.kind === 'tabla' ? d.tid : d.kind === 'fig' ? d.num : d.id
-          );
+          d._cn = normCodigo(d.kind === 'tabla' ? d.tid : d.kind === 'fig' ? d.num : d.id);
         }
         if (d.kind === 'sec') {
           for (const iid of d.incisos || []) {
@@ -128,7 +135,9 @@ export function load() {
       // Los textos, por detrás: los resultados no los esperan.
       textosListos = fetch(`${base}/data/textos.json`)
         .then((t) => t.json())
-        .then((t) => { textos = t; })
+        .then((t) => {
+          textos = t;
+        })
         .catch(() => {});
     })();
   }
@@ -162,7 +171,10 @@ function destacar(lista, consulta) {
     const i = lista.findIndex((r) => r.id === id);
     const propio = i >= 0 ? lista.splice(i, 1)[0] : { ...doc, score: 0 };
     const j = lista.findIndex((r) => r.kind === propio.kind);
-    if (j < 0) { lista.push(propio); continue; }
+    if (j < 0) {
+      lista.push(propio);
+      continue;
+    }
     propio.score = Math.max(propio.score, lista[j].score);
     lista.splice(j, 0, propio);
   }
@@ -193,9 +205,15 @@ export async function buscar(q) {
   }
   destacar(combinados, q);
   const cuenta = {};
-  return combinados
-    .filter((r) => (cuenta[r.kind] = (cuenta[r.kind] || 0) + 1) <= (CUPO[r.kind] ?? 3))
-    // El texto, si ya llegó, del documento de origen: un inciso exacto
-    // ("310-15(a)") muestra el fragmento de su sección.
-    .map((r) => ({ ...r, text: textos?.[r.docId ?? r.id] }));
+  const dentroDelCupo = (r) => {
+    cuenta[r.kind] = (cuenta[r.kind] || 0) + 1;
+    return cuenta[r.kind] <= (CUPO[r.kind] ?? 3);
+  };
+  return (
+    combinados
+      .filter(dentroDelCupo)
+      // El texto, si ya llegó, del documento de origen: un inciso exacto
+      // ("310-15(a)") muestra el fragmento de su sección.
+      .map((r) => ({ ...r, text: textos?.[r.docId ?? r.id] }))
+  );
 }

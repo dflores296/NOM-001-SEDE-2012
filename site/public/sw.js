@@ -29,7 +29,8 @@ const PRECACHE = [`${BASE}/`, `${BASE}/glosario/`];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(CACHE)
+    caches
+      .open(CACHE)
       .then((c) => Promise.all(PRECACHE.map((u) => guardar(c, u).catch(() => {}))))
       .catch(() => {})
   );
@@ -40,15 +41,15 @@ self.addEventListener('install', (e) => {
 // que redirige: así lo que hay en caché siempre es una respuesta directa.
 async function guardar(cache, url) {
   const res = await fetch(url, { redirect: 'follow' });
-  if (!res || res.status !== 200) return;
+  if (res?.status !== 200) return;
   await cache.put(res.redirected ? res.url : url, res.clone());
 }
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(
-    caches.keys().then((ks) =>
-      Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
-    )
+    caches
+      .keys()
+      .then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
   );
   self.clients.claim();
 });
@@ -77,19 +78,20 @@ async function primeroRed(e, request) {
   // navegación no acepta una respuesta ya redirigida: el 301 de una URL sin
   // barra final se le devuelve tal cual al navegador y él lo sigue.
   let guardado = Promise.resolve();
-  const red = fetch(request.url, { cache: 'no-cache', redirect: 'manual', credentials: 'same-origin' })
-    .then((res) => {
-      if (utilizable(res)) guardado = cache.put(request, res.clone());
-      return res;
-    });
+  const red = fetch(request.url, {
+    cache: 'no-cache',
+    redirect: 'manual',
+    credentials: 'same-origin',
+  }).then((res) => {
+    if (utilizable(res)) guardado = cache.put(request, res.clone());
+    return res;
+  });
   // Lo que la red traiga tarde se guarda igual, aunque ya se haya servido la
   // copia: así la siguiente visita sin señal tiene la versión nueva.
   e.waitUntil(red.then(() => guardado).catch(() => {}));
 
   if (!hit) return red.catch(() => Response.error());
-  const desdeRed = red
-    .then((res) => (res.status >= 500 ? hit : res))
-    .catch(() => hit);
+  const desdeRed = red.then((res) => (res.status >= 500 ? hit : res)).catch(() => hit);
   const tarde = new Promise((ok) => setTimeout(() => ok(hit), ESPERA));
   return Promise.race([desdeRed, tarde]);
 }

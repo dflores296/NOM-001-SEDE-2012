@@ -10,11 +10,12 @@ export function armarHilo(id, { porId, entran, salen }, { dir, prof }) {
   const lado = new Map([[id, { x: 0, d: 0 }]]);
   const capa = (desde, lista, signo, d, tope = Infinity) => {
     const nuevos = [];
-    for (const de of desde) for (const v of lista(de) || []) {
-      if (lado.has(v) || nuevos.length >= tope) continue;
-      lado.set(v, { x: signo, d });
-      nuevos.push(v);
-    }
+    for (const de of desde)
+      for (const v of lista(de) || []) {
+        if (lado.has(v) || nuevos.length >= tope) continue;
+        lado.set(v, { x: signo, d });
+        nuevos.push(v);
+      }
     return nuevos;
   };
   const ent = (x) => entran.get(x);
@@ -37,15 +38,21 @@ export function armarHilo(id, { porId, entran, salen }, { dir, prof }) {
   const ESPACIO = 22;
   const ARCO = (150 * Math.PI) / 180;
   const radio = (k, min) => Math.max(min, (k * ESPACIO) / ARCO);
-  const grupo = (x, d) => [...lado].filter(([, o]) => o.x === x && o.d === d).map(([k]) => k)
-    .sort((a, b) => porId.get(b).n - porId.get(a).n);
+  const grupo = (x, d) =>
+    [...lado]
+      .filter(([, o]) => o.x === x && o.d === d)
+      .map(([k]) => k)
+      .sort((a, b) => porId.get(b).n - porId.get(a).n);
   const pos = new Map([[id, [0, 0, 0]]]);
   for (const x of [-1, 1]) {
     const g1 = grupo(x, 1);
     const g2 = grupo(x, 2);
     const r1 = radio(g1.length, 150);
     const r2 = Math.max(r1 + 170, radio(g2.length, 0));
-    for (const [g, r] of [[g1, r1], [g2, r2]]) {
+    for (const [g, r] of [
+      [g1, r1],
+      [g2, r2],
+    ]) {
       g.forEach((k, j) => {
         const t = g.length === 1 ? 0.5 : j / (g.length - 1);
         const ang = (t - 0.5) * ARCO; // de arriba (−) a abajo (+)

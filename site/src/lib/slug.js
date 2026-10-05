@@ -16,5 +16,10 @@ export function defSlug(term) {
 
 /** Ancla de una tabla: "310-15(b)(16)" -> "tabla-310-15-b-16". */
 export function tablaSlug(id) {
-  return 'tabla-' + String(id).replace(/[^\w-]+/g, '-').replace(/-+$/g, '');
+  return (
+    'tabla-' +
+    String(id)
+      .replace(/[^\w-]+/g, '-')
+      .replace(/-+$/g, '')
+  );
 }

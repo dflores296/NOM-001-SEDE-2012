@@ -14,12 +14,16 @@ import { base } from './base.js';
 const rescatarAncla = async () => {
   // Moverse entre anclas de un mismo artículo no recarga la página, así
   // que el aviso anterior sigue en el DOM y se irían apilando.
-  document.querySelectorAll('.aviso-ancla').forEach((n) => n.remove());
+  for (const n of document.querySelectorAll('.aviso-ancla')) n.remove();
 
   const crudo = location.hash.slice(1);
   if (!crudo) return;
   let id;
-  try { id = decodeURIComponent(crudo); } catch (e) { id = crudo; }
+  try {
+    id = decodeURIComponent(crudo);
+  } catch {
+    id = crudo;
+  }
   if (document.getElementById(id)) return;
 
   let mapa;
@@ -27,7 +31,9 @@ const rescatarAncla = async () => {
     const r = await fetch(`${base}/ids-retirados.json`);
     if (!r.ok) return;
     mapa = await r.json();
-  } catch (e) { return; }
+  } catch {
+    return;
+  }
 
   const destino = mapa[id];
   const el = destino && document.getElementById(destino);

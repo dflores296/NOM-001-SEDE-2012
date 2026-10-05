@@ -25,7 +25,7 @@ export async function iniciar(raiz) {
     ForceGraph3D = mod.default;
     SpriteText = spr.default;
     datos = await r.json();
-  } catch (e) {
+  } catch {
     estado.textContent = 'No se pudo cargar el mapa.';
     return;
   }
@@ -35,12 +35,12 @@ export async function iniciar(raiz) {
   const href = (n) => hrefNodo(n, base);
 
   // ------------------------------------------------------------- estado
-  let modo = 'red';        // 'red': la norma entera · 'hilo': un punto y sus hilos
-  let centro = null;       // id del punto de partida
-  let dir = 'ambas';       // 'ambas' | 'entran' | 'salen'
-  let prof = 1;            // 1 o 2 saltos
-  let recorrido = [];      // ids visitados; el último es el centro
-  let foco = null;         // en la red: el punto bajo el cursor
+  let modo = 'red'; // 'red': la norma entera · 'hilo': un punto y sus hilos
+  let centro = null; // id del punto de partida
+  let dir = 'ambas'; // 'ambas' | 'entran' | 'salen'
+  let prof = 1; // 1 o 2 saltos
+  let recorrido = []; // ids visitados; el último es el centro
+  let foco = null; // en la red: el punto bajo el cursor
   const vecinos = new Set();
   const lineas = new Set();
   const ocultos = new Set();
@@ -95,29 +95,40 @@ export async function iniciar(raiz) {
       .nodeColor((n) => (!foco || vecinos.has(n.id) ? color[n.g] : apagado[n.g]))
       .nodeVisibility(visible)
       .nodeThreeObject(null)
-      .nodeLabel((n) => `<b style="font-family:var(--mono)">${esc(rotuloLargo(n))}</b>`
-        + (titulo(n) ? ` · ${esc(titulo(n))}` : '')
-        + `<br><span style="color:#aeaeb7">La citan ${(entran.get(n.id) || []).length} · cita a ${(salen.get(n.id) || []).length} · clic para seguir sus hilos</span>`)
+      .nodeLabel(
+        (n) =>
+          `<b style="font-family:var(--mono)">${esc(rotuloLargo(n))}</b>` +
+          (titulo(n) ? ` · ${esc(titulo(n))}` : '') +
+          `<br><span style="color:#aeaeb7">La citan ${(entran.get(n.id) || []).length} · cita a ${(salen.get(n.id) || []).length} · clic para seguir sus hilos</span>`
+      )
       .linkVisibility((l) => !l.e && lineaVisible(l))
-      .linkColor((l) => (lineas.has(l) ? '#ffffff' : foco ? '#1c1e25' : color[l.source.g] || '#9a9ca8'))
+      .linkColor((l) =>
+        lineas.has(l) ? '#ffffff' : foco ? '#1c1e25' : color[l.source.g] || '#9a9ca8'
+      )
       .linkWidth((l) => (lineas.has(l) ? 0.6 : 0))
       .linkDirectionalParticles((l) => (lineas.has(l) ? 3 : 0));
     G.cooldownTicks(220);
-    G.d3Force('link').distance((l) => (l.e ? 4 : 60)).strength((l) => (l.e ? 0.9 : 0.04));
+    G.d3Force('link')
+      .distance((l) => (l.e ? 4 : 60))
+      .strength((l) => (l.e ? 0.9 : 0.04));
     G.d3Force('charge').strength(-22);
   }
 
   function resaltar(n) {
     foco = n;
-    vecinos.clear(); lineas.clear();
+    vecinos.clear();
+    lineas.clear();
     if (n) {
       vecinos.add(n.id);
       for (const id of entran.get(n.id) || []) vecinos.add(id);
       for (const id of salen.get(n.id) || []) vecinos.add(id);
-      for (const l of linksRed) if (!l.e && (idDe(l.source) === n.id || idDe(l.target) === n.id)) lineas.add(l);
+      for (const l of linksRed)
+        if (!l.e && (idDe(l.source) === n.id || idDe(l.target) === n.id)) lineas.add(l);
     }
-    G.nodeColor(G.nodeColor()).linkWidth(G.linkWidth())
-     .linkDirectionalParticles(G.linkDirectionalParticles()).linkColor(G.linkColor());
+    G.nodeColor(G.nodeColor())
+      .linkWidth(G.linkWidth())
+      .linkDirectionalParticles(G.linkDirectionalParticles())
+      .linkColor(G.linkColor());
   }
 
   function pintarHilo() {
@@ -126,9 +137,14 @@ export async function iniciar(raiz) {
       .nodeVisibility(visible)
       .nodeThreeObjectExtend(true)
       .nodeThreeObject((n) => etiqueta(n))
-      .nodeLabel((n) => `<b style="font-family:var(--mono)">${esc(rotuloLargo(n))}</b>`
-        + (titulo(n) ? ` · ${esc(titulo(n))}` : '')
-        + (n.id !== centro ? '<br><span style="color:#aeaeb7">Clic para seguir desde aquí</span>' : ''))
+      .nodeLabel(
+        (n) =>
+          `<b style="font-family:var(--mono)">${esc(rotuloLargo(n))}</b>` +
+          (titulo(n) ? ` · ${esc(titulo(n))}` : '') +
+          (n.id !== centro
+            ? '<br><span style="color:#aeaeb7">Clic para seguir desde aquí</span>'
+            : '')
+      )
       .linkVisibility(lineaVisible)
       .linkColor(() => '#c8cad0')
       .linkWidth(0.35)
@@ -149,7 +165,9 @@ export async function iniciar(raiz) {
     modo = 'red';
     centro = null;
     recorrido = [];
-    foco = null; vecinos.clear(); lineas.clear();
+    foco = null;
+    vecinos.clear();
+    lineas.clear();
     G.graphData(red);
     pintarRed();
     encuadrar = true;
@@ -180,7 +198,9 @@ export async function iniciar(raiz) {
     lienzo.style.cursor = n && !(modo === 'hilo' && n.id === centro) ? 'pointer' : '';
     if (modo === 'red') resaltar(n);
   });
-  G.onNodeClick((n) => { if (n.id !== centro) seguir(n.id); });
+  G.onNodeClick((n) => {
+    if (n.id !== centro) seguir(n.id);
+  });
 
   // ------------------------------------------------------------- interfaz
   const panel = $('.mapa-panel');
@@ -194,8 +214,10 @@ export async function iniciar(raiz) {
     panel.hidden = !hilo;
     raiz.classList.toggle('con-panel', hilo);
     if (hilo) $('.mapa-guia-c').textContent = rotuloLargo(porId.get(centro));
-    for (const b of raiz.querySelectorAll('[data-dir]')) b.setAttribute('aria-pressed', String(b.dataset.dir === dir));
-    for (const b of raiz.querySelectorAll('[data-prof]')) b.setAttribute('aria-pressed', String(Number(b.dataset.prof) === prof));
+    for (const b of raiz.querySelectorAll('[data-dir]'))
+      b.setAttribute('aria-pressed', String(b.dataset.dir === dir));
+    for (const b of raiz.querySelectorAll('[data-prof]'))
+      b.setAttribute('aria-pressed', String(Number(b.dataset.prof) === prof));
 
     const ol = $('.mapa-recorrido ol');
     ol.replaceChildren();
@@ -213,7 +235,9 @@ export async function iniciar(raiz) {
       b.textContent = rotulo(n);
       b.title = titulo(n);
       if (id === centro) b.setAttribute('aria-current', 'step');
-      b.addEventListener('click', () => { if (id !== centro) seguir(id); });
+      b.addEventListener('click', () => {
+        if (id !== centro) seguir(id);
+      });
       li.append(b);
       ol.append(li);
     }
@@ -229,7 +253,10 @@ export async function iniciar(raiz) {
       ul.append(li);
       return;
     }
-    const orden = ids.map((id) => porId.get(id)).filter(Boolean).sort((a, b) => b.n - a.n);
+    const orden = ids
+      .map((id) => porId.get(id))
+      .filter(Boolean)
+      .sort((a, b) => b.n - a.n);
     for (const n of orden) {
       const li = document.createElement('li');
       const b = document.createElement('button');
@@ -252,8 +279,11 @@ export async function iniciar(raiz) {
     panel.querySelector('.mp-id').style.color = color[n.g];
     panel.querySelector('.mp-t').textContent = titulo(n) || rotuloLargo(n);
     panel.querySelector('.mp-art').textContent =
-      n.k === 's' ? `Artículo ${n.a} · Capítulo ${n.g !== 'g' ? nombreGrupo[n.g] : 'general'}`
-      : n.k === 'a' ? `Capítulo ${n.g !== 'g' ? nombreGrupo[n.g] : 'general'}` : 'Cierre de la norma';
+      n.k === 's'
+        ? `Artículo ${n.a} · Capítulo ${n.g !== 'g' ? nombreGrupo[n.g] : 'general'}`
+        : n.k === 'a'
+          ? `Capítulo ${n.g !== 'g' ? nombreGrupo[n.g] : 'general'}`
+          : 'Cierre de la norma';
     panel.querySelector('.mp-ir').href = href(n);
     const inn = entran.get(n.id) || [];
     const out = salen.get(n.id) || [];
@@ -265,10 +295,16 @@ export async function iniciar(raiz) {
   }
 
   for (const b of raiz.querySelectorAll('[data-dir]')) {
-    b.addEventListener('click', () => { dir = b.dataset.dir; if (centro) seguir(centro, { historial: false, mantener: true }); });
+    b.addEventListener('click', () => {
+      dir = b.dataset.dir;
+      if (centro) seguir(centro, { historial: false, mantener: true });
+    });
   }
   for (const b of raiz.querySelectorAll('[data-prof]')) {
-    b.addEventListener('click', () => { prof = Number(b.dataset.prof); if (centro) seguir(centro, { historial: false, mantener: true }); });
+    b.addEventListener('click', () => {
+      prof = Number(b.dataset.prof);
+      if (centro) seguir(centro, { historial: false, mantener: true });
+    });
   }
   $('.mapa-red').addEventListener('click', () => verRed());
   $('.mapa-atras').addEventListener('click', () => {
@@ -289,11 +325,15 @@ export async function iniciar(raiz) {
 
   // Leyenda: muestra u oculta un capítulo, en la red y en el hilo.
   function alternar(g) {
-    if (ocultos.has(g)) ocultos.delete(g); else ocultos.add(g);
-    raiz.querySelector(`.chip-cap[data-g="${g}"]`)?.setAttribute('aria-pressed', String(!ocultos.has(g)));
+    if (ocultos.has(g)) ocultos.delete(g);
+    else ocultos.add(g);
+    raiz
+      .querySelector(`.chip-cap[data-g="${g}"]`)
+      ?.setAttribute('aria-pressed', String(!ocultos.has(g)));
     G.nodeVisibility(G.nodeVisibility()).linkVisibility(G.linkVisibility());
   }
-  for (const b of raiz.querySelectorAll('.chip-cap')) b.addEventListener('click', () => alternar(b.dataset.g));
+  for (const b of raiz.querySelectorAll('.chip-cap'))
+    b.addEventListener('click', () => alternar(b.dataset.g));
 
   // ----------------------------------------------- buscador con sugerencias
   const input = $('.mapa-busca input');
@@ -319,7 +359,10 @@ export async function iniciar(raiz) {
       const em = document.createElement('em');
       em.textContent = `${(entran.get(n.id) || []).length} citas`;
       li.append(i, b, t, em);
-      li.addEventListener('mousedown', (e) => { e.preventDefault(); elegir(n); });
+      li.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        elegir(n);
+      });
       sug.append(li);
     });
     sug.hidden = !opciones.length;
@@ -329,7 +372,9 @@ export async function iniciar(raiz) {
   }
 
   function elegir(n) {
-    opciones = []; marcada = -1; pintarSug();
+    opciones = [];
+    marcada = -1;
+    pintarSug();
     input.value = '';
     input.blur();
     msg.textContent = '';
@@ -342,8 +387,10 @@ export async function iniciar(raiz) {
     const q = input.value.trim();
     opciones = q.length >= 2 ? sugerir(q) : [];
     marcada = opciones.length ? 0 : -1;
-    msg.textContent = q.length >= 2 && !opciones.length
-      ? 'No aparece en el mapa. Solo están las secciones que citan o son citadas.' : '';
+    msg.textContent =
+      q.length >= 2 && !opciones.length
+        ? 'No aparece en el mapa. Solo están las secciones que citan o son citadas.'
+        : '';
     pintarSug();
   });
   input.addEventListener('keydown', (e) => {
@@ -356,14 +403,27 @@ export async function iniciar(raiz) {
       e.preventDefault();
       if (opciones[marcada]) elegir(opciones[marcada]);
     } else if (e.key === 'Escape') {
-      opciones = []; pintarSug(); input.blur();
+      opciones = [];
+      pintarSug();
+      input.blur();
     }
   });
-  input.addEventListener('blur', () => setTimeout(() => { opciones = []; pintarSug(); }, 120));
+  input.addEventListener('blur', () =>
+    setTimeout(() => {
+      opciones = [];
+      pintarSug();
+    }, 120)
+  );
 
   // Escape fuera del buscador: un paso atrás, y del primero a la red.
   addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape' || modo !== 'hilo' || document.activeElement === input || document.fullscreenElement) return;
+    if (
+      e.key !== 'Escape' ||
+      modo !== 'hilo' ||
+      document.activeElement === input ||
+      document.fullscreenElement
+    )
+      return;
     if (recorrido.length > 1) seguir(recorrido[recorrido.length - 2]);
     else verRed();
   });

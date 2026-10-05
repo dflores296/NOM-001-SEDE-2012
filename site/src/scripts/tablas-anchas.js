@@ -71,7 +71,10 @@ for (const scroll of document.querySelectorAll('.tabla-scroll')) {
   const aviso = document.createElement('p');
   aviso.className = 'tabla-desliza';
   aviso.hidden = true;
-  const ncols = Math.max(0, ...[...table.rows].map((tr) => [...tr.cells].reduce((n, c) => n + c.colSpan, 0)));
+  const ncols = Math.max(
+    0,
+    ...[...table.rows].map((tr) => [...tr.cells].reduce((n, c) => n + c.colSpan, 0))
+  );
   aviso.textContent = `Desliza para ver las ${ncols} columnas →`;
   caja.before(aviso);
 
@@ -96,7 +99,10 @@ for (const scroll of document.querySelectorAll('.tabla-scroll')) {
       scroll.removeAttribute('role');
       scroll.removeAttribute('aria-label');
     }
-    for (const c of fijas) { c.classList.remove('fija'); c.style.left = ''; }
+    for (const c of fijas) {
+      c.classList.remove('fija');
+      c.style.left = '';
+    }
     // Las líneas cambian de modelo con columnas fijas (articulo.css), y eso
     // mueve los anchos un píxel: se mide ya con el modelo que va a quedar.
     caja.classList.toggle('con-fijas', desborda && fijas.length > 0);
@@ -106,7 +112,10 @@ for (const scroll of document.querySelectorAll('.tabla-scroll')) {
     const x0 = fijas.length ? Math.min(...fijas.map((c) => rects.get(c).left)) : 0;
     const ancho = fijas.length ? Math.max(...fijas.map((c) => rects.get(c).right)) - x0 : 0;
     if (desborda && ancho <= scroll.clientWidth * 0.45) {
-      for (const c of fijas) { c.style.left = `${rects.get(c).left - x0}px`; c.classList.add('fija'); }
+      for (const c of fijas) {
+        c.style.left = `${rects.get(c).left - x0}px`;
+        c.classList.add('fija');
+      }
     } else {
       caja.classList.remove('con-fijas');
     }
@@ -114,7 +123,10 @@ for (const scroll of document.querySelectorAll('.tabla-scroll')) {
   };
   const sombras = () => {
     caja.classList.toggle('mas-izq', desborda && scroll.scrollLeft > 2);
-    caja.classList.toggle('mas-der', desborda && scroll.scrollLeft + scroll.clientWidth < scroll.scrollWidth - 2);
+    caja.classList.toggle(
+      'mas-der',
+      desborda && scroll.scrollLeft + scroll.clientWidth < scroll.scrollWidth - 2
+    );
   };
   scroll.addEventListener('scroll', sombras, { passive: true });
   new ResizeObserver(medir).observe(scroll);

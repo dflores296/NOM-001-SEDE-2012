@@ -57,7 +57,8 @@ if (enlaces.length > 1) {
     if (on === marcado) return;
     marcado = on;
     // El mismo contenido del enlace: el número en mono y el título.
-    if (on) actual.innerHTML = on.innerHTML; else actual.textContent = titulo;
+    if (on) actual.innerHTML = on.innerHTML;
+    else actual.textContent = titulo;
     for (const a of lista.querySelectorAll('a')) {
       a.classList.toggle('on', !!on && a.getAttribute('href') === on.getAttribute('href'));
     }
@@ -69,9 +70,16 @@ if (enlaces.length > 1) {
     copiar();
     arriba.hidden = scrollY < innerHeight;
   };
-  addEventListener('scroll', () => {
-    if (!pendiente) { pendiente = true; requestAnimationFrame(alMover); }
-  }, { passive: true });
+  addEventListener(
+    'scroll',
+    () => {
+      if (!pendiente) {
+        pendiente = true;
+        requestAnimationFrame(alMover);
+      }
+    },
+    { passive: true }
+  );
   alMover();
 
   abrir.addEventListener('click', () => {
@@ -83,8 +91,12 @@ if (enlaces.length > 1) {
   hoja.addEventListener('close', () => document.documentElement.classList.remove('im-abierta'));
   hoja.querySelector('.im-cerrar').addEventListener('click', () => hoja.close());
   // Un toque fuera de la hoja (en el fondo oscurecido) la cierra.
-  hoja.addEventListener('click', (e) => { if (e.target === hoja) hoja.close(); });
+  hoja.addEventListener('click', (e) => {
+    if (e.target === hoja) hoja.close();
+  });
   // Al elegir una entrada se cierra la hoja y el ancla hace el resto.
-  lista.addEventListener('click', (e) => { if (e.target.closest('a')) hoja.close(); });
+  lista.addEventListener('click', (e) => {
+    if (e.target.closest('a')) hoja.close();
+  });
   arriba.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 }

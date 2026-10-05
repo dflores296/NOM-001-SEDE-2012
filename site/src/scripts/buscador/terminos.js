@@ -29,8 +29,29 @@ export function singular(t) {
 // Palabras que no dicen nada del tema. Con la búsqueda por prefijo, la "a"
 // de "puesta a tierra" encontraba toda palabra que empezara con a, y la
 // consulta devolvía 3 174 documentos en vez de 940.
-const VACIAS = new Set(['a', 'al', 'con', 'de', 'del', 'e', 'el', 'en', 'la', 'las', 'lo',
-                        'los', 'o', 'para', 'por', 'que', 'se', 'u', 'un', 'una', 'y']);
+const VACIAS = new Set([
+  'a',
+  'al',
+  'con',
+  'de',
+  'del',
+  'e',
+  'el',
+  'en',
+  'la',
+  'las',
+  'lo',
+  'los',
+  'o',
+  'para',
+  'por',
+  'que',
+  'se',
+  'u',
+  'un',
+  'una',
+  'y',
+]);
 
 // En el campo `id` sí se conservan: la "a" de "392-22(a)" es parte del
 // código, no un artículo. (La consulta llega sin campo y las descarta,

@@ -18,6 +18,13 @@ paso() { printf '\n== %s\n' "$1"; }
 paso 'Revisar el código de tools/'
 python3 -m ruff check tools/
 
+# Lo mismo para el JavaScript del sitio, con Biome: errores probables (linter)
+# y un solo estilo de escritura (formateador). `ci` no escribe nada; falla si
+# hay un error o si un archivo no está formateado. Para arreglarlo en local:
+# cd site && npx biome check --write . Ver site/biome.json.
+paso 'Revisar el código del sitio'
+(cd site && npx biome ci .)
+
 # El corpus se regenera desde el PDF en cada publicación: así el sitio nunca
 # se despega de la fuente, y si un cambio en el parser rompe algo, la
 # validación lo detiene aquí y no en producción.
