@@ -12,3 +12,4 @@ site/src/generado/
 # Se regenera cuando haga falta; no hay razón para versionar la salida.
 export-claude*/
 export-claude*.zip
+.pytest_cache/

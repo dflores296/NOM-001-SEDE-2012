@@ -452,17 +452,11 @@ def destino_vivo(dst, index, tabla_ids, figura_ids):
     return dst in index
 
 
-def main():
-    out = sys.argv[1] if len(sys.argv) > 1 else 'data'
-    corpus = json.load(open(os.path.join(out, 'corpus.json')))
-    articles = corpus['articles']
-    tablas = json.load(open(os.path.join(out, 'tablas.json')))
-
-    index, sec_ids = indice_plano(corpus)
-    figura_ids = numeros_de_figura(corpus)
-    # Las tablas y las figuras del Apéndice A, por su clave canónica.
-    ctx = {
-        'art_nums': {a['num'] for a in articles},
+def contexto(corpus, tablas, sec_ids, figura_ids):
+    """Lo que citas() consulta para decidir a qué apunta una cita. Las tablas
+    y las figuras del Apéndice A van por su clave canónica."""
+    return {
+        'art_nums': {a['num'] for a in corpus['articles']},
         'chapters': {c['num']: c['title'] for c in corpus['chapters']},
         'sec_ids': sec_ids,
         'figura_ids': figura_ids,
@@ -471,6 +465,17 @@ def main():
         'ap_figuras': {clave_apendice(f): f for f in figura_ids
                        if f.upper().startswith('B.310')},
     }
+
+
+def main():
+    out = sys.argv[1] if len(sys.argv) > 1 else 'data'
+    corpus = json.load(open(os.path.join(out, 'corpus.json')))
+    articles = corpus['articles']
+    tablas = json.load(open(os.path.join(out, 'tablas.json')))
+
+    index, sec_ids = indice_plano(corpus)
+    figura_ids = numeros_de_figura(corpus)
+    ctx = contexto(corpus, tablas, sec_ids, figura_ids)
     edges = aristas(corpus, ctx)
     outgoing, incoming, incoming_roll = backlinks(edges)
 

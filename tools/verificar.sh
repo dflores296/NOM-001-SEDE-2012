@@ -41,6 +41,12 @@ python3 tools/build_cifras.py data/ README.md --check
 paso 'Verificar cobertura del parseo'
 python3 tools/check_corpus.py data/
 
+# Las reglas del extractor una por una (el lector de artículos, las citas, la
+# huella de las tablas) y los casos conocidos de la norma sobre lo que el
+# pipeline acaba de dejar en data/. Ver tools/pruebas/conftest.py.
+paso 'Pruebas unitarias del extractor'
+python3 -m pytest -q tools/pruebas
+
 paso 'Compilar el sitio'
 (cd site && npm run build)
 

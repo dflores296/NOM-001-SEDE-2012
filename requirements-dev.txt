@@ -2,3 +2,4 @@
 # extracción de requirements.txt. Fijadas por la misma razón: que la
 # verificación de hoy sea la de mañana.
 ruff==0.16.10
+pytest==9.1.1

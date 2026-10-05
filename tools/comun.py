@@ -1,8 +1,8 @@
 """
 Utilidades que comparten los scripts de tools/.
 
-Antes cada script traía su propia copia, y una corrección en una no llegaba a
-las otras. Solo vive aquí lo que es idéntico en todos los que lo usan: dos
+Viven en un solo lugar para que una corrección llegue a todos los scripts.
+Solo está aquí lo que es idéntico en todos los que lo usan: dos
 funciones que se llaman igual pero hacen cosas distintas (el norm() de
 build_redirects.py y el de build_tables.py, por ejemplo) se quedan en su
 script.
