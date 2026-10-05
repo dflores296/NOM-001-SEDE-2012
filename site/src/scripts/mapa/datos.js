@@ -7,7 +7,7 @@ export function indexar(datos) {
   const porId = new Map(datos.nodes.map((n) => [n.id, n]));
   const entran = new Map(); // quién cita a cada nodo
   const salen = new Map(); // a quién cita cada nodo
-  const linksRed = datos.links.map((l) => ({ source: l.s, target: l.t, e: l.e || 0 }));
+  const linksRed = datos.links.map((l) => ({ source: l.s, target: l.t, e: l.e || 0, w: l.w || 1 }));
   for (const l of datos.links) {
     if (l.e) continue;
     if (!salen.has(l.s)) salen.set(l.s, []);
