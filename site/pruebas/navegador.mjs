@@ -537,6 +537,23 @@ prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagi
     await page.$eval('.mapa-ley', (e) => e.scrollWidth <= e.clientWidth),
     'la leyenda se sale de lado'
   );
+
+  // Doble clic en un capítulo deja solo ese, en el mapa y en el panel; el
+  // conteo dice cuántas citas quedaron ocultas y «Mostrar todos» regresa.
+  const antes = Number(await page.textContent('.mp-n-in'));
+  await page.dblclick('.chip-cap[data-g="2"]');
+  const pulsados = await page.$$eval('.chip-cap', (bs) =>
+    bs.filter((b) => b.getAttribute('aria-pressed') === 'true').map((b) => b.dataset.g)
+  );
+  afirmar(pulsados.join() === '2', `quedaron visibles: ${pulsados}`);
+  const ahora = Number(await page.textContent('.mp-n-in'));
+  const ocultas = await page.textContent('.mp-oc-in');
+  afirmar(
+    ahora < antes && ocultas.includes(String(antes - ahora)),
+    `${antes} → ${ahora}, «${ocultas}»`
+  );
+  await page.click('.chip-todos');
+  afirmar(Number(await page.textContent('.mp-n-in')) === antes, 'Mostrar todos no las regresó');
 });
 
 prueba('En el teléfono, el mapa no carga la librería 3D', async ({ nuevaPagina }) => {
