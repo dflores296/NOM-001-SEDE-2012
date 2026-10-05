@@ -271,3 +271,63 @@ p.tabla-intro {
 .backlinks summary:hover { color: var(--text); border-color: var(--text-faint); }
 .backlinks ul { margin: 0.6rem 0 0; padding: 0.6rem 0.9rem 0.6rem 1.8rem; border-left: 1px solid var(--border); }
 .backlinks li { margin: 0.2rem 0; }
+
+/* ------------------------------------------- índice en el teléfono
+   Los botones y la hoja los arma src/scripts/indice-movil.js a partir del
+   .toc; solo se muestran donde el .toc está oculto. */
+.indice-movil { display: none; }
+@media (max-width: 1020px) {
+  .indice-movil {
+    display: flex; gap: 0.5rem; align-items: center;
+    position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 40;
+    max-width: calc(100vw - 32px);
+  }
+}
+.indice-movil button {
+  display: inline-flex; align-items: center; gap: 0.5rem; height: 44px;
+  border: 1px solid var(--card-border); border-radius: var(--radius-lg);
+  background: var(--panel); color: var(--text); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  font: 500 0.875rem/1 var(--sans); cursor: pointer;
+}
+.indice-movil button[hidden] { display: none; }
+.indice-movil svg { width: 18px; height: 18px; flex: none; }
+.im-arriba { width: 44px; justify-content: center; padding: 0; }
+.im-abrir { padding: 0 0.95rem; min-width: 0; }
+.im-actual { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.im-actual .mono, .im-hoja .mono { font-family: var(--mono); }
+.im-actual .mono { color: var(--activo); }
+
+.im-hoja {
+  margin: auto 0 0; width: 100%; max-width: 100%; max-height: 78vh;
+  padding: 0; border: 0; border-top: 1px solid var(--card-border);
+  border-radius: 12px 12px 0 0; background: var(--panel); color: var(--text);
+  overflow: hidden;
+}
+.im-hoja[open] { display: flex; flex-direction: column; animation: im-subir 180ms ease-out; }
+.im-hoja::backdrop { background: rgba(0, 0, 0, 0.45); }
+@keyframes im-subir { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .im-hoja[open] { animation: none; } }
+html.im-abierta { overflow: hidden; }
+.im-cab {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 0.75rem 0.75rem 1.1rem; border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.im-cerrar {
+  display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+  border: 0; border-radius: var(--radius); background: none; color: var(--text-dim); cursor: pointer;
+}
+.im-cerrar svg { width: 20px; height: 20px; }
+.im-lista { overflow-y: auto; padding: 0.4rem 0 calc(1rem + env(safe-area-inset-bottom)); overscroll-behavior: contain; }
+.im-lista h3 {
+  margin: 0.9rem 1.1rem 0.3rem; font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint);
+}
+.im-lista a {
+  display: block; padding: 0.6rem 1.1rem; color: var(--text-dim); line-height: 1.35;
+  font-size: 0.9rem; border-left: 2px solid transparent;
+}
+.im-lista a .mono { color: var(--text-faint); font-size: 0.82rem; margin-right: 0.15rem; }
+.im-lista a.on { color: var(--activo); background: var(--accent-soft); border-left-color: var(--activo); font-weight: 500; }
+.im-lista a.on .mono { color: var(--activo); }
+.im-lista a:hover { text-decoration: none; color: var(--text); }

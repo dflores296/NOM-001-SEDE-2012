@@ -205,6 +205,29 @@ prueba('El índice lateral marca la sección que se está leyendo', async ({ nue
   afirmar(on.some((h) => h.endsWith('#250-32')), `marcado: ${on.join(', ') || 'nada'}`);
 });
 
+prueba('En el teléfono, el índice de la página se abre desde abajo y lleva a la sección', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(TELEFONO);
+  await page.goto('/art/250/#250-32', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(400);
+  afirmar(/250-32/.test(await page.textContent('.im-abrir')), `el botón dice: ${await page.textContent('.im-abrir')}`);
+  await page.click('.im-abrir');
+  await page.waitForSelector('.im-hoja[open]');
+  afirmar(await page.$eval('.im-hoja a.on', (a) => a.getAttribute('href')) === '#250-32', 'la hoja no marca 250-32');
+  await page.click('.im-hoja a[href="#250-122"]');
+  await page.waitForFunction(() => !document.querySelector('.im-hoja').open);
+  await page.waitForTimeout(400);
+  afirmar(page.url().endsWith('#250-122'), `quedó en ${page.url()}`);
+  afirmar(/250-122/.test(await page.textContent('.im-abrir')), `el botón dice: ${await page.textContent('.im-abrir')}`);
+  await page.click('.im-arriba');
+  await page.waitForFunction(() => scrollY === 0);
+});
+
+prueba('En escritorio no aparecen los botones del índice móvil', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  afirmar(!(await page.isVisible('.im-abrir')), 'el botón del índice móvil se ve en escritorio');
+});
+
 prueba('Un identificador retirado avisa dónde quedó su contenido', async ({ nuevaPagina }) => {
   const mapa = JSON.parse(fs.readFileSync(path.join(DIST, 'ids-retirados.json'), 'utf8'));
   const [viejo, nuevo] = Object.entries(mapa).find(([v]) => v.startsWith('250-'))
