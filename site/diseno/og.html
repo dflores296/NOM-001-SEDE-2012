@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- La imagen de vista previa al compartir un enlace (public/ui/og.jpg,
+     1200 × 630). Se genera con: node diseno/og.mjs -->
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: 'Inter';
+    src: url('../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2');
+    font-weight: 100 900;
+  }
+  html, body { margin: 0; }
+  .tarjeta {
+    position: relative; width: 1200px; height: 630px; overflow: hidden;
+    background: #070707; color: #fff; font-family: 'Inter', sans-serif;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  }
+  /* La red de la portada de fondo, oscurecida al centro para que el texto mande. */
+  .red {
+    position: absolute; inset: 0; background: url('../public/video/red.jpg') center / cover;
+    opacity: 0.75;
+  }
+  .velo {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 62% 70% at 50% 50%, rgba(7,7,7,0.92) 0%, rgba(7,7,7,0.78) 45%, rgba(7,7,7,0.25) 100%);
+  }
+  .ey, h1, .sub, .cifras { position: relative; }
+  .ey { font-size: 26px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #a6e5f2; margin: 0 0 22px; }
+  h1 { font-size: 104px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin: 0; }
+  .sub { font-size: 40px; font-weight: 500; color: #e3e4e8; margin: 26px 0 0; }
+  .cifras { font-size: 26px; color: #c8cad0; margin: 44px 0 0; }
+  .cifras b { color: #fff; font-weight: 600; }
+  .url { position: absolute; bottom: 34px; font-size: 22px; color: #9a9ca8; letter-spacing: 0.01em; }
+</style>
+<div class="tarjeta">
+  <div class="red"></div>
+  <div class="velo"></div>
+  <p class="ey">Guía interactiva</p>
+  <h1>NOM-001-SEDE-2012</h1>
+  <p class="sub">Instalaciones Eléctricas (utilización)</p>
+  <p class="cifras"><b>151</b> artículos · <b>245</b> tablas · <b>51</b> figuras · buscador</p>
+  <p class="url">dflores296.github.io/NOM-001-SEDE-2012</p>
+</div>
