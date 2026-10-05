@@ -516,7 +516,7 @@ prueba('El video de la portada solo se carga en escritorio', async ({ nuevaPagin
 // ------------------------------------------------------------------ mapa
 
 prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagina }) => {
-  const { page } = await nuevaPagina(ESCRITORIO);
+  const { page, errores } = await nuevaPagina(ESCRITORIO);
   await page.goto('/mapa/', { waitUntil: 'networkidle' });
   await page.waitForSelector('.mapa canvas', { timeout: 20000 });
   await page.fill('.mapa-busca input', '250-122');
@@ -554,6 +554,11 @@ prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagi
   );
   await page.click('.chip-todos');
   afirmar(Number(await page.textContent('.mp-n-in')) === antes, 'Mostrar todos no las regresó');
+
+  // Centrar vuelve a encuadrar sin romper nada.
+  await page.click('.mapa-centrar');
+  await page.waitForTimeout(700);
+  afirmar(errores.length === 0, errores.join(' | '));
 });
 
 prueba('En el teléfono, el mapa no carga la librería 3D', async ({ nuevaPagina }) => {

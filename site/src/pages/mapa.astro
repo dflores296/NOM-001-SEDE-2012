@@ -63,6 +63,14 @@ const GRUPOS = [
             </div>
           </div>
           <button type="button" class="mapa-btn mapa-red" hidden>Red completa</button>
+          {/* Vuelve a encuadrar lo que está a la vista: la red, el hilo o
+              solo los capítulos que se dejaron en la leyenda. */}
+          <button type="button" class="mapa-btn mapa-centrar" aria-label="Centrar" title="Centrar lo que está a la vista">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+            </svg>
+          </button>
           <button type="button" class="mapa-btn mapa-full" aria-label="Pantalla completa" title="Pantalla completa">
             <svg class="ico-entrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

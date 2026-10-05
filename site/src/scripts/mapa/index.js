@@ -419,6 +419,12 @@ export async function iniciar(raiz) {
   }
   btnTodos.addEventListener('click', () => fijarOcultos([]));
 
+  // Centrar: encuadra solo los puntos a la vista, así que con un capítulo
+  // aislado en la leyenda se acerca a ese capítulo.
+  $('.mapa-centrar').addEventListener('click', () =>
+    G.zoomToFit(600, modo === 'hilo' ? 70 : 30, visible)
+  );
+
   // ----------------------------------------------- buscador con sugerencias
   const input = $('.mapa-busca input');
   const sug = $('.mapa-sug');

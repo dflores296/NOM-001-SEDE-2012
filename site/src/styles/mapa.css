@@ -90,7 +90,7 @@
 }
 .mapa-atras { padding: 0; height: 26px; min-width: 26px; font-size: 0.875rem; }
 .mapa-atras:disabled { opacity: 0.35; cursor: default; }
-.mapa-full { padding: 0; width: 32px; }
+.mapa-full, .mapa-centrar { padding: 0; width: 32px; }
 .mapa-btn svg { width: 16px; height: 16px; }
 .mapa-full .ico-salir { display: none; }
 .mapa-visor:fullscreen .mapa-full .ico-entrar { display: none; }
