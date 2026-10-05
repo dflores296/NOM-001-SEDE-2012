@@ -99,6 +99,8 @@
      tabla separado de ella. */
   h1, h2, h3, h4, figcaption, .sec-head, .part-head, section.sec > h2, p.tabla-intro { break-after: avoid; }
   figure.tabla figcaption + *, p.tabla-intro + .tabla-caja { break-before: avoid; }
+  .part-head, .sec-head { break-inside: avoid; }
+  .eyebrow, .migaja { break-after: avoid; }
   /* Solo las piezas cortas van enteras: una excepción de media hoja que no
      cabe se iría completa a la siguiente y dejaría un hueco. */
   .def, .nota, .fig, .cifra, .card { break-inside: avoid; }

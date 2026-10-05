@@ -594,6 +594,43 @@ prueba(
   }
 );
 
+prueba('Al imprimir, ninguna tabla se sale de la hoja', async ({ nuevaPagina }) => {
+  // 710 px es lo que queda de una hoja carta o A4 vertical con los márgenes
+  // de impresion.css; 950, de una horizontal (las que van con `page:
+  // horizontal`). Una tabla más ancha que eso saldría cortada en el papel.
+  const { page } = await nuevaPagina({ viewport: { width: 710, height: 900 } });
+  await page.emulateMedia({ media: 'print' });
+  const conTablas = [];
+  for (const dir of ['art', 'apendices', 'tablas', 'cierre']) {
+    for (const f of fs.readdirSync(path.join(DIST, dir), { recursive: true })) {
+      if (!f.endsWith('index.html')) continue;
+      const html = fs.readFileSync(path.join(DIST, dir, f), 'utf8');
+      if (html.includes('class="tabla-scroll"'))
+        conTablas.push(`/${dir}/${path.dirname(f)}/`.replace('/./', '/'));
+    }
+  }
+  const fuera = [];
+  let n = 0;
+  for (const ruta of conTablas) {
+    await page.goto(ruta, { waitUntil: 'load' });
+    const medidas = await page.$$eval('.tabla-scroll table', (ts) =>
+      ts.map((t) => {
+        const fig = t.closest('figure');
+        return {
+          id: fig?.id,
+          ancho: t.getBoundingClientRect().width,
+          max: getComputedStyle(fig).page === 'horizontal' ? 950 : 710,
+        };
+      })
+    );
+    n += medidas.length;
+    for (const m of medidas)
+      if (m.ancho > m.max + 0.5) fuera.push(`${m.id} (${Math.round(m.ancho)} px)`);
+  }
+  afirmar(n >= 245, `solo se midieron ${n} tablas`);
+  afirmar(fuera.length === 0, `se salen: ${fuera.join(', ')}`);
+});
+
 // ---------------------------------------------------------------- correr
 
 const { url, cerrar } = await servir(DIST);
