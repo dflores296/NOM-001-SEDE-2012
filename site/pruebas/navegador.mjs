@@ -447,6 +447,25 @@ prueba('Una tabla que cabe no lleva aviso ni columnas fijas', async ({ nuevaPagi
   afirmar(!(await page.$('#tabla-250-122 .fija')), 'columna fija en una tabla que cabe');
 });
 
+prueba(
+  'Una dirección que no existe muestra la página 404 con buscador y atajos',
+  async ({ nuevaPagina }) => {
+    const { page } = await nuevaPagina(TELEFONO);
+    const r = await page.goto('/art/250-122', { waitUntil: 'networkidle' });
+    afirmar(r.status() === 404, `respondió ${r.status()}`);
+    afirmar((await page.textContent('h1')).includes('no existe'), 'sin el título de la 404');
+    // La dirección traía un código que sí existe: se ofrece el enlace directo.
+    const enlace = await page.getAttribute('.sugerencia a', 'href');
+    afirmar(enlace?.endsWith('/art/250/#250-122'), `sugerencia: ${enlace}`);
+    await Promise.all([page.waitForURL((u) => u.hash === '#250-122'), page.click('.sugerencia a')]);
+    // Un artículo que no existe no inventa sugerencia; el buscador sí funciona.
+    await page.goto('/art/999/', { waitUntil: 'networkidle' });
+    afirmar(await page.isHidden('.sugerencia'), 'sugirió un artículo que no existe');
+    const rs = await resultados(page, 'acometida', '.buscar-404');
+    afirmar(rs.length, 'el buscador de la 404 no dio resultados');
+  }
+);
+
 prueba('Un identificador retirado avisa dónde quedó su contenido', async ({ nuevaPagina }) => {
   const mapa = JSON.parse(fs.readFileSync(path.join(DIST, 'ids-retirados.json'), 'utf8'));
   const [viejo, nuevo] =

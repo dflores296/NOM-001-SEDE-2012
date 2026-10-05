@@ -41,8 +41,10 @@ export function servir(dist) {
       f = path.join(f, 'index.html');
     }
     if (!fs.existsSync(f)) {
-      res.writeHead(404, { 'Content-Type': 'text/html' });
-      res.end('<h1>404</h1>');
+      // Como GitHub Pages: la página 404 del sitio, con estado 404.
+      const p404 = path.join(dist, '404.html');
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(fs.existsSync(p404) ? fs.readFileSync(p404) : '<h1>404</h1>');
       return;
     }
     res.writeHead(200, { 'Content-Type': TIPOS[path.extname(f)] || 'application/octet-stream' });

@@ -1,0 +1,94 @@
+---
+// La página que GitHub Pages sirve cuando una dirección no existe. Sin ella
+// se veía la genérica en inglés, sin forma de seguir. Aquí: el buscador, los
+// atajos a las páginas principales y, si la dirección traía un código que
+// sí existe («/art/250-122», «/250»), el enlace directo a él.
+import Base from '../layouts/Base.astro';
+import { articles } from '../lib/nom.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const nums = articles.map((a) => a.num);
+
+const ATAJOS = [
+  { href: '/', txt: 'Índice de artículos', nota: `Los ${articles.length} artículos por capítulo` },
+  { href: '/tablas/', txt: 'Tablas', nota: 'Todas las tablas de la norma' },
+  { href: '/glosario/', txt: 'Glosario', nota: 'Las definiciones del Artículo 100' },
+  { href: '/figuras/', txt: 'Figuras', nota: 'Diagramas y fórmulas' },
+  { href: '/apendices/', txt: 'Apéndices', nota: 'A, B y C' },
+];
+---
+
+<Base title="Página no encontrada — NOM-001-SEDE-2012" desc="Esta dirección no existe en la guía.">
+  <main id="contenido" tabindex="-1" class="wrap pag-404">
+    <div class="hero">
+      <p class="migaja">Error 404</p>
+      <h1>Esta página no existe</h1>
+      <p>
+        La dirección que abriste no lleva a ninguna página de la guía: puede ser un enlace viejo
+        o mal escrito. Busca lo que necesitabas o empieza por una de las páginas de abajo.
+      </p>
+    </div>
+
+    <p class="sugerencia" hidden></p>
+
+    <form class="buscar-404" role="search">
+      <div class="search-wrap">
+        <svg class="lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+        <input data-buscar type="search" autocomplete="off" spellcheck="false"
+               placeholder="Busca 250-32, ampacidad, falla a tierra…" aria-label="Buscar en la norma" />
+        <div class="results" role="listbox"></div>
+      </div>
+    </form>
+
+    <nav class="atajos-404" aria-label="Páginas principales">
+      {ATAJOS.map((a) => (
+        <a href={`${base}${a.href}`}><b>{a.txt}</b><span>{a.nota}</span></a>
+      ))}
+    </nav>
+  </main>
+</Base>
+
+<script define:vars={{ base, nums }}>
+  // Si la dirección rota trae un código de la norma, se ofrece el enlace
+  // directo: «/art/250-122» o «/250-122» llevan a la sección 250-122;
+  // «/art/250» o «/250», al artículo. Solo si ese artículo existe.
+  const ruta = decodeURIComponent(location.pathname.slice(base.length)).toLowerCase();
+  const existe = new Set(nums);
+  const sec = ruta.match(/(\d{3})-(\d{1,3})((?:\([a-z0-9]{1,3}\))*)/);
+  const art = sec ? null : ruta.match(/(?:^|\/)(?:art\/)?(\d{3})(?:\/|$)/);
+  const num = Number((sec || art)?.[1]);
+  if (existe.has(num)) {
+    const id = sec ? `${sec[1]}-${sec[2]}${sec[3]}` : null;
+    const p = document.querySelector('.sugerencia');
+    const a = document.createElement('a');
+    a.href = `${base}/art/${num}/${id ? `#${id}` : ''}`;
+    a.textContent = id ? `la sección ${id}` : `el Artículo ${num}`;
+    p.append('¿Buscabas ', a, '?');
+    p.hidden = false;
+  }
+</script>
+
+<style>
+  .pag-404 { padding-bottom: 5rem; }
+  .sugerencia {
+    margin: 0 0 1.2rem; padding: 0.8rem 1rem; max-width: 600px;
+    border: 1px solid var(--card-border); border-radius: var(--radius-xl);
+    background: var(--accent-soft); font-size: 1rem;
+  }
+  .sugerencia a { font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .buscar-404 { max-width: 600px; margin: 0 0 2.4rem; }
+  .buscar-404 .search-wrap input { height: 52px; padding-left: 2.8rem; font-size: 1rem; }
+  .buscar-404 .lupa { left: 1rem; width: 18px; height: 18px; }
+  .atajos-404 {
+    display: grid; gap: 0.75rem; max-width: 900px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  .atajos-404 a {
+    display: block; padding: 1rem 1.15rem; color: var(--text);
+    border: 1px solid var(--card-border); border-radius: var(--radius-xl); background: var(--panel);
+  }
+  .atajos-404 a:hover { border-color: var(--accent); text-decoration: none; }
+  .atajos-404 b { display: block; font-weight: 600; }
+  .atajos-404 span { display: block; margin-top: 0.25rem; font-size: 0.85rem; color: var(--text-dim); }
+</style>
