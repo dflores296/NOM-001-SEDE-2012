@@ -593,7 +593,7 @@ prueba(
 
     // Pasar el dedo de la C a la M deja elegida la M, y el toque con que
     // termina el arrastre no la vuelve a quitar.
-  await page.$eval('.glos-letras', (e) => e.scrollIntoView({ block: 'center' }));
+    await page.$eval('.glos-letras', (e) => e.scrollIntoView({ block: 'center' }));
     const centro = (l) =>
       page.$eval(`.glos-letras [data-letra="${l}"]`, (e) => {
         const r = e.getBoundingClientRect();
