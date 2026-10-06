@@ -143,6 +143,9 @@ Las acciones de CI van fijadas por SHA y Dependabot propone actualizaciones una
 vez al mes. Las dependencias que a propósito no se actualizan solas, y por qué,
 están en [CONTEXTO.md](CONTEXTO.md#ronda-de-seguridad-octubre-de-2026).
 
+¿Encontraste una vulnerabilidad? Repórtala en privado, como explica
+[SECURITY.md](SECURITY.md).
+
 ## Erratas del PDF de origen
 
 Cuatro tablas traen valores mal impresos **en el DOF**. Se reproducen tal como

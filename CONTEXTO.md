@@ -381,11 +381,21 @@ PRs: «Dependabot security updates» sigue apagado.
   congeladas) y partirlos rompe el `git blame`. Solo valdría ante una edición
   nueva de la norma; entonces, empezar por sacar `LectorDeArticulo` a su módulo.
 
-### Pendiente del dueño del repositorio
+### Lo que quedó activado en GitHub (6 de octubre)
 
-- **Activar las alertas de Dependabot** en GitHub: Settings → Code security →
-  Dependabot alerts. El archivo `dependabot.yml` solo abre PRs de versión; los
-  avisos de vulnerabilidades se encienden ahí.
+Configuración del repositorio en GitHub, no en el código; la activó el dueño:
+
+- **Protección de `main`** (ruleset): sin force push y sin borrado. Se abrió
+  unos minutos para reescribir la historia y se volvió a cerrar.
+- **Security and quality:** alertas de Dependabot, secret scanning con push
+  protection, code scanning (CodeQL, *default setup*: no agrega archivos al
+  repo) y reporte privado de vulnerabilidades. «Dependabot security updates»
+  sigue apagado: los avisos llegan como alertas, no como PRs.
+- **`SECURITY.md`** en la raíz: cómo reportar en privado, qué cubre, y que un
+  error de la norma va por `/observaciones` y no por ahí.
+
+Si code scanning reporta algo, se revisa como cualquier hallazgo: verificar
+si es real antes de corregir, y anotar aquí lo que se descarte y por qué.
 
 ## Qué se hizo en la ronda del Apéndice B y el Apéndice C
 
