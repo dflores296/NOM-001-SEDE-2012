@@ -397,6 +397,20 @@ Configuración del repositorio en GitHub, no en el código; la activó el dueño
 Si code scanning reporta algo, se revisa como cualquier hallazgo: verificar
 si es real antes de corregir, y anotar aquí lo que se descarte y por qué.
 
+**Primer análisis de CodeQL (6 de octubre): 3 alertas «High».**
+
+- **Dos reales, en `limpieza.js`** («Incomplete multi-character
+  sanitization»). Las etiquetas se quitaban de una sola pasada, y un texto
+  anidado a propósito la burlaba: de `<<script>script>…` se quitaba el
+  `<script>` de en medio y quedaba otro. El riesgo era bajo (Formspree manda
+  texto y el correo no ejecuta scripts), pero rompía la promesa de «sin
+  HTML». Ahora `sinEtiquetas()` repite hasta que no queda ninguna, y las
+  pruebas cubren cuatro formas de anidarlas.
+- **Una en contexto, en `huella_sitio.py`** («Bad HTML filtering regexp»):
+  la expresión no filtra nada externo, solo ignora los `<script>` del HTML que
+  genera el propio build para calcular la huella. Se endureció igual
+  (mayúsculas y espacios en el cierre); la huella no cambió.
+
 ## Qué se hizo en la ronda del Apéndice B y el Apéndice C
 
 Con esta ronda **no queda ninguna tabla de la norma sin contrastar**: 245 de

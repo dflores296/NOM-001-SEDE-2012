@@ -33,6 +33,20 @@ const INVISIBLE = /[\p{Cc}\p{Cf}]/gu;
 // «<!-- -->». «< 600 V» o «<=» no son etiquetas y se quedan.
 const ETIQUETA = /<\/?[a-z!?][^<>]*>?/gi;
 
+/**
+ * Sin etiquetas, aunque vengan anidadas para burlar el filtro: de
+ * «<<script>script>» una sola pasada quita el <script> de en medio y deja
+ * otro. Se repite hasta que no quede ninguna.
+ */
+function sinEtiquetas(s) {
+  let antes;
+  do {
+    antes = s;
+    s = s.replace(ETIQUETA, '');
+  } while (s !== antes);
+  return s;
+}
+
 // Una dirección con esquema o con www.
 const URL_ESCRITA = /\b(?:(?:https?|ftp):\/\/|www\.)[^\s<>"']+/gi;
 // Esquemas que en un cliente de correo pueden ejecutar o descargar algo.
@@ -62,12 +76,15 @@ export function desarmarEnlaces(s) {
 
 /** Una sola línea: para la referencia y el asunto del correo. */
 export function lineaUna(s, max) {
-  return desarmarEnlaces(base(s).replace(ETIQUETA, '')).replace(/\s+/g, ' ').trim().slice(0, max);
+  return desarmarEnlaces(sinEtiquetas(base(s)))
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, max);
 }
 
 /** Un texto de varios renglones: lo que se vio y lo que dice el DOF. */
 export function textoLargo(s, max) {
-  return desarmarEnlaces(base(s).replace(ETIQUETA, ''))
+  return desarmarEnlaces(sinEtiquetas(base(s)))
     .replace(/[ \t]+\n/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim()

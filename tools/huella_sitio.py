@@ -33,8 +33,10 @@ DIST = os.path.join(RAIZ, 'site', 'dist')
 # Rutas de dist/ que son código, no contenido.
 CODIGO = ('_astro/', 'sw.js')
 
-RE_SCRIPT = re.compile(r'<script\b[^>]*>.*?</script>', re.S)
-RE_STYLE = re.compile(r'<style\b[^>]*>.*?</style>', re.S)
+# Con mayúsculas y espacios antes del cierre («</SCRIPT >»): el HTML lo
+# genera Astro y no los trae, pero así la expresión no depende de eso.
+RE_SCRIPT = re.compile(r'<script\b[^>]*>.*?</script\s*>', re.S | re.I)
+RE_STYLE = re.compile(r'<style\b[^>]*>.*?</style\s*>', re.S | re.I)
 RE_LINK_ASTRO = re.compile(r'<link\b[^>]*/_astro/[^>]*>')
 # Astro marca cada elemento de un componente con estilos propios con
 # data-astro-cid-<hash>, y ese hash cambia si se reorganiza el componente.

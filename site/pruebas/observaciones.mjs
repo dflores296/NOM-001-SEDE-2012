@@ -71,6 +71,18 @@ prueba('Las etiquetas HTML se quitan y las comparaciones se quedan', () => {
   afirmar(!/<script|<\/?b>/i.test(t), t);
   afirmar(t.includes('< 600 V') && t.includes('<= 1000'), t);
   afirmar(!textoLargo('<a href="https://x.example">clic</a>', 99).includes('<a'), 'quedó el <a');
+  // Etiquetas anidadas para que, al quitar la de en medio, se arme otra.
+  for (const x of [
+    '<<script>script>alert(1)<</script>/script>',
+    '<scr<script>ipt>alert(1)</script>',
+    '<<<b>b>b>negrita',
+    '<<a>a href=x>clic',
+  ]) {
+    for (const f of [textoLargo, lineaUna]) {
+      const t = f(x, 200);
+      afirmar(!/<\/?[a-z!?]/i.test(t), `${f.name}(${JSON.stringify(x)}) dejó ${JSON.stringify(t)}`);
+    }
+  }
 });
 
 prueba('Los enlaces se desarman: se leen pero no se abren', () => {
