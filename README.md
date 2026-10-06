@@ -126,10 +126,97 @@ Cómo se reconstruye todo desde el PDF, en
 
 ## Arquitectura
 
-[![Diagrama de arquitectura de dflores296/nom-001-sede-2012](https://gitdiagram.com/dflores296/nom-001-sede-2012/diagram.png)](https://gitdiagram.com/dflores296/nom-001-sede-2012?utm_source=readme&utm_medium=picture)
+Del PDF al sitio publicado. Cada cambio a `main` regenera todo desde la fuente
+y solo se publica si pasa la verificación. El detalle de cada paso, en
+[docs/arquitectura.md](docs/arquitectura.md).
 
-Generado con [GitDiagram](https://gitdiagram.com) a partir del repositorio. El
-detalle de cada paso, en [docs/arquitectura.md](docs/arquitectura.md).
+```mermaid
+flowchart TB
+  subgraph CI["1 · Cada cambio a main"]
+    direction LR
+    dependabot(["Dependabot<br/>PR mensual"]) -.-> push(["push a main"])
+    push --> actions["GitHub Actions<br/>corre tools/verificar.sh"]
+  end
+
+  subgraph FUENTE["2 · La fuente manda"]
+    direction LR
+    pdf[/"NOM-001-SEDE-2012.pdf<br/>DOF, 780 páginas"/]
+    captura[("Captura a mano, sellada<br/>245 tablas · 59 imágenes")]
+    pdf ~~~ captura
+  end
+
+  subgraph EXTRACCION["3 · Extracción · tools/"]
+    direction LR
+    tablas["build_tables.py<br/>tablas"] -->|"zonas de tabla"| corpus["build_corpus.py<br/>artículos, notas, figuras"]
+    corpus --> grafo["build_graph.py<br/>referencias cruzadas"]
+    grafo --> busqueda["build_search.py<br/>índice de búsqueda"]
+  end
+
+  subgraph DATOS["4 · Datos · data/"]
+    direction LR
+    dtablas[("tablas.json")]
+    dcorpus[("corpus.json<br/>definiciones.json")]
+    dgrafo[("grafo.json")]
+    dtablas ~~~ dcorpus ~~~ dgrafo
+  end
+
+  subgraph SITIO["5 · Sitio estático · Astro"]
+    direction LR
+    paginas["Artículos · tablas<br/>figuras · glosario"]
+    mapa["Mapa 3D<br/>de referencias"]
+    buscador["Buscador<br/>sin conexión"]
+    obs["/observaciones"]
+    paginas ~~~ mapa ~~~ buscador ~~~ obs
+  end
+
+  subgraph CONTROL["6 · Verificación"]
+    direction LR
+    vdatos["check_corpus · pytest<br/>cobertura 100 %"]
+    vhuella["Huella del sitio<br/>nada cambia sin querer"]
+    vnav["Pruebas en navegador<br/>buscador, mapa, formulario"]
+    vdatos ~~~ vhuella ~~~ vnav
+  end
+
+  subgraph PUBLICO["7 · En línea"]
+    direction LR
+    pages["GitHub Pages<br/>CSP en cada página"] --> lector(["Lector"])
+    lector -.->|"reporta una diferencia"| formspree["Formspree<br/>→ correo"]
+  end
+
+  CI -->|"regenera todo desde"| FUENTE
+  FUENTE --> EXTRACCION
+  EXTRACCION --> DATOS
+  DATOS -->|"compila"| SITIO
+  SITIO --> CONTROL
+  CONTROL -->|"solo si todo pasa"| PUBLICO
+
+  classDef fuente fill:#fdf6e7,stroke:#8a5a00,color:#5c3c00
+  classDef script fill:#0569be,stroke:#044f8f,color:#ffffff
+  classDef dato fill:#e3f0fb,stroke:#0569be,color:#08090a
+  classDef sitio fill:#122036,stroke:#70dcd3,color:#ffffff
+  classDef control fill:#2e7d32,stroke:#1b5e20,color:#ffffff
+  classDef externo fill:#f2f2f2,stroke:#525252,color:#08090a
+
+  class pdf,captura fuente
+  class tablas,corpus,grafo,busqueda script
+  class dtablas,dcorpus,dgrafo dato
+  class paginas,mapa,buscador,obs sitio
+  class vdatos,vhuella,vnav control
+  class dependabot,push,actions,pages,lector,formspree externo
+
+  style CI fill:transparent,stroke:#888888
+  style FUENTE fill:transparent,stroke:#8a5a00,stroke-dasharray:4 3
+  style EXTRACCION fill:transparent,stroke:#0569be
+  style DATOS fill:transparent,stroke:#0569be,stroke-dasharray:4 3
+  style SITIO fill:transparent,stroke:#70dcd3
+  style CONTROL fill:transparent,stroke:#2e7d32
+  style PUBLICO fill:transparent,stroke:#888888
+```
+
+<!-- El diagrama es código Mermaid: GitHub lo dibuja, y se edita como texto.
+     Colores del sitio (site/src/styles/temas.css): ámbar para la fuente, azul
+     para la extracción y los datos, el azul noche de la portada con borde menta
+     para el sitio, verde para la verificación. -->
 
 ## Seguridad
 
