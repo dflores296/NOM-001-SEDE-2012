@@ -183,8 +183,10 @@ del proyecto. Lo que sale de la página lo arma
 
 **Las dependencias.** Las acciones de `.github/workflows/` van fijadas por SHA,
 con la versión en comentario, y `.github/dependabot.yml` propone cada mes subir
-acciones, pip y npm. Dos excepciones: `pymupdf` no se sube sola (de su versión
-depende cómo se lee el PDF) y `three` sube siempre junto con `3d-force-graph`.
+acciones, pip y npm. Tres excepciones: `pymupdf` no se sube sola (de su
+versión depende cómo se lee el PDF), `playwright` va en la versión del Chromium
+que trae el entorno de Claude en la nube, y `three` sube siempre junto con
+`3d-force-graph`.
 El porqué y cuándo revisarlas, en «Ronda de seguridad» de `CONTEXTO.md`.
 
 **Lo que esto no cubre.** La dirección de Formspree va en el HTML, así que

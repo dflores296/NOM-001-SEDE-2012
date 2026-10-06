@@ -25,6 +25,8 @@ git status --porcelain      # después de eso, debe quedar vacío
   versión depende cómo se lee el PDF. Ver «Ronda de seguridad» en
   `CONTEXTO.md`.
 - **`three` sube junto con `3d-force-graph`**, nunca sola.
+- **`playwright` va en la versión del Chromium preinstalado** en el entorno de
+  Claude en la nube (`ls /opt/pw-browsers`); Dependabot la ignora.
 - **CSP:** un `<script is:inline>` o con `define:vars` queda bloqueado; los
   datos van por un atributo `data-`. Una conexión nueva del sitio se da de alta
   en `site/astro.config.mjs`.
