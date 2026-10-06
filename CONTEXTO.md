@@ -408,8 +408,10 @@ si es real antes de corregir, y anotar aquí lo que se descarte y por qué.
   pruebas cubren cuatro formas de anidarlas.
 - **Una en contexto, en `huella_sitio.py`** («Bad HTML filtering regexp»):
   la expresión no filtra nada externo, solo ignora los `<script>` del HTML que
-  genera el propio build para calcular la huella. Se endureció igual
-  (mayúsculas y espacios en el cierre); la huella no cambió.
+  genera el propio build para calcular la huella. Se endureció igual: el
+  cierre acepta mayúsculas y lo que sea antes del `>` (`</script foo>`), como
+  los navegadores. La primera corrección solo admitía espacios, y CodeQL abrió
+  otra alerta por eso. La huella no cambió.
 
 ## Qué se hizo en la ronda del Apéndice B y el Apéndice C
 
