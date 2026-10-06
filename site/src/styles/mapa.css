@@ -4,7 +4,11 @@
 .mapa { padding: 0.8rem var(--gut) 1rem; }
 .mapa-movil { display: none; padding-top: 1.5rem; padding-bottom: 2rem; }
 .mapa-movil h1 { margin: 0 0 1rem; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em; }
-@media (max-width: 1023px), (pointer: coarse) {
+/* El mapa en computadora o tablet; en el teléfono, el aviso (ver
+   .solo-pantalla-grande en cabecera.css: la misma regla). */
+:root:not(.con-mapa) .mapa { display: none; }
+:root:not(.con-mapa) .mapa-movil { display: block; }
+@media (pointer: fine) and (max-width: 1023px) {
   .mapa { display: none; }
   .mapa-movil { display: block; }
 }
@@ -40,7 +44,7 @@
    Ocupa todo el alto bajo la cabecera; el título y los controles flotan
    sobre él. */
 .mapa-visor {
-  position: relative; height: calc(100vh - 64px - 1.8rem); min-height: 600px;
+  position: relative; height: calc(100vh - 64px - 1.8rem); height: calc(100dvh - 64px - 1.8rem); min-height: 520px;
   border-radius: var(--radius-xl); overflow: hidden;
   background: var(--m-bg); border: 1px solid var(--m-borde); color: var(--m-texto);
 }
@@ -171,7 +175,10 @@
   color: var(--m-on-tx); background: var(--m-on-bg); border: 0; border-radius: 999px;
 }
 .chip-todos:hover { background: var(--m-on-hover); }
-.chip-todos[hidden] { display: none; }
+/* Oculto conserva su lugar: si apareciera de la nada, la leyenda podría
+   ganar un renglón y recorrer los capítulos hacia arriba entre el primer y
+   el segundo toque de un doble toque. */
+.chip-todos[hidden] { display: inline-block; visibility: hidden; }
 .mapa.con-panel .mapa-ley { right: 362px; }
 
 /* Panel del punto central, a la derecha. */
@@ -218,4 +225,23 @@
   padding: 0.45rem 0.65rem !important; border-radius: var(--radius-lg) !important;
   background: rgb(var(--m-capa) / 0.94) !important; border: 1px solid var(--m-borde);
   font: 500 0.8125rem/1.4 var(--sans) !important; color: var(--m-texto) !important; max-width: 320px;
+}
+
+/* ------------------------------------------------- tablet en vertical
+   Con menos de 1024 px de ancho (una tablet en vertical) no caben el
+   título, el buscador y los controles en una fila, ni el panel a la
+   derecha: los controles van en su propia fila arriba y el panel, como una
+   hoja abajo, con la leyenda y la guía encima de ella. */
+@media (max-width: 1023px) {
+  .seg button { white-space: nowrap; }
+  .mapa-sup { flex-wrap: wrap; gap: 0.5rem; }
+  .mapa-der { order: -1; width: 100%; flex-wrap: wrap; justify-content: flex-start; }
+  .mapa-hilo-ctl { flex-wrap: wrap; }
+  .mapa-izq { width: 100%; }
+  .mapa-busca { width: min(360px, 100%); }
+  .mapa-panel { top: auto; left: 12px; right: 12px; bottom: 12px; width: auto; height: 42%; }
+  .mapa.con-panel .mapa-lienzo { right: 0; bottom: 42%; }
+  .mapa.con-panel .mapa-ley { right: 14px; bottom: calc(42% + 22px); }
+  .mapa.con-panel .mapa-guia { left: 50%; bottom: calc(42% + var(--ley-alto, 28px) + 38px); }
+  .chip-cap, .chip-todos { height: 26px; font-size: 0.7rem; padding: 0 0.6rem; }
 }

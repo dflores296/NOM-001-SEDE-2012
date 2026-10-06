@@ -115,7 +115,7 @@ const GRUPOS = [
       <div class="mapa-ley" role="group" aria-label="Capítulos visibles">
         {GRUPOS.map((x) => (
           <button type="button" class="chip-cap" data-g={x.g} aria-pressed="true"
-                  title="Clic: ocultar o mostrar · Doble clic o clic derecho: solo este capítulo">
+                  title="Clic: ocultar o mostrar · Doble clic, doble toque o clic derecho: solo este capítulo">
             <i style={`--c:${x.color};--c-claro:${x.claro}`}></i>{x.nombre}
           </button>
         ))}
@@ -146,8 +146,8 @@ const GRUPOS = [
     <p class="nota">
       <span class="lb">Pantalla grande</span>
       <span>
-        El mapa en 3D está hecho para una computadora con mouse. En el teléfono, cada sección
-        dice en su apartado «Citado por» quién la cita, y el{' '}
+        El mapa en 3D está hecho para pantalla grande: una computadora o una tablet. En el
+        teléfono, cada sección dice en su apartado «Citado por» quién la cita, y el{' '}
         <a href={`${base}/`}>índice</a> lleva a cualquier artículo.
       </span>
     </p>
@@ -158,9 +158,12 @@ const GRUPOS = [
 <script>
   import { iniciar } from '../scripts/mapa/index.js';
 
-  // El mapa solo se dibuja en una pantalla grande con mouse; en el teléfono
-  // queda el aviso de .mapa-movil y no se descarga nada del 3D.
+  // El mapa solo se dibuja en computadora o tablet (la clase con-mapa de
+  // Base.astro); en el teléfono queda el aviso de .mapa-movil y no se
+  // descarga nada del 3D.
   const raiz = document.querySelector('.mapa');
-  const apto = matchMedia('(min-width: 1024px) and (pointer: fine)').matches;
+  const apto =
+    document.documentElement.classList.contains('con-mapa') &&
+    !matchMedia('(pointer: fine) and (max-width: 1023px)').matches;
   if (raiz && apto) iniciar(raiz);
 </script>

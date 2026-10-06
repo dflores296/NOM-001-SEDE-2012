@@ -610,6 +610,43 @@ prueba('En el teléfono, el mapa no carga la librería 3D', async ({ nuevaPagina
 });
 
 prueba(
+  'En una tablet el mapa se dibuja, y el doble toque deja un capítulo solo',
+  async ({ nuevaPagina }) => {
+    // Lo que distingue a la tablet del teléfono es el lado corto de la
+    // pantalla (600 px o más), no la marca ni el ancho de la ventana.
+    const { page, errores } = await nuevaPagina({
+      viewport: { width: 820, height: 1180 },
+      screen: { width: 820, height: 1180 },
+      isMobile: true,
+      hasTouch: true,
+    });
+    await page.goto('/mapa/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.mapa canvas', { timeout: 20000 });
+    afirmar(
+      await page.$eval('nav.tabs a[href$="/mapa/"]', (a) => getComputedStyle(a).display !== 'none'),
+      'sin pestaña Mapa en la tablet'
+    );
+    // Dos toques seguidos en el mismo capítulo: solo ese; otra vez, todos. Se
+    // simulan al instante: el navegador de las pruebas dibuja el 3D sin
+    // tarjeta de video y tarda más de un segundo entre toques reales.
+    const dobleToque = () =>
+      page.$eval('.chip-cap[data-g="2"]', (c) => {
+        for (let i = 0; i < 2; i++) {
+          c.dispatchEvent(new PointerEvent('pointerdown', { pointerType: 'touch', bubbles: true }));
+          c.click();
+        }
+      });
+    const visibles = () =>
+      page.$$eval('.chip-cap[aria-pressed="true"]', (bs) => bs.map((b) => b.dataset.g).join());
+    await dobleToque();
+    afirmar((await visibles()) === '2', `quedaron: ${await visibles()}`);
+    await dobleToque();
+    afirmar((await visibles()).split(',').length === 9, `quedaron: ${await visibles()}`);
+    afirmar(errores.length === 0, errores.join(' | '));
+  }
+);
+
+prueba(
   'Glosario: la letra y el texto filtran, y un enlace quita el filtro',
   async ({ nuevaPagina }) => {
     const { page, errores } = await nuevaPagina(TELEFONO);
