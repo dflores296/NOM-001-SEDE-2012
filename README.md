@@ -1,4 +1,4 @@
-[![NOM-001-SEDE-2012 — guía interactiva](docs/portada.png)](https://dflores296.github.io/NOM-001-SEDE-2012)
+[![El mapa de la NOM-001-SEDE-2012: cada punto es una sección y cada línea, una referencia](docs/portada.png)](https://dflores296.github.io/NOM-001-SEDE-2012/mapa/)
 
 [![Despliegue](https://github.com/dflores296/NOM-001-SEDE-2012/actions/workflows/deploy.yml/badge.svg)](https://github.com/dflores296/NOM-001-SEDE-2012/actions/workflows/deploy.yml)
 ![Sitio](https://img.shields.io/badge/sitio-PolyForm%20Noncommercial-blue.svg)
@@ -21,7 +21,10 @@ navegables, backlinks y búsqueda instantánea que funciona sin conexión.
 ## Contenido
 
 - **151 artículos**, uno por página, con URL estable.
-- **4 618 referencias cruzadas** enlazadas, y en cada artículo quién lo cita a él.
+- **4 530 referencias cruzadas** enlazadas, y en cada artículo quién lo cita a él.
+- **[Un mapa de las referencias](https://dflores296.github.io/NOM-001-SEDE-2012/mapa/)**:
+  la norma como red en 3D, donde cada punto es una sección y cada línea una
+  cita. Se elige un punto de partida y se siguen sus hilos.
 - **245 tablas** como datos consultables: las 226 del cuerpo, contrastadas
   celda por celda, y las 19 de los Apéndices.
 - **185 definiciones** del Artículo 100, enlazadas donde se usan.
