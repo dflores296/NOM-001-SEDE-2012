@@ -346,6 +346,20 @@ abrir. Se hizo con `git filter-repo` y un force push autorizado a `main`.
   originales.
 - **Desde entonces**, ver «Commits» en `CLAUDE.md`.
 
+### Tres vulnerabilidades de npm (6 de octubre)
+
+Al reescribir la historia, GitHub avisó de 3 vulnerabilidades altas en
+dependencias indirectas de Astro: `devalue` 5.9.0, `http-cache-semantics`
+4.2.0 y `source-map-js` 1.2.1. Las tres corren solo al compilar y procesan
+archivos propios, así que el riesgo para el sitio publicado era bajo. Se
+subieron a 5.9.4, 4.3.0 y 1.2.2 sin tocar `package.json` (caben en los
+rangos que ya declara Astro), y la huella confirmó el sitio idéntico.
+
+Se editaron a mano las 9 líneas del lockfile, porque `npm audit fix` en el
+contenedor de Claude también borra los campos `libc` (ver «Trampas del
+entorno»). Los avisos de seguridad de Dependabot llegan como alertas, no como
+PRs: «Dependabot security updates» sigue apagado.
+
 ### Lo que quedó fuera, a propósito
 
 - **CAPTCHA de Formspree: apagado.** El formulario envía por `fetch` sin salir
@@ -726,6 +740,11 @@ inventar ni descartar ninguno.
   nube. Se puede construir el sitio y servirlo en `localhost` para revisarlo con
   Playwright, pero no abrir la URL publicada. Verificar el deploy es mirar que el
   workflow salga en verde.
+- **El npm del contenedor (10.9) reescribe `package-lock.json`** al instalar o
+  al correr `npm audit fix`: le quita los campos `libc` que pone la versión de
+  Dependabot. Por eso el hook usa `npm ci`. Para subir una dependencia a mano,
+  aplicar solo las líneas reales del cambio (versión, `resolved`, `integrity`)
+  y comprobar con `npm ci` que el lockfile no se mueve.
 - **`gitdiagram.com` también está bloqueado.** El diagrama del README se genera
   en la web de GitDiagram y se enlaza como imagen; desde aquí no se puede ver.
 - **Borrar ramas remotas devuelve 403.** Hay que hacerlo desde la web o desde un
