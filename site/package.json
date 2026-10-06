@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "prueba": "node pruebas/mapa.mjs && node pruebas/navegador.mjs",
+    "prueba": "node pruebas/mapa.mjs && node pruebas/observaciones.mjs && node pruebas/navegador.mjs",
     "revisar": "biome ci ."
   },
   "dependencies": {

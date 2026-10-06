@@ -513,6 +513,85 @@ prueba('El video de la portada solo se carga en escritorio', async ({ nuevaPagin
   afirmar(!(await tel.page.$('.portada-fondo video')), 'hay video en el teléfono');
 });
 
+// ----------------------------------------------------------- seguridad
+
+prueba('Un script inyectado en la página no corre: lo detiene la CSP', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/art/250/', { waitUntil: 'networkidle' });
+  afirmar(
+    await page.$('meta[http-equiv="content-security-policy"]'),
+    'la página no trae Content-Security-Policy'
+  );
+  await page.evaluate(() => {
+    const d = document.createElement('div');
+    d.innerHTML = '<img src="x" onerror="window.__inyectado = 1">';
+    document.body.append(d);
+    const s = document.createElement('script');
+    s.textContent = 'window.__inyectado = 2';
+    document.body.append(s);
+  });
+  await page.waitForTimeout(300);
+  afirmar(
+    (await page.evaluate(() => window.__inyectado)) === undefined,
+    'corrió el script inyectado'
+  );
+});
+
+prueba('Un enlace armado no llena el formulario de observaciones', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  let alerta = false;
+  page.on('dialog', (d) => {
+    alerta = true;
+    d.dismiss();
+  });
+  const ref = encodeURIComponent('<img src=x onerror=alert(1)> Urgente: https://phish.example');
+  await page.goto(`/observaciones/?ref=${ref}&de=${encodeURIComponent('https://phish.example/')}`, {
+    waitUntil: 'networkidle',
+  });
+  afirmar((await page.inputValue('#ref')) === '', 'llenó la referencia con lo del enlace');
+  afirmar(!(await page.$('#ref[readonly]')), 'dejó fija la referencia del enlace');
+  afirmar(!alerta, 'se ejecutó código del enlace');
+});
+
+prueba('Lo que se manda a Formspree va limpio y solo con lo esperado', async ({ nuevaPagina }) => {
+  const { page, ctx } = await nuevaPagina(ESCRITORIO);
+  let cuerpo = null;
+  await ctx.route('https://formspree.io/**', (r) => {
+    cuerpo = r.request().postData();
+    r.fulfill({ json: { ok: true } });
+  });
+  const de = encodeURIComponent('/NOM-001-SEDE-2012/art/250/#250-32');
+  await page.goto(`/observaciones/?ref=250-32(a)(1)&de=${de}`, { waitUntil: 'networkidle' });
+  afirmar((await page.inputValue('#ref')) === '250-32(a)(1)', 'no tomó la referencia legítima');
+  afirmar(await page.$('#ref[readonly]'), 'la referencia legítima no quedó fija');
+
+  await page.fill(
+    'textarea[name="observacion"]',
+    'Dice 600 <script>alert(1)</script> y debe ser 1000. Ver https://phish.example/login'
+  );
+  await page.fill('input[name="email"]', 'yo@example.com');
+  // Un campo que alguien le agregue a la página no viaja.
+  await page.evaluate(() => {
+    const i = Object.assign(document.createElement('input'), { name: '_cc', value: 'x@y.com' });
+    document.getElementById('obs-form').append(i);
+  });
+  // Antes de 3 s el envío se da por bueno sin mandarse (ver MINIMO_MS).
+  await page.waitForTimeout(3100);
+  await page.click('#enviar');
+  await page.waitForSelector('#obs-exito:not([hidden])');
+
+  afirmar(cuerpo, 'no se mandó nada');
+  const campos = Object.fromEntries(
+    [...cuerpo.matchAll(/name="([^"]+)"\r\n\r\n([\s\S]*?)\r\n--/g)].map((m) => [m[1], m[2]])
+  );
+  afirmar(!('_cc' in campos), 'viajó un campo agregado');
+  afirmar(!/<script/i.test(campos.observacion), `observación: ${campos.observacion}`);
+  afirmar(campos.observacion.includes('hxxps://phish[.]example/login'), campos.observacion);
+  afirmar(campos._subject === 'Observación: 250-32(a)(1)', `asunto: ${campos._subject}`);
+  afirmar(campos.url?.endsWith('/NOM-001-SEDE-2012/art/250/#250-32'), `url: ${campos.url}`);
+  afirmar(campos.email === 'yo@example.com', `email: ${campos.email}`);
+});
+
 // ------------------------------------------------------------------ mapa
 
 prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagina }) => {

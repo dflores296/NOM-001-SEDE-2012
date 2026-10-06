@@ -33,7 +33,7 @@ const ATAJOS = [
       <img class="ilustracion" src={`${base}/ui/404.png`} alt="" width="512" height="512" />
     </div>
 
-    <p class="sugerencia" hidden></p>
+    <p class="sugerencia" data-nums={nums.join(' ')} hidden></p>
 
     <form class="buscar-404" role="search">
       <div class="search-wrap">
@@ -59,18 +59,24 @@ const ATAJOS = [
   </main>
 </Base>
 
-<script define:vars={{ base, nums }}>
+<script>
   // Si la dirección rota trae un código de la norma, se ofrece el enlace
   // directo: «/art/250-122» o «/250-122» llevan a la sección 250-122;
   // «/art/250» o «/250», al artículo. Solo si ese artículo existe.
+  //
+  // Los artículos que existen viajan en data-nums y no con define:vars: eso
+  // escribe un script en línea, y la CSP del sitio (astro.config.mjs) solo
+  // deja correr los scripts que Astro compila a archivo.
+  import { base } from '../scripts/base.js';
+
+  const p = document.querySelector<HTMLElement>('.sugerencia');
+  const existe = new Set((p?.dataset.nums || '').split(' ').map(Number));
   const ruta = decodeURIComponent(location.pathname.slice(base.length)).toLowerCase();
-  const existe = new Set(nums);
   const sec = ruta.match(/(\d{3})-(\d{1,3})((?:\([a-z0-9]{1,3}\))*)/);
   const art = sec ? null : ruta.match(/(?:^|\/)(?:art\/)?(\d{3})(?:\/|$)/);
   const num = Number((sec || art)?.[1]);
-  if (existe.has(num)) {
+  if (p && existe.has(num)) {
     const id = sec ? `${sec[1]}-${sec[2]}${sec[3]}` : null;
-    const p = document.querySelector('.sugerencia');
     const a = document.createElement('a');
     a.href = `${base}/art/${num}/${id ? `#${id}` : ''}`;
     a.textContent = id ? `la sección ${id}` : `el Artículo ${num}`;
