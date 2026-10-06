@@ -336,7 +336,8 @@ abrir. Se hizo con `git filter-repo` y un force push autorizado a `main`.
 - **El contenido no cambió.** Se comparó el árbol de cada uno de los 58
   commits antes y después: idénticos, con el mismo título.
 - **Cambiaron todos los identificadores.** El único citado en el repositorio
-  (`a6fd544`, las skills de diseño retiradas) es hoy `23ea227`. El último
+  (`a6fd544`, las skills de diseño retiradas) pasó a ser `23ea227`, y con la
+  segunda reescritura (ver «Licencia no comercial»), `043fb39`. El último
   `main` antes de reescribir era `9403c26`.
 - **Los commits viejos no desaparecen de GitHub del todo:** los PRs cerrados
   (#4 a #11) los siguen mostrando. Borrarlos de ahí solo lo puede hacer el
@@ -384,9 +385,18 @@ Por decisión del dueño, antes de compartir el repositorio:
 - **Consultar la guía es libre, también para trabajar.** Lo que pide permiso es
   el uso comercial del código o de los datos. Licencia comercial: contactar al
   autor. El dueño sí puede usarlo comercialmente (licencia dual).
-- **No es retroactivo:** las copias de antes de `9b172e8` conservan MIT y
-  CC BY-SA. Se cambió con el repositorio casi sin difusión, que es cuando menos
-  pesa eso.
+- **No es retroactivo para quien ya copió:** del 3 al 6 de octubre el
+  repositorio se publicó con MIT y CC BY-SA, y quien obtuvo una copia en esos
+  días conserva lo que esas licencias le concedieron. Se cambió con el
+  repositorio casi sin difusión, que es cuando menos pesa eso.
+- **La historia se reescribió otra vez** para que ningún commit muestre las
+  licencias viejas: `LICENSE`, `LICENSES/` y las líneas de licencia del README
+  quedaron en su versión final en los 67 commits. Se comprobó commit por
+  commit que fuera de eso nada cambió (mismo título, autor y fecha) y que el
+  último árbol es idéntico al de antes. Se hizo con `git filter-branch
+  --tree-filter` y un force push autorizado; el último `main` antes era
+  `7a2af58`. Como en la primera, los PRs cerrados (#4 a #11) siguen mostrando
+  los commits viejos.
 - **Pendiente si se cobra en serio:** revisarlo con un abogado de propiedad
   intelectual, incluida la autoría del código escrito con ayuda de IA.
 - **Dependencias del sitio:** permisivas en su gran mayoría (MIT, ISC, BSD,
@@ -821,4 +831,4 @@ Para el rediseño de octubre se instalaron ocho skills de diseño de terceros en
 y otras seis de nextlevelbuilder/ui-ux-pro-max-skill), con `npx skills add`.
 Terminado el rediseño se quitaron del repo: nada del sitio, del extractor ni
 del CI las usaba, y traían más código que todo `tools/`. Para recuperarlas tal
-como estaban: `git checkout 23ea227 -- .claude/skills skills-lock.json`.
+como estaban: `git checkout 043fb39 -- .claude/skills skills-lock.json`.
