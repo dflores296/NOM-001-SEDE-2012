@@ -9,13 +9,21 @@
 version: 2
 updates:
   # Las acciones de .github/workflows/, fijadas por SHA. Dependabot sube el
-  # SHA y el comentario con la versión.
+  # SHA y el comentario con la versión, todas en UN solo PR.
+  #
+  # Ojo: el verde de ese PR no prueba upload-pages-artifact ni deploy-pages,
+  # que solo corren al publicar desde main (y son pareja: suben juntas). Al
+  # fusionarlo, mirar que la publicación de main salga bien.
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
     commit-message:
       prefix: 'CI'
+    groups:
+      acciones:
+        patterns:
+          - '*'
 
   # requirements.txt y requirements-dev.txt.
   - package-ecosystem: pip
@@ -40,6 +48,14 @@ updates:
       interval: monthly
     commit-message:
       prefix: 'Dependencias'
+    ignore:
+      # Playwright va en la versión cuyo Chromium trae preinstalado el entorno
+      # de Claude Code en la nube (/opt/pw-browsers/chromium-1194 = 1.56.x).
+      # Con otra versión, CI seguiría pasando (descarga su propio navegador),
+      # pero las sesiones de Claude ya no podrían correr tools/verificar.sh
+      # completo: 1.63 busca chromium-1243 y no arranca. Se sube cuando el
+      # entorno traiga un Chromium nuevo (ls /opt/pw-browsers).
+      - dependency-name: playwright
     groups:
       # El mapa 3D: three tiene que ser la MISMA versión que usa 3d-force-graph
       # (npm ls three debe mostrar una sola). Por eso suben siempre juntos,

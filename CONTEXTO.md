@@ -279,8 +279,26 @@ CSP bloquee de más sale como error de consola y tumba las pruebas en navegador.
 |---|---|---|---|
 | **pymupdf** (`requirements.txt`) | Fijada en `1.28.2`; Dependabot la ignora (`ignore` en `dependabot.yml`) | Es la que lee el PDF. De su versión dependen la sangría de cada renglón (47.0 vs 32.8, §2), las coordenadas de las tablas y los bytes de cada figura, y todo eso está sellado con huella. Hasta un parche puede mover la extracción. Sus avisos de seguridad pesan poco: solo lee un PDF propio y fijo, dentro de CI | Cuando `pip install` deje de encontrar una versión para el Python del CI, o si llega una alerta grave. Se sube a mano: cambiar la versión, `bash tools/verificar.sh`, revisar el diff, volver a sellar (`build_tables.py --sellar`, `huella_sitio.py --escribir`) |
 | **three** (`site/package.json`) | Versión exacta, sin `^`; sube siempre junto con `3d-force-graph` (grupo `mapa-3d`) | Tiene que ser la misma que usa `3d-force-graph`: se volvió dependencia directa para la niebla del mapa, y con dos copias de three.js la niebla y los objetos del mapa vendrían de librerías distintas. `npm ls three` debe mostrar una sola versión | Cuando Dependabot abra el PR del grupo `mapa-3d`. Si la prueba del mapa sale en rojo, no se fusiona |
+| **playwright** (`site/package.json`) | Versión exacta `1.56.1`; Dependabot la ignora | Es la versión cuyo Chromium trae preinstalado el entorno de Claude Code en la nube (`/opt/pw-browsers/chromium-1194`). Con otra, CI sigue pasando porque descarga su propio navegador, pero las sesiones de Claude ya no pueden correr `verificar.sh` completo: se probó la 1.63 y no arranca (busca `chromium-1243`) | Cuando el entorno traiga otro Chromium: `ls /opt/pw-browsers`. Subirla a la versión que le corresponda a ese número y correr `verificar.sh` en una sesión de Claude |
 | **ruff, pytest** (`requirements-dev.txt`) | Fijadas, pero Dependabot SÍ las propone | Se fijaron para que la verificación de hoy sea la de mañana. Subirlas es seguro: lo peor es que un `ruff` nuevo marque algo y el PR salga en rojo | En cada PR de Dependabot |
-| **Acciones de GitHub** | Fijadas por SHA, con la versión en comentario | Las cinco son de GitHub (`actions/…`) y el workflow no usa secretos, pero tiene permiso de publicar el sitio | En cada PR de Dependabot (prefijo `CI`). `upload-pages-artifact` usa por dentro otras acciones por etiqueta; eso no se puede fijar desde aquí |
+| **Acciones de GitHub** | Fijadas por SHA, con la versión en comentario; Dependabot las propone todas juntas en un PR (grupo `acciones`) | Las cinco son de GitHub (`actions/…`) y el workflow no usa secretos, pero tiene permiso de publicar el sitio | En cada PR de Dependabot (prefijo `CI`). **Su verde no prueba `upload-pages-artifact` ni `deploy-pages`**, que solo corren al publicar desde `main`: al fusionar, mirar que esa publicación salga bien. `upload-pages-artifact` usa por dentro otras acciones; eso no se puede fijar desde aquí |
+
+### La primera pasada de Dependabot (6 de octubre)
+
+Al llegar `dependabot.yml` a `main` abrió seis PRs. Ninguno se fusionó tal
+cual:
+
+- **Las cinco acciones** (checkout 7.0.1, setup-python 7.0.0, setup-node
+  7.0.0, upload-pages-artifact 5.0.0, deploy-pages 5.0.1) venían en cinco PRs
+  sueltos. Se aplicaron juntas en un commit, porque `upload-pages-artifact` y
+  `deploy-pages` son pareja y su verde en el PR no probaba nada (solo corren en
+  `main`). Antes se revisó lo que podía afectar: desde la v4,
+  `upload-pages-artifact` deja fuera los archivos que empiezan con punto, y
+  `site/dist` no tiene ninguno; `path` y `page_url` siguen iguales. Desde
+  entonces las acciones llegan en un solo PR (grupo `acciones`).
+- **Astro 7.3.5 + Playwright 1.63** venían juntos. Astro sí; Playwright no
+  arranca en el entorno de Claude (ver la tabla de arriba), así que se agregó
+  al `ignore` y el PR se rehace solo con Astro.
 
 ### Lo que quedó fuera, a propósito
 
@@ -290,6 +308,12 @@ CSP bloquee de más sale como error de consola y tumba las pruebas en navegador.
   con clave propia, cargar su script y abrir la CSP a `challenges.cloudflare.com`.
 - **Formshield (filtro de spam de Formspree): encendido.** Es lo único que
   cubre los POST directos a Formspree, que no pasan por la página.
+- **Protección de `main`:** se recomendó activarla solo con «bloquear force
+  push» y «bloquear borrado». «Require status checks» NO, por ahora: bloquearía
+  los fast-forward a `main` con que se publican las rondas, y solo hace falta
+  para fusionar sin revisar.
+- **Fusión automática de los PRs de Dependabot:** no se activó. Exige la
+  protección con status checks de arriba, y el verde no cubre la publicación.
 - **Restringir Formspree al dominio del sitio:** se buscó en el panel (Rules y
   Settings) y no se encontró la opción. Se dejó así.
 - **Partir `build_corpus.py` y `build_tables.py`:** evaluado y descartado. El
