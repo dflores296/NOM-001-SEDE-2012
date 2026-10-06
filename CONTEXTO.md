@@ -360,6 +360,28 @@ contenedor de Claude también borra los campos `libc` (ver «Trampas del
 entorno»). Los avisos de seguridad de Dependabot llegan como alertas, no como
 PRs: «Dependabot security updates» sigue apagado.
 
+### Licencia no comercial (6 de octubre)
+
+Por decisión del dueño, antes de compartir el repositorio:
+
+- **Código:** de MIT a **PolyForm Noncommercial 1.0.0**. El texto oficial va
+  sin tocar en `LICENSE`; se tomó del repositorio de PolyForm Project y se
+  comprobó idéntico.
+- **Datos (`data/`):** de CC BY-SA 4.0 a **CC BY-NC-SA 4.0**.
+- **El texto de la NOM** sigue sin derechos de autor (art. 14 LFDA): la
+  restricción cubre solo lo que agrega el proyecto.
+- **Consultar la guía es libre, también para trabajar.** Lo que pide permiso es
+  el uso comercial del código o de los datos. Licencia comercial: contactar al
+  autor. El dueño sí puede usarlo comercialmente (licencia dual).
+- **No es retroactivo:** las copias de antes de `9b172e8` conservan MIT y
+  CC BY-SA. Se cambió con el repositorio casi sin difusión, que es cuando menos
+  pesa eso.
+- **Pendiente si se cobra en serio:** revisarlo con un abogado de propiedad
+  intelectual, incluida la autoría del código escrito con ayuda de IA.
+- **Dependencias:** las del sitio y las herramientas son permisivas (MIT,
+  Apache, BSD), así que conviven con la licencia nueva. Una dependencia nueva
+  con licencia «copyleft» (GPL) chocaría: revisar antes de agregarla.
+
 ### Lo que quedó fuera, a propósito
 
 - **CAPTCHA de Formspree: apagado.** El formulario envía por `fetch` sin salir

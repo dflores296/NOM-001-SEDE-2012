@@ -30,6 +30,9 @@ git status --porcelain      # después de eso, debe quedar vacío
 - **CSP:** un `<script is:inline>` o con `define:vars` queda bloqueado; los
   datos van por un atributo `data-`. Una conexión nueva del sitio se da de alta
   en `site/astro.config.mjs`.
+- **La licencia es no comercial** (PolyForm Noncommercial en el código,
+  CC BY-NC-SA en `data/`). No se cambia sin el dueño, y una dependencia nueva
+  con licencia GPL no entra sin consultarlo.
 - **El formulario de `/observaciones`** manda solo lo que arma
   `site/src/scripts/observaciones/limpieza.js`. Un campo nuevo se agrega ahí y
   en sus pruebas.
