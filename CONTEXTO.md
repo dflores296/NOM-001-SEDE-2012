@@ -364,10 +364,21 @@ PRs: «Dependabot security updates» sigue apagado.
 
 Por decisión del dueño, antes de compartir el repositorio:
 
-- **Código:** de MIT a **PolyForm Noncommercial 1.0.0**. El texto oficial va
-  sin tocar en `LICENSE`; se tomó del repositorio de PolyForm Project y se
-  comprobó idéntico.
-- **Datos (`data/`):** de CC BY-SA 4.0 a **CC BY-NC-SA 4.0**.
+- **Sitio y el resto del código:** de MIT a **PolyForm Noncommercial 1.0.0**.
+  El texto oficial va sin tocar en `LICENSE`; se tomó del repositorio de
+  PolyForm Project y se comprobó idéntico.
+- **`tools/`: AGPL-3.0-or-later**, no PolyForm. Las herramientas importan
+  PyMuPDF, que es AGPL-3.0 (o licencia comercial de Artifex), y una licencia no
+  comercial no es compatible con la AGPL. Al principio se pusieron bajo
+  PolyForm con todo lo demás, y se corrigió al revisar la licencia de cada
+  dependencia. La AGPL sí permite el uso comercial, pero obliga a publicar el
+  código de cualquier versión que se distribuya o se ofrezca como servicio en
+  red. Texto completo en `LICENSES/AGPL-3.0-or-later.txt`, tomado de SPDX.
+- **Ojo para monetizar:** correr `tools/` dentro de un servicio de pago
+  también obliga al dueño a cumplir la AGPL de PyMuPDF, o a comprar la licencia
+  de Artifex. Un servicio que solo usa los datos ya extraídos (`data/`) no.
+- **Datos (`data/`, `INDICE.txt`) y documentación:** de CC BY-SA 4.0 a
+  **CC BY-NC-SA 4.0**.
 - **El texto de la NOM** sigue sin derechos de autor (art. 14 LFDA): la
   restricción cubre solo lo que agrega el proyecto.
 - **Consultar la guía es libre, también para trabajar.** Lo que pide permiso es
@@ -378,9 +389,11 @@ Por decisión del dueño, antes de compartir el repositorio:
   pesa eso.
 - **Pendiente si se cobra en serio:** revisarlo con un abogado de propiedad
   intelectual, incluida la autoría del código escrito con ayuda de IA.
-- **Dependencias:** las del sitio y las herramientas son permisivas (MIT,
-  Apache, BSD), así que conviven con la licencia nueva. Una dependencia nueva
-  con licencia «copyleft» (GPL) chocaría: revisar antes de agregarla.
+- **Dependencias del sitio:** permisivas en su gran mayoría (MIT, ISC, BSD,
+  Apache), más alguna MPL-2.0 o LGPL-3.0 que solo se usa al compilar y no se
+  modifica; conviven con PolyForm. Una dependencia nueva del sitio con licencia
+  GPL o AGPL chocaría: revisar antes de agregarla (en `site/`:
+  `npx license-checker-rseidelsohn --production --summary`).
 
 ### Lo que quedó fuera, a propósito
 
