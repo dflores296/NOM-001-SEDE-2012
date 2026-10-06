@@ -139,6 +139,10 @@ sitio, y el formulario de observaciones manda los textos sin HTML, sin
 caracteres invisibles y con los enlaces desarmados (`hxxps://sitio[.]com`). Qué
 cubre y qué no, en [docs/arquitectura.md](docs/arquitectura.md#seguridad).
 
+Las acciones de CI van fijadas por SHA y Dependabot propone actualizaciones una
+vez al mes. Las dependencias que a propósito no se actualizan solas, y por qué,
+están en [CONTEXTO.md](CONTEXTO.md#ronda-de-seguridad-octubre-de-2026).
+
 ## Erratas del PDF de origen
 
 Cuatro tablas traen valores mal impresos **en el DOF**. Se reproducen tal como

@@ -4,7 +4,7 @@ Estado del proyecto para retomarlo desde otra sesión o cuenta. El README explic
 **qué es** el proyecto y cómo está construido; esto explica **dónde va**, qué hay
 que entender antes de tocarlo y qué queda pendiente.
 
-Última actualización: 19 de septiembre de 2026.
+Última actualización: 6 de octubre de 2026.
 
 ## Dónde estamos
 
@@ -14,12 +14,12 @@ sobre el PDF deja el árbol idéntico a lo commiteado, byte a byte.
 | | |
 |---|---|
 | Artículos | 151 |
-| Secciones | 2 897 |
+| Secciones | 2 898 |
 | Incisos | 8 306 |
 | Notas / Excepciones | 773 / 986 |
 | Definiciones | 185 |
 | Referencias distintas | 1 685 |
-| Referencias enlazadas / rotas | 4 528 / 0 |
+| Referencias enlazadas / rotas | 4 530 / 0 |
 | Cobertura | 100 % (31 452 de 31 453 renglones) |
 | Ids retirados con destino | 143 de 143 |
 | Tablas | 245, todas contrastadas a mano y congeladas |
@@ -235,6 +235,73 @@ detectar: se dan de alta a mano y se declaran `sin_numero`, sin inventarles uno.
 
 Cuando algo no cuadre, **mira cómo lo imprime el PDF antes de sospechar del
 parser**.
+
+## Ronda de seguridad (octubre de 2026)
+
+Bitácora de lo que se hizo, por qué, y de las dependencias que a propósito
+NO se actualizan solas. Si dentro de un tiempo hay que revisar si una de esas
+decisiones sigue valiendo, la respuesta empieza aquí. El detalle técnico de
+la CSP y del formulario está en «Seguridad» de `docs/arquitectura.md`.
+
+### Lo que se hizo
+
+| Qué | Dónde | Contra qué |
+|---|---|---|
+| Content-Security-Policy en cada página | `site/astro.config.mjs` | Que corra JavaScript ajeno: un script metido en un texto, una URL o un `onerror=` |
+| Formulario de observaciones blindado | `site/src/scripts/observaciones/limpieza.js` | Correos maliciosos disfrazados de sugerencia, y enlaces armados para cambiar el asunto o el origen |
+| Acciones de GitHub fijadas por SHA | `.github/workflows/deploy.yml` | Que alguien mueva una etiqueta (`@v4`) a código malicioso; el workflow puede publicar el sitio |
+| Dependabot mensual | `.github/dependabot.yml` | Quedarse con versiones viejas o con vulnerabilidades sin enterarse |
+| La huella ignora la `<meta>` de la CSP | `tools/huella_sitio.py` | Falsas alarmas: la CSP va hecha de hashes de código, no de contenido |
+
+Pruebas que lo cuidan: `site/pruebas/observaciones.mjs` (la limpieza, y que
+los más de 3 000 «Reportar» del sitio pasen el filtro) y tres en
+`site/pruebas/navegador.mjs` (un script inyectado no corre, un enlace armado no
+llena el formulario, lo que llega a Formspree va limpio). Cualquier cosa que la
+CSP bloquee de más sale como error de consola y tumba las pruebas en navegador.
+
+### Reglas que deja
+
+- **Un `<script is:inline>` o con `define:vars` queda bloqueado por la CSP**:
+  Astro no les calcula hash. Los datos se pasan por un atributo `data-`, como
+  hace la 404. El único en línea que corre es el del tema, en `Base.astro`,
+  porque está antes de la `<meta>` de la CSP.
+- **Las librerías del mapa crean su propio `<style>`.** Su hash lo calcula
+  `hashesDeEstilos()` en `astro.config.mjs`, leyéndolo de cada librería. Si una
+  versión nueva lo cambia de forma, la compilación se detiene con un mensaje que
+  dice cuál.
+- **Una conexión nueva del sitio** (otra API, otra fuente, un CAPTCHA) hay que
+  darla de alta en `connect-src` o en la directiva que toque. Si no, la CSP la
+  bloquea y las pruebas lo dicen.
+
+### Dependencias que no se actualizan solas
+
+| Dependencia | Cómo queda | Por qué | Cuándo revisarlo |
+|---|---|---|---|
+| **pymupdf** (`requirements.txt`) | Fijada en `1.28.2`; Dependabot la ignora (`ignore` en `dependabot.yml`) | Es la que lee el PDF. De su versión dependen la sangría de cada renglón (47.0 vs 32.8, §2), las coordenadas de las tablas y los bytes de cada figura, y todo eso está sellado con huella. Hasta un parche puede mover la extracción. Sus avisos de seguridad pesan poco: solo lee un PDF propio y fijo, dentro de CI | Cuando `pip install` deje de encontrar una versión para el Python del CI, o si llega una alerta grave. Se sube a mano: cambiar la versión, `bash tools/verificar.sh`, revisar el diff, volver a sellar (`build_tables.py --sellar`, `huella_sitio.py --escribir`) |
+| **three** (`site/package.json`) | Versión exacta, sin `^`; sube siempre junto con `3d-force-graph` (grupo `mapa-3d`) | Tiene que ser la misma que usa `3d-force-graph`: se volvió dependencia directa para la niebla del mapa, y con dos copias de three.js la niebla y los objetos del mapa vendrían de librerías distintas. `npm ls three` debe mostrar una sola versión | Cuando Dependabot abra el PR del grupo `mapa-3d`. Si la prueba del mapa sale en rojo, no se fusiona |
+| **ruff, pytest** (`requirements-dev.txt`) | Fijadas, pero Dependabot SÍ las propone | Se fijaron para que la verificación de hoy sea la de mañana. Subirlas es seguro: lo peor es que un `ruff` nuevo marque algo y el PR salga en rojo | En cada PR de Dependabot |
+| **Acciones de GitHub** | Fijadas por SHA, con la versión en comentario | Las cinco son de GitHub (`actions/…`) y el workflow no usa secretos, pero tiene permiso de publicar el sitio | En cada PR de Dependabot (prefijo `CI`). `upload-pages-artifact` usa por dentro otras acciones por etiqueta; eso no se puede fijar desde aquí |
+
+### Lo que quedó fuera, a propósito
+
+- **CAPTCHA de Formspree: apagado.** El formulario envía por `fetch` sin salir
+  del sitio, y el CAPTCHA estándar de Formspree no funciona así. Encenderlo
+  rompería todos los envíos. Si algún día llega mucho spam: Cloudflare Turnstile
+  con clave propia, cargar su script y abrir la CSP a `challenges.cloudflare.com`.
+- **Formshield (filtro de spam de Formspree): encendido.** Es lo único que
+  cubre los POST directos a Formspree, que no pasan por la página.
+- **Restringir Formspree al dominio del sitio:** se buscó en el panel (Rules y
+  Settings) y no se encontró la opción. Se dejó así.
+- **Partir `build_corpus.py` y `build_tables.py`:** evaluado y descartado. El
+  documento es estático, la geometría de tablas está en reposo (las 245 están
+  congeladas) y partirlos rompe el `git blame`. Solo valdría ante una edición
+  nueva de la norma; entonces, empezar por sacar `LectorDeArticulo` a su módulo.
+
+### Pendiente del dueño del repositorio
+
+- **Activar las alertas de Dependabot** en GitHub: Settings → Code security →
+  Dependabot alerts. El archivo `dependabot.yml` solo abre PRs de versión; los
+  avisos de vulnerabilidades se encienden ahí.
 
 ## Qué se hizo en la ronda del Apéndice B y el Apéndice C
 
@@ -589,6 +656,8 @@ inventar ni descartar ninguno.
   nube. Se puede construir el sitio y servirlo en `localhost` para revisarlo con
   Playwright, pero no abrir la URL publicada. Verificar el deploy es mirar que el
   workflow salga en verde.
+- **`gitdiagram.com` también está bloqueado.** El diagrama del README se genera
+  en la web de GitDiagram y se enlaza como imagen; desde aquí no se puede ver.
 - **Borrar ramas remotas devuelve 403.** Hay que hacerlo desde la web o desde un
   clon local.
 - **Chromium está preinstalado** en `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`.

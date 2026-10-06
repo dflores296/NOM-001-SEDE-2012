@@ -1,0 +1,55 @@
+# Dependabot: propone por PR subir las dependencias, una vez al mes. Cada PR
+# pasa por el mismo CI que una publicación (tools/verificar.sh): si una
+# versión nueva mueve una palabra del sitio, la huella lo detiene y el PR sale
+# en rojo para revisarlo con calma. Nada se fusiona solo.
+#
+# Lo que NO se sube por aquí, y por qué, está anotado en cada caso y en
+# «Ronda de seguridad» de CONTEXTO.md. Para revisar si sigue valiendo una
+# excepción, empezar por ahí.
+version: 2
+updates:
+  # Las acciones de .github/workflows/, fijadas por SHA. Dependabot sube el
+  # SHA y el comentario con la versión.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: 'CI'
+
+  # requirements.txt y requirements-dev.txt.
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: 'Dependencias'
+    ignore:
+      # pymupdf lee el PDF: de su versión dependen la sangría de cada renglón,
+      # las coordenadas de las tablas y los bytes de cada figura, y todo eso
+      # está sellado con huella. Hasta un parche puede mover la extracción.
+      # Se sube a mano y a propósito: regenerar, revisar el diff, volver a
+      # sellar. Las alertas de seguridad siguen llegando aunque esté aquí.
+      - dependency-name: pymupdf
+
+  # site/package.json. Los cambios menores van juntos en un PR al mes; un
+  # cambio mayor (Astro 8, por ejemplo) llega en su propio PR.
+  - package-ecosystem: npm
+    directory: /site
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: 'Dependencias'
+    groups:
+      # El mapa 3D: three tiene que ser la MISMA versión que usa 3d-force-graph
+      # (npm ls three debe mostrar una sola). Por eso suben siempre juntos,
+      # incluso en un cambio mayor, y la prueba del mapa los valida a la vez.
+      mapa-3d:
+        patterns:
+          - 'three'
+          - 'three-*'
+          - '3d-force-graph'
+      menores:
+        update-types:
+          - minor
+          - patch
