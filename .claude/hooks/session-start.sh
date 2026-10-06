@@ -15,6 +15,8 @@ cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}"
 # requirements-dev.txt (ruff, pytest, mypy: lo que corre tools/verificar.sh).
 pip install --quiet -r requirements.txt -r requirements-dev.txt
 
-# El sitio se construye con Astro. npm install (no ci) para aprovechar el
-# cacheo del contenedor entre sesiones.
-npm install --prefix site --no-audit --no-fund
+# El sitio se construye con Astro. npm ci y no npm install: instala
+# exactamente lo de package-lock.json y nunca lo reescribe. Con npm install,
+# la versión de npm del contenedor le quitaba campos («libc») que escribe la
+# de Dependabot, y cada sesión arrancaba con el lockfile modificado.
+npm ci --prefix site --no-audit --no-fund

@@ -320,7 +320,10 @@ activarlo:
   esos datos con tipos: trabajo mediano, sin bug que justifique hacerlo.
 - El hook de sesión (`.claude/hooks/session-start.sh`) ahora instala también
   `requirements-dev.txt`. Antes una sesión nueva no traía ruff ni pytest y
-  `verificar.sh` fallaba hasta instalarlos a mano.
+  `verificar.sh` fallaba hasta instalarlos a mano. Y usa `npm ci` en vez de
+  `npm install`: la versión de npm del contenedor reescribía
+  `package-lock.json` (le quitaba los campos `libc` que pone la de Dependabot)
+  y cada sesión arrancaba con el árbol modificado.
 
 ### Lo que quedó fuera, a propósito
 
