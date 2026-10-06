@@ -333,12 +333,18 @@ las líneas `Co-Authored-By: Claude…` y `Claude-Session: …` que el entorno d
 Claude agregaba a cada uno. Las sesiones eran enlaces que solo el dueño podía
 abrir. Se hizo con `git filter-repo` y un force push autorizado a `main`.
 
-- **El contenido no cambió.** Se comparó el árbol de cada uno de los 58
-  commits antes y después: idénticos, con el mismo título.
+- **El contenido no cambió.** Se comparó el árbol de cada commit antes y
+  después: idénticos, con el mismo título.
+- **Se hizo sobre un clon superficial, y se perdió historia.** El clon de la
+  nube trae solo los últimos commits (ver «Trampas del entorno»): la primera
+  reescritura dejó en `main` 58 commits, del 3 de octubre en adelante, y los
+  172 anteriores (del 11 de agosto al 3 de octubre) quedaron fuera. Se
+  recuperaron de las referencias de los PRs cerrados, que GitHub conserva, y
+  se injertaron debajo; ver «La historia completa, reconstruida».
 - **Cambiaron todos los identificadores.** El único citado en el repositorio
-  (`a6fd544`, las skills de diseño retiradas) pasó a ser `23ea227`, y con la
-  segunda reescritura (ver «Licencia no comercial»), `043fb39`. El último
-  `main` antes de reescribir era `9403c26`.
+  (`a6fd544`, las skills de diseño retiradas) pasó a ser `23ea227`, luego
+  `043fb39` y, con la historia completa, `0b3100b`. El último `main` antes de
+  reescribir era `9403c26`.
 - **Los commits viejos no desaparecen de GitHub del todo:** los PRs cerrados
   (#4 a #11) los siguen mostrando. Borrarlos de ahí solo lo puede hacer el
   soporte de GitHub.
@@ -385,18 +391,47 @@ Por decisión del dueño, antes de compartir el repositorio:
 - **Consultar la guía es libre, también para trabajar.** Lo que pide permiso es
   el uso comercial del código o de los datos. Licencia comercial: contactar al
   autor. El dueño sí puede usarlo comercialmente (licencia dual).
-- **No es retroactivo para quien ya copió:** del 3 al 6 de octubre el
-  repositorio se publicó con MIT y CC BY-SA, y quien obtuvo una copia en esos
-  días conserva lo que esas licencias le concedieron. Se cambió con el
+- **No es retroactivo para quien ya copió:** del 11 de agosto al 6 de
+  octubre el repositorio se publicó con MIT y CC BY-SA (GitHub Pages publica
+  desde el 11 de agosto), y quien obtuvo una copia en esos días conserva lo
+  que esas licencias le concedieron. `LICENSE` lo dice así. Se cambió con el
   repositorio casi sin difusión, que es cuando menos pesa eso.
 - **La historia se reescribió otra vez** para que ningún commit muestre las
   licencias viejas: `LICENSE`, `LICENSES/` y las líneas de licencia del README
-  quedaron en su versión final en los 67 commits. Se comprobó commit por
+  quedaron en su versión final en cada commit. Se comprobó commit por
   commit que fuera de eso nada cambió (mismo título, autor y fecha) y que el
   último árbol es idéntico al de antes. Se hizo con `git filter-branch
   --tree-filter` y un force push autorizado; el último `main` antes era
-  `7a2af58`. Como en la primera, los PRs cerrados (#4 a #11) siguen mostrando
+  `7a2af58`. Como en la primera, los PRs cerrados (#1 a #11) siguen mostrando
   los commits viejos.
+
+### La historia completa, reconstruida (6 de octubre)
+
+Al revisar las fechas de la licencia se vio que `main` empezaba el 3 de
+octubre, aunque el repositorio es del 11 de agosto: las dos reescrituras se
+habían hecho sobre el clon superficial de la nube. Se reconstruyó todo desde
+un clon completo:
+
+- **De dónde salió:** `git clone --mirror` trae las referencias
+  `refs/pull/*/head`, y desde ellas se llega a los 172 commits perdidos. Se
+  injertaron (`git replace --graft`) debajo del primero de los 68 que quedaban
+  y se aplicaron las mismas reglas a los 240 con `git filter-branch`: autor
+  `dflores296` en lugar de Claude y de los correos personales del dueño, sin
+  líneas de Claude (también las escritas `Co-authored-by`, en minúsculas, que
+  la primera regla no atrapaba) y con las licencias finales.
+- **Licencias en los commits viejos:** `LICENSE` y `LICENSES/` en su versión
+  final donde ya había `LICENSE` (los 4 commits anteriores a la Fase 3 no
+  tenían, y siguen sin tener); en el README, los badges y la sección de
+  licencia, solo donde existían.
+- **`LICENSE` corrige las fechas:** el periodo con MIT y CC BY-SA es del 11 de
+  agosto al 6 de octubre, no del 3 al 6 de octubre como decía.
+- **Comprobado commit por commit:** mismas fechas, padres y mensajes (sin las
+  líneas de Claude); fuera de `LICENSE`, `LICENSES/` y las líneas de licencia
+  del README, nada cambió; en los 68 de arriba, solo `LICENSE`. El último
+  `main` antes era `ae44122`.
+- **Siguen a la vista en GitHub** los commits viejos, con los nombres y
+  correos originales, a través de los PRs cerrados (#1 a #11). Quitarlos de
+  ahí solo lo puede hacer el soporte de GitHub.
 - **Pendiente si se cobra en serio:** revisarlo con un abogado de propiedad
   intelectual, incluida la autoría del código escrito con ayuda de IA.
 - **Dependencias del sitio:** permisivas en su gran mayoría (MIT, ISC, BSD,
@@ -816,8 +851,14 @@ inventar ni descartar ninguno.
   Dependabot. Por eso el hook usa `npm ci`. Para subir una dependencia a mano,
   aplicar solo las líneas reales del cambio (versión, `resolved`, `integrity`)
   y comprobar con `npm ci` que el lockfile no se mueve.
-- **`gitdiagram.com` también está bloqueado.** El diagrama del README se genera
-  en la web de GitDiagram y se enlaza como imagen; desde aquí no se puede ver.
+- **`gitdiagram.com` también está bloqueado.** Por eso el diagrama del README
+  se rehízo a mano en Mermaid, con los colores del sitio: GitHub lo dibuja solo.
+- **El clon de la nube es superficial** (`git rev-parse
+  --is-shallow-repository` dice `true`): trae solo los últimos commits.
+  Cualquier operación sobre la historia entera —reescribirla, contar commits,
+  buscar cuándo cambió algo— se hace antes con `git fetch --unshallow`, o en un
+  `git clone --mirror` aparte. Una reescritura sobre el clon superficial borra
+  en silencio todo lo anterior al corte.
 - **Borrar ramas remotas devuelve 403.** Hay que hacerlo desde la web o desde un
   clon local.
 - **Chromium está preinstalado** en `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`.
@@ -831,4 +872,4 @@ Para el rediseño de octubre se instalaron ocho skills de diseño de terceros en
 y otras seis de nextlevelbuilder/ui-ux-pro-max-skill), con `npx skills add`.
 Terminado el rediseño se quitaron del repo: nada del sitio, del extractor ni
 del CI las usaba, y traían más código que todo `tools/`. Para recuperarlas tal
-como estaban: `git checkout 043fb39 -- .claude/skills skills-lock.json`.
+como estaban: `git checkout 0b3100b -- .claude/skills skills-lock.json`.
