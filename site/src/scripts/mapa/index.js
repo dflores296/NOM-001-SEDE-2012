@@ -111,7 +111,15 @@ export async function iniciar(raiz) {
     .warmupTicks(80)
     .cooldownTicks(220);
 
-  if (dims === 2) G.controls().enableRotate = false;
+  // En 3D, arrastrar gira; en 2D no hay qué girar y arrastrar (con el
+  // mouse o con un dedo) mueve el plano. Pellizcar acerca en los dos.
+  const ajustarControles = () => {
+    const c = G.controls();
+    c.enableRotate = dims === 3;
+    c.mouseButtons.LEFT = dims === 3 ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN;
+    c.touches.ONE = dims === 3 ? THREE.TOUCH.ROTATE : THREE.TOUCH.PAN;
+  };
+  ajustarControles();
 
   // Niebla de profundidad: lo lejano se funde con el fondo y se entiende qué
   // está adelante. Se mide con la distancia de la cámara al centro de la
@@ -677,9 +685,27 @@ export async function iniciar(raiz) {
     const yaSolo = !ocultos.has(g) && ocultos.size === todosG.length - 1;
     fijarOcultos(yaSolo ? [] : todosG.filter((x) => x !== g));
   }
+  // En una tablet no hay doble clic fiable ni clic derecho: dos toques
+  // seguidos en el mismo capítulo hacen lo mismo (el primero lo oculta, el
+  // segundo lo regresa y deja solo ese).
+  let ultimoToque = { g: null, t: 0 };
+  let conDedo = false;
   for (const b of chips) {
-    b.addEventListener('click', () => alternar(b.dataset.g));
-    b.addEventListener('dblclick', () => soloEste(b.dataset.g));
+    b.addEventListener('pointerdown', (e) => {
+      conDedo = e.pointerType !== 'mouse';
+    });
+    b.addEventListener('click', () => {
+      alternar(b.dataset.g);
+      if (!conDedo) return;
+      const ahora = performance.now();
+      if (ultimoToque.g === b.dataset.g && ahora - ultimoToque.t < 400) {
+        ultimoToque = { g: null, t: 0 };
+        soloEste(b.dataset.g);
+      } else ultimoToque = { g: b.dataset.g, t: ahora };
+    });
+    b.addEventListener('dblclick', () => {
+      if (!conDedo) soloEste(b.dataset.g);
+    });
     b.addEventListener('contextmenu', (e) => {
       e.preventDefault();
       soloEste(b.dataset.g);
@@ -694,7 +720,7 @@ export async function iniciar(raiz) {
     } catch {}
     for (const b of raiz.querySelectorAll('[data-dim]'))
       b.setAttribute('aria-pressed', String(Number(b.dataset.dim) === dims));
-    G.controls().enableRotate = dims === 3;
+    ajustarControles();
     if (dims === 2) {
       // De frente, como un plano.
       const d = G.camera().position.distanceTo(G.controls().target);

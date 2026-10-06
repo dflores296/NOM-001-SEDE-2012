@@ -13,9 +13,9 @@ const PESTANAS = [
   { href: '/figuras/', txt: 'Figuras', activa: ruta.startsWith('/figuras') },
   { href: '/apendices/', txt: 'Apéndices', activa: ruta.startsWith('/apendices') || ruta.startsWith('/cierre') },
   { href: '/glosario/', txt: 'Glosario', activa: ruta.startsWith('/glosario') },
-  // El mapa 3D solo se dibuja en una pantalla grande con mouse: en el
-  // teléfono la pestaña no aparece (.solo-escritorio).
-  { href: '/mapa/', txt: 'Mapa', activa: ruta.startsWith('/mapa'), escritorio: true },
+  // El mapa 3D solo se dibuja en pantalla grande —computadora o tablet—:
+  // en el teléfono la pestaña no aparece (.solo-pantalla-grande).
+  { href: '/mapa/', txt: 'Mapa', activa: ruta.startsWith('/mapa'), grande: true },
   { href: '/observaciones/', txt: 'Observaciones', activa: ruta.startsWith('/observaciones') },
 ];
 // En la portada el buscador grande de la banda hace las veces del de la
@@ -80,6 +80,15 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
         document.querySelector('meta[name="theme-color"]')
           .setAttribute('content', oscuro ? '#070707' : '#ffffff');
       } catch (e) {}
+      // ¿Cabe el mapa 3D? Con mouse, sí (el ancho lo vigila cabecera.css);
+      // en táctil, solo si el lado corto de la PANTALLA mide 600 px o más:
+      // una tablet, en cualquier orientación. Los teléfonos miden de 360 a
+      // 440 y un plegable abierto cuenta como tablet. No se mira la marca
+      // del aparato: el iPad, por ejemplo, se anuncia como Mac.
+      try {
+        if (matchMedia('(pointer: fine)').matches || Math.min(screen.width, screen.height) >= 600)
+          document.documentElement.classList.add('con-mapa');
+      } catch (e) {}
     </script>
   </head>
   <body>
@@ -93,7 +102,7 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
         <nav class="tabs" aria-label="Secciones de la guía">
           {PESTANAS.map((p) => (
             <a href={`${base}${p.href}`} aria-current={p.activa ? 'page' : undefined}
-               class={p.escritorio ? 'solo-escritorio' : undefined}>{p.txt}</a>
+               class={p.grande ? 'solo-pantalla-grande' : undefined}>{p.txt}</a>
           ))}
         </nav>
 
@@ -161,7 +170,7 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
         <div class="pie-col">
           <h2>Consulta</h2>
           {PESTANAS.filter((p) => p.href !== '/observaciones/').map((p) => (
-            <a href={`${base}${p.href}`} class={p.escritorio ? 'solo-escritorio' : undefined}>{p.txt}</a>
+            <a href={`${base}${p.href}`} class={p.grande ? 'solo-pantalla-grande' : undefined}>{p.txt}</a>
           ))}
           <a href={`${base}/tablas/generales/`}>Tablas generales</a>
           <a href={`${base}/cierre/`}>Títulos de cierre</a>
