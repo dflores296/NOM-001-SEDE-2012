@@ -39,11 +39,15 @@ RE_LINK_ASTRO = re.compile(r'<link\b[^>]*/_astro/[^>]*>')
 # Astro marca cada elemento de un componente con estilos propios con
 # data-astro-cid-<hash>, y ese hash cambia si se reorganiza el componente.
 RE_CID = re.compile(r' data-astro-cid-[a-z0-9]+')
+# La Content-Security-Policy lleva el hash de cada script y estilo en línea:
+# cambia con el código aunque el contenido sea el mismo.
+RE_CSP = re.compile(r'<meta http-equiv="content-security-policy"[^>]*>')
 
 
 def normalizar_html(b):
     """El HTML sin lo que es código: los <script> y <style> en línea, los
-    enlaces a los archivos de /_astro/ y la marca de alcance de Astro. Todo
+    enlaces a los archivos de /_astro/, la marca de alcance de Astro y la
+    Content-Security-Policy, que va hecha de hashes de ese código. Todo
     lo demás (texto, tablas, enlaces, anclas, clases, el orden de los
     elementos) queda y se compara."""
     t = b.decode('utf-8')
@@ -51,6 +55,7 @@ def normalizar_html(b):
     t = RE_STYLE.sub('', t)
     t = RE_LINK_ASTRO.sub('', t)
     t = RE_CID.sub('', t)
+    t = RE_CSP.sub('', t)
     return t.encode('utf-8')
 
 

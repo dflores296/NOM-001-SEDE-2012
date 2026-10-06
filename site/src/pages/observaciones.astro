@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { LARGO } from '../scripts/observaciones/limpieza.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -51,7 +52,7 @@ const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new'
         <form class="obs-form" id="obs-form" action={ENDPOINT} method="POST">
           <label>
             <span>Dónde lo viste</span>
-            <input type="text" name="referencia" id="ref"
+            <input type="text" name="referencia" id="ref" maxlength={LARGO.referencia}
                    placeholder="Por ejemplo: 250-32(a)(1), o Tabla 430-250" />
             <small>Si venías de un artículo, una tabla o una definición, ya viene lleno. Si no, escríbelo como puedas: con eso basta.</small>
           </label>
@@ -69,25 +70,26 @@ const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new'
 
           <label>
             <span>Qué viste <em>(obligatorio)</em></span>
-            <textarea name="observacion" rows="4" required
+            <textarea name="observacion" rows="4" required maxlength={LARGO.observacion}
                       placeholder="Qué dice la guía y qué esperabas encontrar."></textarea>
           </label>
 
           <label>
             <span>Qué dice el PDF del DOF <em>(si lo tienes a la mano)</em></span>
-            <textarea name="dice_el_dof" rows="2"
+            <textarea name="dice_el_dof" rows="2" maxlength={LARGO.dice_el_dof}
                       placeholder="El texto o el valor tal como aparece en el documento oficial."></textarea>
           </label>
 
           <label>
             <span>Tu correo <em>(opcional)</em></span>
-            <input type="email" name="email" placeholder="Solo para avisarte en qué quedó." />
+            <input type="email" name="email" maxlength={LARGO.email} placeholder="Solo para avisarte en qué quedó." />
           </label>
 
-          <input type="hidden" name="url" id="origen" />
-          {/* El asunto del correo lo arma el script con la referencia, para que
-              la bandeja no se llene de mensajes con el mismo título. */}
-          <input type="hidden" name="_subject" id="asunto" value="Observación en la guía NOM-001-SEDE-2012" />
+          {/* El asunto fijo es solo para el envío sin JavaScript. Con el
+              script, el asunto lleva la referencia —para que la bandeja no se
+              llene de mensajes con el mismo título— y el origen del reporte
+              va en el campo url; los dos los arma armarEnvio(). */}
+          <input type="hidden" name="_subject" value="Observación en la guía NOM-001-SEDE-2012" />
           {/* Señuelo: los bots llenan todo lo que encuentran, las personas no
               ven este campo. Formspree descarta el envío si viene con algo. */}
           <p class="obs-senuelo" aria-hidden="true">
@@ -98,6 +100,10 @@ const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new'
 
           <button type="submit" id="enviar">Enviar observación</button>
           <p class="obs-nota">No se pide registro ni cuenta de nada.</p>
+          <p class="obs-error" id="obs-espera" hidden role="alert">
+            Ya llegaron varias observaciones desde este navegador en la última
+            hora. Espera un rato y vuelve a intentar.
+          </p>
           <p class="obs-error" id="obs-error" hidden role="alert">
             No se pudo enviar. Revisa tu conexión y vuelve a intentar; si sigue
             fallando, puedes reportarlo en
@@ -146,56 +152,127 @@ const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new'
 </Base>
 
 <script>
+  import { base } from '../scripts/base.js';
+  import { armarEnvio, origenDe, refDeURL } from '../scripts/observaciones/limpieza.js';
+
   // La referencia viaja en la URL (?ref=250-32(a)(1)&de=/art/250/#250-32) porque
   // el sitio es estático: no hay servidor que la inyecte al generar la página.
+  // Solo se toma si tiene la forma de las que arman los botones «Reportar»:
+  // un enlace hecho a mano con otra cosa llega con el campo vacío y editable.
   const p = new URLSearchParams(location.search);
   const ref = document.getElementById('ref') as HTMLInputElement | null;
-  const asunto = document.getElementById('asunto') as HTMLInputElement | null;
+  const refFija = refDeURL(p.get('ref'));
 
-  if (ref && p.get('ref')) {
-    ref.value = p.get('ref')!;
+  if (ref && refFija) {
+    ref.value = refFija;
     ref.setAttribute('readonly', '');
     ref.classList.add('fijo');
   }
-  if (asunto && ref) {
-    const poner = () => {
-      asunto.value = ref.value
-        ? `Observación: ${ref.value}`
-        : 'Observación en la guía NOM-001-SEDE-2012';
-    };
-    poner();
-    ref.addEventListener('input', poner);
-  }
 
-  const origen = document.getElementById('origen') as HTMLInputElement | null;
-  if (origen) origen.value = p.get('de') || document.referrer || '';
+  // De qué página vino el reporte: una ruta de este sitio o nada.
+  const origen = origenDe({
+    de: p.get('de'),
+    referrer: document.referrer,
+    origin: location.origin,
+    raiz: base,
+  });
 
   // Enviar sin salir del sitio. Sin esto Formspree se lleva al lector a una
   // página suya de agradecimiento, que se ve ajena. Si este script no corre, el
   // formulario envía a la manera tradicional y acaba allá: funciona igual, solo
   // se ve prestado. Degradación, no rotura.
+  //
+  // Lo que se manda NO es el formulario tal cual sino lo que arma
+  // armarEnvio(): los campos que se esperan, sin HTML, sin invisibles y con
+  // los enlaces desarmados. Un campo que alguien agregue a la página no viaja.
   const form = document.getElementById('obs-form') as HTMLFormElement | null;
   const exito = document.getElementById('obs-exito');
   const error = document.getElementById('obs-error');
+  const espera = document.getElementById('obs-espera');
   const boton = document.getElementById('enviar') as HTMLButtonElement | null;
 
-  if (form && exito && error && boton) {
+  // Un bot llena y envía en menos de un segundo; una persona que escribe lo
+  // que vio, no. Lo que llega antes de esto, o con el señuelo lleno, se da
+  // por recibido sin mandarse: al bot no se le dice que lo detectaron.
+  const MINIMO_MS = 3000;
+  const abierta = Date.now();
+  // Tope por navegador: con un enlace o un script no se llena la bandeja.
+  const TOPE = 5;
+  const HORA = 60 * 60 * 1000;
+  const envios = (): number[] => {
+    try {
+      const v = JSON.parse(localStorage.getItem('obs-envios') || '[]');
+      return Array.isArray(v) ? v.filter((t) => Date.now() - t < HORA) : [];
+    } catch {
+      return [];
+    }
+  };
+  const anotar = () => {
+    try {
+      localStorage.setItem('obs-envios', JSON.stringify([...envios(), Date.now()]));
+    } catch {
+      // Sin almacenamiento no hay tope en el navegador; queda el de Formspree.
+    }
+  };
+
+  const recibido = () => {
+    form!.hidden = true;
+    exito!.hidden = false;
+    exito!.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  };
+
+  if (form && exito && error && espera && boton) {
+    const campo = (n: string) =>
+      form.elements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement | null;
+    for (const n of ['observacion', 'email']) {
+      campo(n)?.addEventListener('input', () => campo(n)?.setCustomValidity(''));
+    }
+
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       error.hidden = true;
+      espera.hidden = true;
+
+      const leido = Object.fromEntries(new FormData(form)) as Record<string, string>;
+      if (leido._gotcha || Date.now() - abierta < MINIMO_MS) {
+        recibido();
+        return;
+      }
+      if (envios().length >= TOPE) {
+        espera.hidden = false;
+        return;
+      }
+
+      const tipos = [...form.querySelectorAll('select[name="tipo"] option')].map(
+        (o) => (o as HTMLOptionElement).value
+      );
+      const envio = armarEnvio(leido, { tipos, origen });
+      if (!envio.campos) {
+        const c = campo(envio.falta);
+        c?.setCustomValidity(
+          envio.falta === 'email'
+            ? 'Revisa tu correo: no parece una dirección válida.'
+            : 'Escribe qué viste, con palabras.'
+        );
+        c?.reportValidity();
+        return;
+      }
+
+      const cuerpo = new FormData();
+      for (const [k, v] of Object.entries(envio.campos)) if (v) cuerpo.append(k, v);
+
       boton.disabled = true;
       const etiqueta = boton.textContent;
       boton.textContent = 'Enviando…';
       try {
         const r = await fetch(form.action, {
           method: 'POST',
-          body: new FormData(form),
+          body: cuerpo,
           headers: { Accept: 'application/json' },
         });
         if (!r.ok) throw new Error(String(r.status));
-        form.hidden = true;
-        exito.hidden = false;
-        exito.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        anotar();
+        recibido();
       } catch {
         error.hidden = false;
       } finally {
@@ -206,7 +283,7 @@ const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new'
 
     document.getElementById('otra')?.addEventListener('click', () => {
       form.reset();
-      if (ref && p.get('ref')) ref.value = p.get('ref')!;
+      if (ref && refFija) ref.value = refFija;
       exito.hidden = true;
       form.hidden = false;
       form.scrollIntoView({ block: 'center', behavior: 'smooth' });

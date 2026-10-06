@@ -124,6 +124,21 @@ la fuente, así que tampoco aquí.
 Cómo se reconstruye todo desde el PDF, en
 [docs/arquitectura.md](docs/arquitectura.md).
 
+## Arquitectura
+
+[![Diagrama de arquitectura de dflores296/nom-001-sede-2012](https://gitdiagram.com/dflores296/nom-001-sede-2012/diagram.png)](https://gitdiagram.com/dflores296/nom-001-sede-2012?utm_source=readme&utm_medium=picture)
+
+Generado con [GitDiagram](https://gitdiagram.com) a partir del repositorio. El
+detalle de cada paso, en [docs/arquitectura.md](docs/arquitectura.md).
+
+## Seguridad
+
+El sitio es estático: no hay servidor, base de datos ni cuentas. Cada página
+lleva una Content-Security-Policy que solo deja correr el JavaScript del propio
+sitio, y el formulario de observaciones manda los textos sin HTML, sin
+caracteres invisibles y con los enlaces desarmados (`hxxps://sitio[.]com`). Qué
+cubre y qué no, en [docs/arquitectura.md](docs/arquitectura.md#seguridad).
+
 ## Erratas del PDF de origen
 
 Cuatro tablas traen valores mal impresos **en el DOF**. Se reproducen tal como
@@ -147,7 +162,8 @@ grandes de lo que toca. El sustento de cada caso está en
 
 ## Documentación
 
-- [docs/arquitectura.md](docs/arquitectura.md) — el pipeline y qué hace cada script
+- [docs/arquitectura.md](docs/arquitectura.md) — el pipeline, qué hace cada
+  script y la seguridad del sitio
 - [docs/reconstruccion-tablas.md](docs/reconstruccion-tablas.md) — cómo se
   obtuvieron las tablas del PDF
 - [docs/notas-parser.md](docs/notas-parser.md) — las irregularidades del

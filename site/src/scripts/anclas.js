@@ -44,9 +44,16 @@ const rescatarAncla = async () => {
   // borraría la única pista de a dónde quería ir el lector.
   const aviso = document.createElement('div');
   aviso.className = 'aviso-ancla';
-  aviso.innerHTML =
-    `<b>${id}</b> cambió de identificador al corregir la estructura ` +
-    `de este artículo. Su contenido está en <b>${destino}</b>, aquí abajo.`;
+  // Con nodos y no con innerHTML: el id viene de la URL, y aunque solo llega
+  // aquí si está en la lista de retirados, lo que escribe quien arma el
+  // enlace no se interpreta nunca como HTML.
+  const negrita = (t) => Object.assign(document.createElement('b'), { textContent: t });
+  aviso.append(
+    negrita(id),
+    ' cambió de identificador al corregir la estructura de este artículo. Su contenido está en ',
+    negrita(destino),
+    ', aquí abajo.'
+  );
   el.insertAdjacentElement('beforebegin', aviso);
 };
 addEventListener('hashchange', rescatarAncla);

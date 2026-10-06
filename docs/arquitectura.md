@@ -83,7 +83,8 @@ cambiada; la huella de cada tabla (`huella.py`) protege las tablas, pero no el
 texto ni cómo se dibujan.
 
 Del HTML se compara todo menos lo que es código: los `<script>` y `<style>` en
-línea, los enlaces a `/_astro/` y la marca `data-astro-cid-*` de Astro, que
+línea, los enlaces a `/_astro/`, la marca `data-astro-cid-*` de Astro y la
+`<meta>` de la Content-Security-Policy (hecha de hashes de ese código), que
 cambian al reorganizar componentes sin cambiar lo que se lee. Por la misma
 razón quedan fuera `site/dist/_astro/` y `sw.js`.
 
@@ -137,6 +138,56 @@ se regenera en cada publicación. Sin nada que lo impida, un cambio en
 celdas de una tabla ya verificada y el sitio la publicaría igual, con su insignia
 intacta. El detalle de las tres reglas que lo evitan, y de cómo sellar un cambio
 deliberado, está en [reconstruccion-tablas.md](reconstruccion-tablas.md).
+
+## Seguridad
+
+El sitio es estático: no hay servidor, base de datos ni cuentas. Lo que se
+cuida es que no corra código ajeno en la página y que el formulario de
+observaciones no sirva para mandar correos maliciosos.
+
+**Content-Security-Policy en todas las páginas** (`site/astro.config.mjs`).
+Solo corre el JavaScript que compila Astro: un script metido en un texto, en
+una URL o en un `onerror=` no se ejecuta. El sitio solo puede conectarse a sí
+mismo, a `api.github.com` (las estrellas) y a `formspree.io`, y los formularios
+solo pueden enviar ahí. GitHub Pages no deja poner encabezados, así que va como
+`<meta>`; por eso no lleva `frame-ancestors`, que desde una `<meta>` no aplica.
+Dos reglas para quien toque el sitio:
+
+- Un `<script is:inline>` o con `define:vars` queda **bloqueado**: Astro no le
+  calcula hash. Los datos se pasan por un atributo `data-`, como en la 404.
+- Las librerías del mapa 3D crean su propio `<style>`. Su hash se calcula al
+  compilar leyéndolo de la librería; si una versión nueva deja de traerlo
+  donde se busca, la compilación se detiene.
+
+Las pruebas en navegador fallan con cualquier error de consola, y bloquear algo
+de la CSP es uno: si la política le quita algo legítimo al sitio, se nota ahí.
+Una prueba, además, inyecta un script y comprueba que no corra.
+
+**El formulario de `/observaciones`** manda a Formspree, que reenvía al correo
+del proyecto. Lo que sale de la página lo arma
+`site/src/scripts/observaciones/limpieza.js`, probado en
+`site/pruebas/observaciones.mjs`:
+
+- **La referencia y el origen que traen la URL** (`?ref=…&de=…`) solo se toman
+  si tienen la forma de los que generan los botones «Reportar». Un enlace hecho
+  a mano para que el asunto dijera «Urgente: verifica tu cuenta» llega con el
+  campo vacío. Una prueba recorre los más de 3 000 «Reportar» del sitio
+  compilado y comprueba que todos pasan el filtro.
+- **Solo viajan los campos esperados**, sin etiquetas HTML ni caracteres
+  invisibles (los de dirección bidi disfrazan un `.exe` de `.jpg`), y con los
+  enlaces desarmados: `hxxps://sitio[.]com` se puede leer y copiar, pero no se
+  abre con un clic.
+- **Contra bots y avalanchas**: un señuelo que las personas no ven, un mínimo
+  de tres segundos entre abrir la página y enviar, y un tope de cinco envíos por
+  hora en cada navegador.
+
+**Lo que esto no cubre.** La dirección de Formspree va en el HTML, así que
+cualquiera puede mandarle un POST directo sin pasar por la página, y entonces
+nada de lo anterior aplica. Esa parte se cuida en el panel de Formspree:
+restringir el formulario al dominio `dflores296.github.io`, activar su filtro
+de spam y el reCAPTCHA. Y al leer los correos, lo de siempre: es texto que
+escribió un desconocido. El `Reply-To` es el correo que la persona dijo tener,
+no uno verificado.
 
 ## El entorno de desarrollo
 
