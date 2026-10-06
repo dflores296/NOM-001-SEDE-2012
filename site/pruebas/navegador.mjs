@@ -594,20 +594,24 @@ prueba('El mapa busca un punto de partida y sigue sus hilos', async ({ nuevaPagi
   afirmar(errores.length === 0, errores.join(' | '));
 });
 
-prueba('En el teléfono, el mapa no carga la librería 3D', async ({ nuevaPagina }) => {
-  const { page } = await nuevaPagina(TELEFONO);
-  const pedidos = [];
-  page.on('request', (r) => pedidos.push(r.url()));
-  await page.goto('/mapa/', { waitUntil: 'networkidle' });
-  afirmar(
-    await page.$eval('.mapa-movil', (e) => getComputedStyle(e).display !== 'none'),
-    'sin aviso móvil'
-  );
-  afirmar(
-    !pedidos.some((u) => /3d-force-graph|mapa\.json/.test(u)),
-    'pidió la librería 3D o los datos'
-  );
-});
+prueba(
+  'En el teléfono también se dibuja el mapa, con la leyenda plegada',
+  async ({ nuevaPagina }) => {
+    const { page, errores } = await nuevaPagina(TELEFONO);
+    await page.goto('/mapa/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.mapa canvas', { timeout: 20000 });
+    afirmar(
+      await page.$eval('nav.tabs a[href$="/mapa/"]', (a) => getComputedStyle(a).display !== 'none'),
+      'sin pestaña Mapa en el teléfono'
+    );
+    // La leyenda va plegada tras «Capítulos» y se abre con un toque.
+    const leyVisible = () => page.$eval('.mapa-ley', (e) => getComputedStyle(e).display !== 'none');
+    afirmar(!(await leyVisible()), 'la leyenda empieza abierta');
+    await page.click('.ley-abrir');
+    afirmar(await leyVisible(), 'la leyenda no se abrió');
+    afirmar(errores.length === 0, errores.join(' | '));
+  }
+);
 
 prueba(
   'En una tablet el mapa se dibuja, y el doble toque deja un capítulo solo',

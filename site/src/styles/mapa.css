@@ -2,16 +2,6 @@
    arma el script, y lo creado así no lleva la marca de alcance de Astro.
    Todo va bajo prefijos propios (.mapa, .mp-, .chip-cap). */
 .mapa { padding: 0.8rem var(--gut) 1rem; }
-.mapa-movil { display: none; padding-top: 1.5rem; padding-bottom: 2rem; }
-.mapa-movil h1 { margin: 0 0 1rem; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em; }
-/* El mapa en computadora o tablet; en el teléfono, el aviso (ver
-   .solo-pantalla-grande en cabecera.css: la misma regla). */
-:root:not(.con-mapa) .mapa { display: none; }
-:root:not(.con-mapa) .mapa-movil { display: block; }
-@media (pointer: fine) and (max-width: 1023px) {
-  .mapa { display: none; }
-  .mapa-movil { display: block; }
-}
 
 /* ------------------------------------------------------------------ colores
    El mapa sigue el tema del sitio. En claro, los puntos usan tonos más
@@ -239,9 +229,57 @@
   .mapa-hilo-ctl { flex-wrap: wrap; }
   .mapa-izq { width: 100%; }
   .mapa-busca { width: min(360px, 100%); }
-  .mapa-panel { top: auto; left: 12px; right: 12px; bottom: 12px; width: auto; height: 42%; }
-  .mapa.con-panel .mapa-lienzo { right: 0; bottom: 42%; }
-  .mapa.con-panel .mapa-ley { right: 14px; bottom: calc(42% + 22px); }
-  .mapa.con-panel .mapa-guia { left: 50%; bottom: calc(42% + var(--ley-alto, 28px) + 38px); }
+  .mapa { --hoja: 42%; }
+  .mapa-panel { top: auto; left: 12px; right: 12px; bottom: 12px; width: auto; height: var(--hoja); }
+  .mapa.con-panel .mapa-lienzo { right: 0; bottom: var(--hoja); }
+  .mapa.con-panel .mapa-ley { right: 14px; bottom: calc(var(--hoja) + 22px); }
+  .mapa.con-panel .mapa-guia { left: 50%; bottom: calc(var(--hoja) + var(--ley-alto, 28px) + 38px); }
   .chip-cap, .chip-todos { height: 26px; font-size: 0.7rem; padding: 0 0.6rem; }
+}
+
+/* Sin WebGL: el aviso lleva al índice, así que recibe clics. */
+.mapa-estado.sin-3d { pointer-events: auto; padding: 2rem; text-align: center; line-height: 1.6; }
+.mapa-estado.sin-3d a { color: var(--m-acento); text-decoration: underline; }
+
+/* El botón de la leyenda plegada: solo en el teléfono. */
+.ley-abrir { display: none; }
+
+/* ---------------------------------------------------------- teléfono
+   Con menos de 600 px de ancho: controles compactos, sin el título (la
+   pestaña ya dice «Mapa»), avisos en varias líneas y la leyenda plegada
+   tras el botón «Capítulos». El panel sigue como hoja abajo (ver arriba). */
+@media (max-width: 599px) {
+  .mapa { padding: 0.5rem 0.5rem 0.75rem; --hoja: 36%; }
+  .mapa-visor { height: calc(100dvh - 9rem); min-height: 480px; }
+  .mapa-sup { top: 8px; left: 8px; right: 8px; gap: 0.35rem; }
+  .mapa-der { gap: 0.3rem; }
+  .mapa-tit { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .seg button { height: 24px; padding: 0 0.5rem; font-size: 0.6875rem; }
+  .mapa-atras, .mapa-btn { height: 30px; min-width: 30px; font-size: 0.75rem; }
+  .mapa-full, .mapa-centrar { width: 30px; }
+  .mapa-busca input { height: 36px; font-size: 0.8125rem; }
+  .mapa-recorrido { max-width: 100%; }
+  .mapa-guia, .mapa-inicio {
+    bottom: 54px; max-width: calc(100% - 24px); white-space: normal; text-align: center;
+    font-size: 0.75rem; border-radius: var(--radius-xl);
+  }
+  .mapa-guia { gap: 0.6rem; white-space: nowrap; }
+  .ley-abrir {
+    display: inline-flex; align-items: center; gap: 0.35rem; position: absolute; left: 10px; bottom: 10px; z-index: 3;
+    height: 32px; padding: 0 0.8rem; font: inherit; font-size: 0.75rem; font-weight: 600; cursor: pointer;
+    color: var(--m-texto); background: rgb(var(--m-capa) / 0.92); border: 1px solid var(--m-borde); border-radius: 999px;
+  }
+  .ley-abrir::after { content: "▴"; font-size: 0.7rem; color: var(--m-tenue); }
+  .mapa.ley-abierta .ley-abrir::after { content: "▾"; }
+  .ley-n:empty { display: none; }
+  .ley-n { font-weight: 500; color: var(--m-tenue); }
+  .mapa-ley { display: none; }
+  .mapa.ley-abierta .mapa-ley {
+    display: flex; left: 10px; right: 10px; bottom: 50px; z-index: 4; padding: 0.5rem;
+    background: rgb(var(--m-capa) / 0.96); border: 1px solid var(--m-borde); border-radius: var(--radius-xl);
+  }
+  .mapa.con-panel .ley-abrir { bottom: calc(var(--hoja) + 22px); }
+  .mapa.con-panel.ley-abierta .mapa-ley { right: 10px; bottom: calc(var(--hoja) + 62px); }
+  .mapa.con-panel .mapa-guia { bottom: calc(var(--hoja) + 64px); }
+  .mapa-panel { left: 8px; right: 8px; bottom: 8px; padding: 0.9rem 1rem 1rem; }
 }
