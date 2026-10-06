@@ -18,6 +18,11 @@ paso() { printf '\n== %s\n' "$1"; }
 paso 'Revisar el código de tools/'
 python3 -m ruff check tools/
 
+# Los tipos, en modo básico: un valor que puede venir vacío usado como si no,
+# un número sumado a un texto. Ver mypy.ini.
+paso 'Revisar los tipos de tools/'
+python3 -m mypy tools/
+
 # Lo mismo para el JavaScript del sitio, con Biome: errores probables (linter)
 # y un solo estilo de escritura (formateador). `ci` no escribe nada; falla si
 # hay un error o si un archivo no está formateado. Para arreglarlo en local:

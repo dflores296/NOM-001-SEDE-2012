@@ -200,6 +200,7 @@ no uno verificado.
 ## El entorno de desarrollo
 
 `.claude/hooks/session-start.sh`, registrado en `.claude/settings.json`, instala
-`requirements.txt` y las dependencias del sitio al arrancar una sesión remota.
+`requirements.txt`, `requirements-dev.txt` (ruff, pytest, mypy) y las
+dependencias del sitio al arrancar una sesión remota.
 Solo actúa cuando `CLAUDE_CODE_REMOTE` vale `true`; en una máquina local no toca
 el entorno.

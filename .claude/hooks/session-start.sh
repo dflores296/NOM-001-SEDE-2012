@@ -11,8 +11,9 @@ fi
 
 cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}"
 
-# La versión va fijada en requirements.txt; ver el comentario de ahí.
-pip install --quiet -r requirements.txt
+# Las versiones van fijadas en requirements.txt (extracción) y en
+# requirements-dev.txt (ruff, pytest, mypy: lo que corre tools/verificar.sh).
+pip install --quiet -r requirements.txt -r requirements-dev.txt
 
 # El sitio se construye con Astro. npm install (no ci) para aprovechar el
 # cacheo del contenedor entre sesiones.

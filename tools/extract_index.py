@@ -14,6 +14,7 @@ referencia en prosa ("el Artículo 250").
 
 import re, unicodedata, sys
 from collections import OrderedDict, defaultdict
+from typing import Any
 from comun import unaccent
 
 PDF = sys.argv[1] if len(sys.argv) > 1 else 'NOM-001-SEDE-2012.pdf'
@@ -35,9 +36,9 @@ end = toc_txt.find('INTRODUCCION\n')
 if end > 2000:
     toc_txt = toc_txt[:end]
 
-toc = OrderedDict()          # num -> {title, chapter}
-chapters = OrderedDict()     # num -> title
-titulos = OrderedDict()      # num -> title
+toc: dict[int, dict[str, Any]] = OrderedDict()   # num -> {title, chapter}
+chapters: dict[int, str] = OrderedDict()         # num -> title
+titulos: dict[int, str] = OrderedDict()          # num -> title
 cur_chap = None
 
 lines = [l.rstrip() for l in toc_txt.split('\n')]
@@ -101,17 +102,19 @@ for pno, raw in enumerate(PAGES, start=1):
             body[num] = pno
 
 # ---------------------------------------------------------------- TABLAS Cap.10
-tables = OrderedDict()
+tables: dict[str, Any] = OrderedDict()
 tbl_txt = clean(''.join(PAGES[1:9]))
 for m in re.finditer(r'^\s*Tabla\s+([\w\-().]+?)\s{2,}(.+)$', tbl_txt, re.M):
     tables[m.group(1)] = m.group(2).strip()
 
 
-D = {'toc': {str(k): v for k, v in toc.items()},
-     'chapters': {str(k): v for k, v in chapters.items()},
-     'titulos': {str(k): v for k, v in titulos.items()},
-     'body': {str(k): v for k, v in body.items()},
-     'tables': tables}
+D: dict[str, Any] = {
+    'toc': {str(k): v for k, v in toc.items()},
+    'chapters': {str(k): v for k, v in chapters.items()},
+    'titulos': {str(k): v for k, v in titulos.items()},
+    'body': {str(k): v for k, v in body.items()},
+    'tables': tables,
+}
 
 def ua(s):
     return ''.join(c for c in unicodedata.normalize('NFD', s)
@@ -146,7 +149,7 @@ for n in nums:
         parts[n].add(m.group(1))
 
 # apéndices
-apps = OrderedDict()
+apps: dict[str, dict[str, Any]] = OrderedDict()
 for pno, raw in enumerate(PAGES, 1):
     if pno < 700:
         continue
@@ -158,7 +161,7 @@ for pno, raw in enumerate(PAGES, 1):
             apps[k] = {'informativo': bool(m.group(2)), 'page': pno, 'title': ttl}
 
 # ------------------------------------------------------------------ salida
-L = []
+L: list[str] = []
 W = L.append
 W('=' * 100)
 W('ÍNDICE MAESTRO — NOM-001-SEDE-2012, INSTALACIONES ELÉCTRICAS (UTILIZACIÓN)')

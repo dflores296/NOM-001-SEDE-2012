@@ -300,6 +300,28 @@ cual:
   arranca en el entorno de Claude (ver la tabla de arriba), así que se agregó
   al `ignore` y el PR se rehace solo con Astro.
 
+### Revisión de tipos (mypy), por protocolo
+
+`tools/verificar.sh` corre `python3 -m mypy tools/` en modo básico, con la
+configuración en `mypy.ini`. Se agregó sabiendo que hoy no aporta mucho:
+se corrió antes y **no encontró ningún error real**, porque las pruebas y la
+huella ya los atrapan. Está para que un cambio futuro no meta uno. Al
+activarlo:
+
+- Los únicos 8 avisos estaban en `extract_index.py`, un script que vuelve a
+  asignar sus variables con otro tipo. Se resolvieron con anotaciones, sin
+  tocar lo que hace: `INDICE.txt` sale idéntico byte por byte.
+- El modo estricto (`check_untyped_defs`) da 62 avisos y ninguno es un error.
+  Se deja apagado; vale encenderlo solo como parte de un trabajo de fondo en el
+  parser.
+- **`astro check`** (lo mismo para el sitio) **no se agregó**: da 82 avisos,
+  ninguno real. 54 son parámetros sin tipo y 25 vienen de que TypeScript se
+  confunde con la forma del JSON de la norma. Dejarlo en cero exige describir
+  esos datos con tipos: trabajo mediano, sin bug que justifique hacerlo.
+- El hook de sesión (`.claude/hooks/session-start.sh`) ahora instala también
+  `requirements-dev.txt`. Antes una sesión nueva no traía ruff ni pytest y
+  `verificar.sh` fallaba hasta instalarlos a mano.
+
 ### Lo que quedó fuera, a propósito
 
 - **CAPTCHA de Formspree: apagado.** El formulario envía por `fetch` sin salir
