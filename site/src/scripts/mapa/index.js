@@ -113,8 +113,12 @@ export async function iniciar(raiz) {
 
   // En 3D, arrastrar gira; en 2D no hay qué girar y arrastrar (con el
   // mouse o con un dedo) mueve el plano. Pellizcar acerca en los dos.
+  // En 3D, además, el giro tiene inercia: al soltar sigue girando y se
+  // frena solo en cosa de un segundo (no con «reducir movimiento»).
   const ajustarControles = () => {
     const c = G.controls();
+    c.enableDamping = dims === 3 && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    c.dampingFactor = 0.05;
     c.enableRotate = dims === 3;
     c.mouseButtons.LEFT = dims === 3 ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN;
     c.touches.ONE = dims === 3 ? THREE.TOUCH.ROTATE : THREE.TOUCH.PAN;
