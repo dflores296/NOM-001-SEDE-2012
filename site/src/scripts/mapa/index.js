@@ -331,6 +331,7 @@ export async function iniciar(raiz) {
       b.setAttribute('aria-pressed', String(b.dataset.acomodo === acomodo));
     armarRotulos();
     if (modo !== 'red') return;
+    simulacionNormal();
     G.d3Force('link').strength(fuerzaCita);
     G.cooldownTicks(260);
     G.d3ReheatSimulation();
@@ -408,15 +409,121 @@ export async function iniciar(raiz) {
     G.cooldownTicks(0);
   }
 
+  // ------------------------------------------------------------- flotar
+  // Cuando la red ya se acomodó y nadie la está moviendo, los puntos siguen
+  // meciéndose despacio, como suspendidos. No es la simulación de siempre
+  // (que reacomodaría la red): se apagan sus fuerzas y queda solo una
+  // corriente suave, distinta para cada artículo, que mece cada racimo
+  // alrededor de su lugar: unas 14 unidades (los racimos miden 50 o más) en
+  // ciclos de 4 a 7 segundos. Se pausa al girar, acercar o
+  // arrastrar, y vuelve 2 s después de soltar. No con «reducir movimiento».
+  const DECAE = 0.0228; // el ritmo con que se enfría la simulación normal
+  const fuerzasRed = {};
+  let flotando = false;
+  let sinFuerzas = false;
+  let tocando = false;
+  let reanudar = 0;
+  const azar = (semilla, k) => {
+    const x = Math.sin(semilla * 12.9898 + k * 78.233) * 43758.5453;
+    return x - Math.floor(x);
+  };
+  // Fase y ritmo de cada punto: casi todo lo pone su artículo, para que el
+  // racimo se mueva junto; un poco, el punto, para que no sea rígido.
+  const ritmo = (n) => {
+    if (!n.__ritmo) {
+      const a = n.a ?? 999;
+      let h = 0;
+      for (const c of n.id) h = (h * 31 + c.charCodeAt(0)) % 9973;
+      n.__ritmo = [0, 1, 2].map((k) => [
+        2 * Math.PI * azar(a, k) + 0.6 * azar(h, k),
+        (2 * Math.PI) / (240 + 180 * azar(a, k + 3)),
+      ]);
+    }
+    return n.__ritmo;
+  };
+  const fuerzaFlotar = (() => {
+    let nodos = [];
+    let t = 0;
+    const f = () => {
+      t++;
+      for (const n of nodos) {
+        const [x, y, z] = ritmo(n);
+        n.vx += 0.18 * Math.sin(t * x[1] + x[0]);
+        n.vy += 0.18 * Math.sin(t * y[1] + y[0]);
+        if (dims === 3) n.vz += 0.18 * Math.sin(t * z[1] + z[0]);
+      }
+    };
+    f.initialize = (ns) => {
+      nodos = ns;
+    };
+    return f;
+  })();
+
+  function empezarFlotar() {
+    if (modo !== 'red' || tocando || quieto.matches || flotando) return;
+    if (!sinFuerzas) {
+      for (const k of ['link', 'charge', 'center', 'ancla']) {
+        fuerzasRed[k] = G.d3Force(k);
+        G.d3Force(k, null);
+      }
+      sinFuerzas = true;
+    }
+    flotando = true;
+    G.d3Force('flotar', fuerzaFlotar);
+    // Con el enfriamiento en 1 la energía cae a cero en el primer paso: solo
+    // la corriente mueve los puntos (y el arrastre de uno, si lo hay).
+    G.d3AlphaDecay(1).cooldownTicks(Infinity).cooldownTime(Infinity);
+    G.d3ReheatSimulation();
+  }
+  function pausarFlotar() {
+    clearTimeout(reanudar);
+    if (!flotando) return;
+    flotando = false;
+    G.cooldownTicks(0);
+  }
+  function programarFlotar(ms = 2000) {
+    clearTimeout(reanudar);
+    if (modo === 'red') reanudar = setTimeout(empezarFlotar, ms);
+  }
+  // Antes de cualquier cosa que sí reacomode la red (abrirla, cambiar de
+  // acomodo o de vista) o de abrir un hilo: las fuerzas de siempre de vuelta.
+  function simulacionNormal() {
+    pausarFlotar();
+    G.d3Force('flotar', null);
+    if (sinFuerzas) {
+      for (const [k, f] of Object.entries(fuerzasRed)) G.d3Force(k, f);
+      sinFuerzas = false;
+    }
+    G.d3AlphaDecay(DECAE).cooldownTime(15000);
+  }
+  G.controls().addEventListener('start', () => {
+    tocando = true;
+    pausarFlotar();
+  });
+  G.controls().addEventListener('end', () => {
+    tocando = false;
+    programarFlotar();
+  });
+  G.onNodeDrag(() => {
+    tocando = true;
+  });
+  G.onNodeDragEnd(() => {
+    tocando = false;
+    programarFlotar();
+  });
+
   // ---------------------------------------------------- moverse por el hilo
   let encuadrar = false;
   G.onEngineStop(() => {
-    if (!encuadrar) return;
-    encuadrar = false;
-    G.zoomToFit(700, modo === 'hilo' ? 70 : 30);
+    if (encuadrar) {
+      encuadrar = false;
+      G.zoomToFit(700, modo === 'hilo' ? 70 : 30);
+    }
+    if (!flotando) programarFlotar();
   });
 
   function verRed({ historial = true } = {}) {
+    simulacionNormal();
     modo = 'red';
     centro = null;
     recorrido = [];
@@ -434,6 +541,7 @@ export async function iniciar(raiz) {
   function seguir(id, { historial = true, mantener = false } = {}) {
     const n = porId.get(id);
     if (!n) return;
+    simulacionNormal();
     modo = 'hilo';
     centro = id;
     if (!mantener) {
@@ -741,6 +849,7 @@ export async function iniciar(raiz) {
       G.cameraPosition({ x: 0, y: 0, z: d }, { x: 0, y: 0, z: 0 }, 500);
     }
     if (modo === 'red') {
+      simulacionNormal();
       G.numDimensions(dims);
       G.cooldownTicks(260);
       encuadrar = true;
