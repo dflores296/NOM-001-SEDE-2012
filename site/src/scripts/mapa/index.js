@@ -674,6 +674,7 @@ export async function iniciar(raiz) {
     for (const g of gs) ocultos.add(g);
     for (const b of chips) b.setAttribute('aria-pressed', String(!ocultos.has(b.dataset.g)));
     btnTodos.hidden = ocultos.size === 0;
+    contarLey();
     G.nodeVisibility(G.nodeVisibility()).linkVisibility(G.linkVisibility());
     moverRotulos();
     if (modo === 'hilo' && centro) llenarPanel(porId.get(centro));
@@ -712,6 +713,19 @@ export async function iniciar(raiz) {
     });
   }
   btnTodos.addEventListener('click', () => fijarOcultos([]));
+
+  // La leyenda plegada del teléfono (mapa.css): el botón la abre y la
+  // cierra, y dice cuántos capítulos se ven si hay alguno oculto.
+  const leyAbrir = $('.ley-abrir');
+  leyAbrir.addEventListener('click', () => {
+    const abierta = raiz.classList.toggle('ley-abierta');
+    leyAbrir.setAttribute('aria-expanded', String(abierta));
+  });
+  function contarLey() {
+    $('.ley-n').textContent = ocultos.size
+      ? `${todosG.length - ocultos.size} de ${todosG.length}`
+      : '';
+  }
   function elegirDim(n) {
     if (n === dims) return;
     dims = n;

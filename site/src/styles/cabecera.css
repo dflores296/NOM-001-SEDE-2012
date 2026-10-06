@@ -38,14 +38,6 @@ nav.tabs a[aria-current="page"] { color: var(--activo); border-bottom-color: var
 
 .acciones { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; }
 
-/* Lo que solo tiene sentido en pantalla grande, como el mapa 3D: una
-   computadora con la ventana de 1024 px o más, o una tablet (la clase
-   con-mapa la pone Base.astro antes de pintar). */
-:root:not(.con-mapa) .solo-pantalla-grande { display: none !important; }
-@media (pointer: fine) and (max-width: 1023px) {
-  .solo-pantalla-grande { display: none !important; }
-}
-
 /* El buscador de la cabecera. En la portada nace plegado (.oculto) y se
    despliega cuando el buscador grande de la banda sale de la vista. */
 .search-top {

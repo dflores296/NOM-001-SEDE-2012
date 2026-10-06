@@ -1,8 +1,7 @@
 // Los datos del mapa 3D de /mapa, calculados al construir el sitio.
 //
-// Van aparte y no dentro de la página porque solo los pide el navegador de
-// escritorio, cuando de verdad va a dibujar el mapa: en el teléfono no se
-// descarga ni esto ni la librería 3D.
+// Van aparte y no dentro de la página porque solo se piden cuando de verdad
+// se va a dibujar el mapa, junto con la librería 3D.
 //
 // La red se arma a nivel SECCIÓN. Las citas a un inciso ("250-32(b)(1)") se
 // suben a su sección ("250-32"), porque a nivel inciso el mapa serían cuatro
