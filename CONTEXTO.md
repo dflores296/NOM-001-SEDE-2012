@@ -325,6 +325,27 @@ activarlo:
   `package-lock.json` (le quitaba los campos `libc` que pone la de Dependabot)
   y cada sesión arrancaba con el árbol modificado.
 
+### La historia se reescribió (6 de octubre)
+
+Antes de compartir el repositorio, por decisión del dueño, los commits pasaron
+a nombre de `dflores296` (con su correo «noreply» de GitHub) y se les quitaron
+las líneas `Co-Authored-By: Claude…` y `Claude-Session: …` que el entorno de
+Claude agregaba a cada uno. Las sesiones eran enlaces que solo el dueño podía
+abrir. Se hizo con `git filter-repo` y un force push autorizado a `main`.
+
+- **El contenido no cambió.** Se comparó el árbol de cada uno de los 58
+  commits antes y después: idénticos, con el mismo título.
+- **Cambiaron todos los identificadores.** El único citado en el repositorio
+  (`a6fd544`, las skills de diseño retiradas) es hoy `23ea227`. El último
+  `main` antes de reescribir era `9403c26`.
+- **Los commits viejos no desaparecen de GitHub del todo:** los PRs cerrados
+  (#4 a #11) los siguen mostrando. Borrarlos de ahí solo lo puede hacer el
+  soporte de GitHub.
+- **Los commits de Dependabot y las fusiones hechas desde GitHub** conservan su
+  autor, pero pierden la marca «Verified»: la firma era de los commits
+  originales.
+- **Desde entonces**, ver «Commits» en `CLAUDE.md`.
+
 ### Lo que quedó fuera, a propósito
 
 - **CAPTCHA de Formspree: apagado.** El formulario envía por `fetch` sin salir
@@ -720,4 +741,4 @@ Para el rediseño de octubre se instalaron ocho skills de diseño de terceros en
 y otras seis de nextlevelbuilder/ui-ux-pro-max-skill), con `npx skills add`.
 Terminado el rediseño se quitaron del repo: nada del sitio, del extractor ni
 del CI las usaba, y traían más código que todo `tools/`. Para recuperarlas tal
-como estaban: `git checkout a6fd544 -- .claude/skills skills-lock.json`.
+como estaban: `git checkout 23ea227 -- .claude/skills skills-lock.json`.

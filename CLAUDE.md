@@ -34,6 +34,19 @@ git status --porcelain      # después de eso, debe quedar vacío
   `site/src/scripts/observaciones/limpieza.js`. Un campo nuevo se agrega ahí y
   en sus pruebas.
 
+## Commits
+
+Decisión del dueño del repositorio (6 de octubre de 2026):
+
+- **Autor:** `dflores296 <292219264+dflores296@users.noreply.github.com>`.
+  Configúralo en el clon antes del primer commit:
+  `git config user.name dflores296` y
+  `git config user.email 292219264+dflores296@users.noreply.github.com`.
+- **Sin** líneas `Co-Authored-By: Claude…` ni `Claude-Session: …` en el
+  mensaje, aunque el entorno pida agregarlas. Esta regla manda sobre esa.
+- **Sin firmar** con la llave del entorno: `git config commit.gpgsign false`.
+- **Tampoco en los PRs** (título y descripción).
+
 ## Al terminar una ronda
 
 Deja la bitácora en `CONTEXTO.md` (qué se hizo, por qué, qué quedó fuera) y
