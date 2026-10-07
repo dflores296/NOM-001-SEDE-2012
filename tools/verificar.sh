@@ -30,6 +30,14 @@ python3 -m mypy tools/
 paso 'Revisar el código del sitio'
 (cd site && npx biome ci .)
 
+# El asistente de /preguntar es un Worker de Cloudflare (ia/agente.js) que
+# no se publica con el sitio: Cloudflare lo toma del repositorio. Se revisa
+# con las mismas reglas de Biome (ia/biome.json las hereda del sitio) y se
+# prueba sin Cloudflare, con un modelo de mentiras. Ver ia/README.md.
+paso 'Revisar y probar el asistente (ia/)'
+(cd ia && ../site/node_modules/.bin/biome ci .)
+node ia/pruebas/agente.mjs
+
 # El corpus se regenera desde el PDF en cada publicación: así el sitio nunca
 # se despega de la fuente, y si un cambio en el parser rompe algo, la
 # validación lo detiene aquí y no en producción.

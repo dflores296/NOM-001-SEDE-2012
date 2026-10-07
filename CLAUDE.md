@@ -34,6 +34,12 @@ git status --porcelain      # después de eso, debe quedar vacío
   PyMuPDF) y CC BY-NC-SA en `data/` y la documentación. No se cambian sin el
   dueño, y una dependencia nueva del sitio con licencia GPL o AGPL no entra sin
   consultarlo.
+- **El asistente (`/preguntar`, `ia/`) contesta solo con lo que le manda la
+  página**, y la cuenta de Cloudflare se queda en el plan gratis: sin tarjeta,
+  al acabarse la cuota deja de contestar y no cobra. Su dirección vive en
+  `site/src/lib/asistente.js`. Lo que manda la página (`PRESUPUESTO`) va por
+  debajo de los topes del Worker (`TOPES`); una prueba lo cuida. Ver
+  `ia/README.md`.
 - **El formulario de `/observaciones`** manda solo lo que arma
   `site/src/scripts/observaciones/limpieza.js`. Un campo nuevo se agrega ahí y
   en sus pruebas.

@@ -148,8 +148,9 @@ observaciones no sirva para mandar correos maliciosos.
 **Content-Security-Policy en todas las páginas** (`site/astro.config.mjs`).
 Solo corre el JavaScript que compila Astro: un script metido en un texto, en
 una URL o en un `onerror=` no se ejecuta. El sitio solo puede conectarse a sí
-mismo, a `api.github.com` (las estrellas) y a `formspree.io`, y los formularios
-solo pueden enviar ahí. GitHub Pages no deja poner encabezados, así que va como
+mismo, a `api.github.com` (las estrellas), a `formspree.io` y, si está
+conectado, al Worker del asistente (ver «El asistente»), y los formularios
+solo pueden enviar a Formspree. GitHub Pages no deja poner encabezados, así que va como
 `<meta>`; por eso no lleva `frame-ancestors`, que desde una `<meta>` no aplica.
 Dos reglas para quien toque el sitio:
 
@@ -196,6 +197,34 @@ restringir el formulario al dominio `dflores296.github.io`, activar su filtro
 de spam y el reCAPTCHA. Y al leer los correos, lo de siempre: es texto que
 escribió un desconocido. El `Reply-To` es el correo que la persona dijo tener,
 no uno verificado.
+
+## El asistente
+
+`/preguntar` contesta preguntas en lenguaje natural con el texto de la norma.
+El sitio sigue siendo estático: lo único que vive fuera es un Worker de
+Cloudflare (`ia/agente.js`) que llama a un modelo de código abierto
+(gpt-oss-20b) en Workers AI, dentro del plan gratis. Cómo se publica, qué
+cuesta (nada) y qué hacer cuando algo falla: `ia/README.md`.
+
+El reparto del trabajo está pensado para gastar lo menos posible de la cuota
+diaria, que es de todos:
+
+| Paso | Dónde | Qué |
+|---|---|---|
+| Buscar | Navegador | `buscarPregunta` (en `buscador/indice.js`), con el índice de siempre, solo en título y texto: el número de una sección no compite con el «20» de «20 A» |
+| Recortar | Navegador | `preguntar/pasajes.js`: hasta 7 partes (4 secciones, 2 tablas, 1 definición…), 12 000 caracteres en total, con las oraciones o renglones que tocan la pregunta |
+| Redactar | Worker | Valida topes (`TOPES`), arma las reglas —solo los fragmentos, citar entre corchetes, no calcular— y llama al modelo con razonamiento bajo |
+| Pintar | Navegador | `preguntar/respuesta.js`: párrafos, listas y citas. Solo es enlace la cita de una parte que se mandó; todo va con `textContent` |
+
+Las tablas no van aplanadas como en el buscador («15 2.08 14 - - 20 3.31 12»),
+sino renglón por renglón bajo sus encabezados (`lib/tabla-texto.js`, publicado
+en `/data/tablas-ia.json`): así el modelo no toma el calibre de un renglón por
+el del siguiente.
+
+La dirección del Worker vive en `site/src/lib/asistente.js`. Vacía, no hay
+pestaña «Preguntar», la CSP no cambia y la página avisa que el asistente no
+está conectado. Las pruebas en navegador no dependen de eso: le dan a la página
+un asistente de mentiras en el mismo servidor.
 
 ## El entorno de desarrollo
 

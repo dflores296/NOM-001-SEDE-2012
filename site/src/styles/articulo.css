@@ -60,6 +60,10 @@
 /* Solo el de las páginas de tres columnas y el de Observaciones, que ya lo
    tenían: las demás páginas también llevan <main>, sin relleno propio. */
 .cols > main, main.obs { padding: 1.8rem 0 5rem; min-width: 0; }
+/* /observaciones y /preguntar no van en columnas: conservan el margen lateral
+   de .wrap, que la regla de arriba les quitaba y en el teléfono dejaba el
+   texto pegado al borde de la pantalla. */
+main.obs { padding-left: var(--gut); padding-right: var(--gut); }
 
 /* ---------------------------------------------------------------- artículo
    Cabecera de página de documentación: la etiqueta del capítulo en el

@@ -4,7 +4,7 @@ Estado del proyecto para retomarlo desde otra sesión o cuenta. El README explic
 **qué es** el proyecto y cómo está construido; esto explica **dónde va**, qué hay
 que entender antes de tocarlo y qué queda pendiente.
 
-Última actualización: 6 de octubre de 2026.
+Última actualización: 7 de octubre de 2026.
 
 ## Dónde estamos
 
@@ -235,6 +235,72 @@ detectar: se dan de alta a mano y se declaran `sin_numero`, sin inventarles uno.
 
 Cuando algo no cuadre, **mira cómo lo imprime el PDF antes de sospechar del
 parser**.
+
+## El asistente de /preguntar (7 de octubre de 2026)
+
+El dueño quería un chat con IA en la guía sin pagar un servicio. Se
+descartaron, por este orden: un modelo dentro del navegador (cientos de MB
+de descarga, casi inútil en el celular, y los modelos que caben inventan
+números de sección y ampacidades); la API de un modelo comercial (se paga por
+pregunta); el plan gratis de Gemini (usa las preguntas para entrenar y lo
+recortaron varias veces en 2026); y un dominio u hosting propio, que no hacen
+falta para nada de esto.
+
+Quedó: **un Worker de Cloudflare en el plan gratis** (`ia/agente.js`) que
+llama a **gpt-oss-20b** (OpenAI, Apache-2.0) en Workers AI. 10 000 neuronas
+al día, unas 130 preguntas **entre todos**; al acabarse no cobra, contesta el
+error 3036 hasta las 00:00 UTC (6 pm en el centro de México). Cómo se publica
+y qué hacer si algo falla: `ia/README.md`. El reparto, en «El asistente» de
+`docs/arquitectura.md`.
+
+Lo que hay que entender antes de tocarlo:
+
+- **Buscar lo hace el navegador**, con el índice de siempre. El Worker no
+  carga la norma: el plan gratis le da 10 ms de CPU por petición.
+- **El buscador no sirve tal cual para una pregunta entera.** Con
+  «¿qué calibre… circuito de 20 A?» el «20» encontraba el 668-20, el 250-20 y
+  el 300-20 por su número, y las definiciones (títulos cortos) llenaban el
+  envío: salían la Tabla 250-122 y cinco definiciones, sin la sección 250-122.
+  Por eso `buscarPregunta` busca solo en título y texto, sin números, y
+  `elegir` pone cupo por tipo. Un código escrito («el 250-122») va primero y
+  exacto.
+- **Las tablas van renglón por renglón** (`lib/tabla-texto.js`), no aplanadas
+  como en el buscador. Las celdas con `rs`/`cs` se repiten en cada posición
+  que cubren.
+- **La respuesta es texto ajeno**: se pinta con `textContent`, y solo es enlace
+  una cita de algo que se mandó. Una referencia inventada queda como texto.
+- **Los topes van en cascada**: el campo admite 500 caracteres y el Worker
+  también; `PRESUPUESTO` (página) por debajo de `TOPES` (Worker).
+  `site/pruebas/preguntar.mjs` lo comprueba, y también que el Worker acepte el
+  rótulo y el título de los 3 399 documentos del buscador: había 17 tablas con
+  títulos de más de 300 caracteres que se habrían rechazado.
+- **El modelo puede salir del plan gratis.** En julio Cloudflare pasó tres
+  modelos a «solo de pago» (error 5035). gpt-oss-20b sigue gratis; si cambia,
+  se cambia `MODELO` en `ia/wrangler.jsonc`.
+
+Mientras `site/src/lib/asistente.js` esté vacío no hay pestaña ni conexión en
+la CSP, y `/preguntar` avisa que no está conectado: la rama se puede fusionar
+antes de publicar el Worker. Las pruebas en navegador no dependen de eso:
+reescriben el `data-asistente` de la página hacia el mismo servidor y
+contestan ellas.
+
+De paso: `main.obs` (observaciones y preguntar) perdía el margen lateral de
+`.wrap` por una regla de `articulo.css`; en el teléfono el texto llegaba al
+borde de la pantalla. Se le devolvió.
+
+Quedó fuera, a propósito:
+
+- **Tope por IP en el Worker.** El de Cloudflare (Rate Limiting) cuenta por
+  minuto, y contra la cuota diaria no sirve; uno diario pide KV. Hoy hay un
+  tope de 20 preguntas al día por navegador. Si un bot se acaba la cuota, lo
+  siguiente es Turnstile.
+- **Guardar respuestas repetidas.** La Cache API no funciona en `workers.dev`;
+  haría falta KV.
+- **Las erratas del DOF en las tablas** (README, «Erratas»): el asistente cita
+  el valor impreso, como la página. Pasarle esas notas sería una mejora
+  sencilla para la 430-250.
+- **Conversación con memoria.** Cada pregunta va sola; «¿y para 30 A?» no sabe
+  de qué se hablaba.
 
 ## Ronda de seguridad (octubre de 2026)
 
@@ -767,6 +833,9 @@ en cada publicación, así que un archivo puesto ahí existiría en local y
 desaparecería en CI.
 
 ## Pendientes
+
+**Conectar el asistente**: publicar el Worker (`ia/README.md`, «Publicarlo») y
+poner su dirección en `site/src/lib/asistente.js`.
 
 Ninguno de contenido: las 245 tablas están contrastadas, las 59 imágenes
 capturadas y el cierre tiene sus siete hitos. Lo que queda es del oficio de

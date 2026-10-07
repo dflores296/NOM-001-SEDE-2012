@@ -270,7 +270,7 @@ grandes de lo que toca. El sustento de cada caso está en
   por derecho de autor conforme al artículo 14 de la Ley Federal del Derecho de
   Autor. Se reproduce fiel al texto oficial y no confiere derecho sobre la
   edición.
-- **Sitio** (`site/`): [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0).
+- **Sitio** (`site/`) y el asistente (`ia/`): [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0).
 - **Herramientas de extracción** (`tools/`): [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html),
   la misma de PyMuPDF, la librería que lee el PDF.
 - **Estructura, anotaciones, datos y documentación** (`data/`, `docs/`):

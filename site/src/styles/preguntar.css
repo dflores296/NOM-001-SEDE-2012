@@ -1,0 +1,37 @@
+/* --------------------------------------------------------------------------
+   Preguntar: la conversación con el asistente. Toma de observaciones.css el
+   ancho, la introducción, el aviso y el formulario; aquí va solo lo propio.
+   -------------------------------------------------------------------------- */
+.preg-chat { list-style: none; padding: 0; margin: 1.6rem 0; display: grid; gap: 1.4rem; }
+.preg-chat:empty { display: none; }
+
+/* La pregunta, a la derecha como en cualquier chat; la respuesta, a todo lo
+   ancho, porque es la que se lee. */
+.preg-q {
+  justify-self: end; max-width: 85%; margin: 0 0 0.7rem auto; width: fit-content;
+  background: var(--accent-soft); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 0.55rem 0.9rem;
+  white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.preg-r { border-left: 3px solid var(--border); padding: 0.1rem 0 0.1rem 0.95rem; overflow-wrap: anywhere; }
+.preg-r p { margin: 0.5rem 0; line-height: 1.6; }
+.preg-r ul { margin: 0.5rem 0; padding-left: 1.2rem; }
+.preg-r li { margin: 0.3rem 0; }
+
+.preg-ia {
+  color: var(--text-faint); font-size: 0.78rem; letter-spacing: 0.03em;
+  text-transform: uppercase; margin: 0 0 0.3rem;
+}
+.preg-r p.preg-ia { margin-top: 0; }
+.preg-estado { color: var(--text-dim); font-size: 0.93rem; }
+.preg-error {
+  background: var(--warn-bg); border: 1px solid var(--warn-br);
+  border-radius: var(--radius-xl); padding: 0.6rem 0.9rem;
+}
+
+.preg-fuentes { margin-top: 0.7rem; font-size: 0.9rem; }
+.preg-fuentes summary { cursor: pointer; color: var(--text-dim); }
+.preg-fuentes ul { padding-left: 1.1rem; margin: 0.4rem 0 0; }
+.preg-fuentes a { font-family: var(--mono); font-size: 0.85rem; }
+
+.preg-form button:disabled { opacity: 0.6; cursor: progress; }

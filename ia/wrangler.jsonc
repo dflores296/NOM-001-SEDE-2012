@@ -1,0 +1,29 @@
+// La configuración del Worker del asistente (agente.js). Cloudflare la lee al
+// publicar: desde el repositorio conectado (Workers Builds, con «ia» como
+// directorio raíz) o con `npx wrangler deploy` dentro de esta carpeta.
+// Ver ia/README.md.
+{
+  // Tiene que llamarse igual que el Worker en el panel de Cloudflare. De
+  // aquí sale su dirección: https://nom-001-ia.<subdominio>.workers.dev
+  "name": "nom-001-ia",
+  "main": "agente.js",
+  "compatibility_date": "2026-09-01",
+
+  // Workers AI, el que corre el modelo. Sin tarjeta, la cuenta se queda en
+  // el plan gratis: 10 000 neuronas al día y al acabarse deja de contestar,
+  // no cobra.
+  "ai": { "binding": "AI" },
+
+  "vars": {
+    // Si Cloudflare saca gpt-oss-20b del plan gratis (su error 5035), se
+    // cambia aquí por otro del catálogo que siga gratis.
+    "MODELO": "@cf/openai/gpt-oss-20b",
+    // Las páginas que pueden usarlo. Con un dominio propio, se agrega aquí.
+    "ORIGENES": "https://dflores296.github.io"
+  },
+
+  "workers_dev": true,
+  // Las versiones de prueba de cada rama no hacen falta: el asistente se
+  // prueba con la página, y cada URL de prueba sería otra puerta a la cuota.
+  "preview_urls": false
+}

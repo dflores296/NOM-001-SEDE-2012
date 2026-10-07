@@ -1,0 +1,3 @@
+# Lo que deja wrangler al probar o publicar desde esta carpeta.
+.wrangler/
+node_modules/

@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import { ASISTENTE } from '../lib/asistente.js';
+
+// El asistente: se le pregunta en palabras propias y contesta con lo que dice
+// la norma, citando cada parte. Cómo funciona, en src/scripts/preguntar/chat.js;
+// el Worker que llama al modelo, en ia/agente.js. Su dirección viaja en
+// data-asistente porque la CSP bloquea los scripts en línea.
+---
+
+<Base title="Preguntar — NOM-001-SEDE-2012"
+      desc="Pregúntale a la NOM-001-SEDE-2012 en tus palabras: el asistente busca las secciones, tablas y definiciones que aplican y contesta con lo que dicen, con el enlace a cada una.">
+  <main id="contenido" tabindex="-1" class="wrap obs preg" data-asistente={ASISTENTE}>
+    <h1>Preguntar</h1>
+
+    <p class="obs-intro">
+      Escribe tu duda como se la plantearías a un colega. El asistente busca en
+      la norma las secciones, tablas y definiciones que aplican y te contesta
+      con lo que dicen, con el enlace a cada una.
+    </p>
+
+    <div class="obs-tip">
+      <b>Lo redacta un modelo de inteligencia artificial y puede equivocarse.</b>
+      Abre la parte enlazada antes de decidir: lo que vale es el texto de la
+      norma —y ante cualquier diferencia, el DOF—, no la respuesta. No
+      sustituye el criterio de una Unidad de Verificación.
+    </div>
+
+    <div class="obs-cerrado" id="preg-cerrado" hidden>
+      <p><b>El asistente todavía no está conectado.</b></p>
+      <p>Mientras, el buscador de arriba encuentra secciones, tablas y definiciones por palabra o por número.</p>
+    </div>
+    <noscript>
+      <div class="obs-cerrado">
+        <p>El asistente necesita JavaScript. Sin él, el índice y las páginas de cada artículo siguen funcionando.</p>
+      </div>
+    </noscript>
+
+    <ol class="preg-chat" id="preg-chat" aria-live="polite"></ol>
+
+    <form class="obs-form preg-form" id="preg-form" hidden>
+      <label>
+        <span>Tu pregunta</span>
+        <textarea id="preg-campo" name="pregunta" rows="3" maxlength="500" required
+                  placeholder="Por ejemplo: ¿qué calibre mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?"></textarea>
+        <small>Enter manda la pregunta; Mayús+Enter, un renglón nuevo.</small>
+      </label>
+      <button type="submit" id="preg-enviar">Preguntar</button>
+      <p class="obs-nota">
+        Tu pregunta y las partes de la norma que encuentre el buscador se mandan
+        a Cloudflare, que corre el modelo (gpt-oss, de código abierto). No se
+        guardan ni se usan para entrenar modelos. El servicio es gratuito y
+        tiene un cupo diario para todos: hasta 20 preguntas al día en cada
+        navegador.
+      </p>
+    </form>
+  </main>
+</Base>
+
+<script>
+  import '../scripts/preguntar/chat.js';
+</script>

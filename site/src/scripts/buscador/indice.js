@@ -180,6 +180,38 @@ function destacar(lista, consulta) {
   }
 }
 
+// Para el asistente de /preguntar (preguntar/chat.js), que busca con una
+// pregunta entera y no con dos palabras. Dos diferencias con buscar():
+//
+// - Solo en título y texto, y con las palabras del tema que ya escogió
+//   palabrasClave(): el campo `id` lleva el número de cada sección, así que
+//   el «20» de «20 A» encontraba el 668-20, el 250-20 y el 300-20 por
+//   delante del 250-122.
+// - Un código escrito en la pregunta («¿qué dice el 250-122?», «la tabla
+//   310-15(b)(16)») trae su sección y su tabla primero, exactas.
+const CODIGO = /\b\d{2,3}-\d{1,3}(?:\s?\([a-z0-9]{1,3}\))*/gi;
+
+export async function buscarPregunta(pregunta, palabras) {
+  await load();
+  const exactos = [];
+  for (const m of pregunta.matchAll(CODIGO)) {
+    const c = m[0].replace(/\s/g, '').toLowerCase();
+    for (const id of [`tabla:${c}`, c.replace(/\(.*$/, '')]) {
+      const d = docPorId.get(id);
+      if (d) exactos.push({ ...d, score: Number.POSITIVE_INFINITY });
+    }
+  }
+  const difusos = palabras.length
+    ? mini
+        .search(palabras.join(' '), { fields: ['title', 'text'] })
+        .map((r) => ({ ...docPorId.get(r.id), ...r }))
+    : [];
+  const vistos = new Set();
+  return [...exactos, ...difusos]
+    .filter((r) => !vistos.has(r.id) && vistos.add(r.id))
+    .map((r) => ({ ...r, text: textos?.[r.id] }));
+}
+
 // Cuántos resultados de cada tipo. Con un tope para todos juntos, las
 // secciones y las definiciones, que suelen puntuar más que las tablas
 // -títulos cortos contra títulos de tres renglones-, llenarían la lista:

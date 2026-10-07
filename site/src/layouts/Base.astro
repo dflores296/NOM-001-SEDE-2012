@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import '../styles/global.css';
+import { ASISTENTE } from '../lib/asistente.js';
 const { title, desc = 'Guía interactiva de la NOM-001-SEDE-2012, Instalaciones Eléctricas (utilización).' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -14,6 +15,9 @@ const PESTANAS = [
   { href: '/apendices/', txt: 'Apéndices', activa: ruta.startsWith('/apendices') || ruta.startsWith('/cierre') },
   { href: '/glosario/', txt: 'Glosario', activa: ruta.startsWith('/glosario') },
   { href: '/mapa/', txt: 'Mapa', activa: ruta.startsWith('/mapa') },
+  // Solo con el asistente conectado (src/lib/asistente.js): una pestaña que
+  // lleva a un «todavía no funciona» no le sirve a nadie.
+  ...(ASISTENTE ? [{ href: '/preguntar/', txt: 'Preguntar', activa: ruta.startsWith('/preguntar') }] : []),
   { href: '/observaciones/', txt: 'Observaciones', activa: ruta.startsWith('/observaciones') },
 ];
 // En la portada el buscador grande de la banda hace las veces del de la

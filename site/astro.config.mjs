@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
+import { ASISTENTE } from './src/lib/asistente.js';
 
 // Las librerías del mapa 3D crean un <style> con su CSS al cargarse. La CSP
 // (abajo) no admite estilos en línea sin hash, así que se calcula aquí el de
@@ -48,6 +49,8 @@ export default defineConfig({
   // - formspree.io: el formulario de /observaciones. form-action también
   //   lo cierra ahí, para que un formulario inyectado no pueda mandar los
   //   datos a otro lado.
+  // - el Worker del asistente (/preguntar), solo si está conectado: su
+  //   dirección vive en src/lib/asistente.js.
   //
   // Los <style> solo valen con hash: los de Astro y los que crean las
   // librerías del mapa (ver hashesDeEstilos arriba). Los atributos style sí
@@ -68,7 +71,7 @@ export default defineConfig({
         "img-src 'self' data:",
         "font-src 'self'",
         "media-src 'self'",
-        "connect-src 'self' https://api.github.com https://formspree.io",
+        `connect-src 'self' https://api.github.com https://formspree.io${ASISTENTE ? ` ${new URL(ASISTENTE).origin}` : ''}`,
         "form-action 'self' https://formspree.io",
         "manifest-src 'self'",
         "worker-src 'self'",

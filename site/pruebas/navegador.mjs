@@ -60,6 +60,7 @@ const PAGINAS = [
   '/apendices/A/',
   '/cierre/',
   '/observaciones/',
+  '/preguntar/',
   '/mapa/',
 ];
 
@@ -590,6 +591,139 @@ prueba('Lo que se manda a Formspree va limpio y solo con lo esperado', async ({ 
   afirmar(campos._subject === 'Observación: 250-32(a)(1)', `asunto: ${campos._subject}`);
   afirmar(campos.url?.endsWith('/NOM-001-SEDE-2012/art/250/#250-32'), `url: ${campos.url}`);
   afirmar(campos.email === 'yo@example.com', `email: ${campos.email}`);
+});
+
+// ------------------------------------------------------------------ asistente
+
+// /preguntar con el asistente apuntando a una dirección de este mismo
+// servidor, que la prueba contesta: así se prueba la página aunque el sitio
+// se haya compilado sin asistente (src/lib/asistente.js vacío), y la CSP lo
+// deja pasar porque es 'self'. `contestar` recibe lo que mandó la página.
+async function conAsistente(nuevaPagina, contestar) {
+  const { page, ctx, errores } = await nuevaPagina(ESCRITORIO);
+  await ctx.route('**/preguntar/', async (r) => {
+    const resp = await r.fetch();
+    const origen = new URL(r.request().url()).origin;
+    const html = (await resp.text()).replace(
+      /data-asistente(="[^"]*")?/,
+      `data-asistente="${origen}/__asistente"`
+    );
+    await r.fulfill({ response: resp, body: html });
+  });
+  await ctx.route('**/__asistente', async (r) => {
+    const { estado = 200, json } = await contestar(JSON.parse(r.request().postData()));
+    await r.fulfill({ status: estado, json });
+  });
+  let alerta = false;
+  page.on('dialog', (d) => {
+    alerta = true;
+    d.dismiss();
+  });
+  await page.goto('/preguntar/', { waitUntil: 'networkidle' });
+  return { page, errores, alerta: () => alerta };
+}
+
+const PREGUNTA_20A =
+  '¿Qué calibre mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?';
+
+prueba('Sin asistente conectado no hay pestaña, y /preguntar lo dice', async ({ nuevaPagina }) => {
+  const { page } = await nuevaPagina(ESCRITORIO);
+  await page.goto('/preguntar/', { waitUntil: 'networkidle' });
+  const url = await page.getAttribute('main', 'data-asistente');
+  const pestana = await page.$('nav.tabs a[href$="/preguntar/"]');
+  if (url) {
+    afirmar(pestana, 'conectado y sin pestaña');
+    afirmar(await page.isVisible('#preg-form'), 'conectado y sin formulario');
+  } else {
+    afirmar(!pestana, 'hay pestaña sin asistente');
+    afirmar(await page.isVisible('#preg-cerrado'), 'no avisa que no está conectado');
+    afirmar(!(await page.isVisible('#preg-form')), 'enseña un formulario que no funciona');
+  }
+});
+
+prueba(
+  'El asistente recibe la norma que encontró el buscador y su respuesta enlaza lo que cita',
+  async ({ nuevaPagina }) => {
+    let enviado = null;
+    const { page, errores, alerta } = await conAsistente(nuevaPagina, (cuerpo) => {
+      enviado = cuerpo;
+      return {
+        json: {
+          respuesta:
+            '**Respuesta**: según la [Tabla 250-122], para 20 A el mínimo es 3.31 mm² (12 AWG) <img src=x onerror=alert(1)>.\n\n- También lo dice el [999-99].',
+        },
+      };
+    });
+    await page.fill('#preg-campo', PREGUNTA_20A);
+    await page.press('#preg-campo', 'Enter');
+    await page.waitForSelector('.preg-r .preg-ia', { timeout: 20000 });
+
+    afirmar(enviado?.pregunta === PREGUNTA_20A, `pregunta: ${enviado?.pregunta}`);
+    // La sección y su tabla, no el 250-20 ni el 668-20 por el «20» de «20 A».
+    const refs = enviado.fragmentos.map((f) => f.ref);
+    afirmar(refs.includes('250-122'), `sin la sección: ${refs.join(', ')}`);
+    afirmar(!refs.some((r) => /-20$/.test(r)), `buscó el número como sección: ${refs.join(', ')}`);
+    const tabla = enviado.fragmentos.find((f) => f.ref === 'Tabla 250-122');
+    afirmar(tabla, `no mandó la Tabla 250-122: ${enviado.fragmentos.map((f) => f.ref).join(', ')}`);
+    afirmar(tabla.texto.includes('20 | 3.31 | 12'), 'la tabla no fue renglón por renglón');
+    afirmar(
+      enviado.fragmentos.every((f) => Object.keys(f).sort().join() === 'ref,texto,titulo'),
+      'viajó algo más que referencia, título y texto'
+    );
+
+    const enlaces = await page.$$eval('.preg-r p a', (as) =>
+      as.map((a) => ({ t: a.textContent, href: a.getAttribute('href') }))
+    );
+    afirmar(
+      enlaces.length === 1 && enlaces[0].href.endsWith('/art/250#tabla-250-122'),
+      `enlaces: ${JSON.stringify(enlaces)}`
+    );
+    const texto = await page.textContent('.preg-r');
+    afirmar(texto.includes('[999-99]'), 'perdió la cita inventada');
+    afirmar(!texto.includes('**'), 'dejó el Markdown');
+    afirmar(!(await page.$('.preg-r img')), 'pintó HTML de la respuesta');
+    afirmar(!alerta(), 'se ejecutó código de la respuesta');
+    afirmar(
+      (await page.$$('.preg-fuentes li')).length === enviado.fragmentos.length,
+      'no enseña todas las partes consultadas'
+    );
+    afirmar(!errores.length, errores.join(' | '));
+  }
+);
+
+prueba(
+  'Si se acabó la cuota del día lo explica y deja las partes consultadas',
+  async ({ nuevaPagina }) => {
+    const { page } = await conAsistente(nuevaPagina, () => ({
+      estado: 429,
+      json: { error: 'cuota' },
+    }));
+    await page.fill('#preg-campo', PREGUNTA_20A);
+    await page.click('#preg-enviar');
+    await page.waitForSelector('.preg-error', { timeout: 20000 });
+    afirmar(
+      (await page.textContent('.preg-error')).includes('6 de la tarde'),
+      'no dice cuándo vuelve'
+    );
+    afirmar((await page.$$('.preg-fuentes li')).length > 0, 'no dejó las partes consultadas');
+    afirmar(await page.isEnabled('#preg-enviar'), 'el botón se quedó desactivado');
+  }
+);
+
+prueba('Una pregunta sin nada que buscar no gasta cuota', async ({ nuevaPagina }) => {
+  let llamadas = 0;
+  const { page } = await conAsistente(nuevaPagina, () => {
+    llamadas++;
+    return { json: { respuesta: 'x' } };
+  });
+  await page.fill('#preg-campo', 'zxqwv kjhgf');
+  await page.click('#preg-enviar');
+  await page.waitForSelector('.preg-error', { timeout: 20000 });
+  afirmar(
+    (await page.textContent('.preg-error')).includes('No encontré'),
+    'no dice que no encontró nada'
+  );
+  afirmar(!llamadas, 'llamó al asistente sin fragmentos');
 });
 
 // ------------------------------------------------------------------ mapa
