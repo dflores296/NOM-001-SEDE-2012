@@ -1,20 +1,31 @@
-// La conversación de /preguntar. Por cada pregunta:
+// La conversación de /preguntar. El asistente recorre la norma como una
+// persona con el libro, en tres consultas al modelo (Worker: ia/nucleo.js):
 //
-// 1. El índice del buscador de siempre (buscarPregunta, en
-//    buscador/indice.js) encuentra las secciones, tablas y definiciones que
-//    tienen que ver, aquí en el navegador.
-// 2. pasajes.js las recorta a lo que importa para la pregunta.
-// 3. El Worker del asistente (ia/agente.js) le pide al modelo una respuesta
-//    hecha solo con eso.
-// 4. respuesta.js la parte en párrafos y citas, y aquí se pinta con
-//    textContent: es texto de un modelo y no se interpreta como HTML.
+// 1. Lee el índice general (/data/ia/indice.json) y escoge de 1 a 3
+//    artículos.
+// 2. Lee el índice de esos artículos (/data/ia/<clave>.json): secciones,
+//    incisos con título, tablas. Escoge qué leer completo.
+// 3. Lee eso completo —incisos numerados, tablas renglón por renglón— y
+//    contesta citando cada dato. lectura.js convierte lo que pide en lo que
+//    se le manda.
 //
-// Debajo de cada respuesta van siempre las partes de la norma consultadas,
-// con su enlace: también cuando el asistente falla o se acabó la cuota, que
-// es cuando más sirven.
+// Si en 1 o 2 no pide nada que exista, la página busca por su cuenta con el
+// buscador de siempre (buscarPregunta + pasajes.js) y el paso 3 sigue con eso.
+//
+// La respuesta se parte en párrafos y citas (respuesta.js) y se pinta con
+// textContent: es texto de un modelo y no se interpreta como HTML. Debajo
+// van siempre las partes de la norma que leyó, con su enlace: también cuando
+// el asistente falla, que es cuando más sirven.
 import { base } from '../base.js';
 import { buscarPregunta, fragmentos as textosListos, load } from '../buscador/indice.js';
 import { href } from '../buscador/resultados.js';
+import {
+  citables,
+  clavesPedidas,
+  fragmentosDe,
+  indiceCombinado,
+  partesPedidas,
+} from './lectura.js';
 import { elegir, palabrasClave } from './pasajes.js';
 import { bloques, normRef, trozos } from './respuesta.js';
 
@@ -48,18 +59,15 @@ const anotar = () => {
 // centro de México, que no cambia de horario desde 2022.
 const MENSAJES = {
   cuota:
-    'Por hoy se acabaron las respuestas: el asistente es gratuito y tiene un cupo diario para todos. Vuelve después de las 6 de la tarde (hora del centro de México). Mientras, abajo están las partes de la norma que encontré para tu pregunta.',
+    'Por hoy se acabaron las respuestas: el asistente es gratuito y tiene un cupo diario para todos. Vuelve después de las 6 de la tarde (hora del centro de México).',
   ocupado:
-    'El servicio que corre el modelo está saturado en este momento. Intenta de nuevo en un minuto; abajo están las partes de la norma que encontré.',
-  modelo:
-    'El asistente no está disponible por ahora. Abajo están las partes de la norma que encontré para tu pregunta.',
-  lento:
-    'El asistente tardó demasiado en contestar. Intenta de nuevo en un momento; abajo están las partes de la norma que encontré.',
-  red: 'No me pude conectar con el asistente. Revisa tu conexión e intenta de nuevo; abajo están las partes de la norma que encontré.',
+    'El servicio que corre el modelo está saturado en este momento. Intenta de nuevo en un minuto.',
+  modelo: 'El asistente no está disponible por ahora.',
+  lento: 'El asistente tardó demasiado en contestar. Intenta de nuevo en un momento.',
+  red: 'Tu pregunta no llegó al asistente: el navegador no pudo comunicarse con él. Si estás en una red de oficina o de empresa, puede estar bloqueándolo; prueba con otra red o con los datos del celular.',
   tope: `Llegaste al tope de ${TOPE} preguntas al día en este navegador. El cupo del asistente es de todos; mañana se libera. Mientras, el buscador de arriba sigue funcionando.`,
-  nada: 'No encontré nada en la norma con esas palabras. Prueba a decirlo de otra forma, o con el término que usa la norma (por ejemplo «conductor de puesta a tierra» en vez de «tierra física»).',
-  falla:
-    'No pude obtener una respuesta del asistente. Abajo están las partes de la norma que encontré para tu pregunta.',
+  nada: 'No encontré nada en la norma para esa pregunta. Prueba a decirlo de otra forma, o con el término que usa la norma (por ejemplo «conductor de puesta a tierra» en vez de «tierra física»).',
+  falla: 'El asistente no pudo contestar esta vez. Intenta de nuevo en un momento.',
 };
 
 // Las tablas renglón por renglón (src/pages/data/tablas-ia.json.js). Sin
@@ -71,6 +79,38 @@ const cargarTablas = () => {
     .catch(() => ({}));
   return tablas;
 };
+
+// Lo que el asistente lee: el índice general y, por clave, el índice y el
+// texto completo de un artículo (src/pages/data/ia/). Se guardan para la
+// siguiente pregunta.
+let general = null;
+const cargarGeneral = () => {
+  general ??= fetch(`${base}/data/ia/indice.json`).then((r) => {
+    if (!r.ok) throw new Error(`índice: ${r.status}`);
+    return r.json();
+  });
+  general.catch(() => {
+    general = null;
+  });
+  return general;
+};
+const paquetes = new Map();
+const cargarClave = (clave) => {
+  if (!paquetes.has(clave)) {
+    const p = fetch(`${base}/data/ia/${encodeURIComponent(clave)}.json`).then((r) => {
+      if (!r.ok) throw new Error(`${clave}: ${r.status}`);
+      return r.json();
+    });
+    p.catch(() => paquetes.delete(clave));
+    paquetes.set(clave, p);
+  }
+  return paquetes.get(clave);
+};
+
+// La conversación: las últimas preguntas y respuestas van con cada consulta,
+// para que «¿y para 12 AWG?» sepa de qué se hablaba. Topes en ia/nucleo.js.
+const historia = [];
+const RECUERDA = 2;
 
 function el(tag, clase, texto) {
   const e = document.createElement(tag);
@@ -110,10 +150,18 @@ function pintarRespuesta(caja, texto, refs) {
   }
 }
 
-function pintarFuentes(caja, elegidos) {
+function pintarFuentes(caja, elegidos, contesto) {
   if (!elegidos.length) return;
   const d = el('details', 'preg-fuentes');
-  d.append(el('summary', null, `Partes de la norma consultadas (${elegidos.length})`));
+  d.append(
+    el(
+      'summary',
+      null,
+      contesto
+        ? `Lo que leyó de la norma (${elegidos.length})`
+        : `Lo que encontré en la norma para tu pregunta, sin respuesta del asistente (${elegidos.length})`
+    )
+  );
   const ul = el('ul');
   for (const f of elegidos) {
     const li = el('li');
@@ -157,11 +205,36 @@ async function pedir(cuerpo) {
 
 let ocupado = false;
 
+// El respaldo: lo que encuentra el buscador de siempre, recortado. Para cuando
+// el modelo no pidió nada que exista.
+async function respaldo(pregunta) {
+  await load();
+  await textosListos();
+  // Los números se quedan fuera de la búsqueda (ver buscarPregunta), pero no
+  // del recorte: con ellos pasajes.js escoge el renglón del 20 A.
+  const palabras = palabrasClave(pregunta).filter((k) => !/^\d+$/.test(k));
+  const [resultados, tablasIA] = await Promise.all([
+    buscarPregunta(pregunta, palabras),
+    cargarTablas(),
+  ]);
+  return elegir(resultados, pregunta, tablasIA);
+}
+
+const CIERRE = {
+  C10: 'del Capítulo 10',
+  AA: 'del Apéndice A',
+  AB: 'del Apéndice B',
+  AC: 'del Apéndice C',
+  T: 'de los Títulos de cierre',
+};
+const nombreClave = (k) => CIERRE[k] || `del artículo ${k}`;
+const lista = (xs) => (xs.length > 1 ? `${xs.slice(0, -1).join(', ')} y ${xs.at(-1)}` : xs[0]);
+
 async function preguntar(pregunta) {
   const turno = el('li', 'preg-turno');
   turno.append(el('p', 'preg-q', pregunta));
   const caja = el('div', 'preg-r');
-  const estado = el('p', 'preg-estado', 'Buscando en la norma…');
+  const estado = el('p', 'preg-estado', 'Leyendo el índice de la norma…');
   caja.append(estado);
   turno.append(caja);
   chat.append(turno);
@@ -176,34 +249,60 @@ async function preguntar(pregunta) {
     return;
   }
 
-  let elegidos = [];
+  const antes = historia.slice(-RECUERDA);
+  let leidas = [];
+  let contesto = false;
   try {
-    await load();
-    await textosListos();
-    // Los números se quedan fuera de la búsqueda (ver buscarPregunta), pero
-    // no del recorte: con ellos pasajes.js escoge el renglón del 20 A.
-    const palabras = palabrasClave(pregunta).filter((k) => !/^\d+$/.test(k));
-    const [resultados, tablasIA] = await Promise.all([
-      buscarPregunta(pregunta, palabras),
-      cargarTablas(),
-    ]);
-    elegidos = elegir(resultados, pregunta, tablasIA);
-    if (!elegidos.length) {
+    anotar();
+    // Paso 1: el índice general.
+    const { indice, claves: todas } = await cargarGeneral();
+    const r1 = await pedir({ paso: 'articulos', pregunta, historia: antes, indice });
+    const claves = clavesPedidas(r1, todas);
+
+    // Paso 2: el índice de los artículos escogidos.
+    if (claves.length) {
+      estado.textContent = `Revisando el índice ${lista(claves.map(nombreClave))}…`;
+      const paqs = await Promise.all(claves.map(cargarClave));
+      const r2 = await pedir({
+        paso: 'secciones',
+        pregunta,
+        historia: antes,
+        indice: indiceCombinado(paqs),
+      });
+      leidas = fragmentosDe(partesPedidas(r2, paqs));
+    }
+
+    // Si no pidió nada que exista, busca la página.
+    if (!leidas.length) {
+      estado.textContent = 'Buscando en la norma…';
+      leidas = await respaldo(pregunta);
+    }
+    if (!leidas.length) {
       aviso('nada');
       return;
     }
-    estado.textContent = 'Redactando la respuesta…';
-    anotar();
+
+    // Paso 3: leer y contestar.
+    estado.textContent = `Leyendo ${lista(leidas.slice(0, 4).map((f) => f.ref))}${leidas.length > 4 ? '…' : ''} y redactando…`;
     const respuesta = await pedir({
+      paso: 'responder',
       pregunta,
-      fragmentos: elegidos.map(({ ref, titulo, texto }) => ({ ref, titulo, texto })),
+      historia: antes,
+      // El título va en el primer renglón del texto: no se manda dos veces.
+      fragmentos: leidas.map(({ ref, texto }) => ({ ref, titulo: '', texto })),
     });
     estado.remove();
-    pintarRespuesta(caja, respuesta, new Map(elegidos.map((f) => [normRef(f.ref), href(f.r)])));
+    const enlaces = new Map();
+    for (const [id, r] of [...citables(leidas), ...leidas.map((f) => [f.ref, f.r])]) {
+      if (!enlaces.has(normRef(id))) enlaces.set(normRef(id), href(r));
+    }
+    pintarRespuesta(caja, respuesta, enlaces);
+    contesto = true;
+    historia.push({ p: pregunta, r: respuesta.slice(0, 1400) });
   } catch (e) {
     aviso(e?.motivo || 'falla');
   } finally {
-    pintarFuentes(caja, elegidos);
+    pintarFuentes(caja, leidas, contesto);
   }
 }
 
@@ -234,7 +333,7 @@ if (raiz && !URL_ASISTENTE) {
       form.requestSubmit();
     }
   });
-  // El índice del buscador pesa: se empieza a bajar en cuanto se ve el campo,
-  // no al mandar la primera pregunta.
-  campo.addEventListener('focus', () => load().catch(() => {}), { once: true });
+  // El índice general se empieza a bajar en cuanto se enfoca el campo, no
+  // al mandar la primera pregunta.
+  campo.addEventListener('focus', () => cargarGeneral().catch(() => {}), { once: true });
 }

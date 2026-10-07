@@ -1,6 +1,11 @@
-// Qué parte de la norma se le manda al asistente de /preguntar: lo que el
-// buscador de siempre encuentra para la pregunta, recortado a lo que tiene
-// que ver con ella.
+// El respaldo del asistente de /preguntar: lo que el buscador de siempre
+// encuentra para la pregunta, recortado a lo que tiene que ver con ella. Se
+// usa cuando en los pasos del índice el modelo no pidió nada que exista (ver
+// chat.js); lo normal es que lea lo que él escogió (lectura.js).
+//
+// Fue la primera forma del asistente y se quedó corta por esto mismo: la
+// página adivinaba qué leer, y el recorte por oraciones le quitó al 240-4(d)
+// justo los renglones con los amperes.
 //
 // El recorte importa por dos razones. La cuota gratis de Cloudflare se gasta
 // por palabra que lee el modelo, así que cada fragmento de más es una

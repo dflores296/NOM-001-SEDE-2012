@@ -2,25 +2,32 @@
 
 Un Worker de Cloudflare: un programa chico que corre en los servidores de
 Cloudflare cada vez que alguien hace una pregunta en la página `/preguntar`
-de la guía. Recibe la pregunta y las partes de la norma que encontró el
-buscador, y le pide a un modelo de IA de código abierto (**gpt-oss-20b**, de
-OpenAI, licencia Apache-2.0) que conteste **solo** con ellas, citando cada una.
+de la guía. Le pasa a un modelo de IA de código abierto (**gpt-oss-20b**, de
+OpenAI, licencia Apache-2.0) lo que la página le manda, con las instrucciones
+de cada paso.
+
+El asistente recorre la norma como una persona con el libro: primero el
+índice, luego el índice del artículo, luego lo que tiene que leer.
 
 ```
-Página /preguntar (GitHub Pages)
-  1. el buscador de siempre encuentra las secciones y tablas que aplican
-  2. se recortan a lo que tiene que ver con la pregunta
-        │
-        ▼
-Worker nom-001-ia (Cloudflare, este directorio)
-  3. revisa lo que llega y arma las instrucciones
-  4. gpt-oss-20b (Workers AI) redacta la respuesta
-        │
-        ▼
-Página /preguntar
-  5. pinta la respuesta con un enlace en cada cita
-     y debajo, siempre, las partes de la norma consultadas
+Página /preguntar (GitHub Pages)                Worker nom-001-ia (Cloudflare)
+                                                    gpt-oss-20b (Workers AI)
+  pregunta + índice general (151 artículos,  ──▶  1. escoge de 1 a 3 artículos
+  Capítulo 10, Apéndices)                    ◀──     «240»
+  pregunta + índice del 240 (secciones,      ──▶  2. escoge qué leer completo
+  incisos con título, tablas)                ◀──     «240-4(d)»
+  pregunta + 240-4(d) completo, con sus      ──▶  3. contesta citando cada dato
+  incisos numerados                          ◀──     «… 15 amperes [240-4(d)(3)]»
+
+  pinta la respuesta con un enlace en cada cita, y debajo lo que leyó
 ```
+
+Los índices y los textos los publica el sitio en `/data/ia/` (ver
+`site/src/lib/asistente-datos.js`); el Worker no carga la norma. Si en los
+pasos 1 o 2 el modelo no pide nada que exista, la página busca por su cuenta
+con el buscador de siempre y el paso 3 sigue con eso. Cada consulta lleva las
+dos preguntas y respuestas anteriores, para que «¿y para 12 AWG?» sepa de qué
+se hablaba.
 
 El sitio sigue siendo estático: GitHub Pages no corre nada. Lo único que vive
 fuera es este Worker.
@@ -28,11 +35,13 @@ fuera es este Worker.
 ## Lo que cuesta: nada
 
 La cuenta de Cloudflare se queda en el plan gratis (**sin tarjeta**). Ahí
-Workers AI da 10 000 «neuronas» al día, que con gpt-oss-20b y lo que manda la
-página alcanzan para unas 130 preguntas diarias **entre todos los
-visitantes**. Al acabarse, Cloudflare no cobra: el modelo deja de contestar
-hasta las 00:00 UTC (las 6 de la tarde en el centro de México) y la página lo
-explica y enseña las partes de la norma que encontró.
+Workers AI da 10 000 «neuronas» al día. Cada pregunta son tres consultas al
+modelo que leen, juntas, de 5 000 a 15 000 tokens según el artículo: con
+gpt-oss-20b salen unas **35 a 60 preguntas diarias entre todos los
+visitantes**. El registro del Worker (Observability) anota los tokens de cada
+consulta, así que el número real se puede ver ahí. Al acabarse, Cloudflare no
+cobra: el modelo deja de contestar hasta las 00:00 UTC (las 6 de la tarde en
+el centro de México) y la página lo explica.
 
 Para que eso siga así: no meter tarjeta y no activar «Workers Paid».
 

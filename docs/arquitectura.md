@@ -206,20 +206,35 @@ Cloudflare (`ia/agente.js`) que llama a un modelo de código abierto
 (gpt-oss-20b) en Workers AI, dentro del plan gratis. Cómo se publica, qué
 cuesta (nada) y qué hacer cuando algo falla: `ia/README.md`.
 
-El reparto del trabajo está pensado para gastar lo menos posible de la cuota
-diaria, que es de todos:
+El asistente no recibe la norma entera —son 3.5 millones de caracteres, más de
+lo que el modelo lee de una vez y más que la cuota de un día—: la recorre como
+una persona con el libro, en tres consultas que dirige la página
+(`preguntar/chat.js`):
 
-| Paso | Dónde | Qué |
+| Paso | Lee | Escoge |
 |---|---|---|
-| Buscar | Navegador | `buscarPregunta` (en `buscador/indice.js`), con el índice de siempre, solo en título y texto: el número de una sección no compite con el «20» de «20 A» |
-| Recortar | Navegador | `preguntar/pasajes.js`: hasta 7 partes (4 secciones, 2 tablas, 1 definición…), 12 000 caracteres en total, con las oraciones o renglones que tocan la pregunta |
-| Redactar | Worker | Valida topes (`TOPES`), arma las reglas —solo los fragmentos, citar entre corchetes, no calcular— y llama al modelo con razonamiento bajo |
-| Pintar | Navegador | `preguntar/respuesta.js`: párrafos, listas y citas. Solo es enlace la cita de una parte que se mandó; todo va con `textContent` |
+| 1. `articulos` | El índice general: los 151 artículos, el Capítulo 10, los Apéndices y los Títulos de cierre (`/data/ia/indice.json`, unos 2 000 tokens) | De 1 a 3 claves |
+| 2. `secciones` | El índice de esas claves: secciones, incisos con título, tablas y figuras (`/data/ia/<clave>.json`; el más largo, el 250, unos 4 800 tokens) | Hasta 6 identificadores |
+| 3. `responder` | Eso completo, hasta 22 000 caracteres: cada renglón con su identificador entre corchetes, las tablas renglón por renglón | — contesta citando |
 
-Las tablas no van aplanadas como en el buscador («15 2.08 14 - - 20 3.31 12»),
-sino renglón por renglón bajo sus encabezados (`lib/tabla-texto.js`, publicado
-en `/data/tablas-ia.json`): así el modelo no toma el calibre de un renglón por
-el del siguiente.
+- **Lo que lee lo arma `lib/asistente-datos.js`** desde el corpus, con el mismo
+  orden que pinta el sitio (notas, excepciones, párrafos, tablas y figuras por
+  su `seq`). Un campo nuevo del corpus va ahí también (CONTEXTO §3). Las
+  pruebas comprueban que cada sección e inciso, cada tabla y cada definición se
+  pueda leer.
+- **Lo que pide el modelo lo entiende `preguntar/lectura.js`** con manga ancha
+  —numera, copia títulos, escribe «240.4(D)» al estilo del NEC— y solo acepta
+  lo que existe. «Tabla 240-4(g)» es la tabla y «240-4(g)» el inciso: los dos
+  existen, y el alias de la tabla sin «Tabla» pierde.
+- **Si no pide nada que exista**, la página busca con el buscador de siempre
+  (`buscarPregunta` + `pasajes.js`) y el paso 3 sigue con eso.
+- **La respuesta** la parte `preguntar/respuesta.js` en párrafos, listas y
+  citas, y va con `textContent`. Solo es enlace la cita de algo que se leyó, y
+  una cita a un inciso ([240-4(d)(3)]) lleva a su ancla.
+- **Memoria:** cada consulta lleva las dos preguntas y respuestas anteriores.
+- **Topes en cascada:** `LECTURA` y `TOPE_INDICE` (página) van por debajo de
+  `TOPES` (Worker, `ia/nucleo.js`), y una prueba lo comprueba con las partes
+  más largas de la norma.
 
 La dirección del Worker vive en `site/src/lib/asistente.js`. Vacía, no hay
 pestaña «Preguntar», la CSP no cambia y la página avisa que el asistente no

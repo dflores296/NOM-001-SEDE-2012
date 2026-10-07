@@ -641,41 +641,64 @@ prueba('Sin asistente conectado no hay pestaña, y /preguntar lo dice', async ({
   }
 });
 
+// Un asistente de mentiras que contesta cada paso como lo haría el modelo, y
+// anota lo que recibió en cada uno.
+function asistenteDePrueba(respuestas) {
+  const recibido = [];
+  const contestar = (cuerpo) => {
+    recibido.push(cuerpo);
+    const r = respuestas[cuerpo.paso];
+    return typeof r === 'function' ? r(cuerpo) : { json: { respuesta: r } };
+  };
+  return { recibido, contestar };
+}
+
+const RESPUESTA_20A =
+  '**Respuesta**: según la [Tabla 250-122], para 20 A el mínimo es 3.31 mm² (12 AWG), y [250-122(a)] dice que nunca menor que la tabla <img src=x onerror=alert(1)>.\n\n- También lo dice el [999-99].';
+
 prueba(
-  'El asistente recibe la norma que encontró el buscador y su respuesta enlaza lo que cita',
+  'El asistente lee el índice, escoge, recibe la norma completa y su respuesta enlaza lo que cita',
   async ({ nuevaPagina }) => {
-    let enviado = null;
-    const { page, errores, alerta } = await conAsistente(nuevaPagina, (cuerpo) => {
-      enviado = cuerpo;
-      return {
-        json: {
-          respuesta:
-            '**Respuesta**: según la [Tabla 250-122], para 20 A el mínimo es 3.31 mm² (12 AWG) <img src=x onerror=alert(1)>.\n\n- También lo dice el [999-99].',
-        },
-      };
+    const { recibido, contestar } = asistenteDePrueba({
+      articulos: 'Artículo 250',
+      secciones: '250-122(a)\nTabla 250-122',
+      responder: RESPUESTA_20A,
     });
+    const { page, errores, alerta } = await conAsistente(nuevaPagina, contestar);
     await page.fill('#preg-campo', PREGUNTA_20A);
     await page.press('#preg-campo', 'Enter');
     await page.waitForSelector('.preg-r .preg-ia', { timeout: 20000 });
 
-    afirmar(enviado?.pregunta === PREGUNTA_20A, `pregunta: ${enviado?.pregunta}`);
-    // La sección y su tabla, no el 250-20 ni el 668-20 por el «20» de «20 A».
-    const refs = enviado.fragmentos.map((f) => f.ref);
-    afirmar(refs.includes('250-122'), `sin la sección: ${refs.join(', ')}`);
-    afirmar(!refs.some((r) => /-20$/.test(r)), `buscó el número como sección: ${refs.join(', ')}`);
-    const tabla = enviado.fragmentos.find((f) => f.ref === 'Tabla 250-122');
-    afirmar(tabla, `no mandó la Tabla 250-122: ${enviado.fragmentos.map((f) => f.ref).join(', ')}`);
-    afirmar(tabla.texto.includes('20 | 3.31 | 12'), 'la tabla no fue renglón por renglón');
     afirmar(
-      enviado.fragmentos.every((f) => Object.keys(f).sort().join() === 'ref,texto,titulo'),
+      JSON.stringify(recibido.map((c) => c.paso)) === '["articulos","secciones","responder"]',
+      `pasos: ${recibido.map((c) => c.paso).join(', ')}`
+    );
+    const [uno, dos, tres] = recibido;
+    afirmar(
+      uno.pregunta === PREGUNTA_20A && uno.indice.includes('250 Puesta a tierra'),
+      'paso 1 sin índice general'
+    );
+    afirmar(
+      dos.indice.startsWith('Artículo 250') && dos.indice.includes('250-122 '),
+      'paso 2 sin el índice del 250'
+    );
+    const refs = tres.fragmentos.map((f) => f.ref);
+    afirmar(JSON.stringify(refs) === '["250-122(a)","Tabla 250-122"]', `refs: ${refs.join(', ')}`);
+    afirmar(tres.fragmentos[0].texto.startsWith('[250-122] '), 'el inciso llegó sin su sección');
+    afirmar(
+      tres.fragmentos[1].texto.includes('20 | 3.31 | 12'),
+      'la tabla no fue renglón por renglón'
+    );
+    afirmar(
+      tres.fragmentos.every((f) => Object.keys(f).sort().join() === 'ref,texto,titulo'),
       'viajó algo más que referencia, título y texto'
     );
 
-    const enlaces = await page.$$eval('.preg-r p a', (as) =>
-      as.map((a) => ({ t: a.textContent, href: a.getAttribute('href') }))
-    );
+    const enlaces = await page.$$eval('.preg-r p a', (as) => as.map((a) => a.getAttribute('href')));
     afirmar(
-      enlaces.length === 1 && enlaces[0].href.endsWith('/art/250#tabla-250-122'),
+      enlaces.length === 2 &&
+        enlaces[0].endsWith('/art/250#tabla-250-122') &&
+        enlaces[1].endsWith('/art/250#250-122(a)'),
       `enlaces: ${JSON.stringify(enlaces)}`
     );
     const texto = await page.textContent('.preg-r');
@@ -683,21 +706,77 @@ prueba(
     afirmar(!texto.includes('**'), 'dejó el Markdown');
     afirmar(!(await page.$('.preg-r img')), 'pintó HTML de la respuesta');
     afirmar(!alerta(), 'se ejecutó código de la respuesta');
-    afirmar(
-      (await page.$$('.preg-fuentes li')).length === enviado.fragmentos.length,
-      'no enseña todas las partes consultadas'
-    );
+    afirmar((await page.$$('.preg-fuentes li')).length === 2, 'no enseña lo que leyó');
     afirmar(!errores.length, errores.join(' | '));
   }
 );
 
+prueba('La segunda pregunta lleva la conversación anterior', async ({ nuevaPagina }) => {
+  const { recibido, contestar } = asistenteDePrueba({
+    articulos: '240',
+    secciones: '240-4(d)',
+    responder: 'Según [240-4(d)(3)], 15 amperes.',
+  });
+  const { page } = await conAsistente(nuevaPagina, contestar);
+  for (const [n, p] of ['¿Protección del 14 AWG de cobre?', '¿Y del 12 AWG?'].entries()) {
+    await page.fill('#preg-campo', p);
+    await page.press('#preg-campo', 'Enter');
+    await page.waitForFunction(
+      (k) => document.querySelectorAll('.preg-r .preg-ia').length === k,
+      n + 1,
+      {
+        timeout: 20000,
+      }
+    );
+    // La siguiente pregunta, cuando la página ya terminó con esta.
+    await page.waitForFunction(() => !document.querySelector('#preg-enviar').disabled);
+  }
+  const segunda = recibido.filter((c) => c.pregunta === '¿Y del 12 AWG?');
+  afirmar(segunda.length === 3, `${segunda.length} consultas en la segunda`);
+  for (const c of segunda) {
+    afirmar(
+      c.historia?.length === 1 &&
+        c.historia[0].p === '¿Protección del 14 AWG de cobre?' &&
+        c.historia[0].r.includes('15 amperes'),
+      `${c.paso}: historia ${JSON.stringify(c.historia)}`
+    );
+  }
+  const enlace = await page.getAttribute('.preg-r p a', 'href');
+  afirmar(enlace.endsWith('/art/240#240-4(d)(3)'), `la cita no lleva al inciso: ${enlace}`);
+});
+
 prueba(
-  'Si se acabó la cuota del día lo explica y deja las partes consultadas',
+  'Si el modelo no pide nada que exista, busca la página y el asistente contesta con eso',
   async ({ nuevaPagina }) => {
-    const { page } = await conAsistente(nuevaPagina, () => ({
-      estado: 429,
-      json: { error: 'cuota' },
-    }));
+    const { recibido, contestar } = asistenteDePrueba({
+      articulos: 'No sé, quizá el 999',
+      responder: 'Según la [Tabla 250-122], 3.31 mm².',
+    });
+    const { page } = await conAsistente(nuevaPagina, contestar);
+    await page.fill('#preg-campo', PREGUNTA_20A);
+    await page.press('#preg-campo', 'Enter');
+    await page.waitForSelector('.preg-r .preg-ia', { timeout: 20000 });
+    afirmar(
+      JSON.stringify(recibido.map((c) => c.paso)) === '["articulos","responder"]',
+      `pasos: ${recibido.map((c) => c.paso).join(', ')}`
+    );
+    const refs = recibido[1].fragmentos.map((f) => f.ref);
+    afirmar(
+      refs.includes('250-122') && refs.includes('Tabla 250-122'),
+      `el respaldo no encontró: ${refs.join(', ')}`
+    );
+  }
+);
+
+prueba(
+  'Si se acabó la cuota del día lo explica y deja lo que encontró',
+  async ({ nuevaPagina }) => {
+    const { contestar } = asistenteDePrueba({
+      articulos: '250',
+      secciones: '250-122',
+      responder: () => ({ estado: 429, json: { error: 'cuota' } }),
+    });
+    const { page } = await conAsistente(nuevaPagina, contestar);
     await page.fill('#preg-campo', PREGUNTA_20A);
     await page.click('#preg-enviar');
     await page.waitForSelector('.preg-error', { timeout: 20000 });
@@ -705,17 +784,18 @@ prueba(
       (await page.textContent('.preg-error')).includes('6 de la tarde'),
       'no dice cuándo vuelve'
     );
-    afirmar((await page.$$('.preg-fuentes li')).length > 0, 'no dejó las partes consultadas');
+    afirmar(
+      (await page.textContent('.preg-fuentes summary')).includes('sin respuesta del asistente'),
+      'no aclara que no hubo respuesta'
+    );
+    afirmar((await page.$$('.preg-fuentes li')).length > 0, 'no dejó lo que encontró');
     afirmar(await page.isEnabled('#preg-enviar'), 'el botón se quedó desactivado');
   }
 );
 
-prueba('Una pregunta sin nada que buscar no gasta cuota', async ({ nuevaPagina }) => {
-  let llamadas = 0;
-  const { page } = await conAsistente(nuevaPagina, () => {
-    llamadas++;
-    return { json: { respuesta: 'x' } };
-  });
+prueba('Una pregunta sin nada que buscar no llega a redactar', async ({ nuevaPagina }) => {
+  const { recibido, contestar } = asistenteDePrueba({ articulos: 'NADA' });
+  const { page } = await conAsistente(nuevaPagina, contestar);
   await page.fill('#preg-campo', 'zxqwv kjhgf');
   await page.click('#preg-enviar');
   await page.waitForSelector('.preg-error', { timeout: 20000 });
@@ -723,7 +803,7 @@ prueba('Una pregunta sin nada que buscar no gasta cuota', async ({ nuevaPagina }
     (await page.textContent('.preg-error')).includes('No encontré'),
     'no dice que no encontró nada'
   );
-  afirmar(!llamadas, 'llamó al asistente sin fragmentos');
+  afirmar(!recibido.some((c) => c.paso === 'responder'), 'pidió redactar sin nada que leer');
 });
 
 // ------------------------------------------------------------------ mapa

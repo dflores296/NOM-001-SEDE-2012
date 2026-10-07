@@ -337,6 +337,54 @@ Quedó fuera, a propósito:
 - **Conversación con memoria.** Cada pregunta va sola; «¿y para 30 A?» no sabe
   de qué se hablaba.
 
+### El asistente lee el índice (7 de octubre, segunda vuelta)
+
+Ya conectado, contestaba pero mal. A «¿qué protección se usa para calibres
+pequeños?» respondió que los fragmentos no lo decían, y era cierto: la página
+adivinaba qué leer con el buscador, y el recorte por oraciones le quitó al
+240-4(d) justo los renglones con los amperes (los incisos (1) a (7) no repiten
+las palabras de la pregunta). Además, el texto del buscador pierde los números
+de los incisos: aunque hubiera llegado completo, el modelo no podía citar
+«240-4(d)(3)».
+
+La idea del dueño: **que el modelo escoja qué leer a partir de un índice**, en
+vez de que la página adivine. Se midió antes de armarlo:
+
+| Índice | Tamaño |
+|---|---|
+| Los 151 artículos + cierre | ~2 000 tokens |
+| Las 2 898 secciones + 245 tablas | ~35 000 tokens |
+| Un artículo con secciones, incisos con título y tablas | mediana ~330, máximo ~4 800 (el 250) |
+
+Mandar el índice completo con cada pregunta se comía la cuota (~15 preguntas
+al día). Quedó en **dos niveles, como un libro**: índice general → índice del
+artículo → texto completo. Son tres consultas, pero chicas: en la prueba de
+punta a punta leyeron ~4 500 tokens en total. Cómo está hecho, en «El
+asistente» de `docs/arquitectura.md`.
+
+- **El texto que lee es otro que el del buscador:** cada renglón con su
+  identificador entre corchetes ([240-4(d)(3)] 2.08 mm2 (14 AWG) de cobre. 15
+  amperes.), en el orden del sitio. Lo arma `lib/asistente-datos.js` y se
+  publica en `/data/ia/` (157 archivos; el más grande, el 250, 212 KB). La
+  página solo baja los de los artículos que el modelo escogió.
+- **Lo que pide el modelo se lee con manga ancha** (`preguntar/lectura.js`):
+  numera, copia el título, escribe «240.4(D)». Si no pide nada que exista, la
+  página busca con el buscador de siempre: el asistente de la primera vuelta
+  quedó como respaldo.
+- **Memoria:** las dos preguntas y respuestas anteriores van con cada consulta.
+- **Mensajes:** «No me pude conectar» parecía decirlo el asistente. Ahora la
+  página dice que la pregunta no le llegó, y la lista de abajo aclara si es lo
+  que leyó o lo que encontró sin respuesta. En la computadora del dueño falla
+  así y en su celular con datos no: casi seguro su red bloquea `workers.dev`.
+- **El Worker anota los tokens** de cada consulta en su registro, para medir la
+  cuota de verdad. La estimación: 35 a 60 preguntas al día con gpt-oss-20b.
+
+Quedó fuera: dejar que el modelo use herramientas por su cuenta (un agente
+que busca y abre partes las veces que quiera). Es lo más flexible, pero cada
+pregunta costaría de 3 a 5 veces más y la forma en que gpt-oss llama
+herramientas en Workers AI no se puede probar desde aquí. Las tres consultas
+de ahora usan solo texto que entra y texto que sale, que ya se comprobó.
+
 ## Ronda de seguridad (octubre de 2026)
 
 Bitácora de lo que se hizo, por qué, y de las dependencias que a propósito

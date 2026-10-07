@@ -3,7 +3,7 @@
 //
 //     node ia/pruebas/agente.mjs
 import * as entrada from '../agente.js';
-import { armarEntrada, motivo, TOPES, textoDe, validar } from '../nucleo.js';
+import { armarEntrada, motivo, PASOS, TOPES, textoDe, validar } from '../nucleo.js';
 
 const agente = entrada.default;
 
@@ -11,6 +11,8 @@ const agente = entrada.default;
 // que la salida de las pruebas no parezca un error.
 const registro = [];
 console.error = (...a) => registro.push(a.join(' '));
+const decir = console.log.bind(console);
+console.log = (...a) => registro.push(a.join(' '));
 
 const ORIGEN = 'https://dflores296.github.io';
 
@@ -21,10 +23,10 @@ function prueba(nombre, fn) {
     (async () => {
       try {
         await fn();
-        console.log(`  ✓ ${nombre}`);
+        decir(`  ✓ ${nombre}`);
       } catch (e) {
         fallas++;
-        console.log(`  ✗ ${nombre}\n      ${e.message}`);
+        decir(`  ✗ ${nombre}\n      ${e.message}`);
       }
     })()
   );
@@ -120,6 +122,72 @@ prueba('Al modelo le llegan las reglas, cada fragmento con su referencia y la pr
   afirmar(usuario.content.endsWith(`Pregunta: ${BUENO.pregunta}`), 'la pregunta no va al final');
 });
 
+prueba('Los pasos de índice llevan el índice y sus propias instrucciones', async () => {
+  const historia = [{ p: '¿Y el calibre 12?', r: 'Según [240-4(d)(5)], 20 amperes.' }];
+  for (const paso of ['articulos', 'secciones']) {
+    const { env, llamadas } = entorno({ salida: { response: '240, 310' } });
+    const r = await agente.fetch(
+      peticion({
+        paso,
+        pregunta: '¿protección del 14 AWG?',
+        historia,
+        indice: '240 Protección contra sobrecorriente',
+      }),
+      env
+    );
+    afirmar(r.status === 200, `${paso}: estado ${r.status}`);
+    const [sistema, usuario] = llamadas[0].entrada.input;
+    afirmar(
+      sistema.content.includes(
+        paso === 'articulos' ? 'escoge de 1 a 3 claves' : 'hasta 6 identificadores'
+      ),
+      `${paso}: instrucciones equivocadas`
+    );
+    afirmar(
+      usuario.content.includes('240 Protección contra sobrecorriente'),
+      `${paso}: sin el índice`
+    );
+    afirmar(
+      usuario.content.includes('Conversación anterior:\nPregunta: ¿Y el calibre 12?'),
+      `${paso}: sin la conversación`
+    );
+    afirmar(
+      usuario.content.endsWith('Pregunta: ¿protección del 14 AWG?'),
+      `${paso}: la pregunta no va al final`
+    );
+  }
+});
+
+prueba('Un paso desconocido, un índice enorme o una conversación larga se rechazan', () => {
+  const base = { pregunta: 'x', indice: 'y' };
+  afirmar(validar({ ...base, paso: 'otro' }).error === 'paso', 'paso desconocido');
+  afirmar(
+    validar({ ...base, paso: 'articulos', indice: 'x'.repeat(TOPES.indice.articulos + 1) })
+      .error === 'indice',
+    'índice grande'
+  );
+  afirmar(validar({ ...base, paso: 'secciones', indice: '' }).error === 'indice', 'índice vacío');
+  const larga = Array(TOPES.historia + 1).fill({ p: 'a', r: 'b' });
+  afirmar(
+    validar({ ...base, paso: 'articulos', historia: larga }).error === 'historia',
+    'historia larga'
+  );
+  afirmar(
+    validar({
+      ...base,
+      paso: 'articulos',
+      historia: [{ p: 'a', r: 'x'.repeat(TOPES.historiaRespuesta + 1) }],
+    }).error === 'historia',
+    'respuesta larga en la historia'
+  );
+  afirmar(JSON.stringify(PASOS) === '["articulos","secciones","responder"]', 'pasos');
+});
+
+prueba('Sin paso es «responder», como lo mandaba la primera versión de la página', () => {
+  const d = validar(BUENO);
+  afirmar(d.paso === 'responder' && d.fragmentos.length === 2, JSON.stringify(d));
+});
+
 prueba('Entiende las tres formas en que contesta Workers AI', () => {
   afirmar(textoDe(RESPONSES).startsWith('Según la'), 'Responses API');
   afirmar(textoDe({ response: ' hola ' }) === 'hola', 'response');
@@ -164,7 +232,7 @@ prueba('Rechaza lo que no viene como lo arma la página, sin llamar al modelo', 
     'fragmento largo': { ...BUENO, fragmentos: [{ ...BUENO.fragmentos[0], texto: largo }] },
     'demasiado texto en total': {
       ...BUENO,
-      fragmentos: Array(TOPES.fragmentos).fill({
+      fragmentos: Array(Math.ceil(TOPES.total / TOPES.texto) + 1).fill({
         ...BUENO.fragmentos[0],
         texto: 'x'.repeat(TOPES.texto),
       }),
@@ -263,5 +331,5 @@ prueba('Una respuesta vacía del modelo no se da por buena', async () => {
 });
 
 await Promise.all(pendientes);
-console.log(fallas ? `\n${fallas} pruebas fallaron.` : '\nLas pruebas del asistente pasaron.');
+decir(fallas ? `\n${fallas} pruebas fallaron.` : '\nLas pruebas del asistente pasaron.');
 process.exit(fallas ? 1 : 0);
