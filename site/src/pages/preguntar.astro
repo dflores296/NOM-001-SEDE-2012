@@ -6,6 +6,16 @@ import { ASISTENTE } from '../lib/asistente.js';
 // la norma, citando cada parte. Cómo funciona, en src/scripts/preguntar/chat.js;
 // el Worker que llama al modelo, en ia/. Su dirección viaja en
 // data-asistente porque la CSP bloquea los scripts en línea.
+
+// Preguntas de ejemplo: tocar una la pone en el campo (no la manda, para no
+// gastar cupo sin querer). Están escritas como pide la guía de abajo.
+const EJEMPLOS = [
+  '¿Cuál es la protección máxima contra sobrecorriente de un conductor 14 AWG de cobre?',
+  '¿Qué calibre mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?',
+  '¿En qué lugares de una vivienda se requiere protección de las personas contra falla a tierra?',
+  '¿Qué distancia libre de trabajo se necesita frente a un tablero de 220 V?',
+  '¿Qué dice el 210-52 sobre los contactos en la cocina?',
+];
 ---
 
 <Base title="Preguntar — NOM-001-SEDE-2012"
@@ -45,15 +55,58 @@ import { ASISTENTE } from '../lib/asistente.js';
                   placeholder="Por ejemplo: ¿qué calibre mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?"></textarea>
         <small>Enter manda la pregunta; Mayús+Enter, un renglón nuevo.</small>
       </label>
-      <button type="submit" id="preg-enviar">Preguntar</button>
+      <div class="preg-acciones">
+        <button type="submit" id="preg-enviar">Preguntar</button>
+        <button type="button" id="preg-nueva" class="preg-secundario" hidden>Nueva conversación</button>
+      </div>
       <p class="obs-nota">
-        Tu pregunta y las partes de la norma que encuentre el buscador se mandan
-        a Cloudflare, que corre el modelo (gpt-oss, de código abierto). No se
+        Tu pregunta y las partes de la norma que lee el asistente se mandan a
+        Cloudflare, que corre los modelos (gpt-oss, de código abierto). No se
         guardan ni se usan para entrenar modelos. El servicio es gratuito y
         tiene un cupo diario para todos: hasta 20 preguntas al día en cada
         navegador.
       </p>
     </form>
+
+    <section class="preg-guia" id="preg-guia" hidden>
+      <h2>Ejemplos</h2>
+      <p class="obs-nota">Toca uno para ponerlo en el campo; luego lo puedes cambiar.</p>
+      <div class="preg-ejemplos">
+        {EJEMPLOS.map((e) => (
+          <button type="button" class="preg-ejemplo" data-ejemplo={e}>{e}</button>
+        ))}
+      </div>
+
+      <h2>Cómo preguntar para que conteste mejor</h2>
+      <p>
+        El asistente busca en el índice de la norma como lo haría una persona
+        con el libro. Entre más claro digas de qué se trata, mejor escoge qué
+        leer.
+      </p>
+      <ul class="obs-tipos">
+        <li><b>Una pregunta a la vez.</b> Si tienes dos dudas, hazlas por separado.</li>
+        <li><b>Di de qué se trata:</b> el lugar o el equipo (cocina, baño, motor,
+          tablero, alberca), el conductor (calibre y material: 12 AWG de cobre),
+          la tensión o la corriente (127 V, 20 A) y si es interior, exterior o
+          enterrado.</li>
+        <li><b>Di qué quieres saber:</b> la protección máxima, la ampacidad, la
+          distancia mínima, si se permite o no, cuántos se necesitan.</li>
+        <li><b>Usa las palabras de la norma</b> cuando las sepas: «conductor de
+          puesta a tierra» y no «tierra física»; «interruptor automático» y no
+          «pastilla» o «breaker»; «contacto» (receptáculo); «canalización» o
+          «tubo conduit» y no «tubería».</li>
+        <li><b>Si ya sabes la sección, dila:</b> «¿Qué dice el 240-4(d)?» va
+          directo.</li>
+        <li><b>Para seguir el tema, pregunta en la misma conversación:</b> «¿y
+          para 12 AWG?». El asistente recuerda las dos preguntas anteriores. Si
+          cambias de tema, empieza una conversación nueva.</li>
+      </ul>
+      <p>
+        <b>Lo que no hace:</b> no calcula (caída de tensión, cargas, ocupación
+        de tubo), no revisa ni aprueba una instalación concreta y no sabe de
+        otras normas ni del NEC. Te dice qué dice la NOM y dónde lo dice.
+      </p>
+    </section>
   </main>
 </Base>
 

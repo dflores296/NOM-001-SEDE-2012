@@ -28,7 +28,17 @@
 //   MODELO    cuál; si Cloudflare lo retira del plan gratis, se cambia aquí
 //   ORIGENES  las páginas que pueden usarlo, separadas por comas
 
+// Dos modelos de la misma familia: el chico escoge qué leer (pasos 1 y 2),
+// que es leer un índice y copiar identificadores; el grande redacta (paso
+// 3), que es donde se lee con cuidado a qué calibre y condición corresponde
+// cada valor. Gastan de la misma cuota diaria; el grande, como el doble por
+// palabra. Si el grande no está disponible, redacta el chico.
 export const MODELO = '@cf/openai/gpt-oss-20b';
+export const MODELO_REDACTAR = '@cf/openai/gpt-oss-120b';
+
+// Cuánto piensa el modelo antes de contestar. El razonamiento cuenta como
+// texto escrito y gasta cuota: poco para escoger, más para redactar.
+export const ESFUERZO = { articulos: 'low', secciones: 'low', responder: 'medium' };
 
 export const PASOS = ['articulos', 'secciones', 'responder'];
 
@@ -62,25 +72,41 @@ const QUIEN =
 const INSTRUCCIONES = {
   articulos: `${QUIEN} Vas a buscar la respuesta en la norma como lo haría una persona con el libro: primero en el índice.
 
-Abajo está el índice general. Cada renglón empieza con una clave: el número de un artículo (por ejemplo 240) o C10, AA, AB, AC o T para el cierre de la norma. Lee la pregunta (y la conversación anterior, si la hay) y escoge de 1 a 3 claves donde muy probablemente esté la respuesta. Las definiciones de términos están en 100.
+Abajo está el índice general. Cada renglón empieza con una clave: el número de un artículo (por ejemplo 240) o C10, AA, AB, AC o T para el cierre de la norma. Lee la pregunta (y la conversación anterior, si la hay) y escoge de 1 a 3 claves donde muy probablemente esté la respuesta.
+
+- Los capítulos 1 a 4 aplican a cualquier instalación: empieza por ahí.
+- Los capítulos 5 a 9 son casos especiales (lugares peligrosos, vehículos recreativos, sistemas fotovoltaicos, comunicaciones, servicio público y otros): escógelos solo si la pregunta habla de eso.
+- Las definiciones de términos están en 100.
 
 Contesta SOLO con las claves, separadas por comas, sin explicar nada. Ejemplo: 240, 310`,
 
   secciones: `${QUIEN} Ya escogiste los artículos; abajo está su índice detallado: secciones, incisos con título, tablas y figuras, cada uno con su identificador al principio del renglón.
 
-Escoge lo que necesitas leer completo para contestar la pregunta: hasta 6 identificadores. Prefiere el inciso exacto cuando lo veas (por ejemplo 240-4(d)) y agrega las tablas que tengan los valores que se preguntan. Si nada sirve, contesta NADA.
+Escoge lo que necesitas leer completo para contestar: hasta 4 identificadores, los más precisos.
+- Prefiere el inciso exacto (por ejemplo 240-4(d)) antes que la sección entera.
+- Agrega una tabla solo si tiene los valores que se preguntan.
+- No escojas partes de otro tipo de instalación que la que se pregunta.
+- Si nada sirve, contesta NADA.
 
 Contesta SOLO con los identificadores, uno por renglón, escritos exactamente como aparecen en el índice, sin explicar nada.`,
 
-  responder: `${QUIEN} Contestas en español, claro y breve (menos de 250 palabras), SOLO con lo que dicen los fragmentos de la norma que vienen en el mensaje. Cada renglón de un fragmento empieza con su identificador entre corchetes.
+  responder: `${QUIEN} Contestas en español de México, como un ingeniero electricista que le explica a un colega: claro, directo y breve (menos de 150 palabras), SOLO con lo que dicen los fragmentos de la norma que vienen en el mensaje. Cada renglón de un fragmento empieza con su identificador entre corchetes.
+
+Cómo contestar:
+1. Empieza con la respuesta directa, en una o dos frases, con su cita. Por ejemplo: «La protección contra sobrecorriente de ese conductor no debe exceder X amperes [240-4(d)(3)].»
+2. Después, solo si hace falta, hasta 3 puntos con las condiciones o excepciones que cambian la respuesta, cada uno con su cita.
+3. Antes de dar un valor, fíjate a qué calibre, material, tensión y condición corresponde. No mezcles incisos ni tablas: un valor de un inciso no vale para otro.
+4. Los valores de una tabla dilos con palabras («para ese calibre de cobre a 75 °C, X amperes [Tabla 310-15(b)(16)]»); no copies renglones con «|».
+5. Ignora los fragmentos de otro tipo de instalación (vehículos recreativos, lugares peligrosos y otros) si la pregunta no es de eso.
+6. Si la pregunta es ambigua (por ejemplo, solo un calibre sin decir qué se quiere saber), contesta lo más común —la protección y la ampacidad— y termina preguntando qué aspecto le interesa.
 
 Reglas:
-1. No uses nada que no esté en los fragmentos: ni otras normas, ni el NEC, ni lo que sepas por tu cuenta.
-2. Cita cada dato con el identificador más preciso entre corchetes, escrito exactamente como aparece, por ejemplo [240-4(d)(3)] o [Tabla 310-15(b)(16)].
-3. Copia los valores (calibres, ampacidades, distancias, tensiones) tal como vienen. No los calcules, no los redondees, no los conviertas.
-4. Si los fragmentos no alcanzan para contestar, dilo («Lo que leí de la norma no lo dice») y sugiere qué buscar. No adivines.
-5. No des por buena una instalación concreta: la decisión es de quien la diseña y de la Unidad de Verificación.
-6. Texto plano: sin Markdown, sin tablas, sin encabezados. Si hace falta una lista, cada punto en su renglón empezando con guion.`,
+- No uses nada que no esté en los fragmentos: ni otras normas, ni el NEC, ni lo que sepas por tu cuenta.
+- Cita con el identificador más preciso entre corchetes [ ], escrito exactamente como aparece. No uses otro tipo de corchetes.
+- Copia los valores tal como vienen: no los calcules, no los redondees, no los conviertas.
+- Si lo que leíste no alcanza, dilo («Lo que leí de la norma no lo dice») y sugiere qué preguntar. No adivines.
+- No des por buena una instalación concreta: la decisión es de quien la diseña y de la Unidad de Verificación.
+- Texto plano: sin Markdown, sin tablas, sin encabezados. Si hace falta una lista, cada punto en su renglón empezando con guion.`,
 };
 
 // Controles y caracteres de formato (ancho cero, marcas bidi), como en el
@@ -250,6 +276,21 @@ export async function atender(request, env) {
   }
 }
 
+/** Una consulta al modelo, y al registro cuánto tardó y cuánto leyó y escribió. */
+async function consultar(env, modelo, datos) {
+  const inicio = Date.now();
+  const r = await env.AI.run(modelo, {
+    input: armarEntrada(datos),
+    reasoning: { effort: ESFUERZO[datos.paso] },
+  });
+  // La página se rinde a los 90 s, y la cuota diaria se gasta por palabra.
+  const uso = r?.usage
+    ? `, ${r.usage.input_tokens ?? '?'} + ${r.usage.output_tokens ?? '?'} tokens`
+    : '';
+  console.log(`${datos.paso} con ${modelo.split('/').pop()}: ${Date.now() - inicio} ms${uso}`);
+  return r;
+}
+
 async function contestar(request, env, origen) {
   if (request.method === 'OPTIONS') return responder(null, 204, origen);
   if (request.method !== 'POST') return responder({ error: 'metodo' }, 405, origen);
@@ -265,20 +306,20 @@ async function contestar(request, env, origen) {
   const datos = validar(cuerpo);
   if (datos.error) return responder({ error: 'invalido' }, 400, origen);
 
+  const grande = datos.paso === 'responder';
+  const modelo = grande ? env.MODELO_REDACTAR || MODELO_REDACTAR : env.MODELO || MODELO;
   try {
-    // El razonamiento de gpt-oss cuenta como texto generado y gasta cuota:
-    // en «low» piensa poco, y para citar lo que ya viene escrito basta.
-    const inicio = Date.now();
-    const r = await env.AI.run(env.MODELO || MODELO, {
-      input: armarEntrada(datos),
-      reasoning: { effort: 'low' },
-    });
-    // Cuánto tardó y cuánto leyó y escribió el modelo, al registro: la página
-    // se rinde a los 90 s, y la cuota diaria se gasta por palabra.
-    const uso = r?.usage
-      ? `, ${r.usage.input_tokens ?? '?'} + ${r.usage.output_tokens ?? '?'} tokens`
-      : '';
-    console.log(`modelo (${datos.paso}): ${Date.now() - inicio} ms${uso}`);
+    let r;
+    try {
+      r = await consultar(env, modelo, datos);
+    } catch (e) {
+      // El grande, fuera del plan gratis o saturado: redacta el chico.
+      const m = motivo(e);
+      const chico = env.MODELO || MODELO;
+      if (!grande || modelo === chico || (m !== 'modelo' && m !== 'ocupado')) throw e;
+      console.error(`modelo (${m}) con ${modelo}; redacta ${chico}`);
+      r = await consultar(env, chico, datos);
+    }
     const respuesta = textoDe(r);
     if (!respuesta) {
       // Al registro de Cloudflare va solo la forma de la respuesta, nunca

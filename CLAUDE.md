@@ -42,7 +42,8 @@ git status --porcelain      # después de eso, debe quedar vacío
   consultarlo.
 - **El asistente (`/preguntar`, `ia/`) contesta solo con lo que lee de la
   norma**, en tres pasos: índice general, índice del artículo, texto completo
-  (`site/src/lib/asistente-datos.js`). La cuenta de Cloudflare se queda en el
+  (`site/src/lib/asistente-datos.js`); escoge gpt-oss-20b y redacta
+  gpt-oss-120b. La cuenta de Cloudflare se queda en el
   plan gratis: sin tarjeta, al acabarse la cuota deja de contestar y no cobra.
   Su dirección vive en `site/src/lib/asistente.js`. Lo que manda la página
   (`LECTURA`, `TOPE_INDICE`) va por debajo de los topes del Worker (`TOPES`);

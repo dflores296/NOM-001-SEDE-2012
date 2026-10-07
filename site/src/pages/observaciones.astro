@@ -62,6 +62,7 @@ const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new'
               <option>Falta algo</option>
               <option>No se ve bien</option>
               <option>Sugerencia</option>
+              <option>Respuesta del asistente</option>
               <option>Otra cosa</option>
             </select>
           </label>
@@ -151,7 +152,7 @@ const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new'
 
 <script>
   import { base } from '../scripts/base.js';
-  import { armarEnvio, origenDe, refDeURL } from '../scripts/observaciones/limpieza.js';
+  import { armarEnvio, LARGO, origenDe, refDeURL } from '../scripts/observaciones/limpieza.js';
 
   // La referencia viaja en la URL (?ref=250-32(a)(1)&de=/art/250/#250-32) porque
   // el sitio es estático: no hay servidor que la inyecte al generar la página.
@@ -165,6 +166,39 @@ const REPO_ISSUES = 'https://github.com/dflores296/NOM-001-SEDE-2012/issues/new'
     ref.value = refFija;
     ref.setAttribute('readonly', '');
     ref.classList.add('fijo');
+  }
+
+  // Una respuesta del asistente que alguien reporta desde /preguntar: la
+  // pregunta, la respuesta y lo que leyó llegan por sessionStorage —que solo
+  // escribe este sitio, no por la URL, que cualquiera arma— y se ponen en el
+  // campo para que solo falte decir qué está mal. Al enviar pasan por la misma
+  // limpieza que todo (armarEnvio).
+  if (refFija === 'Respuesta del asistente') {
+    try {
+      const a = JSON.parse(sessionStorage.getItem('obs-asistente') || 'null');
+      sessionStorage.removeItem('obs-asistente');
+      const obs = document.querySelector('textarea[name="observacion"]') as HTMLTextAreaElement | null;
+      const tipo = document.querySelector('select[name="tipo"]') as HTMLSelectElement | null;
+      if (tipo) tipo.value = 'Respuesta del asistente';
+      if (a && obs && !obs.value) {
+        const texto = (v: unknown, max: number) => String(v ?? '').slice(0, max);
+        obs.value = [
+          `Pregunta: ${texto(a.pregunta, 500)}`,
+          '',
+          `Respuesta del asistente: ${texto(a.respuesta, 1500)}`,
+          '',
+          `Lo que leyó: ${texto(a.leyo, 300)}`,
+          '',
+          'Qué está mal: ',
+        ]
+          .join('\n')
+          .slice(0, LARGO.observacion - 200);
+        obs.focus();
+        obs.setSelectionRange(obs.value.length, obs.value.length);
+      }
+    } catch {
+      // Sin almacenamiento, el formulario queda como siempre.
+    }
   }
 
   // De qué página vino el reporte: una ruta de este sitio o nada.

@@ -35,3 +35,31 @@
 .preg-fuentes a { font-family: var(--mono); font-size: 0.85rem; }
 
 .preg-form button:disabled { opacity: 0.6; cursor: progress; }
+
+/* Los dos botones del formulario: el de preguntar, relleno; el de empezar de
+   nuevo, solo con borde, para que no compitan. */
+.preg-acciones { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+.obs-form .preg-acciones button { justify-self: auto; }
+.obs-form button.preg-secundario,
+.preg-r button.preg-reportar {
+  background: transparent; color: var(--text-dim); box-shadow: none;
+  border: 1px solid var(--border); font-weight: 500;
+}
+.obs-form button.preg-secundario:hover { background: var(--bg-soft); color: var(--text); }
+
+/* Reportar una respuesta: discreto, como el «Reportar» de cada sección. */
+.preg-r button.preg-reportar {
+  font: inherit; font-size: 0.82rem; cursor: pointer; margin-top: 0.6rem;
+  border-radius: var(--radius); padding: 0.25rem 0.6rem;
+}
+.preg-r button.preg-reportar:hover { color: var(--accent); border-color: var(--accent); }
+
+.preg-guia h2 { margin-top: 2rem; }
+.preg-ejemplos { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.6rem 0 0.4rem; }
+.preg-ejemplo {
+  font: inherit; font-size: 0.88rem; text-align: left; cursor: pointer;
+  color: var(--text); background: var(--panel);
+  border: 1px solid var(--border); border-radius: var(--radius-xl);
+  padding: 0.45rem 0.75rem;
+}
+.preg-ejemplo:hover { border-color: var(--accent); color: var(--accent); }

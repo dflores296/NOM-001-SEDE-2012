@@ -385,6 +385,44 @@ pregunta costaría de 3 a 5 veces más y la forma en que gpt-oss llama
 herramientas en Workers AI no se puede probar desde aquí. Las tres consultas
 de ahora usan solo texto que entra y texto que sale, que ya se comprobó.
 
+### Más exacto y más claro (7 de octubre, tercera vuelta)
+
+Con el índice mejoró mucho, pero una respuesta dijo que la protección del
+14 AWG de cobre «puede ser de 20 amperes»: la norma dice 15 (240-4(d)(3)).
+Había leído también el 551-43, de vehículos recreativos, donde sí aparecen
+20 A, y el modelo chico «pensando poco» le aplicó al 14 AWG una condición del
+18 AWG. Otras respuestas eran largas, copiaban renglones de tabla con «|», y
+algunas citas venían en 【 】 y no eran enlace.
+
+Por decisión del dueño, a cambio de menos preguntas al día (unas 25 a 40):
+
+- **Redacta gpt-oss-120b, pensando más** (`MODELO_REDACTAR`, `ESFUERZO`);
+  escoger sigue con el 20b. Si el grande no está disponible, redacta el chico.
+  Los dos gastan de la misma cuota diaria, que es por cuenta y no por modelo.
+- **Instrucciones nuevas:** en el paso 1, los capítulos 1 a 4 primero y los
+  especiales solo si la pregunta habla de ellos; en el 2, hasta 4 partes y el
+  inciso exacto; en el 3, la respuesta directa primero, máximo 3 puntos,
+  valores de tabla dichos con palabras, «fíjate a qué calibre y condición
+  corresponde cada valor», ignorar lo de otro tipo de instalación y, si la
+  pregunta es ambigua, contestar lo común y preguntar qué aspecto le interesa.
+- **Se lee primero el inciso pedido y las secciones; las tablas al final**, y
+  son 4 partes, no 8.
+- **Las citas en 【240-4】 o 【240-4†L3】** (los corchetes del entrenamiento de
+  gpt-oss) se vuelven [240-4] y son enlace.
+- **Guía y ejemplos** debajo del formulario: cómo preguntar (una cosa a la
+  vez, lugar, conductor, tensión, qué se quiere saber, las palabras de la
+  norma) y cinco preguntas que se ponen en el campo sin mandarse.
+- **«Nueva conversación»** borra la memoria, para cambiar de tema.
+- **«¿Algo está mal en esta respuesta?»** lleva a `/observaciones` con todo
+  escrito y el tipo nuevo «Respuesta del asistente». Viaja por
+  `sessionStorage`; de la URL solo se toma la referencia, que pasa el filtro de
+  siempre (`refDeURL`).
+
+Quedó fuera: revisar cada número de la respuesta contra lo leído. No habría
+atrapado este error —los 20 A sí estaban en lo leído, en otro artículo—, y
+con el grande redactando y menos partes leídas el caso debería ser raro. Si
+los reportes muestran que no lo es, es lo siguiente.
+
 ## Ronda de seguridad (octubre de 2026)
 
 Bitácora de lo que se hizo, por qué, y de las dependencias que a propósito

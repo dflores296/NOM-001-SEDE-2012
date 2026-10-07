@@ -2,21 +2,23 @@
 
 Un Worker de Cloudflare: un programa chico que corre en los servidores de
 Cloudflare cada vez que alguien hace una pregunta en la página `/preguntar`
-de la guía. Le pasa a un modelo de IA de código abierto (**gpt-oss-20b**, de
-OpenAI, licencia Apache-2.0) lo que la página le manda, con las instrucciones
-de cada paso.
+de la guía. Le pasa a dos modelos de IA de código abierto de OpenAI (licencia
+Apache-2.0) lo que la página le manda, con las instrucciones de cada paso: el
+chico, **gpt-oss-20b**, escoge qué leer; el grande, **gpt-oss-120b**, redacta
+la respuesta, que es donde hay que leer con cuidado a qué calibre y condición
+corresponde cada valor. Si el grande no está disponible, redacta el chico.
 
 El asistente recorre la norma como una persona con el libro: primero el
 índice, luego el índice del artículo, luego lo que tiene que leer.
 
 ```
 Página /preguntar (GitHub Pages)                Worker nom-001-ia (Cloudflare)
-                                                    gpt-oss-20b (Workers AI)
+                                                 gpt-oss-20b / -120b (Workers AI)
   pregunta + índice general (151 artículos,  ──▶  1. escoge de 1 a 3 artículos
   Capítulo 10, Apéndices)                    ◀──     «240»
   pregunta + índice del 240 (secciones,      ──▶  2. escoge qué leer completo
   incisos con título, tablas)                ◀──     «240-4(d)»
-  pregunta + 240-4(d) completo, con sus      ──▶  3. contesta citando cada dato
+  pregunta + 240-4(d) completo, con sus      ──▶  3. el grande contesta citando
   incisos numerados                          ◀──     «… 15 amperes [240-4(d)(3)]»
 
   pinta la respuesta con un enlace en cada cita, y debajo lo que leyó
@@ -35,10 +37,11 @@ fuera es este Worker.
 ## Lo que cuesta: nada
 
 La cuenta de Cloudflare se queda en el plan gratis (**sin tarjeta**). Ahí
-Workers AI da 10 000 «neuronas» al día. Cada pregunta son tres consultas al
-modelo que leen, juntas, de 5 000 a 15 000 tokens según el artículo: con
-gpt-oss-20b salen unas **35 a 60 preguntas diarias entre todos los
-visitantes**. El registro del Worker (Observability) anota los tokens de cada
+Workers AI da 10 000 «neuronas» al día, una sola bolsa para todos los
+modelos. Cada pregunta son tres consultas que leen, juntas, de 5 000 a 15 000
+tokens según el artículo; la última la hace el modelo grande, que gasta como
+el doble por palabra y piensa más antes de contestar. Salen unas **25 a 40
+preguntas diarias entre todos los visitantes**. El registro del Worker (Observability) anota los tokens de cada
 consulta, así que el número real se puede ver ahí. Al acabarse, Cloudflare no
 cobra: el modelo deja de contestar hasta las 00:00 UTC (las 6 de la tarde en
 el centro de México) y la página lo explica.

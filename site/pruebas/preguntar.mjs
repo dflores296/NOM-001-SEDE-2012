@@ -29,7 +29,7 @@ import {
   recortar,
   rotulo,
 } from '../src/scripts/preguntar/pasajes.js';
-import { bloques, normRef, trozos } from '../src/scripts/preguntar/respuesta.js';
+import { bloques, normalizarCitas, normRef, trozos } from '../src/scripts/preguntar/respuesta.js';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(AQUI, '..', 'dist');
@@ -182,6 +182,25 @@ prueba('Lo que se lee en el paso 3 cabe en los topes del Worker y lo acepta', ()
   afirmar(
     fr.every((f) => f.texto.length <= LECTURA.porParte),
     'una parte se pasó'
+  );
+});
+
+prueba('Primero se lee el inciso pedido y las secciones; las tablas al final', () => {
+  const paqs = ['240', '310'].map((k) => IA.claves[k]);
+  // Como lo pidió el modelo con «calibres pequeños»: tablas grandes primero.
+  const pedidas = partesPedidas(
+    'Tabla 310-15(B)(16)\nTabla 240-4(g)\n310-15\n240-4(d)\n240-6',
+    paqs
+  );
+  afirmar(
+    pedidas.length === LECTURA.partes,
+    `${pedidas.length} pedidas; se leen ${LECTURA.partes}`
+  );
+  const refs = fragmentosDe(pedidas).map((f) => f.ref);
+  afirmar(
+    JSON.stringify(refs) ===
+      JSON.stringify(['240-4(d)', '310-15', 'Tabla 310-15(b)(16)', 'Tabla 240-4(g)']),
+    JSON.stringify(refs)
   );
 });
 
@@ -397,6 +416,15 @@ prueba('Lo que escriba el modelo se queda como texto, aunque parezca HTML', () =
     t.map((x) => x.texto).join('') === '<img src=x onerror=alert(1)> [<b>250-122</b>]',
     'perdió texto'
   );
+});
+
+prueba('Las citas con los corchetes de gpt-oss también son enlace', () => {
+  const t = normalizarCitas('Según 【240-4†L3-L5】, ［Tabla 250-122］ y 〔250-122〕.');
+  afirmar(t === 'Según [240-4], [Tabla 250-122] y [250-122].', t);
+  const enlaces = bloques('Ver 【Tabla 250-122】.')
+    .flatMap((b) => trozos(b.texto, REFS))
+    .filter((x) => x.href);
+  afirmar(enlaces.length === 1, JSON.stringify(enlaces));
 });
 
 prueba('La respuesta se parte en párrafos y listas, sin el Markdown', () => {

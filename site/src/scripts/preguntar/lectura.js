@@ -15,7 +15,7 @@ import { sinAcentos } from '../buscador/terminos.js';
 
 // Cuánto se lee en el paso 3. Por debajo de los topes del Worker (TOPES en
 // ia/nucleo.js). 22 000 caracteres son unas 6 000 palabras del modelo.
-export const LECTURA = { partes: 8, porParte: 8000, total: 22000 };
+export const LECTURA = { partes: 4, porParte: 8000, total: 22000 };
 
 // El índice de los artículos escogidos (paso 2), por debajo de
 // TOPES.indice.secciones. El del 250, el más largo, tiene 17 000 caracteres.
@@ -99,7 +99,7 @@ function mapaDe(paquetes) {
  * [{ paq, parte, foco }]. De cada renglón se toma el principio más largo que
  * sea un identificador («240-4(d) Conductores pequeños» → 240-4(d)).
  */
-export function partesPedidas(texto, paquetes, max = 6) {
+export function partesPedidas(texto, paquetes, max = LECTURA.partes) {
   const mapa = mapaDe(paquetes);
   const out = [];
   for (const p of piezas(texto)) {
@@ -170,14 +170,26 @@ export function enlaceDe(parte, llave, id = null) {
 }
 
 /**
- * Los fragmentos del paso 3: { ref, titulo, texto, r }, en el orden en que
- * se pidieron y dentro de LECTURA. Una sección grande de la que se pidió un
- * inciso manda su primer renglón y ese inciso completo.
+ * Los fragmentos del paso 3: { ref, titulo, texto, r }, dentro de LECTURA y
+ * en orden de PRIORIDAD (y, entre iguales, en el que se pidieron). Una
+ * sección grande de la que se pidió un inciso manda su primer renglón y ese
+ * inciso completo.
  */
+// Qué se lee primero cuando no cabe todo: el inciso que pidió, luego las
+// secciones, las definiciones y al final las tablas y el cierre. Con «calibres
+// pequeños» el modelo pidió tablas grandes antes que el 240-4, y lo que se
+// quedaba corto era justo lo que tenía la respuesta.
+const PRIORIDAD = { sec: 1, def: 2, tabla: 3, cierre: 4 };
+const prioridad = (p) => (p.focos ? 0 : (PRIORIDAD[p.paq.partes[p.parte].tipo] ?? 5));
+
 export function fragmentosDe(pedidas, L = LECTURA) {
   const out = [];
   let total = 0;
-  for (const { paq, parte: llave, focos } of pedidas) {
+  const orden = pedidas
+    .map((p, i) => ({ p, i }))
+    .sort((a, b) => prioridad(a.p) - prioridad(b.p) || a.i - b.i)
+    .map(({ p }) => p);
+  for (const { paq, parte: llave, focos } of orden) {
     if (out.length >= L.partes) break;
     const parte = paq.partes[llave];
     let texto = parte.texto;

@@ -36,7 +36,12 @@ function afirmar(cond, msg) {
 }
 
 prueba('La referencia de la URL solo se toma si es de las que arma el sitio', () => {
-  for (const r of ['250-32(a)(1)', 'Tabla 430-250', 'Definición «Acometida» (Parte A)']) {
+  for (const r of [
+    '250-32(a)(1)',
+    'Tabla 430-250',
+    'Definición «Acometida» (Parte A)',
+    'Respuesta del asistente',
+  ]) {
     afirmar(refDeURL(r) === r, `rechazó ${r}`);
   }
   for (const r of [

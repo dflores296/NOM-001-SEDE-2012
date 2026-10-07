@@ -634,10 +634,15 @@ prueba('Sin asistente conectado no hay pestaña, y /preguntar lo dice', async ({
   if (url) {
     afirmar(pestana, 'conectado y sin pestaña');
     afirmar(await page.isVisible('#preg-form'), 'conectado y sin formulario');
+    afirmar(await page.isVisible('#preg-guia'), 'conectado y sin la guía');
   } else {
     afirmar(!pestana, 'hay pestaña sin asistente');
     afirmar(await page.isVisible('#preg-cerrado'), 'no avisa que no está conectado');
     afirmar(!(await page.isVisible('#preg-form')), 'enseña un formulario que no funciona');
+    afirmar(
+      !(await page.isVisible('#preg-guia')),
+      'enseña la guía de un asistente que no funciona'
+    );
   }
 });
 
@@ -790,6 +795,80 @@ prueba(
     );
     afirmar((await page.$$('.preg-fuentes li')).length > 0, 'no dejó lo que encontró');
     afirmar(await page.isEnabled('#preg-enviar'), 'el botón se quedó desactivado');
+  }
+);
+
+prueba('Un ejemplo se pone en el campo y no se manda solo', async ({ nuevaPagina }) => {
+  const { recibido, contestar } = asistenteDePrueba({});
+  const { page } = await conAsistente(nuevaPagina, contestar);
+  const ejemplo = await page.textContent('.preg-ejemplo');
+  await page.click('.preg-ejemplo');
+  afirmar(
+    (await page.inputValue('#preg-campo')) === ejemplo.trim(),
+    'no puso el ejemplo en el campo'
+  );
+  await page.waitForTimeout(500);
+  afirmar(!recibido.length, 'mandó la pregunta sin que nadie la enviara');
+});
+
+prueba('Una conversación nueva olvida la anterior', async ({ nuevaPagina }) => {
+  const { recibido, contestar } = asistenteDePrueba({
+    articulos: '240',
+    secciones: '240-4(d)',
+    responder: 'Según [240-4(d)(3)], 15 amperes.',
+  });
+  const { page } = await conAsistente(nuevaPagina, contestar);
+  await page.fill('#preg-campo', '¿Protección del 14 AWG de cobre?');
+  await page.press('#preg-campo', 'Enter');
+  await page.waitForSelector('#preg-nueva:not([hidden])', { timeout: 20000 });
+  await page.click('#preg-nueva');
+  afirmar(!(await page.$('.preg-turno')), 'la conversación anterior sigue a la vista');
+  await page.fill('#preg-campo', '¿Qué es una acometida?');
+  await page.press('#preg-campo', 'Enter');
+  await page.waitForFunction(
+    () => document.querySelectorAll('.preg-r .preg-ia').length === 1,
+    null,
+    {
+      timeout: 20000,
+    }
+  );
+  const ultima = recibido.filter((c) => c.pregunta === '¿Qué es una acometida?');
+  afirmar(
+    ultima.length && ultima.every((c) => !c.historia?.length),
+    'se mandó la conversación anterior'
+  );
+});
+
+prueba(
+  'Reportar una respuesta lleva al formulario con la pregunta y la respuesta escritas',
+  async ({ nuevaPagina }) => {
+    const { contestar } = asistenteDePrueba({
+      articulos: '240',
+      secciones: '240-4(d)',
+      responder: 'Para 14 AWG de cobre, 20 amperes [240-4(d)(3)].',
+    });
+    const { page } = await conAsistente(nuevaPagina, contestar);
+    await page.fill('#preg-campo', '¿Protección del 14 AWG de cobre?');
+    await page.press('#preg-campo', 'Enter');
+    await page.waitForSelector('.preg-reportar', { timeout: 20000 });
+    await Promise.all([page.waitForURL('**/observaciones/**'), page.click('.preg-reportar')]);
+    await page.waitForLoadState('networkidle');
+    afirmar((await page.inputValue('#ref')) === 'Respuesta del asistente', 'sin la referencia');
+    afirmar(await page.$('#ref[readonly]'), 'la referencia no quedó fija');
+    afirmar(
+      (await page.inputValue('select[name="tipo"]')) === 'Respuesta del asistente',
+      'sin el tipo'
+    );
+    const texto = await page.inputValue('textarea[name="observacion"]');
+    afirmar(texto.startsWith('Pregunta: ¿Protección del 14 AWG de cobre?'), texto.slice(0, 80));
+    afirmar(
+      texto.includes('Respuesta del asistente: Para 14 AWG de cobre, 20 amperes'),
+      'sin la respuesta'
+    );
+    afirmar(
+      texto.includes('Lo que leyó: 240-4(d)') && texto.trimEnd().endsWith('Qué está mal:'),
+      'sin lo que leyó'
+    );
   }
 );
 

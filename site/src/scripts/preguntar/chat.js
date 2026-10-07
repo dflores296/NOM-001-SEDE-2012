@@ -36,6 +36,8 @@ const campo = document.getElementById('preg-campo');
 const boton = document.getElementById('preg-enviar');
 const chat = document.getElementById('preg-chat');
 const cerrado = document.getElementById('preg-cerrado');
+const guia = document.getElementById('preg-guia');
+const nueva = document.getElementById('preg-nueva');
 
 // Tope por navegador, como el del formulario de observaciones: que una sola
 // persona no se acabe el cupo diario, que es de todos.
@@ -203,6 +205,32 @@ async function pedir(cuerpo) {
   return j.respuesta;
 }
 
+// «¿Algo está mal en esta respuesta?» lleva al formulario de /observaciones
+// con la pregunta, la respuesta y lo que leyó ya escritos. Viajan por
+// sessionStorage, que solo puede escribir este mismo sitio, y no por la URL,
+// que cualquiera puede armar: el formulario solo acepta de la URL las
+// referencias que generan los botones del sitio (observaciones/limpieza.js),
+// y «Respuesta del asistente» es una.
+function botonReportar(pregunta, respuesta, leidas) {
+  const b = el('button', 'preg-reportar', '¿Algo está mal en esta respuesta? Repórtalo');
+  b.type = 'button';
+  b.addEventListener('click', () => {
+    try {
+      sessionStorage.setItem(
+        'obs-asistente',
+        JSON.stringify({
+          pregunta,
+          respuesta: respuesta.slice(0, 1500),
+          leyo: leidas.map((f) => f.ref).join(', '),
+        })
+      );
+    } catch {}
+    const ref = encodeURIComponent('Respuesta del asistente');
+    location.href = `${base}/observaciones/?ref=${ref}&de=${encodeURIComponent(`${base}/preguntar/`)}`;
+  });
+  return b;
+}
+
 let ocupado = false;
 
 // El respaldo: lo que encuentra el buscador de siempre, recortado. Para cuando
@@ -297,8 +325,10 @@ async function preguntar(pregunta) {
       if (!enlaces.has(normRef(id))) enlaces.set(normRef(id), href(r));
     }
     pintarRespuesta(caja, respuesta, enlaces);
+    caja.append(botonReportar(pregunta, respuesta, leidas));
     contesto = true;
     historia.push({ p: pregunta, r: respuesta.slice(0, 1400) });
+    nueva.hidden = false;
   } catch (e) {
     aviso(e?.motivo || 'falla');
   } finally {
@@ -310,6 +340,23 @@ if (raiz && !URL_ASISTENTE) {
   cerrado.hidden = false;
 } else if (raiz) {
   form.hidden = false;
+  guia.hidden = false;
+  // Un ejemplo se pone en el campo, no se manda: así no gasta cupo sin querer.
+  for (const b of guia.querySelectorAll('[data-ejemplo]')) {
+    b.addEventListener('click', () => {
+      campo.value = b.dataset.ejemplo;
+      campo.focus();
+      campo.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
+  }
+  // Empezar de nuevo: sin la conversación anterior, que si no se manda con
+  // cada pregunta y puede confundir al cambiar de tema.
+  nueva.addEventListener('click', () => {
+    historia.length = 0;
+    chat.replaceChildren();
+    nueva.hidden = true;
+    campo.focus();
+  });
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const pregunta = campo.value.trim();

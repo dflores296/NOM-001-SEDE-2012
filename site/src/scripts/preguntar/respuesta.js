@@ -32,6 +32,13 @@ function sinMarkdown(linea) {
 
 const VINETA = /^\s*(?:[-*•–]|\d+[.)])\s+/;
 
+// gpt-oss cita a veces con los corchetes de su entrenamiento, 【240-4】 o
+// 【240-4†L3-L5】, aunque se le pida [ ]. Se vuelven corchetes normales para
+// que la cita sea enlace.
+export function normalizarCitas(texto) {
+  return String(texto).replace(/[【［〔]([^】］〕†\n]{1,160})(?:†[^】］〕\n]*)?[】］〕]/g, '[$1]');
+}
+
 /**
  * La respuesta en bloques: { tipo: 'p', texto } o { tipo: 'ul', items }.
  * Un renglón vacío separa párrafos; los renglones con guion o número al
@@ -44,7 +51,7 @@ export function bloques(texto) {
     if (parrafo.length) out.push({ tipo: 'p', texto: parrafo.join(' ') });
     parrafo = [];
   };
-  for (const crudo of String(texto).split(/\r?\n/)) {
+  for (const crudo of normalizarCitas(texto).split(/\r?\n/)) {
     const linea = sinMarkdown(crudo).trim();
     if (!linea) {
       cerrarParrafo();

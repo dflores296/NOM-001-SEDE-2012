@@ -15,9 +15,12 @@
   "ai": { "binding": "AI" },
 
   "vars": {
-    // Si Cloudflare saca gpt-oss-20b del plan gratis (su error 5035), se
-    // cambia aquí por otro del catálogo que siga gratis.
+    // El que escoge qué leer (pasos 1 y 2) y el que redacta (paso 3). Si
+    // Cloudflare saca uno del plan gratis (su error 5035), se cambia aquí por
+    // otro del catálogo que siga gratis. Si falla el que redacta, redacta el
+    // otro.
     "MODELO": "@cf/openai/gpt-oss-20b",
+    "MODELO_REDACTAR": "@cf/openai/gpt-oss-120b",
     // Las páginas que pueden usarlo. Con un dominio propio, se agrega aquí.
     "ORIGENES": "https://dflores296.github.io"
   },

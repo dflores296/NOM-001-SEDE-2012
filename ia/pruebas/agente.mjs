@@ -47,8 +47,11 @@ const BUENO = {
   ],
 };
 
-/** Un env con el modelo de mentiras: devuelve `salida` o lanza `falla`. */
-function entorno({ salida, falla } = {}) {
+/**
+ * Un env con el modelo de mentiras: devuelve `salida` o lanza `falla` (solo
+ * con el modelo `fallaCon`, si se da).
+ */
+function entorno({ salida, falla, fallaCon } = {}) {
   const llamadas = [];
   return {
     llamadas,
@@ -58,7 +61,7 @@ function entorno({ salida, falla } = {}) {
       AI: {
         async run(modelo, entrada) {
           llamadas.push({ modelo, entrada });
-          if (falla) throw new Error(falla);
+          if (falla && (!fallaCon || modelo === fallaCon)) throw new Error(falla);
           return salida;
         },
       },
@@ -108,7 +111,9 @@ prueba('Contesta con el texto del modelo, sin su razonamiento', async () => {
   afirmar(j.respuesta === 'Según la [Tabla 250-122], 2.08 mm² (14 AWG).', j.respuesta);
   afirmar(r.headers.get('Access-Control-Allow-Origin') === ORIGEN, 'sin CORS');
   afirmar(llamadas.length === 1, `${llamadas.length} llamadas`);
-  afirmar(llamadas[0].entrada.reasoning?.effort === 'low', 'no pidió razonamiento bajo');
+  // Redacta el modelo grande, pensando más que en los pasos del índice.
+  afirmar(llamadas[0].modelo === '@cf/openai/gpt-oss-120b', `redactó ${llamadas[0].modelo}`);
+  afirmar(llamadas[0].entrada.reasoning?.effort === 'medium', 'no pidió razonamiento medio');
 });
 
 prueba('Al modelo le llegan las reglas, cada fragmento con su referencia y la pregunta', () => {
@@ -139,7 +144,7 @@ prueba('Los pasos de índice llevan el índice y sus propias instrucciones', asy
     const [sistema, usuario] = llamadas[0].entrada.input;
     afirmar(
       sistema.content.includes(
-        paso === 'articulos' ? 'escoge de 1 a 3 claves' : 'hasta 6 identificadores'
+        paso === 'articulos' ? 'escoge de 1 a 3 claves' : 'hasta 4 identificadores'
       ),
       `${paso}: instrucciones equivocadas`
     );
@@ -156,6 +161,42 @@ prueba('Los pasos de índice llevan el índice y sus propias instrucciones', asy
       `${paso}: la pregunta no va al final`
     );
   }
+});
+
+prueba('Escoger lo hace el modelo chico, pensando poco', async () => {
+  for (const paso of ['articulos', 'secciones']) {
+    const { env, llamadas } = entorno({ salida: { response: '240' } });
+    await agente.fetch(peticion({ paso, pregunta: 'x', indice: 'y' }), env);
+    afirmar(llamadas[0].modelo === '@cf/openai/gpt-oss-20b', `${paso}: ${llamadas[0].modelo}`);
+    afirmar(llamadas[0].entrada.reasoning?.effort === 'low', `${paso}: no pidió razonamiento bajo`);
+  }
+});
+
+prueba('Si el modelo grande no está disponible, redacta el chico', async () => {
+  for (const falla of [
+    '5035: This model requires a Workers Paid plan.',
+    '3040: Capacity temporarily exceeded',
+  ]) {
+    const { env, llamadas } = entorno({
+      salida: RESPONSES,
+      falla,
+      fallaCon: '@cf/openai/gpt-oss-120b',
+    });
+    const r = await agente.fetch(peticion(BUENO), env);
+    afirmar(r.status === 200, `${falla}: estado ${r.status}`);
+    afirmar(
+      JSON.stringify(llamadas.map((l) => l.modelo.split('/').pop())) ===
+        '["gpt-oss-120b","gpt-oss-20b"]',
+      `${falla}: ${llamadas.map((l) => l.modelo).join(', ')}`
+    );
+  }
+  // Sin cuota no se reintenta: el chico gasta de la misma.
+  const { env, llamadas } = entorno({ salida: RESPONSES, falla: '3036: daily free allocation' });
+  const r = await agente.fetch(peticion(BUENO), env);
+  afirmar(
+    r.status === 429 && llamadas.length === 1,
+    `cuota: ${r.status}, ${llamadas.length} llamadas`
+  );
 });
 
 prueba('Un paso desconocido, un índice enorme o una conversación larga se rechazan', () => {

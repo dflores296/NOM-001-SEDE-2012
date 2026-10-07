@@ -215,7 +215,13 @@ una persona con el libro, en tres consultas que dirige la página
 |---|---|---|
 | 1. `articulos` | El índice general: los 151 artículos, el Capítulo 10, los Apéndices y los Títulos de cierre (`/data/ia/indice.json`, unos 2 000 tokens) | De 1 a 3 claves |
 | 2. `secciones` | El índice de esas claves: secciones, incisos con título, tablas y figuras (`/data/ia/<clave>.json`; el más largo, el 250, unos 4 800 tokens) | Hasta 6 identificadores |
-| 3. `responder` | Eso completo, hasta 22 000 caracteres: cada renglón con su identificador entre corchetes, las tablas renglón por renglón | — contesta citando |
+| 3. `responder` | Eso completo, hasta 4 partes y 22 000 caracteres: cada renglón con su identificador entre corchetes, las tablas renglón por renglón | — contesta citando |
+
+Los pasos 1 y 2 los hace gpt-oss-20b pensando poco; el 3, gpt-oss-120b
+pensando más, porque ahí se equivocaba el chico: le aplicó al 14 AWG la
+condición del 18 AWG y tomó los 20 A de un artículo de vehículos
+recreativos. Si el grande no está disponible (error 5035 o 3040), redacta el
+chico.
 
 - **Lo que lee lo arma `lib/asistente-datos.js`** desde el corpus, con el mismo
   orden que pinta el sitio (notas, excepciones, párrafos, tablas y figuras por
@@ -226,12 +232,19 @@ una persona con el libro, en tres consultas que dirige la página
   —numera, copia títulos, escribe «240.4(D)» al estilo del NEC— y solo acepta
   lo que existe. «Tabla 240-4(g)» es la tabla y «240-4(g)» el inciso: los dos
   existen, y el alias de la tabla sin «Tabla» pierde.
+- **Se lee primero el inciso pedido**, luego las secciones, las definiciones
+  y al final las tablas (`PRIORIDAD` en `lectura.js`): si no cabe todo, lo
+  que se queda fuera es una tabla, no la sección con la respuesta.
 - **Si no pide nada que exista**, la página busca con el buscador de siempre
   (`buscarPregunta` + `pasajes.js`) y el paso 3 sigue con eso.
 - **La respuesta** la parte `preguntar/respuesta.js` en párrafos, listas y
   citas, y va con `textContent`. Solo es enlace la cita de algo que se leyó, y
   una cita a un inciso ([240-4(d)(3)]) lleva a su ancla.
-- **Memoria:** cada consulta lleva las dos preguntas y respuestas anteriores.
+- **Memoria:** cada consulta lleva las dos preguntas y respuestas anteriores;
+  «Nueva conversación» la borra.
+- **«¿Algo está mal en esta respuesta?»** lleva a `/observaciones` con la
+  pregunta, la respuesta y lo que leyó escritos. Viajan por `sessionStorage`,
+  no por la URL, y el formulario los limpia como todo lo demás.
 - **Topes en cascada:** `LECTURA` y `TOPE_INDICE` (página) van por debajo de
   `TOPES` (Worker, `ia/nucleo.js`), y una prueba lo comprueba con las partes
   más largas de la norma.
