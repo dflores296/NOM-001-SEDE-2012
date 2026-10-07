@@ -4,6 +4,12 @@ Antes de tocar nada, lee `CONTEXTO.md`: es la memoria del proyecto (dónde
 estamos, qué hay que entender antes de tocar, qué se hizo en cada ronda y
 por qué). `README.md` dice qué es; `docs/arquitectura.md`, cómo funciona.
 
+## Idioma
+
+**Con el dueño se habla siempre en español**, en cada respuesta, también en
+las técnicas y en las que siguen a una herramienta o a un error. Él no es
+programador: sin jerga, y cuando haga falta un término, explicado.
+
 ## Verificar
 
 ```
