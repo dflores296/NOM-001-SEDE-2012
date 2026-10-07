@@ -22,6 +22,15 @@
     "ORIGENES": "https://dflores296.github.io"
   },
 
+  // El registro de Cloudflare (Workers & Pages → nom-001-ia → Observability)
+  // guarda solo lo que el Worker escribe con console.error: el error del
+  // modelo, nunca la pregunta. Sin los registros por petición, que traerían
+  // la dirección IP de cada visitante.
+  "observability": {
+    "enabled": true,
+    "logs": { "invocation_logs": false }
+  },
+
   "workers_dev": true,
   // Las versiones de prueba de cada rama no hacen falta: el asistente se
   // prueba con la página, y cada URL de prueba sería otra puerta a la cuota.

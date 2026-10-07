@@ -189,10 +189,16 @@ export default {
         reasoning: { effort: 'low' },
       });
       const respuesta = textoDe(r);
-      if (!respuesta) return responder({ error: 'vacia' }, 502, origen);
+      if (!respuesta) {
+        // Al registro de Cloudflare va solo la forma de la respuesta, nunca
+        // la pregunta: si cambia el formato del modelo, aquí se ve cuál llegó.
+        console.error('respuesta vacía; llegó:', Object.keys(r ?? {}).join(','));
+        return responder({ error: 'vacia' }, 502, origen);
+      }
       return responder({ respuesta }, 200, origen);
     } catch (e) {
       const m = motivo(e);
+      console.error(`modelo (${m}):`, String(e?.message ?? e).slice(0, 300));
       return responder({ error: m }, ESTADO[m], origen);
     }
   },

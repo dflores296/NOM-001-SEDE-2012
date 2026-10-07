@@ -278,9 +278,17 @@ Lo que hay que entender antes de tocarlo:
   modelos a «solo de pago» (error 5035). gpt-oss-20b sigue gratis; si cambia,
   se cambia `MODELO` en `ia/wrangler.jsonc`.
 
-Mientras `site/src/lib/asistente.js` esté vacío no hay pestaña ni conexión en
-la CSP, y `/preguntar` avisa que no está conectado: la rama se puede fusionar
-antes de publicar el Worker. Las pruebas en navegador no dependen de eso:
+**Conectado el mismo día** en `https://nom-001-ia.bettofe.workers.dev`: cuenta
+de Cloudflare del dueño, plan gratis, con Workers Builds conectado al
+repositorio (rama `main`, carpeta raíz `ia`). Cada cambio en `ia/` que llega a
+`main` se vuelve a publicar solo. El primer intento falló con «root directory
+not found» porque `ia/` aún no estaba en `main`: el Worker se publica desde
+ahí, no desde la rama de trabajo. El registro del Worker (Observability) guarda
+solo lo que escribe `console.error` —el error del modelo, nunca la pregunta—,
+sin registros por petición, que traerían la IP de cada visitante.
+
+Con `site/src/lib/asistente.js` vacío no hay pestaña ni conexión en la CSP, y
+`/preguntar` avisa que no está conectado: así se desconecta si hiciera falta. Las pruebas en navegador no dependen de eso:
 reescriben el `data-asistente` de la página hacia el mismo servidor y
 contestan ellas.
 
@@ -834,9 +842,6 @@ desaparecería en CI.
 
 ## Pendientes
 
-**Conectar el asistente**: publicar el Worker (`ia/README.md`, «Publicarlo») y
-poner su dirección en `site/src/lib/asistente.js`.
-
 Ninguno de contenido: las 245 tablas están contrastadas, las 59 imágenes
 capturadas y el cierre tiene sus siete hitos. Lo que queda es del oficio de
 siempre —si el DOF publica una fe de erratas, si un lector reporta una
@@ -920,6 +925,9 @@ inventar ni descartar ninguno.
   Dependabot. Por eso el hook usa `npm ci`. Para subir una dependencia a mano,
   aplicar solo las líneas reales del cambio (versión, `resolved`, `integrity`)
   y comprobar con `npm ci` que el lockfile no se mueve.
+- **`*.workers.dev` también está bloqueado**: el asistente no se puede probar
+  desde aquí contra Cloudflare. Las pruebas usan uno de mentiras; la prueba de
+  verdad es preguntar en el sitio publicado.
 - **`gitdiagram.com` también está bloqueado.** Por eso el diagrama del README
   se rehízo a mano en Mermaid, con los colores del sitio: GitHub lo dibuja solo.
 - **El clon de la nube es superficial** (`git rev-parse

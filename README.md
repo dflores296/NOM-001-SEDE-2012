@@ -33,6 +33,10 @@ navegables, backlinks y búsqueda instantánea que funciona sin conexión.
 - **Los tres Apéndices y los Títulos de cierre**, que son las últimas 38
   páginas de la norma.
 - **Búsqueda instantánea** sobre el texto completo, sin conexión.
+- **[Un asistente](https://dflores296.github.io/NOM-001-SEDE-2012/preguntar/)**
+  que contesta en tus palabras con el texto de la norma y un enlace en cada
+  cita. Lo redacta una IA de código abierto y puede equivocarse: la respuesta
+  siempre remite a la sección que la sustenta.
 
 ## Cifras
 
