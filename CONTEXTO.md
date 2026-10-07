@@ -288,7 +288,34 @@ solo lo que escribe `console.error` —el error del modelo, nunca la pregunta—
 sin registros por petición, que traerían la IP de cada visitante.
 
 Con `site/src/lib/asistente.js` vacío no hay pestaña ni conexión en la CSP, y
-`/preguntar` avisa que no está conectado: así se desconecta si hiciera falta. Las pruebas en navegador no dependen de eso:
+`/preguntar` avisa que no está conectado: así se desconecta si hiciera falta.
+
+**La primera pregunta real falló** con «No me pude conectar con el asistente»:
+la página no recibió nada legible del Worker. Abierta directo, la dirección del
+Worker sí contestaba (`{"error":"origen"}`, que es lo correcto fuera de la
+guía). Lo que se encontró y se cambió:
+
+- **`agente.js` exportaba de más.** Cloudflare toma cada `export` del archivo
+  principal como una entrada del Worker, y `workerd` en local no arrancaba con
+  `export const TOPES`: «Incorrect type for map entry 'MODELO'». Producción sí
+  lo publicó (la subida mide el arranque), así que quizá no era la causa, pero
+  estaba mal: ahora `agente.js` solo exporta `default` y todo lo demás vive en
+  `nucleo.js`. Una prueba lo cuida.
+- **Una falla no prevista ya contesta con permiso CORS** (500, `falla`) y queda
+  en el registro. Antes Cloudflare devolvía su página de error y la página
+  solo podía decir «no me pude conectar».
+- **El registro anota cuánto tardó el modelo**, y la página espera 90 s (eran
+  60) y distingue «tardó demasiado» de «no me pude conectar». La CPU no era:
+  3 ms la primera petición y menos de 1 ms después, de 10 permitidos.
+
+Cómo se probó de punta a punta sin poder llegar a Cloudflare: `wrangler dev`
+corre el Worker en `workerd` con una envoltura que le da un modelo de mentiras,
+y Chromium abre `/preguntar` desde otro origen con la CSP y el
+`data-asistente` reescritos. Chromium bloquea entre dos direcciones locales
+(«`unknown` address space»); para la prueba se apaga con
+`--disable-features=LocalNetworkAccessChecks`. Si la página vuelve a fallar en
+el sitio publicado, la respuesta está en **Workers & Pages → nom-001-ia →
+Observability**. Las pruebas en navegador no dependen de eso:
 reescriben el `data-asistente` de la página hacia el mismo servidor y
 contestan ellas.
 

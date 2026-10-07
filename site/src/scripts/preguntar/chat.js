@@ -53,6 +53,8 @@ const MENSAJES = {
     'El servicio que corre el modelo está saturado en este momento. Intenta de nuevo en un minuto; abajo están las partes de la norma que encontré.',
   modelo:
     'El asistente no está disponible por ahora. Abajo están las partes de la norma que encontré para tu pregunta.',
+  lento:
+    'El asistente tardó demasiado en contestar. Intenta de nuevo en un momento; abajo están las partes de la norma que encontré.',
   red: 'No me pude conectar con el asistente. Revisa tu conexión e intenta de nuevo; abajo están las partes de la norma que encontré.',
   tope: `Llegaste al tope de ${TOPE} preguntas al día en este navegador. El cupo del asistente es de todos; mañana se libera. Mientras, el buscador de arriba sigue funcionando.`,
   nada: 'No encontré nada en la norma con esas palabras. Prueba a decirlo de otra forma, o con el término que usa la norma (por ejemplo «conductor de puesta a tierra» en vez de «tierra física»).',
@@ -127,9 +129,11 @@ function pintarFuentes(caja, elegidos) {
 
 async function pedir(cuerpo) {
   const falla = (motivo) => Object.assign(new Error(motivo), { motivo });
-  // gpt-oss tarda unos segundos; más de un minuto es que algo se colgó.
+  // gpt-oss tarda unos segundos, pero con el servicio cargado puede esperar
+  // turno. Minuto y medio sin nada es que algo se colgó; el Worker anota en
+  // su registro cuánto tardó cada respuesta.
   const alto = new AbortController();
-  const reloj = setTimeout(() => alto.abort(), 60_000);
+  const reloj = setTimeout(() => alto.abort(), 90_000);
   let r;
   try {
     r = await fetch(URL_ASISTENTE, {
@@ -139,7 +143,7 @@ async function pedir(cuerpo) {
       signal: alto.signal,
     });
   } catch {
-    throw falla('red');
+    throw falla(alto.signal.aborted ? 'lento' : 'red');
   } finally {
     clearTimeout(reloj);
   }

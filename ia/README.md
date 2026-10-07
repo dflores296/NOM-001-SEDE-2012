@@ -59,16 +59,11 @@ Desde entonces, cada cambio en `ia/` que llegue a `main` se publica solo.
 Conviene poner `ia/*` en **Build watch paths** (Settings → Build) para que un
 cambio del sitio no vuelva a publicar el Worker.
 
-Sin conectar GitHub también se puede: **Create → Start with Hello World**,
-nombre `nom-001-ia`, **Edit code**, pegar `agente.js` completo y publicar;
-luego en **Settings → Bindings** agregar *Workers AI* con el nombre `AI`, y en
-**Settings → Variables** poner `ORIGENES` = `https://dflores296.github.io`.
-Cada cambio al código habría que volver a pegarlo.
-
 ## Qué hacer si…
 
 | Pasa | Qué es | Qué hacer |
 |---|---|---|
+| La página dice «No me pude conectar con el asistente» | El Worker no contestó nada legible: no arrancó, se cayó o tardó más de un minuto | **Workers & Pages → nom-001-ia → Observability** dice el error. Así se encontró que no arrancaba con un `export` de más en `agente.js` |
 | La página dice que se acabaron las respuestas del día | La cuota gratis se gastó (error 3036) | Nada: vuelve a las 6 pm. Si pasa seguido, ver la tercera fila |
 | «El asistente no está disponible por ahora» | Cloudflare sacó el modelo del plan gratis (error 5035) | Cambiar `MODELO` en `wrangler.jsonc` por otro del catálogo que siga gratis y subirlo a `main` |
 | La cuota se acaba temprano todos los días | Mucha gente, o un bot | En el panel, **Workers & Pages → nom-001-ia → Metrics** dice cuántas llegan. Contra un bot: Turnstile (gratis) o un tope por IP |
@@ -81,7 +76,9 @@ node ia/pruebas/agente.mjs
 ```
 
 Prueba el Worker sin Cloudflare: el modelo se sustituye por una función que
-anota lo que recibe. `tools/verificar.sh` lo corre junto con Biome. Las
+anota lo que recibe. `agente.js` es solo la puerta de entrada y todo lo demás
+vive en `nucleo.js`: Cloudflare toma cada `export` de `agente.js` como una
+entrada del Worker, y uno que no lo sea le impide arrancar. `tools/verificar.sh` lo corre junto con Biome. Las
 pruebas de la página están en `site/pruebas/preguntar.mjs` (sin navegador) y
 en `site/pruebas/navegador.mjs` (con un asistente de mentiras).
 

@@ -2,7 +2,15 @@
 // se sustituye por una función que anota lo que recibe.
 //
 //     node ia/pruebas/agente.mjs
-import agente, { armarEntrada, motivo, textoDe, TOPES, validar } from '../agente.js';
+import * as entrada from '../agente.js';
+import { armarEntrada, motivo, TOPES, textoDe, validar } from '../nucleo.js';
+
+const agente = entrada.default;
+
+// Lo que el Worker escribe en el registro de Cloudflare se guarda aquí, para
+// que la salida de las pruebas no parezca un error.
+const registro = [];
+console.error = (...a) => registro.push(a.join(' '));
 
 const ORIGEN = 'https://dflores296.github.io';
 
@@ -81,6 +89,14 @@ const RESPONSES = {
     },
   ],
 };
+
+prueba('agente.js solo exporta default: Cloudflare toma cada export como una entrada', () => {
+  // Una constante exportada ahí hace que el Worker no arranque
+  // («Incorrect type for map entry 'MODELO'»). Le pasó a la primera versión.
+  const nombres = Object.keys(entrada);
+  afirmar(JSON.stringify(nombres) === '["default"]', `exporta: ${nombres.join(', ')}`);
+  afirmar(typeof agente.fetch === 'function', 'default no tiene fetch');
+});
 
 prueba('Contesta con el texto del modelo, sin su razonamiento', async () => {
   const { env, llamadas } = entorno({ salida: RESPONSES });
@@ -218,6 +234,27 @@ prueba('Distingue saturación, modelo fuera del plan gratis y cualquier otra fal
   );
   afirmar(motivo(new Error('algo raro')) === 'falla', 'falla');
 });
+
+prueba(
+  'Una falla no prevista también contesta con permiso CORS, para que la página la lea',
+  async () => {
+    const { env } = entorno({ salida: RESPONSES });
+    const roto = {
+      method: 'POST',
+      headers: new Headers({ Origin: ORIGEN }),
+      text: async () => {
+        throw new Error('se cortó la conexión');
+      },
+    };
+    const r = await agente.fetch(roto, env);
+    afirmar(r.status === 500, `estado ${r.status}`);
+    afirmar(r.headers.get('Access-Control-Allow-Origin') === ORIGEN, 'sin CORS');
+    afirmar(
+      registro.some((l) => l.includes('se cortó la conexión')),
+      'no quedó en el registro'
+    );
+  }
+);
 
 prueba('Una respuesta vacía del modelo no se da por buena', async () => {
   const { env } = entorno({ salida: { output: [{ type: 'reasoning' }] } });

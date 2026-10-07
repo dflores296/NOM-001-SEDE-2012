@@ -11,7 +11,7 @@
 import { sinAcentos, termino } from '../buscador/terminos.js';
 
 // Cuánto se manda. Por debajo de los topes del Worker (TOPES en
-// ia/agente.js), que rechaza lo que se pase. 12 000 caracteres son unas
+// ia/nucleo.js), que rechaza lo que se pase. 12 000 caracteres son unas
 // 3 500 palabras del modelo: con gpt-oss-20b, unas 130 preguntas al día.
 export const PRESUPUESTO = { fragmentos: 7, porFragmento: 3500, total: 12000 };
 

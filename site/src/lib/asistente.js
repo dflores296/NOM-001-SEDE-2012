@@ -2,7 +2,7 @@
 // DÓNDE VIVE EL ASISTENTE
 //
 // La dirección del Worker de Cloudflare que contesta las preguntas de
-// /preguntar (su código está en ia/agente.js). La usan dos lugares, y por eso
+// /preguntar (su código está en ia/). La usan dos lugares, y por eso
 // vive aquí y no en la página:
 //
 // - astro.config.mjs, para abrirle la CSP (connect-src) a ese origen y a

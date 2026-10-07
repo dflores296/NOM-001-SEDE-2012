@@ -1,14 +1,14 @@
 // Pruebas del asistente de /preguntar del lado de la página, sin navegador:
 // qué se le manda (pasajes.js), cómo se lee lo que contesta (respuesta.js),
 // las tablas renglón por renglón (lib/tabla-texto.js) y que todo lo que arma
-// la página pase la revisión del Worker (ia/agente.js). Las últimas recorren
+// la página pase la revisión del Worker (ia/nucleo.js). Las últimas recorren
 // el sitio compilado.
 //
 //     cd site && npm run build && node pruebas/preguntar.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { TOPES, validar } from '../../ia/agente.js';
+import { TOPES, validar } from '../../ia/nucleo.js';
 import { rejilla, tablaComoTexto } from '../src/lib/tabla-texto.js';
 import {
   elegir,
