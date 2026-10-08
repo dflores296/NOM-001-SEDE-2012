@@ -1,8 +1,9 @@
 # El asistente de /preguntar
 
 Un Worker de Cloudflare: un programa chico que corre en los servidores de
-Cloudflare cada vez que alguien hace una pregunta en la página `/preguntar`
-de la guía. Le pasa a dos modelos de IA de código abierto de OpenAI (licencia
+Cloudflare cada vez que alguien le hace una pregunta al asistente de la guía:
+la burbuja de abajo a la derecha de cada página (la guía de uso está en
+`/preguntar`). Le pasa a dos modelos de IA de código abierto de OpenAI (licencia
 Apache-2.0) lo que la página le manda, con las instrucciones de cada paso: el
 chico, **gpt-oss-20b**, escoge qué leer; el grande, **gpt-oss-120b**, redacta
 la respuesta, que es donde hay que leer con cuidado a qué calibre y condición
@@ -12,7 +13,7 @@ El asistente recorre la norma como una persona con el libro: primero el
 índice, luego el índice del artículo, luego lo que tiene que leer.
 
 ```
-Página /preguntar (GitHub Pages)                Worker nom-001-ia (Cloudflare)
+Burbuja del sitio (GitHub Pages)               Worker nom-001-ia (Cloudflare)
                                                  gpt-oss-20b / -120b (Workers AI)
   pregunta + índice general (151 artículos,  ──▶  1. escoge de 1 a 3 artículos
   Capítulo 10, Apéndices)                    ◀──     «240»
@@ -65,10 +66,10 @@ Para que eso siga así: no meter tarjeta y no activar «Workers Paid».
      (el que trae).
 4. **Deploy.** Al terminar, Cloudflare enseña la dirección del Worker:
    `https://nom-001-ia.<tu-subdominio>.workers.dev`.
-5. Esa dirección va en `site/src/lib/asistente.js`. Con eso aparece la pestaña
-   «Preguntar», la CSP se abre a ese origen y nada más, y la página empieza a
-   usarlo. Es un cambio de contenido: hay que volver a sellar la huella del
-   sitio (la pestaña sale en todas las páginas).
+5. Esa dirección va en `site/src/lib/asistente.js`. Con eso aparece la
+   burbuja del asistente, la CSP se abre a ese origen y nada más, y el sitio
+   empieza a usarlo. Es un cambio de contenido: hay que volver a sellar la
+   huella del sitio (la burbuja va en todas las páginas).
 
 Desde entonces, cada cambio en `ia/` que llegue a `main` se publica solo.
 Conviene poner `ia/*` en **Build watch paths** (Settings → Build) para que un

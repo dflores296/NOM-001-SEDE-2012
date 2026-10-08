@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import '../styles/global.css';
+import Asistente from '../components/Asistente.astro';
 import { ASISTENTE } from '../lib/asistente.js';
 const { title, desc = 'Guía interactiva de la NOM-001-SEDE-2012, Instalaciones Eléctricas (utilización).' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -15,9 +16,6 @@ const PESTANAS = [
   { href: '/apendices/', txt: 'Apéndices', activa: ruta.startsWith('/apendices') || ruta.startsWith('/cierre') },
   { href: '/glosario/', txt: 'Glosario', activa: ruta.startsWith('/glosario') },
   { href: '/mapa/', txt: 'Mapa', activa: ruta.startsWith('/mapa') },
-  // Solo con el asistente conectado (src/lib/asistente.js): una pestaña que
-  // lleva a un «todavía no funciona» no le sirve a nadie.
-  ...(ASISTENTE ? [{ href: '/preguntar/', txt: 'Preguntar', activa: ruta.startsWith('/preguntar') }] : []),
   { href: '/observaciones/', txt: 'Observaciones', activa: ruta.startsWith('/observaciones') },
 ];
 // En la portada el buscador grande de la banda hace las veces del de la
@@ -41,7 +39,9 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* resizes-content: en el teléfono, el teclado encoge la página en vez
+        de taparla, y el campo del asistente queda a la vista. */}
+    <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content" />
     <title>{title}</title>
     <meta name="description" content={desc} />
     {!es404 && <link rel="canonical" href={urlCompleta} />}
@@ -165,6 +165,9 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
           {PESTANAS.filter((p) => p.href !== '/observaciones/').map((p) => (
             <a href={`${base}${p.href}`}>{p.txt}</a>
           ))}
+          {/* El asistente no es pestaña: vive en la burbuja de cada página.
+              Aquí, su guía, solo si está conectado (src/lib/asistente.js). */}
+          {ASISTENTE && <a href={`${base}/preguntar/`}>El asistente</a>}
           <a href={`${base}/tablas/generales/`}>Tablas generales</a>
           <a href={`${base}/cierre/`}>Títulos de cierre</a>
         </div>
@@ -183,6 +186,8 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
       </div>
     </footer>
 
+    <Asistente />
+
     <script>
       // El comportamiento de la página, una pieza por módulo (src/scripts/).
       // El orden es el de antes de separarlos: cada uno se ejecuta al cargar.
@@ -194,6 +199,7 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
       import '../scripts/tema.js';
       import '../scripts/anclas.js';
       import '../scripts/sin-conexion.js';
+      import '../scripts/asistente/burbuja.js';
     </script>
   </body>
 </html>

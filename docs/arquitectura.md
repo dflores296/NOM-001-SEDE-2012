@@ -200,7 +200,9 @@ no uno verificado.
 
 ## El asistente
 
-`/preguntar` contesta preguntas en lenguaje natural con el texto de la norma.
+El asistente contesta preguntas en lenguaje natural con el texto de la norma.
+Vive en una burbuja abajo a la derecha de cada página
+(`components/Asistente.astro`); `/preguntar` es su guía.
 El sitio sigue siendo estático: lo único que vive fuera es un Worker de
 Cloudflare (`ia/agente.js`) que llama a dos modelos de código abierto
 (gpt-oss-20b y gpt-oss-120b) en Workers AI, dentro del plan gratis. Cómo se publica, qué
@@ -252,15 +254,31 @@ chico.
   una cita a un inciso ([240-4(d)(3)]) lleva a su ancla.
 - **Memoria:** cada consulta lleva las dos preguntas y respuestas anteriores;
   «Nueva conversación» la borra.
-- **«¿Algo está mal en esta respuesta?»** lleva a `/observaciones` con la
+- **La burbuja** (`scripts/asistente/burbuja.js`) abre y cierra la
+  conversación y recuerda si estaba abierta. `preguntar/chat.js` se baja la
+  primera vez que se abre: quien solo lee la norma no lo descarga. En la
+  computadora es una ventana encima de la página; en el teléfono (hasta
+  640px) ocupa la pantalla, con `aria-modal` y el foco adentro. Esc la
+  cierra. Hasta 1020px es solo el ícono, y el índice del artículo en el
+  teléfono se recorre a su izquierda.
+- **La conversación sigue al cambiar de página:** se guarda en
+  `sessionStorage` (`asis-conversacion`, con la memoria de las dos últimas
+  preguntas), porque abrir una cita es cambiar de página. En el teléfono,
+  abrir una cita cierra la burbuja para que se vea la norma; un punto en la
+  burbuja avisa que la conversación sigue. Se borra al cerrar la pestaña o
+  con «Nueva conversación».
+- **Las sugerencias** de la bienvenida y los ejemplos de `/preguntar`
+  (`data-preguntar`) se mandan al tocarlos; `data-abrir-asistente` solo abre.
+- **«¿Algo está mal? Repórtalo»** lleva a `/observaciones` con la
   pregunta, la respuesta y lo que leyó escritos. Viajan por `sessionStorage`,
-  no por la URL, y el formulario los limpia como todo lo demás.
+  no por la URL, y el formulario los limpia como todo lo demás. El «volver»
+  regresa a la página donde se estaba.
 - **Topes en cascada:** `LECTURA` y `TOPE_INDICE` (página) van por debajo de
   `TOPES` (Worker, `ia/nucleo.js`), y una prueba lo comprueba con las partes
   más largas de la norma.
 
-La dirección del Worker vive en `site/src/lib/asistente.js`. Vacía, no hay
-pestaña «Preguntar», la CSP no cambia y la página avisa que el asistente no
+La dirección del Worker vive en `site/src/lib/asistente.js`. Vacía, la
+burbuja no aparece, la CSP no cambia y `/preguntar` avisa que el asistente no
 está conectado. Las pruebas en navegador no dependen de eso: le dan a la página
 un asistente de mentiras en el mismo servidor.
 

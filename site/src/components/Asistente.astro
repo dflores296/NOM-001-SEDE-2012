@@ -1,0 +1,85 @@
+---
+// El asistente, en todas las páginas: una burbuja abajo a la derecha que abre
+// la conversación. En la computadora es un panel encima de la página; en el
+// teléfono ocupa la pantalla. La conversación sigue al cambiar de página
+// (sessionStorage), para poder abrir una cita y volver.
+//
+// Lo arman src/scripts/asistente/burbuja.js (abrir, cerrar, recordar) y
+// src/scripts/preguntar/chat.js (preguntar y pintar), que se baja hasta que
+// se abre. Sin dirección del Worker (src/lib/asistente.js vacío) o sin
+// JavaScript no se ve nada: la burbuja nace oculta. La dirección viaja en
+// data-asistente porque la CSP bloquea los scripts en línea.
+import { ASISTENTE } from '../lib/asistente.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Tocar una la manda. Cortas, para que quepan como botón, y escritas como
+// pide la guía (/preguntar).
+const EJEMPLOS = [
+  '¿Qué protección máxima lleva un conductor 14 AWG de cobre?',
+  '¿Dónde se requiere protección contra falla a tierra en una vivienda?',
+  '¿Qué calibre lleva el conductor de puesta a tierra de un circuito de 20 A?',
+];
+---
+
+<div class="asis" data-asistente={ASISTENTE}>
+  <button type="button" class="asis-lanzar" aria-expanded="false" aria-controls="asis-panel" hidden>
+    <svg class="asis-ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z" /></svg>
+    <svg class="asis-ico-bajar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+    <span class="asis-lanzar-txt">Pregúntale a la norma</span>
+    <span class="asis-punto" hidden><span class="vh">(conversación abierta)</span></span>
+  </button>
+
+  <section id="asis-panel" class="asis-panel" role="dialog" aria-labelledby="asis-titulo" hidden>
+    <header class="asis-cab">
+      <span class="asis-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z" /></svg>
+      </span>
+      <div class="asis-titulos">
+        <h2 id="asis-titulo">Asistente de la NOM</h2>
+        <p>Contesta con el texto de la norma</p>
+      </div>
+      <button type="button" class="asis-icono" data-nueva aria-label="Nueva conversación"
+              title="Nueva conversación" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5" /></svg>
+      </button>
+      <button type="button" class="asis-icono" data-cerrar aria-label="Cerrar el asistente" title="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+    </header>
+
+    <div class="asis-cuerpo">
+      <div class="asis-msg asis-ia asis-hola">
+        <div class="asis-burbuja">
+          <p>Hola. Pregúntame lo que necesites de la NOM-001-SEDE-2012: busco en la norma y te contesto con lo que dice, con el enlace a cada parte.</p>
+          <p class="asis-sugerencias-txt">Puedes empezar con una de estas:</p>
+          <div class="asis-sugerencias">
+            {EJEMPLOS.map((e) => (
+              <button type="button" class="asis-sugerencia" data-preguntar={e}>{e}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+      <ol class="asis-chat" aria-live="polite"></ol>
+    </div>
+
+    <form class="asis-form">
+      <label class="vh" for="asis-campo">Tu pregunta</label>
+      <textarea id="asis-campo" rows="1" maxlength="500" enterkeyhint="send"
+                placeholder="Escribe tu pregunta…"></textarea>
+      <button type="submit" class="asis-enviar" aria-label="Enviar la pregunta" title="Enviar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+      </button>
+    </form>
+    <p class="asis-pie">
+      Lo redacta una IA y puede equivocarse: abre la cita antes de decidir.{' '}
+      <a href={`${base}/preguntar/`}>Cómo preguntar y privacidad</a>
+    </p>
+  </section>
+</div>

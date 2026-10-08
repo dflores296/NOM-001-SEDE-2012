@@ -1,5 +1,8 @@
-// La conversación de /preguntar. El asistente recorre la norma como una
-// persona con el libro, en tres consultas al modelo (Worker: ia/nucleo.js):
+// La conversación con el asistente, dentro de la burbuja que aparece en
+// todas las páginas (components/Asistente.astro; abrirla y cerrarla es de
+// ../asistente/burbuja.js, que baja este módulo la primera vez que se abre).
+// El asistente recorre la norma como una persona con el libro, en tres
+// consultas al modelo (Worker: ia/nucleo.js):
 //
 // 1. Lee el índice general (/data/ia/indice.json) y escoge de 1 a 3
 //    artículos.
@@ -22,6 +25,10 @@
 // textContent: es texto de un modelo y no se interpreta como HTML. Debajo
 // van siempre las partes de la norma que leyó, con su enlace: también cuando
 // el asistente falla, que es cuando más sirven.
+//
+// La conversación se guarda en sessionStorage: al abrir una cita se cambia
+// de página, y al volver a abrir la burbuja sigue ahí. Se borra al cerrar la
+// pestaña del navegador o con «Nueva conversación».
 import { base } from '../base.js';
 import { buscarPregunta, fragmentos as textosListos, load } from '../buscador/indice.js';
 import { href } from '../buscador/resultados.js';
@@ -41,16 +48,6 @@ import {
 } from './lectura.js';
 import { elegir, palabrasClave } from './pasajes.js';
 import { bloques, normRef, trozos } from './respuesta.js';
-
-const raiz = document.querySelector('[data-asistente]');
-const URL_ASISTENTE = raiz?.dataset.asistente || '';
-const form = document.getElementById('preg-form');
-const campo = document.getElementById('preg-campo');
-const boton = document.getElementById('preg-enviar');
-const chat = document.getElementById('preg-chat');
-const cerrado = document.getElementById('preg-cerrado');
-const guia = document.getElementById('preg-guia');
-const nueva = document.getElementById('preg-nueva');
 
 // Tope por navegador, como el del formulario de observaciones: que una sola
 // persona no se acabe el cupo diario, que es de todos.
@@ -124,8 +121,10 @@ const cargarClave = (clave) => {
 
 // La conversación: las últimas preguntas y respuestas van con cada consulta,
 // para que «¿y para 12 AWG?» sepa de qué se hablaba. Topes en ia/nucleo.js.
-const historia = [];
 const RECUERDA = 2;
+// Lo que se guarda para pintarla otra vez en la página siguiente.
+const GUARDA = 'asis-conversacion';
+const MAX_MENSAJES = 30;
 
 function el(tag, clase, texto) {
   const e = document.createElement(tag);
@@ -146,8 +145,7 @@ function pintarTrozos(destino, linea, refs) {
   }
 }
 
-function pintarRespuesta(caja, texto, refs) {
-  caja.append(el('p', 'preg-ia', 'Respuesta generada por IA · verifícala en la norma'));
+function pintarTexto(caja, texto, refs) {
   for (const b of bloques(texto)) {
     if (b.tipo === 'ul') {
       const ul = el('ul');
@@ -165,32 +163,22 @@ function pintarRespuesta(caja, texto, refs) {
   }
 }
 
-function pintarFuentes(caja, elegidos, contesto) {
-  if (!elegidos.length) return;
-  const d = el('details', 'preg-fuentes');
-  d.append(
-    el(
-      'summary',
-      null,
-      contesto
-        ? `Lo que leyó de la norma (${elegidos.length})`
-        : `Lo que encontré en la norma para tu pregunta, sin respuesta del asistente (${elegidos.length})`
-    )
-  );
-  const ul = el('ul');
-  for (const f of elegidos) {
-    const li = el('li');
-    const a = el('a', null, f.ref);
-    a.href = href(f.r);
-    li.append(a);
-    if (f.titulo && f.titulo !== f.ref) li.append(document.createTextNode(` · ${f.titulo}`));
-    ul.append(li);
+// Lo que leyó, como etiquetas con enlace. Cuando el asistente no contestó es
+// lo único que hay, y lo dice.
+function pintarFuentes(destino, fuentes, contesto) {
+  if (!fuentes?.length) return;
+  const d = el('div', 'asis-fuentes');
+  d.append(el('span', 'asis-fuentes-txt', contesto ? 'Leyó:' : 'Lo que encontré en la norma:'));
+  for (const f of fuentes) {
+    const a = el('a', 'asis-fuente', f.ref);
+    a.href = f.href;
+    if (f.titulo && f.titulo !== f.ref) a.title = f.titulo;
+    d.append(a);
   }
-  d.append(ul);
-  caja.append(d);
+  destino.append(d);
 }
 
-async function pedir(cuerpo) {
+async function pedir(url, cuerpo) {
   const falla = (motivo) => Object.assign(new Error(motivo), { motivo });
   // gpt-oss tarda unos segundos, pero con el servicio cargado puede esperar
   // turno. Minuto y medio sin nada es que algo se colgó; el Worker anota en
@@ -199,7 +187,7 @@ async function pedir(cuerpo) {
   const reloj = setTimeout(() => alto.abort(), 90_000);
   let r;
   try {
-    r = await fetch(URL_ASISTENTE, {
+    r = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(cuerpo),
@@ -218,33 +206,56 @@ async function pedir(cuerpo) {
   return j.respuesta;
 }
 
-// «¿Algo está mal en esta respuesta?» lleva al formulario de /observaciones
-// con la pregunta, la respuesta y lo que leyó ya escritos. Viajan por
-// sessionStorage, que solo puede escribir este mismo sitio, y no por la URL,
-// que cualquiera puede armar: el formulario solo acepta de la URL las
-// referencias que generan los botones del sitio (observaciones/limpieza.js),
-// y «Respuesta del asistente» es una.
-function botonReportar(pregunta, respuesta, leidas) {
-  const b = el('button', 'preg-reportar', '¿Algo está mal en esta respuesta? Repórtalo');
+// «Reportar un error» lleva al formulario de /observaciones con la pregunta,
+// la respuesta y lo que leyó ya escritos. Viajan por sessionStorage, que
+// solo puede escribir este mismo sitio, y no por la URL, que cualquiera
+// puede armar: el formulario solo acepta de la URL las referencias que
+// generan los botones del sitio (observaciones/limpieza.js), y «Respuesta
+// del asistente» es una. Al terminar, «volver» lleva a la página donde se
+// estaba.
+function botonReportar(m) {
+  const b = el('button', 'asis-reportar');
   b.type = 'button';
+  b.innerHTML =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4M4 4h13l-2 4 2 4H4"/></svg>';
+  b.append('¿Algo está mal? Repórtalo');
   b.addEventListener('click', () => {
     try {
       sessionStorage.setItem(
         'obs-asistente',
         JSON.stringify({
-          pregunta,
-          respuesta: respuesta.slice(0, 1500),
-          leyo: leidas.map((f) => f.ref).join(', '),
+          pregunta: m.pregunta,
+          respuesta: m.texto.slice(0, 1500),
+          leyo: (m.fuentes || []).map((f) => f.ref).join(', '),
         })
       );
     } catch {}
     const ref = encodeURIComponent('Respuesta del asistente');
-    location.href = `${base}/observaciones/?ref=${ref}&de=${encodeURIComponent(`${base}/preguntar/`)}`;
+    location.href = `${base}/observaciones/?ref=${ref}&de=${encodeURIComponent(location.pathname)}`;
   });
   return b;
 }
 
-let ocupado = false;
+/** Un mensaje guardado, pintado: { rol: 'tu' | 'ia' | 'aviso', texto, … }. */
+function pintarMensaje(m) {
+  const li = el('li', `asis-msg asis-${m.rol === 'tu' ? 'tu' : 'ia'}`);
+  if (m.rol === 'aviso') li.classList.add('asis-error');
+  const burbuja = el('div', 'asis-burbuja');
+  li.append(burbuja);
+  if (m.rol === 'tu') {
+    burbuja.textContent = m.texto;
+    return li;
+  }
+  if (m.rol === 'aviso') {
+    burbuja.append(el('p', null, m.texto));
+    pintarFuentes(li, m.fuentes, false);
+    return li;
+  }
+  pintarTexto(burbuja, m.texto, new Map(m.enlaces || []));
+  pintarFuentes(li, m.fuentes, true);
+  li.append(botonReportar(m));
+  return li;
+}
 
 // Los números se quedan fuera de la búsqueda (ver buscarPregunta), pero no
 // del recorte: con ellos pasajes.js escoge el renglón del 20 A.
@@ -294,131 +305,186 @@ const CIERRE = {
 const nombreClave = (k) => CIERRE[k] || `del artículo ${k}`;
 const lista = (xs) => (xs.length > 1 ? `${xs.slice(0, -1).join(', ')} y ${xs.at(-1)}` : xs[0]);
 
-async function preguntar(pregunta) {
-  const turno = el('li', 'preg-turno');
-  turno.append(el('p', 'preg-q', pregunta));
-  const caja = el('div', 'preg-r');
-  const estado = el('p', 'preg-estado', 'Leyendo el índice de la norma…');
-  caja.append(estado);
-  turno.append(caja);
-  chat.append(turno);
-  turno.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+function leerConversacion() {
+  try {
+    const c = JSON.parse(sessionStorage.getItem(GUARDA) || 'null');
+    if (c?.v === 1 && Array.isArray(c.mensajes) && Array.isArray(c.historia)) return c;
+  } catch {}
+  return { v: 1, mensajes: [], historia: [] };
+}
 
-  const aviso = (motivo) => {
-    estado.replaceWith(el('p', 'preg-error', MENSAJES[motivo] || MENSAJES.falla));
+/**
+ * Arma la conversación dentro de la burbuja (raiz = .asis). Devuelve
+ * { preguntar(texto) } para las sugerencias y la guía.
+ */
+export function iniciar(raiz) {
+  const URL_ASISTENTE = raiz.dataset.asistente;
+  const chat = raiz.querySelector('.asis-chat');
+  const cuerpo = raiz.querySelector('.asis-cuerpo');
+  const form = raiz.querySelector('.asis-form');
+  const campo = raiz.querySelector('#asis-campo');
+  const enviar = raiz.querySelector('.asis-enviar');
+  const nueva = raiz.querySelector('[data-nueva]');
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)');
+
+  let conv = leerConversacion();
+  let ocupado = false;
+
+  const guardar = () => {
+    conv.mensajes = conv.mensajes.slice(-MAX_MENSAJES);
+    try {
+      sessionStorage.setItem(GUARDA, JSON.stringify(conv));
+    } catch {}
+  };
+  const bajar = (li) => {
+    const top = li ? li.offsetTop - 12 : cuerpo.scrollHeight;
+    cuerpo.scrollTo({ top, behavior: quieto.matches ? 'auto' : 'smooth' });
+  };
+  const anotarMensaje = (m) => {
+    conv.mensajes.push(m);
+    guardar();
+    const li = pintarMensaje(m);
+    chat.append(li);
+    nueva.hidden = false;
+    return li;
   };
 
-  if (usadas().length >= TOPE) {
-    aviso('tope');
-    return;
-  }
+  for (const m of conv.mensajes) chat.append(pintarMensaje(m));
+  nueva.hidden = !conv.mensajes.length;
+  cuerpo.scrollTop = cuerpo.scrollHeight;
 
-  const antes = historia.slice(-RECUERDA);
-  let leidas = [];
-  let contesto = false;
-  try {
-    anotar();
-    // Paso 1: el índice general, con las pistas del buscador.
-    const [{ indice, claves: todas }, halladas] = await Promise.all([
-      cargarGeneral(),
-      pistas(pregunta),
-    ]);
-    const r1 = await pedir({
-      paso: 'articulos',
-      pregunta,
-      historia: antes,
-      indice: indice + bloquePistas(halladas.map((p) => p.general)),
-    });
-    const claves = clavesPedidas(r1, todas);
+  // Lo que se necesita para la primera pregunta, desde que se abre.
+  cargarGeneral().catch(() => {});
+  load().catch(() => {});
 
-    // Paso 2: el índice de los artículos escogidos, con las pistas que caen
-    // en ellos.
-    if (claves.length) {
-      estado.textContent = `Revisando el índice ${lista(claves.map(nombreClave))}…`;
-      const paqs = await Promise.all(claves.map(cargarClave));
-      const suyas = bloquePistas(
-        halladas.filter((p) => claves.includes(p.clave)).map((p) => p.detalle)
-      );
-      const r2 = await pedir({
-        paso: 'secciones',
-        pregunta,
-        historia: antes,
-        indice: indiceCombinado(paqs, TOPE_INDICE - suyas.length) + suyas,
-      });
-      leidas = fragmentosDe(await leerPedidas(r2, paqs, todas));
-    }
+  async function preguntar(pregunta) {
+    anotarMensaje({ rol: 'tu', texto: pregunta });
+    const pensando = el('li', 'asis-msg asis-ia asis-pensando');
+    const burbuja = el('div', 'asis-burbuja');
+    const puntos = el('span', 'asis-puntos');
+    puntos.setAttribute('aria-hidden', 'true');
+    puntos.append(el('i'), el('i'), el('i'));
+    const estado = el('span', 'asis-estado', 'Leyendo el índice de la norma…');
+    burbuja.append(puntos, estado);
+    pensando.append(burbuja);
+    chat.append(pensando);
+    bajar();
 
-    // Si no pidió nada que exista, busca la página.
-    if (!leidas.length) {
-      estado.textContent = 'Buscando en la norma…';
-      leidas = await respaldo(pregunta);
-    }
-    if (!leidas.length) {
-      aviso('nada');
+    const terminar = (m) => {
+      pensando.remove();
+      bajar(anotarMensaje(m));
+    };
+    const aviso = (motivo, fuentes = []) =>
+      terminar({ rol: 'aviso', texto: MENSAJES[motivo] || MENSAJES.falla, fuentes });
+
+    if (usadas().length >= TOPE) {
+      aviso('tope');
       return;
     }
 
-    // Paso 3: leer y contestar.
-    estado.textContent = `Leyendo ${lista(leidas.slice(0, 4).map((f) => f.ref))}${leidas.length > 4 ? '…' : ''} y redactando…`;
-    const respuesta = await pedir({
-      paso: 'responder',
-      pregunta,
-      historia: antes,
-      // El título va en el primer renglón del texto: no se manda dos veces.
-      fragmentos: leidas.map(({ ref, texto }) => ({ ref, titulo: '', texto })),
-    });
-    estado.remove();
-    const enlaces = new Map();
-    for (const [id, r] of [...citables(leidas), ...leidas.map((f) => [f.ref, f.r])]) {
-      if (!enlaces.has(normRef(id))) enlaces.set(normRef(id), href(r));
-    }
-    pintarRespuesta(caja, respuesta, enlaces);
-    caja.append(botonReportar(pregunta, respuesta, leidas));
-    contesto = true;
-    historia.push({ p: pregunta, r: respuesta.slice(0, 1400) });
-    nueva.hidden = false;
-  } catch (e) {
-    aviso(e?.motivo || 'falla');
-  } finally {
-    pintarFuentes(caja, leidas, contesto);
-  }
-}
+    const antes = conv.historia.slice(-RECUERDA);
+    let leidas = [];
+    const fuentes = () =>
+      leidas.map((f) => ({ ref: f.ref, titulo: f.titulo || '', href: href(f.r) }));
+    try {
+      anotar();
+      // Paso 1: el índice general, con las pistas del buscador.
+      const [{ indice, claves: todas }, halladas] = await Promise.all([
+        cargarGeneral(),
+        pistas(pregunta),
+      ]);
+      const r1 = await pedir(URL_ASISTENTE, {
+        paso: 'articulos',
+        pregunta,
+        historia: antes,
+        indice: indice + bloquePistas(halladas.map((p) => p.general)),
+      });
+      const claves = clavesPedidas(r1, todas);
 
-if (raiz && !URL_ASISTENTE) {
-  cerrado.hidden = false;
-} else if (raiz) {
-  form.hidden = false;
-  guia.hidden = false;
-  // Un ejemplo se pone en el campo, no se manda: así no gasta cupo sin querer.
-  for (const b of guia.querySelectorAll('[data-ejemplo]')) {
-    b.addEventListener('click', () => {
-      campo.value = b.dataset.ejemplo;
-      campo.focus();
-      campo.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    });
+      // Paso 2: el índice de los artículos escogidos, con las pistas que caen
+      // en ellos.
+      if (claves.length) {
+        estado.textContent = `Revisando el índice ${lista(claves.map(nombreClave))}…`;
+        const paqs = await Promise.all(claves.map(cargarClave));
+        const suyas = bloquePistas(
+          halladas.filter((p) => claves.includes(p.clave)).map((p) => p.detalle)
+        );
+        const r2 = await pedir(URL_ASISTENTE, {
+          paso: 'secciones',
+          pregunta,
+          historia: antes,
+          indice: indiceCombinado(paqs, TOPE_INDICE - suyas.length) + suyas,
+        });
+        leidas = fragmentosDe(await leerPedidas(r2, paqs, todas));
+      }
+
+      // Si no pidió nada que exista, busca la página.
+      if (!leidas.length) {
+        estado.textContent = 'Buscando en la norma…';
+        leidas = await respaldo(pregunta);
+      }
+      if (!leidas.length) {
+        aviso('nada');
+        return;
+      }
+
+      // Paso 3: leer y contestar.
+      estado.textContent = `Leyendo ${lista(leidas.slice(0, 4).map((f) => f.ref))}${leidas.length > 4 ? '…' : ''} y redactando…`;
+      const respuesta = await pedir(URL_ASISTENTE, {
+        paso: 'responder',
+        pregunta,
+        historia: antes,
+        // El título va en el primer renglón del texto: no se manda dos veces.
+        fragmentos: leidas.map(({ ref, texto }) => ({ ref, titulo: '', texto })),
+      });
+      const enlaces = new Map();
+      for (const [id, r] of [...citables(leidas), ...leidas.map((f) => [f.ref, f.r])]) {
+        if (!enlaces.has(normRef(id))) enlaces.set(normRef(id), href(r));
+      }
+      conv.historia = [...conv.historia, { p: pregunta, r: respuesta.slice(0, 1400) }].slice(
+        -RECUERDA
+      );
+      terminar({
+        rol: 'ia',
+        pregunta,
+        texto: respuesta,
+        enlaces: [...enlaces],
+        fuentes: fuentes(),
+      });
+    } catch (e) {
+      aviso(e?.motivo || 'falla', fuentes());
+    }
   }
-  // Empezar de nuevo: sin la conversación anterior, que si no se manda con
-  // cada pregunta y puede confundir al cambiar de tema.
-  nueva.addEventListener('click', () => {
-    historia.length = 0;
-    chat.replaceChildren();
-    nueva.hidden = true;
-    campo.focus();
-  });
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const pregunta = campo.value.trim();
+
+  async function mandar(texto) {
+    const pregunta = String(texto || '')
+      .trim()
+      .slice(0, 500);
     if (!pregunta || ocupado) return;
     ocupado = true;
-    boton.disabled = true;
-    campo.value = '';
+    enviar.disabled = true;
     try {
       await preguntar(pregunta);
     } finally {
       ocupado = false;
-      boton.disabled = false;
-      campo.focus();
+      enviar.disabled = false;
     }
+  }
+
+  // El campo crece con lo que se escribe, hasta unos cinco renglones.
+  const crecer = () => {
+    campo.style.height = 'auto';
+    campo.style.height = `${Math.min(campo.scrollHeight, 132)}px`;
+  };
+  campo.addEventListener('input', crecer);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const texto = campo.value;
+    if (!texto.trim() || ocupado) return;
+    campo.value = '';
+    crecer();
+    mandar(texto);
   });
   // Enter manda la pregunta, como en cualquier chat; Mayús+Enter es un
   // salto de línea.
@@ -428,14 +494,18 @@ if (raiz && !URL_ASISTENTE) {
       form.requestSubmit();
     }
   });
-  // El índice general y el del buscador (para las pistas) se empiezan a
-  // bajar en cuanto se enfoca el campo, no al mandar la primera pregunta.
-  campo.addEventListener(
-    'focus',
-    () => {
-      cargarGeneral().catch(() => {});
-      load().catch(() => {});
-    },
-    { once: true }
-  );
+  // Empezar de nuevo: sin la conversación anterior, que si no se manda con
+  // cada pregunta y puede confundir al cambiar de tema.
+  nueva.addEventListener('click', () => {
+    if (ocupado) return;
+    conv = { v: 1, mensajes: [], historia: [] };
+    try {
+      sessionStorage.removeItem(GUARDA);
+    } catch {}
+    chat.replaceChildren();
+    nueva.hidden = true;
+    campo.focus();
+  });
+
+  return { preguntar: mandar };
 }

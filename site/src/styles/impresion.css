@@ -50,7 +50,7 @@
 
   /* Lo que solo sirve en pantalla. */
   .saltar, header.top, .side, .toc, .pager, .partes, .cap-nav,
-  .indice-movil, .im-hoja, .report, .anchor, .backlinks, details.fig-texto,
+  .indice-movil, .im-hoja, .asis, .report, .anchor, .backlinks, details.fig-texto,
   .glos-filtro, .tabla-desliza, .portada-fondo, .hero-buscar, .atajos,
   .tabla-pie a[href*="/observaciones/"], .obs-btn,
   form[role="search"], .results, button {

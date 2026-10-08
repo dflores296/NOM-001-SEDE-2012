@@ -441,7 +441,7 @@ prueba('Lo que manda la página cabe en los topes del Worker', () => {
   afirmar(PRESUPUESTO.porFragmento < TOPES.texto, 'texto por fragmento');
   afirmar(PRESUPUESTO.total < TOPES.total, 'total');
   const html = fs.readFileSync(path.join(DIST, 'preguntar', 'index.html'), 'utf8');
-  const max = Number(/id="preg-campo"[^>]*maxlength="(\d+)"/.exec(html)?.[1]);
+  const max = Number(/id="asis-campo"[^>]*maxlength="(\d+)"/.exec(html)?.[1]);
   afirmar(max === TOPES.pregunta, `el campo admite ${max} y el Worker ${TOPES.pregunta}`);
 });
 
@@ -547,6 +547,9 @@ prueba('Lo que escriba el modelo se queda como texto, aunque parezca HTML', () =
 prueba('Las citas con los corchetes de gpt-oss también son enlace', () => {
   const t = normalizarCitas('Según 【240-4†L3-L5】, ［Tabla 250-122］ y 〔250-122〕.');
   afirmar(t === 'Según [240-4], [Tabla 250-122] y [250-122].', t);
+  // Abre con uno y cierra con otro, como pasó con la nota de una errata.
+  const mixta = normalizarCitas('el valor correcto es 11 A 【Nota de la guía (errata del DOF)}].');
+  afirmar(mixta === 'el valor correcto es 11 A [Nota de la guía (errata del DOF)].', mixta);
   const enlaces = bloques('Ver 【Tabla 250-122】.')
     .flatMap((b) => trozos(b.texto, REFS))
     .filter((x) => x.href);

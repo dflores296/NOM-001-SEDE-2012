@@ -2,13 +2,11 @@
 import Base from '../layouts/Base.astro';
 import { ASISTENTE } from '../lib/asistente.js';
 
-// El asistente: se le pregunta en palabras propias y contesta con lo que dice
-// la norma, citando cada parte. Cómo funciona, en src/scripts/preguntar/chat.js;
-// el Worker que llama al modelo, en ia/. Su dirección viaja en
-// data-asistente porque la CSP bloquea los scripts en línea.
-
-// Preguntas de ejemplo: tocar una la pone en el campo (no la manda, para no
-// gastar cupo sin querer). Están escritas como pide la guía de abajo.
+// La guía del asistente. El asistente mismo vive en la burbuja de abajo a
+// la derecha, en todas las páginas (components/Asistente.astro); aquí se
+// explica cómo preguntarle, qué no hace y a dónde va lo que se le escribe.
+// Los botones con data-preguntar abren la burbuja y mandan esa pregunta
+// (scripts/asistente/burbuja.js).
 const EJEMPLOS = [
   '¿Cuál es la protección máxima contra sobrecorriente de un conductor 14 AWG de cobre?',
   '¿Qué calibre mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?',
@@ -18,16 +16,37 @@ const EJEMPLOS = [
 ];
 ---
 
-<Base title="Preguntar — NOM-001-SEDE-2012"
+<Base title="El asistente — NOM-001-SEDE-2012"
       desc="Pregúntale a la NOM-001-SEDE-2012 en tus palabras: el asistente busca las secciones, tablas y definiciones que aplican y contesta con lo que dicen, con el enlace a cada una.">
-  <main id="contenido" tabindex="-1" class="wrap obs preg" data-asistente={ASISTENTE}>
-    <h1>Preguntar</h1>
+  <main id="contenido" tabindex="-1" class="wrap obs preg">
+    <h1>El asistente</h1>
 
     <p class="obs-intro">
-      Escribe tu duda como se la plantearías a un colega. El asistente busca en
-      la norma las secciones, tablas y definiciones que aplican y te contesta
-      con lo que dicen, con el enlace a cada una.
+      Pregúntale a la norma en tus palabras, como a un colega. Busca las
+      secciones, tablas y definiciones que aplican y te contesta con lo que
+      dicen, con el enlace a cada una. Está en la burbuja de abajo a la
+      derecha, en todas las páginas.
     </p>
+
+    {ASISTENTE ? (
+      <p class="preg-abrir">
+        <button type="button" class="preg-boton" data-abrir-asistente>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z" /></svg>
+          Abrir el asistente
+        </button>
+      </p>
+    ) : (
+      <div class="obs-cerrado" id="preg-cerrado">
+        <p><b>El asistente todavía no está conectado.</b></p>
+        <p>Mientras, el buscador de arriba encuentra secciones, tablas y definiciones por palabra o por número.</p>
+      </div>
+    )}
+    <noscript>
+      <div class="obs-cerrado">
+        <p>El asistente necesita JavaScript. Sin él, el índice y las páginas de cada artículo siguen funcionando.</p>
+      </div>
+    </noscript>
 
     <div class="obs-tip">
       <b>Lo redacta un modelo de inteligencia artificial y puede equivocarse.</b>
@@ -36,80 +55,63 @@ const EJEMPLOS = [
       sustituye el criterio de una Unidad de Verificación.
     </div>
 
-    <div class="obs-cerrado" id="preg-cerrado" hidden>
-      <p><b>El asistente todavía no está conectado.</b></p>
-      <p>Mientras, el buscador de arriba encuentra secciones, tablas y definiciones por palabra o por número.</p>
-    </div>
-    <noscript>
-      <div class="obs-cerrado">
-        <p>El asistente necesita JavaScript. Sin él, el índice y las páginas de cada artículo siguen funcionando.</p>
-      </div>
-    </noscript>
+    {ASISTENTE && (
+      <section>
+        <h2>Pruébalo</h2>
+        <p class="obs-nota">Toca una y el asistente la contesta.</p>
+        <div class="preg-ejemplos">
+          {EJEMPLOS.map((e) => (
+            <button type="button" class="preg-ejemplo" data-preguntar={e}>{e}</button>
+          ))}
+        </div>
+      </section>
+    )}
 
-    <ol class="preg-chat" id="preg-chat" aria-live="polite"></ol>
+    <h2>Cómo preguntar para que conteste mejor</h2>
+    <p>
+      El asistente busca en el índice de la norma como lo haría una persona
+      con el libro. Entre más claro digas de qué se trata, mejor escoge qué
+      leer.
+    </p>
+    <ul class="obs-tipos">
+      <li><b>Una pregunta a la vez.</b> Si tienes dos dudas, hazlas por separado.</li>
+      <li><b>Di de qué se trata:</b> el lugar o el equipo (cocina, baño, motor,
+        tablero, alberca), el conductor (calibre y material: 12 AWG de cobre),
+        la tensión o la corriente (127 V, 20 A) y si es interior, exterior o
+        enterrado.</li>
+      <li><b>Di qué quieres saber:</b> la protección máxima, la ampacidad, la
+        distancia mínima, si se permite o no, cuántos se necesitan.</li>
+      <li><b>Usa las palabras de la norma</b> cuando las sepas: «conductor de
+        puesta a tierra» y no «tierra física»; «interruptor automático» y no
+        «pastilla» o «breaker»; «contacto» (receptáculo); «canalización» o
+        «tubo conduit» y no «tubería».</li>
+      <li><b>Si ya sabes la sección, dila:</b> «¿Qué dice el 240-4(d)?» va
+        directo.</li>
+      <li><b>Para seguir el tema, pregunta en la misma conversación:</b> «¿y
+        para 12 AWG?». El asistente recuerda las dos preguntas anteriores. Si
+        cambias de tema, empieza una conversación nueva con el botón de la
+        flecha circular, arriba de la conversación.</li>
+      <li><b>Abre las citas.</b> Cada referencia de la respuesta lleva a su
+        parte de la norma. La conversación sigue ahí cuando vuelves a abrir la
+        burbuja, mientras no cierres la pestaña del navegador.</li>
+    </ul>
 
-    <form class="obs-form preg-form" id="preg-form" hidden>
-      <label>
-        <span>Tu pregunta</span>
-        <textarea id="preg-campo" name="pregunta" rows="3" maxlength="500" required
-                  placeholder="Por ejemplo: ¿qué calibre mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?"></textarea>
-        <small>Enter manda la pregunta; Mayús+Enter, un renglón nuevo.</small>
-      </label>
-      <div class="preg-acciones">
-        <button type="submit" id="preg-enviar">Preguntar</button>
-        <button type="button" id="preg-nueva" class="preg-secundario" hidden>Nueva conversación</button>
-      </div>
-      <p class="obs-nota">
-        Tu pregunta y las partes de la norma que lee el asistente se mandan a
-        Cloudflare, que corre los modelos (gpt-oss, de código abierto). No se
-        guardan ni se usan para entrenar modelos. El servicio es gratuito y
-        tiene un cupo diario para todos: hasta 20 preguntas al día en cada
-        navegador.
-      </p>
-    </form>
+    <h2>Lo que no hace</h2>
+    <p>
+      No calcula (caída de tensión, cargas, ocupación de tubo), no revisa ni
+      aprueba una instalación concreta y no sabe de otras normas ni del NEC. Te
+      dice qué dice la NOM y dónde lo dice. Si una respuesta está mal,
+      repórtala con el botón que va debajo de cada una.
+    </p>
 
-    <section class="preg-guia" id="preg-guia" hidden>
-      <h2>Ejemplos</h2>
-      <p class="obs-nota">Toca uno para ponerlo en el campo; luego lo puedes cambiar.</p>
-      <div class="preg-ejemplos">
-        {EJEMPLOS.map((e) => (
-          <button type="button" class="preg-ejemplo" data-ejemplo={e}>{e}</button>
-        ))}
-      </div>
-
-      <h2>Cómo preguntar para que conteste mejor</h2>
-      <p>
-        El asistente busca en el índice de la norma como lo haría una persona
-        con el libro. Entre más claro digas de qué se trata, mejor escoge qué
-        leer.
-      </p>
-      <ul class="obs-tipos">
-        <li><b>Una pregunta a la vez.</b> Si tienes dos dudas, hazlas por separado.</li>
-        <li><b>Di de qué se trata:</b> el lugar o el equipo (cocina, baño, motor,
-          tablero, alberca), el conductor (calibre y material: 12 AWG de cobre),
-          la tensión o la corriente (127 V, 20 A) y si es interior, exterior o
-          enterrado.</li>
-        <li><b>Di qué quieres saber:</b> la protección máxima, la ampacidad, la
-          distancia mínima, si se permite o no, cuántos se necesitan.</li>
-        <li><b>Usa las palabras de la norma</b> cuando las sepas: «conductor de
-          puesta a tierra» y no «tierra física»; «interruptor automático» y no
-          «pastilla» o «breaker»; «contacto» (receptáculo); «canalización» o
-          «tubo conduit» y no «tubería».</li>
-        <li><b>Si ya sabes la sección, dila:</b> «¿Qué dice el 240-4(d)?» va
-          directo.</li>
-        <li><b>Para seguir el tema, pregunta en la misma conversación:</b> «¿y
-          para 12 AWG?». El asistente recuerda las dos preguntas anteriores. Si
-          cambias de tema, empieza una conversación nueva.</li>
-      </ul>
-      <p>
-        <b>Lo que no hace:</b> no calcula (caída de tensión, cargas, ocupación
-        de tubo), no revisa ni aprueba una instalación concreta y no sabe de
-        otras normas ni del NEC. Te dice qué dice la NOM y dónde lo dice.
-      </p>
-    </section>
+    <h2 id="privacidad">Privacidad y cupo</h2>
+    <p>
+      Tu pregunta y las partes de la norma que lee el asistente se mandan a
+      Cloudflare, que corre los modelos (gpt-oss, de código abierto). No se
+      guardan ni se usan para entrenar modelos. La conversación se queda en tu
+      navegador y se borra al cerrar la pestaña. El servicio es gratuito y
+      tiene un cupo diario para todos: hasta 20 preguntas al día en cada
+      navegador.
+    </p>
   </main>
 </Base>
-
-<script>
-  import '../scripts/preguntar/chat.js';
-</script>

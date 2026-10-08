@@ -464,6 +464,54 @@ Lo que se hizo:
 Quedó fuera: las figuras de los apéndices no dan pista, porque el buscador no
 dice de qué apéndice son (cuatro, todas del A).
 
+### Una burbuja de chat en cada página (8 de octubre, quinta vuelta)
+
+El asistente ya contestaba bien, pero el dueño no se lo imaginaba como una
+pestaña al lado del Mapa, sino como una burbuja a la mano en todo el sitio, y
+la página no parecía un chat. La revisión de diseño encontró lo mismo:
+
+- En el teléfono, antes de la conversación había un título, un párrafo y un
+  aviso (casi media pantalla), y después un formulario con etiqueta, pista,
+  botón negro y un párrafo de privacidad: se leía como un formulario de
+  contacto, no como un chat.
+- La pestaña «Preguntar» no se veía en el teléfono: la barra de pestañas se
+  corta en «Glosario».
+- Abrir una cita llevaba a otra página y la conversación se perdía.
+- Los ejemplos quedaban abajo del formulario, fuera de la vista.
+
+Lo que se hizo:
+
+- **Una burbuja abajo a la derecha en todas las páginas**
+  (`components/Asistente.astro`, `scripts/asistente/burbuja.js`,
+  `styles/asistente.css`). En la computadora abre una ventana de chat encima
+  de la página, para seguir leyendo al lado; en el teléfono ocupa la
+  pantalla. Mensajes en globos (las preguntas en azul a la derecha, las
+  respuestas en tarjeta a la izquierda), tres puntos animados con el paso en
+  que va, y debajo de cada respuesta lo que leyó como etiquetas con enlace y
+  «¿Algo está mal? Repórtalo».
+- **Bienvenida con tres sugerencias** que se mandan al tocarlas. Antes los
+  ejemplos solo se ponían en el campo, para no gastar cupo sin querer; en un
+  chat lo que se espera al tocar una sugerencia es que se mande.
+- **La conversación sigue al cambiar de página** (`sessionStorage`). En el
+  teléfono, abrir una cita cierra la burbuja y un punto avisa que la
+  conversación sigue; en la computadora se queda abierta.
+- **Sin pestaña.** `/preguntar` queda como guía: botón para abrir el
+  asistente, ejemplos que lo abren y lo mandan, cómo preguntar, qué no hace y
+  privacidad. En el pie del sitio, «El asistente» lleva ahí.
+- `chat.js` se baja la primera vez que se abre la burbuja: quien solo lee no
+  lo descarga.
+- La página encoge con el teclado del teléfono
+  (`interactive-widget=resizes-content` en la cabecera): sin eso, el campo
+  quedaba tapado.
+- En el mapa la burbuja es solo el ícono, para no tapar la leyenda; en el
+  teléfono, el índice del artículo se recorre a su izquierda.
+- De paso: una cita que abre con 【 y cierra con }] (pasó con la nota de una
+  errata) ya se lee como cita.
+
+Quedó fuera: que las citas se abran sin salir de la conversación (en un panel
+al lado, por ejemplo). Con la conversación guardada, abrir y volver ya
+funciona, y es lo que hace cualquier enlace del sitio.
+
 ## Ronda de seguridad (octubre de 2026)
 
 Bitácora de lo que se hizo, por qué, y de las dependencias que a propósito

@@ -1,65 +1,23 @@
 /* --------------------------------------------------------------------------
-   Preguntar: la conversación con el asistente. Toma de observaciones.css el
-   ancho, la introducción, el aviso y el formulario; aquí va solo lo propio.
+   /preguntar: la guía del asistente. El asistente vive en la burbuja de cada
+   página (asistente.css); aquí van el botón que la abre y las preguntas de
+   ejemplo. Toma de observaciones.css el ancho, la introducción y el aviso.
    -------------------------------------------------------------------------- */
-.preg-chat { list-style: none; padding: 0; margin: 1.6rem 0; display: grid; gap: 1.4rem; }
-.preg-chat:empty { display: none; }
-
-/* La pregunta, a la derecha como en cualquier chat; la respuesta, a todo lo
-   ancho, porque es la que se lee. */
-.preg-q {
-  justify-self: end; max-width: 85%; margin: 0 0 0.7rem auto; width: fit-content;
-  background: var(--accent-soft); border: 1px solid var(--border);
-  border-radius: var(--radius-xl); padding: 0.55rem 0.9rem;
-  white-space: pre-wrap; overflow-wrap: anywhere;
+.preg-abrir { margin: 1.2rem 0 1.4rem; }
+.preg-boton {
+  display: inline-flex; align-items: center; gap: 0.55rem; min-height: 48px; padding: 0 1.2rem;
+  border: 0; border-radius: var(--radius-lg); background: var(--accent); color: var(--on-accent);
+  font: 600 1rem/1 var(--sans); cursor: pointer;
 }
-.preg-r { border-left: 3px solid var(--border); padding: 0.1rem 0 0.1rem 0.95rem; overflow-wrap: anywhere; }
-.preg-r p { margin: 0.5rem 0; line-height: 1.6; }
-.preg-r ul { margin: 0.5rem 0; padding-left: 1.2rem; }
-.preg-r li { margin: 0.3rem 0; }
+.preg-boton svg { width: 20px; height: 20px; }
+.preg-boton:hover { filter: brightness(1.08); }
+.preg-boton:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-.preg-ia {
-  color: var(--text-faint); font-size: 0.78rem; letter-spacing: 0.03em;
-  text-transform: uppercase; margin: 0 0 0.3rem;
-}
-.preg-r p.preg-ia { margin-top: 0; }
-.preg-estado { color: var(--text-dim); font-size: 0.93rem; }
-.preg-error {
-  background: var(--warn-bg); border: 1px solid var(--warn-br);
-  border-radius: var(--radius-xl); padding: 0.6rem 0.9rem;
-}
-
-.preg-fuentes { margin-top: 0.7rem; font-size: 0.9rem; }
-.preg-fuentes summary { cursor: pointer; color: var(--text-dim); }
-.preg-fuentes ul { padding-left: 1.1rem; margin: 0.4rem 0 0; }
-.preg-fuentes a { font-family: var(--mono); font-size: 0.85rem; }
-
-.preg-form button:disabled { opacity: 0.6; cursor: progress; }
-
-/* Los dos botones del formulario: el de preguntar, relleno; el de empezar de
-   nuevo, solo con borde, para que no compitan. */
-.preg-acciones { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
-.obs-form .preg-acciones button { justify-self: auto; }
-.obs-form button.preg-secundario,
-.preg-r button.preg-reportar {
-  background: transparent; color: var(--text-dim); box-shadow: none;
-  border: 1px solid var(--border); font-weight: 500;
-}
-.obs-form button.preg-secundario:hover { background: var(--bg-soft); color: var(--text); }
-
-/* Reportar una respuesta: discreto, como el «Reportar» de cada sección. */
-.preg-r button.preg-reportar {
-  font: inherit; font-size: 0.82rem; cursor: pointer; margin-top: 0.6rem;
-  border-radius: var(--radius); padding: 0.25rem 0.6rem;
-}
-.preg-r button.preg-reportar:hover { color: var(--accent); border-color: var(--accent); }
-
-.preg-guia h2 { margin-top: 2rem; }
 .preg-ejemplos { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.6rem 0 0.4rem; }
 .preg-ejemplo {
-  font: inherit; font-size: 0.88rem; text-align: left; cursor: pointer;
-  color: var(--text); background: var(--panel);
-  border: 1px solid var(--border); border-radius: var(--radius-xl);
-  padding: 0.45rem 0.75rem;
+  min-height: 44px; padding: 0.5rem 0.8rem; text-align: left; cursor: pointer;
+  font: inherit; font-size: 0.9rem; color: var(--accent);
+  background: var(--accent-soft); border: 1px solid transparent; border-radius: var(--radius-lg);
 }
-.preg-ejemplo:hover { border-color: var(--accent); color: var(--accent); }
+.preg-ejemplo:hover { border-color: var(--accent); }
+.preg-ejemplo:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }

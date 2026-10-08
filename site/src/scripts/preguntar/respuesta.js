@@ -34,9 +34,13 @@ const VINETA = /^\s*(?:[-*•–]|\d+[.)])\s+/;
 
 // gpt-oss cita a veces con los corchetes de su entrenamiento, 【240-4】 o
 // 【240-4†L3-L5】, aunque se le pida [ ]. Se vuelven corchetes normales para
-// que la cita sea enlace.
+// que la cita sea enlace. Alguna vez abre con uno y cierra con otro
+// («【Nota de la guía (errata del DOF)}]»): también.
 export function normalizarCitas(texto) {
-  return String(texto).replace(/[【［〔]([^】］〕†\n]{1,160})(?:†[^】］〕\n]*)?[】］〕]/g, '[$1]');
+  return String(texto).replace(
+    /[【［〔]([^】］〕†\n\]}]{1,160})(?:†[^】］〕\n\]]*)?(?:[】］〕]|\}?\])/g,
+    '[$1]'
+  );
 }
 
 /**

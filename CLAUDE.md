@@ -40,7 +40,8 @@ git status --porcelain      # después de eso, debe quedar vacío
   PyMuPDF) y CC BY-NC-SA en `data/` y la documentación. No se cambian sin el
   dueño, y una dependencia nueva del sitio con licencia GPL o AGPL no entra sin
   consultarlo.
-- **El asistente (`/preguntar`, `ia/`) contesta solo con lo que lee de la
+- **El asistente (la burbuja de cada página, su guía en `/preguntar`, `ia/`)
+  contesta solo con lo que lee de la
   norma**, en tres pasos: índice general, índice del artículo, texto completo
   (`site/src/lib/asistente-datos.js`); escoge gpt-oss-20b y redacta
   gpt-oss-120b. La cuenta de Cloudflare se queda en el

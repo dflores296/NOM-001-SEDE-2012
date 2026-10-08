@@ -595,21 +595,28 @@ prueba('Lo que se manda a Formspree va limpio y solo con lo esperado', async ({ 
 
 // ------------------------------------------------------------------ asistente
 
-// /preguntar con el asistente apuntando a una dirección de este mismo
-// servidor, que la prueba contesta: así se prueba la página aunque el sitio
-// se haya compilado sin asistente (src/lib/asistente.js vacío), y la CSP lo
-// deja pasar porque es 'self'. `contestar` recibe lo que mandó la página.
-async function conAsistente(nuevaPagina, contestar) {
-  const { page, ctx, errores } = await nuevaPagina(ESCRITORIO);
-  await ctx.route('**/preguntar/', async (r) => {
-    const resp = await r.fetch();
-    const origen = new URL(r.request().url()).origin;
-    const html = (await resp.text()).replace(
-      /data-asistente(="[^"]*")?/,
-      `data-asistente="${origen}/__asistente"`
-    );
-    await r.fulfill({ response: resp, body: html });
-  });
+// El asistente vive en una burbuja en todas las páginas. Aquí apunta a una
+// dirección de este mismo servidor, que la prueba contesta: así se prueba
+// aunque el sitio se haya compilado sin asistente (src/lib/asistente.js
+// vacío), y la CSP lo deja pasar porque es 'self'. `contestar` recibe lo que
+// mandó la página.
+async function conAsistente(nuevaPagina, contestar, { ruta = '/', vista = ESCRITORIO } = {}) {
+  const { page, ctx, errores } = await nuevaPagina(vista);
+  // Toda página, también la que llega sin barra final (/art/240#…, que el
+  // servidor redirige): r.fetch() sigue la redirección.
+  await ctx.route(
+    (u) => !/\.\w+$/.test(u.pathname),
+    async (r) => {
+      if (r.request().resourceType() !== 'document') return r.continue();
+      const resp = await r.fetch();
+      const origen = new URL(r.request().url()).origin;
+      const html = (await resp.text()).replace(
+        /data-asistente(="[^"]*")?/,
+        `data-asistente="${origen}/__asistente"`
+      );
+      await r.fulfill({ response: resp, body: html });
+    }
+  );
   await ctx.route('**/__asistente', async (r) => {
     const { estado = 200, json } = await contestar(JSON.parse(r.request().postData()));
     await r.fulfill({ status: estado, json });
@@ -619,32 +626,50 @@ async function conAsistente(nuevaPagina, contestar) {
     alerta = true;
     d.dismiss();
   });
-  await page.goto('/preguntar/', { waitUntil: 'networkidle' });
+  await page.goto(ruta, { waitUntil: 'networkidle' });
   return { page, errores, alerta: () => alerta };
+}
+
+/** Abre la burbuja si hace falta y manda una pregunta. */
+async function preguntar(page, texto) {
+  if (await page.isHidden('#asis-panel')) await page.click('.asis-lanzar');
+  await page.fill('#asis-campo', texto);
+  await page.press('#asis-campo', 'Enter');
+}
+
+/** Espera a que haya `n` respuestas (o avisos) del asistente. */
+const RESPUESTAS = '.asis-chat .asis-ia:not(.asis-pensando)';
+async function respuestas(page, n = 1) {
+  await page.waitForFunction(
+    ([sel, k]) => document.querySelectorAll(sel).length === k,
+    [RESPUESTAS, n],
+    { timeout: 20000 }
+  );
+  await page.waitForFunction(() => !document.querySelector('.asis-enviar').disabled);
 }
 
 const PREGUNTA_20A =
   '¿Qué calibre mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?';
 
-prueba('Sin asistente conectado no hay pestaña, y /preguntar lo dice', async ({ nuevaPagina }) => {
-  const { page } = await nuevaPagina(ESCRITORIO);
-  await page.goto('/preguntar/', { waitUntil: 'networkidle' });
-  const url = await page.getAttribute('main', 'data-asistente');
-  const pestana = await page.$('nav.tabs a[href$="/preguntar/"]');
-  if (url) {
-    afirmar(pestana, 'conectado y sin pestaña');
-    afirmar(await page.isVisible('#preg-form'), 'conectado y sin formulario');
-    afirmar(await page.isVisible('#preg-guia'), 'conectado y sin la guía');
-  } else {
-    afirmar(!pestana, 'hay pestaña sin asistente');
-    afirmar(await page.isVisible('#preg-cerrado'), 'no avisa que no está conectado');
-    afirmar(!(await page.isVisible('#preg-form')), 'enseña un formulario que no funciona');
-    afirmar(
-      !(await page.isVisible('#preg-guia')),
-      'enseña la guía de un asistente que no funciona'
-    );
+prueba(
+  'Conectado, el asistente es una burbuja en cada página y no una pestaña',
+  async ({ nuevaPagina }) => {
+    const { page } = await nuevaPagina(ESCRITORIO);
+    await page.goto('/art/250/', { waitUntil: 'networkidle' });
+    const url = await page.getAttribute('.asis', 'data-asistente');
+    afirmar(!(await page.$('nav.tabs a[href$="/preguntar/"]')), 'sigue la pestaña Preguntar');
+    if (url) {
+      afirmar(await page.isVisible('.asis-lanzar'), 'conectado y sin burbuja');
+      afirmar(await page.isHidden('#asis-panel'), 'la conversación nace abierta');
+      await page.goto('/preguntar/', { waitUntil: 'networkidle' });
+      afirmar(await page.isVisible('[data-abrir-asistente]'), 'la guía no la abre');
+    } else {
+      afirmar(await page.isHidden('.asis-lanzar'), 'hay burbuja sin asistente');
+      await page.goto('/preguntar/', { waitUntil: 'networkidle' });
+      afirmar(await page.isVisible('#preg-cerrado'), 'no avisa que no está conectado');
+    }
   }
-});
+);
 
 // Un asistente de mentiras que contesta cada paso como lo haría el modelo, y
 // anota lo que recibió en cada uno.
@@ -672,9 +697,8 @@ prueba(
       responder: RESPUESTA_20A,
     });
     const { page, errores, alerta } = await conAsistente(nuevaPagina, contestar);
-    await page.fill('#preg-campo', PREGUNTA_20A);
-    await page.press('#preg-campo', 'Enter');
-    await page.waitForSelector('.preg-r .preg-ia', { timeout: 20000 });
+    await preguntar(page, PREGUNTA_20A);
+    await respuestas(page);
 
     afirmar(
       JSON.stringify(recibido.map((c) => c.paso)) === '["articulos","secciones","responder"]',
@@ -709,19 +733,24 @@ prueba(
       'viajó algo más que referencia, título y texto'
     );
 
-    const enlaces = await page.$$eval('.preg-r p a', (as) => as.map((a) => a.getAttribute('href')));
+    const r = `${RESPUESTAS} .asis-burbuja`;
+    const enlaces = await page.$$eval(`${r} a`, (as) => as.map((a) => a.getAttribute('href')));
     afirmar(
       enlaces.length === 2 &&
         enlaces[0].endsWith('/art/250#tabla-250-122') &&
         enlaces[1].endsWith('/art/250#250-122(a)'),
       `enlaces: ${JSON.stringify(enlaces)}`
     );
-    const texto = await page.textContent('.preg-r');
+    const texto = await page.textContent(r);
     afirmar(texto.includes('[999-99]'), 'perdió la cita inventada');
     afirmar(!texto.includes('**'), 'dejó el Markdown');
-    afirmar(!(await page.$('.preg-r img')), 'pintó HTML de la respuesta');
+    afirmar(!(await page.$(`${r} img`)), 'pintó HTML de la respuesta');
     afirmar(!alerta(), 'se ejecutó código de la respuesta');
-    afirmar((await page.$$('.preg-fuentes li')).length === 2, 'no enseña lo que leyó');
+    afirmar((await page.$$('.asis-fuente')).length === 2, 'no enseña lo que leyó');
+    afirmar(
+      (await page.textContent('.asis-chat .asis-tu')) === PREGUNTA_20A,
+      'no enseña la pregunta'
+    );
     afirmar(!errores.length, errores.join(' | '));
   }
 );
@@ -734,17 +763,8 @@ prueba('La segunda pregunta lleva la conversación anterior', async ({ nuevaPagi
   });
   const { page } = await conAsistente(nuevaPagina, contestar);
   for (const [n, p] of ['¿Protección del 14 AWG de cobre?', '¿Y del 12 AWG?'].entries()) {
-    await page.fill('#preg-campo', p);
-    await page.press('#preg-campo', 'Enter');
-    await page.waitForFunction(
-      (k) => document.querySelectorAll('.preg-r .preg-ia').length === k,
-      n + 1,
-      {
-        timeout: 20000,
-      }
-    );
-    // La siguiente pregunta, cuando la página ya terminó con esta.
-    await page.waitForFunction(() => !document.querySelector('#preg-enviar').disabled);
+    await preguntar(page, p);
+    await respuestas(page, n + 1);
   }
   const segunda = recibido.filter((c) => c.pregunta === '¿Y del 12 AWG?');
   afirmar(segunda.length === 3, `${segunda.length} consultas en la segunda`);
@@ -756,7 +776,7 @@ prueba('La segunda pregunta lleva la conversación anterior', async ({ nuevaPagi
       `${c.paso}: historia ${JSON.stringify(c.historia)}`
     );
   }
-  const enlace = await page.getAttribute('.preg-r p a', 'href');
+  const enlace = await page.getAttribute(`${RESPUESTAS} .asis-burbuja a`, 'href');
   afirmar(enlace.endsWith('/art/240#240-4(d)(3)'), `la cita no lleva al inciso: ${enlace}`);
 });
 
@@ -768,9 +788,8 @@ prueba(
       responder: 'Según la [Tabla 250-122], 3.31 mm².',
     });
     const { page } = await conAsistente(nuevaPagina, contestar);
-    await page.fill('#preg-campo', PREGUNTA_20A);
-    await page.press('#preg-campo', 'Enter');
-    await page.waitForSelector('.preg-r .preg-ia', { timeout: 20000 });
+    await preguntar(page, PREGUNTA_20A);
+    await respuestas(page);
     afirmar(
       JSON.stringify(recibido.map((c) => c.paso)) === '["articulos","responder"]',
       `pasos: ${recibido.map((c) => c.paso).join(', ')}`
@@ -792,34 +811,86 @@ prueba(
       responder: () => ({ estado: 429, json: { error: 'cuota' } }),
     });
     const { page } = await conAsistente(nuevaPagina, contestar);
-    await page.fill('#preg-campo', PREGUNTA_20A);
-    await page.click('#preg-enviar');
-    await page.waitForSelector('.preg-error', { timeout: 20000 });
+    await preguntar(page, PREGUNTA_20A);
+    await respuestas(page);
     afirmar(
-      (await page.textContent('.preg-error')).includes('6 de la tarde'),
+      (await page.textContent('.asis-error .asis-burbuja')).includes('6 de la tarde'),
       'no dice cuándo vuelve'
     );
     afirmar(
-      (await page.textContent('.preg-fuentes summary')).includes('sin respuesta del asistente'),
+      (await page.textContent('.asis-error .asis-fuentes-txt')).includes('Lo que encontré'),
       'no aclara que no hubo respuesta'
     );
-    afirmar((await page.$$('.preg-fuentes li')).length > 0, 'no dejó lo que encontró');
-    afirmar(await page.isEnabled('#preg-enviar'), 'el botón se quedó desactivado');
+    afirmar((await page.$$('.asis-error .asis-fuente')).length > 0, 'no dejó lo que encontró');
+    afirmar(await page.isEnabled('.asis-enviar'), 'el botón se quedó desactivado');
   }
 );
 
-prueba('Un ejemplo se pone en el campo y no se manda solo', async ({ nuevaPagina }) => {
-  const { recibido, contestar } = asistenteDePrueba({});
+prueba('Una sugerencia se manda al tocarla', async ({ nuevaPagina }) => {
+  const { recibido, contestar } = asistenteDePrueba({
+    articulos: '240',
+    secciones: '240-4(d)',
+    responder: 'Según [240-4(d)(3)], 15 amperes.',
+  });
   const { page } = await conAsistente(nuevaPagina, contestar);
-  const ejemplo = await page.textContent('.preg-ejemplo');
-  await page.click('.preg-ejemplo');
-  afirmar(
-    (await page.inputValue('#preg-campo')) === ejemplo.trim(),
-    'no puso el ejemplo en el campo'
-  );
-  await page.waitForTimeout(500);
-  afirmar(!recibido.length, 'mandó la pregunta sin que nadie la enviara');
+  await page.click('.asis-lanzar');
+  const sugerencia = (await page.textContent('.asis-sugerencia')).trim();
+  await page.click('.asis-sugerencia');
+  await respuestas(page);
+  afirmar(recibido[0]?.pregunta === sugerencia, `mandó: ${recibido[0]?.pregunta}`);
 });
+
+prueba('La guía de /preguntar abre la burbuja y manda el ejemplo', async ({ nuevaPagina }) => {
+  const { recibido, contestar } = asistenteDePrueba({
+    articulos: '240',
+    secciones: '240-4(d)',
+    responder: 'Según [240-4(d)(3)], 15 amperes.',
+  });
+  const { page } = await conAsistente(nuevaPagina, contestar, { ruta: '/preguntar/' });
+  const ejemplo = (await page.textContent('.preg-ejemplo')).trim();
+  await page.click('.preg-ejemplo');
+  await respuestas(page);
+  afirmar(await page.isVisible('#asis-panel'), 'no abrió la burbuja');
+  afirmar(recibido[0]?.pregunta === ejemplo, `mandó: ${recibido[0]?.pregunta}`);
+});
+
+prueba(
+  'La conversación sigue al cambiar de página; en el teléfono, abrir una cita cierra la burbuja',
+  async ({ nuevaPagina }) => {
+    const { recibido, contestar } = asistenteDePrueba({
+      articulos: '240',
+      secciones: '240-4(d)',
+      responder: 'Según [240-4(d)(3)], 15 amperes.',
+    });
+    const { page } = await conAsistente(nuevaPagina, contestar, {
+      ruta: '/art/250/',
+      vista: TELEFONO,
+    });
+    await preguntar(page, '¿Protección del 14 AWG de cobre?');
+    await respuestas(page);
+    afirmar(
+      (await page.getAttribute('#asis-panel', 'aria-modal')) === 'true',
+      'en el teléfono no tapa la página'
+    );
+    await Promise.all([
+      page.waitForURL('**/art/240**'),
+      page.click(`${RESPUESTAS} .asis-burbuja a`),
+    ]);
+    await page.waitForLoadState('networkidle');
+    afirmar(await page.isHidden('#asis-panel'), 'la cita no se ve: la burbuja sigue abierta');
+    afirmar(await page.isVisible('.asis-punto'), 'no avisa que hay conversación');
+    await page.click('.asis-lanzar');
+    afirmar(
+      (await page.textContent('.asis-chat .asis-tu')) === '¿Protección del 14 AWG de cobre?',
+      'se perdió la conversación'
+    );
+    // Y sigue con memoria.
+    await preguntar(page, '¿Y del 12 AWG?');
+    await respuestas(page, 2);
+    const ultima = recibido.at(-1);
+    afirmar(ultima.historia?.[0]?.p === '¿Protección del 14 AWG de cobre?', 'perdió la memoria');
+  }
+);
 
 prueba('Una conversación nueva olvida la anterior', async ({ nuevaPagina }) => {
   const { recibido, contestar } = asistenteDePrueba({
@@ -828,24 +899,38 @@ prueba('Una conversación nueva olvida la anterior', async ({ nuevaPagina }) => 
     responder: 'Según [240-4(d)(3)], 15 amperes.',
   });
   const { page } = await conAsistente(nuevaPagina, contestar);
-  await page.fill('#preg-campo', '¿Protección del 14 AWG de cobre?');
-  await page.press('#preg-campo', 'Enter');
-  await page.waitForSelector('#preg-nueva:not([hidden])', { timeout: 20000 });
-  await page.click('#preg-nueva');
-  afirmar(!(await page.$('.preg-turno')), 'la conversación anterior sigue a la vista');
-  await page.fill('#preg-campo', '¿Qué es una acometida?');
-  await page.press('#preg-campo', 'Enter');
-  await page.waitForFunction(
-    () => document.querySelectorAll('.preg-r .preg-ia').length === 1,
-    null,
-    {
-      timeout: 20000,
-    }
-  );
+  await preguntar(page, '¿Protección del 14 AWG de cobre?');
+  await respuestas(page);
+  await page.click('[data-nueva]');
+  afirmar(!(await page.$('.asis-chat .asis-msg')), 'la conversación anterior sigue a la vista');
+  await page.reload({ waitUntil: 'networkidle' });
+  afirmar(!(await page.$('.asis-chat .asis-msg')), 'volvió al cambiar de página');
+  await preguntar(page, '¿Qué es una acometida?');
+  await respuestas(page);
   const ultima = recibido.filter((c) => c.pregunta === '¿Qué es una acometida?');
   afirmar(
     ultima.length && ultima.every((c) => !c.historia?.length),
     'se mandó la conversación anterior'
+  );
+});
+
+prueba('La burbuja se cierra con Esc y devuelve el foco', async ({ nuevaPagina }) => {
+  const { contestar } = asistenteDePrueba({});
+  const { page } = await conAsistente(nuevaPagina, contestar, { ruta: '/art/240/' });
+  await page.click('.asis-lanzar');
+  afirmar(
+    (await page.getAttribute('.asis-lanzar', 'aria-expanded')) === 'true',
+    'no dice que está abierta'
+  );
+  afirmar(
+    await page.evaluate(() => document.activeElement?.id === 'asis-campo'),
+    'el foco no fue al campo'
+  );
+  await page.keyboard.press('Escape');
+  afirmar(await page.isHidden('#asis-panel'), 'Esc no la cerró');
+  afirmar(
+    await page.evaluate(() => document.activeElement?.classList.contains('asis-lanzar')),
+    'el foco no volvió a la burbuja'
   );
 });
 
@@ -857,12 +942,15 @@ prueba(
       secciones: '240-4(d)',
       responder: 'Para 14 AWG de cobre, 20 amperes [240-4(d)(3)].',
     });
-    const { page } = await conAsistente(nuevaPagina, contestar);
-    await page.fill('#preg-campo', '¿Protección del 14 AWG de cobre?');
-    await page.press('#preg-campo', 'Enter');
-    await page.waitForSelector('.preg-reportar', { timeout: 20000 });
-    await Promise.all([page.waitForURL('**/observaciones/**'), page.click('.preg-reportar')]);
+    const { page } = await conAsistente(nuevaPagina, contestar, { ruta: '/art/240/' });
+    await preguntar(page, '¿Protección del 14 AWG de cobre?');
+    await respuestas(page);
+    await Promise.all([page.waitForURL('**/observaciones/**'), page.click('.asis-reportar')]);
     await page.waitForLoadState('networkidle');
+    afirmar(
+      decodeURIComponent(page.url()).includes('de=/NOM-001-SEDE-2012/art/240/'),
+      `no dice de dónde vino: ${page.url()}`
+    );
     afirmar((await page.inputValue('#ref')) === 'Respuesta del asistente', 'sin la referencia');
     afirmar(await page.$('#ref[readonly]'), 'la referencia no quedó fija');
     afirmar(
@@ -885,11 +973,10 @@ prueba(
 prueba('Una pregunta sin nada que buscar no llega a redactar', async ({ nuevaPagina }) => {
   const { recibido, contestar } = asistenteDePrueba({ articulos: 'NADA' });
   const { page } = await conAsistente(nuevaPagina, contestar);
-  await page.fill('#preg-campo', 'zxqwv kjhgf');
-  await page.click('#preg-enviar');
-  await page.waitForSelector('.preg-error', { timeout: 20000 });
+  await preguntar(page, 'zxqwv kjhgf');
+  await respuestas(page);
   afirmar(
-    (await page.textContent('.preg-error')).includes('No encontré'),
+    (await page.textContent('.asis-error .asis-burbuja')).includes('No encontré'),
     'no dice que no encontró nada'
   );
   afirmar(!recibido.some((c) => c.paso === 'responder'), 'pidió redactar sin nada que leer');
