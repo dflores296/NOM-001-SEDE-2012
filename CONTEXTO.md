@@ -559,6 +559,10 @@ Lo que se hizo:
   en cada página como lo da Cloudflare (`type="module"`), la CSP se abre solo
   a Cloudflare Insights y el pie lo dice. Las pruebas en navegador contestan
   ese script aquí mismo, sin red. Se ve en el panel, en **Web Analytics**.
+- **El texto de «Privacidad y cupo»** de `/preguntar` volvió a su versión
+  corta. Se le habían agregado cómo se cuentan las preguntas y lo del número
+  al azar, y el dueño lo rechazó: son notas de desarrollo, no le sirven al
+  visitante. Quedó como regla en `CLAUDE.md`.
 - **Blindaje del asistente**, a pedido del dueño («contra peticiones que
   busquen saturar el servidor o sacar datos»): un tope de 15 consultas por
   minuto por conexión con el Rate Limiting de Cloudflare (`ratelimits` en

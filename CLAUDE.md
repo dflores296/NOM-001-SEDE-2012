@@ -50,6 +50,11 @@ git status --porcelain      # después de eso, debe quedar vacío
   (`LECTURA`, `TOPE_INDICE`) va por debajo de los topes del Worker (`TOPES`);
   una prueba lo cuida. `ia/agente.js` solo exporta `default`. Ver
   `ia/README.md`.
+- **Lo que lee el visitante no explica cómo funciona por dentro.** Textos del
+  sitio y del asistente: qué hace y qué le toca a la persona, sin detalles de
+  implementación (cómo se cuenta, qué se manda, por qué). Eso va en los
+  comentarios del código y en `CONTEXTO.md`. Decisión del dueño (8 de octubre
+  de 2026), que lo pidió dos veces.
 - **El formulario de `/observaciones`** manda solo lo que arma
   `site/src/scripts/observaciones/limpieza.js`. Un campo nuevo se agrega ahí y
   en sus pruebas.
