@@ -477,6 +477,158 @@ prueba('Una respuesta vacía del modelo no se da por buena', async () => {
   afirmar(r.status === 502, `estado ${r.status}`);
 });
 
+// ------------------------------------------- los eventos «pregunta» y «respuesta_generada»
+//
+// Estas cuentan lo que una sola petición deja en el registro, y las de arriba
+// escriben en él al mismo tiempo: corren al final, una tras otra.
+const enOrden = [];
+function pruebaEnOrden(nombre, fn) {
+  enOrden.push([nombre, fn]);
+}
+
+/** La respuesta de una petición, los eventos de conteo que dejó y todo lo que escribió. */
+async function eventosDe(cuerpo, env) {
+  const desde = registro.length;
+  const r = await agente.fetch(peticion(cuerpo), env);
+  const lineas = registro.slice(desde);
+  const eventos = lineas.filter((l) => l.startsWith('{"evento"')).map((l) => JSON.parse(l));
+  return { r, eventos, lineas };
+}
+
+const PASO1 = { paso: 'articulos', pregunta: BUENO.pregunta, indice: '250 Puesta a tierra' };
+const PASO2 = { ...PASO1, paso: 'secciones', indice: '250-122 Tamaño de los conductores' };
+const SATURADO = '3040: Capacity temporarily exceeded';
+const generada = (modelo) => JSON.stringify([{ evento: 'respuesta_generada', modelo }]);
+
+pruebaEnOrden(
+  'Una respuesta del 120b deja un solo «respuesta_generada», sin contenido ni identificadores',
+  async () => {
+    const { env } = entorno({ salida: RESPONSES });
+    const cuerpo = {
+      ...BUENO,
+      historia: [{ p: 'pregunta-anterior-xyz', r: 'respuesta-anterior-xyz' }],
+    };
+    const { r, eventos, lineas } = await eventosDe(cuerpo, env);
+    afirmar(r.status === 200, `estado ${r.status}`);
+    afirmar(
+      JSON.stringify(eventos) === generada('gpt-oss-120b'),
+      `eventos: ${JSON.stringify(eventos)}`
+    );
+    for (const marca of [
+      BUENO.pregunta,
+      'pregunta-anterior-xyz',
+      'respuesta-anterior-xyz',
+      BUENO.fragmentos[0].texto,
+      '2.08 mm²',
+    ]) {
+      afirmar(!lineas.some((l) => l.includes(marca)), `el registro trae «${marca}»`);
+    }
+  }
+);
+
+pruebaEnOrden('Si el 120b falla y redacta el 20b, el evento sale una vez, con el 20b', async () => {
+  for (const falla of ['5035: This model requires a Workers Paid plan.', SATURADO]) {
+    const { env } = entorno({ salida: RESPONSES, falla, fallaCon: '@cf/openai/gpt-oss-120b' });
+    const { r, eventos } = await eventosDe(BUENO, env);
+    afirmar(r.status === 200, `${falla}: estado ${r.status}`);
+    afirmar(
+      JSON.stringify(eventos) === generada('gpt-oss-20b'),
+      `${falla}: ${JSON.stringify(eventos)}`
+    );
+  }
+});
+
+pruebaEnOrden('Si fallan los dos redactores no hay «respuesta_generada»', async () => {
+  for (const falla of [SATURADO, '5035: This model requires a Workers Paid plan.', 'otra cosa']) {
+    const { env } = entorno({ salida: RESPONSES, falla });
+    const { r, eventos } = await eventosDe(BUENO, env);
+    afirmar(r.status !== 200, `${falla}: estado ${r.status}`);
+    afirmar(!eventos.length, `${falla}: ${JSON.stringify(eventos)}`);
+  }
+});
+
+pruebaEnOrden(
+  'Una falla al escoger qué leer no deja eventos: ni «respuesta_generada» ni, en el paso 1, «pregunta»',
+  async () => {
+    for (const cuerpo of [
+      { ...PASO1, orden: 4 },
+      { ...PASO2, orden: 4 },
+    ]) {
+      const { env } = entorno({ salida: RESPONSES, falla: SATURADO });
+      const { r, eventos } = await eventosDe(cuerpo, env);
+      afirmar(r.status !== 200, `${cuerpo.paso}: estado ${r.status}`);
+      afirmar(!eventos.length, `${cuerpo.paso}: ${JSON.stringify(eventos)}`);
+    }
+  }
+);
+
+pruebaEnOrden('Una respuesta vacía o sin texto no deja «respuesta_generada»', async () => {
+  for (const salida of [{ output: [{ type: 'reasoning' }] }, {}, null, { response: '   ' }]) {
+    const { env } = entorno({ salida });
+    const { r, eventos } = await eventosDe(BUENO, env);
+    afirmar(r.status === 502, `${JSON.stringify(salida)}: estado ${r.status}`);
+    afirmar(!eventos.length, `${JSON.stringify(salida)}: ${JSON.stringify(eventos)}`);
+  }
+});
+
+pruebaEnOrden(
+  'Una pregunta deja un «pregunta» y un «respuesta_generada», sin duplicados',
+  async () => {
+    const { env } = entorno({ salida: RESPONSES });
+    const uno = await eventosDe({ ...PASO1, orden: 3 }, env);
+    afirmar(
+      JSON.stringify(uno.eventos) === '[{"evento":"pregunta","orden":3}]',
+      `paso 1: ${JSON.stringify(uno.eventos)}`
+    );
+    const dos = await eventosDe({ ...PASO2, orden: 3 }, env);
+    afirmar(!dos.eventos.length, `paso 2: ${JSON.stringify(dos.eventos)}`);
+    const tres = await eventosDe({ ...BUENO, paso: 'responder', orden: 3 }, env);
+    afirmar(
+      JSON.stringify(tres.eventos) === generada('gpt-oss-120b'),
+      `paso 3: ${JSON.stringify(tres.eventos)}`
+    );
+    // El respaldo es el único reintento, y va dentro de la misma petición.
+    const respaldo = entorno({
+      salida: RESPONSES,
+      falla: SATURADO,
+      fallaCon: '@cf/openai/gpt-oss-120b',
+    });
+    const cuatro = await eventosDe(BUENO, respaldo.env);
+    afirmar(respaldo.llamadas.length === 2, `${respaldo.llamadas.length} llamadas al modelo`);
+    afirmar(cuatro.eventos.length === 1, `con respaldo: ${JSON.stringify(cuatro.eventos)}`);
+  }
+);
+
+pruebaEnOrden(
+  'Si falla escribir el evento, la respuesta ya generada se entrega igual',
+  async () => {
+    const antes = console.log;
+    console.log = (...a) => {
+      const linea = a.join(' ');
+      if (linea.includes('respuesta_generada')) throw new Error('registro caído');
+      registro.push(linea);
+    };
+    try {
+      const { env } = entorno({ salida: RESPONSES });
+      const r = await agente.fetch(peticion(BUENO), env);
+      afirmar(r.status === 200, `estado ${r.status}`);
+      const j = await r.json();
+      afirmar(j.respuesta?.includes('2.08 mm²'), `respuesta: ${JSON.stringify(j)}`);
+    } finally {
+      console.log = antes;
+    }
+  }
+);
+
 await Promise.all(pendientes);
+for (const [nombre, fn] of enOrden) {
+  try {
+    await fn();
+    decir(`  ✓ ${nombre}`);
+  } catch (e) {
+    fallas++;
+    decir(`  ✗ ${nombre}\n      ${e.message}`);
+  }
+}
 decir(fallas ? `\n${fallas} pruebas fallaron.` : '\nLas pruebas del asistente pasaron.');
 process.exit(fallas ? 1 : 0);

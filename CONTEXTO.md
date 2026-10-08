@@ -919,6 +919,46 @@ Se probó rompiendo cada cosa a propósito: otro modelo, un KV, los registros
 por petición encendidos, una llamada a `api.groq.com` y una dirección nueva
 en la CSP; en los cinco casos falla con un mensaje que dice qué y dónde.
 
+**Paso 5: la métrica de preguntas (B1), hecho (8 de octubre de 2026).** El
+dueño aprobó la opción B con precisiones, y la opción A para `pregunta`:
+
+- **`pregunta` se queda donde estaba** (al contestar el primer paso, como el
+  contador de la página), para no cambiar la métrica ni perder la
+  comparación con los conteos de antes. Un primer paso que falla no se anota.
+- **Evento nuevo, `respuesta_generada`:** `{"evento":"respuesta_generada",
+  "modelo":"gpt-oss-120b"}` (o el 20b si redactó el respaldo), sin contenido
+  ni identificadores adicionales incorporados por la aplicación. Se anota
+  solo en la petición de redactar, cuando el redactor principal o su
+  respaldo terminó, la respuesta tiene texto y el Worker ya armó lo que
+  devuelve. El nombre lo escogió el dueño: el Worker sabe que la generó, no
+  que el navegador la mostró.
+- **Lo que el Worker no puede saber:** si la selección de los pasos 1 y 2
+  terminó bien. Las tres peticiones de una pregunta no se unen (a propósito
+  no hay identificador), y si el modelo no escoge nada la página busca por su
+  cuenta. Lo que sí comprueba es que la petición de redactar traiga partes
+  de la norma válidas.
+- **`anotar()`** escribe los dos eventos dentro de un `try`: si el registro
+  falla, la respuesta se entrega igual.
+- **Siete pruebas** en `ia/pruebas/agente.mjs`, al final y una tras otra
+  (las demás escriben en el registro al mismo tiempo): respuesta del 120b
+  (un solo evento, sin la pregunta, la conversación ni las partes de la
+  norma en el registro), falla del 120b y respaldo del 20b, falla de los dos,
+  falla al escoger, respuesta vacía o sin texto, sin duplicados (paso 1 →
+  un `pregunta`; paso 2 → nada; paso 3 → un `respuesta_generada`; con
+  respaldo, uno) y registro caído. Se probaron contra cuatro versiones rotas
+  a propósito (sin el evento, sin la protección, el respaldo anotando de más,
+  anotar antes de saber si hay texto): en todas falla al menos una.
+- `ia/README.md` («Cuánta gente lo usa») explica cómo leer los dos conteos
+  juntos y qué no demuestran.
+- No cambian el tope de 10, el contador del navegador, el tope por minuto,
+  el flujo entre modelos ni el aviso. El candado del paso 4 no se dispara:
+  no hay modelo ni servicio nuevo.
+
+**Ajuste posterior de redacción del aviso** (decisión del dueño: no es un
+cambio material del tratamiento y no bloquea este paso): agregar en «Lo que
+anota el asistente» que el registro indica si la respuesta terminó
+correctamente. Se hace con la siguiente versión del aviso.
+
 Pendiente para el paso de documentación (B3): `ia/README.md` («Privacidad»)
 sigue diciendo que el Worker no guarda nada y que Cloudflare no entrena con
 las preguntas, y `docs/arquitectura.md` («El contador de visitas»), «sin

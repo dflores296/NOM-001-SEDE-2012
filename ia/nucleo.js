@@ -279,6 +279,17 @@ function responder(datos, estado, origen) {
   });
 }
 
+/**
+ * Un evento de conteo al registro (Observability). Si escribirlo falla, la
+ * respuesta sigue: el registro es para contar, no una condición para
+ * contestar.
+ */
+function anotar(evento) {
+  try {
+    console.log(JSON.stringify(evento));
+  } catch {}
+}
+
 /** Atiende una petición de la página. Ver agente.js. */
 export async function atender(request, env) {
   // Solo las páginas de ORIGENES. Un navegador siempre manda Origin en un
@@ -366,21 +377,28 @@ async function contestar(request, env, origen) {
       return responder({ error: 'vacia' }, 502, origen);
     }
     // Una pregunta nueva, y cuántas lleva ese navegador en el día (ver
-    // ORDEN_MAX). En Observability, contar los eventos «pregunta» da las
-    // preguntas del día, y contar los de `orden` 1, cuántos navegadores
-    // preguntaron. Nunca la pregunta ni la IP. Se anota al terminar el primer
-    // paso, así que cuenta también las que después fallan: arreglo pendiente
-    // (B1 en «La auditoría del asistente», CONTEXTO.md).
+    // ORDEN_MAX). Se anota cuando el primer paso contestó, que es cuando la
+    // pregunta ya gastó del cupo (igual que el contador de la página); uno
+    // que falla no se anota. Contar los «pregunta» da las preguntas del día,
+    // y los de `orden` 1, cuántos navegadores preguntaron. Nunca la pregunta
+    // ni la IP.
     if (datos.paso === 'articulos') {
-      console.log(
-        JSON.stringify({ evento: 'pregunta', ...(datos.orden ? { orden: datos.orden } : {}) })
-      );
+      anotar({ evento: 'pregunta', ...(datos.orden ? { orden: datos.orden } : {}) });
     }
     // Quién redactó, para la etiqueta del chat: «Respondió gpt-oss-120b ·
     // Cloudflare». Los pasos 1 y 2 no lo dicen: el chat no lo muestra.
     if (grande) {
       const nombre = String(usado).split('/').pop();
-      return responder({ respuesta, modelo: nombre, servicio: 'Cloudflare' }, 200, origen);
+      const res = responder({ respuesta, modelo: nombre, servicio: 'Cloudflare' }, 200, origen);
+      // La respuesta terminada, ya armada para devolverla: solo el modelo
+      // que de verdad redactó (el 20b si entró el respaldo, que corre dentro
+      // de esta misma petición, así que no se anota dos veces). Sin
+      // contenido ni identificadores: la hora y lo técnico los pone
+      // Cloudflare. «pregunta» menos «respuesta_generada» aproxima las
+      // preguntas que no terminaron; que el navegador la haya mostrado no lo
+      // puede saber el Worker. Ver «Cuánta gente lo usa» en ia/README.md.
+      anotar({ evento: 'respuesta_generada', modelo: nombre });
+      return res;
     }
     return responder({ respuesta }, 200, origen);
   } catch (e) {

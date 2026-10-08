@@ -64,11 +64,30 @@ otro navegador o una ventana de incógnito empiezan de cero.
   en el día (UTC), contando esa. Contar esos eventos da las preguntas del
   día; contar los de `orden` 1, cuántos navegadores preguntaron; los de orden
   alto dicen si alguien gasta mucho. No identifica al navegador: con él no se
-  juntan los eventos de uno. Se anota al terminar el primer paso, así que
-  cuenta también las preguntas que después fallan (pendiente, ver «La
-  auditoría del asistente» en `CONTEXTO.md`). Hasta el 8 de octubre de 2026
-  el evento llevaba un número al azar por navegador y por día (`navegador`).
-  El registro gratis guarda 3 días.
+  juntan los eventos de uno. Se anota cuando el primer paso contestó, que es
+  cuando la pregunta ya gastó del cupo; un primer paso que falla no se anota.
+  Hasta el 8 de octubre de 2026 el evento llevaba un número al azar por
+  navegador y por día (`navegador`). El registro gratis guarda 3 días.
+- **Respuestas:** cuando el Worker termina de redactar una respuesta con
+  texto y ya la armó para devolverla, anota
+  `{"evento":"respuesta_generada","modelo":"gpt-oss-120b"}` (o `gpt-oss-20b`,
+  si redactó el respaldo). No lleva contenido ni identificadores adicionales
+  incorporados por la aplicación: la hora y los datos técnicos los agrega
+  Cloudflare a todo evento.
+- **Cómo leerlos juntos:**
+  - `pregunta` mide las preguntas iniciadas cuyo primer paso contestó;
+  - `respuesta_generada` mide las respuestas que el Worker terminó;
+  - la diferencia aproxima las preguntas que no terminaron (falló el segundo
+    paso o el redactor, la respuesta llegó vacía, o la persona se fue antes);
+  - no demuestra que el navegador haya recibido o mostrado la respuesta: el
+    Worker solo sabe que la devolvió.
+
+  Cada pregunta deja un `pregunta` y, como mucho, un `respuesta_generada`: el
+  respaldo del 120b al 20b va dentro de la misma petición y no duplica. Las
+  tres peticiones de una pregunta no se pueden unir entre sí (a propósito no
+  hay identificador), así que se cuentan por separado; alguien que llame al
+  Worker sin pasar por la página puede descuadrar los conteos. Si escribir un
+  evento falla, la respuesta se entrega igual.
 - **Visitas al sitio:** Cloudflare Web Analytics, si tiene su token
   (`site/src/lib/analitica.js`).
 

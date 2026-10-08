@@ -316,7 +316,9 @@ proceso, y en el chat parecería que contestan dos.
   sacado de las mismas marcas del tope. El Worker lo anota en su registro con
   cada pregunta, nunca la pregunta ni la IP; las de orden 1 son los
   navegadores del día (ver «Cuánta gente lo usa» en `ia/README.md`). No
-  identifica al navegador.
+  identifica al navegador. Al terminar una respuesta anota además
+  `respuesta_generada` con el modelo que redactó, sin contenido: la
+  diferencia entre los dos conteos aproxima las preguntas que no terminaron.
 - **Topes en cascada:** `LECTURA` y `TOPE_INDICE` (página) van por debajo de
   `TOPES` (Worker, `ia/nucleo.js`), y una prueba lo comprueba con las partes
   más largas de la norma.
