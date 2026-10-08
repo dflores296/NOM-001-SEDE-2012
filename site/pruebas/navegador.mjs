@@ -602,12 +602,14 @@ prueba('Lo que se manda a Formspree va limpio y solo con lo esperado', async ({ 
 // mandó la página.
 async function conAsistente(nuevaPagina, contestar, { ruta = '/', vista = ESCRITORIO } = {}) {
   const { page, ctx, errores } = await nuevaPagina(vista);
-  // Toda página, también la que llega sin barra final (/art/240#…, que el
-  // servidor redirige): r.fetch() sigue la redirección.
+  // Toda página del sitio, también la que llega sin barra final (/art/240#…,
+  // que el servidor redirige): r.fetch() sigue la redirección. Lo demás pasa
+  // a las otras rutas (fallback): la API de GitHub y el contador de visitas
+  // se contestan aquí mismo, sin red.
   await ctx.route(
-    (u) => !/\.\w+$/.test(u.pathname),
+    (u) => u.origin === new URL(url).origin && !/\.\w+$/.test(u.pathname),
     async (r) => {
-      if (r.request().resourceType() !== 'document') return r.continue();
+      if (r.request().resourceType() !== 'document') return r.fallback();
       const resp = await r.fetch();
       const origen = new URL(r.request().url()).origin;
       const html = (await resp.text()).replace(
