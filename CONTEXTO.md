@@ -959,6 +959,23 @@ cambio material del tratamiento y no bloquea este paso): agregar en «Lo que
 anota el asistente» que el registro indica si la respuesta terminó
 correctamente. Se hace con la siguiente versión del aviso.
 
+**Retoques al aviso 0.3, sin cambiar versión (8 de octubre de 2026).** A
+pedido del dueño: «Ing. David Alberto Flores» como responsable; «Antes que
+nada: no escribas datos personales» pasó a «Importante: no incluyas datos
+personales» (sonaba coloquial). El ajuste del punto 8 (que el registro indica
+si la respuesta terminó) sigue pendiente: el dueño no quiso subir la versión
+por esto.
+
+**Trampa de Astro: se come el espacio antes de un enlace en otro renglón.**
+Si en una plantilla una palabra o un `</b>` termina un renglón y el `<a>` o
+el `<b>` empieza el siguiente, el sitio publica las dos cosas pegadas: salía
+«privacidad:nom001sede2012…», «Cloudflaredeclaraque», «en elaviso de
+privacidad» (`/asistente`) y «reportarlo enel repositorio» (`/observaciones`,
+de antes). Se arregló con `{' '}` al final del renglón, como ya hacía el pie
+de la burbuja. Al escribir texto con enlaces, ponerlo así o en el mismo
+renglón. Los menús de arriba y del pie también quedan pegados en el HTML,
+pero cada enlace es un elemento aparte y en pantalla se ven bien.
+
 Pendiente para el paso de documentación (B3): `ia/README.md` («Privacidad»)
 sigue diciendo que el Worker no guarda nada y que Cloudflare no entrena con
 las preguntas, y `docs/arquitectura.md` («El contador de visitas»), «sin

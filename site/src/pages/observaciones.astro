@@ -102,7 +102,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <button type="submit" id="enviar">Enviar observación</button>
           <p class="obs-nota">
             No se pide registro ni cuenta de nada. Aparte de tu correo, que es
-            opcional, no escribas datos personales
+            opcional, no escribas datos personales{' '}
             (<a href={`${base}/privacidad/`}>aviso de privacidad</a>).
           </p>
           <p class="obs-error" id="obs-espera" hidden role="alert">
@@ -111,7 +111,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </p>
           <p class="obs-error" id="obs-error" hidden role="alert">
             No se pudo enviar. Revisa tu conexión y vuelve a intentar; si sigue
-            fallando, puedes reportarlo en
+            fallando, puedes reportarlo en{' '}
             <a href={REPO_ISSUES} rel="noopener" target="_blank">el repositorio del proyecto</a>.
           </p>
         </form>
