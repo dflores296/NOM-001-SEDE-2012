@@ -709,6 +709,9 @@ prueba(
       uno.pregunta === PREGUNTA_20A && uno.indice.includes('250 Puesta a tierra'),
       'paso 1 sin índice general'
     );
+    // El número al azar del navegador, solo en el primer paso.
+    afirmar(/^[0-9a-f]{16}$/.test(uno.navegador ?? ''), `navegador: ${uno.navegador}`);
+    afirmar(!('navegador' in dos) && !('navegador' in tres), 'el número viajó en otro paso');
     afirmar(
       dos.indice.startsWith('Artículo 250') && dos.indice.includes('250-122 '),
       'paso 2 sin el índice del 250'
@@ -989,21 +992,21 @@ prueba(
     await respuestas(page);
     afirmar((await usadas()) === 0, 'contó una pregunta que no se contestó');
 
-    // Con 15 ya hechas, la que se contesta dice cuántas quedan.
+    // Con 7 ya hechas, la que se contesta dice cuántas quedan.
     ocupado = false;
     await page.evaluate(() => {
       const hace = (h) => Date.now() - h * 3600_000;
       localStorage.setItem(
         'asis-usadas',
-        JSON.stringify(Array.from({ length: 15 }, (_, i) => hace(23 - i)))
+        JSON.stringify(Array.from({ length: 7 }, (_, i) => hace(23 - i)))
       );
     });
     await preguntar(page, '¿Y del 12 AWG?');
     await respuestas(page, 2);
-    afirmar((await usadas()) === 16, `cuenta ${await usadas()}`);
+    afirmar((await usadas()) === 8, `cuenta ${await usadas()}`);
     afirmar(
       (await page.textContent('.asis-quedan')) ===
-        'Te quedan 4 preguntas en este navegador por ahora.',
+        'Te quedan 2 preguntas en este navegador por ahora.',
       'no dice cuántas quedan'
     );
 
@@ -1012,7 +1015,7 @@ prueba(
       const hace = (h) => Date.now() - h * 3600_000;
       localStorage.setItem(
         'asis-usadas',
-        JSON.stringify(Array.from({ length: 20 }, (_, i) => hace(20 - i)))
+        JSON.stringify(Array.from({ length: 10 }, (_, i) => hace(20 - i)))
       );
     });
     const antes = recibido.length;

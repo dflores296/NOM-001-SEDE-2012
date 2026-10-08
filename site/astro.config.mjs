@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
+import { ANALITICA } from './src/lib/analitica.js';
 import { ASISTENTE } from './src/lib/asistente.js';
 
 // Las librerías del mapa 3D crean un <style> con su CSS al cargarse. La CSP
@@ -49,8 +50,10 @@ export default defineConfig({
   // - formspree.io: el formulario de /observaciones. form-action también
   //   lo cierra ahí, para que un formulario inyectado no pueda mandar los
   //   datos a otro lado.
-  // - el Worker del asistente (/preguntar), solo si está conectado: su
+  // - el Worker del asistente (la burbuja), solo si está conectado: su
   //   dirección vive en src/lib/asistente.js.
+  // - cloudflareinsights.com, el contador de visitas, solo si tiene token
+  //   (src/lib/analitica.js); su script viene de static.cloudflareinsights.com.
   //
   // Los <style> solo valen con hash: los de Astro y los que crean las
   // librerías del mapa (ver hashesDeEstilos arriba). Los atributos style sí
@@ -71,7 +74,7 @@ export default defineConfig({
         "img-src 'self' data:",
         "font-src 'self'",
         "media-src 'self'",
-        `connect-src 'self' https://api.github.com https://formspree.io${ASISTENTE ? ` ${new URL(ASISTENTE).origin}` : ''}`,
+        `connect-src 'self' https://api.github.com https://formspree.io${ASISTENTE ? ` ${new URL(ASISTENTE).origin}` : ''}${ANALITICA ? ' https://cloudflareinsights.com' : ''}`,
         "form-action 'self' https://formspree.io",
         "manifest-src 'self'",
         "worker-src 'self'",
@@ -79,6 +82,9 @@ export default defineConfig({
         "base-uri 'none'",
         "frame-src 'none'",
       ],
+      ...(ANALITICA
+        ? { scriptDirective: { resources: ["'self'", 'https://static.cloudflareinsights.com'] } }
+        : {}),
       styleDirective: {
         resources: ["'self'", { resource: "'unsafe-inline'", kind: 'attribute' }],
         hashes: hashesDeEstilos(),

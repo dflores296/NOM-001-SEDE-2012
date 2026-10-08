@@ -273,6 +273,13 @@ chico.
   pregunta, la respuesta y lo que leyó escritos. Viajan por `sessionStorage`,
   no por la URL, y el formulario los limpia como todo lo demás. El «volver»
   regresa a la página donde se estaba.
+- **Tope por navegador:** 10 preguntas en 24 horas (`TOPE` en `chat.js`),
+  contadas solo cuando el Worker contestó el primer paso. Con 3 o menos lo
+  dice debajo de la respuesta; en el tope, a qué hora se libera la siguiente.
+- **Cuántos navegadores preguntan:** la primera consulta de cada pregunta
+  lleva un número al azar del navegador que cambia cada día (`navegador`); el
+  Worker lo anota en su registro con cada pregunta contestada, nunca la
+  pregunta ni la IP (ver «Cuánta gente lo usa» en `ia/README.md`).
 - **Topes en cascada:** `LECTURA` y `TOPE_INDICE` (página) van por debajo de
   `TOPES` (Worker, `ia/nucleo.js`), y una prueba lo comprueba con las partes
   más largas de la norma.
@@ -281,6 +288,16 @@ La dirección del Worker vive en `site/src/lib/asistente.js`. Vacía, la
 burbuja no aparece, la CSP no cambia y `/preguntar` avisa que el asistente no
 está conectado. Las pruebas en navegador no dependen de eso: le dan a la página
 un asistente de mentiras en el mismo servidor.
+
+## El contador de visitas
+
+Cloudflare Web Analytics, sin cookies ni datos personales. Su token vive en
+`site/src/lib/analitica.js`: vacío, no hay contador y la CSP no cambia; con
+token, `Base.astro` pone el script de Cloudflare al final de cada página y lo
+dice en el pie, y `astro.config.mjs` abre la CSP a
+`static.cloudflareinsights.com` (el script) y a `cloudflareinsights.com` (a
+donde manda la visita), y a nada más. Poner o cambiar el token es un cambio de
+contenido: todas las páginas cambian y se vuelve a sellar la huella.
 
 ## El entorno de desarrollo
 

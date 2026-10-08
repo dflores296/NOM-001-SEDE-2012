@@ -50,8 +50,11 @@ import { elegir, palabrasClave } from './pasajes.js';
 import { bloques, normRef, trozos } from './respuesta.js';
 
 // Tope por navegador, como el del formulario de observaciones: que una sola
-// persona no se acabe el cupo diario, que es de todos. Son 20 preguntas en
-// 24 horas, contadas cada una desde que se hizo.
+// persona no se acabe el cupo diario, que es de todos. Son 10 preguntas en
+// 24 horas, contadas cada una desde que se hizo. El cupo de Cloudflare
+// alcanza para unas 40 a 45 al día entre todos (unas 230 neuronas cada una,
+// medido el 8 de octubre de 2026): con 20 por navegador, dos personas se lo
+// acababan.
 //
 // Solo cuenta la pregunta a la que el Worker contestó algo: la que no llegó
 // (sin red, red de oficina que lo bloquea) o la que no tuvo cupo no gastó
@@ -59,7 +62,7 @@ import { bloques, normRef, trozos } from './respuesta.js';
 // con cuatro preguntas del día más las fallidas de la víspera; por eso la
 // llave cambió de nombre (preg-usadas → asis-usadas) y la cuenta empezó de
 // nuevo.
-const TOPE = 20;
+const TOPE = 10;
 const DIA = 24 * 60 * 60 * 1000;
 const USADAS = 'asis-usadas';
 const usadas = () => {
@@ -83,7 +86,27 @@ const libre = () => {
   return hoy ? `hoy a las ${hora}` : `mañana a las ${hora}`;
 };
 // Cuando quedan pocas, se dice debajo de la respuesta.
-const AVISAR_DESDE = 5;
+const AVISAR_DESDE = 3;
+
+// Un número al azar por navegador y por día, que va con la primera consulta
+// de cada pregunta: con él, el registro del Worker cuenta cuántos navegadores
+// distintos preguntaron ese día. Cambia cada día (UTC, como el cupo de
+// Cloudflare), así que no sirve para seguir a nadie de un día a otro, y no
+// dice nada de la persona.
+function navegador() {
+  const hoy = new Date().toISOString().slice(0, 10);
+  try {
+    const v = JSON.parse(localStorage.getItem('asis-navegador') || 'null');
+    if (v?.dia === hoy && /^[0-9a-f]{16}$/.test(v.id)) return v.id;
+    const id = [...crypto.getRandomValues(new Uint8Array(8))]
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('');
+    localStorage.setItem('asis-navegador', JSON.stringify({ dia: hoy, id }));
+    return id;
+  } catch {
+    return '';
+  }
+}
 
 // La cuota de Cloudflare se reinicia a las 00:00 UTC: las 6 de la tarde en el
 // centro de México, que no cambia de horario desde 2022.
@@ -430,6 +453,7 @@ export function iniciar(raiz) {
         pregunta,
         historia: antes,
         indice: indice + bloquePistas(halladas.map((p) => p.general)),
+        navegador: navegador(),
       });
       // El Worker contestó: ya gastó del cupo.
       anotar();

@@ -528,6 +528,36 @@ aparatos pequeños, para calcular el alimentador. No se tocó: si se repite con
 otras cargas, lo siguiente es una pista en el paso 1 («las cargas para
 calcular, en VA, están en el 220»).
 
+### Cuánto se usa (8 de octubre, sexta vuelta)
+
+El dueño encontró el panel de neuronas (**AI → Workers AI**): 3 130 de 10 000
+en el día, con sus pruebas. Cada pregunta gasta unas 230 neuronas, así que el
+cupo gratis da unas **40 a 45 preguntas al día entre todos**, no por usuario.
+El modelo chico gastó el doble que el grande: lee los índices.
+
+Decisión del dueño: **se queda Cloudflare gratis por ahora.** Se habló de un
+servidor propio (una tarjeta gráfica no alcanza para cientos de usuarios, y
+rentarla cuesta de cientos a miles de dólares al mes), de Cloudflare de pago
+(unos 5 centavos de peso por pregunta más 5 dólares al mes) y de pasarle el
+costo al usuario (cobrar, que cada quien ponga su clave o donaciones). Quedó
+pendiente un botón de donaciones, si un día hace falta.
+
+Lo que se hizo:
+
+- **Tope por navegador de 10**, no 20: con 20, dos personas se acababan el
+  cupo de todos. Con 3 o menos, lo dice debajo de la respuesta.
+- **Cuántos navegadores preguntan:** la primera consulta de cada pregunta
+  lleva un número al azar del navegador, que cambia cada día. El Worker anota
+  `{"evento":"pregunta","navegador":"…"}` con cada pregunta contestada, nunca
+  la pregunta ni la IP. En Observability se cuentan las preguntas y los
+  números distintos; el registro gratis guarda 3 días. La guía lo dice en
+  «Privacidad y cupo».
+- **Contador de visitas** (Cloudflare Web Analytics, sin cookies), listo pero
+  **apagado**: falta el token, que el dueño saca en su cuenta de Cloudflare.
+  Va en `site/src/lib/analitica.js`; con él, el script entra en cada página,
+  la CSP se abre solo a Cloudflare Insights y el pie lo dice. Se probó con un
+  token de mentiras: la CSP deja pasar el script y la visita.
+
 ## Ronda de seguridad (octubre de 2026)
 
 Bitácora de lo que se hizo, por qué, y de las dependencias que a propósito

@@ -42,13 +42,28 @@ fuera es este Worker.
 
 La cuenta de Cloudflare se queda en el plan gratis (**sin tarjeta**). Ahí
 Workers AI da 10 000 «neuronas» al día, una sola bolsa para todos los
-modelos. Cada pregunta son tres consultas que leen, juntas, de 5 000 a 15 000
-tokens según el artículo; la última la hace el modelo grande, que gasta como
-el doble por palabra y piensa más antes de contestar. Salen unas **25 a 40
-preguntas diarias entre todos los visitantes**. El registro del Worker (Observability) anota los tokens de cada
-consulta, así que el número real se puede ver ahí. Al acabarse, Cloudflare no
-cobra: el modelo deja de contestar hasta las 00:00 UTC (las 6 de la tarde en
-el centro de México) y la página lo explica.
+modelos. Cada pregunta son tres consultas. Medido el 8 de octubre de 2026
+(panel **AI → Workers AI**, «Neurons used today»): unas **230 neuronas por
+pregunta**, así que salen unas **40 a 45 preguntas diarias entre todos los
+visitantes**. El modelo chico gasta el doble que el grande: lee los índices,
+que son largos; el grande solo lee las partes escogidas. Al acabarse,
+Cloudflare no cobra: el modelo deja de contestar hasta las 00:00 UTC (las 6 de
+la tarde en el centro de México) y la página lo explica.
+
+Para que una sola persona no se lo acabe, cada navegador tiene un tope de 10
+preguntas en 24 horas (`site/src/scripts/preguntar/chat.js`). Es de cortesía:
+otro navegador o una ventana de incógnito empiezan de cero.
+
+### Cuánta gente lo usa
+
+- **Preguntas:** cada pregunta contestada deja en el registro del Worker
+  (**Workers & Pages → nom-001-ia → Observability**) un evento
+  `{"evento":"pregunta","navegador":"…"}`. Contar esos eventos da las
+  preguntas del día; contar los `navegador` distintos, cuántos navegadores
+  preguntaron. El número lo inventa cada navegador al azar y cambia cada día:
+  no sirve para seguir a nadie. El registro gratis guarda 3 días.
+- **Visitas al sitio:** Cloudflare Web Analytics, si tiene su token
+  (`site/src/lib/analitica.js`).
 
 Para que eso siga así: no meter tarjeta y no activar «Workers Paid».
 

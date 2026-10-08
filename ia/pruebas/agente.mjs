@@ -168,6 +168,43 @@ prueba('Los pasos de índice llevan el índice y sus propias instrucciones', asy
   }
 });
 
+prueba(
+  'Cada pregunta contestada deja en el registro su número de navegador, nunca la pregunta',
+  async () => {
+    const pregunta = '¿Protección del 14 AWG de cobre? texto-que-no-debe-quedar';
+    const indice = '240 Protección contra sobrecorriente';
+    const { env } = entorno({ salida: { response: '240' } });
+    await agente.fetch(
+      peticion({ paso: 'articulos', pregunta, indice, navegador: '0123456789abcdef' }),
+      env
+    );
+    // Uno inventado se contesta igual, y se anota sin él.
+    const r = await agente.fetch(
+      peticion({ paso: 'articulos', pregunta, indice, navegador: '<script>' }),
+      env
+    );
+    afirmar(r.status === 200, 'un número inventado impidió contestar');
+    // Los pasos 2 y 3 son de la misma pregunta: no cuentan otra vez.
+    await agente.fetch(
+      peticion({ paso: 'secciones', pregunta, indice, navegador: 'fedcba9876543210' }),
+      env
+    );
+    // Las demás pruebas corren a la vez y también escriben aquí: se buscan
+    // solo los números de esta.
+    const eventos = registro.filter((l) => l.includes('"evento":"pregunta"'));
+    afirmar(
+      eventos.filter((l) => l === '{"evento":"pregunta","navegador":"0123456789abcdef"}').length ===
+        1,
+      'no anotó la pregunta con su número'
+    );
+    afirmar(!eventos.some((l) => l.includes('<script>')), 'anotó un número inventado');
+    afirmar(!eventos.some((l) => l.includes('fedcba9876543210')), 'el paso 2 contó otra pregunta');
+    afirmar(!registro.some((l) => l.includes('texto-que-no-debe-quedar')), 'anotó la pregunta');
+    const v = validar({ paso: 'articulos', pregunta: 'x', indice: 'y', navegador: 'zz' });
+    afirmar(!v.error && !('navegador' in v), 'un número mal formado no se ignoró');
+  }
+);
+
 prueba('Escoger lo hace el modelo chico, pensando poco', async () => {
   for (const paso of ['articulos', 'secciones']) {
     const { env, llamadas } = entorno({ salida: { response: '240' } });

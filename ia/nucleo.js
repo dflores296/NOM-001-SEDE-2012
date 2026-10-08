@@ -60,6 +60,12 @@ export const TOPES = {
   total: 26_000,
 };
 
+// El número al azar que manda la página con la primera consulta de cada
+// pregunta (16 cifras hexadecimales, uno por navegador y por día). Solo sirve
+// para contar navegadores distintos en el registro; si no viene o no tiene
+// esa forma, se ignora: la pregunta se contesta igual.
+const NAVEGADOR = /^[0-9a-f]{16}$/;
+
 // Una referencia es lo que el modelo copia entre corchetes y la página
 // convierte en enlace: «310-15», «Tabla 310-15(b)(16)», «Figura 230-1»,
 // «Definición: Acometida». Sin corchetes ni saltos de línea, que romperían
@@ -176,7 +182,9 @@ export function validar(cuerpo) {
   }
   const indice = texto(cuerpo.indice);
   if (!indice || indice.length > TOPES.indice[paso]) return { error: 'indice' };
-  return { paso, pregunta, historia, indice };
+  const navegador =
+    paso === 'articulos' && NAVEGADOR.test(cuerpo.navegador ?? '') ? cuerpo.navegador : null;
+  return { paso, pregunta, historia, indice, ...(navegador ? { navegador } : {}) };
 }
 
 /** La entrada del modelo, en el formato de la Responses API. */
@@ -330,6 +338,15 @@ async function contestar(request, env, origen) {
       // la pregunta: si cambia el formato del modelo, aquí se ve cuál llegó.
       console.error('respuesta vacía; llegó:', Object.keys(r ?? {}).join(','));
       return responder({ error: 'vacia' }, 502, origen);
+    }
+    // Una pregunta nueva contestada, y de qué navegador (un número al azar
+    // que cambia cada día; ver NAVEGADOR). En Observability, contar los
+    // `navegador` distintos de los eventos «pregunta» da cuántos navegadores
+    // preguntaron. Nunca la pregunta ni la IP.
+    if (datos.paso === 'articulos') {
+      console.log(
+        JSON.stringify({ evento: 'pregunta', navegador: datos.navegador ?? 'sin-numero' })
+      );
     }
     return responder({ respuesta }, 200, origen);
   } catch (e) {

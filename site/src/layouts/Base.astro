@@ -2,6 +2,7 @@
 import '@fontsource-variable/inter';
 import '../styles/global.css';
 import Asistente from '../components/Asistente.astro';
+import { ANALITICA } from '../lib/analitica.js';
 import { ASISTENTE } from '../lib/asistente.js';
 const { title, desc = 'Guía interactiva de la NOM-001-SEDE-2012, Instalaciones Eléctricas (utilización).' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -182,11 +183,19 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
         <p class="pie-legal">
           Los textos reglamentarios no son objeto de protección por derecho de autor conforme al
           artículo 14 de la Ley Federal del Derecho de Autor. El código de este proyecto es libre.
+          {ANALITICA && ' Para saber cuántas personas lo visitan, el sitio usa Cloudflare Web Analytics, que no usa cookies ni guarda datos personales.'}
         </p>
       </div>
     </footer>
 
     <Asistente />
+
+    {/* El contador de visitas (src/lib/analitica.js), solo con su token. Es
+        un script de afuera: la CSP lo deja pasar solo a él. */}
+    {ANALITICA && (
+      <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js"
+              data-cf-beacon={JSON.stringify({ token: ANALITICA })}></script>
+    )}
 
     <script>
       // El comportamiento de la página, una pieza por módulo (src/scripts/).
