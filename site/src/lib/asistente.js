@@ -12,7 +12,7 @@
 // - Base.astro y preguntar.astro: el enlace del pie y la guía.
 //
 // Vacía, el asistente está desconectado: no hay burbuja, la CSP no cambia y
-// /preguntar avisa que todavía no funciona. No es un secreto: viaja en el
+// /asistente avisa que todavía no funciona. No es un secreto: viaja en el
 // HTML, porque es a donde el navegador manda la pregunta.
 // ---------------------------------------------------------------------------
 export const ASISTENTE = 'https://nom-001-ia.bettofe.workers.dev';

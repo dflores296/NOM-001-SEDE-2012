@@ -1,6 +1,6 @@
 // Las erratas del DOF en las tablas (README, «Erratas del PDF de origen»; el
 // sustento, en REVISION-TABLAS.md). La norma no se corrige: las tablas dicen
-// lo que imprime el DOF. El asistente de /preguntar las lee con esta nota al
+// lo que imprime el DOF. El asistente las lee con esta nota al
 // pie (tabla-texto.js), para que dé el valor impreso y avise.
 //
 // `impreso` son pedazos de la tabla como la lee el asistente, tal cual: si

@@ -1,4 +1,4 @@
-// La norma como la consulta el asistente de /preguntar: un índice en dos
+// La norma como la consulta el asistente (la burbuja): un índice en dos
 // niveles y el texto completo de cada parte, con su identificador.
 //
 // El asistente no recibe la norma entera —son 3.5 millones de caracteres, más

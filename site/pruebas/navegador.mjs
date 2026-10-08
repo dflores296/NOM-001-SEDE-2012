@@ -60,7 +60,7 @@ const PAGINAS = [
   '/apendices/A/',
   '/cierre/',
   '/observaciones/',
-  '/preguntar/',
+  '/asistente/',
   '/mapa/',
 ];
 
@@ -658,14 +658,21 @@ prueba(
     await page.goto('/art/250/', { waitUntil: 'networkidle' });
     const url = await page.getAttribute('.asis', 'data-asistente');
     afirmar(!(await page.$('nav.tabs a[href$="/preguntar/"]')), 'sigue la pestaña Preguntar');
+    // La dirección vieja de la guía lleva a la nueva.
+    await page.goto('/preguntar/', { waitUntil: 'networkidle' });
+    afirmar(
+      page.url().endsWith('/asistente/'),
+      `/preguntar/ no lleva a /asistente/: ${page.url()}`
+    );
+    await page.goto('/art/250/', { waitUntil: 'networkidle' });
     if (url) {
       afirmar(await page.isVisible('.asis-lanzar'), 'conectado y sin burbuja');
       afirmar(await page.isHidden('#asis-panel'), 'la conversación nace abierta');
-      await page.goto('/preguntar/', { waitUntil: 'networkidle' });
+      await page.goto('/asistente/', { waitUntil: 'networkidle' });
       afirmar(await page.isVisible('[data-abrir-asistente]'), 'la guía no la abre');
     } else {
       afirmar(await page.isHidden('.asis-lanzar'), 'hay burbuja sin asistente');
-      await page.goto('/preguntar/', { waitUntil: 'networkidle' });
+      await page.goto('/asistente/', { waitUntil: 'networkidle' });
       afirmar(await page.isVisible('#preg-cerrado'), 'no avisa que no está conectado');
     }
   }
@@ -843,13 +850,13 @@ prueba('Una sugerencia se manda al tocarla', async ({ nuevaPagina }) => {
   afirmar(recibido[0]?.pregunta === sugerencia, `mandó: ${recibido[0]?.pregunta}`);
 });
 
-prueba('La guía de /preguntar abre la burbuja y manda el ejemplo', async ({ nuevaPagina }) => {
+prueba('La guía de /asistente abre la burbuja y manda el ejemplo', async ({ nuevaPagina }) => {
   const { recibido, contestar } = asistenteDePrueba({
     articulos: '240',
     secciones: '240-4(d)',
     responder: 'Según [240-4(d)(3)], 15 amperes.',
   });
-  const { page } = await conAsistente(nuevaPagina, contestar, { ruta: '/preguntar/' });
+  const { page } = await conAsistente(nuevaPagina, contestar, { ruta: '/asistente/' });
   const ejemplo = (await page.textContent('.preg-ejemplo')).trim();
   await page.click('.preg-ejemplo');
   await respuestas(page);

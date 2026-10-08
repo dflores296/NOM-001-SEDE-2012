@@ -229,7 +229,8 @@ no uno verificado.
 
 El asistente contesta preguntas en lenguaje natural con el texto de la norma.
 Vive en una burbuja abajo a la derecha de cada página
-(`components/Asistente.astro`); `/preguntar` es su guía.
+(`components/Asistente.astro`); `/asistente` es su guía (antes `/preguntar`,
+que ahora lleva ahí).
 El sitio sigue siendo estático: lo único que vive fuera es un Worker de
 Cloudflare (`ia/agente.js`) que llama a dos modelos de código abierto
 (gpt-oss-20b y gpt-oss-120b) en Workers AI, dentro del plan gratis. Cómo se publica, qué
@@ -294,7 +295,7 @@ chico.
   abrir una cita cierra la burbuja para que se vea la norma; un punto en la
   burbuja avisa que la conversación sigue. Se borra al cerrar la pestaña o
   con «Nueva conversación».
-- **Las sugerencias** de la bienvenida y los ejemplos de `/preguntar`
+- **Las sugerencias** de la bienvenida y los ejemplos de `/asistente`
   (`data-preguntar`) se mandan al tocarlos; `data-abrir-asistente` solo abre.
 - **«¿Algo está mal? Repórtalo»** lleva a `/observaciones` con la
   pregunta, la respuesta y lo que leyó escritos. Viajan por `sessionStorage`,
@@ -313,7 +314,7 @@ chico.
   más largas de la norma.
 
 La dirección del Worker vive en `site/src/lib/asistente.js`. Vacía, la
-burbuja no aparece, la CSP no cambia y `/preguntar` avisa que el asistente no
+burbuja no aparece, la CSP no cambia y `/asistente` avisa que el asistente no
 está conectado. Las pruebas en navegador no dependen de eso: le dan a la página
 un asistente de mentiras en el mismo servidor.
 

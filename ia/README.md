@@ -1,9 +1,9 @@
-# El asistente de /preguntar
+# El asistente
 
 Un Worker de Cloudflare: un programa chico que corre en los servidores de
 Cloudflare cada vez que alguien le hace una pregunta al asistente de la guía:
 la burbuja de abajo a la derecha de cada página (la guía de uso está en
-`/preguntar`). Le pasa a dos modelos de IA de código abierto de OpenAI (licencia
+`/asistente`). Le pasa a dos modelos de IA de código abierto de OpenAI (licencia
 Apache-2.0) lo que la página le manda, con las instrucciones de cada paso: el
 chico, **gpt-oss-20b**, escoge qué leer; el grande, **gpt-oss-120b**, redacta
 la respuesta, que es donde hay que leer con cuidado a qué calibre y condición

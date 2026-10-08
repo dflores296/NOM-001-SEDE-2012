@@ -8,7 +8,7 @@
 // encima de la página, y se puede seguir leyendo al lado.
 //
 // Cualquier botón del sitio con data-abrir-asistente lo abre, y uno con
-// data-preguntar="…" lo abre y manda esa pregunta (la guía de /preguntar).
+// data-preguntar="…" lo abre y manda esa pregunta (la guía, /asistente).
 const raiz = document.querySelector('.asis');
 const URL_ASISTENTE = raiz?.dataset.asistente || '';
 

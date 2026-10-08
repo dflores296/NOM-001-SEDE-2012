@@ -563,6 +563,12 @@ Lo que se hizo:
   corta. Se le habían agregado cómo se cuentan las preguntas y lo del número
   al azar, y el dueño lo rechazó: son notas de desarrollo, no le sirven al
   visitante. Quedó como regla en `CLAUDE.md`.
+- **La guía cambió de dirección:** `/preguntar` → `/asistente`, a pedido del
+  dueño (la página se llama «El asistente»; «preguntar» venía de cuando era
+  pestaña). `/preguntar` quedó como desvío a la nueva (`redirects` en
+  `site/astro.config.mjs`), por los enlaces ya compartidos; una prueba lo
+  cuida. Los archivos del código (`scripts/preguntar/`, `preguntar.css`,
+  `pruebas/preguntar.mjs`) conservan el nombre: no los ve nadie.
 - **Blindaje del asistente**, a pedido del dueño («contra peticiones que
   busquen saturar el servidor o sacar datos»): un tope de 15 consultas por
   minuto por conexión con el Rate Limiting de Cloudflare (`ratelimits` en

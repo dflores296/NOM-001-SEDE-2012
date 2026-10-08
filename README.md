@@ -33,7 +33,7 @@ navegables, backlinks y búsqueda instantánea que funciona sin conexión.
 - **Los tres Apéndices y los Títulos de cierre**, que son las últimas 38
   páginas de la norma.
 - **Búsqueda instantánea** sobre el texto completo, sin conexión.
-- **[Un asistente](https://dflores296.github.io/NOM-001-SEDE-2012/preguntar/)**,
+- **[Un asistente](https://dflores296.github.io/NOM-001-SEDE-2012/asistente/)**,
   en la burbuja de abajo a la derecha de cada página, que contesta en tus
   palabras con el texto de la norma y un enlace en cada cita. Lo redacta una IA de código abierto y puede equivocarse: la respuesta
   siempre remite a la sección que la sustenta.
@@ -241,7 +241,7 @@ están en [CONTEXTO.md](CONTEXTO.md#ronda-de-seguridad-octubre-de-2026).
 
 Cuatro tablas traen valores mal impresos **en el DOF**. Se reproducen tal como
 los publica: corregirlos sería editar la norma, no transcribirla. El asistente
-de `/preguntar` las lee con una nota de la guía al pie y avisa
+del sitio las lee con una nota de la guía al pie y avisa
 (`site/src/lib/erratas.js`).
 
 | Tabla | Dónde | El DOF imprime | Debería decir |

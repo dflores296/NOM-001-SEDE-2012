@@ -440,7 +440,7 @@ prueba('Lo que manda la página cabe en los topes del Worker', () => {
   afirmar(PRESUPUESTO.fragmentos <= TOPES.fragmentos, 'fragmentos');
   afirmar(PRESUPUESTO.porFragmento < TOPES.texto, 'texto por fragmento');
   afirmar(PRESUPUESTO.total < TOPES.total, 'total');
-  const html = fs.readFileSync(path.join(DIST, 'preguntar', 'index.html'), 'utf8');
+  const html = fs.readFileSync(path.join(DIST, 'asistente', 'index.html'), 'utf8');
   const max = Number(/id="asis-campo"[^>]*maxlength="(\d+)"/.exec(html)?.[1]);
   afirmar(max === TOPES.pregunta, `el campo admite ${max} y el Worker ${TOPES.pregunta}`);
 });

@@ -14,7 +14,7 @@ import { ASISTENTE } from '../lib/asistente.js';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Tocar una la manda. Cortas, para que quepan como botón, y escritas como
-// pide la guía (/preguntar).
+// pide la guía (/asistente).
 const EJEMPLOS = [
   '¿Qué protección máxima lleva un conductor 14 AWG de cobre?',
   '¿Dónde se requiere protección contra falla a tierra en una vivienda?',
@@ -91,7 +91,7 @@ const EJEMPLOS = [
     </form>
     <p class="asis-pie">
       Lo redacta una IA y puede equivocarse: abre la cita antes de decidir.{' '}
-      <a href={`${base}/preguntar/`}>Cómo preguntar y privacidad</a>
+      <a href={`${base}/asistente/`}>Cómo preguntar y privacidad</a>
     </p>
   </section>
 </div>

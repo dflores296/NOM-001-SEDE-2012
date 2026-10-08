@@ -30,7 +30,7 @@ python3 -m mypy tools/
 paso 'Revisar el código del sitio'
 (cd site && npx biome ci .)
 
-# El asistente de /preguntar es un Worker de Cloudflare (ia/agente.js) que
+# El asistente (la burbuja del sitio) es un Worker de Cloudflare (ia/agente.js) que
 # no se publica con el sitio: Cloudflare lo toma del repositorio. Se revisa
 # con las mismas reglas de Biome (ia/biome.json las hereda del sitio) y se
 # prueba sin Cloudflare, con un modelo de mentiras. Ver ia/README.md.

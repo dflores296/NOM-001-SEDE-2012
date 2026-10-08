@@ -1,4 +1,4 @@
-// Una tabla de la norma como texto para el asistente (/preguntar): un renglón
+// Una tabla de la norma como texto para el asistente: un renglón
 // de encabezados y un renglón por fila, con las celdas separadas por «|».
 //
 // El buscador guarda las tablas aplanadas, todas las celdas seguidas

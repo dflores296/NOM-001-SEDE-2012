@@ -101,8 +101,12 @@ export default defineConfig({
   // /revision era la lista de trabajo de la revisión de tablas y se retiró al
   // terminarse. La ruta sigue publicada en REVISION-TABLAS.md y en enlaces
   // viejos, así que lleva a donde hoy se reporta.
+  // /preguntar fue la página del asistente cuando era una pestaña; hoy el
+  // asistente es la burbuja de cada página y su guía vive en /asistente. La
+  // dirección vieja pudo haberse compartido: lleva a la nueva.
   redirects: {
     '/art/100': '/NOM-001-SEDE-2012/glosario/',
     '/revision': '/NOM-001-SEDE-2012/observaciones/',
+    '/preguntar': '/NOM-001-SEDE-2012/asistente/',
   },
 });
