@@ -970,6 +970,60 @@ prueba(
   }
 );
 
+prueba(
+  'El tope cuenta solo lo que el asistente recibió y dice cuándo se libera',
+  async ({ nuevaPagina }) => {
+    let ocupado = true;
+    const { recibido, contestar } = asistenteDePrueba({
+      articulos: () =>
+        ocupado ? { estado: 503, json: { error: 'ocupado' } } : { json: { respuesta: '240' } },
+      secciones: '240-4(d)',
+      responder: 'Según [240-4(d)(3)], 15 amperes.',
+    });
+    const { page } = await conAsistente(nuevaPagina, contestar);
+    const usadas = () =>
+      page.evaluate(() => JSON.parse(localStorage.getItem('asis-usadas') || '[]').length);
+
+    // Un error del servicio no gasta cupo.
+    await preguntar(page, '¿Protección del 14 AWG de cobre?');
+    await respuestas(page);
+    afirmar((await usadas()) === 0, 'contó una pregunta que no se contestó');
+
+    // Con 15 ya hechas, la que se contesta dice cuántas quedan.
+    ocupado = false;
+    await page.evaluate(() => {
+      const hace = (h) => Date.now() - h * 3600_000;
+      localStorage.setItem(
+        'asis-usadas',
+        JSON.stringify(Array.from({ length: 15 }, (_, i) => hace(23 - i)))
+      );
+    });
+    await preguntar(page, '¿Y del 12 AWG?');
+    await respuestas(page, 2);
+    afirmar((await usadas()) === 16, `cuenta ${await usadas()}`);
+    afirmar(
+      (await page.textContent('.asis-quedan')) ===
+        'Te quedan 4 preguntas en este navegador por ahora.',
+      'no dice cuántas quedan'
+    );
+
+    // En el tope no pregunta y dice a qué hora vuelve.
+    await page.evaluate(() => {
+      const hace = (h) => Date.now() - h * 3600_000;
+      localStorage.setItem(
+        'asis-usadas',
+        JSON.stringify(Array.from({ length: 20 }, (_, i) => hace(20 - i)))
+      );
+    });
+    const antes = recibido.length;
+    await preguntar(page, '¿Y del 10 AWG?');
+    await respuestas(page, 3);
+    const texto = await page.textContent('.asis-chat .asis-error:last-child .asis-burbuja');
+    afirmar(/Puedes volver a preguntar (hoy|mañana) a las \d/.test(texto), texto);
+    afirmar(recibido.length === antes, 'preguntó estando en el tope');
+  }
+);
+
 prueba('Una pregunta sin nada que buscar no llega a redactar', async ({ nuevaPagina }) => {
   const { recibido, contestar } = asistenteDePrueba({ articulos: 'NADA' });
   const { page } = await conAsistente(nuevaPagina, contestar);

@@ -50,12 +50,21 @@ import { elegir, palabrasClave } from './pasajes.js';
 import { bloques, normRef, trozos } from './respuesta.js';
 
 // Tope por navegador, como el del formulario de observaciones: que una sola
-// persona no se acabe el cupo diario, que es de todos.
+// persona no se acabe el cupo diario, que es de todos. Son 20 preguntas en
+// 24 horas, contadas cada una desde que se hizo.
+//
+// Solo cuenta la pregunta a la que el Worker contestó algo: la que no llegó
+// (sin red, red de oficina que lo bloquea) o la que no tuvo cupo no gastó
+// nada. La primera versión contaba todas, y el dueño, probando, llegó al tope
+// con cuatro preguntas del día más las fallidas de la víspera; por eso la
+// llave cambió de nombre (preg-usadas → asis-usadas) y la cuenta empezó de
+// nuevo.
 const TOPE = 20;
 const DIA = 24 * 60 * 60 * 1000;
+const USADAS = 'asis-usadas';
 const usadas = () => {
   try {
-    const v = JSON.parse(localStorage.getItem('preg-usadas') || '[]');
+    const v = JSON.parse(localStorage.getItem(USADAS) || '[]');
     return Array.isArray(v) ? v.filter((t) => Date.now() - t < DIA) : [];
   } catch {
     return [];
@@ -63,9 +72,18 @@ const usadas = () => {
 };
 const anotar = () => {
   try {
-    localStorage.setItem('preg-usadas', JSON.stringify([...usadas(), Date.now()]));
+    localStorage.setItem(USADAS, JSON.stringify([...usadas(), Date.now()]));
   } catch {}
 };
+// A qué hora se libera la siguiente: 24 horas después de la más vieja.
+const libre = () => {
+  const t = Math.min(...usadas()) + DIA;
+  const hora = new Date(t).toLocaleTimeString('es-MX', { hour: 'numeric', minute: '2-digit' });
+  const hoy = new Date().toDateString() === new Date(t).toDateString();
+  return hoy ? `hoy a las ${hora}` : `mañana a las ${hora}`;
+};
+// Cuando quedan pocas, se dice debajo de la respuesta.
+const AVISAR_DESDE = 5;
 
 // La cuota de Cloudflare se reinicia a las 00:00 UTC: las 6 de la tarde en el
 // centro de México, que no cambia de horario desde 2022.
@@ -77,7 +95,8 @@ const MENSAJES = {
   modelo: 'El asistente no está disponible por ahora.',
   lento: 'El asistente tardó demasiado en contestar. Intenta de nuevo en un momento.',
   red: 'Tu pregunta no llegó al asistente: el navegador no pudo comunicarse con él. Si estás en una red de oficina o de empresa, puede estar bloqueándolo; prueba con otra red o con los datos del celular.',
-  tope: `Llegaste al tope de ${TOPE} preguntas al día en este navegador. El cupo del asistente es de todos; mañana se libera. Mientras, el buscador de arriba sigue funcionando.`,
+  tope: () =>
+    `Llegaste al tope de ${TOPE} preguntas en 24 horas en este navegador: el cupo del asistente es de todos. Puedes volver a preguntar ${libre()}. Mientras, el buscador de arriba sigue funcionando.`,
   nada: 'No encontré nada en la norma para esa pregunta. Prueba a decirlo de otra forma, o con el término que usa la norma (por ejemplo «conductor de puesta a tierra» en vez de «tierra física»).',
   falla: 'El asistente no pudo contestar esta vez. Intenta de nuevo en un momento.',
 };
@@ -254,6 +273,18 @@ function pintarMensaje(m) {
   pintarTexto(burbuja, m.texto, new Map(m.enlaces || []));
   pintarFuentes(li, m.fuentes, true);
   li.append(botonReportar(m));
+  if (Number.isInteger(m.quedan)) {
+    const q = Math.max(0, m.quedan);
+    li.append(
+      el(
+        'p',
+        'asis-quedan',
+        q === 1
+          ? 'Te queda 1 pregunta en este navegador por ahora.'
+          : `Te quedan ${q} preguntas en este navegador por ahora.`
+      )
+    );
+  }
   return li;
 }
 
@@ -374,8 +405,10 @@ export function iniciar(raiz) {
       pensando.remove();
       bajar(anotarMensaje(m));
     };
-    const aviso = (motivo, fuentes = []) =>
-      terminar({ rol: 'aviso', texto: MENSAJES[motivo] || MENSAJES.falla, fuentes });
+    const aviso = (motivo, fuentes = []) => {
+      const m = MENSAJES[motivo] || MENSAJES.falla;
+      terminar({ rol: 'aviso', texto: typeof m === 'function' ? m() : m, fuentes });
+    };
 
     if (usadas().length >= TOPE) {
       aviso('tope');
@@ -387,7 +420,6 @@ export function iniciar(raiz) {
     const fuentes = () =>
       leidas.map((f) => ({ ref: f.ref, titulo: f.titulo || '', href: href(f.r) }));
     try {
-      anotar();
       // Paso 1: el índice general, con las pistas del buscador.
       const [{ indice, claves: todas }, halladas] = await Promise.all([
         cargarGeneral(),
@@ -399,6 +431,8 @@ export function iniciar(raiz) {
         historia: antes,
         indice: indice + bloquePistas(halladas.map((p) => p.general)),
       });
+      // El Worker contestó: ya gastó del cupo.
+      anotar();
       const claves = clavesPedidas(r1, todas);
 
       // Paso 2: el índice de los artículos escogidos, con las pistas que caen
@@ -444,12 +478,14 @@ export function iniciar(raiz) {
       conv.historia = [...conv.historia, { p: pregunta, r: respuesta.slice(0, 1400) }].slice(
         -RECUERDA
       );
+      const quedan = TOPE - usadas().length;
       terminar({
         rol: 'ia',
         pregunta,
         texto: respuesta,
         enlaces: [...enlaces],
         fuentes: fuentes(),
+        ...(quedan <= AVISAR_DESDE ? { quedan } : {}),
       });
     } catch (e) {
       aviso(e?.motivo || 'falla', fuentes());

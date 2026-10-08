@@ -512,6 +512,22 @@ Quedó fuera: que las citas se abran sin salir de la conversación (en un panel
 al lado, por ejemplo). Con la conversación guardada, abrir y volver ya
 funciona, y es lo que hace cualquier enlace del sitio.
 
+**El tope por navegador, corregido.** Ya publicada la burbuja, el dueño llegó
+al tope de 20 con cuatro preguntas del día: contaban también las de la víspera
+(son 24 horas desde cada una, no «hasta mañana») y las que fallaron sin llegar
+al asistente. Ahora solo cuenta una pregunta cuando el Worker contestó el
+primer paso, que es cuando ya gastó del cupo; la llave cambió
+(`preg-usadas` → `asis-usadas`), así que la cuenta empezó de cero; con 5 o
+menos, debajo de la respuesta dice cuántas quedan, y en el tope dice a qué
+hora se libera la siguiente.
+
+De esa misma prueba: a «¿cuánta carga en VA lleva un circuito de 20 A de
+aparatos pequeños?» contestó que no hay carga mínima, leyendo 210-11(c)(1) y
+210-23. El dato está en 220-52(a): 1 500 voltamperes por cada circuito de
+aparatos pequeños, para calcular el alimentador. No se tocó: si se repite con
+otras cargas, lo siguiente es una pista en el paso 1 («las cargas para
+calcular, en VA, están en el 220»).
+
 ## Ronda de seguridad (octubre de 2026)
 
 Bitácora de lo que se hizo, por qué, y de las dependencias que a propósito
