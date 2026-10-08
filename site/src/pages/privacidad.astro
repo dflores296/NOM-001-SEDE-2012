@@ -1,0 +1,212 @@
+---
+import Base from '../layouts/Base.astro';
+
+// El aviso de privacidad, provisional. Es la única página que dice qué datos
+// se tratan y a dónde van: excepción a la regla de CLAUDE.md «lo que lee el
+// visitante no explica cómo funciona por dentro», autorizada por el dueño el
+// 8 de octubre de 2026. Las demás páginas solo enlazan aquí.
+//
+// Dice solo lo comprobado en el código y en el panel de Cloudflare (paso 0 de
+// «La auditoría del asistente», CONTEXTO.md). Nada de plazos ni de lo que los
+// servicios hagan con lo que reciben: eso lo dicen sus políticas, enlazadas
+// abajo. Tampoco el domicilio del responsable, por decisión del dueño.
+//
+// Si cambia lo que se manda o a qué servicio llega, este texto cambia ANTES,
+// con versión y fecha nuevas (regla de CLAUDE.md).
+const VERSION = '0.1';
+const FECHA = '8 de octubre de 2026';
+const CONTACTO = 'nom001sede2012.contacto@gmail.com';
+const HISTORIA =
+  'https://github.com/dflores296/NOM-001-SEDE-2012/commits/main/site/src/pages/privacidad.astro';
+---
+
+<Base title="Aviso de privacidad — NOM-001-SEDE-2012"
+      desc="Qué datos pasan por esta guía cuando la usas, a qué servicios llegan y qué se guarda.">
+  <main id="contenido" tabindex="-1" class="wrap obs">
+    <h1>Aviso de privacidad</h1>
+    <p class="obs-nota">Versión {VERSION}, provisional · {FECHA}</p>
+
+    <p class="obs-intro">
+      Este aviso explica qué datos pasan por esta guía cuando la usas, a qué
+      servicios llegan y qué se guarda. Describe lo que hace hoy el sitio,
+      comprobado en su código y en la configuración de los servicios. Es
+      provisional: todavía no tiene revisión legal.
+    </p>
+
+    <p>
+      <b>Responsable del tratamiento:</b> el autor de la guía (dflores296 en
+      GitHub), una persona física que mantiene este proyecto personal y sin
+      fines de lucro.
+    </p>
+    <p>
+      <b>Medio de contacto para asuntos de privacidad y ejercicio de
+      derechos:</b> <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>
+    </p>
+    <p>
+      Por razones de seguridad personal, el domicilio particular del
+      responsable no se publica en este sitio. Podrá proporcionarse a la
+      autoridad competente.
+    </p>
+
+    <div class="obs-tip">
+      <b>Antes que nada: no escribas datos personales.</b> Ni en las preguntas
+      al asistente ni en las observaciones: nombres, teléfonos, direcciones, ni
+      datos de un cliente o de una obra que permitan saber de quién se trata.
+      La guía no los necesita para contestar. El correo del formulario de
+      observaciones es opcional.
+    </div>
+
+    <h2>Al visitar la guía</h2>
+    <ul class="obs-tipos">
+      <li>
+        <b>GitHub publica la guía</b> (GitHub Pages). Tu navegador le pide cada
+        página, y GitHub recibe lo que acompaña a cualquier conexión, como tu
+        dirección IP y el tipo de navegador.
+      </li>
+      <li>
+        <b>El número de estrellas</b> del proyecto lo pide tu navegador a
+        GitHub, a lo más una vez cada 6 horas. No se manda nada tuyo aparte de
+        la conexión.
+      </li>
+      <li>
+        <b>El contador de visitas</b> es Cloudflare Web Analytics. Cada página
+        carga un programa de Cloudflare que le manda datos de la visita, como
+        la página que abriste. Qué recoge exactamente y cuánto tiempo lo guarda
+        lo dice Cloudflare en su política.
+      </li>
+      <li><b>El sitio no usa cookies propias.</b></li>
+    </ul>
+
+    <h2>Al preguntarle al asistente</h2>
+    <ul class="obs-tipos">
+      <li>
+        <b>El asistente funciona en Cloudflare.</b> Con cada pregunta, tu
+        navegador le manda:
+        <ul>
+          <li>tu pregunta;</li>
+          <li>
+            las dos preguntas y respuestas anteriores de la misma conversación,
+            para entender las de seguimiento («¿y para 12 AWG?»);
+          </li>
+          <li>los índices y las partes de la norma que el asistente va a leer;</li>
+          <li>
+            cuántas preguntas lleva tu navegador ese día (1, 2, 3…), para saber
+            cuánta gente usa el asistente.
+          </li>
+        </ul>
+        Una pregunta hace hasta tres consultas, y cada una lleva tu pregunta y
+        la conversación anterior.
+      </li>
+      <li>
+        <b>Los modelos</b> que escogen qué leer y redactan la respuesta son
+        gpt-oss-20b y gpt-oss-120b, de OpenAI. Los corre Cloudflare en sus
+        servidores (Workers AI).
+      </li>
+      <li>
+        <b>Tu dirección IP</b> la recibe Cloudflare, como cualquier servidor. El
+        asistente la usa solo para un tope de consultas por minuto por
+        conexión, contra abusos, y no la anota.
+      </li>
+      <li>
+        <b>Lo que anota el asistente</b> en su registro de Cloudflare: por cada
+        consulta, la hora, qué paso y qué modelo, cuánto tardó y cuánto texto
+        leyó y escribió; los errores; y por cada pregunta, cuántas lleva ese
+        navegador ese día. <b>No anota tu pregunta, ni la respuesta, ni tu
+        IP.</b> Cloudflare le agrega datos técnicos de la consulta, como
+        identificadores internos. Cuánto tiempo guarda ese registro lo fija
+        Cloudflare.
+      </li>
+      <li>
+        <b>Lo que Cloudflare haga con lo que recibe</b> —si lo guarda, por
+        cuánto tiempo, para qué lo usa— lo dicen sus condiciones y su política
+        de privacidad. Esta guía no lo controla.
+      </li>
+    </ul>
+
+    <h2>Al mandar una observación o reportar una respuesta</h2>
+    <ul class="obs-tipos">
+      <li>
+        <b>El formulario de Observaciones</b> manda lo que escribes a
+        Formspree, un servicio de formularios, que lo hace llegar por correo al
+        responsable de la guía.
+      </li>
+      <li>
+        <b>Se manda:</b> tu observación; la referencia, el tipo y lo que dice
+        el DOF, si los escribes; tu correo, si lo dejas; y la página de la guía
+        de donde llegaste.
+      </li>
+      <li>
+        <b>«¿Algo está mal? Repórtalo»</b>, debajo de cada respuesta del
+        asistente, llena el formulario con tu pregunta, la respuesta y lo que
+        leyó. No se envía nada hasta que tú lo mandas: revisa y borra antes lo
+        que no quieras enviar.
+      </li>
+      <li>
+        <b>Tu correo</b>, si lo dejas, solo se usa para avisarte en qué quedó tu
+        observación.
+      </li>
+    </ul>
+
+    <h2>Lo que se guarda en tu navegador</h2>
+    <p>Todo esto se queda en tu dispositivo; de aquí solo sale lo que se dice arriba.</p>
+    <ul class="obs-tipos">
+      <li>
+        <b>La conversación con el asistente, y si el chat estaba abierto</b>,
+        para que siga al cambiar de página. Dura mientras la pestaña esté
+        abierta, o hasta que toques «Nueva conversación». Algunos navegadores
+        la recuperan al restaurar pestañas.
+      </li>
+      <li>
+        <b>La hora de cada pregunta de las últimas 24 horas</b>, para el tope de
+        10 preguntas y para contar cuántas llevas hoy. Se queda hasta que
+        borres los datos del sitio; las de más de 24 horas se descartan la
+        próxima vez que preguntes.
+      </li>
+      <li>
+        <b>Tu pregunta y la respuesta, al tocar «Repórtalo»</b>, para llenar el
+        formulario. Se borran al abrir el formulario.
+      </li>
+      <li>
+        <b>La hora de cada observación enviada en la última hora</b>, para un
+        tope de envíos. Se queda hasta que borres los datos del sitio.
+      </li>
+      <li>
+        <b>El tema de colores, el acomodo del mapa y el número de estrellas</b>,
+        para recordar tus preferencias y no preguntarle a GitHub en cada
+        página. Se quedan hasta que borres los datos del sitio.
+      </li>
+      <li>
+        <b>Una copia de páginas del sitio</b>, para usarlo sin conexión. Se
+        renueva con cada versión del sitio.
+      </li>
+    </ul>
+    <p>Para borrar todo: en la configuración de tu navegador, borra los datos de este sitio.</p>
+
+    <h2>Los servicios y sus políticas</h2>
+    <ul class="obs-tipos">
+      <li>
+        <b>Cloudflare</b>, el asistente y el contador de visitas:
+        <a href="https://www.cloudflare.com/privacypolicy/">su política de privacidad</a>.
+      </li>
+      <li>
+        <b>GitHub</b>, que publica la guía y da el número de estrellas:
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">su declaración de privacidad</a>.
+      </li>
+      <li>
+        <b>Formspree</b>, que recibe las observaciones:
+        <a href="https://formspree.io/legal/privacy-policy/">su política de privacidad</a>.
+      </li>
+    </ul>
+    <p class="obs-nota">Consultadas el 8 de octubre de 2026; cada servicio puede cambiarlas.</p>
+
+    <h2>Cambios a este aviso</h2>
+    <p>
+      Si cambia lo que se manda o a qué servicio llega, este aviso se actualiza
+      antes del cambio, con fecha y versión nuevas. Las versiones anteriores
+      quedan en el <a href={HISTORIA}>historial público del proyecto en GitHub</a>.
+    </p>
+
+    <h2>Dudas</h2>
+    <p>Escribe a <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>.</p>
+  </main>
+</Base>

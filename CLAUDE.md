@@ -54,7 +54,10 @@ git status --porcelain      # después de eso, debe quedar vacío
   sitio y del asistente: qué hace y qué le toca a la persona, sin detalles de
   implementación (cómo se cuenta, qué se manda, por qué). Eso va en los
   comentarios del código y en `CONTEXTO.md`. Decisión del dueño (8 de octubre
-  de 2026), que lo pidió dos veces.
+  de 2026), que lo pidió dos veces. **Excepción**, autorizada por él el mismo
+  día: el aviso de privacidad (`site/src/pages/privacidad.astro`) sí dice qué
+  datos se tratan y a dónde van, porque un aviso lo necesita; las demás
+  páginas solo enlazan a él.
 - **El formulario de `/observaciones`** manda solo lo que arma
   `site/src/scripts/observaciones/limpieza.js`. Un campo nuevo se agrega ahí y
   en sus pruebas.

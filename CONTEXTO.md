@@ -793,6 +793,53 @@ Sigue igual: el evento se anota al terminar el paso 1 (B1, en su turno), y
 producción no cambia nada hasta que llegue a `main`; el aviso del paso 3 se
 publica con este cambio o después, nunca antes.
 
+**Paso 3: el aviso de privacidad provisional, hecho (8 de octubre de 2026).**
+Página propia, `/privacidad` (`site/src/pages/privacidad.astro`), versión
+0.1 con fecha. Dice solo lo comprobado en el código y en el paso 0: qué se
+manda al visitar (GitHub Pages, la API de GitHub por las estrellas, Web
+Analytics), al preguntar (la pregunta, las dos preguntas y respuestas
+anteriores, índices y partes de la norma, el número de orden; la IP solo para
+el tope por minuto, sin anotarse; qué anota el registro y qué no), al mandar
+una observación (Formspree, qué campos, «Repórtalo») y qué se guarda en el
+navegador. Nombra a Cloudflare, GitHub y Formspree con enlace a sus políticas,
+revisadas el mismo día (Cloudflare, vigente desde el 4 de noviembre de 2025;
+GitHub, desde el 27 de abril de 2026; Formspree, del 24 de abril de 2022). Pide
+no escribir datos personales y da el correo de contacto,
+`nom001sede2012.contacto@gmail.com`, creado para el proyecto.
+
+- **Responsable:** «el autor de la guía (dflores296 en GitHub)», persona
+  física, proyecto personal sin fines de lucro. **El domicilio no se publica**
+  por seguridad personal, decisión del dueño: el aviso dice que podrá
+  proporcionarse a la autoridad competente. No se inventa ni se toma una
+  dirección de terceros, y el texto no presenta el correo como sustituto
+  del domicilio; si eso basta lo dice el abogado.
+- **Lo que no dice, a propósito:** plazos de conservación, si Cloudflare
+  entrena o no, edad mínima, derechos ARCO, dónde se procesan los datos.
+  Nada de eso está comprobado, y lo legal es del aviso completo.
+- **Formspree:** el dueño cambió el destino de las observaciones al correo de
+  contacto. El aviso dice «por correo al responsable», sin nombrar la bandeja.
+- **Las demás páginas solo enlazan:** el pie de todas («Aviso de
+  privacidad», y la frase del contador de visitas sin «que no usa cookies ni
+  guarda datos personales»); «Privacidad y cupo» en `/asistente` («se guarda
+  en tu navegador» en lugar de «se queda», «de OpenAI» en lugar de «de código
+  abierto», «No escribas datos personales» y el enlace); el pie de la burbuja
+  («No escribas datos personales», «Cómo preguntar · Privacidad»), y la nota
+  del formulario de `/observaciones`.
+- **El aviso iba en el campo de la burbuja** («Escribe tu pregunta (sin datos
+  personales)…»), pero no cabe: el campo deja 220 px útiles en un teléfono de
+  320 y la frase mide 334. Se movió al renglón de abajo, que siempre está a la
+  vista.
+- **La excepción, en `CLAUDE.md`:** el aviso es la única página que dice qué
+  datos se tratan; las demás solo enlazan.
+- La huella se volvió a sellar: cambiaron las 164 páginas (el pie y la
+  burbuja están en todas) y hay una nueva; ningún archivo de datos.
+
+Pendiente para el paso de documentación (B3): `ia/README.md` («Privacidad»)
+sigue diciendo que el Worker no guarda nada y que Cloudflare no entrena con
+las preguntas, y `docs/arquitectura.md` («El contador de visitas»), «sin
+cookies ni datos personales». No los lee el visitante, pero contradicen el
+aviso.
+
 **Paso 1, hecho.** Se quitaron tres afirmaciones, sin agregar texto:
 
 - «No se guardan»: el Worker sí escribe en Observability (el número del día,

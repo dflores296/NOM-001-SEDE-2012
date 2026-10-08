@@ -7,6 +7,8 @@
 .obs > h1 { margin: 0 0 0.8rem; font-size: 2.5rem; font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; }
 .obs h2 { margin: 2.4rem 0 0.7rem; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
 .obs-intro { color: var(--text-dim); font-size: 1.125rem; line-height: 1.6; margin-top: 0; }
+/* La versión y la fecha del aviso de privacidad, debajo del título. */
+.obs > h1 + .obs-nota { margin-bottom: 1rem; }
 .obs-tipos { padding-left: 1.1rem; }
 .obs-tipos li { margin: 0.4rem 0; }
 
