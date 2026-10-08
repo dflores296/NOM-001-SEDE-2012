@@ -24,33 +24,23 @@
 // 00:00 UTC, y la página lo dice.
 //
 // Configuración (ia/wrangler.jsonc):
-//   AI              Workers AI, enlazado por Cloudflare (binding)
-//   FILA_ESCOGER    los modelos de los pasos 1 y 2, en orden (servicios.js)
-//   FILA_REDACTAR   los del paso 3
-//   ORIGENES        las páginas que pueden usarlo, separadas por comas
-//   *_KEY           las claves de los otros servicios: secretos del panel,
-//                   nunca en el código (ver servicios.js)
-//
-// La puerta: cada consulta va al primer modelo de su fila que tenga clave y
-// cupo; si ese está lleno, saturado o tarda, pasa al siguiente. Un modelo
-// chico escoge qué leer (pasos 1 y 2), que es leer un índice y copiar
-// identificadores; uno grande redacta (paso 3), que es donde se lee con
-// cuidado a qué calibre y condición corresponde cada valor.
+//   AI        el modelo, enlazado por Cloudflare (binding de Workers AI)
+//   MODELO    cuál; si Cloudflare lo retira del plan gratis, se cambia aquí
+//   ORIGENES  las páginas que pueden usarlo, separadas por comas
+
+// Dos modelos de la misma familia: el chico escoge qué leer (pasos 1 y 2),
+// que es leer un índice y copiar identificadores; el grande redacta (paso
+// 3), que es donde se lee con cuidado a qué calibre y condición corresponde
+// cada valor. Gastan de la misma cuota diaria; el grande, como el doble por
+// palabra. Si el grande no está disponible, redacta el chico.
+export const MODELO = '@cf/openai/gpt-oss-20b';
+export const MODELO_REDACTAR = '@cf/openai/gpt-oss-120b';
 
 // Cuánto piensa el modelo antes de contestar. El razonamiento cuenta como
 // texto escrito y gasta cuota: poco para escoger, más para redactar.
-import { FILAS, leerFila, nombreModelo, SERVICIOS } from './servicios.js';
-
 export const ESFUERZO = { articulos: 'low', secciones: 'low', responder: 'medium' };
 
 export const PASOS = ['articulos', 'secciones', 'responder'];
-
-// Cuánto se le deja escribir (razonamiento incluido) y cuánto se le espera a
-// cada modelo antes de pasar al siguiente. La página se rinde a los 90 s, así
-// que la fila entera para a los 75.
-const ESCRIBE = { escoger: 1024, redactar: 4096 };
-const ESPERA = { escoger: 20_000, redactar: 45_000 };
-const ESPERA_FILA = 75_000;
 
 // Lo que se acepta de la página. Topes holgados para lo que ella manda
 // (PRESUPUESTO y TOPE_INDICE en site/src/scripts/preguntar/): están para que
@@ -219,8 +209,7 @@ export function armarEntrada({ paso = 'responder', pregunta, historia = [], indi
 /**
  * El texto de la respuesta. Por el binding, gpt-oss contesta en el formato de
  * la Responses API (output[] con un mensaje y su output_text); se aceptan
- * también las otras dos formas que usa Workers AI, y la de chat de los otros
- * servicios (choices[]), para que cambiar un modelo de fila no
+ * también las otras dos formas que usa Workers AI, para que cambiar MODELO no
  * obligue a tocar esto.
  */
 export function textoDe(r) {
@@ -251,31 +240,7 @@ export function motivo(e) {
   return 'falla';
 }
 
-const ESTADO = { cuota: 429, ocupado: 503, modelo: 503, clave: 503, vacia: 502, falla: 502 };
-
-/** Qué le pasó a un servicio que contesta por HTTP, por su código. */
-export function motivoHttp(e) {
-  if (e?.name === 'TimeoutError' || e?.name === 'AbortError') return 'ocupado';
-  const s = e?.estado;
-  if (s === 429 || s === 402) return 'cuota';
-  if (s === 401 || s === 403) return 'clave';
-  if (s === 400 || s === 404 || s === 413 || s === 422) return 'modelo';
-  if (s >= 500) return 'ocupado';
-  return 'falla';
-}
-
-/**
- * La razón que se le da a la página cuando ningún modelo de la fila
- * contestó: si todos estaban sin cupo, «cuota» (vuelve a las 6 pm); si
- * alguno estaba saturado, «ocupado» (intenta en un minuto).
- */
-export function peorMotivo(motivos) {
-  if (!motivos.length) return 'modelo';
-  if (motivos.every((m) => m === 'cuota')) return 'cuota';
-  if (motivos.every((m) => m === 'vacia')) return 'vacia';
-  for (const m of ['ocupado', 'cuota', 'modelo', 'clave']) if (motivos.includes(m)) return m;
-  return 'falla';
-}
+const ESTADO = { cuota: 429, ocupado: 503, modelo: 503, falla: 502 };
 
 export function origenes(env) {
   return String(env?.ORIGENES ?? '')
@@ -323,111 +288,19 @@ export async function atender(request, env) {
   }
 }
 
-// Espera a una promesa, pero no más de `ms`: como un AbortSignal, para el
-// binding de Workers AI, que no recibe uno.
-function aTiempo(promesa, ms) {
-  let reloj;
-  const tarde = new Promise((_, no) => {
-    reloj = setTimeout(
-      () => no(Object.assign(new Error('tardó demasiado'), { name: 'TimeoutError' })),
-      ms
-    );
-  });
-  return Promise.race([promesa, tarde]).finally(() => clearTimeout(reloj));
-}
-
-/** Una consulta a Workers AI. gpt-oss va por la Responses API; los demás, por mensajes. */
-async function consultarCloudflare(env, modelo, datos, fila) {
-  const entrada = armarEntrada(datos);
-  const r = await aTiempo(
-    /gpt-oss/.test(modelo)
-      ? env.AI.run(modelo, { input: entrada, reasoning: { effort: ESFUERZO[datos.paso] } })
-      : env.AI.run(modelo, { messages: entrada, max_tokens: ESCRIBE[fila] }),
-    ESPERA[fila]
-  );
-  return { texto: textoDe(r), uso: [r?.usage?.input_tokens, r?.usage?.output_tokens] };
-}
-
-/** Una consulta a un servicio con el formato de chat de OpenAI (servicios.js). */
-async function consultarHttp(env, servicio, modelo, datos, fila) {
-  const s = SERVICIOS[servicio];
-  const cuerpo = { model: modelo, messages: armarEntrada(datos), max_tokens: ESCRIBE[fila] };
-  // Cuánto piensa: cada servicio lo pide a su manera, y solo a los que piensan.
-  if (/gpt-oss/.test(modelo) && servicio === 'groq') cuerpo.reasoning_effort = ESFUERZO[datos.paso];
-  if (/gpt-oss/.test(modelo) && servicio === 'openrouter') {
-    cuerpo.reasoning = { effort: ESFUERZO[datos.paso] };
-  }
-  if (servicio === 'google') cuerpo.reasoning_effort = 'low';
-  const r = await fetch(s.url, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${env[s.clave]}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(cuerpo),
-    signal: AbortSignal.timeout(ESPERA[fila]),
-  });
-  if (!r.ok) {
-    // Al registro va el código y el principio del error, nunca la pregunta.
-    const detalle = (await r.text().catch(() => '')).slice(0, 200);
-    throw Object.assign(new Error(`${r.status}`), { estado: r.status, detalle });
-  }
-  const j = await r.json();
-  return { texto: textoDe(j), uso: [j?.usage?.prompt_tokens, j?.usage?.completion_tokens] };
-}
-
-/**
- * La puerta: pregunta al primer modelo de la fila del paso que tenga clave y
- * cupo, y si falla, al siguiente. Devuelve { texto, servicio, modelo } o
- * lanza un error con el `motivo` para la página (peorMotivo).
- *
- * Cada intento queda en el registro como un evento: «consulta» (quién
- * contestó, cuánto tardó y cuánto leyó y escribió) o «salto» (quién no y
- * por qué). Nunca la pregunta.
- */
-async function preguntarEnFila(env, datos) {
-  const fila = datos.paso === 'responder' ? 'redactar' : 'escoger';
-  const config = fila === 'redactar' ? env.FILA_REDACTAR : env.FILA_ESCOGER;
-  const lista = leerFila(config).length ? leerFila(config) : leerFila(FILAS[fila]);
+/** Una consulta al modelo, y al registro cuánto tardó y cuánto leyó y escribió. */
+async function consultar(env, modelo, datos) {
   const inicio = Date.now();
-  const motivos = [];
-  // Un servicio sin cupo diario (la bolsa de Cloudflare es una sola) o con la
-  // clave mala no se vuelve a intentar con otro de sus modelos.
-  const fuera = new Set();
-  for (const { servicio, modelo } of lista) {
-    const s = SERVICIOS[servicio];
-    if (s.clave && !env[s.clave]) continue;
-    if (fuera.has(servicio)) continue;
-    if (Date.now() - inicio > ESPERA_FILA) break;
-    const t0 = Date.now();
-    const anotar = (evento, extra) =>
-      (evento === 'salto' ? console.error : console.log)(
-        JSON.stringify({
-          evento,
-          paso: datos.paso,
-          servicio,
-          modelo,
-          ms: Date.now() - t0,
-          ...extra,
-        })
-      );
-    try {
-      const { texto, uso } =
-        servicio === 'cloudflare'
-          ? await consultarCloudflare(env, modelo, datos, fila)
-          : await consultarHttp(env, servicio, modelo, datos, fila);
-      if (!texto) {
-        motivos.push('vacia');
-        anotar('salto', { motivo: 'vacia' });
-        continue;
-      }
-      anotar('consulta', { lee: uso[0] ?? null, escribe: uso[1] ?? null });
-      return { texto, servicio, modelo };
-    } catch (e) {
-      const m = servicio === 'cloudflare' ? motivo(e) : motivoHttp(e);
-      motivos.push(m);
-      if ((servicio === 'cloudflare' && m === 'cuota') || m === 'clave') fuera.add(servicio);
-      anotar('salto', { motivo: m, detalle: String(e?.detalle || e?.message || e).slice(0, 200) });
-    }
-  }
-  throw Object.assign(new Error('nadie contestó'), { motivo: peorMotivo(motivos) });
+  const r = await env.AI.run(modelo, {
+    input: armarEntrada(datos),
+    reasoning: { effort: ESFUERZO[datos.paso] },
+  });
+  // La página se rinde a los 90 s, y la cuota diaria se gasta por palabra.
+  const uso = r?.usage
+    ? `, ${r.usage.input_tokens ?? '?'} + ${r.usage.output_tokens ?? '?'} tokens`
+    : '';
+  console.log(`${datos.paso} con ${modelo.split('/').pop()}: ${Date.now() - inicio} ms${uso}`);
+  return r;
 }
 
 async function contestar(request, env, origen) {
@@ -458,14 +331,29 @@ async function contestar(request, env, origen) {
   const datos = validar(cuerpo);
   if (datos.error) return responder({ error: 'invalido' }, 400, origen);
 
-  let r;
+  const grande = datos.paso === 'responder';
+  const modelo = grande ? env.MODELO_REDACTAR || MODELO_REDACTAR : env.MODELO || MODELO;
   try {
-    r = await preguntarEnFila(env, datos);
-  } catch (e) {
-    const m = e?.motivo || 'falla';
-    return responder({ error: m }, ESTADO[m] ?? 502, origen);
-  }
-  try {
+    let r;
+    let usado = modelo;
+    try {
+      r = await consultar(env, modelo, datos);
+    } catch (e) {
+      // El grande, fuera del plan gratis o saturado: redacta el chico.
+      const m = motivo(e);
+      const chico = env.MODELO || MODELO;
+      if (!grande || modelo === chico || (m !== 'modelo' && m !== 'ocupado')) throw e;
+      console.error(`modelo (${m}) con ${modelo}; redacta ${chico}`);
+      r = await consultar(env, chico, datos);
+      usado = chico;
+    }
+    const respuesta = textoDe(r);
+    if (!respuesta) {
+      // Al registro de Cloudflare va solo la forma de la respuesta, nunca
+      // la pregunta: si cambia el formato del modelo, aquí se ve cuál llegó.
+      console.error('respuesta vacía; llegó:', Object.keys(r ?? {}).join(','));
+      return responder({ error: 'vacia' }, 502, origen);
+    }
     // Una pregunta nueva contestada, y de qué navegador (un número al azar
     // que cambia cada día; ver NAVEGADOR). En Observability, contar los
     // `navegador` distintos de los eventos «pregunta» da cuántos navegadores
@@ -475,18 +363,16 @@ async function contestar(request, env, origen) {
         JSON.stringify({ evento: 'pregunta', navegador: datos.navegador ?? 'sin-numero' })
       );
     }
-    // Qué modelo contestó, para que el chat lo diga.
-    return responder(
-      {
-        respuesta: r.texto,
-        modelo: nombreModelo(r.modelo),
-        servicio: SERVICIOS[r.servicio].nombre,
-      },
-      200,
-      origen
-    );
+    // Quién redactó, para la etiqueta del chat: «Respondió gpt-oss-120b ·
+    // Cloudflare». Los pasos 1 y 2 no lo dicen: el chat no lo muestra.
+    if (grande) {
+      const nombre = String(usado).split('/').pop();
+      return responder({ respuesta, modelo: nombre, servicio: 'Cloudflare' }, 200, origen);
+    }
+    return responder({ respuesta }, 200, origen);
   } catch (e) {
-    console.error('falla al responder:', String(e?.message ?? e).slice(0, 300));
-    return responder({ error: 'falla' }, 502, origen);
+    const m = motivo(e);
+    console.error(`modelo (${m}):`, String(e?.message ?? e).slice(0, 300));
+    return responder({ error: m }, ESTADO[m], origen);
   }
 }

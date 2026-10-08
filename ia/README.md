@@ -3,10 +3,13 @@
 Un Worker de Cloudflare: un programa chico que corre en los servidores de
 Cloudflare cada vez que alguien le hace una pregunta al asistente de la guía:
 la burbuja de abajo a la derecha de cada página (la guía de uso está en
-`/asistente`). Le pasa a un modelo de IA lo que la página le manda, con las
-instrucciones de cada paso: uno chico escoge qué leer; uno grande redacta la
-respuesta, que es donde hay que leer con cuidado a qué calibre y condición
-corresponde cada valor. Qué modelo, lo decide la puerta (abajo).
+`/asistente`). Le pasa a dos modelos de IA de código abierto de OpenAI (licencia
+Apache-2.0) lo que la página le manda, con las instrucciones de cada paso: el
+chico, **gpt-oss-20b**, escoge qué leer; el grande, **gpt-oss-120b**, redacta
+la respuesta, que es donde hay que leer con cuidado a qué calibre y condición
+corresponde cada valor. Si el grande no está disponible, redacta el chico.
+Debajo de cada respuesta, el chat dice cuál la redactó: «Respondió
+gpt-oss-120b · Cloudflare».
 
 El asistente recorre la norma como una persona con el libro: primero el
 índice, luego el índice del artículo, luego lo que tiene que leer.
@@ -36,53 +39,6 @@ se hablaba.
 
 El sitio sigue siendo estático: GitHub Pages no corre nada. Lo único que vive
 fuera es este Worker.
-
-## La puerta: varios servicios gratis, uno tras otro
-
-Cada servicio gratis tiene su propio cupo diario. La puerta los suma: cada
-consulta va al primero de su fila que tenga cupo, y si está lleno, al
-siguiente (`servicios.js`). Hay dos filas, en `wrangler.jsonc`:
-
-| Fila | Para | Orden |
-|---|---|---|
-| `FILA_ESCOGER` | Pasos 1 y 2: escoger qué leer | Groq Llama 3.1 8B → Cloudflare gpt-oss-20b → Groq gpt-oss-20b |
-| `FILA_REDACTAR` | Paso 3: redactar | Cloudflare gpt-oss-120b → Groq gpt-oss-120b → Groq Llama 3.3 70B → Cloudflare gpt-oss-20b |
-
-**Mistral y Google están fuera** por decisión del dueño (8 de octubre de
-2026), hasta que tenga asesoría legal: en su plan gratis pueden usar las
-preguntas para entrenar, y las condiciones de la API de Google prohíben
-usarla en un sitio que probablemente abran menores de 18 años. El código
-los sigue entendiendo (`servicios.js`), pero fuera de las filas no se usan
-aunque su clave esté en el panel, y una prueba impide meterlos sin querer.
-
-**OpenRouter también está fuera**, pero solo como estaba: con su router
-gratis (modelos `:free`) o cualquier ruta en la que OpenRouter escoge qué
-empresa corre el modelo. No es incompatible para siempre: queda **pendiente
-de evaluación** para una posible integración con modelo y proveedor final
-fijos, registro de preguntas y guardado privado apagados, proveedores que
-entrenan excluidos y sin respaldo hacia rutas no aprobadas. Eso pide código
-nuevo (hoy el Worker no fija el proveedor) y cambiar la prueba. Mientras
-tanto no se crea su llave. Lo que dicen sus condiciones: `CONTEXTO.md`,
-«OpenRouter: fuera de las filas, pendiente de evaluación».
-
-**Encender un servicio** es pegar su clave en el panel: **Workers & Pages →
-nom-001-ia → Settings → Variables and Secrets → Add**, tipo *Secret*, con el
-nombre exacto (hoy, solo `GROQ_KEY`). Sin la clave, la fila se lo salta. Las claves nunca van en el código ni en el chat.
-
-Antes de encender uno:
-
-- **El aviso de privacidad tiene que nombrarlo.**
-- **Sus modelos pasan la batería de preguntas de prueba**: respuestas que ya
-  se saben (14 AWG → 15 A en 240-4(d)(3), la errata de la Tabla 430-250, la
-  falla a tierra en 210-8). En una norma eléctrica, uno que confunda incisos
-  no entra.
-- En **Groq**, activar *Zero Data Retention* (Data Controls).
-
-**Quién contestó:** el chat lo dice debajo de cada respuesta, y el registro
-(Observability) anota cada intento: `{"evento":"consulta", …}` con servicio,
-modelo, tiempo y tokens, o `{"evento":"salto", …}` con el motivo (`cuota`,
-`clave`, `modelo`, `ocupado`). Un modelo que salta siempre por `modelo` cambió
-de nombre o lo retiraron: se cambia en la fila.
 
 ## Lo que cuesta: nada
 
@@ -142,7 +98,7 @@ cambio del sitio no vuelva a publicar el Worker.
 |---|---|---|
 | La página dice «No me pude conectar con el asistente» | El Worker no contestó nada legible: no arrancó, se cayó o tardó más de un minuto | **Workers & Pages → nom-001-ia → Observability** dice el error. Así se encontró que no arrancaba con un `export` de más en `agente.js` |
 | La página dice que se acabaron las respuestas del día | La cuota gratis se gastó (error 3036) | Nada: vuelve a las 6 pm. Si pasa seguido, ver la tercera fila |
-| «El asistente no está disponible por ahora» | Ningún modelo de la fila pudo contestar: los sacaron del plan gratis, cambiaron de nombre o las claves fallan | El registro (Observability) dice cuál y por qué, en los eventos `salto`. Cambiar ese modelo en `FILA_ESCOGER` o `FILA_REDACTAR` de `wrangler.jsonc`, o la clave en el panel, y subirlo a `main` |
+| «El asistente no está disponible por ahora» | Cloudflare sacó el modelo del plan gratis (error 5035) | Cambiar `MODELO` en `wrangler.jsonc` por otro del catálogo que siga gratis y subirlo a `main` |
 | La cuota se acaba temprano todos los días | Mucha gente, o un bot | En el panel, **Workers & Pages → nom-001-ia → Metrics** dice cuántas llegan. Contra un bot: Turnstile (gratis) o un tope por IP |
 | La página dice que llegaron muchas preguntas seguidas | Más de 15 consultas en un minuto desde la misma conexión (unas 5 preguntas): el tope `ratelimits` de `wrangler.jsonc` | Nada: al minuto se libera. Una oficina que comparte internet puede toparlo; si pasa seguido, subir `limit` |
 | Se agrega un dominio propio | La página manda la pregunta desde otro origen | Agregarlo a `ORIGENES` en `wrangler.jsonc`, separado por coma |

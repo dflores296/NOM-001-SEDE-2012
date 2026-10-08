@@ -254,7 +254,8 @@ async function pedir(url, cuerpo) {
     j = await r.json();
   } catch {}
   if (!r.ok || typeof j?.respuesta !== 'string') throw falla(j?.error || 'falla');
-  // Qué modelo contestó (ia/servicios.js): el chat lo dice.
+  // Quién redactó: solo lo dice el paso 3, y el chat lo pone debajo de la
+  // respuesta.
   return { texto: j.respuesta, modelo: j.modelo || '', servicio: j.servicio || '' };
 }
 
@@ -442,13 +443,7 @@ export function iniciar(raiz) {
     puntos.setAttribute('aria-hidden', 'true');
     puntos.append(el('i'), el('i'), el('i'));
     const estado = el('span', 'asis-estado', 'Leyendo el índice de la norma…');
-    // Qué modelo escogió qué leer, en cuanto se sabe.
-    const modelo = el('span', 'asis-estado-modelo');
-    burbuja.append(puntos, estado, modelo);
-    const escogio = (r) => {
-      if (r.modelo) modelo.textContent = `Escogió ${quien(r)}`;
-      return r.texto;
-    };
+    burbuja.append(puntos, estado);
     pensando.append(burbuja);
     chat.append(pensando);
     bajar();
@@ -477,7 +472,7 @@ export function iniciar(raiz) {
         cargarGeneral(),
         pistas(pregunta),
       ]);
-      const r1 = escogio(
+      const r1 = (
         await pedir(URL_ASISTENTE, {
           paso: 'articulos',
           pregunta,
@@ -485,7 +480,7 @@ export function iniciar(raiz) {
           indice: indice + bloquePistas(halladas.map((p) => p.general)),
           navegador: navegador(),
         })
-      );
+      ).texto;
       // El Worker contestó: ya gastó del cupo.
       anotar();
       pintarCupo();
@@ -499,14 +494,14 @@ export function iniciar(raiz) {
         const suyas = bloquePistas(
           halladas.filter((p) => claves.includes(p.clave)).map((p) => p.detalle)
         );
-        const r2 = escogio(
+        const r2 = (
           await pedir(URL_ASISTENTE, {
             paso: 'secciones',
             pregunta,
             historia: antes,
             indice: indiceCombinado(paqs, TOPE_INDICE - suyas.length) + suyas,
           })
-        );
+        ).texto;
         leidas = fragmentosDe(await leerPedidas(r2, paqs, todas));
       }
 

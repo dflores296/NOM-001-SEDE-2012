@@ -585,6 +585,8 @@ Lo que se hizo:
 
 ### La puerta: varios servicios gratis (8 de octubre, séptima vuelta)
 
+**Se quitó el mismo día: ver «Regreso a solo Cloudflare» abajo.**
+
 El cupo de Cloudflare (unas 40 a 45 preguntas al día) se queda corto si hay
 muchos usuarios. El dueño trajo un plan de Copilot (embeddings, fine-tuning,
 destilación, caché, varios servicios). Se revisó idea por idea:
@@ -597,36 +599,106 @@ destilación, caché, varios servicios). Se revisó idea por idea:
   búsqueda cuenta contra todos los vectores); se haría con los vectores en el
   sitio. Hay que medir que escoja igual de bien.
 - **Caché, en chico:** las preguntas de ejemplo, después.
-- **Varios servicios gratis, sí: la puerta.** Dos filas de modelos (escoger y
-  redactar) en `ia/wrangler.jsonc`; cada consulta va al primero con clave y
-  cupo. Servicios: Cloudflare, Groq, OpenRouter, Mistral, Google. Decisión del
-  dueño: Mistral y Google entran (al final de las filas) aunque en su plan
-  gratis pueden entrenar con las preguntas, **con un aviso de privacidad bien
-  redactado** (cambió el 8 de octubre: fuera hasta tener asesoría legal; ver
-  «Mistral y Google, fuera» abajo; OpenRouter también salió ese día, ver
-  «OpenRouter: fuera de las filas, pendiente de evaluación»). Cerebras quedó
-  fuera (ya pide tarjeta); GitHub Models y NVIDIA también (solo para
-  pruebas).
+- **Varios servicios gratis: la puerta, que se hizo y se quitó.** Dos filas
+  de modelos (escoger y redactar) en `ia/wrangler.jsonc`; cada consulta iba
+  al primero con clave y cupo. Servicios: Cloudflare, Groq, OpenRouter,
+  Mistral, Google. Se planeó solo por cómo funcionaría, sin revisar antes las
+  condiciones de cada servicio; al revisarlas salieron los problemas (ver
+  «Alternativas futuras no implementadas»). Cerebras quedó fuera (ya pide
+  tarjeta); GitHub Models y NVIDIA también (solo para pruebas).
 
 Lo que se hizo en esta vuelta:
 
 - La puerta en el Worker (`ia/servicios.js`, `preguntarEnFila`), con pruebas
-  de servicios de mentiras: salta lleno, saturado, lento o inexistente; no
-  reintenta una clave mala ni la bolsa de Cloudflare sin cupo; anota
-  `consulta` y `salto` sin la pregunta. Publicada **apagada**: sin claves solo
-  contesta Cloudflare, como antes.
-- El chat dice qué modelo contestó, a pedido del dueño: «Escogió Llama 3.1 8B
-  · Groq» mientras piensa y «Respondió gpt-oss-120b · Cloudflare» debajo de la
-  respuesta (se guarda con la conversación).
-- Borrador del aviso de privacidad (`/privacidad`), para que el dueño lo
-  revise: falta su nombre, su correo de contacto y confirmar plazos.
+  de servicios de mentiras. Se publicó **apagada**: sin claves en el panel
+  solo contestaba Cloudflare, y no se pegó ninguna. **Se quitó.**
+- El chat dice qué modelo contestó, a pedido del dueño: «Escogió…» mientras
+  piensa y «Respondió gpt-oss-120b · Cloudflare» debajo de la respuesta (se
+  guarda con la conversación). **Se quedó solo «Respondió…».**
+- Borrador del aviso de privacidad, fuera del repositorio, para que el dueño
+  lo revise. Nombraba a los cinco servicios: hay que rehacerlo (ver abajo).
 
-Pendiente, en este orden: aprobar y publicar el aviso; que el dueño cree la
-cuenta de Groq y pegue la clave en el panel; la batería de
-preguntas de prueba para cada modelo; AI Gateway como ventana para ver todo
-junto. **No encender ningún servicio antes de publicar el aviso.**
+### Regreso a solo Cloudflare (8 de octubre de 2026)
 
-### Mistral y Google, fuera (8 de octubre de 2026)
+El dueño: el plan era ambicioso, pero se pensó solo en cómo funcionaría y no
+en los términos y condiciones de cada servicio. **Decisión: volver a la
+arquitectura de antes de la puerta, con Cloudflare Workers AI como única línea
+base.** Lo que pasó ese día, en orden:
+
+| Hora | Cambio | Qué |
+|---|---|---|
+| 16:17 | `ff43e32` | La puerta: cinco servicios en dos filas, apagada sin llaves; el chat dice qué modelo contestó |
+| 16:48 | `1c255d6` | Mistral y Google fuera de las filas |
+| 17:07 | `7b03495` | Arreglo, sin relación con la puerta: la pregunta mandada antes de que baje el chat se perdía |
+| 17:21 | `cc80f8e` | OpenRouter fuera de las filas |
+| después | este cambio | Regreso a solo Cloudflare |
+
+Ninguna pregunta llegó a otro servicio: sin llaves en el panel, la puerta
+solo usaba Cloudflare.
+
+Lo que quedó:
+
+- Como antes de la puerta: gpt-oss-20b escoge qué leer (pasos 1 y 2),
+  gpt-oss-120b redacta y, si no está disponible o está saturado (5035 o
+  3040), redacta el 20b. `ia/nucleo.js`, `ia/wrangler.jsonc` (`MODELO`,
+  `MODELO_REDACTAR`) e `ia/pruebas/agente.mjs` son los de antes de `ff43e32`,
+  más una cosa: la respuesta del paso 3 dice `modelo` y `servicio`
+  («Cloudflare»), con sus pruebas.
+- En el chat, solo «Respondió gpt-oss-120b · Cloudflare» (o gpt-oss-20b)
+  debajo de la respuesta. **«Escogió…» se quitó por decisión del dueño:**
+  describe un proceso interno y parece que contestan dos modelos. Qué modelo
+  hace cada paso queda en `docs/arquitectura.md`.
+- El arreglo de `7b03495`.
+
+Lo que se quitó: `ia/servicios.js`; las filas `FILA_ESCOGER` y
+`FILA_REDACTAR`; las llamadas a Groq, OpenRouter, Mistral y Google y los
+nombres de sus llaves; los saltos entre servicios y sus eventos de registro
+`consulta` y `salto` (el registro vuelve a anotar solo `pregunta` y los
+errores); las pruebas de todo eso; «La puerta» en `ia/README.md`,
+`docs/arquitectura.md` y `CLAUDE.md`. Ningún archivo de código nombra ya a
+esos servicios. El código sigue en el historial: `git show ff43e32` y los
+dos cambios siguientes.
+
+Lo que cambia para después:
+
+- Cupo: el de Cloudflare solo, unas 40 a 45 preguntas al día entre todos.
+- De las cuatro medidas aprobadas para después del aviso, la de quitar
+  correos y teléfonos antes de mandar a Mistral o Google ya no aplica.
+  Siguen: las estrellas de GitHub calculadas al publicar; cuánto guarda
+  Formspree (lo fija el dueño); AI Gateway con el registro de contenido
+  apagado (por revisar si hace falta con un solo servicio).
+- **El aviso de privacidad no se da por resuelto.** Antes de rehacerlo, una
+  revisión aparte de todo lo que interviene, sin dar nada por hecho: el
+  asistente (Cloudflare Workers AI), el contador de visitas (Cloudflare Web
+  Analytics), Formspree, GitHub Pages, la consulta a la API de GitHub por
+  las estrellas (la hace el navegador del visitante) y lo que se guarda en
+  el navegador (la conversación, el contador de preguntas, el número del
+  día, el tema, el acomodo del mapa, los envíos de observaciones y la copia
+  para usar el sitio sin conexión).
+
+### Una pregunta mandada antes de tiempo se perdía (8 de octubre de 2026)
+
+La publicación de `1c255d6` falló en GitHub por una prueba del asistente
+que había pasado en la rama con el mismo código. No era una falla al azar:
+`chat.js` se baja al abrir la burbuja, y si la pregunta se mandaba antes de
+que llegara, Enter dejaba un renglón de más y el botón de enviar recargaba la
+página. A alguien con señal lenta le pasaba lo mismo. Se reprodujo haciendo
+llegar `chat.js` 3 segundos tarde. Ahora `burbuja.js` atiende el envío
+mientras baja: deja la pregunta en el campo y la manda sola en cuanto el chat
+está listo. Prueba nueva con `chat.js` tarde, con Enter y con el botón: falla
+con el código de antes y pasa con el arreglo.
+
+## Alternativas futuras no implementadas
+
+**Nada de esta sección está en el código.** Son servicios que se analizaron
+para sumar cupo al asistente y quedaron fuera. El código que sabía hablar con
+ellos está en el historial (`ff43e32`, la puerta; `1c255d6` y `cc80f8e`).
+Antes de retomar cualquiera: primero sus términos y condiciones, después la
+arquitectura; que pase la batería de preguntas de prueba (14 AWG → 15 A en
+240-4(d)(3), la errata de la Tabla 430-250, la falla a tierra en 210-8); y que
+el aviso de privacidad lo diga.
+
+### Mistral y Google: fuera hasta tener asesoría legal
 
 Al revisar el aviso de privacidad salió que las condiciones de la API de
 Gemini piden usuarios mayores de 18 años y prohíben usarla en un sitio
@@ -637,37 +709,19 @@ los teléfonos Android tiene otras condiciones, las de consumidor; las que
 cuentan aquí son las de la API para desarrolladores). Mistral, en su plan
 gratis, puede entrenar con las preguntas.
 
-**Decisión del dueño: Mistral y Google quedan fuera de las filas hasta que
-tenga asesoría legal.** Se quitaron de `FILA_ESCOGER` y `FILA_REDACTAR`
-(`ia/wrangler.jsonc`) y de las de respaldo (`ia/servicios.js`). El código
-los sigue entendiendo, para que volver a meterlos sea cambiar una fila, pero
-sin estar en una fila no se usan aunque su clave esté en el panel. Una prueba
-(`ia/pruebas/agente.mjs`) falla si alguno vuelve a una fila; quitarla es
-parte de la decisión de volver a meterlos.
+**Decisión del dueño (8 de octubre de 2026): fuera hasta que tenga asesoría
+legal.**
 
-Lo que quedó por revisar con los demás, para el aviso y para el abogado:
+### OpenRouter: pendiente de evaluación
 
-- **Groq**: no entrena con lo que le llega por la API; *Zero Data Retention*
-  hay que encenderlo. Su página pide 18 años para usar el sitio web; no se
-  encontró una regla de edad para la API. Confirmar en su contrato.
-- **Cloudflare y Groq** pueden procesar la pregunta fuera de México: el
-  aviso tiene que decirlo.
-- **Formspree y GitHub** siguen como estaban en el análisis del aviso
-  (cuánto guarda Formspree lo fija el dueño; las estrellas pasan a
-  calcularse al publicar, entre las cuatro medidas aprobadas).
-
-### OpenRouter: fuera de las filas, pendiente de evaluación (8 de octubre de 2026)
-
-**Decisión del dueño: OpenRouter sale de las filas activas por ahora.** La
-exclusión es del **router gratis y de las rutas con proveedor variable**: los
-modelos `:free` que estaban en las filas (`openai/gpt-oss-20b:free` y
+Lo que se descartó es su **router gratis y las rutas con proveedor variable**:
+los modelos `:free` que estuvieron en las filas (`openai/gpt-oss-20b:free` y
 `deepseek/deepseek-chat-v3.1:free`), en los que OpenRouter escoge qué empresa
 corre el modelo. Esas rutas, según guías de terceros (su documentación no se
 pudo abrir desde aquí), suelen ir a empresas que guardan o entrenan con las
 preguntas.
 
-**No es incompatible para siempre: queda pendiente de evaluación** para una
-posible integración con:
+**No es incompatible para siempre.** Se podría evaluar una integración con:
 
 - modelo y proveedor final fijos (la consulta va siempre a la misma empresa);
 - registro de preguntas apagado (§6.2) y guardado privado apagado (§6.3 a);
@@ -675,14 +729,11 @@ posible integración con:
 - sin respaldo hacia rutas no aprobadas: si el proveedor fijo no contesta, la
   consulta no se va a otro.
 
-Hoy el Worker no fija el proveedor (`consultarHttp` manda solo modelo y
-consulta), así que cualquier entrada `openrouter:` en una fila sería una ruta
-variable, y la prueba de `ia/pruebas/agente.mjs` falla si vuelve alguna.
-Integrarlo así pide código nuevo y que esa prueba cambie con la decisión.
-**Mientras tanto no se crea la llave ni se usa openrouter/free.**
+Pediría código nuevo: la puerta no fijaba el proveedor. Mientras no se
+decida, no se crea la llave ni se usa openrouter/free.
 
 Lo que dicen sus condiciones y su aviso de privacidad (el dueño los copió;
-ambos del 31 de agosto de 2026), para el aviso y para el abogado:
+ambos del 31 de agosto de 2026), para el abogado:
 
 - **Edad: interpretación pendiente.** §2 pide 18 años para usar el servicio.
   No trae la cláusula expresa de Google sobre sitios que probablemente abran
@@ -712,21 +763,17 @@ ambos del 31 de agosto de 2026), para el aviso y para el abogado:
   comercial. Disputas: Nueva York, por arbitraje (§18, §19).
 - §4.1 dice que para usar la API hay que comprar créditos (mínimo 5
   dólares), lo que choca con «sin tarjeta». Confirmarlo si se evalúa.
-- Lo que el Worker le mandaría: solo la clave y la consulta; ni la IP del
-  visitante, ni su número del día, ni el nombre del sitio (sin
-  `HTTP-Referer` ni `X-Title`).
+- Lo que el Worker de la puerta le habría mandado (nunca tuvo su llave):
+  solo la clave y la consulta; ni la IP del visitante, ni su número del día,
+  ni el nombre del sitio (sin `HTTP-Referer` ni `X-Title`).
 
-### Una pregunta mandada antes de tiempo se perdía (8 de octubre de 2026)
+### Groq
 
-La publicación de este cambio falló en GitHub por una prueba del asistente
-que había pasado en la rama con el mismo código. No era una falla al azar:
-`chat.js` se baja al abrir la burbuja, y si la pregunta se mandaba antes de
-que llegara, Enter dejaba un renglón de más y el botón de enviar recargaba la
-página. A alguien con señal lenta le pasaba lo mismo. Se reprodujo haciendo
-llegar `chat.js` 3 segundos tarde. Ahora `burbuja.js` atiende el envío
-mientras baja: deja la pregunta en el campo y la manda sola en cuanto el chat
-está listo. Prueba nueva con `chat.js` tarde, con Enter y con el botón: falla
-con el código de antes y pasa con el arreglo.
+No entrena con lo que le llega por la API; *Zero Data Retention* hay que
+encenderlo. Según un sitio de terceros que sigue cambios de condiciones, su
+página pide 18 años para usar el sitio web; no se encontró una regla de edad
+para la API. Confirmar en su contrato. Procesaría la pregunta fuera de
+México (confirmar dónde).
 
 ## Ronda de seguridad (octubre de 2026)
 

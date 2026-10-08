@@ -701,9 +701,7 @@ prueba(
     // Pide solo el inciso: la Tabla 250-122, que el inciso cita, la agrega
     // la página.
     const { recibido, contestar } = asistenteDePrueba({
-      articulos: () => ({
-        json: { respuesta: 'Artículo 250', modelo: 'Llama 3.1 8B', servicio: 'Groq' },
-      }),
+      articulos: 'Artículo 250',
       secciones: '250-122(a)',
       responder: () => ({
         json: { respuesta: RESPUESTA_20A, modelo: 'gpt-oss-120b', servicio: 'Cloudflare' },

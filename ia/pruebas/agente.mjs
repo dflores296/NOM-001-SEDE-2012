@@ -3,18 +3,7 @@
 //
 //     node ia/pruebas/agente.mjs
 import * as entrada from '../agente.js';
-import {
-  armarEntrada,
-  motivo,
-  motivoHttp,
-  PASOS,
-  peorMotivo,
-  TOPES,
-  textoDe,
-  validar,
-} from '../nucleo.js';
-import { readFileSync } from 'node:fs';
-import { FILAS, leerFila, nombreModelo } from '../servicios.js';
+import { armarEntrada, motivo, PASOS, TOPES, textoDe, validar } from '../nucleo.js';
 
 const agente = entrada.default;
 
@@ -68,6 +57,7 @@ function entorno({ salida, falla, fallaCon } = {}) {
     llamadas,
     env: {
       ORIGENES: `${ORIGEN}, http://127.0.0.1:4321`,
+      MODELO: '@cf/openai/gpt-oss-20b',
       AI: {
         async run(modelo, entrada) {
           llamadas.push({ modelo, entrada });
@@ -124,6 +114,11 @@ prueba('Contesta con el texto del modelo, sin su razonamiento', async () => {
   // Redacta el modelo grande, pensando más que en los pasos del índice.
   afirmar(llamadas[0].modelo === '@cf/openai/gpt-oss-120b', `redactó ${llamadas[0].modelo}`);
   afirmar(llamadas[0].entrada.reasoning?.effort === 'medium', 'no pidió razonamiento medio');
+  // Y dice quién redactó, para la etiqueta del chat.
+  afirmar(
+    j.modelo === 'gpt-oss-120b' && j.servicio === 'Cloudflare',
+    `dice ${j.modelo} · ${j.servicio}`
+  );
 });
 
 prueba('Al modelo le llegan las reglas, cada fragmento con su referencia y la pregunta', () => {
@@ -249,156 +244,6 @@ prueba('Muchas consultas seguidas de la misma conexión se frenan sin gastar cup
   afirmar(!registro.some((l) => l.includes('203.0.113.7')), 'anotó la IP');
 });
 
-// Los otros servicios (Groq, OpenRouter) se contestan aquí:
-// cada prueba usa su propia clave, y la clave dice qué servidor de mentiras
-// contesta. Las pruebas corren a la vez, y así no se pisan.
-const servidores = new Map();
-globalThis.fetch = async (url, init) => {
-  const clave = String(init?.headers?.Authorization ?? '').replace('Bearer ', '');
-  const contestar = servidores.get(clave);
-  if (!contestar) throw new Error(`fetch inesperado a ${url}`);
-  return contestar(String(url), JSON.parse(init.body));
-};
-const chat = (texto) =>
-  Response.json({
-    choices: [{ message: { content: texto } }],
-    usage: { prompt_tokens: 100, completion_tokens: 5 },
-  });
-
-prueba('Las filas se leen de la configuración, y lo que no existe se ignora', () => {
-  const f = leerFila('groq:llama-3.1-8b-instant, nadie:x, cloudflare:@cf/openai/gpt-oss-20b, mal');
-  afirmar(
-    JSON.stringify(f) ===
-      JSON.stringify([
-        { servicio: 'groq', modelo: 'llama-3.1-8b-instant' },
-        { servicio: 'cloudflare', modelo: '@cf/openai/gpt-oss-20b' },
-      ]),
-    JSON.stringify(f)
-  );
-  // Las de respaldo terminan en el chico de Cloudflare.
-  afirmar(leerFila(FILAS.redactar).at(-1).modelo === '@cf/openai/gpt-oss-20b', 'sin respaldo');
-  afirmar(nombreModelo('@cf/openai/gpt-oss-120b') === 'gpt-oss-120b', 'gpt-oss');
-  afirmar(nombreModelo('llama-3.3-70b-versatile') === 'Llama 3.3 70B', 'llama');
-  afirmar(nombreModelo('gemini-flash-lite-latest') === 'Gemini Flash-Lite', 'gemini lite');
-  afirmar(nombreModelo('gemini-flash-latest') === 'Gemini Flash', 'gemini');
-  afirmar(nombreModelo('algo/nuevo-7b:free') === 'nuevo-7b', 'desconocido');
-});
-
-// Decisiones del dueño (8 de octubre de 2026): Mistral y Google, fuera hasta
-// tener asesoría legal; OpenRouter, fuera mientras no se fije el proveedor
-// final (ver servicios.js). Volver a meter uno cambia esta prueba a propósito.
-prueba('Mistral, Google y OpenRouter no están en ninguna fila', async () => {
-  const wrangler = readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8');
-  const filas = [...wrangler.matchAll(/"(FILA_\w+)":\s*"([^"]*)"/g)];
-  afirmar(filas.length === 2, `wrangler.jsonc: ${filas.length} filas`);
-  for (const [nombre, texto] of [...Object.entries(FILAS), ...filas.map((m) => [m[1], m[2]])]) {
-    const fuera = leerFila(texto).filter((p) =>
-      ['mistral', 'google', 'openrouter'].includes(p.servicio)
-    );
-    afirmar(!fuera.length, `${nombre} trae ${fuera.map((p) => p.servicio).join(', ')}`);
-  }
-});
-
-prueba('Con su clave, la fila pregunta primero a Groq y dice qué modelo contestó', async () => {
-  const pedidos = [];
-  servidores.set('clave-groq-1', (url, cuerpo) => {
-    pedidos.push({ url, cuerpo });
-    return chat('240');
-  });
-  const { env, llamadas } = entorno({ salida: { response: 'no debió usarse' } });
-  env.GROQ_KEY = 'clave-groq-1';
-  const r = await agente.fetch(peticion({ paso: 'articulos', pregunta: 'x', indice: 'y' }), env);
-  const j = await r.json();
-  afirmar(
-    j.respuesta === '240' && j.modelo === 'Llama 3.1 8B' && j.servicio === 'Groq',
-    JSON.stringify(j)
-  );
-  afirmar(llamadas.length === 0, 'gastó cupo de Cloudflare');
-  afirmar(pedidos[0].url === 'https://api.groq.com/openai/v1/chat/completions', pedidos[0].url);
-  afirmar(pedidos[0].cuerpo.model === 'llama-3.1-8b-instant', pedidos[0].cuerpo.model);
-  afirmar(pedidos[0].cuerpo.messages[0].role === 'system', 'sin instrucciones');
-});
-
-prueba('Sin claves, contesta Cloudflare y lo dice', async () => {
-  const { env } = entorno({ salida: RESPONSES });
-  const j = await (await agente.fetch(peticion(BUENO), env)).json();
-  afirmar(j.modelo === 'gpt-oss-120b' && j.servicio === 'Cloudflare', JSON.stringify(j));
-});
-
-prueba('Si un servicio está lleno pasa al siguiente; si todos, dice cuota', async () => {
-  let llamadasGroq = 0;
-  servidores.set('clave-groq-2', () => {
-    llamadasGroq++;
-    return new Response('{"error":{"message":"Rate limit reached"}}', { status: 429 });
-  });
-  const { env } = entorno({ salida: { response: '240' } });
-  env.GROQ_KEY = 'clave-groq-2';
-  const j = await (
-    await agente.fetch(peticion({ paso: 'articulos', pregunta: 'x', indice: 'y' }), env)
-  ).json();
-  afirmar(j.servicio === 'Cloudflare' && j.modelo === 'gpt-oss-20b', JSON.stringify(j));
-  afirmar(llamadasGroq === 1, `Groq: ${llamadasGroq}`);
-
-  // Cloudflare sin cupo y Groq lleno: la página dice que vuelva más tarde.
-  const sin = entorno({ salida: RESPONSES, falla: '3036: daily free allocation' });
-  sin.env.GROQ_KEY = 'clave-groq-2';
-  const r = await agente.fetch(peticion(BUENO), sin.env);
-  afirmar(r.status === 429 && (await r.json()).error === 'cuota', `estado ${r.status}`);
-});
-
-prueba('Un servicio con la clave mala no se vuelve a intentar con otro modelo', async () => {
-  let llamadasGroq = 0;
-  servidores.set('clave-groq-3', () => {
-    llamadasGroq++;
-    return new Response('{"error":"invalid api key"}', { status: 401 });
-  });
-  const { env, llamadas } = entorno({
-    salida: RESPONSES,
-    falla: '3040: Capacity temporarily exceeded',
-    fallaCon: '@cf/openai/gpt-oss-120b',
-  });
-  env.GROQ_KEY = 'clave-groq-3';
-  const j = await (await agente.fetch(peticion(BUENO), env)).json();
-  afirmar(llamadasGroq === 1, `Groq: ${llamadasGroq} intentos`);
-  afirmar(
-    j.servicio === 'Cloudflare' && j.modelo === 'gpt-oss-20b',
-    `${JSON.stringify(j)}; ${llamadas.map((l) => l.modelo)}`
-  );
-});
-
-prueba('El registro dice quién contestó y quién no, nunca la pregunta', async () => {
-  servidores.set('clave-groq-4', () => new Response('lleno', { status: 429 }));
-  const { env } = entorno({ salida: { response: '240' } });
-  env.GROQ_KEY = 'clave-groq-4';
-  const pregunta = 'pregunta-que-no-debe-quedar-en-el-registro';
-  await agente.fetch(peticion({ paso: 'secciones', pregunta, indice: 'y' }), env);
-  const eventos = registro.filter((l) =>
-    l.startsWith('{"evento":"salto","paso":"secciones","servicio":"groq"')
-  );
-  afirmar(
-    eventos.some((l) => l.includes('"motivo":"cuota"')),
-    'no anotó el salto'
-  );
-  afirmar(
-    registro.some((l) =>
-      l.startsWith('{"evento":"consulta","paso":"secciones","servicio":"cloudflare"')
-    ),
-    'no anotó quién contestó'
-  );
-  afirmar(!registro.some((l) => l.includes(pregunta)), 'anotó la pregunta');
-});
-
-prueba('Qué le pasó a cada servicio, en una palabra para la página', () => {
-  afirmar(motivoHttp({ estado: 429 }) === 'cuota', '429');
-  afirmar(motivoHttp({ estado: 401 }) === 'clave', '401');
-  afirmar(motivoHttp({ estado: 404 }) === 'modelo', '404');
-  afirmar(motivoHttp({ estado: 503 }) === 'ocupado', '503');
-  afirmar(motivoHttp({ name: 'TimeoutError' }) === 'ocupado', 'tardó');
-  afirmar(peorMotivo(['cuota', 'cuota']) === 'cuota', 'todos sin cupo');
-  afirmar(peorMotivo(['cuota', 'ocupado']) === 'ocupado', 'uno saturado');
-  afirmar(peorMotivo(['vacia']) === 'vacia', 'vacía');
-});
-
 prueba('Escoger lo hace el modelo chico, pensando poco', async () => {
   for (const paso of ['articulos', 'secciones']) {
     const { env, llamadas } = entorno({ salida: { response: '240' } });
@@ -406,6 +251,11 @@ prueba('Escoger lo hace el modelo chico, pensando poco', async () => {
     afirmar(llamadas[0].modelo === '@cf/openai/gpt-oss-20b', `${paso}: ${llamadas[0].modelo}`);
     afirmar(llamadas[0].entrada.reasoning?.effort === 'low', `${paso}: no pidió razonamiento bajo`);
   }
+  // Escoger no dice qué modelo lo hizo: el chat no lo muestra.
+  const { env } = entorno({ salida: { response: '240' } });
+  const r = await agente.fetch(peticion({ paso: 'articulos', pregunta: 'x', indice: 'y' }), env);
+  const j = await r.json();
+  afirmar(!('modelo' in j) && !('servicio' in j), `escoger dice ${j.modelo} · ${j.servicio}`);
 });
 
 prueba('Si el modelo grande no está disponible, redacta el chico', async () => {
@@ -425,6 +275,8 @@ prueba('Si el modelo grande no está disponible, redacta el chico', async () => 
         '["gpt-oss-120b","gpt-oss-20b"]',
       `${falla}: ${llamadas.map((l) => l.modelo).join(', ')}`
     );
+    const j = await r.json();
+    afirmar(j.modelo === 'gpt-oss-20b' && j.servicio === 'Cloudflare', `${falla}: ${j.modelo}`);
   }
   // Sin cuota no se reintenta: el chico gasta de la misma.
   const { env, llamadas } = entorno({ salida: RESPONSES, falla: '3036: daily free allocation' });

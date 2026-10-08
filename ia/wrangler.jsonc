@@ -15,14 +15,12 @@
   "ai": { "binding": "AI" },
 
   "vars": {
-    // La puerta (ver servicios.js): los modelos que escogen qué leer (pasos 1
-    // y 2) y los que redactan (paso 3), en orden, como «servicio:modelo». Se
-    // usa el primero que tenga clave y cupo; si está lleno, el siguiente. Un
-    // servicio sin su clave en el panel (GROQ_KEY) se salta. Si un servicio
-    // retira un modelo, se cambia aquí. Mistral, Google y OpenRouter NO van,
-    // por decisión del dueño (ver servicios.js); una prueba lo cuida.
-    "FILA_ESCOGER": "groq:llama-3.1-8b-instant, cloudflare:@cf/openai/gpt-oss-20b, groq:openai/gpt-oss-20b",
-    "FILA_REDACTAR": "cloudflare:@cf/openai/gpt-oss-120b, groq:openai/gpt-oss-120b, groq:llama-3.3-70b-versatile, cloudflare:@cf/openai/gpt-oss-20b",
+    // El que escoge qué leer (pasos 1 y 2) y el que redacta (paso 3). Si
+    // Cloudflare saca uno del plan gratis (su error 5035), se cambia aquí por
+    // otro del catálogo que siga gratis. Si falla el que redacta, redacta el
+    // otro.
+    "MODELO": "@cf/openai/gpt-oss-20b",
+    "MODELO_REDACTAR": "@cf/openai/gpt-oss-120b",
     // Las páginas que pueden usarlo. Con un dominio propio, se agrega aquí.
     "ORIGENES": "https://dflores296.github.io"
   },

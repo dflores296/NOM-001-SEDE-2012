@@ -43,15 +43,8 @@ git status --porcelain      # después de eso, debe quedar vacío
 - **El asistente (la burbuja de cada página, su guía en `/asistente`, `ia/`)
   contesta solo con lo que lee de la
   norma**, en tres pasos: índice general, índice del artículo, texto completo
-  (`site/src/lib/asistente-datos.js`). Los modelos salen de dos filas de
-  servicios gratuitos («escoger» y «redactar», `ia/servicios.js` y
-  `ia/wrangler.jsonc`); un modelo nuevo entra solo si pasa la batería de
-  preguntas de prueba, y un servicio que entrena con las preguntas no se
-  enciende sin que el aviso de privacidad lo diga. **Mistral y Google no
-  entran a las filas** hasta que el dueño tenga asesoría legal, **ni
-  OpenRouter** con su router gratis o con proveedor variable: queda pendiente
-  de evaluación con modelo y proveedor fijos (decisiones del 8 de octubre de
-  2026; ver `CONTEXTO.md`). Una prueba lo cuida. La cuenta de Cloudflare se queda en el
+  (`site/src/lib/asistente-datos.js`); escoge gpt-oss-20b y redacta
+  gpt-oss-120b. La cuenta de Cloudflare se queda en el
   plan gratis: sin tarjeta, al acabarse la cuota deja de contestar y no cobra.
   Su dirección vive en `site/src/lib/asistente.js`. Lo que manda la página
   (`LECTURA`, `TOPE_INDICE`) va por debajo de los topes del Worker (`TOPES`);
