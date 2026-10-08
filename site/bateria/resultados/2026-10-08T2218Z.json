@@ -1,0 +1,673 @@
+{
+  "version_preguntas": 2,
+  "sitio": "https://dflores296.github.io/NOM-001-SEDE-2012/asistente/",
+  "inicio_utc": "2026-10-08T22:18:34.859Z",
+  "fin_utc": "2026-10-08T22:24:59.707Z",
+  "resumen": {
+    "preguntas": 24,
+    "correctas": "16 de 24",
+    "correctas_pct": 67,
+    "incorrectas": [
+      1,
+      2,
+      3,
+      5,
+      8,
+      9,
+      14,
+      24
+    ],
+    "citas_exactas": "14 de 22",
+    "citas_exactas_pct": 64,
+    "citas_a_la_seccion_de_arriba": [
+      16,
+      22
+    ],
+    "leyo_lo_esperado": "13 de 22",
+    "valores_correctos": "16 de 22",
+    "valores_pct": 73,
+    "con_prohibidos": [],
+    "sin_respuesta": [],
+    "redacto_el_respaldo": [],
+    "revisadas_a_mano": [
+      18,
+      23,
+      24
+    ],
+    "sin_revisar_a_mano": [],
+    "segundos_mediana": 9.3,
+    "segundos_max": 24.6
+  },
+  "resultados": [
+    {
+      "id": 1,
+      "pregunta": "¿Cuál es la protección máxima contra sobrecorriente de un conductor 14 AWG de cobre?",
+      "segundos": 24.6,
+      "aviso": false,
+      "texto": "La protección máxima contra sobrecorriente para un conductor de 14 AWG de cobre se determina según la columna que corresponda del cuadro 430‑72(b) [Tabla 430‑72(b)]:\n\nProtección independiente (columna A): el valor está limitado al “Nota 1”, o sea, al valor de ampacidad que indica la tabla 310‑15 para 14 AWG cobre a la temperatura aplicable [430‑72(b)(1) & Nota 1].\nProtección mediante el dispositivo del circuito derivado cuando el conductor queda dentro del envolvente del equipo de control: el límite es 100 amperes [Tabla 430‑72(b), columna B, cobre].\nProtección mediante el dispositivo del circuito derivado cuando el conductor se extiende más allá del envolvente del equipo de control: el límite es 45 amperes [Tabla 430‑72(b), columna C, cobre].",
+      "citas": [],
+      "fuentes": [
+        "430-72(b)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": false,
+        "cita_arriba": false,
+        "leyo": false,
+        "faltan": [
+          [
+            "\\b15 ?a(mperes?)?\\b"
+          ]
+        ],
+        "valor": false,
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Y para 12 AWG?",
+      "segundos": 8.3,
+      "aviso": false,
+      "texto": "La protección máxima contra sobrecorriente para un conductor de 12 AWG de cobre es 120 amperes cuando los conductores quedan dentro del envolvente del equipo de control y 60 amperes cuando se extienden más allá del envolvente; si se requiere protección independiente, el valor no debe exceder el indicado en la tabla 310‑15 (Nota 1) [430‑72(b)(1) & Nota 1] [Tabla 430‑72(b), columna B, cobre] [Tabla 430‑72(b), columna C, cobre].",
+      "citas": [],
+      "fuentes": [
+        "430-72(b)",
+        "Tabla 430-72(b)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": false,
+        "cita_arriba": false,
+        "leyo": false,
+        "faltan": [
+          [
+            "\\b20 ?a(mperes?)?\\b"
+          ]
+        ],
+        "valor": false,
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Cuál es la protección máxima de un conductor 10 AWG de cobre?",
+      "segundos": 14.6,
+      "aviso": false,
+      "texto": "La protección contra sobrecorriente de un conductor 10 AWG de cobre no debe superar su ampacidad indicada en 310‑15, salvo que se aplique la excepción de 240‑4(b) que permite usar un dispositivo de valor inmediato superior de hasta 800 amperes siempre que se cumplan íntegramente los incisos (1)‑(3) [240-4(b)].\n\nLa ampacidad del conductor 10 AWG cobre la fija la tabla 310‑15(b)(16) [310-15]; esa será la protección “normal”.\nSólo cuando se cumplan: (1) que el conductor no forme parte de un circuito derivado que alimente más de un contacto de cargas portátiles con cordón y clavija, (2) que la ampacidad no corresponda a la corriente estándar de un fusible o interruptor automático sin ajuste de disparo por sobrecarga superior a su valor nominal, y (3) que el valor inmediato superior seleccionado no supere 800 amperes, podrá usarse una protección de hasta 800 amperes [240-4(b)(1‑3)].\n\nSi lo que necesitas es la ampacidad específica de 10 AWG cobre, indícame la temperatura del aislamiento y la condición de instalación para consultarla en la tabla correspondiente.",
+      "citas": [
+        "240-4(b)",
+        "240-4(b)(1‑3)"
+      ],
+      "fuentes": [
+        "240-4(b)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": false,
+        "cita_arriba": false,
+        "leyo": false,
+        "faltan": [
+          [
+            "\\b30 ?a(mperes?)?\\b"
+          ]
+        ],
+        "valor": false,
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué tamaño mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?",
+      "segundos": 5.6,
+      "aviso": false,
+      "texto": "El conductor de puesta a tierra de equipos debe ser, como mínimo, 12 AWG (3.31 mm²) de cobre para un circuito protegido a 20 amperes [Tabla 250-122] y [250-122(a)].\n\nEse es el tamaño mínimo indicado en la tabla para la capacidad del dispositivo automático de protección ≤ 20 A.\nEl conductor no tiene que ser mayor que el del circuito que alimenta el equipo, pero puede aumentarse si se requieren otras consideraciones [250-122(a)].",
+      "citas": [
+        "Tabla 250-122",
+        "250-122(a)",
+        "250-122(a)"
+      ],
+      "fuentes": [
+        "250-122(a)",
+        "Tabla 250-122"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 5,
+      "pregunta": "¿De qué tamaño es el conductor del electrodo de puesta a tierra si la acometida es de 33.6 mm² (2 AWG) de cobre?",
+      "segundos": 9.3,
+      "aviso": false,
+      "texto": "El conductor que une el electrodo a la acometida puede ser tan pequeño como 13.3 mm² (6 AWG) de cobre [250-66(a)]. En tu caso, aunque la acometida sea de 33.6 mm² (2 AWG), el tramo que conecta al electrodo no necesita ser mayor que 13.3 mm² (6 AWG) de cobre.",
+      "citas": [
+        "250-66(a)"
+      ],
+      "fuentes": [
+        "250-66(a)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [
+          [
+            "8\\.37 ?mm²",
+            "\\b8 awg"
+          ]
+        ],
+        "valor": false,
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué longitud mínima debe tener un electrodo de varilla?",
+      "segundos": 7.6,
+      "aviso": false,
+      "texto": "La longitud mínima que debe tener un electrodo de varilla es de 2.44 metros [250-52(a)(5)].",
+      "citas": [
+        "250-52(a)(5)"
+      ],
+      "fuentes": [
+        "250-52(a)(5)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 7,
+      "pregunta": "¿En qué lugares de una vivienda se requiere protección de las personas contra falla a tierra en los contactos?",
+      "segundos": 12.6,
+      "aviso": false,
+      "texto": "Se requiere protección de personas mediante interruptor de circuito por falla a tierra en los contactos de los siguientes lugares de una vivienda :\n\nCuartos de baño [210-8(a)(1)].\nCocheras y edificios auxiliares con nivel sobre o debajo del piso, no habitables y limitados a áreas de almacenamiento, trabajo o uso similar [210-8(a)(2)].\nExteriores [210-8(a)(3)].\nEspacios de poca altura (que exijan entrar agachado) situados a nivel del suelo o por debajo de él [210-8(a)(4)].\nSótanos sin acabados (zonas de almacén, trabajo o similares) [210-8(a)(5)].\nCocinas, cuando los contactos estén instalados en la cubierta del mueble de cocina [210-8(a)(6)].\nFregaderos fuera de la cocina, cuando los contactos estén a menos de 1.80 metros del borde exterior del fregadero [210-8(a)(7)].\nCobertizos para botes [210-8(a)(8)].",
+      "citas": [
+        "210-8(a)(1)",
+        "210-8(a)(2)",
+        "210-8(a)(3)",
+        "210-8(a)(4)",
+        "210-8(a)(5)",
+        "210-8(a)(6)",
+        "210-8(a)(7)",
+        "210-8(a)(8)"
+      ],
+      "fuentes": [
+        "210-8"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": false,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Cuántos circuitos de 20 A para aparatos pequeños se requieren en una vivienda?",
+      "segundos": 9,
+      "aviso": false,
+      "texto": "La carga nominal de cualquier equipo de utilización con cordón y clavija que no esté fijo no debe superar el 80 % de la capacidad nominal del circuito derivado; en un circuito de 20 A eso equivale a 16 amperes [210-23(a)(1)].\n\nPor lo tanto, cada circuito de 20 A puede alimentar un equipo cuyo consumo sea ≤ 16 A, o varios equipos cuyo total no supere 20 A.\nSi la suma de las cargas de los aparatos pequeños supera 20 A, se requieren circuitos adicionales.\n\nComo la pregunta no indica la carga total esperada, no se puede determinar cuántos circuitos de 20 A son necesarios sin conocer la demanda total de los aparatos. ¿Podrías especificar la potencia o corriente total que se desea atender?",
+      "citas": [
+        "210-23(a)(1)"
+      ],
+      "fuentes": [
+        "210-23(a)(1)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": false,
+        "cita_arriba": false,
+        "leyo": false,
+        "faltan": [
+          [
+            "dos o más",
+            "\\b2 o más",
+            "al menos dos",
+            "mínimo dos",
+            "dos circuitos"
+          ]
+        ],
+        "valor": false,
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué circuito necesitan los contactos del cuarto de baño de una vivienda?",
+      "segundos": 8.5,
+      "aviso": false,
+      "texto": "Lo que leí de la norma no lo dice; el fragmento [210-52(4)(d)] sólo establece la ubicación mínima de los contactos en el baño, sin indicar el tipo de circuito que deben alimentarse. ¿Qué aspecto del circuito le interesa (ampacidad, protección diferencial, circuito dedicado, etc.)?",
+      "citas": [
+        "210-52(4)(d)"
+      ],
+      "fuentes": [
+        "210-52(4)(d)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": false,
+        "cita_arriba": false,
+        "leyo": false,
+        "faltan": [
+          [
+            "\\b20 ?a(mperes?)?\\b"
+          ]
+        ],
+        "valor": false,
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué dice el 210-52?",
+      "segundos": 22,
+      "aviso": false,
+      "texto": "El inciso 210‑52 establece los requisitos de las salidas de contactos de 120 V, 15 A y 20 A en unidades de vivienda [210-52].\n\nLas salidas deben instalarse de modo que ningún punto medido horizontalmente a lo largo de la línea del piso quede a más de 1.80 m de una salida; “espacio de pared” se define como cualquier zona de 60 cm o más de ancho no interrumpida por puertas, chimeneas, gabinetes u otras aberturas [210-52(4)(a)(1); 210-52(4)(a)(2)(1)]. Los contactos de piso solo cuentan si están a ≤45 cm de la pared y los contactos sobre cubiertas no se consideran en este cómputo [210-52(4)(a)(3); 210-52(4)(a)(4)].\nEn cocinas, despensas, comedores y áreas similares, los dos o más circuitos derivados de 20 A para aparatos pequeños deben alimentar todas las salidas de contactos de pared, de piso y de cubiertas, así como los de refrigeración [210-52(4)(b)(1)]; no pueden servir para otros propósitos, salvo excepciones para relojes eléctricos o equipos suplementarios de estufas, hornos o parrillas [210-52(4)(b)(2‑3)].\nEn cubiertas de cocina y áreas afines se requieren contactos cada 30 cm de ancho, de modo que ningún punto a lo largo de la pared de la cubierta quede a más de 60 cm de un contacto; al menos un contacto debe haber en cada isla o península con dimensiones mínimas de 60 cm × 30 cm, y deben ubicarse a ≤50 cm sobre la cubierta (o ≤30 cm bajo ella según excepción) [210-52(4)(c)(1‑5)].",
+      "citas": [
+        "210-52",
+        "210-52(4)(a)(1)",
+        "210-52(4)(a)(2)(1)",
+        "210-52(4)(a)(3)",
+        "210-52(4)(a)(4)",
+        "210-52(4)(b)(1)",
+        "210-52(4)(b)(2‑3)",
+        "210-52(4)(c)(1‑5)"
+      ],
+      "fuentes": [
+        "210-52"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Con qué carga se calcula cada circuito de aparatos pequeños para el alimentador de una vivienda?",
+      "segundos": 7,
+      "aviso": false,
+      "texto": "Cada circuito de aparatos pequeños se cuenta con 1500 voltamperes para el cálculo de la carga del alimentador de la vivienda [220-52(a)].\n\nSi la carga se reparte entre varios alimentadores, cada alimentador debe incluir no menos de 1500 VA por cada circuito de 2 hilos de aparatos pequeños [220-52(a)].\nEstas cargas pueden agregarse a la carga de alumbrado general y aplicarse los factores de demanda de la Tabla 220‑42 [220-52(a)].\nExcepción: se pueden excluir de este cálculo los circuitos individuales permitidos por 210‑52(b)(1), Excepción 2.",
+      "citas": [
+        "220-52(a)",
+        "220-52(a)",
+        "220-52(a)"
+      ],
+      "fuentes": [
+        "220-52(a)",
+        "Tabla 220-42"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué carga se considera para el circuito de la lavadora?",
+      "segundos": 8.2,
+      "aviso": false,
+      "texto": "Se considera una carga mínima de 1500 voltamperes por cada circuito derivado de 2 hilos destinado a la lavadora [220-52(b)]. Esa carga puede sumarse a la del alumbrado general y aplicársele el factor de demanda que corresponda en la Tabla 220‑42.\n\n‑ La regla no se aplica a unidades de vivienda popular de hasta 60 m² (excepción indicada en el mismo inciso).",
+      "citas": [
+        "220-52(b)"
+      ],
+      "fuentes": [
+        "220-52(b)",
+        "210-23(b)",
+        "Tabla 220-42"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuál es la carga mínima de alumbrado por metro cuadrado en una unidad de vivienda?",
+      "segundos": 8.2,
+      "aviso": false,
+      "texto": "La carga mínima de alumbrado para una unidad de vivienda es de 33 VA por metro cuadrado de superficie del piso [Tabla 220-12] y debe ser ≥ ese valor según lo indica la sección 220‑12 [220-12].\n\nEl área del piso se calcula a partir de las dimensiones exteriores de la unidad y no incluye patios abiertos, cocheras ni espacios no terminados o no adaptables para uso futuro [220-12].",
+      "citas": [
+        "Tabla 220-12",
+        "220-12",
+        "220-12"
+      ],
+      "fuentes": [
+        "220-12",
+        "Tabla 220-42",
+        "210-52",
+        "220-52",
+        "220-82",
+        "Tabla 220-12",
+        "Definición: Unidad de vivienda bifamiliar"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué profundidad mínima de espacio de trabajo se necesita frente a un tablero de 220 V entre fases (127 V a tierra)?",
+      "segundos": 10.1,
+      "aviso": false,
+      "texto": "La profundidad mínima del espacio de trabajo frente al tablero debe ser de 1.20 metros cuando las partes vivas están expuestas al frente y el lado opuesto está conectado a tierra (condición 2) [110-34][Tabla 110-34(a)].\n\nSi las partes vivas están expuestas solo en un lado y el otro lado no está activo ni conectado a tierra, la distancia mínima sería 0.90 metros (condición 1).\nSi hay partes vivas expuestas en ambos lados del espacio, la distancia mínima sería 1.50 metros (condición 3).\n\nEstas distancias se miden desde las partes vivas o, si están encerradas, desde el frente o abertura del envolvente. ¿Te interesa alguna otra condición o detalle del espacio de trabajo?",
+      "citas": [
+        "110-34",
+        "Tabla 110-34(a)"
+      ],
+      "fuentes": [
+        "110-26",
+        "110-33",
+        "Tabla 922-19(e)",
+        "Tabla 110-34(a)",
+        "110-34",
+        "552-45"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": false,
+        "cita_arriba": false,
+        "leyo": false,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué ancho mínimo debe tener el espacio de trabajo frente a un equipo eléctrico?",
+      "segundos": 6.9,
+      "aviso": false,
+      "texto": "El ancho mínimo del espacio de trabajo en el frente del equipo debe ser el mayor entre el ancho del equipo y 80 centímetros [110-26(a)(2)].\n\nAdemás, alrededor de todo equipo eléctrico de 600 volts o menos debe existir y mantenerse un espacio de acceso y de trabajo suficiente para permitir su funcionamiento y mantenimiento rápido y seguro [110-26].",
+      "citas": [
+        "110-26(a)(2)",
+        "110-26"
+      ],
+      "fuentes": [
+        "110-26(a)(2)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué altura mínima debe tener el espacio de trabajo?",
+      "segundos": 13,
+      "aviso": false,
+      "texto": "La altura mínima del espacio de trabajo debe ser de 2.00 metros, o la altura del equipo si ésta es mayor [110-26] .\n\nEn equipos donde existan partes energizadas, el requisito es “no menor a 2.00 metros de altura (medidos verticalmente desde el piso o plataforma)” [110-32].\nExcepción: en unidades de vivienda, los equipos de acometida y tableros de control ≤ 200 amperes pueden instalarse en espacios con altura de trabajo inferior a 2.00 metros [110-26].",
+      "citas": [
+        "110-26",
+        "110-32",
+        "110-26"
+      ],
+      "fuentes": [
+        "110-34",
+        "Tabla 110-34(a)",
+        "110-26",
+        "Tabla 110-34(e)",
+        "110-32",
+        "922-20",
+        "Figura 410-2"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": false,
+        "cita_arriba": true,
+        "leyo": false,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuál es la corriente a plena carga de un motor trifásico de 5 hp a 230 V?",
+      "segundos": 13.1,
+      "aviso": false,
+      "texto": "La corriente a plena carga de un motor trifásico de 5 hp a 230 V es 15.2 amperes [Tabla 430-250].",
+      "citas": [
+        "Tabla 430-250"
+      ],
+      "fuentes": [
+        "Tabla 430-250"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cuál es la corriente a plena carga de un motor trifásico de 10 hp a 575 V?",
+      "segundos": 15.5,
+      "aviso": false,
+      "texto": "La corriente a plena carga es 11 amperes [Nota de la guía (no es texto de la norma)], aunque la tabla original indica 44 amperes [Tabla 430-250].\n\nLa tabla de corrientes a plena carga muestra 44 amperes para 10 hp (7.5 kW) a 575 V [Tabla 430-250].\nLa nota de la guía señala una errata del DOF: el valor correcto es 11 amperes, pues el 44 amperes sobredimensionaría conductor y protección [Nota de la guía (no es texto de la norma)].",
+      "citas": [
+        "Tabla 430-250",
+        "Tabla 430-250"
+      ],
+      "fuentes": [
+        "Tabla 430-250"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuál es la corriente a plena carga de un motor monofásico de 1 hp a 127 V?",
+      "segundos": 3.9,
+      "aviso": false,
+      "texto": "La corriente a plena carga es de 14 amperes para un motor monofásico de 1 hp a 127 V [Tabla 430-248].",
+      "citas": [
+        "Tabla 430-248"
+      ],
+      "fuentes": [
+        "Tabla 430-248"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuál es la ampacidad de un conductor de cobre 12 AWG THHN a 90 °C?",
+      "segundos": 12.7,
+      "aviso": false,
+      "texto": "La ampacidad es 30 amperes [Tabla 310-15(b)(16)].\n\nEl tipo THHN se incluye en la columna de 90 °C para cobre.\nLa tabla asume temperatura ambiente de 30 °C; si la temperatura ambiente difiere, aplíquese el factor de corrección de la 310‑15(b)(2).",
+      "citas": [
+        "Tabla 310-15(b)(16)"
+      ],
+      "fuentes": [
+        "Tabla 310-15(b)(16)"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 21,
+      "pregunta": "¿Qué porcentaje máximo de la sección de un tubo conduit pueden ocupar más de dos conductores?",
+      "segundos": 7.8,
+      "aviso": false,
+      "texto": "Para más de dos conductores el máximo permitido es el 40 % del área total del tubo conduit [Tabla 4].",
+      "citas": [
+        "Tabla 4"
+      ],
+      "fuentes": [
+        "402-7",
+        "Tabla 4"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": true,
+        "leyo": true,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 22,
+      "pregunta": "¿A qué distancia mínima de la alberca debe estar un contacto que no sea de la bomba?",
+      "segundos": 10.5,
+      "aviso": false,
+      "texto": "Un contacto que no sea el de la bomba debe estar a una distancia mínima de 1.85 metros de las paredes interiores de la alberca [680-22].\n\nSi el contacto está en una alberca interior, la norma establece al menos 1.80 metros horizontales desde las paredes interiores [680-43].\nEn unidades de vivienda con alberca permanente, el contacto de 120 V/15‑20 A también debe quedar entre 1.85 m y 6.00 m de la pared [680-22]; la distancia mínima sigue siendo 1.85 m.",
+      "citas": [
+        "680-22",
+        "680-43",
+        "680-22"
+      ],
+      "fuentes": [
+        "680-22",
+        "680-27",
+        "680-31",
+        "680-43",
+        "Tabla 610-14(d)",
+        "Tabla 300-5"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "cita": false,
+        "cita_arriba": true,
+        "leyo": false,
+        "faltan": [],
+        "valor": true,
+        "prohibidos": [],
+        "bien": true
+      }
+    },
+    {
+      "id": 23,
+      "pregunta": "¿Cuánta caída de tensión tengo en 30 m de cable 12 AWG con 16 A?",
+      "segundos": 7.2,
+      "aviso": false,
+      "texto": "Lo que leí de la norma no indica el valor numérico de caída de tensión para 30 m de cable 12 AWG con 16 A; sólo establece límites máximos de caída:‑ para el arranque del controlador de bomba contra incendio la caída no debe superar el 15 % de la tensión nominal [695-7];‑ para el motor en operación la caída no debe superar el 5 % de la tensión nominal cuando opera al 115 % de la corriente de plena carga [695-7].\n\nSi desea saber la caída real, se necesita el valor de resistencia del conductor (que no está en los fragmentos) y aplicar la fórmula V = I·R·L. ¿Qué aspecto le interesa: verificar que la caída cumpla con esos límites o conocer el valor exacto?",
+      "citas": [
+        "695-7",
+        "695-7"
+      ],
+      "fuentes": [
+        "Tabla 400-4",
+        "695-7",
+        "Tabla 310-15(b)(16)",
+        "310-15",
+        "552-10"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "prohibidos": [],
+        "bien": false
+      }
+    },
+    {
+      "id": 24,
+      "pregunta": "¿Qué dice el NEC 2023 sobre los interruptores contra falla de arco?",
+      "segundos": 15,
+      "aviso": false,
+      "texto": "Los circuitos derivados de 120 V, de 15 A o 20 A que alimenten receptáculos en habitaciones, comedores, salas, pasillos y áreas similares de una vivienda pueden protegerse con un interruptor de circuito por falla de arco, ya sea en el origen o en la primera salida del circuito [210-12(a)].\n\nExcepción 1: Si el tramo entre el dispositivo de protección contra sobrecorriente y la primera salida está en conduit metálico RMC, IMC, EMT, cable MC o AC, cumpliendo 250‑118 y usando cajas metálicas, el AFCI puede instalarse en la primera salida para proteger el resto del circuito [210-12(a) Excepción 1].\nExcepción 2: Cuando el conduit (metálico o no metálico) está incrustado al menos 5 cm en concreto entre la protección contra sobrecorriente y la primera salida, también se permite el AFCI en la primera salida [210-12(a) Excepción 2].\nEn modificaciones, reemplazos o ampliaciones del circuito en esas áreas, se puede usar un AFCI tipo combinación en el origen o un AFCI tipo salida en la primera salida existente [210-12(b)(1‑2)].",
+      "citas": [
+        "210-12(a)",
+        "210-12(b)(1‑2)"
+      ],
+      "fuentes": [
+        "210-12"
+      ],
+      "modelo": "Respondió gpt-oss-120b · Cloudflare",
+      "calificacion": {
+        "prohibidos": [],
+        "bien": false
+      }
+    }
+  ],
+  "revision_manual": {
+    "18": {
+      "bien": true,
+      "nota": "Da el valor impreso (44 A) y avisa la errata del DOF (debería ser 11 A). Empieza por el corregido, con la «Nota de la guía» como cita."
+    },
+    "23": {
+      "bien": true,
+      "nota": "No inventa un resultado: dice que hace falta la resistencia del conductor y pregunta qué le interesa. Cita los límites de caída del 695-7 (bombas contra incendio), que no vienen al caso."
+    },
+    "24": {
+      "bien": false,
+      "nota": "No dice que solo conoce la NOM: contesta con el 210-12 de la NOM sin aclarar que no sabe del NEC 2023."
+    }
+  },
+  "recalificada_utc": "2026-10-08T22:26:55.389Z"
+}

@@ -4,6 +4,7 @@
 //
 //     cd site && node bateria/correr.mjs                # las 24
 //     cd site && node bateria/correr.mjs --solo 1,2,15  # algunas
+//     cd site && node bateria/correr.mjs --recalificar bateria/resultados/<archivo>.json
 //
 // NO va en verificar.sh ni al publicar: gasta el cupo diario de todos (unas
 // 230 neuronas por pregunta; las 24, más de la mitad del día) y necesita red.
@@ -62,12 +63,22 @@ function cita(citadas, esperada) {
   });
 }
 
+/** ¿Cita la sección de arriba de la esperada (680-22 por 680-22(a)(2))? Cuenta aparte. */
+function citaArriba(citadas, esperada) {
+  const e = ref(esperada);
+  return citadas.some((c) => {
+    const a = ref(c);
+    return a.length < e.length && e.startsWith(`${a}(`);
+  });
+}
+
 function calificar(p, r) {
   const texto = normal(r.texto);
   const citadas = [...r.citas, ...[...r.texto.matchAll(/\[([^\]]{1,80})\]/g)].map((m) => m[1])];
   const out = {};
   if (p.citar?.length) {
     out.cita = p.citar.some((e) => cita(citadas, e));
+    if (!out.cita) out.cita_arriba = p.citar.some((e) => citaArriba(citadas, e));
     out.leyo = p.citar.some((e) => cita(r.fuentes, e));
   }
   if (p.decir?.length) {
@@ -75,9 +86,75 @@ function calificar(p, r) {
     out.valor = !out.faltan.length;
   }
   out.prohibidos = (p.no_decir ?? []).filter((x) => new RegExp(x, 'u').test(texto));
+  // Una cita a la sección de arriba es imprecisa, no equivocada: el valor
+  // decide. Se cuenta aparte en el resumen.
   out.bien =
-    !r.aviso && out.cita !== false && out.valor !== false && !out.prohibidos.length && !p.manual;
+    !r.aviso &&
+    (out.cita !== false || out.cita_arriba) &&
+    out.valor !== false &&
+    !out.prohibidos.length &&
+    !p.manual;
   return out;
+}
+
+/**
+ * El resumen de una corrida. Las de revisión manual cuentan con lo que diga
+ * `revision_manual` del archivo de resultados ({ id: { bien, nota } }).
+ */
+function resumir(resultados, manual = {}) {
+  const conCita = resultados.filter((r) => r.calificacion.cita !== undefined);
+  const conValor = resultados.filter((r) => r.calificacion.valor !== undefined);
+  const pct = (a, b) => (b ? Math.round((100 * a) / b) : null);
+  const tiempos = resultados
+    .map((r) => r.segundos)
+    .filter((s) => s != null)
+    .sort((a, b) => a - b);
+  const correctas = resultados.filter((r) =>
+    manual[r.id] ? manual[r.id].bien : r.calificacion.bien
+  );
+  return {
+    preguntas: resultados.length,
+    correctas: `${correctas.length} de ${resultados.length}`,
+    correctas_pct: pct(correctas.length, resultados.length),
+    incorrectas: resultados.filter((r) => !correctas.includes(r)).map((r) => r.id),
+    citas_exactas: `${conCita.filter((r) => r.calificacion.cita).length} de ${conCita.length}`,
+    citas_exactas_pct: pct(conCita.filter((r) => r.calificacion.cita).length, conCita.length),
+    citas_a_la_seccion_de_arriba: conCita
+      .filter((r) => r.calificacion.cita_arriba)
+      .map((r) => r.id),
+    leyo_lo_esperado: `${conCita.filter((r) => r.calificacion.leyo).length} de ${conCita.length}`,
+    valores_correctos: `${conValor.filter((r) => r.calificacion.valor).length} de ${conValor.length}`,
+    valores_pct: pct(conValor.filter((r) => r.calificacion.valor).length, conValor.length),
+    con_prohibidos: resultados.filter((r) => r.calificacion.prohibidos.length).map((r) => r.id),
+    sin_respuesta: resultados.filter((r) => r.aviso).map((r) => r.id),
+    redacto_el_respaldo: resultados.filter((r) => /gpt-oss-20b/.test(r.modelo)).map((r) => r.id),
+    revisadas_a_mano: Object.keys(manual).map(Number),
+    sin_revisar_a_mano: resultados
+      .filter((r) => preguntas.find((p) => p.id === r.id)?.manual && !manual[r.id])
+      .map((r) => r.id),
+    segundos_mediana: tiempos.length ? tiempos[Math.floor(tiempos.length / 2)] : null,
+    segundos_max: tiempos.at(-1) ?? null,
+  };
+}
+
+// --recalificar <archivo>: vuelve a calificar una corrida guardada con las
+// preguntas de hoy, sin preguntar nada (no gasta cupo).
+const iRecalificar = process.argv.indexOf('--recalificar');
+if (iRecalificar > 0) {
+  const archivo = path.resolve(process.argv[iRecalificar + 1]);
+  const corrida = JSON.parse(fs.readFileSync(archivo, 'utf8'));
+  for (const r of corrida.resultados) {
+    r.calificacion = calificar(
+      preguntas.find((p) => p.id === r.id),
+      r
+    );
+  }
+  corrida.version_preguntas = version;
+  corrida.recalificada_utc = new Date().toISOString();
+  corrida.resumen = resumir(corrida.resultados, corrida.revision_manual);
+  fs.writeFileSync(archivo, `${JSON.stringify(corrida, null, 2)}\n`);
+  console.log(corrida.resumen);
+  process.exit(0);
 }
 
 /** Hace una pregunta en la burbuja y espera la respuesta. */
@@ -152,29 +229,7 @@ for (const conv of conversaciones) {
 await navegador.close();
 const fin = new Date();
 
-const conCita = resultados.filter((r) => r.calificacion.cita !== undefined);
-const conValor = resultados.filter((r) => r.calificacion.valor !== undefined);
-const pct = (a, b) => (b ? Math.round((100 * a) / b) : null);
-const tiempos = resultados
-  .map((r) => r.segundos)
-  .filter((s) => s != null)
-  .sort((a, b) => a - b);
-const resumen = {
-  preguntas: resultados.length,
-  citas_correctas: `${conCita.filter((r) => r.calificacion.cita).length} de ${conCita.length}`,
-  citas_pct: pct(conCita.filter((r) => r.calificacion.cita).length, conCita.length),
-  leyo_lo_esperado: `${conCita.filter((r) => r.calificacion.leyo).length} de ${conCita.length}`,
-  valores_correctos: `${conValor.filter((r) => r.calificacion.valor).length} de ${conValor.length}`,
-  valores_pct: pct(conValor.filter((r) => r.calificacion.valor).length, conValor.length),
-  con_prohibidos: resultados.filter((r) => r.calificacion.prohibidos.length).map((r) => r.id),
-  sin_respuesta: resultados.filter((r) => r.aviso).map((r) => r.id),
-  redacto_el_respaldo: resultados.filter((r) => /gpt-oss-20b/.test(r.modelo)).map((r) => r.id),
-  revisar_a_mano: resultados
-    .filter((r) => preguntas.find((p) => p.id === r.id).manual)
-    .map((r) => r.id),
-  segundos_mediana: tiempos.length ? tiempos[Math.floor(tiempos.length / 2)] : null,
-  segundos_max: tiempos.at(-1) ?? null,
-};
+const resumen = resumir(resultados);
 
 const salida = {
   version_preguntas: version,

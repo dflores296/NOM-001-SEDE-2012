@@ -963,6 +963,34 @@ dueño aprobó la opción B con precisiones, y la opción A para `pregunta`:
   el flujo entre modelos ni el aviso. El candado del paso 4 no se dispara:
   no hay modelo ni servicio nuevo.
 
+**Paso 4 de la auditoría: batería de evaluación y línea base (8 de octubre
+de 2026).** 24 preguntas que aprobó el dueño, en `site/bateria/preguntas.json`,
+cada una con lo que debe citar, decir y no decir, sacado de la captura de la
+norma; varias prueban valores donde la NOM y el NEC difieren (80 cm, 1.85 m,
+127 V) o casos que ya fallaron. `site/bateria/correr.mjs` las hace al
+asistente real en el sitio publicado, como un visitante (Chromium por el
+proxy del entorno, sin desactivar ninguna verificación), con 15 s entre una y
+otra por el tope por minuto, y califica solo; `--recalificar` vuelve a
+calificar una corrida guardada sin gastar cupo. No va en `verificar.sh`: gasta
+el cupo de todos (unas 230 neuronas por pregunta).
+
+Primera corrida, 22:18 a 22:25 UTC (más una prueba con una pregunta a las
+22:17): **16 de 24 correctas (67 %)**, citas exactas 14 de 22 más 2 a la
+sección de arriba, valores 16 de 22, ningún valor prohibido, ninguna sin
+respuesta, el 120b redactó las 24, mediana de 9.3 s. **Casi todas las fallas
+son de selección:** con la parte esperada leída acertó 12 de 13; sin ella, 3
+de 9. Detalle y lectura en `site/bateria/resultados/2026-10-08T2218Z.md`.
+
+Ajustes a la calificación tras revisar a mano (versión 2 de las preguntas):
+la 15 decía «80 centímetros» y solo se reconocía «80 cm»; la 21 citó la Tabla
+4, que trae la misma columna del 40 % que la Tabla 1; una cita a la sección de
+arriba (680-22 por 680-22(a)(2)) cuenta aparte, como imprecisa. Dos detalles
+del programa salieron en la prueba de una pregunta: «120b» contiene «20b», y
+el modelo escribe guiones no separables (‑).
+
+Falta para cerrar la línea base: las neuronas por pregunta (el panel de
+Workers AI antes y después, o el registro de esa hora exportado).
+
 **Ajuste posterior de redacción del aviso** (decisión del dueño: no es un
 cambio material del tratamiento y no bloquea este paso): agregar en «Lo que
 anota el asistente» que el registro indica si la respuesta terminó
