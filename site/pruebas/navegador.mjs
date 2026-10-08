@@ -4,8 +4,8 @@
 //     cd site && npm run build && npm run prueba
 //
 // Usa Chromium de Playwright. Cada prueba abre un contexto nuevo, sin service
-// worker, y la API de GitHub se responde aquí mismo: las estrellas no dependen
-// de la red y la prueba tampoco.
+// worker, y la API de GitHub y el contador de visitas se responden aquí
+// mismo: las pruebas no dependen de la red.
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -1303,6 +1303,11 @@ for (const { nombre, fn } of pruebas) {
     await ctx.route('https://api.github.com/**', (r) =>
       r.fulfill({ json: { stargazers_count: 7 } })
     );
+    // El contador de visitas (src/lib/analitica.js) tampoco sale a la red.
+    await ctx.route('https://static.cloudflareinsights.com/**', (r) =>
+      r.fulfill({ contentType: 'text/javascript', body: '' })
+    );
+    await ctx.route('https://cloudflareinsights.com/**', (r) => r.fulfill({ status: 204 }));
     const page = await ctx.newPage();
     const errores = [];
     page.on('pageerror', (e) => errores.push(e.message));

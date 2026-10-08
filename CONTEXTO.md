@@ -552,11 +552,11 @@ Lo que se hizo:
   la pregunta ni la IP. En Observability se cuentan las preguntas y los
   números distintos; el registro gratis guarda 3 días. La guía lo dice en
   «Privacidad y cupo».
-- **Contador de visitas** (Cloudflare Web Analytics, sin cookies), listo pero
-  **apagado**: falta el token, que el dueño saca en su cuenta de Cloudflare.
-  Va en `site/src/lib/analitica.js`; con él, el script entra en cada página,
-  la CSP se abre solo a Cloudflare Insights y el pie lo dice. Se probó con un
-  token de mentiras: la CSP deja pasar el script y la visita.
+- **Contador de visitas** (Cloudflare Web Analytics, sin cookies), encendido
+  con el token que dio el dueño (`site/src/lib/analitica.js`). El script entra
+  en cada página como lo da Cloudflare (`type="module"`), la CSP se abre solo
+  a Cloudflare Insights y el pie lo dice. Las pruebas en navegador contestan
+  ese script aquí mismo, sin red. Se ve en el panel, en **Web Analytics**.
 - **Blindaje del asistente**, a pedido del dueño («contra peticiones que
   busquen saturar el servidor o sacar datos»): un tope de 15 consultas por
   minuto por conexión con el Rate Limiting de Cloudflare (`ratelimits` en

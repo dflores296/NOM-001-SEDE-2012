@@ -193,7 +193,7 @@ const imagen = new URL(`${base}/ui/og.jpg`, Astro.site).href;
     {/* El contador de visitas (src/lib/analitica.js), solo con su token. Es
         un script de afuera: la CSP lo deja pasar solo a él. */}
     {ANALITICA && (
-      <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js"
+      <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
               data-cf-beacon={JSON.stringify({ token: ANALITICA })}></script>
     )}
 

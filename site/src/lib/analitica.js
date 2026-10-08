@@ -18,4 +18,4 @@
 //
 // Vacío, no hay contador: ni script, ni cambio en la CSP.
 // ---------------------------------------------------------------------------
-export const ANALITICA = '';
+export const ANALITICA = '1622791134004e28874c88902382969d';
