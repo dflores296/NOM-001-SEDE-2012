@@ -569,6 +569,10 @@ Lo que se hizo:
   `site/astro.config.mjs`), por los enlaces ya compartidos; una prueba lo
   cuida. Los archivos del código (`scripts/preguntar/`, `preguntar.css`,
   `pruebas/preguntar.mjs`) conservan el nombre: no los ve nadie.
+- **El pie decía «El código de este proyecto es libre»**, de antes del cambio
+  de licencias (PolyForm Noncommercial, AGPL y CC BY-NC-SA). Lo notó el
+  dueño. Ahora: consultar es libre; el uso comercial del código o los datos
+  requiere permiso, con enlace a `LICENSE`.
 - **Blindaje del asistente**, a pedido del dueño («contra peticiones que
   busquen saturar el servidor o sacar datos»): un tope de 15 consultas por
   minuto por conexión con el Rate Limiting de Cloudflare (`ratelimits` en
