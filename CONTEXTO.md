@@ -4,7 +4,7 @@ Estado del proyecto para retomarlo desde otra sesión o cuenta. El README explic
 **qué es** el proyecto y cómo está construido; esto explica **dónde va**, qué hay
 que entender antes de tocarlo y qué queda pendiente.
 
-Última actualización: 7 de octubre de 2026.
+Última actualización: 8 de octubre de 2026.
 
 ## Dónde estamos
 
@@ -333,7 +333,7 @@ Quedó fuera, a propósito:
   haría falta KV.
 - **Las erratas del DOF en las tablas** (README, «Erratas»): el asistente cita
   el valor impreso, como la página. Pasarle esas notas sería una mejora
-  sencilla para la 430-250.
+  sencilla para la 430-250. *Hecho en la cuarta vuelta.*
 - **Conversación con memoria.** Cada pregunta va sola; «¿y para 30 A?» no sabe
   de qué se hablaba.
 
@@ -422,6 +422,47 @@ Quedó fuera: revisar cada número de la respuesta contra lo leído. No habría
 atrapado este error —los 20 A sí estaban en lo leído, en otro artículo—, y
 con el grande redactando y menos partes leídas el caso debería ser raro. Si
 los reportes muestran que no lo es, es lo siguiente.
+
+### Tablas citadas, pistas y erratas (8 de octubre, cuarta vuelta)
+
+El dueño lo probó con preguntas reales. Bien: 14 AWG → 15 A, y «¿y el 12?» →
+20 A con la memoria. Tres fallas, cada una con su causa:
+
+| Pregunta | Contestó | Por qué |
+|---|---|---|
+| Motor de 10 hp a 575 V | 44 A | Es lo que imprime la Tabla 430-250, pero es una errata del DOF (debería ser 11 A) |
+| Tierra física de una pastilla de 20 A | Sin calibre | Leyó el 250-122(a), que dice «no menor a lo de la Tabla 250-122», y no la tabla |
+| Protección contra falla a tierra en vivienda | El 240-13 (de equipos) | El índice general solo dice «210 Circuitos derivados»; el 210-8(a) no se ve desde ahí |
+
+Lo que se hizo:
+
+- **Las tablas que cita lo que va a leer se leen solas**
+  (`tablasCitadas` y `conTablasCitadas` en `preguntar/lectura.js`): si el
+  inciso dice «la Tabla 250-122» y quedan lugares de los 4, la página la
+  agrega. Si la tabla es de otro artículo (el 240-5(a) manda a la 402-5), baja
+  ese artículo. No cuentan «las Tablas 430-247 a 430-250» (son para escoger
+  una, y eso lo hace el modelo), ni lo que dicen los encabezados de una tabla
+  que ya viene en el texto («[Ver tabla 310-104(a)]»).
+- **Pistas del buscador en los pasos 1 y 2** (`pistasDe`, `bloquePistas`):
+  las 8 primeras secciones, tablas o definiciones que encuentra el buscador
+  con las palabras de la pregunta van al final del índice, con su artículo;
+  en el paso 2, solo las de los artículos escogidos. Son ayuda, no la
+  respuesta: las instrucciones lo dicen. El índice del buscador pesa (2.7 MB);
+  se empieza a bajar al enfocar el campo, y si en 6 segundos no ha llegado se
+  pregunta sin pistas.
+- **Las cuatro erratas del README van al pie de su tabla** como «Nota de la
+  guía (no es texto de la norma)», en lo que lee el asistente
+  (`site/src/lib/erratas.js`, que usa `tabla-texto.js`). La tabla sigue
+  diciendo lo que imprime el DOF; una prueba comprueba que el valor impreso
+  siga ahí, y si un día cambia la captura, avisa. El asistente da el valor
+  impreso y avisa de la errata.
+- **Unidades como la norma:** amperes, volts, watts, voltamperes; no
+  amperios ni voltios.
+- De paso: una definición con coma («Accesible, fácilmente») ya se puede
+  pedir, y una figura con varios rótulos se encuentra por cualquiera.
+
+Quedó fuera: las figuras de los apéndices no dan pista, porque el buscador no
+dice de qué apéndice son (cuatro, todas del A).
 
 ## Ronda de seguridad (octubre de 2026)
 

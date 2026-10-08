@@ -664,9 +664,11 @@ const RESPUESTA_20A =
 prueba(
   'El asistente lee el índice, escoge, recibe la norma completa y su respuesta enlaza lo que cita',
   async ({ nuevaPagina }) => {
+    // Pide solo el inciso: la Tabla 250-122, que el inciso cita, la agrega
+    // la página.
     const { recibido, contestar } = asistenteDePrueba({
       articulos: 'Artículo 250',
-      secciones: '250-122(a)\nTabla 250-122',
+      secciones: '250-122(a)',
       responder: RESPUESTA_20A,
     });
     const { page, errores, alerta } = await conAsistente(nuevaPagina, contestar);
@@ -686,6 +688,14 @@ prueba(
     afirmar(
       dos.indice.startsWith('Artículo 250') && dos.indice.includes('250-122 '),
       'paso 2 sin el índice del 250'
+    );
+    // Las pistas del buscador: en el paso 1 con su artículo; en el 2, solo
+    // las del 250.
+    const pistas = (indice) => indice.split('— Pistas del buscador de la guía')[1] ?? '';
+    afirmar(/\(artículo 250\)/.test(pistas(uno.indice)), 'paso 1 sin pistas');
+    afirmar(
+      pistas(dos.indice).includes('\n250-') && !pistas(dos.indice).includes('(artículo'),
+      'paso 2 sin las pistas del 250'
     );
     const refs = tres.fragmentos.map((f) => f.ref);
     afirmar(JSON.stringify(refs) === '["250-122(a)","Tabla 250-122"]', `refs: ${refs.join(', ')}`);

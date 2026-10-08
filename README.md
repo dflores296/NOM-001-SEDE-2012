@@ -240,7 +240,9 @@ están en [CONTEXTO.md](CONTEXTO.md#ronda-de-seguridad-octubre-de-2026).
 ## Erratas del PDF de origen
 
 Cuatro tablas traen valores mal impresos **en el DOF**. Se reproducen tal como
-los publica: corregirlos sería editar la norma, no transcribirla.
+los publica: corregirlos sería editar la norma, no transcribirla. El asistente
+de `/preguntar` las lee con una nota de la guía al pie y avisa
+(`site/src/lib/erratas.js`).
 
 | Tabla | Dónde | El DOF imprime | Debería decir |
 |---|---|---|---|

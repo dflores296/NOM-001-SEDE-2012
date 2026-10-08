@@ -202,8 +202,8 @@ no uno verificado.
 
 `/preguntar` contesta preguntas en lenguaje natural con el texto de la norma.
 El sitio sigue siendo estático: lo único que vive fuera es un Worker de
-Cloudflare (`ia/agente.js`) que llama a un modelo de código abierto
-(gpt-oss-20b) en Workers AI, dentro del plan gratis. Cómo se publica, qué
+Cloudflare (`ia/agente.js`) que llama a dos modelos de código abierto
+(gpt-oss-20b y gpt-oss-120b) en Workers AI, dentro del plan gratis. Cómo se publica, qué
 cuesta (nada) y qué hacer cuando algo falla: `ia/README.md`.
 
 El asistente no recibe la norma entera —son 3.5 millones de caracteres, más de
@@ -213,9 +213,9 @@ una persona con el libro, en tres consultas que dirige la página
 
 | Paso | Lee | Escoge |
 |---|---|---|
-| 1. `articulos` | El índice general: los 151 artículos, el Capítulo 10, los Apéndices y los Títulos de cierre (`/data/ia/indice.json`, unos 2 000 tokens) | De 1 a 3 claves |
-| 2. `secciones` | El índice de esas claves: secciones, incisos con título, tablas y figuras (`/data/ia/<clave>.json`; el más largo, el 250, unos 4 800 tokens) | Hasta 6 identificadores |
-| 3. `responder` | Eso completo, hasta 4 partes y 22 000 caracteres: cada renglón con su identificador entre corchetes, las tablas renglón por renglón | — contesta citando |
+| 1. `articulos` | El índice general: los 151 artículos, el Capítulo 10, los Apéndices y los Títulos de cierre (`/data/ia/indice.json`, unos 2 000 tokens), más las pistas del buscador | De 1 a 3 claves |
+| 2. `secciones` | El índice de esas claves: secciones, incisos con título, tablas y figuras (`/data/ia/<clave>.json`; el más largo, el 250, unos 4 800 tokens), más las pistas que caen en ellas | Hasta 4 identificadores |
+| 3. `responder` | Eso completo, más las tablas que cita, hasta 4 partes y 22 000 caracteres: cada renglón con su identificador entre corchetes, las tablas renglón por renglón | — contesta citando |
 
 Los pasos 1 y 2 los hace gpt-oss-20b pensando poco; el 3, gpt-oss-120b
 pensando más, porque ahí se equivocaba el chico: le aplicó al 14 AWG la
@@ -232,6 +232,16 @@ chico.
   —numera, copia títulos, escribe «240.4(D)» al estilo del NEC— y solo acepta
   lo que existe. «Tabla 240-4(g)» es la tabla y «240-4(g)» el inciso: los dos
   existen, y el alias de la tabla sin «Tabla» pierde.
+- **Pistas del buscador** (`pistasDe` en `lectura.js`): las 8 primeras cosas
+  que encuentra `buscarPregunta` con las palabras de la pregunta van al final
+  del índice de los pasos 1 y 2. El índice general solo dice «210 Circuitos
+  derivados»; el buscador sabe que la falla a tierra está en el 210-8. Si el
+  índice del buscador tarda más de 6 segundos, se pregunta sin pistas.
+- **Las tablas citadas se leen solas** (`conTablasCitadas`): si lo pedido dice
+  «la Tabla 250-122» y quedan lugares, se agrega, aunque sea de otro artículo.
+  «Las Tablas 430-247 a 430-250» no cuentan: son para escoger una.
+- **Las erratas del DOF** (`lib/erratas.js`) van al pie de su tabla como «Nota
+  de la guía», en lo que lee el asistente; la tabla no se corrige.
 - **Se lee primero el inciso pedido**, luego las secciones, las definiciones
   y al final las tablas (`PRIORIDAD` en `lectura.js`): si no cabe todo, lo
   que se queda fuera es una tabla, no la sección con la respuesta.

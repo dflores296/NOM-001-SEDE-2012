@@ -7,7 +7,13 @@
 //    incisos con título, tablas. Escoge qué leer completo.
 // 3. Lee eso completo —incisos numerados, tablas renglón por renglón— y
 //    contesta citando cada dato. lectura.js convierte lo que pide en lo que
-//    se le manda.
+//    se le manda, y le suma las tablas que cita lo que va a leer («no menor
+//    a lo de la Tabla 250-122»).
+//
+// Con los índices de 1 y 2 van unas pistas: dónde encuentra el buscador de
+// la guía las palabras de la pregunta. El índice general solo dice «210
+// Circuitos derivados»; el buscador sabe que la falla a tierra está en el
+// 210-8.
 //
 // Si en 1 o 2 no pide nada que exista, la página busca por su cuenta con el
 // buscador de siempre (buscarPregunta + pasajes.js) y el paso 3 sigue con eso.
@@ -20,11 +26,18 @@ import { base } from '../base.js';
 import { buscarPregunta, fragmentos as textosListos, load } from '../buscador/indice.js';
 import { href } from '../buscador/resultados.js';
 import {
+  articuloDeTabla,
+  bloquePistas,
   citables,
   clavesPedidas,
+  conTablasCitadas,
   fragmentosDe,
   indiceCombinado,
+  LECTURA,
   partesPedidas,
+  pistasDe,
+  TOPE_INDICE,
+  tablasCitadas,
 } from './lectura.js';
 import { elegir, palabrasClave } from './pasajes.js';
 import { bloques, normRef, trozos } from './respuesta.js';
@@ -233,19 +246,42 @@ function botonReportar(pregunta, respuesta, leidas) {
 
 let ocupado = false;
 
+// Los números se quedan fuera de la búsqueda (ver buscarPregunta), pero no
+// del recorte: con ellos pasajes.js escoge el renglón del 20 A.
+const palabrasDe = (pregunta) => palabrasClave(pregunta).filter((k) => !/^\d+$/.test(k));
+
+// Las pistas del buscador para los pasos 1 y 2. El índice del buscador pesa:
+// si en unos segundos no ha llegado, se pregunta sin pistas.
+async function pistas(pregunta) {
+  const espera = new Promise((listo) => setTimeout(() => listo([]), 6000));
+  const busca = buscarPregunta(pregunta, palabrasDe(pregunta)).catch(() => []);
+  return pistasDe(await Promise.race([busca, espera]));
+}
+
 // El respaldo: lo que encuentra el buscador de siempre, recortado. Para cuando
 // el modelo no pidió nada que exista.
 async function respaldo(pregunta) {
   await load();
   await textosListos();
-  // Los números se quedan fuera de la búsqueda (ver buscarPregunta), pero no
-  // del recorte: con ellos pasajes.js escoge el renglón del 20 A.
-  const palabras = palabrasClave(pregunta).filter((k) => !/^\d+$/.test(k));
   const [resultados, tablasIA] = await Promise.all([
-    buscarPregunta(pregunta, palabras),
+    buscarPregunta(pregunta, palabrasDe(pregunta)),
     cargarTablas(),
   ]);
   return elegir(resultados, pregunta, tablasIA);
+}
+
+// Lo que se lee en el paso 3: lo que pidió y las tablas que eso cita. Una
+// tabla de otro artículo («la Tabla 402-5» desde el 240-5(a)) baja ese
+// artículo; si no llega, se lee sin ella.
+async function leerPedidas(r2, paqs, todas) {
+  const pedidas = partesPedidas(r2, paqs);
+  if (!pedidas.length || pedidas.length >= LECTURA.partes) return pedidas;
+  const ya = new Set(paqs.map((p) => p.clave));
+  const otras = [...new Set(tablasCitadas(pedidas).map(articuloDeTabla))]
+    .filter((k) => todas.includes(k) && !ya.has(k))
+    .slice(0, 2);
+  const mas = await Promise.all(otras.map((k) => cargarClave(k).catch(() => null)));
+  return conTablasCitadas(pedidas, [...paqs, ...mas.filter(Boolean)]);
 }
 
 const CIERRE = {
@@ -282,22 +318,34 @@ async function preguntar(pregunta) {
   let contesto = false;
   try {
     anotar();
-    // Paso 1: el índice general.
-    const { indice, claves: todas } = await cargarGeneral();
-    const r1 = await pedir({ paso: 'articulos', pregunta, historia: antes, indice });
+    // Paso 1: el índice general, con las pistas del buscador.
+    const [{ indice, claves: todas }, halladas] = await Promise.all([
+      cargarGeneral(),
+      pistas(pregunta),
+    ]);
+    const r1 = await pedir({
+      paso: 'articulos',
+      pregunta,
+      historia: antes,
+      indice: indice + bloquePistas(halladas.map((p) => p.general)),
+    });
     const claves = clavesPedidas(r1, todas);
 
-    // Paso 2: el índice de los artículos escogidos.
+    // Paso 2: el índice de los artículos escogidos, con las pistas que caen
+    // en ellos.
     if (claves.length) {
       estado.textContent = `Revisando el índice ${lista(claves.map(nombreClave))}…`;
       const paqs = await Promise.all(claves.map(cargarClave));
+      const suyas = bloquePistas(
+        halladas.filter((p) => claves.includes(p.clave)).map((p) => p.detalle)
+      );
       const r2 = await pedir({
         paso: 'secciones',
         pregunta,
         historia: antes,
-        indice: indiceCombinado(paqs),
+        indice: indiceCombinado(paqs, TOPE_INDICE - suyas.length) + suyas,
       });
-      leidas = fragmentosDe(partesPedidas(r2, paqs));
+      leidas = fragmentosDe(await leerPedidas(r2, paqs, todas));
     }
 
     // Si no pidió nada que exista, busca la página.
@@ -380,7 +428,14 @@ if (raiz && !URL_ASISTENTE) {
       form.requestSubmit();
     }
   });
-  // El índice general se empieza a bajar en cuanto se enfoca el campo, no
-  // al mandar la primera pregunta.
-  campo.addEventListener('focus', () => cargarGeneral().catch(() => {}), { once: true });
+  // El índice general y el del buscador (para las pistas) se empiezan a
+  // bajar en cuanto se enfoca el campo, no al mandar la primera pregunta.
+  campo.addEventListener(
+    'focus',
+    () => {
+      cargarGeneral().catch(() => {});
+      load().catch(() => {});
+    },
+    { once: true }
+  );
 }

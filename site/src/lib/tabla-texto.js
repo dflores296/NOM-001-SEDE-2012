@@ -10,6 +10,7 @@
 // posición que cubren, como se leen en la tabla dibujada: un encabezado
 // «Cobre» sobre dos columnas nombra a las dos, y un valor que baja tres
 // renglones vale para los tres.
+import { notaErrata } from './erratas.js';
 
 /** Las celdas de `rows` acomodadas en una rejilla: rejilla[fila][columna]. */
 export function rejilla(rows, cols) {
@@ -66,5 +67,9 @@ export function tablaComoTexto(t) {
     const txt = celda({ t: typeof n === 'string' ? n : n?.t });
     if (txt) lineas.push(txt);
   }
+  // Las cuatro tablas con un valor mal impreso en el DOF llevan la errata al
+  // pie, marcada como de la guía (erratas.js).
+  const errata = notaErrata(t.id);
+  if (errata) lineas.push(errata);
   return lineas.join('\n');
 }

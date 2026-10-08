@@ -32,10 +32,13 @@ export function normId(s) {
     .replace(/^(\d{3})\.(\d)/, '$1-$2');
 }
 
-const piezas = (texto) =>
+// Un renglón se parte en comas («240, 310»), salvo que el renglón entero sea
+// lo que se puede pedir: hay definiciones con coma («Accesible, fácilmente»).
+const sinVineta = (l) => l.replace(/^\s*(?:[-*•]|\d+[.)])\s+/, '').trim();
+const piezas = (texto, entero = () => false) =>
   String(texto)
-    .split(/\n|[,;]/)
-    .map((l) => l.replace(/^\s*(?:[-*•]|\d+[.)])\s+/, '').trim())
+    .split('\n')
+    .flatMap((l) => (entero(sinVineta(l)) ? [sinVineta(l)] : l.split(/[,;]/).map(sinVineta)))
     .filter(Boolean);
 
 /** Las claves del índice general que pidió el modelo (paso 1), sin repetir. */
@@ -57,6 +60,74 @@ export function indiceCombinado(paquetes, tope = TOPE_INDICE) {
   if (todo.length <= tope) return todo;
   const corte = todo.lastIndexOf('\n', tope - 40);
   return `${todo.slice(0, corte)}\n… (índice recortado)`;
+}
+
+// Pistas: lo que encuentra el buscador de la guía con las palabras de la
+// pregunta. Van con los índices de los pasos 1 y 2 porque el índice solo
+// dice «210 Circuitos derivados», y la protección contra falla a tierra de
+// una vivienda vive en el 210-8: el buscador la encuentra por sus palabras.
+// Son ayuda, no la respuesta: el modelo sigue escogiendo.
+const PISTAS = 8;
+const LARGO_PISTA = 150;
+const CLAVE_APENDICE = { A: 'AA', B: 'AB', C: 'AC' };
+
+const corto = (s) => {
+  const t = String(s ?? '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return t.length > LARGO_PISTA ? `${t.slice(0, LARGO_PISTA - 1)}…` : t;
+};
+
+/** La clave del índice general donde vive un resultado del buscador. */
+function claveDe(r) {
+  if (r.kind === 'cierre') {
+    if (r.cid === 'capitulo-10') return 'C10';
+    if (r.cid?.startsWith('titulo-')) return 'T';
+    return CLAVE_APENDICE[r.cid?.split('-')[1]] ?? null;
+  }
+  if (r.art != null) return String(r.art);
+  // Las figuras de los apéndices no dicen de cuál son: sin pista.
+  if (r.kind === 'tabla') return r.apendice ? CLAVE_APENDICE[r.apendice] : 'C10';
+  return null;
+}
+
+/** Cómo aparece un resultado en el índice de su artículo (paso 2). */
+function idDe(r) {
+  if (r.kind === 'tabla') return `Tabla ${r.sinNumero ? 'del ' : ''}${r.tid}`;
+  if (r.kind === 'def') return r.id;
+  // «Tabla 240-92(b)» y «Fórmula de 310-15(b)(2)» son dibujos de un inciso:
+  // se piden por el inciso.
+  if (r.kind === 'fig') return r.fid?.startsWith('Figura ') ? r.fid : r.num;
+  if (r.kind === 'cierre') return `Texto del ${r.fid}`;
+  return r.id;
+}
+
+/**
+ * Las primeras PISTAS de unos resultados del buscador: [{ clave, general,
+ * detalle }]. `general` es el renglón para el paso 1 (con su clave al
+ * final); `detalle`, el del paso 2, con el identificador que se puede pedir.
+ */
+export function pistasDe(resultados, max = PISTAS) {
+  const out = [];
+  for (const r of resultados || []) {
+    if (out.length >= max) break;
+    const clave = claveDe(r);
+    if (!clave || !r.id) continue;
+    const id = idDe(r);
+    const titulo = r.kind === 'def' ? '' : corto(r.title);
+    const detalle = titulo && titulo !== id ? `${id} ${titulo}` : id;
+    if (out.some((p) => p.detalle === detalle)) continue;
+    const donde = /^\d+$/.test(clave) ? `artículo ${clave}` : clave;
+    const general = r.kind === 'def' ? `Definición: ${id} (${donde})` : `${detalle} (${donde})`;
+    out.push({ clave, general, detalle });
+  }
+  return out;
+}
+
+/** El bloque de pistas que va al final de un índice; vacío si no hay. */
+export function bloquePistas(lineas) {
+  if (!lineas.length) return '';
+  return `\n\n— Pistas del buscador de la guía: dónde aparecen las palabras de la pregunta (pueden servir o no) —\n${lineas.join('\n')}`;
 }
 
 /**
@@ -82,10 +153,13 @@ function mapaDe(paquetes) {
         if (id !== llave && id.startsWith(llave))
           poner(normId(id), { paq, parte: llave, foco: id });
       }
-      for (const [, fig] of parte.texto.matchAll(
-        /^\s*\[Figura\] (Figura [^\s.]+(?:\s\([^)]+\))?)/gm
-      )) {
-        alias.push([normId(fig), { paq, parte: llave, foco: null }]);
+      // Una figura puede tener varios rótulos: «[Figura] Figura 923-10(a)(3).
+      // Zonificación… / Figura 923-10(c). Banco de ductos…».
+      for (const [, figs] of parte.texto.matchAll(/^\s*\[Figura\] (.+)$/gm)) {
+        for (const r of figs.split(' / ')) {
+          const fig = /^(Figura \S+?(?:\s\([^)]+\))?)\.(?:\s|$)/.exec(r);
+          if (fig) alias.push([normId(fig[1]), { paq, parte: llave, foco: null }]);
+        }
       }
     }
   }
@@ -102,7 +176,7 @@ function mapaDe(paquetes) {
 export function partesPedidas(texto, paquetes, max = LECTURA.partes) {
   const mapa = mapaDe(paquetes);
   const out = [];
-  for (const p of piezas(texto)) {
+  for (const p of piezas(texto, (l) => mapa.has(normId(l)))) {
     const palabras = p.split(/\s+/);
     let hallado = null;
     for (let n = palabras.length; n > 0 && !hallado; n--) {
@@ -125,6 +199,80 @@ export function partesPedidas(texto, paquetes, max = LECTURA.partes) {
       parte: hallado.parte,
       focos: hallado.foco ? [hallado.foco] : null,
     });
+  }
+  return out;
+}
+
+// «… no menor a lo de la Tabla 250-122», «según la Tabla 310-15(b)(16)».
+// Solo en singular: «las Tablas 430-247 a 430-250» son para escoger una, y
+// eso lo hace el modelo en el paso 2.
+const TABLA_CITADA = /\bTabla\s+(\d{2,3}-\d{1,3}(?:\s?\([a-z0-9]{1,4}\))*)/gi;
+
+/** El texto de una parte pedida como se va a leer: la sección o sus incisos. */
+function textoPedido({ paq, parte, focos }) {
+  const texto = paq.partes[parte].texto;
+  if (!focos) return texto;
+  return focos.map((f) => subarbol(texto, f) ?? '').join('\n');
+}
+
+/**
+ * Las tablas que nombra lo que se va a leer y que no vienen con ello, en el
+ * orden en que se leen: ['250-122', '310-15(b)(16)']. El 250-122(a) dice
+ * «no menor a lo de la Tabla 250-122» y sin la tabla el asistente no puede
+ * dar el calibre. No cuentan los renglones de una tabla que ya viene dentro
+ * del texto («[Ver tabla 310-104(a)]» en sus encabezados), ni la tabla que ya
+ * viene o que se pidió.
+ */
+export function tablasCitadas(pedidas) {
+  const out = [];
+  const ya = new Set();
+  for (const p of pedidas) {
+    const parte = p.paq.partes[p.parte];
+    if (parte.tipo === 'tabla') ya.add(parte.tid);
+  }
+  const orden = [...pedidas].sort((a, b) => prioridad(a) - prioridad(b));
+  for (const p of orden) {
+    if (p.paq.partes[p.parte].tipo !== 'sec') continue;
+    // La sangría del renglón [Tabla …] de una tabla que viene dentro del
+    // texto: lo que cuelga de él son sus renglones.
+    let enTabla = -1;
+    for (const l of textoPedido(p).split('\n')) {
+      const sangria = l.length - l.trimStart().length;
+      if (enTabla >= 0 && sangria > enTabla) continue;
+      enTabla = -1;
+      const cab = /^\s*\[Tabla (?:del )?([^\]]+)\]/.exec(l);
+      if (cab) {
+        if (!l.includes('(tabla aparte')) {
+          ya.add(cab[1]);
+          enTabla = sangria;
+        }
+        continue;
+      }
+      for (const [, id] of l.matchAll(TABLA_CITADA)) {
+        const tid = id.replace(/\s/g, '').toLowerCase();
+        if (!out.includes(tid)) out.push(tid);
+      }
+    }
+  }
+  return out.filter((t) => !ya.has(t));
+}
+
+/** El artículo donde vive una tabla: «310» para la 310-15(b)(16). */
+export const articuloDeTabla = (tid) => tid.split('-')[0];
+
+/**
+ * Las partes pedidas más las tablas que citan (tablasCitadas), hasta `max`.
+ * Las tablas se buscan en `paquetes`, que pueden ser más que los del paso 2:
+ * la página baja también el artículo de una tabla citada de otro.
+ */
+export function conTablasCitadas(pedidas, paquetes, max = LECTURA.partes) {
+  const out = [...pedidas];
+  const mapa = mapaDe(paquetes);
+  for (const tid of tablasCitadas(pedidas)) {
+    if (out.length >= max) break;
+    const h = mapa.get(normId(`Tabla ${tid}`));
+    if (!h || out.some((o) => o.paq === h.paq && o.parte === h.parte)) continue;
+    out.push({ paq: h.paq, parte: h.parte, focos: null });
   }
   return out;
 }

@@ -12,15 +12,21 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { TOPES, validar } from '../../ia/nucleo.js';
 import { armarAsistente } from '../src/lib/asistente-datos.js';
+import { ERRATAS } from '../src/lib/erratas.js';
 import { rejilla, tablaComoTexto } from '../src/lib/tabla-texto.js';
 import {
+  articuloDeTabla,
+  bloquePistas,
   citables,
   clavesPedidas,
+  conTablasCitadas,
   fragmentosDe,
   indiceCombinado,
   LECTURA,
   partesPedidas,
+  pistasDe,
   TOPE_INDICE,
+  tablasCitadas,
 } from '../src/scripts/preguntar/lectura.js';
 import {
   elegir,
@@ -225,6 +231,126 @@ prueba('Una cita a un inciso de lo leído lleva a su ancla', () => {
   afirmar(r?.kind === 'sec' && r.art === '240' && r.id === '240-4(d)(3)', JSON.stringify(r));
   afirmar(m.get('Tabla 240-4(g)')?.kind === 'tabla', 'la tabla no es citable');
   afirmar(fr.length === 2 && fr[1].ref === 'Tabla 240-4(g)', JSON.stringify(fr.map((f) => f.ref)));
+});
+
+prueba('Lo que se lee trae la tabla que cita: el 250-122(a) manda a la Tabla 250-122', () => {
+  const paqs = [IA.claves['250']];
+  const pedidas = partesPedidas('250-122(a)', paqs);
+  afirmar(JSON.stringify(tablasCitadas(pedidas)) === '["250-122"]', 'no ve la cita');
+  const refs = fragmentosDe(conTablasCitadas(pedidas, paqs)).map((f) => f.ref);
+  afirmar(
+    JSON.stringify(refs) === JSON.stringify(['250-122(a)', 'Tabla 250-122']),
+    JSON.stringify(refs)
+  );
+  // Si ya se lee todo lo que cabe, no se agrega nada.
+  const llenas = partesPedidas('250-122(a)\n250-4\n250-24\n250-30', paqs);
+  afirmar(conTablasCitadas(llenas, paqs).length === LECTURA.partes, 'se pasó de las partes');
+});
+
+prueba('Una tabla que ya viene en el texto, o que solo nombra otra tabla, no se agrega', () => {
+  // La sección entera trae la Tabla 250-122 dentro.
+  const entera = partesPedidas('250-122', [IA.claves['250']]);
+  afirmar(!tablasCitadas(entera).length, JSON.stringify(tablasCitadas(entera)));
+  // Los encabezados de las tablas del 310-15 dicen «[Ver tabla 310-104(a)]».
+  const t = tablasCitadas(partesPedidas('310-15', [IA.claves['310']]));
+  afirmar(!t.includes('310-104(a)'), JSON.stringify(t));
+  // «Las Tablas 430-247 a 430-250» son para escoger una: eso lo hace el modelo.
+  const motor = tablasCitadas(partesPedidas('430-6(a)(1)', [IA.claves['430']]));
+  afirmar(!motor.length, JSON.stringify(motor));
+});
+
+prueba('Una tabla citada de otro artículo se busca en el suyo', () => {
+  // El 240-5(a) manda a la Tabla 402-5 (ampacidad de los cordones flexibles).
+  const pedidas = partesPedidas('240-5(a)', [IA.claves['240']]);
+  const citadas = tablasCitadas(pedidas);
+  afirmar(citadas.includes('402-5') && articuloDeTabla('402-5') === '402', JSON.stringify(citadas));
+  afirmar(conTablasCitadas(pedidas, [IA.claves['240']]).length === 1, 'sin el 402 no la hay');
+  const con = conTablasCitadas(pedidas, [IA.claves['240'], IA.claves['402']]);
+  afirmar(con.at(-1).parte === 'Tabla 402-5', JSON.stringify(con.map((p) => p.parte)));
+});
+
+// ------------------------------------------------------------ las pistas
+
+prueba('Cada resultado del buscador es una pista que se puede pedir en su artículo', () => {
+  const malos = [];
+  for (const d of DOCS) {
+    const [p] = pistasDe([d]);
+    // Las figuras de los apéndices no dicen de cuál son, y no dan pista.
+    if (!p && d.kind === 'fig' && d.art == null) continue;
+    const paq = p && IA.claves[p.clave];
+    if (!paq) {
+      malos.push(`${d.id}: sin clave`);
+      continue;
+    }
+    if (!p.general.includes(p.detalle.slice(0, 40))) malos.push(`${d.id}: renglones distintos`);
+    // Lo que se dice en el paso 2 es un identificador de ese artículo.
+    if (d.kind !== 'cierre' && partesPedidas(p.detalle, [paq]).length !== 1)
+      malos.push(`${d.id}: «${p.detalle}» no se puede pedir`);
+  }
+  afirmar(!malos.length, `${malos.length}: ${malos.slice(0, 5).join(' | ')}`);
+});
+
+prueba('Las pistas se dicen con su clave y caben con el índice en los topes del Worker', () => {
+  const p = pistasDe([
+    doc('210-8'),
+    doc('tabla:250-122'),
+    DOCS.find((d) => d.kind === 'def' && d.id === 'Acometida'),
+    DOCS.find((d) => d.kind === 'tabla' && d.art == null && !d.apendice),
+    DOCS.find((d) => d.kind === 'tabla' && d.apendice === 'A'),
+    doc('210-8'),
+  ]);
+  afirmar(p.length === 5, `${p.length} pistas: la repetida no cuenta`);
+  afirmar(
+    JSON.stringify(p.map((x) => x.clave)) === '["210","250","100","C10","AA"]',
+    JSON.stringify(p.map((x) => x.clave))
+  );
+  afirmar(
+    p[0].general.endsWith('(artículo 210)') && p[0].detalle.startsWith('210-8 '),
+    p[0].general
+  );
+  afirmar(p[1].detalle.startsWith('Tabla 250-122 '), p[1].detalle);
+  afirmar(p[2].general === 'Definición: Acometida (artículo 100)', p[2].general);
+  // Lo más largo que pueden ser: las ocho pistas más largas del buscador.
+  const todas = DOCS.flatMap((d) => pistasDe([d]));
+  const largas = (k) =>
+    todas
+      .map((x) => x[k])
+      .sort((a, b) => b.length - a.length)
+      .slice(0, 8);
+  const uno = IA.indice + bloquePistas(largas('general'));
+  afirmar(uno.length < TOPES.indice.articulos, `paso 1: ${uno.length} caracteres`);
+  const suyas = bloquePistas(largas('detalle'));
+  const grandes = Object.values(IA.claves)
+    .sort((a, b) => b.indice.length - a.indice.length)
+    .slice(0, 3);
+  const dos = indiceCombinado(grandes, TOPE_INDICE - suyas.length) + suyas;
+  afirmar(dos.length <= TOPE_INDICE, `paso 2: ${dos.length} caracteres`);
+  afirmar(!bloquePistas([]), 'sin pistas no va nada');
+});
+
+// ------------------------------------------------------------ las erratas
+
+prueba('Las cuatro tablas con errata del DOF la llevan al pie, y el valor impreso sigue', () => {
+  afirmar(Object.keys(ERRATAS).length === 4, `${Object.keys(ERRATAS).length} erratas`);
+  for (const [id, e] of Object.entries(ERRATAS)) {
+    const t = TABLAS.find((x) => x.id === id);
+    afirmar(t, `no existe la Tabla ${id}`);
+    const texto = tablaComoTexto(t);
+    for (const pedazo of e.impreso)
+      afirmar(texto.includes(pedazo), `la Tabla ${id} ya no dice «${pedazo}»`);
+    afirmar(
+      texto.endsWith(
+        `Nota de la guía (no es texto de la norma): errata del DOF en esta tabla: ${e.nota}`
+      ),
+      `la Tabla ${id} sin su nota`
+    );
+    // También en lo que se publica: el paso 3 y el respaldo.
+    const parte = Object.values(IA.claves[articuloDeTabla(id)].partes).find((p) => p.tid === id);
+    afirmar(parte.texto.includes(e.nota), `la Tabla ${id} del paso 3 sin su nota`);
+    afirmar(TABLAS_IA[`tabla:${id}`]?.includes(e.nota), `la Tabla ${id} del respaldo sin su nota`);
+  }
+  const otra = tablaComoTexto(TABLAS.find((x) => x.id === '250-122'));
+  afirmar(!otra.includes('Nota de la guía'), 'una tabla sin errata lleva nota');
 });
 
 // ------------------------------------------------------------ el respaldo

@@ -77,6 +77,7 @@ Abajo está el índice general. Cada renglón empieza con una clave: el número 
 - Los capítulos 1 a 4 aplican a cualquier instalación: empieza por ahí.
 - Los capítulos 5 a 9 son casos especiales (lugares peligrosos, vehículos recreativos, sistemas fotovoltaicos, comunicaciones, servicio público y otros): escógelos solo si la pregunta habla de eso.
 - Las definiciones de términos están en 100.
+- Al final del índice pueden venir pistas del buscador de la guía: dónde aparecen las palabras de la pregunta, con su clave. Úsalas para ubicar el tema, no como respuesta: pueden servir o no.
 
 Contesta SOLO con las claves, separadas por comas, sin explicar nada. Ejemplo: 240, 310`,
 
@@ -86,6 +87,7 @@ Escoge lo que necesitas leer completo para contestar: hasta 4 identificadores, l
 - Prefiere el inciso exacto (por ejemplo 240-4(d)) antes que la sección entera.
 - Agrega una tabla solo si tiene los valores que se preguntan.
 - No escojas partes de otro tipo de instalación que la que se pregunta.
+- Al final pueden venir pistas del buscador de la guía: dónde aparecen las palabras de la pregunta. Tómalas en cuenta, pero escoge tú.
 - Si nada sirve, contesta NADA.
 
 Contesta SOLO con los identificadores, uno por renglón, escritos exactamente como aparecen en el índice, sin explicar nada.`,
@@ -104,6 +106,8 @@ Reglas:
 - No uses nada que no esté en los fragmentos: ni otras normas, ni el NEC, ni lo que sepas por tu cuenta.
 - Cita con el identificador más preciso entre corchetes [ ], escrito exactamente como aparece. No uses otro tipo de corchetes.
 - Copia los valores tal como vienen: no los calcules, no los redondees, no los conviertas.
+- Escribe las unidades como la norma: amperes, volts, watts, voltamperes (no amperios, voltios ni vatios).
+- Si una tabla trae al pie una «Nota de la guía» sobre una errata del DOF y usas ese valor, da el valor impreso y avisa de la errata con lo que dice la nota.
 - Si lo que leíste no alcanza, dilo («Lo que leí de la norma no lo dice») y sugiere qué preguntar. No adivines.
 - No des por buena una instalación concreta: la decisión es de quien la diseña y de la Unidad de Verificación.
 - Texto plano: sin Markdown, sin tablas, sin encabezados. Si hace falta una lista, cada punto en su renglón empezando con guion.`,

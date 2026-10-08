@@ -122,6 +122,10 @@ prueba('Al modelo le llegan las reglas, cada fragmento con su referencia y la pr
     sistema.role === 'system' && /SOLO con lo que dicen los fragmentos/.test(sistema.content),
     'sin reglas'
   );
+  // Las unidades como las escribe la norma, y el aviso de las erratas que la
+  // guía anota al pie de cuatro tablas (site/src/lib/erratas.js).
+  afirmar(/amperes, volts/.test(sistema.content), 'sin las unidades de la norma');
+  afirmar(/«Nota de la guía» sobre una errata/.test(sistema.content), 'sin el aviso de erratas');
   afirmar(usuario.content.includes('[250-122] Tamaño de los conductores'), 'sin la sección');
   afirmar(usuario.content.includes('[Tabla 250-122] Tamaño mínimo'), 'sin la tabla');
   afirmar(usuario.content.endsWith(`Pregunta: ${BUENO.pregunta}`), 'la pregunta no va al final');
@@ -148,6 +152,7 @@ prueba('Los pasos de índice llevan el índice y sus propias instrucciones', asy
       ),
       `${paso}: instrucciones equivocadas`
     );
+    afirmar(sistema.content.includes('pistas del buscador'), `${paso}: sin las pistas`);
     afirmar(
       usuario.content.includes('240 Protección contra sobrecorriente'),
       `${paso}: sin el índice`

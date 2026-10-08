@@ -25,9 +25,12 @@ Página /preguntar (GitHub Pages)                Worker nom-001-ia (Cloudflare)
 ```
 
 Los índices y los textos los publica el sitio en `/data/ia/` (ver
-`site/src/lib/asistente-datos.js`); el Worker no carga la norma. Si en los
-pasos 1 o 2 el modelo no pide nada que exista, la página busca por su cuenta
-con el buscador de siempre y el paso 3 sigue con eso. Cada consulta lleva las
+`site/src/lib/asistente-datos.js`); el Worker no carga la norma. Con los
+índices van unas pistas: dónde encuentra el buscador de la guía las palabras
+de la pregunta. Si lo que va a leer cita una tabla («no menor a lo de la Tabla
+250-122»), la página se la agrega. Si en los pasos 1 o 2 el modelo no pide
+nada que exista, la página busca por su cuenta con el buscador de siempre y el
+paso 3 sigue con eso. Cada consulta lleva las
 dos preguntas y respuestas anteriores, para que «¿y para 12 AWG?» sepa de qué
 se hablaba.
 
