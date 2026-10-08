@@ -284,14 +284,16 @@ prueba('Las filas se leen de la configuración, y lo que no existe se ignora', (
   afirmar(nombreModelo('algo/nuevo-7b:free') === 'nuevo-7b', 'desconocido');
 });
 
-// Decisión del dueño (8 de octubre de 2026): fuera hasta tener asesoría legal.
-prueba('Mistral y Google no están en ninguna fila', async () => {
+// Decisiones del dueño (8 de octubre de 2026): Mistral y Google, fuera hasta
+// tener asesoría legal; OpenRouter, fuera mientras no se fije el proveedor
+// final (ver servicios.js). Volver a meter uno cambia esta prueba a propósito.
+prueba('Mistral, Google y OpenRouter no están en ninguna fila', async () => {
   const wrangler = readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8');
   const filas = [...wrangler.matchAll(/"(FILA_\w+)":\s*"([^"]*)"/g)];
   afirmar(filas.length === 2, `wrangler.jsonc: ${filas.length} filas`);
   for (const [nombre, texto] of [...Object.entries(FILAS), ...filas.map((m) => [m[1], m[2]])]) {
-    const fuera = leerFila(texto).filter(
-      (p) => p.servicio === 'mistral' || p.servicio === 'google'
+    const fuera = leerFila(texto).filter((p) =>
+      ['mistral', 'google', 'openrouter'].includes(p.servicio)
     );
     afirmar(!fuera.length, `${nombre} trae ${fuera.map((p) => p.servicio).join(', ')}`);
   }

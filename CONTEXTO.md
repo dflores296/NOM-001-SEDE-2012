@@ -603,8 +603,10 @@ destilación, caché, varios servicios). Se revisó idea por idea:
   dueño: Mistral y Google entran (al final de las filas) aunque en su plan
   gratis pueden entrenar con las preguntas, **con un aviso de privacidad bien
   redactado** (cambió el 8 de octubre: fuera hasta tener asesoría legal; ver
-  «Mistral y Google, fuera» abajo). Cerebras quedó fuera (ya pide tarjeta); GitHub Models y NVIDIA
-  también (solo para pruebas).
+  «Mistral y Google, fuera» abajo; OpenRouter también salió ese día, ver
+  «OpenRouter: fuera de las filas, pendiente de evaluación»). Cerebras quedó
+  fuera (ya pide tarjeta); GitHub Models y NVIDIA también (solo para
+  pruebas).
 
 Lo que se hizo en esta vuelta:
 
@@ -619,8 +621,8 @@ Lo que se hizo en esta vuelta:
 - Borrador del aviso de privacidad (`/privacidad`), para que el dueño lo
   revise: falta su nombre, su correo de contacto y confirmar plazos.
 
-Pendiente, en este orden: aprobar y publicar el aviso; que el dueño cree las
-cuentas (Groq, OpenRouter) y pegue las claves en el panel; la batería de
+Pendiente, en este orden: aprobar y publicar el aviso; que el dueño cree la
+cuenta de Groq y pegue la clave en el panel; la batería de
 preguntas de prueba para cada modelo; AI Gateway como ventana para ver todo
 junto. **No encender ningún servicio antes de publicar el aviso.**
 
@@ -645,42 +647,74 @@ parte de la decisión de volver a meterlos.
 
 Lo que quedó por revisar con los demás, para el aviso y para el abogado:
 
-- **OpenRouter** (el dueño copió sus condiciones y su aviso de privacidad,
-  ambos del 31 de agosto de 2026):
-  - Los 18 años (§2) son para quien tiene la cuenta. No trae la frase de
-    Google sobre sitios que abren menores, pero «tus clientes» tienen que
-    cumplir el contrato y las condiciones de cada empresa que corre el
-    modelo, y el dueño responde por ellos (§5.1, §5.2, §5.5).
-  - Es intermediario: la pregunta va a una de unas 90 empresas, cada una
-    con sus condiciones; algunas guardan o entrenan. Revisarlas le toca al
-    dueño (§5.6). OpenRouter no entrena (aviso de privacidad).
-  - Aun sin guardar nada, una IA suya clasifica cada pregunta por tema para
-    sus estadísticas públicas, sin guardarla ni ligarla a la cuenta (§6.5).
-  - **El registro de preguntas va apagado siempre:** encendido, OpenRouter
-    puede guardarlas para siempre y venderlas anónimas (§6.2). Tampoco el
-    guardado privado (§6.3 a).
-  - El dueño garantiza tener permiso sobre lo que se manda (§6.6) y paga si
-    alguien demanda a OpenRouter por su uso (§15). Si alguien intenta
-    engañar al modelo por el chat (§7.11), pueden cerrar la cuenta; el
-    asistente seguiría con los demás.
-  - El contrato de tratamiento de datos (§10.2) es solo para empresas o uso
-    comercial. Disputas: Nueva York, por arbitraje (§18, §19).
-  - §4.1 dice que para usar la API hay que comprar créditos (mínimo 5
-    dólares). Los modelos `:free` han funcionado sin comprar, con tope de 50
-    al día; confirmarlo, porque choca con «sin tarjeta».
-  - Nuestro Worker le manda solo la clave y la consulta: ni la IP del
-    visitante, ni su número del día, ni el nombre del sitio (sin
-    `HTTP-Referer` ni `X-Title`, así no sale en sus listas públicas).
-  - Sus modelos gratis suelen correr en servicios que guardan o entrenan:
-    con la privacidad cerrada pueden dejar de contestar.
 - **Groq**: no entrena con lo que le llega por la API; *Zero Data Retention*
   hay que encenderlo. Su página pide 18 años para usar el sitio web; no se
   encontró una regla de edad para la API. Confirmar en su contrato.
-- **Cloudflare, Groq y OpenRouter** procesan en Estados Unidos: el aviso
-  tiene que decir que la pregunta sale de México.
+- **Cloudflare y Groq** pueden procesar la pregunta fuera de México: el
+  aviso tiene que decirlo.
 - **Formspree y GitHub** siguen como estaban en el análisis del aviso
   (cuánto guarda Formspree lo fija el dueño; las estrellas pasan a
   calcularse al publicar, entre las cuatro medidas aprobadas).
+
+### OpenRouter: fuera de las filas, pendiente de evaluación (8 de octubre de 2026)
+
+**Decisión del dueño: OpenRouter sale de las filas activas por ahora.** La
+exclusión es del **router gratis y de las rutas con proveedor variable**: los
+modelos `:free` que estaban en las filas (`openai/gpt-oss-20b:free` y
+`deepseek/deepseek-chat-v3.1:free`), en los que OpenRouter escoge qué empresa
+corre el modelo. Esas rutas, según guías de terceros (su documentación no se
+pudo abrir desde aquí), suelen ir a empresas que guardan o entrenan con las
+preguntas.
+
+**No es incompatible para siempre: queda pendiente de evaluación** para una
+posible integración con:
+
+- modelo y proveedor final fijos (la consulta va siempre a la misma empresa);
+- registro de preguntas apagado (§6.2) y guardado privado apagado (§6.3 a);
+- proveedores que entrenan, excluidos;
+- sin respaldo hacia rutas no aprobadas: si el proveedor fijo no contesta, la
+  consulta no se va a otro.
+
+Hoy el Worker no fija el proveedor (`consultarHttp` manda solo modelo y
+consulta), así que cualquier entrada `openrouter:` en una fila sería una ruta
+variable, y la prueba de `ia/pruebas/agente.mjs` falla si vuelve alguna.
+Integrarlo así pide código nuevo y que esa prueba cambie con la decisión.
+**Mientras tanto no se crea la llave ni se usa openrouter/free.**
+
+Lo que dicen sus condiciones y su aviso de privacidad (el dueño los copió;
+ambos del 31 de agosto de 2026), para el aviso y para el abogado:
+
+- **Edad: interpretación pendiente.** §2 pide 18 años para usar el servicio.
+  No trae la cláusula expresa de Google sobre sitios que probablemente abran
+  menores, pero hace al titular de la cuenta responsable de que sus clientes
+  cumplan el contrato y las condiciones de cada proveedor (§5.1, §5.2, §5.5).
+  Si eso alcanza a los visitantes de la guía lo dice el abogado.
+- **Quién corre el modelo.** OpenRouter es intermediario. La lista de unas
+  90 empresas al final de sus condiciones es su catálogo general, no a
+  dónde va cada consulta: el proveedor real depende del modelo, del router,
+  de las restricciones de la cuenta y del respaldo que se permita. Cada
+  proveedor tiene sus condiciones y algunos guardan o entrenan; revisarlas
+  le toca al titular (§5.6). OpenRouter mismo no entrena con las preguntas
+  (aviso de privacidad).
+- Aun sin registro, una IA suya clasifica cada pregunta por tema para sus
+  estadísticas públicas, sin guardarla ni ligarla a la cuenta (§6.5).
+- Con el registro de preguntas encendido, OpenRouter tiene licencia perpetua
+  para guardarlas y venderlas anónimas (§6.2).
+- El titular garantiza tener permiso sobre lo que se manda (§6.6) y paga si
+  alguien demanda a OpenRouter por su uso (§15).
+- **Uso adversarial.** Intentar engañar o romper un modelo (*red teaming*,
+  §7.11) está prohibido sin permiso escrito; sus sistemas y los de los
+  proveedores lo vigilan, y detectarlo puede llevar a suspender la cuenta
+  (§8, §5.5). El titular responde por todo lo que pase con su llave (§3.2).
+  Una caja de preguntas abierta al público sube ese riesgo: cualquiera
+  escribe lo que quiera, y sale con la llave del titular.
+- El contrato de tratamiento de datos (§10.2) es solo para empresas o uso
+  comercial. Disputas: Nueva York, por arbitraje (§18, §19).
+- §4.1 dice que para usar la API hay que comprar créditos (mínimo 5
+  dólares), lo que choca con «sin tarjeta». Confirmarlo si se evalúa.
+- Lo que el Worker le mandaría: solo la clave y la consulta; ni la IP del
+  visitante, ni su número del día, ni el nombre del sitio (sin
+  `HTTP-Referer` ni `X-Title`).
 
 ### Una pregunta mandada antes de tiempo se perdía (8 de octubre de 2026)
 

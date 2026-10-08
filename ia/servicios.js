@@ -26,10 +26,19 @@
 // Mistral y Google están fuera de las filas por decisión del dueño (8 de
 // octubre de 2026), hasta que tenga asesoría legal: en su plan gratis pueden
 // usar las preguntas para entrenar, y las condiciones de Google prohíben su
-// API en un sitio que probablemente abran menores de 18 años. Se quedan
-// aquí para que volver a meterlos sea cambiar una fila, pero sin estar en
-// una fila no se usan aunque su clave esté en el panel. Una prueba lo cuida
-// (ia/pruebas/agente.mjs).
+// API en un sitio que probablemente abran menores de 18 años.
+//
+// OpenRouter también está fuera (misma fecha), pero solo como estaba: con
+// sus modelos gratis (`:free`) o cualquier ruta en la que OpenRouter escoge
+// qué empresa corre el modelo. Queda pendiente de evaluación con modelo y
+// proveedor final fijos, sin registro ni guardado de preguntas, sin
+// proveedores que entrenan y sin respaldo hacia otras rutas. Este código no
+// fija el proveedor (consultarHttp manda solo modelo y consulta), así que
+// hoy toda entrada `openrouter:` sería una ruta variable.
+//
+// Se quedan aquí para que volver a meterlos sea cambiar una fila, pero sin
+// estar en una fila no se usan aunque su clave esté en el panel. Una prueba
+// lo cuida (ia/pruebas/agente.mjs).
 
 export const SERVICIOS = {
   // Workers AI, por el binding `AI`: no lleva clave ni dirección.
@@ -64,13 +73,11 @@ export const FILAS = {
     'groq:llama-3.1-8b-instant',
     'cloudflare:@cf/openai/gpt-oss-20b',
     'groq:openai/gpt-oss-20b',
-    'openrouter:openai/gpt-oss-20b:free',
   ].join(', '),
   redactar: [
     'cloudflare:@cf/openai/gpt-oss-120b',
     'groq:openai/gpt-oss-120b',
     'groq:llama-3.3-70b-versatile',
-    'openrouter:deepseek/deepseek-chat-v3.1:free',
     'cloudflare:@cf/openai/gpt-oss-20b',
   ].join(', '),
 };
