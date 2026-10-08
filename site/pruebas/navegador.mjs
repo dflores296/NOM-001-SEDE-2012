@@ -991,6 +991,10 @@ prueba(
     await preguntar(page, '¿Protección del 14 AWG de cobre?');
     await respuestas(page);
     afirmar((await usadas()) === 0, 'contó una pregunta que no se contestó');
+    afirmar(
+      (await page.textContent('.asis-cupo-cuenta')) === '0 de 10',
+      'la barra no empieza en 0'
+    );
 
     // Con 7 ya hechas, la que se contesta dice cuántas quedan.
     ocupado = false;
@@ -1004,11 +1008,16 @@ prueba(
     await preguntar(page, '¿Y del 12 AWG?');
     await respuestas(page, 2);
     afirmar((await usadas()) === 8, `cuenta ${await usadas()}`);
+    afirmar((await page.textContent('.asis-cupo-cuenta')) === '8 de 10', 'la barra no cuenta');
     afirmar(
-      (await page.textContent('.asis-quedan')) ===
-        'Te quedan 2 preguntas en este navegador por ahora.',
-      'no dice cuántas quedan'
+      (await page.getAttribute('.asis-cupo-barra', 'aria-valuenow')) === '8',
+      'la barra no lo dice a un lector de pantalla'
     );
+    afirmar(
+      /^Se libera una en \d+ h/.test(await page.textContent('.asis-cupo-libera')),
+      await page.textContent('.asis-cupo-libera')
+    );
+    afirmar(await page.$('.asis-cupo.pocas'), 'con 2 restantes no avisa');
 
     // En el tope no pregunta y dice a qué hora vuelve.
     await page.evaluate(() => {

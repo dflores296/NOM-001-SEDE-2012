@@ -85,7 +85,14 @@ const libre = () => {
   const hoy = new Date().toDateString() === new Date(t).toDateString();
   return hoy ? `hoy a las ${hora}` : `mañana a las ${hora}`;
 };
-// Cuando quedan pocas, se dice debajo de la respuesta.
+// Y en cuánto tiempo, para la barra: «en 5 h 10 min».
+const enCuanto = () => {
+  const min = Math.ceil((Math.min(...usadas()) + DIA - Date.now()) / 60_000);
+  if (min <= 1) return 'en un minuto';
+  const h = Math.floor(min / 60);
+  return h ? `en ${h} h${min % 60 ? ` ${min % 60} min` : ''}` : `en ${min} min`;
+};
+// Desde cuántas restantes la barra se pinta de aviso.
 const AVISAR_DESDE = 3;
 
 // Un número al azar por navegador y por día, que va con la primera consulta
@@ -298,18 +305,6 @@ function pintarMensaje(m) {
   pintarTexto(burbuja, m.texto, new Map(m.enlaces || []));
   pintarFuentes(li, m.fuentes, true);
   li.append(botonReportar(m));
-  if (Number.isInteger(m.quedan)) {
-    const q = Math.max(0, m.quedan);
-    li.append(
-      el(
-        'p',
-        'asis-quedan',
-        q === 1
-          ? 'Te queda 1 pregunta en este navegador por ahora.'
-          : `Te quedan ${q} preguntas en este navegador por ahora.`
-      )
-    );
-  }
   return li;
 }
 
@@ -386,6 +381,27 @@ export function iniciar(raiz) {
   let conv = leerConversacion();
   let ocupado = false;
 
+  // La barra de las preguntas de este navegador: cuántas lleva de TOPE y en
+  // cuánto se libera la siguiente. Se repinta con cada pregunta contestada y
+  // cada minuto mientras la burbuja está abierta.
+  const cupo = raiz.querySelector('.asis-cupo');
+  const barra = cupo.querySelector('.asis-cupo-barra');
+  const pintarCupo = () => {
+    const n = Math.min(usadas().length, TOPE);
+    cupo.querySelector('.asis-cupo-cuenta').textContent = `${n} de ${TOPE}`;
+    cupo.querySelector('.asis-cupo-libera').textContent = n ? `Se libera una ${enCuanto()}` : '';
+    barra.querySelector('i').style.width = `${(n / TOPE) * 100}%`;
+    barra.setAttribute('aria-valuemax', String(TOPE));
+    barra.setAttribute('aria-valuenow', String(n));
+    barra.setAttribute('aria-valuetext', `${n} de ${TOPE} preguntas`);
+    cupo.classList.toggle('pocas', TOPE - n <= AVISAR_DESDE);
+    cupo.hidden = false;
+  };
+  pintarCupo();
+  setInterval(() => {
+    if (!cupo.closest('[hidden]')) pintarCupo();
+  }, 60_000);
+
   const guardar = () => {
     conv.mensajes = conv.mensajes.slice(-MAX_MENSAJES);
     try {
@@ -459,6 +475,7 @@ export function iniciar(raiz) {
       });
       // El Worker contestó: ya gastó del cupo.
       anotar();
+      pintarCupo();
       const claves = clavesPedidas(r1, todas);
 
       // Paso 2: el índice de los artículos escogidos, con las pistas que caen
@@ -504,14 +521,12 @@ export function iniciar(raiz) {
       conv.historia = [...conv.historia, { p: pregunta, r: respuesta.slice(0, 1400) }].slice(
         -RECUERDA
       );
-      const quedan = TOPE - usadas().length;
       terminar({
         rol: 'ia',
         pregunta,
         texto: respuesta,
         enlaces: [...enlaces],
         fuentes: fuentes(),
-        ...(quedan <= AVISAR_DESDE ? { quedan } : {}),
       });
     } catch (e) {
       aviso(e?.motivo || 'falla', fuentes());

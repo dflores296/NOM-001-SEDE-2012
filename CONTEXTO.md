@@ -545,7 +545,9 @@ pendiente un botón de donaciones, si un día hace falta.
 Lo que se hizo:
 
 - **Tope por navegador de 10**, no 20: con 20, dos personas se acababan el
-  cupo de todos. Con 3 o menos, lo dice debajo de la respuesta.
+  cupo de todos. Una barra delgada arriba del campo, al estilo de las de uso
+  de una cuenta (la pidió el dueño), dice cuántas lleva y en cuánto se libera
+  la siguiente; con 3 o menos, en color de aviso.
 - **Cuántos navegadores preguntan:** la primera consulta de cada pregunta
   lleva un número al azar del navegador, que cambia cada día. El Worker anota
   `{"evento":"pregunta","navegador":"…"}` con cada pregunta contestada, nunca

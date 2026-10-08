@@ -301,8 +301,9 @@ chico.
   no por la URL, y el formulario los limpia como todo lo demás. El «volver»
   regresa a la página donde se estaba.
 - **Tope por navegador:** 10 preguntas en 24 horas (`TOPE` en `chat.js`),
-  contadas solo cuando el Worker contestó el primer paso. Con 3 o menos lo
-  dice debajo de la respuesta; en el tope, a qué hora se libera la siguiente.
+  contadas solo cuando el Worker contestó el primer paso. Una barra arriba del
+  campo dice cuántas lleva el navegador y en cuánto se libera la siguiente
+  (en color de aviso con 3 o menos); en el tope, el aviso dice a qué hora.
 - **Cuántos navegadores preguntan:** la primera consulta de cada pregunta
   lleva un número al azar del navegador que cambia cada día (`navegador`); el
   Worker lo anota en su registro con cada pregunta contestada, nunca la

@@ -68,6 +68,18 @@ const EJEMPLOS = [
       <ol class="asis-chat" aria-live="polite"></ol>
     </div>
 
+    {/* Cuántas preguntas lleva este navegador de su tope (chat.js la llena y
+        la muestra; sin JavaScript no hay asistente). */}
+    <div class="asis-cupo" hidden>
+      <div class="asis-cupo-fila">
+        <span class="asis-cupo-titulo">Tus preguntas</span>
+        <span class="asis-cupo-libera"></span>
+        <span class="asis-cupo-cuenta"></span>
+      </div>
+      <div class="asis-cupo-barra" role="meter" aria-label="Preguntas usadas en este navegador"
+           aria-valuemin="0"><i></i></div>
+    </div>
+
     <form class="asis-form">
       <label class="vh" for="asis-campo">Tu pregunta</label>
       <textarea id="asis-campo" rows="1" maxlength="500" enterkeyhint="send"
