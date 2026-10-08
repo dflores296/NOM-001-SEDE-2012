@@ -2,7 +2,7 @@
 // preguntas de preguntas.json al asistente real, en el sitio publicado, como
 // un visitante, y califica cada respuesta contra lo que dice la norma.
 //
-//     cd site && node bateria/correr.mjs                # las 24
+//     cd site && node bateria/correr.mjs                # todas
 //     cd site && node bateria/correr.mjs --solo 1,2,15  # algunas
 //     cd site && node bateria/correr.mjs --recalificar bateria/resultados/<archivo>.json
 //

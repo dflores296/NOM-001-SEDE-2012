@@ -991,6 +991,21 @@ el modelo escribe guiones no separables (‑).
 Falta para cerrar la línea base: las neuronas por pregunta (el panel de
 Workers AI antes y después, o el registro de esa hora exportado).
 
+**Reporte del dueño: los lugares Clase I, II y III.** A «¿Qué es un área
+clase 1 2 y 3?» el asistente leyó 513 a 516 (gasolineras, almacenamiento,
+pintura) y dijo que no encontraba las Clases 2 y 3. Al aclarar «Lugares Clase
+II y Clase III» leyó el 500-5, que sí es, y contestó que solo se describe la
+Clase I. **Causa: el corte por parte.** El 500-5 completo mide unos 11 900
+caracteres y la página manda 8 000 por parte (`LECTURA.porParte` en
+`lectura.js`, con `recortarLineas`): la Clase I empieza en el 1 139, la II en
+el 7 867 (en el borde) y la III en el 10 346 (fuera). Si el modelo hubiera
+pedido los incisos (500-5(c), 500-5(d)), `subarbol` los habría mandado
+completos. Es la deficiencia D4 de la auditoría («el techo puede cortar
+contexto»), y entra en sus pasos 7 y 8. De paso, el modelo le pidió «los
+fragmentos que compartiste»: habla como si el usuario le hubiera mandado el
+texto. Quedaron como preguntas 25 (con las palabras del dueño) y 26 (con las
+de la norma) de la batería, versión 3.
+
 **Ajuste posterior de redacción del aviso** (decisión del dueño: no es un
 cambio material del tratamiento y no bloquea este paso): agregar en «Lo que
 anota el asistente» que el registro indica si la respuesta terminó

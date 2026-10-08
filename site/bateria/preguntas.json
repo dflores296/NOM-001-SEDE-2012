@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "nota": "Batería de evaluación del asistente (paso 4 de la auditoría). Aprobada por el dueño el 8 de octubre de 2026. Cada respuesta esperada sale de la captura de la norma (data/corpus.json, data/tablas_revisadas.json, site/src/lib/erratas.js), no de memoria. 'citar': basta una; vale también un inciso de adentro (210-8(a) acepta 210-8(a)(1)). 'decir': grupos de alternativas, todos los grupos tienen que aparecer. 'no_decir': ninguna puede aparecer. Las expresiones se aplican al texto en minúsculas, con 'mm2' como 'mm²' y sin el espacio de miles ('1 500' como '1500'). 'sigue': va en la misma conversación que esa pregunta. 'manual': lo que se revisa a mano. Versión 2 (8 de octubre de 2026, tras la primera corrida): la 15 acepta «80 centímetros» y la 21 acepta la Tabla 4, que trae la misma columna del 40 %.",
+  "version": 3,
+  "nota": "Batería de evaluación del asistente (paso 4 de la auditoría). Aprobada por el dueño el 8 de octubre de 2026. Cada respuesta esperada sale de la captura de la norma (data/corpus.json, data/tablas_revisadas.json, site/src/lib/erratas.js), no de memoria. 'citar': basta una; vale también un inciso de adentro (210-8(a) acepta 210-8(a)(1)). 'decir': grupos de alternativas, todos los grupos tienen que aparecer. 'no_decir': ninguna puede aparecer. Las expresiones se aplican al texto en minúsculas, con 'mm2' como 'mm²' y sin el espacio de miles ('1 500' como '1500'). 'sigue': va en la misma conversación que esa pregunta. 'manual': lo que se revisa a mano. Versión 2 (8 de octubre de 2026, tras la primera corrida): la 15 acepta «80 centímetros» y la 21 acepta la Tabla 4, que trae la misma columna del 40 %. Versión 3: las 25 y 26, del reporte del dueño sobre los lugares Clase I, II y III.",
   "preguntas": [
     {
       "id": 1,
@@ -353,6 +353,60 @@
       "pregunta": "¿Qué dice el NEC 2023 sobre los interruptores contra falla de arco?",
       "manual": "Que diga que solo conoce la NOM y no invente contenido del NEC (puede ofrecer el 210-12 de la NOM).",
       "fuente": "Fuera de la norma: la guía del asistente dice que no sabe de otras normas ni del NEC."
+    },
+    {
+      "id": 25,
+      "pregunta": "¿Qué es un área clase 1, 2 y 3?",
+      "citar": [
+        "500-5"
+      ],
+      "decir": [
+        [
+          "gases",
+          "vapores"
+        ],
+        [
+          "polvos? combustibles?"
+        ],
+        [
+          "fibras",
+          "partículas"
+        ]
+      ],
+      "no_decir": [
+        "que (me )?compartiste",
+        "proporci[oó]nanos los fragmentos",
+        "fragmentos que (me )?(has )?(proporcionado|enviado)"
+      ],
+      "fuente": "500-5(b): «Los lugares Clase I son aquellos en los que hay o puede haber en el aire gases inflamables, vapores…»; 500-5(c): «Un lugar de Clase II es el que resulta peligroso por la presencia de polvos combustibles.»; 500-5(d): «Los lugares de Clase III son aquellos que resultan peligrosos por la presencia de fibras fácilmente inflamables… o partículas combustibles…». El 500-5 completo mide unos 11 900 caracteres y la página manda 8 000 por parte (LECTURA en lectura.js): si se pide entero, la Clase II queda en el borde y la III fuera.",
+      "origen": "Reporte del dueño, 8 de octubre de 2026: con estas palabras leyó 513 a 516 (gasolineras, almacenamiento, pintura) y dijo que no encontraba las Clases 2 y 3."
+    },
+    {
+      "id": 26,
+      "pregunta": "¿Qué son los lugares Clase I, Clase II y Clase III?",
+      "citar": [
+        "500-5"
+      ],
+      "decir": [
+        [
+          "gases",
+          "vapores"
+        ],
+        [
+          "polvos? combustibles?"
+        ],
+        [
+          "fibras",
+          "partículas"
+        ]
+      ],
+      "no_decir": [
+        "que (me )?compartiste",
+        "proporci[oó]nanos los fragmentos",
+        "fragmentos que (me )?(has )?(proporcionado|enviado)"
+      ],
+      "fuente": "500-5(b): «Los lugares Clase I son aquellos en los que hay o puede haber en el aire gases inflamables, vapores…»; 500-5(c): «Un lugar de Clase II es el que resulta peligroso por la presencia de polvos combustibles.»; 500-5(d): «Los lugares de Clase III son aquellos que resultan peligrosos por la presencia de fibras fácilmente inflamables… o partículas combustibles…». El 500-5 completo mide unos 11 900 caracteres y la página manda 8 000 por parte (LECTURA en lectura.js): si se pide entero, la Clase II queda en el borde y la III fuera.",
+      "origen": "Mismo reporte: con las palabras de la norma leyó el 500-5, pero cortado a 8 000 caracteres, y contestó que solo se describe la Clase I y que le pasaran «los fragmentos que compartiste»."
     }
   ]
 }
