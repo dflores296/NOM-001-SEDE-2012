@@ -167,7 +167,7 @@ a8fea43d63e66e32083d98aad388aab153efbf83d3f5cbeb430d836b57c1d01b  site/dist/art/
 a59fcfe5deff0a06d8f93accc8a8808d67ee41c547f16784eb26c2c0d6984512  site/dist/art/922/index.html
 aa5b2c152164a808eb28f7a7b4c2b27c5a383d4f484bf44f4dc53b79a67443b3  site/dist/art/923/index.html
 49328ca5c8fe25c3d657b0ae46b5a9602675a213dfa95a665cb08220c1e92884  site/dist/art/924/index.html
-6c8a9c82b4afed1d07ae662dc398d43d9a80f33063f02769eeea62f6c0a68117  site/dist/asistente/index.html
+5bee2adf0e7ee7138867fa2d8f5a81eeec6fc3f9633fa8ed771fa975cf4afe8b  site/dist/asistente/index.html
 2e1df39b1ebabb2a36ea9dace3bde401390a393b6432d4549b6e0ac87c1510d3  site/dist/cierre/index.html
 284fa32f1e60ebc682510797f5282a56cceac57358d6647ac506ba9cb434b09e  site/dist/data/ia/100.json
 2c2b8e01ca090437672124579016301748db82abd748bd10d2530f3d868e236e  site/dist/data/ia/110.json

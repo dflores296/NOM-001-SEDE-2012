@@ -688,6 +688,59 @@ mientras baja: deja la pregunta en el campo y la manda sola en cuanto el chat
 está listo. Prueba nueva con `chat.js` tarde, con Enter y con el botón: falla
 con el código de antes y pasa con el arreglo.
 
+### La auditoría del asistente (8 de octubre de 2026)
+
+El dueño trajo una auditoría técnica del asistente, hecha en modo de solo
+lectura sobre `186595d` (el regreso a solo Cloudflare). Llegó como PDF; no
+está en el repositorio. Confirma la arquitectura tal como la describen
+`docs/arquitectura.md` e `ia/README.md`, y encuentra, entre otras cosas:
+
+- el tope de 10 preguntas existe solo en el navegador; el Worker solo tiene el
+  de 15 consultas por minuto por conexión y la cuota diaria de Cloudflare;
+- el Worker acepta los índices, los fragmentos y la conversación que le manda
+  la página sin comprobar que sean de la norma;
+- el evento `pregunta` se anota al terminar el paso 1, no al contestar, así
+  que cuenta de más;
+- una cita a un inciso que no existe se enlaza a la sección de arriba y parece
+  respaldada;
+- el bloque «Privacidad y cupo» de `/asistente` tenía afirmaciones falsas o
+  demasiado absolutas y le faltaba mucho (su sección 12).
+
+**Orden que fijó el dueño, un paso a la vez y con su aprobación en cada uno:**
+(1) quitar de «Privacidad y cupo» lo que la auditoría marca como incorrecto;
+(2) proponerle, sin tocar nada, las decisiones que cambian qué datos se
+tratan (el número del día en el registro, la conversación que va a los pasos
+1 y 2); (3) un aviso de privacidad provisional en página propia, solo con lo
+verificado; (4) la regla en `CLAUDE.md` de que ningún modelo ni proveedor
+nuevo recibe preguntas sin el aviso publicado. Después, el plan de la sección
+18 de la auditoría, también uno por uno.
+
+**Paso 0, pendiente:** que el Worker publicado sea el del repositorio. Lo
+revisa el dueño en el panel de Cloudflare (despliegue activo, conexiones,
+nombres de variables y secretos, Observability, AI Gateway, Logpush). El paso
+1 no depende de eso; el aviso del paso 3, sí.
+
+**Paso 1, hecho.** Se quitaron tres afirmaciones, sin agregar texto:
+
+- «No se guardan»: el Worker sí escribe en Observability (el número del día,
+  la hora, la duración y los tokens; nunca la pregunta), y «Repórtalo» manda
+  la pregunta a Formspree.
+- «ni se usan para entrenar modelos»: depende de las condiciones de Workers
+  AI y no se puede comprobar desde el código. Vuelve solo si se verifica.
+- «y se borra al cerrar la pestaña»: la conversación vive en
+  `sessionStorage`, que depende del navegador, y el contador de preguntas y el
+  número del día están en `localStorage`, que no se borra al cerrar.
+
+La huella del sitio se volvió a sellar; solo cambió `asistente/index.html`.
+
+Quedó fuera, a propósito, para el aviso del paso 3: «La conversación se queda
+en tu navegador» (es cierto, pero las dos preguntas y respuestas anteriores
+también viajan a Cloudflare con cada consulta); «de código abierto» (la
+auditoría sugiere «pesos abiertos», tras verificarlo); y el pie del sitio,
+que dice que Web Analytics «no usa cookies ni guarda datos personales», una
+afirmación sobre un tercero. Para el paso de documentación (B3): `ia/README.md`
+sigue diciendo «El Worker no guarda nada».
+
 ## Alternativas futuras no implementadas
 
 **Nada de esta sección está en el código.** Son servicios que se analizaron
