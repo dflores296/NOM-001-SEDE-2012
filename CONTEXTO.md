@@ -715,10 +715,53 @@ verificado; (4) la regla en `CLAUDE.md` de que ningún modelo ni proveedor
 nuevo recibe preguntas sin el aviso publicado. Después, el plan de la sección
 18 de la auditoría, también uno por uno.
 
-**Paso 0, pendiente:** que el Worker publicado sea el del repositorio. Lo
-revisa el dueño en el panel de Cloudflare (despliegue activo, conexiones,
-nombres de variables y secretos, Observability, AI Gateway, Logpush). El paso
-1 no depende de eso; el aviso del paso 3, sí.
+**Paso 0: el Worker publicado es el del repositorio.** El dueño lo revisó en
+el panel de Cloudflare el 8 de octubre, con capturas y una exportación del
+registro (68 eventos, del 7 y el 8):
+
+| Punto | Resultado |
+|---|---|
+| Versión activa | La de `186595d` («regreso a solo Cloudflare»), desde `main` |
+| Conexiones | Solo `AI` (Workers AI) y `TOPE_IP` (Rate limiter, 1001) |
+| Variables | `MODELO`, `MODELO_REDACTAR` y `ORIGENES`, con los valores de `ia/wrangler.jsonc` |
+| Secretos | Ninguno: no quedó ninguna llave de la puerta |
+| Observability | Logs encendido; *invocation logs*, Traces e Issues apagados |
+| AI Gateway y Logpush | Ninguno |
+| Campos de un evento | Los que escribe el código más los de la plataforma: nombre y versión del Worker, método y URL del propio Worker, identificadores internos de la petición, cuenta, hora y tamaño. **Sin IP, país, navegador ni texto de la pregunta** |
+| Cuántos días guarda | El panel no lo dice, y los eventos más viejos son del 7, el día en que se conectó. Se puede comprobar el 11 de octubre; mientras, el aviso no da plazo |
+
+De paso salieron tres cosas:
+
+- **Workers Builds publica el Worker con cualquier cambio que llega a `main`**,
+  no solo con los de `ia/` como decía arriba: en el historial de versiones
+  están «Pie del sitio…» y «Pruebas: el asistente de mentiras…». No hace
+  daño (publica el mismo `ia/`); se corrige en el paso de documentación.
+- **El conteo inflado (B1) se confirma en producción:** cada evento
+  `pregunta` es de la misma petición que la consulta `articulos`.
+- **Nadie preguntó mientras estuvo publicada la puerta:** la última pregunta
+  registrada es de las 15:11 UTC, antes de `ff43e32`. La versión actual
+  todavía no había recibido ninguna.
+
+**Paso 2: decisiones del dueño (8 de octubre de 2026).**
+
+- **El número del día se cambia por un número de orden, antes del aviso.**
+  La pregunta llevará solo «es la n.ª de hoy (UTC) en este navegador»,
+  sacado del contador de preguntas que ya existe (`asis-usadas`), en lugar
+  del número al azar de `asis-navegador`, que se borra de los navegadores.
+  Contar las de orden 1 da cuántos navegadores preguntaron, y el reparto
+  dice si alguien gasta mucho, sin un dato que junte los eventos de un
+  navegador. Se descartaron dejarlo (es un identificador, y si es dato
+  personal lo dice un abogado) y quitarlo (se pierde cuántas personas usan
+  el asistente).
+- **A quien escoge (pasos 1 y 2) le llegan las preguntas anteriores y las
+  secciones que se leyeron, sin el texto de las respuestas**; a quien redacta,
+  la conversación completa como hoy. Se manda menos y se gasta menos cupo, y
+  quien escoge conserva la sección exacta que encontró la respuesta anterior.
+  Se descartaron dejarlo (hasta 2 800 caracteres de respuestas de más, dos
+  veces) y mandar solo las preguntas (se pierde la sección cuando la pregunta
+  anterior era vaga). No cambia lo que dirá el aviso: todo va a Cloudflare.
+- **La línea base de consumo** con lo que ya anota el registro (tokens por
+  paso) se hace en su turno del plan de la sección 18.
 
 **Paso 1, hecho.** Se quitaron tres afirmaciones, sin agregar texto:
 
