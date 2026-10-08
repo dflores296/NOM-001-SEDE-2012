@@ -645,13 +645,34 @@ parte de la decisión de volver a meterlos.
 
 Lo que quedó por revisar con los demás, para el aviso y para el abogado:
 
-- **OpenRouter**: según un sitio que sigue cambios de condiciones (no se pudo
-  abrir la página oficial desde aquí), desde el 31 de agosto de 2026 sus
-  condiciones piden 18 años. Falta ver si eso habla solo de quien tiene la
-  cuenta o también de quien usa un sitio hecho con ella. Además, sus modelos
-  gratis suelen correr en servicios que guardan o entrenan con las
-  preguntas: con la privacidad cerrada pueden dejar de contestar. Si pasa,
-  OpenRouter se queda apagado.
+- **OpenRouter** (el dueño copió sus condiciones y su aviso de privacidad,
+  ambos del 31 de agosto de 2026):
+  - Los 18 años (§2) son para quien tiene la cuenta. No trae la frase de
+    Google sobre sitios que abren menores, pero «tus clientes» tienen que
+    cumplir el contrato y las condiciones de cada empresa que corre el
+    modelo, y el dueño responde por ellos (§5.1, §5.2, §5.5).
+  - Es intermediario: la pregunta va a una de unas 90 empresas, cada una
+    con sus condiciones; algunas guardan o entrenan. Revisarlas le toca al
+    dueño (§5.6). OpenRouter no entrena (aviso de privacidad).
+  - Aun sin guardar nada, una IA suya clasifica cada pregunta por tema para
+    sus estadísticas públicas, sin guardarla ni ligarla a la cuenta (§6.5).
+  - **El registro de preguntas va apagado siempre:** encendido, OpenRouter
+    puede guardarlas para siempre y venderlas anónimas (§6.2). Tampoco el
+    guardado privado (§6.3 a).
+  - El dueño garantiza tener permiso sobre lo que se manda (§6.6) y paga si
+    alguien demanda a OpenRouter por su uso (§15). Si alguien intenta
+    engañar al modelo por el chat (§7.11), pueden cerrar la cuenta; el
+    asistente seguiría con los demás.
+  - El contrato de tratamiento de datos (§10.2) es solo para empresas o uso
+    comercial. Disputas: Nueva York, por arbitraje (§18, §19).
+  - §4.1 dice que para usar la API hay que comprar créditos (mínimo 5
+    dólares). Los modelos `:free` han funcionado sin comprar, con tope de 50
+    al día; confirmarlo, porque choca con «sin tarjeta».
+  - Nuestro Worker le manda solo la clave y la consulta: ni la IP del
+    visitante, ni su número del día, ni el nombre del sitio (sin
+    `HTTP-Referer` ni `X-Title`, así no sale en sus listas públicas).
+  - Sus modelos gratis suelen correr en servicios que guardan o entrenan:
+    con la privacidad cerrada pueden dejar de contestar.
 - **Groq**: no entrena con lo que le llega por la API; *Zero Data Retention*
   hay que encenderlo. Su página pide 18 años para usar el sitio web; no se
   encontró una regla de edad para la API. Confirmar en su contrato.
@@ -660,6 +681,18 @@ Lo que quedó por revisar con los demás, para el aviso y para el abogado:
 - **Formspree y GitHub** siguen como estaban en el análisis del aviso
   (cuánto guarda Formspree lo fija el dueño; las estrellas pasan a
   calcularse al publicar, entre las cuatro medidas aprobadas).
+
+### Una pregunta mandada antes de tiempo se perdía (8 de octubre de 2026)
+
+La publicación de este cambio falló en GitHub por una prueba del asistente
+que había pasado en la rama con el mismo código. No era una falla al azar:
+`chat.js` se baja al abrir la burbuja, y si la pregunta se mandaba antes de
+que llegara, Enter dejaba un renglón de más y el botón de enviar recargaba la
+página. A alguien con señal lenta le pasaba lo mismo. Se reprodujo haciendo
+llegar `chat.js` 3 segundos tarde. Ahora `burbuja.js` atiende el envío
+mientras baja: deja la pregunta en el campo y la manda sola en cuanto el chat
+está listo. Prueba nueva con `chat.js` tarde, con Enter y con el botón: falla
+con el código de antes y pasa con el arreglo.
 
 ## Ronda de seguridad (octubre de 2026)
 

@@ -301,7 +301,9 @@ que probablemente abran menores de 18 años); una prueba lo cuida.
   «Nueva conversación» la borra.
 - **La burbuja** (`scripts/asistente/burbuja.js`) abre y cierra la
   conversación y recuerda si estaba abierta. `preguntar/chat.js` se baja la
-  primera vez que se abre: quien solo lee la norma no lo descarga. En la
+  primera vez que se abre: quien solo lee la norma no lo descarga. Si la
+  pregunta se manda antes de que llegue (señal lenta), la burbuja la detiene
+  y la manda en cuanto está listo; antes se perdía. En la
   computadora es una ventana encima de la página; en el teléfono (hasta
   640px) ocupa la pantalla, con `aria-modal` y el foco adentro. Esc la
   cierra. Hasta 1020px es solo el ícono, y el índice del artículo en el

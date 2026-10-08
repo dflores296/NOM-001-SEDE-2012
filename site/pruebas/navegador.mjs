@@ -993,6 +993,40 @@ prueba(
 );
 
 prueba(
+  'Con señal lenta, una pregunta mandada antes de que baje el chat no se pierde',
+  async ({ nuevaPagina }) => {
+    // Con Enter y con el botón: antes, Enter dejaba un renglón de más y el
+    // botón recargaba la página (falló así en la publicación).
+    for (const mandar of ['Enter', 'boton']) {
+      const { recibido, contestar } = asistenteDePrueba({
+        articulos: '240',
+        secciones: '240-4(d)',
+        responder: 'Según [240-4(d)(3)], 15 amperes.',
+      });
+      const { page } = await conAsistente(nuevaPagina, contestar);
+      let demorado = 0;
+      await page.context().route(/\/_astro\/chat[^/]*\.js$/, async (r) => {
+        demorado++;
+        await new Promise((ok) => setTimeout(ok, 1500));
+        await r.fallback();
+      });
+      const antes = page.url();
+      await page.click('.asis-lanzar');
+      await page.fill('#asis-campo', '¿Protección del 14 AWG?');
+      if (mandar === 'Enter') await page.press('#asis-campo', 'Enter');
+      else await page.click('.asis-enviar');
+      await respuestas(page);
+      afirmar(demorado === 1, `${mandar}: el chat no llegó tarde (${demorado})`);
+      afirmar(page.url() === antes, `${mandar}: recargó la página (${page.url()})`);
+      afirmar((await page.inputValue('#asis-campo')) === '', `${mandar}: quedó en el campo`);
+      const pasos = recibido.map((c) => c.paso).join(', ');
+      afirmar(pasos === 'articulos, secciones, responder', `${mandar}: ${pasos}`);
+      afirmar(recibido[0].pregunta === '¿Protección del 14 AWG?', `${mandar}: otra pregunta`);
+    }
+  }
+);
+
+prueba(
   'El tope cuenta solo lo que el asistente recibió y dice cuándo se libera',
   async ({ nuevaPagina }) => {
     let ocupado = true;

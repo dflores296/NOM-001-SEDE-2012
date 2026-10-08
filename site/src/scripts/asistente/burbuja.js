@@ -30,14 +30,23 @@ if (raiz && URL_ASISTENTE) {
   const lanzar = raiz.querySelector('.asis-lanzar');
   const panel = raiz.querySelector('.asis-panel');
   const campo = raiz.querySelector('#asis-campo');
+  const form = raiz.querySelector('.asis-form');
   const telefono = matchMedia('(max-width: 640px)');
 
   // chat.js, una sola vez. Devuelve su { preguntar }.
   // Si no baja (sin red), se vuelve a intentar la próxima vez que se abra.
   let chat = null;
+  let listo = false;
+  let pendiente = false;
   const cargar = () => {
     chat ??= import('../preguntar/chat.js')
-      .then((m) => m.iniciar(raiz))
+      .then((m) => {
+        const c = m.iniciar(raiz);
+        listo = true;
+        if (pendiente) form.requestSubmit();
+        pendiente = false;
+        return c;
+      })
       .catch((e) => {
         chat = null;
         throw e;
@@ -75,6 +84,23 @@ if (raiz && URL_ASISTENTE) {
     modal();
     if (devolverFoco) lanzar.focus({ preventScroll: true });
   }
+
+  // Con señal lenta, chat.js puede tardar en bajar, y quien ya escribió y
+  // mandó la pregunta la perdía: Enter dejaba un renglón de más y el botón
+  // recargaba la página. Mientras baja, mandar la deja en el campo y sale
+  // sola en cuanto el chat está listo. Ya listo, esto no hace nada: lo
+  // atiende chat.js.
+  const antesDeTiempo = (e) => {
+    if (listo) return;
+    e.preventDefault();
+    if (!campo.value.trim()) return;
+    pendiente = true;
+    cargar().catch(() => {});
+  };
+  form.addEventListener('submit', antesDeTiempo);
+  campo.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) antesDeTiempo(e);
+  });
 
   lanzar.hidden = false;
   lanzar.addEventListener('click', () => (panel.hidden ? abrir().catch(() => {}) : cerrar()));
