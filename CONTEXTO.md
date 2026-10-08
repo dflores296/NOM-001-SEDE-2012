@@ -857,6 +857,38 @@ trabajo para casi ningún dato. **El domicilio sigue sin publicarse**: el
 dueño acepta ese hueco; si algún día se cobra por algo o alguien se queja, ahí
 entra un abogado. No volver a inflar el aviso sin que él lo pida.
 
+**Versión 0.3 del aviso (8 de octubre de 2026), aprobada por el dueño en
+estructura y contenido.** Correcciones puntuales sobre la 0.2, sin
+reestructurar:
+
+- **Responsable con nombre:** David Alberto Flores, decisión del dueño.
+- **El domicilio ya no se menciona en la página.** El párrafo «por razones de
+  seguridad personal, el domicilio no se publica…» subrayaba el hueco sin
+  resolverlo. La decisión queda aquí: el domicilio particular no se publica;
+  el hueco formal (art. 15, fr. I) sigue y el dueño lo acepta.
+- **El número de orden** ya no se presenta como medida de «cuánta gente»:
+  mide preguntas por navegador, no personas. Se dice que no llega a los
+  modelos y que solo se anota en el registro (el cupo de 10 lo aplica el
+  navegador con sus propias marcas, no ese número).
+- **Lo que declara Cloudflare** en la página «Data usage» de Workers AI
+  (actualizada el 21 de abril de 2026): no usa el contenido para entrenar
+  los modelos ni para mejorar servicios propios o de terceros sin
+  consentimiento explícito, y solo lo guarda si se conecta un almacenamiento
+  (R2, KV, DO, Vectorize). El dueño no ha dado ese consentimiento, y el
+  paso 0 confirmó que no hay almacenamiento conectado.
+- **Formspree conserva el envío en su panel**: en el plan gratuito, 30 días
+  de historial (su página de límites y la de planes). Más la copia en Gmail.
+- **GitHub Pages** registra y almacena la IP de los visitantes por
+  seguridad (su documentación, «Data collection»).
+- **«Tus datos»:** 20 días hábiles para la determinación y 15 más para
+  hacerla efectiva (arts. 31 y 2, fr. VIII: «Días: Días hábiles»); sin la
+  frase absoluta «no guarda nada que se pueda entregar».
+- La pregunta y la conversación anterior van en cada consulta (comprobado
+  en `chat.js`); se dice «en cada una» y no «en las tres» porque, si el
+  modelo no pide nada en el paso 1, son dos.
+- El uso del correo de la observación: atenderla, pedir aclaraciones,
+  comunicar el resultado o responder una solicitud sobre esos datos.
+
 Pendiente para el paso de documentación (B3): `ia/README.md` («Privacidad»)
 sigue diciendo que el Worker no guarda nada y que Cloudflare no entrena con
 las preguntas, y `docs/arquitectura.md` («El contador de visitas»), «sin

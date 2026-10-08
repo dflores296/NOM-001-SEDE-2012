@@ -13,7 +13,7 @@ import Base from '../layouts/Base.astro';
 //
 // Si cambia lo que se manda o a qué servicio llega, este texto cambia ANTES,
 // con versión y fecha nuevas (regla de CLAUDE.md).
-const VERSION = '0.2';
+const VERSION = '0.3';
 const FECHA = '8 de octubre de 2026';
 const CONTACTO = 'nom001sede2012.contacto@gmail.com';
 const HISTORIA =
@@ -34,18 +34,12 @@ const HISTORIA =
     </p>
 
     <p>
-      <b>Responsable del tratamiento:</b> el autor de la guía (dflores296 en
-      GitHub), una persona física que mantiene este proyecto personal y sin
-      fines de lucro.
+      <b>Responsable del tratamiento:</b> David Alberto Flores, autor de la
+      guía y responsable de este proyecto personal y sin fines de lucro.
     </p>
     <p>
-      <b>Medio de contacto para asuntos de privacidad y ejercicio de
-      derechos:</b> <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>
-    </p>
-    <p>
-      Por razones de seguridad personal, el domicilio particular del
-      responsable no se publica en este sitio. Podrá proporcionarse a la
-      autoridad competente.
+      <b>Medio de contacto para asuntos de privacidad:</b>
+      <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>
     </p>
 
     <div class="obs-tip">
@@ -60,8 +54,9 @@ const HISTORIA =
     <ul class="obs-tipos">
       <li>
         <b>GitHub publica la guía</b> (GitHub Pages). Tu navegador le pide cada
-        página, y GitHub recibe lo que acompaña a cualquier conexión, como tu
-        dirección IP y el tipo de navegador.
+        página, y GitHub registra y almacena la dirección IP de quienes visitan
+        un sitio de GitHub Pages, por motivos de seguridad. También recibe lo
+        que acompaña a cualquier conexión, como el tipo de navegador.
       </li>
       <li>
         <b>El número de estrellas</b> del proyecto lo pide tu navegador a
@@ -88,14 +83,16 @@ const HISTORIA =
             las dos preguntas y respuestas anteriores de la misma conversación,
             para entender las de seguimiento («¿y para 12 AWG?»);
           </li>
-          <li>los índices y las partes de la norma que el asistente va a leer;</li>
           <li>
-            cuántas preguntas lleva tu navegador ese día (1, 2, 3…), para saber
-            cuánta gente usa el asistente.
+            los índices de la norma, para escoger qué leer, y las partes que va
+            a leer, para redactar la respuesta.
           </li>
         </ul>
-        Una pregunta hace hasta tres consultas, y cada una lleva tu pregunta y
-        la conversación anterior.
+        Una pregunta genera hasta tres consultas: dos para escoger qué leer y
+        una para redactar. Tu pregunta y la conversación anterior van en cada
+        una. La primera lleva además cuántas preguntas lleva tu navegador ese
+        día (1, 2, 3…). Ese número no llega a los modelos: se anota en el
+        registro, para medir de forma aproximada cuánto se usa el asistente.
       </li>
       <li>
         <b>Los modelos</b> que escogen qué leer y redactan la respuesta son
@@ -104,8 +101,8 @@ const HISTORIA =
       </li>
       <li>
         <b>Tu dirección IP</b> la recibe Cloudflare, como cualquier servidor. El
-        asistente la usa solo para un tope de consultas por minuto por
-        conexión, contra abusos, y no la anota.
+        asistente utiliza la dirección IP para aplicar un límite de consultas
+        por minuto contra abusos, pero no la incluye en su registro propio.
       </li>
       <li>
         <b>Lo que anota el asistente</b> en su registro de Cloudflare: por cada
@@ -117,19 +114,27 @@ const HISTORIA =
         Cloudflare.
       </li>
       <li>
-        <b>Lo que Cloudflare haga con lo que recibe</b> —si lo guarda, por
-        cuánto tiempo, para qué lo usa— lo dicen sus condiciones y su política
-        de privacidad. Esta guía no lo controla.
+        <b>Uso del contenido por Cloudflare.</b> Cloudflare
+        <a href="https://developers.cloudflare.com/workers-ai/platform/data-usage/">declara</a>
+        que no utiliza las preguntas ni las respuestas procesadas por Workers
+        AI para entrenar los modelos disponibles ni para mejorar servicios
+        propios o de terceros sin consentimiento explícito. El responsable no
+        ha otorgado ese consentimiento ni ha conectado un servicio destinado a
+        almacenar conversaciones. Cloudflare procesa además los datos técnicos
+        necesarios para prestar y proteger el servicio, conforme a sus
+        condiciones y su política de privacidad.
       </li>
     </ul>
 
     <h2>Al mandar una observación o reportar una respuesta</h2>
     <ul class="obs-tipos">
       <li>
-        <b>El formulario de Observaciones</b> manda lo que escribes a
-        Formspree, un servicio de formularios, que lo hace llegar por correo al
-        responsable de la guía. Ese correo es una cuenta de Gmail, así que las
-        observaciones quedan guardadas en Google.
+        <b>El formulario de Observaciones</b> envía lo que escribes a
+        Formspree. Formspree conserva temporalmente el envío en su panel y lo
+        hace llegar por correo al responsable. En el plan gratuito que se usa
+        actualmente, el historial de envíos está disponible durante 30 días. El
+        correo receptor es una cuenta de Gmail, por lo que las observaciones
+        también quedan almacenadas en Google.
       </li>
       <li>
         <b>Se manda:</b> tu observación; la referencia, el tipo y lo que dice
@@ -143,8 +148,10 @@ const HISTORIA =
         que no quieras enviar.
       </li>
       <li>
-        <b>Tu correo</b>, si lo dejas, solo se usa para avisarte en qué quedó tu
-        observación.
+        <b>Tu correo</b>, si lo proporcionas, se utiliza únicamente para
+        atender la observación, solicitar alguna aclaración necesaria,
+        comunicarte el resultado o responder una solicitud relacionada con esos
+        datos.
       </li>
     </ul>
 
@@ -206,11 +213,25 @@ const HISTORIA =
 
     <h2>Tus datos</h2>
     <p>
-      Si mandaste una observación, puedes pedir ver, corregir o borrar lo que
-      enviaste, incluido tu correo, u oponerte a que se use: escribe a
-      <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>. Es gratis, y la respuesta
-      llega en un máximo de 20 días. De tus preguntas al asistente, esta guía no
-      guarda nada que se pueda entregar o borrar.
+      Este sitio no crea cuentas ni conserva deliberadamente un historial de
+      conversaciones asociado con tu identidad.
+    </p>
+    <p>
+      Si mandaste una observación, puedes pedir consultar, corregir o eliminar
+      lo que enviaste, incluido tu correo, así como oponerte a que siga
+      utilizándose. Escribe a <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>,
+      indicando el correo utilizado y, si es posible, una descripción de la
+      observación.
+    </p>
+    <p>
+      La solicitud es gratuita. Recibirás una determinación en un máximo de 20
+      días hábiles. Si procede, se hará efectiva dentro de los 15 días hábiles
+      siguientes.
+    </p>
+    <p>
+      Las preguntas al asistente no se almacenan en un historial asociado con
+      tu nombre o correo, por lo que la guía no puede recuperar un historial
+      individual de conversaciones.
     </p>
 
     <h2>Cambios a este aviso</h2>
