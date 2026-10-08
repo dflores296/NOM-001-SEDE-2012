@@ -58,12 +58,17 @@ otro navegador o una ventana de incógnito empiezan de cero.
 
 ### Cuánta gente lo usa
 
-- **Preguntas:** cada pregunta contestada deja en el registro del Worker
+- **Preguntas:** cada pregunta deja en el registro del Worker
   (**Workers & Pages → nom-001-ia → Observability**) un evento
-  `{"evento":"pregunta","navegador":"…"}`. Contar esos eventos da las
-  preguntas del día; contar los `navegador` distintos, cuántos navegadores
-  preguntaron. El número lo inventa cada navegador al azar y cambia cada día:
-  no sirve para seguir a nadie. El registro gratis guarda 3 días.
+  `{"evento":"pregunta","orden":3}`: `orden` es cuántas lleva ese navegador
+  en el día (UTC), contando esa. Contar esos eventos da las preguntas del
+  día; contar los de `orden` 1, cuántos navegadores preguntaron; los de orden
+  alto dicen si alguien gasta mucho. No identifica al navegador: con él no se
+  juntan los eventos de uno. Se anota al terminar el primer paso, así que
+  cuenta también las preguntas que después fallan (pendiente, ver «La
+  auditoría del asistente» en `CONTEXTO.md`). Hasta el 8 de octubre de 2026
+  el evento llevaba un número al azar por navegador y por día (`navegador`).
+  El registro gratis guarda 3 días.
 - **Visitas al sitio:** Cloudflare Web Analytics, si tiene su token
   (`site/src/lib/analitica.js`).
 

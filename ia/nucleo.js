@@ -60,11 +60,17 @@ export const TOPES = {
   total: 26_000,
 };
 
-// El número al azar que manda la página con la primera consulta de cada
-// pregunta (16 cifras hexadecimales, uno por navegador y por día). Solo sirve
-// para contar navegadores distintos en el registro; si no viene o no tiene
-// esa forma, se ignora: la pregunta se contesta igual.
-const NAVEGADOR = /^[0-9a-f]{16}$/;
+// El número de orden que manda la página con la primera consulta de cada
+// pregunta: cuántas lleva ese navegador en el día (UTC), contando esta. Solo
+// sirve para el registro: las de orden 1 dicen cuántos navegadores
+// preguntaron, y las de orden alto, si alguien gasta mucho. No identifica al
+// navegador: con él no se pueden juntar los eventos de uno. Si no viene, o
+// no es un entero de 1 a ORDEN_MAX, se ignora: la pregunta se contesta igual.
+//
+// Hasta el 8 de octubre de 2026 era un número al azar por navegador y por día
+// (`navegador`). Una página vieja guardada en algún navegador todavía puede
+// mandarlo: se ignora y no se anota.
+const ORDEN_MAX = 99;
 
 // Una referencia es lo que el modelo copia entre corchetes y la página
 // convierte en enlace: «310-15», «Tabla 310-15(b)(16)», «Figura 230-1»,
@@ -182,9 +188,14 @@ export function validar(cuerpo) {
   }
   const indice = texto(cuerpo.indice);
   if (!indice || indice.length > TOPES.indice[paso]) return { error: 'indice' };
-  const navegador =
-    paso === 'articulos' && NAVEGADOR.test(cuerpo.navegador ?? '') ? cuerpo.navegador : null;
-  return { paso, pregunta, historia, indice, ...(navegador ? { navegador } : {}) };
+  const orden =
+    paso === 'articulos' &&
+    Number.isInteger(cuerpo.orden) &&
+    cuerpo.orden >= 1 &&
+    cuerpo.orden <= ORDEN_MAX
+      ? cuerpo.orden
+      : null;
+  return { paso, pregunta, historia, indice, ...(orden ? { orden } : {}) };
 }
 
 /** La entrada del modelo, en el formato de la Responses API. */
@@ -354,13 +365,15 @@ async function contestar(request, env, origen) {
       console.error('respuesta vacía; llegó:', Object.keys(r ?? {}).join(','));
       return responder({ error: 'vacia' }, 502, origen);
     }
-    // Una pregunta nueva contestada, y de qué navegador (un número al azar
-    // que cambia cada día; ver NAVEGADOR). En Observability, contar los
-    // `navegador` distintos de los eventos «pregunta» da cuántos navegadores
-    // preguntaron. Nunca la pregunta ni la IP.
+    // Una pregunta nueva, y cuántas lleva ese navegador en el día (ver
+    // ORDEN_MAX). En Observability, contar los eventos «pregunta» da las
+    // preguntas del día, y contar los de `orden` 1, cuántos navegadores
+    // preguntaron. Nunca la pregunta ni la IP. Se anota al terminar el primer
+    // paso, así que cuenta también las que después fallan: arreglo pendiente
+    // (B1 en «La auditoría del asistente», CONTEXTO.md).
     if (datos.paso === 'articulos') {
       console.log(
-        JSON.stringify({ evento: 'pregunta', navegador: datos.navegador ?? 'sin-numero' })
+        JSON.stringify({ evento: 'pregunta', ...(datos.orden ? { orden: datos.orden } : {}) })
       );
     }
     // Quién redactó, para la etiqueta del chat: «Respondió gpt-oss-120b ·

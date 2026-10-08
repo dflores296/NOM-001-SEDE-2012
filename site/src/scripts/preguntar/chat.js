@@ -95,25 +95,25 @@ const enCuanto = () => {
 // Desde cuántas restantes la barra se pinta de aviso.
 const AVISAR_DESDE = 3;
 
-// Un número al azar por navegador y por día, que va con la primera consulta
-// de cada pregunta: con él, el registro del Worker cuenta cuántos navegadores
-// distintos preguntaron ese día. Cambia cada día (UTC, como el cupo de
-// Cloudflare), así que no sirve para seguir a nadie de un día a otro, y no
-// dice nada de la persona.
-function navegador() {
-  const hoy = new Date().toISOString().slice(0, 10);
-  try {
-    const v = JSON.parse(localStorage.getItem('asis-navegador') || 'null');
-    if (v?.dia === hoy && /^[0-9a-f]{16}$/.test(v.id)) return v.id;
-    const id = [...crypto.getRandomValues(new Uint8Array(8))]
-      .map((b) => b.toString(16).padStart(2, '0'))
-      .join('');
-    localStorage.setItem('asis-navegador', JSON.stringify({ dia: hoy, id }));
-    return id;
-  } catch {
-    return '';
-  }
+// Cuántas preguntas lleva este navegador hoy, contando la que va: 1, 2, 3…
+// Va con la primera consulta de cada pregunta, y con eso el registro del
+// Worker cuenta cuántos navegadores preguntaron (los de orden 1) y si alguien
+// gasta mucho. Sale de las marcas del tope (USADAS), así que no se guarda
+// nada más, y no identifica al navegador. El día es el de la cuota de
+// Cloudflare (UTC).
+//
+// Hasta el 8 de octubre de 2026 iba un número al azar por navegador y por
+// día, guardado en asis-navegador. Decisión del dueño: el número de orden
+// dice lo mismo sin un dato que junte las preguntas de un navegador. El
+// viejo se borra de quien lo tenga.
+function orden() {
+  const ahora = new Date();
+  const hoy = Date.UTC(ahora.getUTCFullYear(), ahora.getUTCMonth(), ahora.getUTCDate());
+  return usadas().filter((t) => t >= hoy).length + 1;
 }
+try {
+  localStorage.removeItem('asis-navegador');
+} catch {}
 
 // La cuota de Cloudflare se reinicia a las 00:00 UTC: las 6 de la tarde en el
 // centro de México, que no cambia de horario desde 2022.
@@ -478,7 +478,7 @@ export function iniciar(raiz) {
           pregunta,
           historia: antes,
           indice: indice + bloquePistas(halladas.map((p) => p.general)),
-          navegador: navegador(),
+          orden: orden(),
         })
       ).texto;
       // El Worker contestó: ya gastó del cupo.

@@ -720,9 +720,14 @@ prueba(
       uno.pregunta === PREGUNTA_20A && uno.indice.includes('250 Puesta a tierra'),
       'paso 1 sin índice general'
     );
-    // El número al azar del navegador, solo en el primer paso.
-    afirmar(/^[0-9a-f]{16}$/.test(uno.navegador ?? ''), `navegador: ${uno.navegador}`);
-    afirmar(!('navegador' in dos) && !('navegador' in tres), 'el número viajó en otro paso');
+    // El número de orden del día, solo en el primer paso; el número al azar
+    // de antes, en ninguno.
+    afirmar(uno.orden === 1, `orden: ${uno.orden}`);
+    afirmar(!('orden' in dos) && !('orden' in tres), 'el orden viajó en otro paso');
+    afirmar(
+      recibido.every((c) => !('navegador' in c)),
+      'todavía manda el número al azar'
+    );
     afirmar(
       dos.indice.startsWith('Artículo 250') && dos.indice.includes('250-122 '),
       'paso 2 sin el índice del 250'
@@ -782,9 +787,28 @@ prueba('La segunda pregunta lleva la conversación anterior', async ({ nuevaPagi
     responder: 'Según [240-4(d)(3)], 15 amperes.',
   });
   const { page } = await conAsistente(nuevaPagina, contestar);
+  // Quien ya preguntó antes del 8 de octubre de 2026 tiene guardado el
+  // número al azar de entonces: al abrir el chat se borra.
+  await page.evaluate(() =>
+    localStorage.setItem('asis-navegador', '{"dia":"2026-10-08","id":"0123456789abcdef"}')
+  );
+  const dia = () => new Date().toISOString().slice(0, 10);
+  const empezo = dia();
   for (const [n, p] of ['¿Protección del 14 AWG de cobre?', '¿Y del 12 AWG?'].entries()) {
     await preguntar(page, p);
     await respuestas(page, n + 1);
+  }
+  afirmar(
+    (await page.evaluate(() => localStorage.getItem('asis-navegador'))) === null,
+    'no se borró el número al azar de antes'
+  );
+  // La segunda del día es la 2 (salvo que justo cambiara el día UTC).
+  const orden = (p) => recibido.find((c) => c.pregunta === p && c.paso === 'articulos')?.orden;
+  if (dia() === empezo) {
+    afirmar(
+      orden('¿Protección del 14 AWG de cobre?') === 1 && orden('¿Y del 12 AWG?') === 2,
+      `orden: ${orden('¿Protección del 14 AWG de cobre?')}, ${orden('¿Y del 12 AWG?')}`
+    );
   }
   const segunda = recibido.filter((c) => c.pregunta === '¿Y del 12 AWG?');
   afirmar(segunda.length === 3, `${segunda.length} consultas en la segunda`);

@@ -311,9 +311,11 @@ proceso, y en el chat parecería que contestan dos.
   campo dice cuántas lleva el navegador y en cuánto se libera la siguiente
   (en color de aviso con 3 o menos); en el tope, el aviso dice a qué hora.
 - **Cuántos navegadores preguntan:** la primera consulta de cada pregunta
-  lleva un número al azar del navegador que cambia cada día (`navegador`); el
-  Worker lo anota en su registro con cada pregunta contestada, nunca la
-  pregunta ni la IP (ver «Cuánta gente lo usa» en `ia/README.md`).
+  lleva su número de orden del día en ese navegador (`orden`: 1, 2, 3…),
+  sacado de las mismas marcas del tope. El Worker lo anota en su registro con
+  cada pregunta, nunca la pregunta ni la IP; las de orden 1 son los
+  navegadores del día (ver «Cuánta gente lo usa» en `ia/README.md`). No
+  identifica al navegador.
 - **Topes en cascada:** `LECTURA` y `TOPE_INDICE` (página) van por debajo de
   `TOPES` (Worker, `ia/nucleo.js`), y una prueba lo comprueba con las partes
   más largas de la norma.

@@ -174,39 +174,57 @@ prueba('Los pasos de índice llevan el índice y sus propias instrucciones', asy
 });
 
 prueba(
-  'Cada pregunta contestada deja en el registro su número de navegador, nunca la pregunta',
+  'Cada pregunta deja en el registro su número de orden del día, nunca la pregunta',
   async () => {
     const pregunta = '¿Protección del 14 AWG de cobre? texto-que-no-debe-quedar';
     const indice = '240 Protección contra sobrecorriente';
     const { env } = entorno({ salida: { response: '240' } });
-    await agente.fetch(
-      peticion({ paso: 'articulos', pregunta, indice, navegador: '0123456789abcdef' }),
-      env
-    );
-    // Uno inventado se contesta igual, y se anota sin él.
-    const r = await agente.fetch(
-      peticion({ paso: 'articulos', pregunta, indice, navegador: '<script>' }),
-      env
-    );
-    afirmar(r.status === 200, 'un número inventado impidió contestar');
+    // Las demás pruebas corren a la vez y también escriben aquí, sin orden:
+    // se buscan solo los de esta.
+    await agente.fetch(peticion({ paso: 'articulos', pregunta, indice, orden: 7 }), env);
+    // Uno inventado, o el número al azar de antes, se contestan igual y no se
+    // anotan.
+    const malos = [
+      { orden: 0 },
+      { orden: 100 },
+      { orden: 2.5 },
+      { orden: '3' },
+      { orden: '<script>' },
+      { navegador: '0123456789abcdef' },
+    ];
+    for (const extra of malos) {
+      const r = await agente.fetch(
+        peticion({ paso: 'articulos', pregunta, indice, ...extra }),
+        env
+      );
+      afirmar(r.status === 200, `${JSON.stringify(extra)} impidió contestar`);
+    }
     // Los pasos 2 y 3 son de la misma pregunta: no cuentan otra vez.
-    await agente.fetch(
-      peticion({ paso: 'secciones', pregunta, indice, navegador: 'fedcba9876543210' }),
-      env
-    );
-    // Las demás pruebas corren a la vez y también escriben aquí: se buscan
-    // solo los números de esta.
+    await agente.fetch(peticion({ paso: 'secciones', pregunta, indice, orden: 8 }), env);
     const eventos = registro.filter((l) => l.includes('"evento":"pregunta"'));
     afirmar(
-      eventos.filter((l) => l === '{"evento":"pregunta","navegador":"0123456789abcdef"}').length ===
-        1,
-      'no anotó la pregunta con su número'
+      eventos.filter((l) => l === '{"evento":"pregunta","orden":7}').length === 1,
+      'no anotó la pregunta con su orden'
     );
-    afirmar(!eventos.some((l) => l.includes('<script>')), 'anotó un número inventado');
-    afirmar(!eventos.some((l) => l.includes('fedcba9876543210')), 'el paso 2 contó otra pregunta');
+    afirmar(
+      !eventos.some((l) => /"orden":(0|100|2\.5|"3"|"<script>")/.test(l)),
+      'anotó un orden inventado'
+    );
+    afirmar(!registro.some((l) => l.includes('0123456789abcdef')), 'anotó el número de antes');
+    afirmar(!eventos.some((l) => l.includes('"orden":8')), 'el paso 2 contó otra pregunta');
     afirmar(!registro.some((l) => l.includes('texto-que-no-debe-quedar')), 'anotó la pregunta');
-    const v = validar({ paso: 'articulos', pregunta: 'x', indice: 'y', navegador: 'zz' });
-    afirmar(!v.error && !('navegador' in v), 'un número mal formado no se ignoró');
+    const base = { pregunta: 'x', indice: 'y' };
+    afirmar(validar({ ...base, paso: 'articulos', orden: 3 }).orden === 3, 'no tomó el orden');
+    for (const v of [
+      validar({ ...base, paso: 'articulos', orden: 0 }),
+      validar({ ...base, paso: 'secciones', orden: 3 }),
+      validar({ ...base, paso: 'articulos', navegador: '0123456789abcdef' }),
+    ]) {
+      afirmar(
+        !v.error && !('orden' in v) && !('navegador' in v),
+        `no se ignoró: ${JSON.stringify(v)}`
+      );
+    }
   }
 );
 

@@ -762,6 +762,36 @@ De paso salieron tres cosas:
   anterior era vaga). No cambia lo que dirá el aviso: todo va a Cloudflare.
 - **La línea base de consumo** con lo que ya anota el registro (tokens por
   paso) se hace en su turno del plan de la sección 18.
+- **Cuándo:** el número de orden, antes del aviso; lo de quien escoge,
+  después, con la batería de preguntas de prueba, para medir que la
+  selección en las preguntas de seguimiento no empeore.
+
+**El número de orden, hecho (8 de octubre de 2026).** La primera consulta de
+cada pregunta lleva `orden` (cuántas lleva ese navegador en el día UTC,
+contando esa) en lugar de `navegador`, y el Worker anota
+`{"evento":"pregunta","orden":3}`:
+
+- **Página** (`chat.js`): `orden()` cuenta las marcas de `asis-usadas` desde
+  las 00:00 UTC, así que no guarda nada nuevo. Al cargar, borra
+  `asis-navegador` de quien lo tenga.
+- **Worker** (`nucleo.js`): acepta `orden` solo en el paso 1 y solo si es un
+  entero de 1 a 99 (`ORDEN_MAX`); si no, lo ignora y contesta igual. Ya no lee
+  `navegador`: lo que mande una página vieja se descarta sin anotarse.
+- **Se publican en cualquier orden:** cada lado ignora el campo que no
+  conoce, así que página vieja con Worker nuevo, o al revés, siguen
+  funcionando; en la transición, unos eventos salen sin `orden`.
+- **Pruebas:** en `ia/pruebas/agente.mjs`, que anota el orden, que ignora uno
+  inventado (0, 100, 2.5, «3», un script) y el número viejo, y que el paso 2
+  no cuenta otra vez; falla con el `nucleo.js` de antes. En
+  `site/pruebas/navegador.mjs`, que la primera pregunta lleva 1 y la segunda
+  2 (salvo que el día UTC cambie a media prueba), que ningún otro paso lo
+  lleva, que no viaja `navegador` y que el número viejo se borra.
+- `ia/README.md` y `docs/arquitectura.md` lo dicen.
+
+Sigue igual: el evento se anota al terminar el paso 1 (B1, en su turno), y
+«el registro gratis guarda 3 días» de `ia/README.md` sigue sin comprobar. En
+producción no cambia nada hasta que llegue a `main`; el aviso del paso 3 se
+publica con este cambio o después, nunca antes.
 
 **Paso 1, hecho.** Se quitaron tres afirmaciones, sin agregar texto:
 
