@@ -182,6 +182,33 @@ del proyecto. Lo que sale de la página lo arma
   de tres segundos entre abrir la página y enviar, y un tope de cinco envíos por
   hora en cada navegador.
 
+**El asistente** (el Worker de `ia/`) es lo único que corre fuera de GitHub
+Pages. Qué lo protege:
+
+- **Solo atiende al sitio:** rechaza las peticiones que no traen el origen
+  `dflores296.github.io` (ORIGENES). Otra página no puede usarlo desde el
+  navegador de sus visitantes.
+- **Revisa todo lo que llega** (`validar` en `ia/nucleo.js`): cuerpo de máximo
+  80 KB, pregunta de 500 caracteres, índices y fragmentos con tope, sin
+  caracteres invisibles. Lo que no tiene la forma que arma la página se
+  rechaza sin llamar al modelo.
+- **Un tope por conexión:** 15 consultas por minuto desde la misma IP (unas 5
+  preguntas), con el Rate Limiting de Cloudflare (`ratelimits` en
+  `ia/wrangler.jsonc`). La IP solo es la llave de esa cuenta: el Worker no la
+  anota.
+- **No hay datos que sacar:** no tiene base de datos ni contraseñas; el acceso
+  al modelo es un enlace interno de Cloudflare, no una clave en el código; el
+  registro no guarda preguntas ni IPs.
+- **Lo peor que puede pasar es que se acabe el cupo del día:** en el plan
+  gratis, Cloudflare corta el servicio hasta las 6 de la tarde y no cobra.
+
+Lo que no cubre: alguien con muchas máquinas (muchas IPs) puede acabarse el
+cupo del día sin pasar del tope por conexión, y un programa fuera del
+navegador puede inventar el origen. Si los conteos del registro lo muestran,
+lo siguiente es Turnstile (la verificación gratuita de Cloudflare contra bots).
+Y lo que más protege los datos del proyecto no está en el código: la
+verificación en dos pasos en las cuentas de GitHub y de Cloudflare.
+
 **Las dependencias.** Las acciones de `.github/workflows/` van fijadas por SHA,
 con la versión en comentario, y `.github/dependabot.yml` propone cada mes subir
 acciones, pip y npm. Tres excepciones: `pymupdf` no se sube sola (de su

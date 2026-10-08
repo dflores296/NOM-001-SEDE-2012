@@ -98,6 +98,7 @@ cambio del sitio no vuelva a publicar el Worker.
 | La página dice que se acabaron las respuestas del día | La cuota gratis se gastó (error 3036) | Nada: vuelve a las 6 pm. Si pasa seguido, ver la tercera fila |
 | «El asistente no está disponible por ahora» | Cloudflare sacó el modelo del plan gratis (error 5035) | Cambiar `MODELO` en `wrangler.jsonc` por otro del catálogo que siga gratis y subirlo a `main` |
 | La cuota se acaba temprano todos los días | Mucha gente, o un bot | En el panel, **Workers & Pages → nom-001-ia → Metrics** dice cuántas llegan. Contra un bot: Turnstile (gratis) o un tope por IP |
+| La página dice que llegaron muchas preguntas seguidas | Más de 15 consultas en un minuto desde la misma conexión (unas 5 preguntas): el tope `ratelimits` de `wrangler.jsonc` | Nada: al minuto se libera. Una oficina que comparte internet puede toparlo; si pasa seguido, subir `limit` |
 | Se agrega un dominio propio | La página manda la pregunta desde otro origen | Agregarlo a `ORIGENES` en `wrangler.jsonc`, separado por coma |
 
 ## Probarlo

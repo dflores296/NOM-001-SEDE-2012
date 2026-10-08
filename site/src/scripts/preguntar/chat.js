@@ -117,6 +117,8 @@ const MENSAJES = {
     'El servicio que corre el modelo está saturado en este momento. Intenta de nuevo en un minuto.',
   modelo: 'El asistente no está disponible por ahora.',
   lento: 'El asistente tardó demasiado en contestar. Intenta de nuevo en un momento.',
+  rapido:
+    'Llegaron muchas preguntas seguidas desde tu conexión. Espera un minuto y vuelve a intentar.',
   red: 'Tu pregunta no llegó al asistente: el navegador no pudo comunicarse con él. Si estás en una red de oficina o de empresa, puede estar bloqueándolo; prueba con otra red o con los datos del celular.',
   tope: () =>
     `Llegaste al tope de ${TOPE} preguntas en 24 horas en este navegador: el cupo del asistente es de todos. Puedes volver a preguntar ${libre()}. Mientras, el buscador de arriba sigue funcionando.`,

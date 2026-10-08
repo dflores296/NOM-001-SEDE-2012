@@ -205,6 +205,40 @@ prueba(
   }
 );
 
+prueba('Muchas consultas seguidas de la misma conexión se frenan sin gastar cupo', async () => {
+  const cuentas = new Map();
+  const { env, llamadas } = entorno({ salida: { response: '240' } });
+  env.TOPE_IP = {
+    async limit({ key }) {
+      cuentas.set(key, (cuentas.get(key) || 0) + 1);
+      return { success: cuentas.get(key) <= 2 };
+    },
+  };
+  const consulta = (ip) => {
+    const p = peticion({ paso: 'articulos', pregunta: 'x', indice: '240 Protección' });
+    const h = new Headers(p.headers);
+    if (ip) h.set('CF-Connecting-IP', ip);
+    return agente.fetch(new Request(p, { headers: h }), env);
+  };
+  const estados = [];
+  for (let i = 0; i < 3; i++) estados.push((await consulta('203.0.113.7')).status);
+  afirmar(JSON.stringify(estados) === '[200,200,429]', `estados: ${estados}`);
+  const r = await consulta('203.0.113.7');
+  afirmar((await r.json()).error === 'rapido', 'no dice que fue por rapidez');
+  afirmar(r.headers.get('Access-Control-Allow-Origin') === ORIGEN, 'sin permiso CORS');
+  afirmar(llamadas.length === 2, `llamó al modelo ${llamadas.length} veces`);
+  // Otra conexión no se frena por la primera.
+  afirmar((await consulta('198.51.100.4')).status === 200, 'frenó a otra conexión');
+  // Si el tope falla, se contesta igual.
+  env.TOPE_IP = {
+    async limit() {
+      throw new Error('sin tope');
+    },
+  };
+  afirmar((await consulta('203.0.113.7')).status === 200, 'una falla del tope cerró la puerta');
+  afirmar(!registro.some((l) => l.includes('203.0.113.7')), 'anotó la IP');
+});
+
 prueba('Escoger lo hace el modelo chico, pensando poco', async () => {
   for (const paso of ['articulos', 'secciones']) {
     const { env, llamadas } = entorno({ salida: { response: '240' } });

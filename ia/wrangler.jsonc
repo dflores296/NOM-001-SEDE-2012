@@ -25,10 +25,21 @@
     "ORIGENES": "https://dflores296.github.io"
   },
 
+  // Un tope por conexión (dirección IP) y por minuto, contra quien quiera
+  // saturar el asistente o acabarse el cupo de golpe desde una sola máquina:
+  // 15 consultas por minuto, unas 5 preguntas (cada una son 3). Una persona
+  // tarda de 10 a 30 segundos por pregunta, así que no lo nota. Cloudflare
+  // lleva la cuenta en memoria, por centro de datos; el Worker no anota ni
+  // guarda la IP. namespace_id es cualquier número, único en la cuenta.
+  "ratelimits": [
+    { "name": "TOPE_IP", "namespace_id": "1001", "simple": { "limit": 15, "period": 60 } }
+  ],
+
   // El registro de Cloudflare (Workers & Pages → nom-001-ia → Observability)
-  // guarda solo lo que el Worker escribe con console.error: el error del
-  // modelo, nunca la pregunta. Sin los registros por petición, que traerían
-  // la dirección IP de cada visitante.
+  // guarda solo lo que el Worker escribe: el error del modelo, lo que tardó y
+  // gastó cada consulta, y un evento por pregunta con el número al azar del
+  // navegador; nunca la pregunta. Sin los registros por petición, que
+  // traerían la dirección IP de cada visitante.
   "observability": {
     "enabled": true,
     "logs": { "invocation_logs": false }

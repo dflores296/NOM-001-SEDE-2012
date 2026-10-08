@@ -307,6 +307,19 @@ async function contestar(request, env, origen) {
   if (request.method === 'OPTIONS') return responder(null, 204, origen);
   if (request.method !== 'POST') return responder({ error: 'metodo' }, 405, origen);
 
+  // Muchas consultas seguidas desde la misma conexión: 15 por minuto (ver
+  // «ratelimits» en wrangler.jsonc). La IP solo es la llave de esa cuenta,
+  // que lleva Cloudflare: aquí no se anota ni se guarda. Si el tope falla,
+  // se contesta igual: es una defensa de más, no una puerta.
+  const ip = request.headers.get('CF-Connecting-IP');
+  if (env.TOPE_IP && ip) {
+    let paso = true;
+    try {
+      paso = (await env.TOPE_IP.limit({ key: ip })).success !== false;
+    } catch {}
+    if (!paso) return responder({ error: 'rapido' }, 429, origen);
+  }
+
   const crudo = await request.text();
   if (crudo.length > TOPES.cuerpo) return responder({ error: 'grande' }, 413, origen);
   let cuerpo;

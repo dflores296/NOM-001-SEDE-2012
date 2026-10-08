@@ -557,6 +557,15 @@ Lo que se hizo:
   Va en `site/src/lib/analitica.js`; con él, el script entra en cada página,
   la CSP se abre solo a Cloudflare Insights y el pie lo dice. Se probó con un
   token de mentiras: la CSP deja pasar el script y la visita.
+- **Blindaje del asistente**, a pedido del dueño («contra peticiones que
+  busquen saturar el servidor o sacar datos»): un tope de 15 consultas por
+  minuto por conexión con el Rate Limiting de Cloudflare (`ratelimits` en
+  `ia/wrangler.jsonc`, unas 5 preguntas por minuto; la IP no se anota). Se
+  comprobó la configuración con `wrangler deploy --dry-run` (wrangler 4.148).
+  Lo demás ya estaba (origen, revisión de lo que llega, topes de tamaño) y no
+  hay datos que sacar. Quedó fuera Turnstile: hasta que los conteos muestren
+  bots. Se le recomendó al dueño la verificación en dos pasos en GitHub y
+  Cloudflare. Todo, en «Seguridad» de `docs/arquitectura.md`.
 
 ## Ronda de seguridad (octubre de 2026)
 
