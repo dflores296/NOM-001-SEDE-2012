@@ -254,7 +254,8 @@ async function pedir(url, cuerpo) {
     j = await r.json();
   } catch {}
   if (!r.ok || typeof j?.respuesta !== 'string') throw falla(j?.error || 'falla');
-  return j.respuesta;
+  // Qué modelo contestó (ia/servicios.js): el chat lo dice.
+  return { texto: j.respuesta, modelo: j.modelo || '', servicio: j.servicio || '' };
 }
 
 // «Reportar un error» lleva al formulario de /observaciones con la pregunta,
@@ -287,6 +288,9 @@ function botonReportar(m) {
   return b;
 }
 
+// «gpt-oss-120b · Cloudflare»: el modelo y el servicio que lo corre.
+const quien = (r) => (r.servicio ? `${r.modelo} · ${r.servicio}` : r.modelo);
+
 /** Un mensaje guardado, pintado: { rol: 'tu' | 'ia' | 'aviso', texto, … }. */
 function pintarMensaje(m) {
   const li = el('li', `asis-msg asis-${m.rol === 'tu' ? 'tu' : 'ia'}`);
@@ -303,6 +307,7 @@ function pintarMensaje(m) {
     return li;
   }
   pintarTexto(burbuja, m.texto, new Map(m.enlaces || []));
+  if (m.modelo) li.append(el('p', 'asis-modelo', `Respondió ${quien(m)}`));
   pintarFuentes(li, m.fuentes, true);
   li.append(botonReportar(m));
   return li;
@@ -437,7 +442,13 @@ export function iniciar(raiz) {
     puntos.setAttribute('aria-hidden', 'true');
     puntos.append(el('i'), el('i'), el('i'));
     const estado = el('span', 'asis-estado', 'Leyendo el índice de la norma…');
-    burbuja.append(puntos, estado);
+    // Qué modelo escogió qué leer, en cuanto se sabe.
+    const modelo = el('span', 'asis-estado-modelo');
+    burbuja.append(puntos, estado, modelo);
+    const escogio = (r) => {
+      if (r.modelo) modelo.textContent = `Escogió ${quien(r)}`;
+      return r.texto;
+    };
     pensando.append(burbuja);
     chat.append(pensando);
     bajar();
@@ -466,13 +477,15 @@ export function iniciar(raiz) {
         cargarGeneral(),
         pistas(pregunta),
       ]);
-      const r1 = await pedir(URL_ASISTENTE, {
-        paso: 'articulos',
-        pregunta,
-        historia: antes,
-        indice: indice + bloquePistas(halladas.map((p) => p.general)),
-        navegador: navegador(),
-      });
+      const r1 = escogio(
+        await pedir(URL_ASISTENTE, {
+          paso: 'articulos',
+          pregunta,
+          historia: antes,
+          indice: indice + bloquePistas(halladas.map((p) => p.general)),
+          navegador: navegador(),
+        })
+      );
       // El Worker contestó: ya gastó del cupo.
       anotar();
       pintarCupo();
@@ -486,12 +499,14 @@ export function iniciar(raiz) {
         const suyas = bloquePistas(
           halladas.filter((p) => claves.includes(p.clave)).map((p) => p.detalle)
         );
-        const r2 = await pedir(URL_ASISTENTE, {
-          paso: 'secciones',
-          pregunta,
-          historia: antes,
-          indice: indiceCombinado(paqs, TOPE_INDICE - suyas.length) + suyas,
-        });
+        const r2 = escogio(
+          await pedir(URL_ASISTENTE, {
+            paso: 'secciones',
+            pregunta,
+            historia: antes,
+            indice: indiceCombinado(paqs, TOPE_INDICE - suyas.length) + suyas,
+          })
+        );
         leidas = fragmentosDe(await leerPedidas(r2, paqs, todas));
       }
 
@@ -507,13 +522,14 @@ export function iniciar(raiz) {
 
       // Paso 3: leer y contestar.
       estado.textContent = `Leyendo ${lista(leidas.slice(0, 4).map((f) => f.ref))}${leidas.length > 4 ? '…' : ''} y redactando…`;
-      const respuesta = await pedir(URL_ASISTENTE, {
+      const redacto = await pedir(URL_ASISTENTE, {
         paso: 'responder',
         pregunta,
         historia: antes,
         // El título va en el primer renglón del texto: no se manda dos veces.
         fragmentos: leidas.map(({ ref, texto }) => ({ ref, titulo: '', texto })),
       });
+      const respuesta = redacto.texto;
       const enlaces = new Map();
       for (const [id, r] of [...citables(leidas), ...leidas.map((f) => [f.ref, f.r])]) {
         if (!enlaces.has(normRef(id))) enlaces.set(normRef(id), href(r));
@@ -525,6 +541,8 @@ export function iniciar(raiz) {
         rol: 'ia',
         pregunta,
         texto: respuesta,
+        modelo: redacto.modelo,
+        servicio: redacto.servicio,
         enlaces: [...enlaces],
         fuentes: fuentes(),
       });

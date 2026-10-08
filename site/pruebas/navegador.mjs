@@ -701,9 +701,13 @@ prueba(
     // Pide solo el inciso: la Tabla 250-122, que el inciso cita, la agrega
     // la página.
     const { recibido, contestar } = asistenteDePrueba({
-      articulos: 'Artículo 250',
+      articulos: () => ({
+        json: { respuesta: 'Artículo 250', modelo: 'Llama 3.1 8B', servicio: 'Groq' },
+      }),
       secciones: '250-122(a)',
-      responder: RESPUESTA_20A,
+      responder: () => ({
+        json: { respuesta: RESPUESTA_20A, modelo: 'gpt-oss-120b', servicio: 'Cloudflare' },
+      }),
     });
     const { page, errores, alerta } = await conAsistente(nuevaPagina, contestar);
     await preguntar(page, PREGUNTA_20A);
@@ -762,6 +766,12 @@ prueba(
     afirmar(
       (await page.textContent('.asis-chat .asis-tu')) === PREGUNTA_20A,
       'no enseña la pregunta'
+    );
+    // El chat dice qué modelo contestó.
+    afirmar(
+      (await page.textContent(`${RESPUESTAS} .asis-modelo`)) ===
+        'Respondió gpt-oss-120b · Cloudflare',
+      'no dice qué modelo contestó'
     );
     afirmar(!errores.length, errores.join(' | '));
   }

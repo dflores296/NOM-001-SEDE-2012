@@ -139,9 +139,16 @@
 .asis-reportar svg { width: 14px; height: 14px; }
 .asis-reportar:hover { color: var(--accent); }
 
-/* Mientras piensa: tres puntos y en qué paso va. */
+/* Mientras piensa: tres puntos, en qué paso va y, abajo, qué modelo escogió. */
 .asis-pensando .asis-burbuja {
-  display: flex; align-items: center; gap: 0.65rem; color: var(--text-dim); font-size: 0.88rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.65rem;
+  color: var(--text-dim); font-size: 0.88rem;
+}
+.asis-estado-modelo { flex-basis: 100%; font-size: 0.76rem; color: var(--text-faint); }
+.asis-estado-modelo:empty { display: none; }
+/* Qué modelo redactó la respuesta. */
+.asis-modelo {
+  margin: 0; padding: 0 0.15rem; font-size: 0.76rem; color: var(--text-faint);
 }
 .asis-puntos { display: inline-flex; gap: 4px; flex: none; }
 .asis-puntos i {

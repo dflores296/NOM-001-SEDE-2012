@@ -583,6 +583,47 @@ Lo que se hizo:
   bots. Se le recomendó al dueño la verificación en dos pasos en GitHub y
   Cloudflare. Todo, en «Seguridad» de `docs/arquitectura.md`.
 
+### La puerta: varios servicios gratis (8 de octubre, séptima vuelta)
+
+El cupo de Cloudflare (unas 40 a 45 preguntas al día) se queda corto si hay
+muchos usuarios. El dueño trajo un plan de Copilot (embeddings, fine-tuning,
+destilación, caché, varios servicios). Se revisó idea por idea:
+
+- **Fine-tuning y destilación, no:** un modelo que «se aprende» la norma la
+  recuerda aproximada, inventa números y no cita el inciso. Leer el texto es
+  lo seguro.
+- **Búsqueda por significado (embeddings), después:** podría ahorrar el
+  modelo chico, que gasta dos tercios. Vectorize gratis no alcanza (cada
+  búsqueda cuenta contra todos los vectores); se haría con los vectores en el
+  sitio. Hay que medir que escoja igual de bien.
+- **Caché, en chico:** las preguntas de ejemplo, después.
+- **Varios servicios gratis, sí: la puerta.** Dos filas de modelos (escoger y
+  redactar) en `ia/wrangler.jsonc`; cada consulta va al primero con clave y
+  cupo. Servicios: Cloudflare, Groq, OpenRouter, Mistral, Google. Decisión del
+  dueño: Mistral y Google entran (al final de las filas) aunque en su plan
+  gratis pueden entrenar con las preguntas, **con un aviso de privacidad bien
+  redactado**. Cerebras quedó fuera (ya pide tarjeta); GitHub Models y NVIDIA
+  también (solo para pruebas).
+
+Lo que se hizo en esta vuelta:
+
+- La puerta en el Worker (`ia/servicios.js`, `preguntarEnFila`), con pruebas
+  de servicios de mentiras: salta lleno, saturado, lento o inexistente; no
+  reintenta una clave mala ni la bolsa de Cloudflare sin cupo; anota
+  `consulta` y `salto` sin la pregunta. Publicada **apagada**: sin claves solo
+  contesta Cloudflare, como antes.
+- El chat dice qué modelo contestó, a pedido del dueño: «Escogió Llama 3.1 8B
+  · Groq» mientras piensa y «Respondió gpt-oss-120b · Cloudflare» debajo de la
+  respuesta (se guarda con la conversación).
+- Borrador del aviso de privacidad (`/privacidad`), para que el dueño lo
+  revise: falta su nombre, su correo de contacto y confirmar plazos.
+
+Pendiente, en este orden: aprobar y publicar el aviso; que el dueño cree las
+cuentas (Groq, OpenRouter, Mistral, Google AI Studio) y pegue las claves en el
+panel; la batería de preguntas de prueba para cada modelo; AI Gateway como
+ventana para ver todo junto. **No encender ningún servicio antes de publicar
+el aviso.**
+
 ## Ronda de seguridad (octubre de 2026)
 
 Bitácora de lo que se hizo, por qué, y de las dependencias que a propósito

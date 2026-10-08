@@ -232,9 +232,10 @@ Vive en una burbuja abajo a la derecha de cada página
 (`components/Asistente.astro`); `/asistente` es su guía (antes `/preguntar`,
 que ahora lleva ahí).
 El sitio sigue siendo estático: lo único que vive fuera es un Worker de
-Cloudflare (`ia/agente.js`) que llama a dos modelos de código abierto
-(gpt-oss-20b y gpt-oss-120b) en Workers AI, dentro del plan gratis. Cómo se publica, qué
-cuesta (nada) y qué hacer cuando algo falla: `ia/README.md`.
+Cloudflare (`ia/agente.js`) que le pasa cada consulta a un modelo de IA: el
+primero con cupo de una fila de servicios gratuitos (Cloudflare Workers AI,
+Groq, OpenRouter, Mistral, Google; ver «La puerta» abajo). Cómo se publica,
+qué cuesta (nada) y qué hacer cuando algo falla: `ia/README.md`.
 
 El asistente no recibe la norma entera —son 3.5 millones de caracteres, más de
 lo que el modelo lee de una vez y más que la cuota de un día—: la recorre como
@@ -247,11 +248,26 @@ una persona con el libro, en tres consultas que dirige la página
 | 2. `secciones` | El índice de esas claves: secciones, incisos con título, tablas y figuras (`/data/ia/<clave>.json`; el más largo, el 250, unos 4 800 tokens), más las pistas que caen en ellas | Hasta 4 identificadores |
 | 3. `responder` | Eso completo, más las tablas que cita, hasta 4 partes y 22 000 caracteres: cada renglón con su identificador entre corchetes, las tablas renglón por renglón | — contesta citando |
 
-Los pasos 1 y 2 los hace gpt-oss-20b pensando poco; el 3, gpt-oss-120b
+Los pasos 1 y 2 los hace un modelo chico pensando poco; el 3, uno grande
 pensando más, porque ahí se equivocaba el chico: le aplicó al 14 AWG la
 condición del 18 AWG y tomó los 20 A de un artículo de vehículos
-recreativos. Si el grande no está disponible (error 5035 o 3040), redacta el
-chico.
+recreativos.
+
+**La puerta** (`ia/servicios.js`, `preguntarEnFila` en `ia/nucleo.js`). Hay
+dos filas de modelos, «escoger» (pasos 1 y 2) y «redactar» (paso 3), en
+`FILA_ESCOGER` y `FILA_REDACTAR` de `ia/wrangler.jsonc`, como
+«servicio:modelo» separados por comas. Cada consulta va al primero de su fila
+que tenga clave y cupo; si está lleno (429, error 3036 de Cloudflare), sin
+clave válida, saturado, tarda más de 20 s (escoger) o 45 s (redactar), o no
+existe, pasa al siguiente, y la fila entera para a los 75 s. Un servicio sin
+cupo de Cloudflare o con la clave mala no se vuelve a intentar en esa
+consulta. Las claves (`GROQ_KEY`, `OPENROUTER_KEY`, `MISTRAL_KEY`,
+`GOOGLE_KEY`) son secretos del panel de Cloudflare: sin la suya, el servicio
+está apagado. La respuesta dice qué modelo y qué servicio contestó, y el chat
+lo enseña («Escogió…» mientras piensa, «Respondió…» debajo de la respuesta).
+El registro anota cada intento como evento `consulta` o `salto`, nunca la
+pregunta. Mistral y Google van al final: en sus planes gratuitos pueden usar
+las preguntas para entrenar, y el aviso de privacidad lo dice.
 
 - **Lo que lee lo arma `lib/asistente-datos.js`** desde el corpus, con el mismo
   orden que pinta el sitio (notas, excepciones, párrafos, tablas y figuras por
