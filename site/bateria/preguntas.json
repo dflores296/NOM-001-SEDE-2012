@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "nota": "Batería de evaluación del asistente (paso 4 de la auditoría). Aprobada por el dueño el 8 de octubre de 2026. Cada respuesta esperada sale de la captura de la norma (data/corpus.json, data/tablas_revisadas.json, site/src/lib/erratas.js), no de memoria. 'citar': basta una; vale también un inciso de adentro (210-8(a) acepta 210-8(a)(1)). 'decir': grupos de alternativas, todos los grupos tienen que aparecer. 'no_decir': ninguna puede aparecer. Las expresiones se aplican al texto en minúsculas, con 'mm2' como 'mm²' y sin el espacio de miles ('1 500' como '1500'). 'sigue': va en la misma conversación que esa pregunta. 'manual': lo que se revisa a mano.",
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Cuál es la protección máxima contra sobrecorriente de un conductor 14 AWG de cobre?",
+      "citar": ["240-4(d)(3)"],
+      "decir": [["\\b15 ?a(mperes?)?\\b"]],
+      "no_decir": ["\\b20 ?a(mperes?)?\\b"],
+      "fuente": "240-4(d)(3): «2.08 mm2 (14 AWG) de cobre. 15 amperes.»"
+    },
+    {
+      "id": 2,
+      "sigue": 1,
+      "pregunta": "¿Y para 12 AWG?",
+      "citar": ["240-4(d)(5)"],
+      "decir": [["\\b20 ?a(mperes?)?\\b"]],
+      "fuente": "240-4(d)(5): «3.31 mm2 (12 AWG) de cobre. 20 amperes.»"
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Cuál es la protección máxima de un conductor 10 AWG de cobre?",
+      "citar": ["240-4(d)(7)"],
+      "decir": [["\\b30 ?a(mperes?)?\\b"]],
+      "fuente": "240-4(d)(7): «5.26 mm2 (10 AWG) de cobre. 30 amperes»"
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué tamaño mínimo lleva el conductor de puesta a tierra de equipos en un circuito de 20 A?",
+      "citar": ["Tabla 250-122", "250-122"],
+      "decir": [["3\\.31 ?mm²", "\\b12 awg"]],
+      "fuente": "Tabla 250-122, renglón de 20 A: cobre 3.31 mm2, 12 AWG."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿De qué tamaño es el conductor del electrodo de puesta a tierra si la acometida es de 33.6 mm² (2 AWG) de cobre?",
+      "citar": ["Tabla 250-66", "250-66"],
+      "decir": [["8\\.37 ?mm²", "\\b8 awg"]],
+      "fuente": "Tabla 250-66, renglón «33.6 o menor / 2 o menor» de cobre: al electrodo, cobre 8.37 mm2, 8 AWG."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué longitud mínima debe tener un electrodo de varilla?",
+      "citar": ["250-52(a)(5)"],
+      "decir": [["2\\.44 ?m"]],
+      "fuente": "250-52(a)(5): «Los electrodos de varilla y tubería no deben tener menos de 2.44 metros de longitud…»"
+    },
+    {
+      "id": 7,
+      "pregunta": "¿En qué lugares de una vivienda se requiere protección de las personas contra falla a tierra en los contactos?",
+      "citar": ["210-8(a)"],
+      "decir": [["baño"], ["cocina"]],
+      "no_decir": ["240-13"],
+      "fuente": "210-8(a), Unidades de vivienda: los contactos de 120 V, 15 y 20 A en los lugares de (1) a (8); (1) Cuartos de baño, (6) Cocinas."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Cuántos circuitos de 20 A para aparatos pequeños se requieren en una vivienda?",
+      "citar": ["210-11(c)(1)"],
+      "decir": [["dos o más", "\\b2 o más", "al menos dos", "mínimo dos", "dos circuitos"]],
+      "fuente": "210-11(c)(1): «…se deben instalar dos o más circuitos derivados de 20 amperes para aparatos pequeños…»"
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué circuito necesitan los contactos del cuarto de baño de una vivienda?",
+      "citar": ["210-11(c)(3)"],
+      "decir": [["\\b20 ?a(mperes?)?\\b"]],
+      "fuente": "210-11(c)(3): «…al menos un circuito derivado de 20 amperes para alimentar los contactos del cuarto de baño. Estos circuitos no deben tener otras salidas.»"
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué dice el 210-52?",
+      "citar": ["210-52"],
+      "decir": [["contacto"]],
+      "fuente": "210-52: «Esta sección proporciona los requisitos para las salidas de contactos de 120 volts, 15 y 20 amperes…» (unidades de vivienda)."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Con qué carga se calcula cada circuito de aparatos pequeños para el alimentador de una vivienda?",
+      "citar": ["220-52(a)"],
+      "decir": [["1500 ?(va|voltamperes?)"]],
+      "no_decir": ["no hay (una )?carga mínima", "no existe (una )?carga mínima"],
+      "fuente": "220-52(a): «…la carga del alimentador debe calcularse a 1500 voltamperes por cada circuito derivado de 2 hilos para aparatos pequeños…»"
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué carga se considera para el circuito de la lavadora?",
+      "citar": ["220-52(b)"],
+      "decir": [["1500 ?(va|voltamperes?)"]],
+      "fuente": "220-52(b): «Una carga de cuando menos 1500 voltamperes se debe incluir por cada circuito derivado de 2 hilos para lavadora…»"
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuál es la carga mínima de alumbrado por metro cuadrado en una unidad de vivienda?",
+      "citar": ["Tabla 220-12", "220-12"],
+      "decir": [["\\b33 ?(va|voltamperes?)"]],
+      "fuente": "Tabla 220-12, «Unidades de vivienda (a)»: 33 VA/m2."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué profundidad mínima de espacio de trabajo se necesita frente a un tablero de 220 V entre fases (127 V a tierra)?",
+      "citar": ["Tabla 110-26(a)(1)", "110-26(a)(1)"],
+      "decir": [["0\\.90? ?m", "\\b90 ?cm", "\\b900 ?mm"]],
+      "fuente": "Tabla 110-26(a)(1), 0-150 volts a tierra: 0.9 m en las condiciones 1, 2 y 3."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué ancho mínimo debe tener el espacio de trabajo frente a un equipo eléctrico?",
+      "citar": ["110-26(a)(2)"],
+      "decir": [["\\b80 ?cm", "0\\.80? ?m", "\\b800 ?mm"]],
+      "no_decir": ["\\b76 ?cm", "\\b762 ?mm", "0\\.76 ?m", "30 pulgadas"],
+      "fuente": "110-26(a)(2): «El ancho del espacio de trabajo en el frente del equipo eléctrico debe ser igual al ancho del equipo o 80 centímetros, el que sea mayor.» (El NEC dice 762 mm.)"
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué altura mínima debe tener el espacio de trabajo?",
+      "citar": ["110-26(a)(3)"],
+      "decir": [["\\b2(\\.0+)? ?m(etros)?\\b", "\\b200 ?cm", "\\b2000 ?mm"]],
+      "fuente": "110-26(a)(3): «…hasta la altura de 2.00 metros o la altura del equipo, la que sea mayor.»"
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuál es la corriente a plena carga de un motor trifásico de 5 hp a 230 V?",
+      "citar": ["Tabla 430-250", "430-250"],
+      "decir": [["15\\.2 ?a"]],
+      "fuente": "Tabla 430-250, renglón de 5 hp (3.75 kW), columna de 230 volts: 15.2 A."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cuál es la corriente a plena carga de un motor trifásico de 10 hp a 575 V?",
+      "citar": ["Tabla 430-250", "430-250"],
+      "decir": [["\\b44 ?a?"], ["\\b11 ?a"]],
+      "manual": "Que dé el valor impreso (44 A) y avise que es una errata del DOF (debería ser 11 A).",
+      "fuente": "Tabla 430-250, renglón de 10 hp (7.5 kW), columna de 575 volts: el DOF imprime 44 A; nota de la guía (site/src/lib/erratas.js): debería decir 11 A."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuál es la corriente a plena carga de un motor monofásico de 1 hp a 127 V?",
+      "citar": ["Tabla 430-248", "430-248"],
+      "decir": [["\\b14 ?a(mperes?)?\\b"]],
+      "no_decir": ["\\b16 ?a(mperes?)?\\b"],
+      "fuente": "Tabla 430-248, renglón de 1 hp (0.75 kW): 16 A a 115 volts y 14 A a 127 volts."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuál es la ampacidad de un conductor de cobre 12 AWG THHN a 90 °C?",
+      "citar": ["Tabla 310-15(b)(16)", "310-15(b)(16)"],
+      "decir": [["\\b30 ?a(mperes?)?\\b"]],
+      "fuente": "Tabla 310-15(b)(16), cobre 3.31 mm2 (12 AWG), columna de 90 °C (THHN entre los tipos): 30 A."
+    },
+    {
+      "id": 21,
+      "pregunta": "¿Qué porcentaje máximo de la sección de un tubo conduit pueden ocupar más de dos conductores?",
+      "citar": ["Tabla 1"],
+      "decir": [["\\b40 ?%", "40 por ciento"]],
+      "fuente": "Capítulo 10, Tabla 1: más de 2 conductores, 40 %."
+    },
+    {
+      "id": 22,
+      "pregunta": "¿A qué distancia mínima de la alberca debe estar un contacto que no sea de la bomba?",
+      "citar": ["680-22(a)(2)"],
+      "decir": [["1\\.85 ?m", "\\b185 ?cm"]],
+      "no_decir": ["1\\.83", "\\b183 ?cm"],
+      "fuente": "680-22(a)(2): «Cualquier otros contacto debe estar cuando menos a 1.85 metros de las paredes interiores de la alberca.» (El NEC dice 1.83 m.)"
+    },
+    {
+      "id": 23,
+      "pregunta": "¿Cuánta caída de tensión tengo en 30 m de cable 12 AWG con 16 A?",
+      "manual": "Que diga que no hace cálculos y no invente un resultado (puede citar lo que la norma dice de la caída de tensión).",
+      "fuente": "Fuera de alcance: la guía del asistente dice que no calcula caída de tensión."
+    },
+    {
+      "id": 24,
+      "pregunta": "¿Qué dice el NEC 2023 sobre los interruptores contra falla de arco?",
+      "manual": "Que diga que solo conoce la NOM y no invente contenido del NEC (puede ofrecer el 210-12 de la NOM).",
+      "fuente": "Fuera de la norma: la guía del asistente dice que no sabe de otras normas ni del NEC."
+    }
+  ]
+}

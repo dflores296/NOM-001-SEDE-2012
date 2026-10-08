@@ -6,7 +6,8 @@
       "pruebas/**/*.mjs",
       "public/sw.js",
       "astro.config.mjs",
-      "diseno/**/*.mjs"
+      "diseno/**/*.mjs",
+      "bateria/**/*.mjs"
     ]
   },
   "formatter": {
