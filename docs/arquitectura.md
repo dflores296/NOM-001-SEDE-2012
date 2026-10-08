@@ -234,7 +234,7 @@ que ahora lleva ahí).
 El sitio sigue siendo estático: lo único que vive fuera es un Worker de
 Cloudflare (`ia/agente.js`) que le pasa cada consulta a un modelo de IA: el
 primero con cupo de una fila de servicios gratuitos (Cloudflare Workers AI,
-Groq, OpenRouter, Mistral, Google; ver «La puerta» abajo). Cómo se publica,
+Groq, OpenRouter; ver «La puerta» abajo). Cómo se publica,
 qué cuesta (nada) y qué hacer cuando algo falla: `ia/README.md`.
 
 El asistente no recibe la norma entera —son 3.5 millones de caracteres, más de
@@ -261,13 +261,14 @@ que tenga clave y cupo; si está lleno (429, error 3036 de Cloudflare), sin
 clave válida, saturado, tarda más de 20 s (escoger) o 45 s (redactar), o no
 existe, pasa al siguiente, y la fila entera para a los 75 s. Un servicio sin
 cupo de Cloudflare o con la clave mala no se vuelve a intentar en esa
-consulta. Las claves (`GROQ_KEY`, `OPENROUTER_KEY`, `MISTRAL_KEY`,
-`GOOGLE_KEY`) son secretos del panel de Cloudflare: sin la suya, el servicio
-está apagado. La respuesta dice qué modelo y qué servicio contestó, y el chat
+consulta. Las claves (`GROQ_KEY`, `OPENROUTER_KEY`) son secretos del panel
+de Cloudflare: sin la suya, el servicio está apagado. La respuesta dice qué modelo y qué servicio contestó, y el chat
 lo enseña («Escogió…» mientras piensa, «Respondió…» debajo de la respuesta).
 El registro anota cada intento como evento `consulta` o `salto`, nunca la
-pregunta. Mistral y Google van al final: en sus planes gratuitos pueden usar
-las preguntas para entrenar, y el aviso de privacidad lo dice.
+pregunta. `servicios.js` también sabe hablar con Mistral y Google, pero no
+están en ninguna fila hasta que el dueño tenga asesoría legal (en su plan
+gratis pueden entrenar con las preguntas, y Google prohíbe su API en sitios
+que probablemente abran menores de 18 años); una prueba lo cuida.
 
 - **Lo que lee lo arma `lib/asistente-datos.js`** desde el corpus, con el mismo
   orden que pinta el sitio (notas, excepciones, párrafos, tablas y figuras por

@@ -47,7 +47,9 @@ git status --porcelain      # después de eso, debe quedar vacío
   servicios gratuitos («escoger» y «redactar», `ia/servicios.js` y
   `ia/wrangler.jsonc`); un modelo nuevo entra solo si pasa la batería de
   preguntas de prueba, y un servicio que entrena con las preguntas no se
-  enciende sin que el aviso de privacidad lo diga. La cuenta de Cloudflare se queda en el
+  enciende sin que el aviso de privacidad lo diga. **Mistral y Google no
+  entran a las filas** hasta que el dueño tenga asesoría legal (decisión del
+  8 de octubre de 2026); una prueba lo cuida. La cuenta de Cloudflare se queda en el
   plan gratis: sin tarjeta, al acabarse la cuota deja de contestar y no cobra.
   Su dirección vive en `site/src/lib/asistente.js`. Lo que manda la página
   (`LECTURA`, `TOPE_INDICE`) va por debajo de los topes del Worker (`TOPES`);

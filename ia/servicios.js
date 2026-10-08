@@ -23,9 +23,13 @@
 // prueba (ver ia/README.md, «La puerta»): en una norma eléctrica, uno que
 // confunda incisos no puede entrar.
 //
-// Mistral y Google, en su plan gratis, pueden usar las preguntas para
-// entrenar o mejorar sus productos: van al final y el aviso de privacidad
-// del sitio lo dice (/privacidad).
+// Mistral y Google están fuera de las filas por decisión del dueño (8 de
+// octubre de 2026), hasta que tenga asesoría legal: en su plan gratis pueden
+// usar las preguntas para entrenar, y las condiciones de Google prohíben su
+// API en un sitio que probablemente abran menores de 18 años. Se quedan
+// aquí para que volver a meterlos sea cambiar una fila, pero sin estar en
+// una fila no se usan aunque su clave esté en el panel. Una prueba lo cuida
+// (ia/pruebas/agente.mjs).
 
 export const SERVICIOS = {
   // Workers AI, por el binding `AI`: no lleva clave ni dirección.
@@ -61,16 +65,12 @@ export const FILAS = {
     'cloudflare:@cf/openai/gpt-oss-20b',
     'groq:openai/gpt-oss-20b',
     'openrouter:openai/gpt-oss-20b:free',
-    'mistral:mistral-small-latest',
-    'google:gemini-flash-lite-latest',
   ].join(', '),
   redactar: [
     'cloudflare:@cf/openai/gpt-oss-120b',
     'groq:openai/gpt-oss-120b',
     'groq:llama-3.3-70b-versatile',
     'openrouter:deepseek/deepseek-chat-v3.1:free',
-    'mistral:mistral-medium-latest',
-    'google:gemini-flash-latest',
     'cloudflare:@cf/openai/gpt-oss-20b',
   ].join(', '),
 };

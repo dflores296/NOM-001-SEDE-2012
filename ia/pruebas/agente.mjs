@@ -13,6 +13,7 @@ import {
   textoDe,
   validar,
 } from '../nucleo.js';
+import { readFileSync } from 'node:fs';
 import { FILAS, leerFila, nombreModelo } from '../servicios.js';
 
 const agente = entrada.default;
@@ -248,7 +249,7 @@ prueba('Muchas consultas seguidas de la misma conexión se frenan sin gastar cup
   afirmar(!registro.some((l) => l.includes('203.0.113.7')), 'anotó la IP');
 });
 
-// Los otros servicios (Groq, OpenRouter, Mistral, Google) se contestan aquí:
+// Los otros servicios (Groq, OpenRouter) se contestan aquí:
 // cada prueba usa su propia clave, y la clave dice qué servidor de mentiras
 // contesta. Las pruebas corren a la vez, y así no se pisan.
 const servidores = new Map();
@@ -281,6 +282,19 @@ prueba('Las filas se leen de la configuración, y lo que no existe se ignora', (
   afirmar(nombreModelo('gemini-flash-lite-latest') === 'Gemini Flash-Lite', 'gemini lite');
   afirmar(nombreModelo('gemini-flash-latest') === 'Gemini Flash', 'gemini');
   afirmar(nombreModelo('algo/nuevo-7b:free') === 'nuevo-7b', 'desconocido');
+});
+
+// Decisión del dueño (8 de octubre de 2026): fuera hasta tener asesoría legal.
+prueba('Mistral y Google no están en ninguna fila', async () => {
+  const wrangler = readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8');
+  const filas = [...wrangler.matchAll(/"(FILA_\w+)":\s*"([^"]*)"/g)];
+  afirmar(filas.length === 2, `wrangler.jsonc: ${filas.length} filas`);
+  for (const [nombre, texto] of [...Object.entries(FILAS), ...filas.map((m) => [m[1], m[2]])]) {
+    const fuera = leerFila(texto).filter(
+      (p) => p.servicio === 'mistral' || p.servicio === 'google'
+    );
+    afirmar(!fuera.length, `${nombre} trae ${fuera.map((p) => p.servicio).join(', ')}`);
+  }
 });
 
 prueba('Con su clave, la fila pregunta primero a Groq y dice qué modelo contestó', async () => {

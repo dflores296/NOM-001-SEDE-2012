@@ -602,7 +602,8 @@ destilación, caché, varios servicios). Se revisó idea por idea:
   cupo. Servicios: Cloudflare, Groq, OpenRouter, Mistral, Google. Decisión del
   dueño: Mistral y Google entran (al final de las filas) aunque en su plan
   gratis pueden entrenar con las preguntas, **con un aviso de privacidad bien
-  redactado**. Cerebras quedó fuera (ya pide tarjeta); GitHub Models y NVIDIA
+  redactado** (cambió el 8 de octubre: fuera hasta tener asesoría legal; ver
+  «Mistral y Google, fuera» abajo). Cerebras quedó fuera (ya pide tarjeta); GitHub Models y NVIDIA
   también (solo para pruebas).
 
 Lo que se hizo en esta vuelta:
@@ -619,10 +620,46 @@ Lo que se hizo en esta vuelta:
   revise: falta su nombre, su correo de contacto y confirmar plazos.
 
 Pendiente, en este orden: aprobar y publicar el aviso; que el dueño cree las
-cuentas (Groq, OpenRouter, Mistral, Google AI Studio) y pegue las claves en el
-panel; la batería de preguntas de prueba para cada modelo; AI Gateway como
-ventana para ver todo junto. **No encender ningún servicio antes de publicar
-el aviso.**
+cuentas (Groq, OpenRouter) y pegue las claves en el panel; la batería de
+preguntas de prueba para cada modelo; AI Gateway como ventana para ver todo
+junto. **No encender ningún servicio antes de publicar el aviso.**
+
+### Mistral y Google, fuera (8 de octubre de 2026)
+
+Al revisar el aviso de privacidad salió que las condiciones de la API de
+Gemini piden usuarios mayores de 18 años y prohíben usarla en un sitio
+«dirigido a, o que probablemente abran» menores. El dueño dice, con razón,
+que la guía está hecha para estudiantes de ingeniería en adelante; si eso
+basta frente a esa cláusula lo tiene que decir un abogado (la app Gemini de
+los teléfonos Android tiene otras condiciones, las de consumidor; las que
+cuentan aquí son las de la API para desarrolladores). Mistral, en su plan
+gratis, puede entrenar con las preguntas.
+
+**Decisión del dueño: Mistral y Google quedan fuera de las filas hasta que
+tenga asesoría legal.** Se quitaron de `FILA_ESCOGER` y `FILA_REDACTAR`
+(`ia/wrangler.jsonc`) y de las de respaldo (`ia/servicios.js`). El código
+los sigue entendiendo, para que volver a meterlos sea cambiar una fila, pero
+sin estar en una fila no se usan aunque su clave esté en el panel. Una prueba
+(`ia/pruebas/agente.mjs`) falla si alguno vuelve a una fila; quitarla es
+parte de la decisión de volver a meterlos.
+
+Lo que quedó por revisar con los demás, para el aviso y para el abogado:
+
+- **OpenRouter**: según un sitio que sigue cambios de condiciones (no se pudo
+  abrir la página oficial desde aquí), desde el 31 de agosto de 2026 sus
+  condiciones piden 18 años. Falta ver si eso habla solo de quien tiene la
+  cuenta o también de quien usa un sitio hecho con ella. Además, sus modelos
+  gratis suelen correr en servicios que guardan o entrenan con las
+  preguntas: con la privacidad cerrada pueden dejar de contestar. Si pasa,
+  OpenRouter se queda apagado.
+- **Groq**: no entrena con lo que le llega por la API; *Zero Data Retention*
+  hay que encenderlo. Su página pide 18 años para usar el sitio web; no se
+  encontró una regla de edad para la API. Confirmar en su contrato.
+- **Cloudflare, Groq y OpenRouter** procesan en Estados Unidos: el aviso
+  tiene que decir que la pregunta sale de México.
+- **Formspree y GitHub** siguen como estaban en el análisis del aviso
+  (cuánto guarda Formspree lo fija el dueño; las estrellas pasan a
+  calcularse al publicar, entre las cuatro medidas aprobadas).
 
 ## Ronda de seguridad (octubre de 2026)
 

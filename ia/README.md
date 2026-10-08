@@ -45,24 +45,35 @@ siguiente (`servicios.js`). Hay dos filas, en `wrangler.jsonc`:
 
 | Fila | Para | Orden |
 |---|---|---|
-| `FILA_ESCOGER` | Pasos 1 y 2: escoger qué leer | Groq Llama 3.1 8B → Cloudflare gpt-oss-20b → Groq gpt-oss-20b → OpenRouter gpt-oss-20b gratis → Mistral Small → Google Gemini Flash-Lite |
-| `FILA_REDACTAR` | Paso 3: redactar | Cloudflare gpt-oss-120b → Groq gpt-oss-120b → Groq Llama 3.3 70B → OpenRouter DeepSeek V3 gratis → Mistral Medium → Google Gemini Flash → Cloudflare gpt-oss-20b |
+| `FILA_ESCOGER` | Pasos 1 y 2: escoger qué leer | Groq Llama 3.1 8B → Cloudflare gpt-oss-20b → Groq gpt-oss-20b → OpenRouter gpt-oss-20b gratis |
+| `FILA_REDACTAR` | Paso 3: redactar | Cloudflare gpt-oss-120b → Groq gpt-oss-120b → Groq Llama 3.3 70B → OpenRouter DeepSeek V3 gratis → Cloudflare gpt-oss-20b |
+
+**Mistral y Google están fuera** por decisión del dueño (8 de octubre de
+2026), hasta que tenga asesoría legal: en su plan gratis pueden usar las
+preguntas para entrenar, y las condiciones de la API de Google prohíben
+usarla en un sitio que probablemente abran menores de 18 años. El código
+los sigue entendiendo (`servicios.js`), pero fuera de las filas no se usan
+aunque su clave esté en el panel, y una prueba impide meterlos sin querer.
 
 **Encender un servicio** es pegar su clave en el panel: **Workers & Pages →
 nom-001-ia → Settings → Variables and Secrets → Add**, tipo *Secret*, con el
-nombre exacto: `GROQ_KEY`, `OPENROUTER_KEY`, `MISTRAL_KEY` o `GOOGLE_KEY`. Sin
+nombre exacto: `GROQ_KEY` u `OPENROUTER_KEY`. Sin
 la clave, la fila se lo salta. Las claves nunca van en el código ni en el chat.
 
 Antes de encender uno:
 
-- **El aviso de privacidad tiene que nombrarlo.** Mistral y Google, en su plan
-  gratis, pueden usar las preguntas para entrenar.
+- **El aviso de privacidad tiene que nombrarlo.**
 - **Sus modelos pasan la batería de preguntas de prueba**: respuestas que ya
   se saben (14 AWG → 15 A en 240-4(d)(3), la errata de la Tabla 430-250, la
   falla a tierra en 210-8). En una norma eléctrica, uno que confunda incisos
   no entra.
 - En **Groq**, activar *Zero Data Retention* (Data Controls). En
-  **OpenRouter**, en Privacy, no permitir servicios que entrenan.
+  **OpenRouter**, en Privacy, no permitir servicios que entrenan ni que
+  guardan las preguntas, también en los modelos gratis. Con eso puede que
+  los modelos `:free` dejen de contestar («No endpoints found matching your
+  data policy»): la fila los salta por `modelo` y el registro lo enseña. Si
+  pasa, OpenRouter no sirve gratis sin ceder las preguntas, y se queda
+  apagado.
 
 **Quién contestó:** el chat lo dice debajo de cada respuesta, y el registro
 (Observability) anota cada intento: `{"evento":"consulta", …}` con servicio,
