@@ -37,9 +37,11 @@
 
   // El registro de Cloudflare (Workers & Pages → nom-001-ia → Observability)
   // guarda solo lo que el Worker escribe: el error del modelo, lo que tardó y
-  // gastó cada consulta, y un evento por pregunta con el número al azar del
-  // navegador; nunca la pregunta. Sin los registros por petición, que
-  // traerían la dirección IP de cada visitante.
+  // gastó cada consulta, y los eventos «pregunta» (con el número de orden del
+  // día) y «respuesta_generada» (con el modelo); nunca la pregunta, la
+  // respuesta ni la IP. Sin los registros por petición, que traerían datos de
+  // cada petición. El candado del aviso de privacidad
+  // (site/pruebas/aviso.mjs) falla si se encienden.
   "observability": {
     "enabled": true,
     "logs": { "invocation_logs": false }

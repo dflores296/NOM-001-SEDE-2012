@@ -67,7 +67,9 @@ otro navegador o una ventana de incógnito empiezan de cero.
   juntan los eventos de uno. Se anota cuando el primer paso contestó, que es
   cuando la pregunta ya gastó del cupo; un primer paso que falla no se anota.
   Hasta el 8 de octubre de 2026 el evento llevaba un número al azar por
-  navegador y por día (`navegador`). El registro gratis guarda 3 días.
+  navegador y por día (`navegador`). Cuántos días guarda el registro lo fija
+  Cloudflare: se decía que 3 en el plan gratis y no está comprobado (el 11 de
+  octubre de 2026 se puede ver si siguen los eventos del 7).
 - **Respuestas:** cuando el Worker termina de redactar una respuesta con
   texto y ya la armó para devolverla, anota
   `{"evento":"respuesta_generada","modelo":"gpt-oss-120b"}` (o `gpt-oss-20b`,
@@ -112,15 +114,18 @@ Para que eso siga así: no meter tarjeta y no activar «Workers Paid».
    empieza a usarlo. Es un cambio de contenido: hay que volver a sellar la
    huella del sitio (la burbuja va en todas las páginas).
 
-Desde entonces, cada cambio en `ia/` que llegue a `main` se publica solo.
-Conviene poner `ia/*` en **Build watch paths** (Settings → Build) para que un
-cambio del sitio no vuelva a publicar el Worker.
+Desde entonces, cada cambio que llegue a `main` vuelve a publicar el Worker,
+también los que no tocan `ia/` (se vio en su historial de versiones el 8 de
+octubre de 2026): publica el mismo código, así que no hace daño. Para que solo
+lo haga con cambios de `ia/`, poner `ia/*` en **Build watch paths** (Settings →
+Build).
 
 ## Qué hacer si…
 
 | Pasa | Qué es | Qué hacer |
 |---|---|---|
-| La página dice «No me pude conectar con el asistente» | El Worker no contestó nada legible: no arrancó, se cayó o tardó más de un minuto | **Workers & Pages → nom-001-ia → Observability** dice el error. Así se encontró que no arrancaba con un `export` de más en `agente.js` |
+| La página dice «Tu pregunta no llegó al asistente» | El navegador no pudo comunicarse con el Worker: una red que bloquea `workers.dev`, o el Worker no arrancó o se cayó | Probar con otra red (los datos del celular). Si falla en todas, **Workers & Pages → nom-001-ia → Observability** dice el error. Así se encontró que no arrancaba con un `export` de más en `agente.js` |
+| La página dice «El asistente tardó demasiado en contestar» | Pasaron 90 segundos sin respuesta (la página se rinde; el Worker no tiene tope propio) | Volver a intentar. Si pasa seguido, Observability dice cuánto tarda cada paso |
 | La página dice que se acabaron las respuestas del día | La cuota gratis se gastó (error 3036) | Nada: vuelve a las 6 pm. Si pasa seguido, ver la tercera fila |
 | «El asistente no está disponible por ahora» | Cloudflare sacó el modelo del plan gratis (error 5035) | Cambiar `MODELO` en `wrangler.jsonc` por otro del catálogo que siga gratis y subirlo a `main` |
 | La cuota se acaba temprano todos los días | Mucha gente, o un bot | En el panel, **Workers & Pages → nom-001-ia → Metrics** dice cuántas llegan. Contra un bot: Turnstile (gratis) o un tope por IP |
@@ -142,10 +147,20 @@ en `site/pruebas/navegador.mjs` (con un asistente de mentiras).
 
 ## Privacidad
 
-La pregunta y las partes de la norma viajan a Cloudflare, que corre el modelo.
-El Worker no guarda nada, y según la política de Workers AI, Cloudflare no usa
-ese contenido para entrenar modelos ni para mejorar sus servicios. La página
-lo dice debajo del campo.
+Qué se trata y a dónde va lo dice el aviso de privacidad del sitio
+(`site/src/pages/privacidad.astro`, publicado en `/privacidad`), y ningún
+modelo ni servicio nuevo recibe preguntas sin actualizarlo antes: regla de
+`CLAUDE.md`, con su candado en `site/pruebas/aviso.mjs`.
+
+En corto: la pregunta, la conversación anterior y las partes de la norma
+viajan a Cloudflare, que corre los modelos. El Worker no tiene dónde guardar
+nada (ni KV, ni R2, ni base de datos), pero su registro (Observability) anota
+por consulta el paso, el modelo, lo que tardó y los tokens, los errores, y
+los eventos `pregunta` y `respuesta_generada` (ver «Cuánta gente lo usa»);
+nunca la pregunta, la respuesta ni la IP. Cloudflare declara que no usa el
+contenido de Workers AI para entrenar los modelos ni para mejorar servicios
+sin consentimiento explícito (página «Data usage» de Workers AI, actualizada
+el 21 de abril de 2026), y el dueño no lo ha dado.
 
 ## Licencia
 

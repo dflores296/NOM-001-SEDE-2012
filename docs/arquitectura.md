@@ -165,8 +165,9 @@ Las pruebas en navegador fallan con cualquier error de consola, y bloquear algo
 de la CSP es uno: si la política le quita algo legítimo al sitio, se nota ahí.
 Una prueba, además, inyecta un script y comprueba que no corra.
 
-**El formulario de `/observaciones`** manda a Formspree, que reenvía al correo
-del proyecto. Lo que sale de la página lo arma
+**El formulario de `/observaciones`** manda a Formspree, que guarda el envío
+en su panel (30 días de historial en el plan gratis) y lo reenvía al correo
+de contacto del proyecto, una cuenta de Gmail. Lo que sale de la página lo arma
 `site/src/scripts/observaciones/limpieza.js`, probado en
 `site/pruebas/observaciones.mjs`:
 
@@ -199,7 +200,8 @@ Pages. Qué lo protege:
   anota.
 - **No hay datos que sacar:** no tiene base de datos ni contraseñas; el acceso
   al modelo es un enlace interno de Cloudflare, no una clave en el código; el
-  registro no guarda preguntas ni IPs.
+  registro no guarda preguntas ni IPs (comprobado en el panel el 8 de octubre
+  de 2026).
 - **Lo peor que puede pasar es que se acabe el cupo del día:** en el plan
   gratis, Cloudflare corta el servicio hasta las 6 de la tarde y no cobra.
 
@@ -330,7 +332,8 @@ un asistente de mentiras en el mismo servidor.
 
 ## El contador de visitas
 
-Cloudflare Web Analytics, sin cookies ni datos personales. Su token vive en
+Cloudflare Web Analytics; según Cloudflare, sin cookies (qué recoge lo dice su
+política, enlazada en el aviso de privacidad). Su token vive en
 `site/src/lib/analitica.js`: vacío, no hay contador y la CSP no cambia; con
 token, `Base.astro` pone el script de Cloudflare al final de cada página y lo
 dice en el pie, y `astro.config.mjs` abre la CSP a

@@ -248,7 +248,9 @@ falta para nada de esto.
 
 Quedó: **un Worker de Cloudflare en el plan gratis** (`ia/agente.js`) que
 llama a **gpt-oss-20b** (OpenAI, Apache-2.0) en Workers AI. 10 000 neuronas
-al día, unas 130 preguntas **entre todos**; al acabarse no cobra, contesta el
+al día, unas 130 preguntas **entre todos** (estimación inicial; medido el 8 de
+octubre, con los tres pasos, unas 40 a 45: ver «Cuánto se usa»); al acabarse
+no cobra, contesta el
 error 3036 hasta las 00:00 UTC (6 pm en el centro de México). Cómo se publica
 y qué hacer si algo falla: `ia/README.md`. El reparto, en «El asistente» de
 `docs/arquitectura.md`.
@@ -281,11 +283,15 @@ Lo que hay que entender antes de tocarlo:
 **Conectado el mismo día** en `https://nom-001-ia.bettofe.workers.dev`: cuenta
 de Cloudflare del dueño, plan gratis, con Workers Builds conectado al
 repositorio (rama `main`, carpeta raíz `ia`). Cada cambio en `ia/` que llega a
-`main` se vuelve a publicar solo. El primer intento falló con «root directory
+`main` se vuelve a publicar solo (en realidad, cualquier cambio que llega a
+`main`: ver el paso 0 en «La auditoría del asistente»). El primer intento falló con «root directory
 not found» porque `ia/` aún no estaba en `main`: el Worker se publica desde
 ahí, no desde la rama de trabajo. El registro del Worker (Observability) guarda
 solo lo que escribe `console.error` —el error del modelo, nunca la pregunta—,
-sin registros por petición, que traerían la IP de cada visitante.
+sin registros por petición, que traerían la IP de cada visitante. *(Ya no es
+así: después anota también lo que tarda y gasta cada consulta y los eventos
+`pregunta` y `respuesta_generada`; ver «Cuánta gente lo usa» en
+`ia/README.md` y el aviso de privacidad.)*
 
 Con `site/src/lib/asistente.js` vacío no hay pestaña ni conexión en la CSP, y
 `/preguntar` avisa que no está conectado: así se desconecta si hiciera falta.
@@ -328,7 +334,8 @@ Quedó fuera, a propósito:
 - **Tope por IP en el Worker.** El de Cloudflare (Rate Limiting) cuenta por
   minuto, y contra la cuota diaria no sirve; uno diario pide KV. Hoy hay un
   tope de 20 preguntas al día por navegador. Si un bot se acaba la cuota, lo
-  siguiente es Turnstile.
+  siguiente es Turnstile. *(Después: 10 por navegador, y un tope de 15
+  consultas por minuto por conexión en el Worker; ver «Cuánto se usa».)*
 - **Guardar respuestas repetidas.** La Cache API no funciona en `workers.dev`;
   haría falta KV.
 - **Las erratas del DOF en las tablas** (README, «Erratas»): el asistente cita
@@ -553,7 +560,9 @@ Lo que se hizo:
   `{"evento":"pregunta","navegador":"…"}` con cada pregunta contestada, nunca
   la pregunta ni la IP. En Observability se cuentan las preguntas y los
   números distintos; el registro gratis guarda 3 días. La guía lo dice en
-  «Privacidad y cupo».
+  «Privacidad y cupo». *(Se quitó de la guía el mismo día, ver dos puntos
+  abajo; el número al azar se cambió por un número de orden y los «3 días»
+  siguen sin comprobar: ver «La auditoría del asistente».)*
 - **Contador de visitas** (Cloudflare Web Analytics, sin cookies), encendido
   con el token que dio el dueño (`site/src/lib/analitica.js`). El script entra
   en cada página como lo da Cloudflare (`type="module"`), la CSP se abre solo
@@ -976,11 +985,31 @@ de la burbuja. Al escribir texto con enlaces, ponerlo así o en el mismo
 renglón. Los menús de arriba y del pie también quedan pegados en el HTML,
 pero cada enlace es un elemento aparte y en pantalla se ven bien.
 
-Pendiente para el paso de documentación (B3): `ia/README.md` («Privacidad»)
-sigue diciendo que el Worker no guarda nada y que Cloudflare no entrena con
-las preguntas, y `docs/arquitectura.md` («El contador de visitas»), «sin
-cookies ni datos personales». No los lee el visitante, pero contradicen el
-aviso.
+**Paso 2 de la auditoría: documentación al día (B3), hecho (8 de octubre de
+2026).** Se corrigieron los textos internos que contradecían el código o el
+aviso:
+
+- `ia/README.md`: «Privacidad» decía que el Worker no guarda nada y que la
+  página lo dice «debajo del campo»; ahora remite al aviso y dice qué anota
+  el registro. La tabla «Qué hacer si…» citaba «No me pude conectar con el
+  asistente», que ya no existe: ahora trae los mensajes de hoy («Tu pregunta
+  no llegó…», «tardó demasiado…»). «Cada cambio en `ia/` se publica solo»:
+  se publica con cualquier cambio en `main`. «El registro gratis guarda 3
+  días»: sin comprobar, y así se dice.
+- `ia/nucleo.js`: la lista de configuración no traía `MODELO_REDACTAR` ni
+  `TOPE_IP`, y ahora recuerda que cambiar de modelo pasa antes por el aviso.
+- `ia/wrangler.jsonc`: el comentario de Observability hablaba del número al
+  azar.
+- `site/src/scripts/preguntar/pasajes.js`: «unas 130 preguntas al día» era la
+  estimación inicial; medido, 40 a 45.
+- `docs/arquitectura.md` y `site/src/lib/analitica.js`: «sin cookies ni datos
+  personales» de Web Analytics, una afirmación sobre un tercero, pasa a
+  «según Cloudflare, sin cookies», con la política en el aviso. Formspree
+  guarda el envío 30 días en su panel y reenvía a la cuenta de Gmail.
+- `CONTEXTO.md`: las partes viejas que ya no valen (lo que guarda el
+  registro, el tope de 20, «la guía lo dice», las 130 preguntas, «cada
+  cambio en `ia/`») llevan una nota en cursiva de qué cambió y dónde. Es
+  bitácora: se anota, no se reescribe.
 
 **Paso 1, hecho.** Se quitaron tres afirmaciones, sin agregar texto:
 
@@ -1001,7 +1030,8 @@ también viajan a Cloudflare con cada consulta); «de código abierto» (la
 auditoría sugiere «pesos abiertos», tras verificarlo); y el pie del sitio,
 que dice que Web Analytics «no usa cookies ni guarda datos personales», una
 afirmación sobre un tercero. Para el paso de documentación (B3): `ia/README.md`
-sigue diciendo «El Worker no guarda nada».
+sigue diciendo «El Worker no guarda nada». *(Todo esto se resolvió después:
+aviso 0.3 y paso 2 de la auditoría.)*
 
 ## Alternativas futuras no implementadas
 

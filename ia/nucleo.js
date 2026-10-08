@@ -24,9 +24,12 @@
 // 00:00 UTC, y la página lo dice.
 //
 // Configuración (ia/wrangler.jsonc):
-//   AI        el modelo, enlazado por Cloudflare (binding de Workers AI)
-//   MODELO    cuál; si Cloudflare lo retira del plan gratis, se cambia aquí
-//   ORIGENES  las páginas que pueden usarlo, separadas por comas
+//   AI               los modelos, enlazados por Cloudflare (binding de Workers AI)
+//   MODELO           el que escoge qué leer; si Cloudflare lo retira del plan
+//                    gratis, se cambia aquí (y antes, el aviso: ver CLAUDE.md)
+//   MODELO_REDACTAR  el que redacta; si no está disponible, redacta MODELO
+//   ORIGENES         las páginas que pueden usarlo, separadas por comas
+//   TOPE_IP          el tope de consultas por minuto por conexión (ratelimits)
 
 // Dos modelos de la misma familia: el chico escoge qué leer (pasos 1 y 2),
 // que es leer un índice y copiar identificadores; el grande redacta (paso

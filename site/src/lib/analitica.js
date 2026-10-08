@@ -1,8 +1,9 @@
 // ---------------------------------------------------------------------------
 // EL CONTADOR DE VISITAS
 //
-// Cloudflare Web Analytics: cuenta visitas y páginas vistas sin cookies y sin
-// guardar datos de la persona. Es gratis y vive en la misma cuenta de
+// Cloudflare Web Analytics: cuenta visitas y páginas vistas; según Cloudflare,
+// sin cookies. Qué recoge lo dice su política, enlazada en el aviso de
+// privacidad (src/pages/privacidad.astro). Es gratis y vive en la misma cuenta de
 // Cloudflare que el asistente (Analytics & Logs → Web Analytics).
 //
 // Aquí va el «token» que da Cloudflare al dar de alta el sitio

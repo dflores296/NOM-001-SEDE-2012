@@ -17,7 +17,8 @@ import { sinAcentos, termino } from '../buscador/terminos.js';
 
 // Cuánto se manda. Por debajo de los topes del Worker (TOPES en
 // ia/nucleo.js), que rechaza lo que se pase. 12 000 caracteres son unas
-// 3 500 palabras del modelo: con gpt-oss-20b, unas 130 preguntas al día.
+// 3 500 palabras del modelo. (Al principio se estimaban unas 130 preguntas al
+// día; medido el 8 de octubre de 2026, el cupo da unas 40 a 45 entre todos.)
 export const PRESUPUESTO = { fragmentos: 7, porFragmento: 3500, total: 12000 };
 
 // Cuántos de cada tipo, como el CUPO del buscador y por lo mismo: las
