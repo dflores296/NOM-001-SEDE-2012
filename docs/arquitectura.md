@@ -56,7 +56,8 @@ la norma sobre `data/`), la compilación, la revisión de enlaces (`check_enlace
 que cada enlace interno lleve a una página y un ancla que existan), la
 huella del sitio y las pruebas (`site/pruebas/`: en navegador, el buscador,
 el tema, el índice lateral y el mapa; sin navegador, la geometría del hilo
-del mapa y sus sugerencias), lo corre en orden
+del mapa y sus sugerencias, y el candado del aviso de privacidad, que falla si
+aparece un modelo o un servicio que el aviso no nombra), lo corre en orden
 `bash tools/verificar.sh`.
 
 El sitio queda en `site/dist/`, archivos estáticos sin servidor detrás. Se

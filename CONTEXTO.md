@@ -889,6 +889,36 @@ reestructurar:
 - El uso del correo de la observación: atenderla, pedir aclaraciones,
   comunicar el resultado o responder una solicitud sobre esos datos.
 
+**Publicado el 8 de octubre de 2026:** `main` se adelantó a la rama de
+trabajo (`7a98f75`): el aviso 0.3 y el número de orden salieron juntos. La
+publicación de GitHub terminó bien y `/privacidad` se comprobó en el sitio
+publicado. Desde que el dueño dio acceso completo a la red del entorno,
+`dflores296.github.io` sí se abre desde aquí (ver «Trampas del entorno»).
+
+**Paso 4: la regla y el candado, hechos (8 de octubre de 2026).** En
+`CLAUDE.md`, con el texto que aprobó el dueño: ningún modelo ni proveedor
+nuevo recibe preguntas sin el aviso actualizado y publicado; incluye un
+respaldo, una prueba con visitantes reales, un cambio de `MODELO` o
+`MODELO_REDACTAR` y una conexión nueva del sitio que mande datos del
+visitante. Y el candado que él aprobó, `site/pruebas/aviso.mjs` (corre con
+las demás pruebas del sitio, en `verificar.sh` y al publicar), que compara el
+aviso compilado contra:
+
+- los modelos `@cf/<org>/<modelo>` de `ia/wrangler.jsonc` e `ia/nucleo.js`:
+  el aviso nombra cada modelo y su dueño;
+- `ia/wrangler.jsonc`: solo las llaves conocidas (una conexión nueva del
+  Worker, como KV o R2, sería una llave nueva), *invocation logs* apagados y
+  sin trazas;
+- el código del Worker: sin direcciones fuera de los comentarios (una
+  llamada a otro servicio) y sin AI Gateway;
+- la CSP de la portada: cada dirección con el servicio que el aviso nombra
+  (`SERVICIOS`); una que no esté en la lista es una conexión nueva;
+- que la portada, `/asistente` y `/observaciones` enlacen el aviso.
+
+Se probó rompiendo cada cosa a propósito: otro modelo, un KV, los registros
+por petición encendidos, una llamada a `api.groq.com` y una dirección nueva
+en la CSP; en los cinco casos falla con un mensaje que dice qué y dónde.
+
 Pendiente para el paso de documentación (B3): `ia/README.md` («Privacidad»)
 sigue diciendo que el Worker no guarda nada y que Cloudflare no entrena con
 las preguntas, y `docs/arquitectura.md` («El contador de visitas»), «sin
@@ -1609,10 +1639,12 @@ inventar ni descartar ninguno.
 
 ## Trampas del entorno
 
-- **`dflores296.github.io` está bloqueado** desde el entorno de Claude Code en la
-  nube. Se puede construir el sitio y servirlo en `localhost` para revisarlo con
-  Playwright, pero no abrir la URL publicada. Verificar el deploy es mirar que el
-  workflow salga en verde.
+- **`dflores296.github.io` estaba bloqueado** desde el entorno de Claude Code en
+  la nube. Se puede construir el sitio y servirlo en `localhost` para revisarlo
+  con Playwright; verificar el deploy era mirar que el workflow salga en verde.
+  El 8 de octubre de 2026 el dueño le dio acceso completo a la red al entorno y
+  desde entonces la URL publicada sí se abre; si una sesión vuelve a tener el
+  acceso limitado, vuelve a estar bloqueado.
 - **El npm del contenedor (10.9) reescribe `package-lock.json`** al instalar o
   al correr `npm audit fix`: le quita los campos `libc` que pone la versión de
   Dependabot. Por eso el hook usa `npm ci`. Para subir una dependencia a mano,

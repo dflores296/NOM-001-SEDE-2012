@@ -50,6 +50,17 @@ git status --porcelain      # después de eso, debe quedar vacío
   (`LECTURA`, `TOPE_INDICE`) va por debajo de los topes del Worker (`TOPES`);
   una prueba lo cuida. `ia/agente.js` solo exporta `default`. Ver
   `ia/README.md`.
+- **Ningún modelo ni proveedor nuevo recibe preguntas sin el aviso
+  actualizado y publicado.** Antes de que una pregunta llegue a otro modelo u
+  otro servicio, el aviso (`site/src/pages/privacidad.astro`) lo dice, con
+  versión y fecha nuevas, y ya está publicado en `main`. Esto incluye un
+  respaldo, una prueba con visitantes reales y un cambio de `MODELO` o
+  `MODELO_REDACTAR`. Vale igual para una conexión nueva del sitio que mande
+  datos del visitante. Ver «Alternativas futuras no implementadas» en
+  `CONTEXTO.md`. El candado es `site/pruebas/aviso.mjs`: detiene la
+  publicación si aparece un modelo, algo conectado al Worker o un servicio
+  del sitio que el aviso no nombra. Primero se cambia el aviso; después, la
+  lista de la prueba.
 - **Lo que lee el visitante no explica cómo funciona por dentro.** Textos del
   sitio y del asistente: qué hace y qué le toca a la persona, sin detalles de
   implementación (cómo se cuenta, qué se manda, por qué). Eso va en los
