@@ -834,6 +834,29 @@ no escribir datos personales y da el correo de contacto,
 - La huella se volvió a sellar: cambiaron las 164 páginas (el pie y la
   burbuja están en todas) y hay una nueva; ningún archivo de datos.
 
+**Versión 0.2 del aviso, y hasta dónde llega (8 de octubre de 2026).** A
+pedido del dueño se revisó el aviso contra la ley vigente (LFPDPPP, nueva ley
+del DOF del 20 de marzo de 2025; su art. 15 dice qué debe contener un aviso).
+Salieron huecos: el domicilio, el procedimiento para los derechos ARCO, las
+finalidades separadas por consentimiento, entre otros. **Decisión del dueño:
+el mínimo proporcional**, porque lo que la guía trata de verdad es poco (del
+asistente no guarda nada que identifique a nadie; lo único personal son las
+observaciones y el correo opcional). En la 0.2 solo se agregó:
+
+- que el correo de contacto es Gmail, así que las observaciones quedan en
+  Google, con enlace a su política (en español, vigente desde el 1 de octubre
+  de 2026);
+- «Tus datos»: quien mandó una observación puede pedir verla, corregirla,
+  borrarla u oponerse a su uso, por correo, gratis, con respuesta en un máximo
+  de 20 días (el plazo de la ley, art. 31).
+
+**No se hace, a propósito:** separar finalidades por tipo de consentimiento,
+un mecanismo para no ser contado en las visitas, avisos cortos junto a cada
+formulario, el análisis de encargados y transferencias, lo de menores. Mucho
+trabajo para casi ningún dato. **El domicilio sigue sin publicarse**: el
+dueño acepta ese hueco; si algún día se cobra por algo o alguien se queja, ahí
+entra un abogado. No volver a inflar el aviso sin que él lo pida.
+
 Pendiente para el paso de documentación (B3): `ia/README.md` («Privacidad»)
 sigue diciendo que el Worker no guarda nada y que Cloudflare no entrena con
 las preguntas, y `docs/arquitectura.md` («El contador de visitas»), «sin

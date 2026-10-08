@@ -13,7 +13,7 @@ import Base from '../layouts/Base.astro';
 //
 // Si cambia lo que se manda o a qué servicio llega, este texto cambia ANTES,
 // con versión y fecha nuevas (regla de CLAUDE.md).
-const VERSION = '0.1';
+const VERSION = '0.2';
 const FECHA = '8 de octubre de 2026';
 const CONTACTO = 'nom001sede2012.contacto@gmail.com';
 const HISTORIA =
@@ -128,7 +128,8 @@ const HISTORIA =
       <li>
         <b>El formulario de Observaciones</b> manda lo que escribes a
         Formspree, un servicio de formularios, que lo hace llegar por correo al
-        responsable de la guía.
+        responsable de la guía. Ese correo es una cuenta de Gmail, así que las
+        observaciones quedan guardadas en Google.
       </li>
       <li>
         <b>Se manda:</b> tu observación; la referencia, el tipo y lo que dice
@@ -196,8 +197,21 @@ const HISTORIA =
         <b>Formspree</b>, que recibe las observaciones:
         <a href="https://formspree.io/legal/privacy-policy/">su política de privacidad</a>.
       </li>
+      <li>
+        <b>Google</b>, donde está el correo de contacto:
+        <a href="https://policies.google.com/privacy?hl=es">su política de privacidad</a>.
+      </li>
     </ul>
     <p class="obs-nota">Consultadas el 8 de octubre de 2026; cada servicio puede cambiarlas.</p>
+
+    <h2>Tus datos</h2>
+    <p>
+      Si mandaste una observación, puedes pedir ver, corregir o borrar lo que
+      enviaste, incluido tu correo, u oponerte a que se use: escribe a
+      <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>. Es gratis, y la respuesta
+      llega en un máximo de 20 días. De tus preguntas al asistente, esta guía no
+      guarda nada que se pueda entregar o borrar.
+    </p>
 
     <h2>Cambios a este aviso</h2>
     <p>
