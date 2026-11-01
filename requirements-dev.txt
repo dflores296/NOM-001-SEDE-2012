@@ -3,4 +3,4 @@
 # verificación de hoy sea la de mañana.
 ruff==0.16.10
 mypy==2.4.0
-pytest==9.1.1
+pytest==9.2.0
